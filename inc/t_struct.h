@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:24 2010 francois1 ancel
-** Last update Tue Apr  6 14:28:59 2010 pierre1 boutbel
+** Last update Tue Apr  6 17:15:00 2010 Florian Chanioux
 */
 
 #ifndef T_STRUCT_INCLUDED
@@ -24,13 +24,27 @@ typedef struct
 {
   /* liste doublement chainer de player */
   int		ress[RESS_NUM];
+  t_list	*player;
 }		t_case;
+
+struct		s_map
+{
+  struct s_map	*n;
+  struct s_map	*no;
+  struct s_map	*o;
+  struct s_map	*so;
+  struct s_map	*s;
+  struct s_map	*se;
+  struct s_map	*e;
+  struct s_map	*ne;
+  t_case	*cas;
+}
 
 typedef struct
 {
-  t_case	map[MAP_SIZ][MAP_SIZ];
-  /* idealement il faudrais faire une liste doublement chainer
-     des adresse des t_player sur la map */
+  t_map		**map;
+  t_list	*player;
+  t_list	*eggs;
 }		t_game;
 
 typedef struct
