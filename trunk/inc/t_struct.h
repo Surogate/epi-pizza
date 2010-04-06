@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:24 2010 francois1 ancel
-** Last update Tue Apr  6 13:38:04 2010 pierre1 boutbel
+** Last update Tue Apr  6 14:28:59 2010 pierre1 boutbel
 */
 
 #ifndef T_STRUCT_INCLUDED
@@ -13,20 +13,10 @@
 
 typedef struct
 {
-  int		linemate;
-  int		deraumere;
-  int		sibur;
-  int		mendiane;
-  int		phiras;
-  int		thystame;
-}		t_ressource;
-
-typedef struct
-{
   int		team;
   int		level;
-  t_ressource	*invent;
   int		dir;
+  int		ress[RESS_NUM];
   /* mettre les info lier au joueurs */
 }		t_player;
 
