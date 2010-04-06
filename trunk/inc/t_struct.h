@@ -17,6 +17,7 @@ typedef struct
   int		level;
   t_ressource	*invent;
   int		dir;
+  t_map		*pos;
   /* mettre les info lier au joueurs */
 }		t_player;
 
@@ -61,5 +62,11 @@ typedef struct
   int		ac;
   char		**av;
 }		t_packet;
+
+typedef	struct
+{
+  int		nb_player;
+  int		ress_need[RESS_NUM];
+}		t_incant;
 
 #endif
