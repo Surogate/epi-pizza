@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ## 
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Tue Apr  6 14:53:41 2010 Florian Chanioux
+## Last update Tue Apr  6 15:00:13 2010 Florian Chanioux
 ##
 
 STAG	= 	$(shell uname -s)
@@ -117,6 +117,7 @@ cleanall:	fclean
 	@$(CD) $(DIR_SRC_C); $(RM) *~
 	@$(CD) $(DIR_SRC_CO); $(RM) *~
 	@$(CD) $(DIR_SRC_S); $(RM) *~
+	$(RM) *~
 	$(RM) TAGS
 
 re	:	fclean	all
