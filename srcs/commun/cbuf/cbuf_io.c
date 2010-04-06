@@ -22,7 +22,6 @@
 char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
 {
   static char	result[CBUFSIZ];
-  int		len;
   int		cmd;
 
   if (cbuf->use == 0)
@@ -34,10 +33,9 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
     }
   else
     {
-      len = CBUFSIZ - cbuf->cons;
       strncpy(result, cbuf->buf + cbuf->cons, CBUFSIZ - cbuf->cons);
       strncpy(result + CBUFSIZ - cbuf->cons, cbuf->buf, cbuf->prod);
-      result[len + cbuf->prod] = '\0';
+      result[CBUFSIZ - cbuf->cons + cbuf->prod] = '\0';
     }
   if ((cmd = check_read(result)) != 0)
     {
