@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:24 2010 francois1 ancel
-** Last update Tue Apr  6 17:15:00 2010 Florian Chanioux
+** Last update Tue Apr  6 18:19:44 2010 Florian Chanioux
 */
 
 #ifndef T_STRUCT_INCLUDED
@@ -15,19 +15,18 @@ typedef struct
 {
   int		team;
   int		level;
+  t_ressource	*invent;
   int		dir;
-  int		ress[RESS_NUM];
   /* mettre les info lier au joueurs */
 }		t_player;
 
 typedef struct
 {
-  /* liste doublement chainer de player */
-  int		ress[RESS_NUM];
+    int		ress[RESS_NUM];
   t_list	*player;
 }		t_case;
 
-struct		s_map
+typedef struct	s_map
 {
   struct s_map	*n;
   struct s_map	*no;
@@ -38,6 +37,16 @@ struct		s_map
   struct s_map	*e;
   struct s_map	*ne;
   t_case	*cas;
+}		t_map;
+
+typedef struct
+{
+  int		port;
+  int		height;
+  int		width;
+  char		*teamname;
+  int		nb_client;
+  int		delay;
 }
 
 typedef struct

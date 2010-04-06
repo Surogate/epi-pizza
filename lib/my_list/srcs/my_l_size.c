@@ -5,8 +5,10 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Oct 20 16:03:31 2009 florian chanioux
-** Last update Mon Nov 30 14:21:17 2009 florian chanioux
+** Last update Tue Apr  6 18:05:46 2010 Florian Chanioux
 */
+
+#include <stdlib.h>
 
 #include "my_list.h"
 
@@ -15,9 +17,9 @@ int		my_l_size(t_list *begin)
   int		i;
 
   i = 0;
-  while (begin != 0)
+  while (begin->data != NULL)
     {
-      i = i + 1;
+      i++;
       begin = begin->next;
     }
   return (i);
