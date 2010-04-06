@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Mon Nov 30 12:30:14 2009 florian chanioux
-** Last update Sat Mar 20 18:05:46 2010 Florian Chanioux
+** Last update Tue Apr  6 18:06:00 2010 Florian Chanioux
 */
 
 #include <stdlib.h>
@@ -28,5 +28,5 @@ t_list          *my_l_init()
   }
   res->data = NULL;
   res->next = NULL;
-  return (0);
+  return (res);
 }
