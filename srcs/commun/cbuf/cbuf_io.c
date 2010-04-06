@@ -57,7 +57,8 @@ int		sock_write(int sock, char *from)
     return (EXIT_SUCCESS);
   while (total < strlen(from))
     {
-      result = send(sock, from, strlen(from), 0);
+      /*result = send(sock, from, strlen(from), 0);*/
+      result = write(sock, from, strlen(from));
       if (result < 0)
 	return (EXIT_FAILURE);
       total += result;
@@ -69,7 +70,8 @@ int		sock_read(int sock, char *to, int limit)
 {
   int		result;
 
-  result = recv(sock, to , limit, 0);
+  /*  result = recv(sock, to , limit, 0);*/
+  result = read(sock, to, limit);
   if (result < 0)
     return (EXIT_FAILURE);
   return (result);
