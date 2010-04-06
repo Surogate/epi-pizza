@@ -23,7 +23,7 @@ typedef struct
 
 typedef struct
 {
-    int		ress[RESS_NUM];
+  int		ress[RESS_NUM];
   t_list	*player;
 }		t_case;
 
@@ -62,6 +62,14 @@ typedef struct
   int		ac;
   char		**av;
 }		t_packet;
+
+typedef struct
+{
+  int		sock;
+  int		type;
+  t_cbuf	cbuf;
+  t_list	*t_packet;
+}		t_client;
 
 typedef	struct
 {
