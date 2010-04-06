@@ -18,8 +18,8 @@
 
 int main(int ac, char **av)
 {
-  /*init map*/
-  /*init server */
+  /* init map*/
+  /* init server */
   /* attendre qu'il se passe quelque chose */
   /* recup la chose */
   /* conditionner & envoie dans la partie */
