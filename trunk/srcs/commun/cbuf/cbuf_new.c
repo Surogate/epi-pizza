@@ -21,9 +21,7 @@ t_cbuf		*cbuf_new(void)
 
   new = malloc(sizeof(*new));
   if (new)
-    {
-      cbuf_init(new);
-    }
+    cbuf_init(new);
   return (new);
 }
 
