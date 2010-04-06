@@ -29,15 +29,14 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
     return (NULL);
   else if (cbuf->prod > cbuf->cons)
     {
-      len = cbuf->prod - cbuf->cons;
-      strncpy(result, cbuf->buf + cbuf->cons, len);
-      result[len] = '\0';
+      strncpy(result, cbuf->buf + cbuf->cons, cbuf->prod - cbuf->cons);
+      result[cbuf->prod - cbuf->cons] = '\0';
     }
   else
     {
       len = CBUFSIZ - cbuf->cons;
-      strncpy(result, cbuf->buf + cbuf->cons, len);
-      strncpy(result + len, cbuf->buf, cbuf->prod);
+      strncpy(result, cbuf->buf + cbuf->cons, CBUFSIZ - cbuf->cons);
+      strncpy(result + CBUFSIZ - cbuf->cons, cbuf->buf, cbuf->prod);
       result[len + cbuf->prod] = '\0';
     }
   if ((cmd = check_read(result)) != 0)
