@@ -5,13 +5,14 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:10 2010 francois1 ancel
-** Last update Mon Apr  5 18:18:10 2010 francois1 ancel
+** Last update Tue Apr  6 15:22:41 2010 pierre1 boutbel
 */
 
 #ifndef DEFINE_INCLUDED
 # define DEFINE_INCLUDED
 
-# define RESS_NUM	1
+# define INCANT_NUM	7
+# define RESS_NUM	7
 # define MAP_SIZ	8
 
 #endif

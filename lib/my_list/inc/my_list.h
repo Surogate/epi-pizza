@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Mon Nov 30 12:35:43 2009 florian chanioux
-** Last update Sun Mar 21 00:14:48 2010 Florian Chanioux
+** Last update Tue Apr  6 15:20:57 2010 pierre1 boutbel
 */
 
 #ifndef                 __MY_LIST_H__
