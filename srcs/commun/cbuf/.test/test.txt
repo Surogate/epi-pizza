@@ -1,0 +1,9 @@
+En préparation du procès à 1 milliard de dollars intenté par le géant américain des médias contre Google, Viacom et YouTube ont commencé à s'échanger des amabilités à travers les documents fournis au tribunal. Une centaine de pages qui se résume grosso modo à un vulgaire c'est celui qui dit qui l'est. 
+
+Si Mozilla résiste coûte que coûte au H.264, Firefox risque de se retrouver isolé à lire des vidéos dans un format qui ne sera que très peu utilisé. De fait, tandis que le H.264 se répandra sur le Web, les utilisateurs de Firefox se retrouveront dans un monde à part où le seul moyen de lire lesdites vidéo sera d’espérer, et c’est bien là le plus ironique, qu’une version Flash existera. Pour éviter le H.264, se servir du Flash ? Dans les deux cas, les technologies sont propriétaires.
+
+It needs to be emphasized that while it gives you an early glimpse at EVE Gate, the primary purpose of this test is a technical one. The features included in the test are still heavily in development and we wanted to get an early version up and available for you to beat up the hardware well in advance.
+
+There will be elements that are not yet done or which are presented as a simplified version for testing purposes. To make this clear the application will be labeled the "EVE Gate Alpha Stress Test";
+ 
+it will be pretty hard to miss. I am not going to go into depth here on the features that will be included; we have an additional Dev Blog that will be presented soon which will focus on the web based functionality which will come with EVE Gate at launch (calendar, mail, contacts, profiles, broadcast logs, etc).
