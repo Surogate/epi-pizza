@@ -57,7 +57,6 @@ SRC_C	=	$(DIR_SRC_C)main.c
 SRC_CO	=	
 
 
-
 OBJ_S	=	$(SRC_S:.c=.o)
 OBJ_C	=	$(SRC_C:.c=.o)
 OBJ_CO	=	$(SRC_CO:.c=.o)

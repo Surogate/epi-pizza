@@ -12,6 +12,7 @@ NAME	= prog
 CC	= gcc
 RM	= rm -rf
 SRCS	= cbuf_io.c		\
+	cbuf_debug.c		\
 	cbuf_new.c		\
 	main.c
 

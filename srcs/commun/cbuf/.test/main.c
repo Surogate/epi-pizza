@@ -15,7 +15,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "define.h"
 #include "s_cbuf.h"
 #include "cbuf_new.h"
 #include "cbuf_io.h"
@@ -44,7 +43,7 @@ int main()
       return (EXIT_FAILURE);
     }
   printf("on vient de write\ncbuf->cons : %i\n cbuf->prod : %i\n", buf->cons, buf->prod);
-  readed = cbuf_read(buf, &strlen);
+  readed = cbuf_read(buf, (int (*)())strlen);
   if (readed)
     printf("=========\n%s\n", readed);
   else
@@ -56,7 +55,7 @@ int main()
       return (EXIT_FAILURE);
     }
   printf("on vient de write\ncbuf->cons : %i\n cbuf->prod : %i\n", buf->cons, buf->prod);
-  readed = cbuf_read(buf, &strlen);
+  readed = cbuf_read(buf, (int (*)())strlen);
   if (readed)
     printf("=========\n%s\n", readed);
   else
@@ -68,7 +67,7 @@ int main()
       return (EXIT_FAILURE);
     }
   printf("on vient de write\ncbuf->cons : %i\n cbuf->prod : %i\n", buf->cons, buf->prod);
-  readed = cbuf_read(buf, &strlen);
+  readed = cbuf_read(buf, (int (*)())strlen);
   if (readed)
     printf("=========\n%s\n", readed);
   else
