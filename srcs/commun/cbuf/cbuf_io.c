@@ -34,7 +34,7 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
   else
     {
       strncpy(result, cbuf->buf + cbuf->cons, CBUFSIZ - cbuf->cons);
-      strncpy(result + CBUFSIZ - cbuf->cons, cbuf->buf, cbuf->prod);
+      strncpy(result + (CBUFSIZ - cbuf->cons), cbuf->buf, cbuf->prod);
       result[CBUFSIZ - cbuf->cons + cbuf->prod] = '\0';
     }
   if ((cmd = check_read(result)) != 0)
