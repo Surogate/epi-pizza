@@ -16,13 +16,16 @@
 #include "my_list.h"
 #include "t_struct.h"
 
-t_map		**init_map()
-{
-  t
-}
-
 int main(int ac, char **av)
 {
+  /*init map*/
+  /*init server */
+  /* attendre qu'il se passe quelque chose */
+  /* recup la chose */
+  /* conditionner & envoie dans la partie */
+  /* recuperer la reponse et la renvoyer */
+  /* envoyer la map a l'affichage */
+  /* retourner a l'attente */
   printf("hello world !\n");
   return (EXIT_SUCCESS);
 }
