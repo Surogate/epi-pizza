@@ -12,6 +12,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "define.h"
+#include "s_cbuf.h"
 #include "xfunc.h"
 #include "my_list.h"
 #include "t_struct.h"
