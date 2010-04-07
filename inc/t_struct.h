@@ -5,11 +5,11 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:24 2010 francois1 ancel
-** Last update Tue Apr  6 18:19:44 2010 Florian Chanioux
+** Last update Wed Apr  7 15:30:25 2010 Florian Chanioux
 */
 
-#ifndef T_STRUCT_INCLUDED
-# define T_STRUCT_INCLUDED
+#ifndef		T_STRUCT_INCLUDED
+# define	T_STRUCT_INCLUDED
 
 typedef struct
 {
@@ -17,16 +17,15 @@ typedef struct
   t_list	*player;
 }		t_case;
 
+typedef struct
+{
+  int		x;
+  int		y;
+}		t_card;
+
 typedef struct	s_map
 {
-  struct s_map	*n;
-  struct s_map	*no;
-  struct s_map	*o;
-  struct s_map	*so;
-  struct s_map	*s;
-  struct s_map	*se;
-  struct s_map	*e;
-  struct s_map	*ne;
+  struct s_map	*card[M_CARD];
   t_case	*cas;
 }		t_map;
 
@@ -51,6 +50,7 @@ typedef struct
 
 typedef struct
 {
+  t_server	*server;
   t_map		**map;
   t_list	*player;
   t_list	*eggs;
