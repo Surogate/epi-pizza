@@ -13,16 +13,6 @@
 
 typedef struct
 {
-  int		team;
-  int		level;
-  t_ressource	*invent;
-  int		dir;
-  t_map		*pos;
-  /* mettre les info lier au joueurs */
-}		t_player;
-
-typedef struct
-{
   int		ress[RESS_NUM];
   t_list	*player;
 }		t_case;
@@ -42,13 +32,22 @@ typedef struct	s_map
 
 typedef struct
 {
+  int		team;
+  int		level;
+  int		dir;
+  t_map		*pos;
+  /* mettre les info lier au joueurs */
+}		t_player;
+
+typedef struct
+{
   int		port;
   int		height;
   int		width;
   char		*teamname;
   int		nb_client;
   int		delay;
-}
+}		t_server;
 
 typedef struct
 {

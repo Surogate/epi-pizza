@@ -11,3 +11,15 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+
+int server_start(t_list **client)
+{
+  t_client *server;
+
+  server = malloc(sizeof(*server));
+  if (server)
+    {
+      return (EXIT_SUCCESS);
+    }
+  return (EXIT_FAILURE);
+}
