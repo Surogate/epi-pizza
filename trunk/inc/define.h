@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:10 2010 francois1 ancel
-** Last update Tue Apr  6 15:22:41 2010 pierre1 boutbel
+** Last update Tue Apr  6 20:34:18 2010 Florian Chanioux
 */
 
 #ifndef DEFINE_INCLUDED
@@ -14,5 +14,8 @@
 # define INCANT_NUM	7
 # define RESS_NUM	7
 # define MAP_SIZ	8
+
+# define M_CARD		(8)
+# enum {M_E, M_NE, M_N, M_NO, M_O, M_SO, M_S, M_SE}
 
 #endif
