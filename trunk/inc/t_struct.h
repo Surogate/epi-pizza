@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:24 2010 francois1 ancel
-** Last update Wed Apr  7 15:30:25 2010 Florian Chanioux
+** Last update Wed Apr  7 19:19:56 2010 Florian Chanioux
 */
 
 #ifndef		T_STRUCT_INCLUDED
@@ -50,7 +50,7 @@ typedef struct
 
 typedef struct
 {
-  t_server	*server;
+  t_server	server;
   t_map		**map;
   t_list	*player;
   t_list	*eggs;
@@ -66,7 +66,6 @@ typedef struct
 {
   int		sock;
   int		type;
-  t_cbuf	cbuf;
   t_list	*t_packet;
 }		t_client;
 

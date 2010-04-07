@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ## 
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Tue Apr  6 15:00:13 2010 Florian Chanioux
+## Last update Wed Apr  7 19:27:06 2010 Florian Chanioux
 ##
 
 STAG	= 	$(shell uname -s)
@@ -50,7 +50,9 @@ DIR_SRC_C	=	$(DIR_SRC)client/
 DIR_SRC_CO	=	$(DIR_SRC)commun/
 
 
-SRC_S	=	$(DIR_SRC_S)main.c
+SRC_S	=	$(DIR_SRC_S)main.c		\
+		$(DIR_SRC_S)serveur_map.c	\
+
 
 SRC_C	=	$(DIR_SRC_C)main.c
 
@@ -68,12 +70,12 @@ DEFINE_i386-FreeBSD	=
 DEFINE_i686-Linux	=
 
 LFLAGS_sun4u-SunOS	=
-LFLAGS_i386-FreeBSD	=	`sdl-config --cflags --libs` -lSDL
-LFLAGS_i686-Linux	=	`sdl-config --cflags --libs` -lSDL
+LFLAGS_i386-FreeBSD	=	-lxfunc_$(TAG) `sdl-config --cflags --libs` -lSDL
+LFLAGS_i686-Linux	=	-lxfunc_$(TAG) `sdl-config --cflags --libs` -lSDL
 
 LFLAGS		=	-L$(DIR_LIB) $(LFLAGS_$(TAG))
 IFLAGS		=	-I$(DIR_INC)
-CFLAGS		+=	-W -Wall -ansi -pedantic $(DEFINE_$(TAG)) $(IFLAGS)
+CFLAGS		+=	-g3 -W -Wall -ansi -pedantic $(DEFINE_$(TAG)) $(IFLAGS)
 
 # OTHERS
 
@@ -112,10 +114,10 @@ fclean	:	clean
 	$(RM) $(NAME_S)
 
 cleanall:	fclean
-	@$(CD) $(DIR_INC); $(RM) *~
-	@$(CD) $(DIR_SRC_C); $(RM) *~
-	@$(CD) $(DIR_SRC_CO); $(RM) *~
-	@$(CD) $(DIR_SRC_S); $(RM) *~
+	$(RM) $(DIR_SRC_S)*~
+	$(RM) $(DIR_SRC_CO)*~
+	$(RM) $(DIR_SRC_C)*~
+	$(RM) $(DIR_INC)*~
 	$(RM) *~
 	$(RM) TAGS
 
