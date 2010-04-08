@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:15:36 2010 francois1 ancel
-** Last update Thu Apr  8 15:20:28 2010 Florian Chanioux
+** Last update Thu Apr  8 15:45:39 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -46,7 +46,7 @@ int main(int ac, char **av)
   game = init_game();
   puts("phase de test");
   
-  test_map(game, 0, 0);
+  test_map(game);
   test_aff_map(game);
   puts("fin de test");
   free_map(game);

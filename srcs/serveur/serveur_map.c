@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Wed Apr  7 18:05:33 2010 Florian Chanioux
-** Last update Thu Apr  8 15:36:20 2010 Florian Chanioux
+** Last update Thu Apr  8 15:48:21 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -67,11 +67,7 @@ void		init_map(t_game *game)
       i = -1;
       printf("pos_c x y: %i %i\n%x\n", x, y, (int)&game->map[y][x]);
       while (++i < M_CARD)
-      {
 	game->map[y][x].card[i] = init_case(game, i, y, x);
-      
-    printf("card %i: %x\n", i, (int)game->map[y][x].card[i]);
-      }
       game->map[y][x].cas = NULL;
     }
   }
@@ -91,16 +87,25 @@ void		test_aff_map(t_game *game)
   }
 }
 
-void		test_map(t_game *game, int y, int x)
+void		test_map(t_game *game)
 {
   int		i;
+  int		x;
+  int		y;
 
-  i = -1;
-  printf("pos: y=%i, x=%i\n", y, x);
-  printf("case: %x\n", (int)&game->map[y][x]);
-  while (++i < M_CARD)
+  y = -1;
+  while (++y < game->server.height)
   {
-    printf("card %i: %x\n", i, (int)game->map[y][x].card[i]);
+    x = -1;
+    while (++x < game->server.width)
+    {
+      i = -1;
+      printf("pos: y=%i, x=%i\n", y, x);
+      printf("case: %x\n{", (int)&game->map[y][x]);
+      while (++i < M_CARD)
+	printf("[%i, %x] ", i, (int)game->map[y][x].card[i]);
+      printf("}\n");
+    }
   }
 }
 
@@ -109,14 +114,10 @@ void		free_map(t_game *game)
   int		y;
 
   y = 0;
-  puts("test");
   while (y < game->server.height)
   {
-    printf("y=%i\n", y);
     free(game->map[y]);
     y++;
-    puts("toto");
   }
-  puts("terst");
   free(game->map);
 }
