@@ -5,11 +5,13 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Wed Feb 24 15:36:40 2010 Florian Chanioux
-** Last update Sat Apr  3 18:17:08 2010 Florian Chanioux
+** Last update Thu Apr  8 15:05:15 2010 Florian Chanioux
 */
 
 #ifndef		__MY_H__
 #define		__MY_H__
+
+#include <sys/types.h>
 
 /* GESTION ERREUR */
 
