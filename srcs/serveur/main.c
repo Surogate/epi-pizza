@@ -33,7 +33,6 @@ t_game		*init_game()
 
   init_server(&(game.server));
   init_map(&game);
-  puts("sdfsdf");
   game.player = NULL;
   game.eggs = NULL;
   return (&game);
@@ -45,12 +44,8 @@ int main(int ac, char **av)
 
   game = init_game();
   puts("phase de test");
-  
-  test_map(game);
-  test_aff_map(game);
   puts("fin de test");
-  free_map(game);
-/* init map*/
+  /* init map*/
   /* init server */
   /* attendre qu'il se passe quelque chose */
   /* recup la chose */
@@ -58,6 +53,5 @@ int main(int ac, char **av)
   /* recuperer la reponse et la renvoyer */
   /* envoyer la map a l'affichage */
   /* retourner a l'attente */
-  printf("hello world !\n");
   return (EXIT_SUCCESS);
 }

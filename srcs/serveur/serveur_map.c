@@ -34,8 +34,8 @@ static t_map 	*init_case(t_game *game, int orient, int y, int x)
   int xf;
   int yf;
 
-  yf = y + card[orient].y ;
-  xf = x + card[orient].x ;
+  yf = y + card[orient].y;
+  xf = x + card[orient].x;
   if (xf < 0)
     xf = game->server.width - 1;
   else if (xf >= game->server.width)
@@ -44,8 +44,7 @@ static t_map 	*init_case(t_game *game, int orient, int y, int x)
     yf = game->server.height - 1;
   else if (yf >= game->server.height)
     yf = 0;
-  printf("pos o x y: %i %i %i\n%x\n", orient, xf, yf, (int)&game->map[yf][xf]);
-  return (&game->map[yf][xf]);
+  return (&(game->map[yf][xf]));
 }
 
 void		init_map(t_game *game)
@@ -53,24 +52,25 @@ void		init_map(t_game *game)
   int		x;
   int		y;
   int		i;
+  int		o;
+  struct s_map	*cas;
 
-  game->map = xmalloc(sizeof(game->map) * (game->server.height));
+  game->map = xmalloc(sizeof(*game->map) * (game->server.height));
   y = -1;
   while (++y < game->server.height)
-    game->map[y] = xmalloc(sizeof(game->map[y]) * (game->server.width));
+    game->map[y] = xmalloc(sizeof(*game->map[y]) * (game->server.width));
   y = -1;
   while (++y < game->server.height)
-  {
-    x = -1;
-    while (++x < game->server.width)
     {
-      i = -1;
-      printf("pos_c x y: %i %i\n%x\n", x, y, (int)&game->map[y][x]);
-      while (++i < M_CARD)
-	game->map[y][x].card[i] = init_case(game, i, y, x);
-      game->map[y][x].cas = NULL;
+      x = -1;
+      while (++x < game->server.width)
+	{
+	  i = -1;
+	  cas = &(game->map[y][x]);
+	  while (++i < M_CARD)
+	    cas->card[i] = init_case(game, i, y, x);
+	}
     }
-  }
 }
 
 void		test_aff_map(t_game *game)
@@ -83,7 +83,8 @@ void		test_aff_map(t_game *game)
   {
     x = -1;
     while (++x < game->server.width)
-      printf("pos_c x y: %i %i\n%x\n", x, y, (int)&game->map[y][x]);
+      printf("%p ", &(game->map[y][x]));
+    printf("\n");
   }
 }
 
@@ -92,6 +93,7 @@ void		test_map(t_game *game)
   int		i;
   int		x;
   int		y;
+  t_map		*cas;
 
   y = -1;
   while (++y < game->server.height)
@@ -100,11 +102,11 @@ void		test_map(t_game *game)
     while (++x < game->server.width)
     {
       i = -1;
-      printf("pos: y=%i, x=%i\n", y, x);
-      printf("case: %x\n{", (int)&game->map[y][x]);
+      printf("y: %i, x: %i case: %p\n", y, x, &(game->map[y][x]));
+      cas = &(game->map[y][x]);
       while (++i < M_CARD)
-	printf("[%i, %x] ", i, (int)game->map[y][x].card[i]);
-      printf("}\n");
+	printf("card : %i = %p\n", i, cas->card[i]);
+      printf("\n");
     }
   }
 }
