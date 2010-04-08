@@ -43,8 +43,7 @@ int main(int ac, char **av)
   t_game	*game;
 
   game = init_game();
-  puts("phase de test");
-  puts("fin de test");
+  free_map(game);
   /* init map*/
   /* init server */
   /* attendre qu'il se passe quelque chose */

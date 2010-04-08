@@ -52,7 +52,6 @@ void		init_map(t_game *game)
   int		x;
   int		y;
   int		i;
-  int		o;
   struct s_map	*cas;
 
   game->map = xmalloc(sizeof(*game->map) * (game->server.height));
@@ -83,7 +82,7 @@ void		test_aff_map(t_game *game)
   {
     x = -1;
     while (++x < game->server.width)
-      printf("%p ", &(game->map[y][x]));
+      printf("%p ", (void *)&(game->map[y][x]));
     printf("\n");
   }
 }
@@ -102,10 +101,10 @@ void		test_map(t_game *game)
     while (++x < game->server.width)
     {
       i = -1;
-      printf("y: %i, x: %i case: %p\n", y, x, &(game->map[y][x]));
+      printf("y: %i, x: %i case: %p\n", y, x, (void *)&(game->map[y][x]));
       cas = &(game->map[y][x]);
       while (++i < M_CARD)
-	printf("card : %i = %p\n", i, cas->card[i]);
+	printf("card : %i = %p\n", i, (void *)cas->card[i]);
       printf("\n");
     }
   }
