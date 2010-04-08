@@ -16,6 +16,7 @@
 #include "my_list.h"
 #include "t_struct.h"
 #include "serveur.h"
+#include "server_map.h"
 
 void		init_server(t_server *server)
 {
