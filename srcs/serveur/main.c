@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:15:36 2010 francois1 ancel
-** Last update Wed Apr  7 19:37:26 2010 Florian Chanioux
+** Last update Thu Apr  8 12:40:33 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -20,8 +20,8 @@
 void		init_server(t_server *server)
 {
   server->port = 0;
-  server->height = 10;
-  server->width = 10;
+  server->height = 2;
+  server->width = 2;
   server->teamname = NULL;
   server->nb_client = 0 ;
   server->delay = 0;
@@ -45,9 +45,12 @@ int main(int ac, char **av)
   t_game	*game;
 
   game = init_game();
-
-  test_map(game->map);
-
+  puts("phase de test");
+  
+  test_map(game, 0, 0);
+  test_aff_map(game);
+  puts("fin de test");
+  free_map(game);
 /* init map*/
   /* init server */
   /* attendre qu'il se passe quelque chose */
