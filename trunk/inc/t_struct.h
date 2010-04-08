@@ -35,7 +35,7 @@ typedef struct
   int		level;
   int		dir;
   t_map		*pos;
-  /* mettre les info lier au joueurs */
+  int		ress[RESS_NUM];
 }		t_player;
 
 typedef struct
@@ -43,7 +43,7 @@ typedef struct
   int		port;
   int		height;
   int		width;
-  char		*teamname;
+  t_list	*teamname;
   int		nb_client;
   int		delay;
 }		t_server;
@@ -51,7 +51,7 @@ typedef struct
 typedef struct
 {
   t_server	server;
-  t_map		**map;
+  struct s_map 	**map;
   t_list	*player;
   t_list	*eggs;
 }		t_game;
