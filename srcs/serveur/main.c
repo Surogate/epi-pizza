@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:15:36 2010 francois1 ancel
-** Last update Thu Apr  8 12:40:33 2010 Florian Chanioux
+** Last update Thu Apr  8 14:38:15 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -32,7 +32,6 @@ t_game		*init_game()
   static t_game		game;
 
   init_server(&(game.server));
-  puts("erterter");
   init_map(&game);
   puts("sdfsdf");
   game.player = NULL;
