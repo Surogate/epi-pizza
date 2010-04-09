@@ -44,7 +44,10 @@ typedef struct
 {
   int			sock;
   int			type;
-  t_list		*t_packet;
+  t_cbuf		buf;
+  t_packet		packet[10];
+  int			used;
+  int			cons;
 }			t_client;
 
 typedef struct
