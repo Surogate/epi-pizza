@@ -1,5 +1,5 @@
 /*
-** serveur_map.c for  in /home/Ayden/Epitech/Projet/Zappy
+** server_map.c for  in /home/Ayden/Epitech/Projet/Zappy
 ** 
 ** Made by Florian Chanioux
 ** Login   <chanio_f@epitech.net>
@@ -104,7 +104,7 @@ void		test_map(t_game *game)
       printf("y: %i, x: %i case: %p\n", y, x, (void *)&(game->map[y][x]));
       cas = &(game->map[y][x]);
       while (++i < M_CARD)
-	printf("card : %i = %p\n", i, (void *)cas->card[i]);
+        printf("card : %i = %p\n", i, (void *)cas->card[i]);
       printf("\n");
     }
   }
