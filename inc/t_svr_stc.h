@@ -8,50 +8,50 @@
 ** Last update Fri Apr  9 13:59:47 2010 Florian Chanioux
 */
 
-#ifndef		T_SVR_STC_INCLUDED
-# define	T_SVR_STC_INCLUDED
+#ifndef			T_SVR_STC_INCLUDED
+# define		T_SVR_STC_INCLUDED
 
-# ifndef	T_SERVER_INCLUDED
-#  define	T_SERVER_INCLUDED
-
-typedef struct
-{
-  int		port;
-  int		height;
-  int		width;
-  t_list	*teamname;
-  int		nb_client;
-  int		delay;
-}		t_server;
-
-# endif		/* !T_SERVER_INCLUDED */
-
-# ifndef	T_PACKET_INCLUDED
-#  define	T_PACKET_INCLUDED
+# ifndef		T_SERVER_INCLUDED
+#  define		T_SERVER_INCLUDED
 
 typedef struct
 {
-  int		player_id;
-  int		ac;
-  char		**av;
-  int		time;
-  char		*response;
-}		t_packet;
+  int			port;
+  int			height;
+  int			width;
+  t_list		*teamname;
+  int			nb_client;
+  int			delay;
+}			t_server;
+
+# endif			/* !T_SERVER_INCLUDED */
+
+# ifndef		T_PACKET_INCLUDED
+#  define		T_PACKET_INCLUDED
+
+typedef struct
+{
+  int			player_id;
+  int			ac;
+  char			**av;
+  int			time;
+  char			*response;
+}			t_packet;
 
 # endif		/* !T_PACKET_INCLUDED */
 
 typedef struct
 {
-  int		sock;
-  int		type;
-  t_list	*t_packet;
-}		t_client;
+  int			sock;
+  int			type;
+  t_list		*t_packet;
+}			t_client;
 
 typedef struct
 {
-  int		fd_max;
-  fd_set	fd_read;
-  /* timeval de timeout */
-}		t_select;
+  int			fd_max;
+  fd_set		fd_read;
+  struct timeval	timeout;
+}			t_select;
 
 #endif		/* !T_SVR_STC_INCLUDED */
