@@ -17,7 +17,4 @@ void		incant(t_packet *packet, t_player *player);
 void		multi(t_packet *packet, t_player *player);
 void		connect(t_packet *packet, t_player *player);
 
-
-
-
 #endif		/* _SERVEUR_H_ */
