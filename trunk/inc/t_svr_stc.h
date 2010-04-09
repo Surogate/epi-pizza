@@ -31,29 +31,20 @@ typedef struct
 
 typedef struct
 {
+  int		player_id;
   int		ac;
   char		**av;
-}		t_packet;
-
-typedef struct
-{
   int		time;
   char		*response;
-}		t_rep;
+}		t_packet;
 
 # endif		/* !T_PACKET_INCLUDED */
 
 typedef struct
 {
-  t_packet	pct_send;
-  t_rep		*rep;
-}		t_instruc;
-
-typedef struct
-{
   int		sock;
   int		type;
-  t_list	*t_instruc;
+  t_list	*t_packet;
 }		t_client;
 
 typedef struct
@@ -62,14 +53,5 @@ typedef struct
   fd_set	fd_read;
   /* timeval de timeout */
 }		t_select;
-
-
-typedef struct
-{
-  t_packet	pct_send;
-  t_rep		*rep;
-}		t_instruc;
-
-
 
 #endif		/* !T_SVR_STC_INCLUDED */
