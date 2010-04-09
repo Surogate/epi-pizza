@@ -36,6 +36,7 @@ DIR_SRC_CO	=	$(DIR_SRC)commun/
 
 SRC_S	=	$(DIR_SRC_S)main.c		\
 		$(DIR_SRC_S)server_map.c	\
+		$(DIR_SRC_S)server_stt.c	\
 
 
 SRC_C	=	$(DIR_SRC_C)main.c

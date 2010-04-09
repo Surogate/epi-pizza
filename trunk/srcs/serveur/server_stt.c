@@ -17,7 +17,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int			init_svr(t_server *svr)
+#include "define.h"
+#include "xfunc.h"
+#include "my_list.h"
+#include "t_svr_stc.h"
+
+int			init_svr(t_server *svr, t_select *slt_par)
 {
   struct sockaddr_in	sin;
   int			sock;
@@ -32,33 +37,36 @@ int			init_svr(t_server *svr)
     return (-1);
   if (listen(sock, 42) < 0)
     return (-1);
+  slt_par->fd_max = sock;
+  FD_ZERO(&(slt_par->fd_read));
   return (sock);
 }
 
-int			select_loop(int svr_sock)
+int			select_loop(int svr_sock, t_select *slt_par)
 {
-  return (1);
+  slt_par = slt_par;
+  svr_sock = svr_sock;
+  return (0);
 }
 
 int			svr_start(t_server *svr)
 {
   int			svr_sock;
   int			result;
-  int			select_cont;
-  fd_set		fd_read;
+  int			slt_cont;
+  t_select		slt_par;
 
-  select_cont = 1;
+  slt_cont = 1;
   result = EXIT_SUCCESS;
-  if ((svr_sock = init_svr) < 0)
+  if ((svr_sock = init_svr(svr, &slt_par)) < 0)
     {
       fprintf(stderr, "init server error\n");
       return (EXIT_FAILURE);
     }
-  FD_ZERO(&fd_read);
-  while (select_cont)
+  while (slt_cont)
     {
-      select_cont = select_loop(svr_sock, &fd_);
-      if (select_cont < 0)
+      slt_cont = select_loop(svr_sock, &slt_par);
+      if (slt_cont < 0)
 	{
 	  fprintf(stderr, "select loop error");
 	  result = EXIT_FAILURE;

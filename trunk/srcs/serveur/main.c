@@ -11,20 +11,24 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <sys/time.h>
+#include <sys/types.h>
 
 #include "define.h"
 #include "my_list.h"
 #include "t_struct.h"
+#include "t_svr_stc.h"
 #include "server.h"
 #include "server_map.h"
+#include "server_stt.h"
 
 void		init_server(t_server *server)
 {
-  server->port = 0;
+  server->port = 1337;
   server->height = 2;
   server->width = 2;
   server->teamname = NULL;
-  server->nb_client = 0 ;
+  server->nb_client = 1;
   server->delay = 0;
 }
 
@@ -48,14 +52,8 @@ int main(int ac, char **av)
   game = init_game();
   test_map(game);
   test_aff_map(game);
-  /* init map*/
-  /* init server */
-  /* attendre qu'il se passe quelque chose */
-  /* recup la chose */
-  /* conditionner & envoie dans la partie */
-  /* recuperer la reponse et la renvoyer */
-  /* envoyer la map a l'affichage */
-  /* retourner a l'attente */
+  if (svr_start(&(game->server)) == EXIT_FAILURE)
+    perror("svr start error\n");
   free_map(game);
   return (EXIT_SUCCESS);
 }
