@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ## 
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Fri Apr  9 13:29:24 2010 Florian Chanioux
+## Last update Fri Apr  9 14:50:22 2010 Florian Chanioux
 ##
 
 STAG	= 	$(shell uname -s)
@@ -37,7 +37,11 @@ DIR_SRC_CO	=	$(DIR_SRC)commun/
 SRC_S	=	$(DIR_SRC_S)main.c		\
 		$(DIR_SRC_S)server_map.c	\
 		$(DIR_SRC_S)server_stt.c	\
-
+		$(DIR_SRC_S)instr_broadcast.c	\
+		$(DIR_SRC_S)instr_connect.c	\
+		$(DIR_SRC_S)instr_expulse.c	\
+		$(DIR_SRC_S)instr_multi.c	\
+		$(DIR_SRC_S)instr_incant.c	\
 
 SRC_C	=	$(DIR_SRC_C)main.c
 

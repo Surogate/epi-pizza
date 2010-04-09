@@ -5,15 +5,16 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Apr  6 15:01:49 2010 Florian Chanioux
-** Last update Fri Apr  9 14:03:13 2010 pierre1 boutbel
+** Last update Fri Apr  9 14:47:02 2010 Florian Chanioux
 */
 
 #include <stdlib.h>
 #include <string.h>
 
 #include "define.h"
-#include "t_svr_stc.h"
+#include "my_list.h"
 #include "t_struct.h"
+#include "t_svr_stc.h"
 #include "server.h"
 
 # define	NB_INST		(12)
@@ -27,26 +28,36 @@ t_instr		tab_instr[NB_INST] =
   {"inventaire", try_invent},
   {"prendre", try_take_obj},
   {"pose", try_drop_obj},
-  {"expulse",},
-  {"broadcat",},
-  {"incant",},
-  {"fork",},
-  {"connect",},
+  {"expulse", expulse},
+  {"broadcat",broadcast},
+  {"incant", incant},
+  {"fork", multi},
+  {"connect", connect},
   {NULL, NULL}
 };
 
-void		treatment_intr(t_packet *packet)
+int		find_elem(void *ref, void *test)
+{
+  int		tmp;
+
+  temp = (int)ref;
+  printf("%i\n",temp);
+  return (1);
+}
+
+void		treatment_intr(t_game *game, t_packet *packet)
 {
   int		i;
 
   i = -1;
-  while (i < NB_INST)
-  {
+  while (++i < NB_INST)
     if (strcmp(packet->av[0], tab_instr[i].inst))
     {
-      tab_instr[i].ptr_func(packet);
+      player = (t_player *)my_l_find(game->player,
+				     (void *)(packet->player_id),
+				     find_elem());
+      tab_instr[i].ptr_func(packet, player);
       break;
     }
-  }
   
 }

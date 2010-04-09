@@ -5,17 +5,18 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Mon Nov 30 12:35:43 2009 florian chanioux
-** Last update Wed Apr  7 18:51:33 2010 Florian Chanioux
+** Last update Fri Apr  9 14:41:37 2010 Florian Chanioux
 */
 
 #ifndef			__MY_LIST_H__
 # define		__MY_LIST_H__
 
-typedef struct		s_list
+struct			s_list
 {
   void			*data;
   struct s_list		*next;
-}			t_list;
+};
+typedef			struct s_list t_list;
 
 
 t_list			*my_l_init();
@@ -33,5 +34,6 @@ int			my_l_apply_iem(t_list *begin, int iem, int (*f)());
 void			my_l_free(t_list *list, void (*func)());
 int			my_l_rev(t_list **begin);
 void			*my_l_iem(t_list *begin, int iem);
+void			*my_l_find(t_list *begin, void *ref, int (*func)());
 
 #endif			/* __MY_LIST_H__ */

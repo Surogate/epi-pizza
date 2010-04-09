@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Mon Nov 30 12:35:43 2009 florian chanioux
-** Last update Wed Apr  7 18:45:14 2010 Florian Chanioux
+** Last update Fri Apr  9 14:41:37 2010 Florian Chanioux
 */
 
 #ifndef			__MY_LIST_H__
@@ -34,5 +34,6 @@ int			my_l_apply_iem(t_list *begin, int iem, int (*f)());
 void			my_l_free(t_list *list, void (*func)());
 int			my_l_rev(t_list **begin);
 void			*my_l_iem(t_list *begin, int iem);
+void			*my_l_find(t_list *begin, void *ref, int (*func)());
 
 #endif			/* __MY_LIST_H__ */
