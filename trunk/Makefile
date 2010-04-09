@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ## 
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Fri Apr  9 12:34:56 2010 Florian Chanioux
+## Last update Fri Apr  9 12:58:29 2010 Florian Chanioux
 ##
 
 STAG	= 	$(shell uname -s)
@@ -67,20 +67,20 @@ OBJ_CO	=	$(SRC_CO:.c=.o)
 DEFINE_i386-Darwin	=
 DEFINE_i386-FreeBSD	=
 DEFINE_i686-Linux	=
+DEFINE			=	$(DEFINE_$(TAG))
 
 LFLAGS_i386-Darwin	=	-lxfunc_$(TAG) 
 LFLAGS_i386-FreeBSD	=	-lxfunc_$(TAG) `sdl-config --cflags --libs` -lSDL
 LFLAGS_i686-Linux	=	-lxfunc_$(TAG) `sdl-config --cflags --libs` -lSDL
+LFLAGS			=	-L$(DIR_LIB) $(LFLAGS_$(TAG))
 
-LFLAGS		=	-L$(DIR_LIB) $(LFLAGS_$(TAG))
 IFLAGS		=	-I$(DIR_INC)
-CFLAGS		+=	-03 -W -Wall -ansi -pedantic $(DEFINE_$(TAG)) $(IFLAGS)
+CFLAGS		+=	-O3 -W -Wall -ansi -pedantic $(DEFINE) $(IFLAGS)
 
 ############### BINARIES
 
 CC_FreeBSD	=	gcc
-CC_NetBSD	=	gcc
-CC_solaris	=	/usr/sfw/bin/gcc
+CC_SunOS	=	/usr/sfw/bin/gcc
 CC_Linux	=	gcc
 CC_Darwin	=	gcc
 CC		=	$(CC_$(STAG))
@@ -109,7 +109,7 @@ $(NAME_C)	:	$(OBJ_C) $(OBJ_CO)
 	@$(ECHO) "$(GREEN)[LINKING] - DONE$(END)"
 
 $(NAME_S)	:	$(OBJ_S) $(OBJ_CO)
-	@$(ECHO) "$(CYAN)[LINKING]: $(NAME_C)$(END)"
+	@$(ECHO) "$(CYAN)[LINKING]: $(NAME_S)$(END)"
 	$(CC) -o $(NAME_S) $(OBJ_S) $(OBJ_CO) $(LFLAGS)
 	@$(ECHO) "$(GREEN)[LINKING] - DONE$(END)"
 
