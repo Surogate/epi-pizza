@@ -58,16 +58,12 @@ typedef struct
 
 typedef struct
 {
+  int		player_id;
   int		ac;
   char		**av;
-}		t_packet;
-
-typedef struct
-{
   int		time;
   char		*response;
-}		t_rep;
-
+}		t_packet;
 typedef struct
 {
   char		*inst;
