@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Apr  6 15:02:15 2010 Florian Chanioux
-** Last update Fri Apr  9 14:56:58 2010 Florian Chanioux
+** Last update Fri Apr  9 15:35:29 2010 Florian Chanioux
 */
 
 #ifndef		_SERVEUR_H_

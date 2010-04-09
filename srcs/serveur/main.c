@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:15:36 2010 francois1 ancel
-** Last update Thu Apr  8 15:45:39 2010 Florian Chanioux
+** Last update Fri Apr  9 15:41:02 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -52,8 +52,9 @@ int main(int ac, char **av)
   game = init_game();
   test_map(game);
   test_aff_map(game);
-  if (svr_start(&(game->server)) == EXIT_FAILURE)
+/*  if (svr_start(&(game->server)) == EXIT_FAILURE)
     perror("svr start error\n");
+*/
   free_map(game);
   return (EXIT_SUCCESS);
 }
