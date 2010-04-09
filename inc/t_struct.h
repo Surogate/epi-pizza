@@ -65,11 +65,17 @@ typedef struct
 
 typedef struct
 {
+  int		id_player;
+  char		*mess;
+}		t_rep;
+
+typedef struct
+{
   int		player_id;
   int		ac;
   char		**av;
   int		time;
-  char		*response;
+  t_rep		*response; /* tableau */
 }		t_packet;
 
 typedef struct

@@ -31,6 +31,7 @@ t_card		card[M_CARD] =
 
 static void	init_case(t_case *the_case)
 {
+  the_case = the_case;
 }
 
 
