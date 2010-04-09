@@ -17,6 +17,12 @@ typedef struct
   t_list	*player;
 }		t_case;
 
+typedef	struct
+{
+  int		nb_player;
+  int		ress_need[RESS_NUM];
+}		t_incant;
+
 typedef struct
 {
   int		x;
@@ -64,6 +70,7 @@ typedef struct
   int		time;
   char		*response;
 }		t_packet;
+
 typedef struct
 {
   char		*inst;
@@ -71,12 +78,6 @@ typedef struct
 }		t_inst;
 
 # endif		/* !T_PACKET_INCLUDED */
-
-typedef	struct
-{
-  int		nb_player;
-  int		ress_need[RESS_NUM];
-}		t_incant;
 
 typedef struct
 {
