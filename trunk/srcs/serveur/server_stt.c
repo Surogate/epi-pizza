@@ -39,19 +39,40 @@ int			init_svr(int sock, t_server *svr, t_select *slt_par)
   return (EXIT_SUCCESS);
 }
 
-int	select_loop(int svr_sock, t_select *slt_par, t_game *game)
+int	init_svr_par(t_select *slt_par, t_list *client, int svr_sock)
 {
-  /* init svr_par */
-  /* select(svr_par) */
-  /* if svr_sock ISSRED
-     add player*/
+  FD_SET(svr_sock, &(slt_par->fd_read));
+  slt_par->fd_max = svr_sock;
+  client = client;
+  return (EXIT_SUCCESS);
+}
+
+int		select_loop(int svr_sock, t_select *slt_par, t_game *game)
+{
+  t_list	*client = NULL;
+  int		err;
+
+  if (init_svr_par(slt_par, client, svr_sock) == EXIT_FAILURE)
+    return (-1);
+  err = select(slt_par->fd_max, &(slt_par->fd_read), NULL, NULL, NULL);
+  if (err < 0)
+    return (-1);
+  if (err > 0)
+    {
+      if (FD_ISSET(svr_sock, &(slt_par->fd_read)))
+	{
+	  printf("une nouvelle connection");
+	  /* add un client */
+	}
+      /* search and execute */
+    }
   game = game;
   slt_par = slt_par;
   svr_sock = svr_sock;
   return (0);
 }
 
-int			svr_start(t_game *game)
+int		svr_start(t_game *game)
 {
   int		svr_sock;
   int		result;
