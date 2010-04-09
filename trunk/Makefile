@@ -15,35 +15,19 @@ MTAG	!= 	uname -m
 
 TAG	=	$(MTAG)-$(STAG)
 
-# PROJECT
+############### PROJECT
 
+NAME	=	zappi
 NAME_C	=	client
-
 NAME_S	=	serveur
 
-# BINARIES
-
-CC	=	gcc
-RM	=	rm -f
-CD	=	cd
-ETAGS	=	etags
-CP	=	cp
-
-# COLOR
-
-END	=	\033[m
-RED	=	\033[31m
-GREEN	=	\033[32m
-CYAN	=	\033[36m
-GREY	=	\033[37m
-
-# DIRECTORIES
+############### DIRECTORIES
 
 DIR_SRC	=	./srcs/
 DIR_INC	=	./inc/
 DIR_LIB	=	./lib/
 
-# FILES
+############### FILES
 
 DIR_SRC_S	=	$(DIR_SRC)serveur/
 DIR_SRC_C	=	$(DIR_SRC)client/
@@ -56,53 +40,105 @@ SRC_S	=	$(DIR_SRC_S)main.c		\
 
 SRC_C	=	$(DIR_SRC_C)main.c
 
+
 SRC_CO	=	
+
+
+SRC_INC	=	$(DIR_INC)xfunc.h		\
+		$(DIR_INC)my_list.h		\
+		$(DIR_INC)server.h		\
+		$(DIR_INC)server_map.h		\
+		$(DIR_INC)t_struct.h		\
+		$(DIR_INC)define.h		\
+		$(DIR_INC)s_cbuf.h		\
+
+
+SRC_LIB	=	$(DIR_INC)libxfunc$_*.a		\
+		$(DIR_INC)libmy_list_*.a	\
 
 
 OBJ_S	=	$(SRC_S:.c=.o)
 OBJ_C	=	$(SRC_C:.c=.o)
 OBJ_CO	=	$(SRC_CO:.c=.o)
 
-# FLAGS
 
-DEFINE_sun4u-SunOS	=
+############### FLAGS
+
+DEFINE_i386-Darwin	=
 DEFINE_i386-FreeBSD	=
 DEFINE_i686-Linux	=
 
-LFLAGS_sun4u-SunOS	=
+LFLAGS_i386-Darwin	=	-lxfunc_$(TAG) 
 LFLAGS_i386-FreeBSD	=	-lxfunc_$(TAG) `sdl-config --cflags --libs` -lSDL
 LFLAGS_i686-Linux	=	-lxfunc_$(TAG) `sdl-config --cflags --libs` -lSDL
 
 LFLAGS		=	-L$(DIR_LIB) $(LFLAGS_$(TAG))
 IFLAGS		=	-I$(DIR_INC)
-CFLAGS		+=	-g3 -W -Wall -ansi -pedantic $(DEFINE_$(TAG)) $(IFLAGS)
+CFLAGS		+=	-03 -W -Wall -ansi -pedantic $(DEFINE_$(TAG)) $(IFLAGS)
 
-# OTHERS
+############### BINARIES
+
+CC_FreeBSD	=	gcc
+CC_NetBSD	=	gcc
+CC_solaris	=	/usr/sfw/bin/gcc
+CC_linux	=	gcc
+CC_Darwin	=	gcc
+CC		=	$(CC_$(OSTYPE))
+
+RM	=	rm -f
+CD	=	cd
+ETAGS	=	etags
+CP	=	cp
+ECHO	=	echo -e
+
+############### COLOR
+
+END	=	\033[m
+RED	=	\033[31m
+GREEN	=	\033[32m
+CYAN	=	\033[36m
+GREY	=	\033[37m
+
+############### OTHERS
 
 all	:	$(NAME_C) $(NAME_S)
 
 $(NAME_C)	:	$(OBJ_C) $(OBJ_CO)
-	@echo -e "$(CYAN)[LINKING]: $(NAME_C)$(END)"
+	@ECHO "$(CYAN)[LINKING]: $(NAME_C)$(END)"
 	$(CC) -o $(NAME_C) $(OBJ_C) $(OBJ_CO) $(LFLAGS)
-	@echo -e "$(GREEN)[LINKING] - DONE$(END)"
+	@ECHO "$(GREEN)[LINKING] - DONE$(END)"
 
 $(NAME_S)	:	$(OBJ_S) $(OBJ_CO)
-	@echo -e "$(CYAN)[LINKING]: $(NAME_C)$(END)"
+	@ECHO "$(CYAN)[LINKING]: $(NAME_C)$(END)"
 	$(CC) -o $(NAME_S) $(OBJ_S) $(OBJ_CO) $(LFLAGS)
-	@echo -e "$(GREEN)[LINKING] - DONE$(END)"
+	@ECHO "$(GREEN)[LINKING] - DONE$(END)"
 
 tags	:
-	@echo -e "$(CYAN)[TAGGING]$(END)"
-	$(ETAGS) $(DIR_INC)*.h $(SRC_S) $(SRC_CO) $(SRC_C)
-	@echo -e "$(GREEN)[TAGGING] - DONE$(END)"
+	@ECHO "$(CYAN)[TAGGING]$(END)"
+	$(ETAGS) $(SRC_INC) $(SRC_S) $(SRC_CO) $(SRC_C)
+	@ECHO "$(GREEN)[TAGGING] - DONE$(END)"
+
+tar	:
+	@ECHO "$(CYAN)[TAR]$(END)"
+	tar -cf $(NAME).tar.gz		\
+	 	Makefile		\
+		$(SRC_INC)		\
+		$(SRC_LIB)		\
+		$(SRC_S)		\
+		$(SRC_CO)		\
+		$(SRC_C)
+		
+	@ECHO "$(CYAN)[TAR] - DONE$(END)"
+
+############### SUFFIXIES
 
 .SUFIXIES	:	.c .o
 .c.o	:
-	@echo -e "$(GREY)[OBJ]"
+	@ECHO "$(GREY)[OBJ]"
 	$(CC) $(CFLAGS) -c $< -o $@
-	@echo -e "[OBJ] -DONE$(END)"
+	@ECHO "[OBJ] -DONE$(END)"
 
-#CLEAN OPTION
+############### CLEAN OPTION
 
 clean	:
 	$(RM) $(OBJ_C)

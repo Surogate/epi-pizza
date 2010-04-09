@@ -15,7 +15,7 @@
 #include "define.h"
 #include "my_list.h"
 #include "t_struct.h"
-#include "serveur.h"
+#include "server.h"
 #include "server_map.h"
 
 void		init_server(t_server *server)
@@ -43,7 +43,11 @@ int main(int ac, char **av)
 {
   t_game	*game;
 
+	ac = ac;
+	av = av;
   game = init_game();
+	test_map(game);
+	test_aff_map(game);
   free_map(game);
   /* init map*/
   /* init server */
