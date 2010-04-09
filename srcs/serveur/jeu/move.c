@@ -6,6 +6,7 @@
 #include	"../../../inc/my_list.h"
 #include	"../../../inc/define.h"
 #include	"../../../inc/t_struct.h"
+#include	"../../../inc/t_game_stc.h"
 #include	"../../../inc/xfunc.h"
 
 static t_dir_m	gl_dir[5] = {
@@ -16,20 +17,23 @@ static t_dir_m	gl_dir[5] = {
   {0, 0, 0, 0}
 };
 
-void		try_turn_left(t_player *player)
+void		try_turn_left(t_packet *packet, t_player *player)
 {
   player->dir = gl_dir[player->dir].dir_left;
-  return (OK);
+  packet->response = OK;
+  packet->time = 7;
 }
 
-void		try_turn_right(t_player *player)
+void		try_turn_right(t_packet *packet, t_player *player)
 {
   player->dir = gl_dir[player->dir].dir_right;
-  return (OK);
+  packet->response = OK;
+  packet->time = 7;
 }
 
-void		try_move(t_player *player)
+void		try_move(t_packet *packet, t_player *player)
 {
   player->pos = player->pos->card[gl_dir[player->dir].front];
-  return (OK);
+  packet->response = OK;
+  packet->time = 7;
 }

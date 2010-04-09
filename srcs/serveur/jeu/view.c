@@ -7,6 +7,7 @@ Header
 #include	"../../../inc/my_list.h"
 #include	"../../../inc/define.h"
 #include	"../../../inc/t_struct.h"
+#include	"../../../inc/t_game_stc.h"
 #include	"../../../inc/xfunc.h"
 
 char		*concatene_msg(t_vision *list);
@@ -88,7 +89,7 @@ void		free_list_vision(t_vision *s_vision)
     }
 }
 
-char		*try_view(t_player *player)
+char		*try_view(t_packet *packet, t_player *player)
 {
   t_vision	*s_vision;
   int		i;
@@ -104,5 +105,6 @@ char		*try_view(t_player *player)
       s_vision = add_level(s_vision, &gl_dir[player->dir - 1], i);
       i++;
     }
-  return (concatene_msg(s_vision));
+  packet->response = concatene_msg(s_vision);
+  packet->time = 7;
 }

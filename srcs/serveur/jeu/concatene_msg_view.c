@@ -9,6 +9,7 @@
 #include	"../../../inc/my_list.h"
 #include	"../../../inc/define.h"
 #include	"../../../inc/t_struct.h"
+#include	"../../../inc/t_game_stc.h"
 #include	"../../../inc/xfunc.h"
 
 void		free_list_vision(t_vision *s_vision);
