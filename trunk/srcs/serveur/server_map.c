@@ -5,11 +5,12 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Wed Apr  7 18:05:33 2010 Florian Chanioux
-** Last update Fri Apr  9 15:35:38 2010 Florian Chanioux
+** Last update Fri Apr  9 16:52:58 2010 Florian Chanioux
 */
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <time.h> 
 #include <stdio.h>
 
 #include "define.h"
@@ -31,7 +32,16 @@ t_card		card[M_CARD] =
 
 static void	init_case(t_case *the_case)
 {
-  the_case = the_case;
+  int		alea;
+  int		i;
+
+  i = -1;
+  while (++i < RESS_NUM)
+  {
+    alea = rand() % MAX_RESS;
+    the_case->ress[i] = alea;
+  }
+  the_case->player = my_l_init();
 }
 
 
@@ -60,6 +70,7 @@ void		init_map(t_game *game)
   int		i;
   struct s_map	*cas;
 
+  srand(time(NULL));
   game->map = xmalloc(sizeof(*game->map) * (game->server.height));
   y = -1;
   while (++y < game->server.height)

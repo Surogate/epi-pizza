@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ## 
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Fri Apr  9 15:39:30 2010 Florian Chanioux
+## Last update Fri Apr  9 17:24:57 2010 Florian Chanioux
 ##
 
 STAG	= 	$(shell uname -s)
@@ -76,9 +76,12 @@ DEFINE_i386-FreeBSD	=
 DEFINE_i686-Linux	=
 DEFINE			=	$(DEFINE_$(TAG))
 
-LFLAGS_i386-Darwin	=	-lxfunc_$(TAG) 
-LFLAGS_i386-FreeBSD	=	-lxfunc_$(TAG) `sdl-config --cflags --libs` -lSDL
-LFLAGS_i686-Linux	=	-lxfunc_$(TAG) `sdl-config --cflags --libs` -lSDL
+LFLAGS_i386-Darwin	=	-lxfunc_$(TAG)
+LFLAGS_i386-FreeBSD	=	-lxfunc_$(TAG)				\
+				 `sdl-config --cflags --libs` -lSDL
+LFLAGS_i686-Linux	=	-lxfunc_$(TAG)				\
+				-lmylist_$(TAG)			\
+				`sdl-config --cflags --libs` -lSDL
 LFLAGS			=	-L$(DIR_LIB) $(LFLAGS_$(TAG))
 
 IFLAGS		=	-I$(DIR_INC)
