@@ -9,40 +9,65 @@
 #include	"../../../inc/my_list.h"
 #include	"../../../inc/define.h"
 #include	"../../../inc/t_struct.h"
+#include	"../../../inc/t_game_stc.h"
 #include	"../../../inc/xfunc.h"
 
-char		*try_drop_obj(t_player *player, char *name_ress)
+void		try_drop_obj(t_packet *packet, t_player *player)
 {
   char		msg_ress[RESS_NUM][10] = {MSG_RESS};
+  char		*name_res;
   int		num_ress;
 
   num_ress = 0;
-  while (num_ress != RESS_NUM && strcmp(name_ress, msg_ress[num_ress]) != 0)
-    num_ress++;
-  if (num_ress == RESS_NUM)
-    return (KO);
-  if (player->ress[num_ress] == 0)
-    return (KO);
-  player->ress[num_ress]--;
-  player->pos->cas.ress[num_ress]++;
-  return (OK);
+  packet->response = NULL;
+  if (packet->ac == 2)
+    {
+      name_res = packet->av[1];
+      while (num_ress != RESS_NUM && strcmp(name_res, msg_ress[num_ress]) != 0)
+	num_ress++;
+      if (num_ress == RESS_NUM)
+	packet->response = KO;
+      if (player->ress[num_ress] == 0)
+	packet->response = KO;
+      player->ress[num_ress]--;
+      player->pos->cas.ress[num_ress]++;
+      if (packet->response == NULL)
+	{
+	  packet->response = OK;
+	  packet->time = 7;
+	}
+    }
+  else
+    packet->response = KO;
 }
 
-char		*try_take_obj(t_player *player, char *name_ress)
+void		try_take_obj(t_packet *packet, t_player *player)
 {
   char		msg_ress[RESS_NUM][10] = {MSG_RESS};
+  char		*name_res;
   int		num_ress;
 
   num_ress = 0;
-  while (num_ress != RESS_NUM && strcmp(name_ress, msg_ress[num_ress]) != 0)
-    num_ress++;
-  if (num_ress == RESS_NUM)
-    return (KO);
-  if (player->pos->cas.ress[num_ress] == 0)
-    return (KO);
-  player->ress[num_ress]++;
-  player->pos->cas.ress[num_ress]--;
-  return (OK);
+  packet->response = NULL;
+  if (packet->ac == 2)
+    {
+      name_res = packet->av[1];
+      while (num_ress != RESS_NUM && strcmp(name_res, msg_ress[num_ress]) != 0)
+	num_ress++;
+      if (num_ress == RESS_NUM)
+	packet->response = KO;
+      if (player->pos->cas.ress[num_ress] == 0)
+	packet->response = KO;
+      player->ress[num_ress]++;
+      player->pos->cas.ress[num_ress]--;
+      if (packet->response == NULL)
+	{
+	  packet->response = OK;
+	  packet->time = 7;
+	}
+    }
+  else
+    packet->response = KO;
 }
 
 static int	my_dec_pow(int nb)
@@ -79,7 +104,7 @@ static char	*int_to_str(int nbr)
   return (str);
 }
 
-char		*try_invent(t_player *player)
+void		try_invent(t_packet *packet, t_player *player)
 {
   char		msg_ress[RESS_NUM][10] = {MSG_RESS};
   int		num_ress;
@@ -101,5 +126,6 @@ char		*try_invent(t_player *player)
       num_ress++;
     }
   free(nb_ress);
-  return (msg);
+  packet->response = msg;
+  packet->time = 1;
 }
