@@ -5,7 +5,12 @@
 ##
 
 NAME			= debug_jeu
-SRCS			= main.c
+SRCS			= main.c				\
+			  concatene_msg_view.c			\
+			  invent.c				\
+			  move.c				\
+			  view.c				\
+			  incant.c				\
 
 OBJS			= $(SRCS:.c=.o)
 CC			= gcc

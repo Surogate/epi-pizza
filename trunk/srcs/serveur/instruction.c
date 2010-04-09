@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Apr  6 15:01:49 2010 Florian Chanioux
-** Last update Fri Apr  9 13:59:47 2010 Florian Chanioux
+** Last update Fri Apr  9 14:03:13 2010 pierre1 boutbel
 */
 
 #include <stdlib.h>
@@ -20,13 +20,13 @@
 
 t_instr		tab_instr[NB_INST] =
 {
-  {"avance", try_avance},
-  {"droite", trydroite},
-  {"gauche",},
-  {"voir",},
-  {"inventaire",},
-  {"prendre",},
-  {"pose",},
+  {"avance", try_move},
+  {"droite", try_turn_right},
+  {"gauche", try_turn_left},
+  {"voir", try_view},
+  {"inventaire", try_invent},
+  {"prendre", try_take_obj},
+  {"pose", try_drop_obj},
   {"expulse",},
   {"broadcat",},
   {"incant",},
