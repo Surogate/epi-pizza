@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ## 
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Wed Apr  7 19:27:06 2010 Florian Chanioux
+## Last update Fri Apr  9 12:34:56 2010 Florian Chanioux
 ##
 
 STAG	= 	$(shell uname -s)
@@ -81,9 +81,9 @@ CFLAGS		+=	-03 -W -Wall -ansi -pedantic $(DEFINE_$(TAG)) $(IFLAGS)
 CC_FreeBSD	=	gcc
 CC_NetBSD	=	gcc
 CC_solaris	=	/usr/sfw/bin/gcc
-CC_linux	=	gcc
+CC_Linux	=	gcc
 CC_Darwin	=	gcc
-CC		=	$(CC_$(OSTYPE))
+CC		=	$(CC_$(STAG))
 
 RM	=	rm -f
 CD	=	cd
@@ -104,22 +104,22 @@ GREY	=	\033[37m
 all	:	$(NAME_C) $(NAME_S)
 
 $(NAME_C)	:	$(OBJ_C) $(OBJ_CO)
-	@ECHO "$(CYAN)[LINKING]: $(NAME_C)$(END)"
+	@$(ECHO) "$(CYAN)[LINKING]: $(NAME_C)$(END)"
 	$(CC) -o $(NAME_C) $(OBJ_C) $(OBJ_CO) $(LFLAGS)
-	@ECHO "$(GREEN)[LINKING] - DONE$(END)"
+	@$(ECHO) "$(GREEN)[LINKING] - DONE$(END)"
 
 $(NAME_S)	:	$(OBJ_S) $(OBJ_CO)
-	@ECHO "$(CYAN)[LINKING]: $(NAME_C)$(END)"
+	@$(ECHO) "$(CYAN)[LINKING]: $(NAME_C)$(END)"
 	$(CC) -o $(NAME_S) $(OBJ_S) $(OBJ_CO) $(LFLAGS)
-	@ECHO "$(GREEN)[LINKING] - DONE$(END)"
+	@$(ECHO) "$(GREEN)[LINKING] - DONE$(END)"
 
 tags	:
-	@ECHO "$(CYAN)[TAGGING]$(END)"
+	@$(ECHO) "$(CYAN)[TAGGING]$(END)"
 	$(ETAGS) $(SRC_INC) $(SRC_S) $(SRC_CO) $(SRC_C)
-	@ECHO "$(GREEN)[TAGGING] - DONE$(END)"
+	@$(ECHO) "$(GREEN)[TAGGING] - DONE$(END)"
 
 tar	:
-	@ECHO "$(CYAN)[TAR]$(END)"
+	@$(ECHO) "$(CYAN)[TAR]$(END)"
 	tar -cf $(NAME).tar.gz		\
 	 	Makefile		\
 		$(SRC_INC)		\
@@ -127,16 +127,15 @@ tar	:
 		$(SRC_S)		\
 		$(SRC_CO)		\
 		$(SRC_C)
-		
-	@ECHO "$(CYAN)[TAR] - DONE$(END)"
+	@$(ECHO) "$(CYAN)[TAR] - DONE$(END)"
 
 ############### SUFFIXIES
 
 .SUFIXIES	:	.c .o
 .c.o	:
-	@ECHO "$(GREY)[OBJ]"
+	@$(ECHO) "$(GREY)[OBJ]"
 	$(CC) $(CFLAGS) -c $< -o $@
-	@ECHO "[OBJ] -DONE$(END)"
+	@$(ECHO) "[OBJ] -DONE$(END)"
 
 ############### CLEAN OPTION
 
