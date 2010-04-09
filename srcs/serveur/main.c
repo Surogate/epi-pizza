@@ -43,12 +43,11 @@ int main(int ac, char **av)
 {
   t_game	*game;
 
-	ac = ac;
-	av = av;
+  ac = ac;
+  av = av;
   game = init_game();
-	test_map(game);
-	test_aff_map(game);
-  free_map(game);
+  test_map(game);
+  test_aff_map(game);
   /* init map*/
   /* init server */
   /* attendre qu'il se passe quelque chose */
@@ -57,5 +56,6 @@ int main(int ac, char **av)
   /* recuperer la reponse et la renvoyer */
   /* envoyer la map a l'affichage */
   /* retourner a l'attente */
+  free_map(game);
   return (EXIT_SUCCESS);
 }

@@ -26,7 +26,7 @@ typedef struct
 typedef struct	s_map
 {
   struct s_map	*card[M_CARD];
-  t_case	*cas;
+  t_case	cas;
 }		t_map;
 
 typedef struct
@@ -38,6 +38,9 @@ typedef struct
   int		ress[RESS_NUM];
 }		t_player;
 
+# ifndef	T_SERVER_INCLUDED
+#  define	T_SERVER_INCLUDED
+
 typedef struct
 {
   int		port;
@@ -48,13 +51,10 @@ typedef struct
   int		delay;
 }		t_server;
 
-typedef struct
-{
-  t_server	server;
-  struct s_map 	**map;
-  t_list	*player;
-  t_list	*eggs;
-}		t_game;
+# endif		/* !T_SERVER_INCLUDED */
+
+# ifndef	T_PACKET_INCLUDED
+#  define	T_PACKET_INCLUDED
 
 typedef struct
 {
@@ -64,10 +64,11 @@ typedef struct
 
 typedef struct
 {
-  int		sock;
-  int		type;
-  t_list	*t_packet;
-}		t_client;
+  int		time;
+  char		*response;
+}		t_rep;
+
+# endif		/* !T_PACKET_INCLUDED */
 
 typedef	struct
 {
@@ -75,4 +76,12 @@ typedef	struct
   int		ress_need[RESS_NUM];
 }		t_incant;
 
-#endif
+typedef struct
+{
+  t_server	server;
+  struct s_map 	**map;
+  t_list	*player;
+  t_list	*eggs;
+}		t_game;
+
+#endif		/* !T_STRUCT_INCLUDED */
