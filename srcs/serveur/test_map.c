@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr  9 15:22:12 2010 Florian Chanioux
-** Last update Fri Apr  9 15:35:40 2010 Florian Chanioux
+** Last update Fri Apr  9 17:01:56 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -51,7 +51,10 @@ void		test_map(t_game *game)
       cas = &(game->map[y][x]);
       while (++i < M_CARD)
         printf("card : %i = %p\n", i, (void *)cas->card[i]);
-      printf("\n");
+      i = -1;
+      while (++i < RESS_NUM)
+        printf("##res : %i = %i\n", i, cas->cas.ress[i]);
+      printf("#nb_player : = %i\n\n", my_l_size(cas->cas.player));
     }
   }
 }
