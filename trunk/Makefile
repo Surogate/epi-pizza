@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ## 
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Fri Apr  9 12:58:29 2010 Florian Chanioux
+## Last update Fri Apr  9 13:29:24 2010 Florian Chanioux
 ##
 
 STAG	= 	$(shell uname -s)
@@ -49,6 +49,7 @@ SRC_INC	=	$(DIR_INC)xfunc.h		\
 		$(DIR_INC)server.h		\
 		$(DIR_INC)server_map.h		\
 		$(DIR_INC)t_struct.h		\
+		$(DIR_INC)t_svr_stc.h		\
 		$(DIR_INC)define.h		\
 		$(DIR_INC)s_cbuf.h		\
 

@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:24 2010 francois1 ancel
-** Last update Wed Apr  7 19:19:56 2010 Florian Chanioux
+** Last update Fri Apr  9 13:38:59 2010 Florian Chanioux
 */
 
 #ifndef		T_STRUCT_INCLUDED
@@ -67,6 +67,12 @@ typedef struct
   int		time;
   char		*response;
 }		t_rep;
+
+typedef struct
+{
+  char		*inst;
+  void		(*ptr_func)();
+}		t_inst;
 
 # endif		/* !T_PACKET_INCLUDED */
 

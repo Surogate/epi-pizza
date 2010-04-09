@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Fri Apr  9 12:53:57 2010 francois1 ancel
-** Last update Fri Apr  9 12:53:57 2010 francois1 ancel
+** Last update Fri Apr  9 13:59:47 2010 Florian Chanioux
 */
 
 #ifndef		T_SVR_STC_INCLUDED
@@ -62,6 +62,13 @@ typedef struct
   fd_set	fd_read;
   /* timeval de timeout */
 }		t_select;
+
+
+typedef struct
+{
+  t_packet	pct_send;
+  t_rep		*rep;
+}		t_instruc;
 
 
 
