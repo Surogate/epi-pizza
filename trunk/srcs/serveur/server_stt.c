@@ -20,6 +20,7 @@
 #include "define.h"
 #include "xfunc.h"
 #include "my_list.h"
+#include "s_cbuf.h"
 #include "t_struct.h"
 #include "t_svr_stc.h"
 
