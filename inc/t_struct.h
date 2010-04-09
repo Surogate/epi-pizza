@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:24 2010 francois1 ancel
-** Last update Fri Apr  9 13:38:59 2010 Florian Chanioux
+** Last update Fri Apr  9 14:16:11 2010 Florian Chanioux
 */
 
 #ifndef		T_STRUCT_INCLUDED
@@ -37,6 +37,7 @@ typedef struct	s_map
 
 typedef struct
 {
+  int		player_id;
   int		team;
   int		level;
   int		dir;

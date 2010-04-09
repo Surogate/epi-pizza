@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Mon Oct 19 11:33:57 2009 florian chanioux
-## Last update Sat Mar 20 21:00:22 2010 Florian Chanioux
+## Last update Fri Apr  9 14:39:14 2010 Florian Chanioux
 ##
 
 NAME		= libmylist_`uname -m`-`uname -s`.a
@@ -19,7 +19,6 @@ FILES_C 	= $(D_SRC)my_l_init.c		\
 		  $(D_SRC)my_l_rm_iem.c		\
 		  $(D_SRC)my_l_rm.c		\
 		  $(D_SRC)my_l_sort.c		\
-		  $(D_SRC)my_l_param.c		\
 		  $(D_SRC)my_l_concat.c		\
 		  $(D_SRC)my_l_size.c		\
 		  $(D_SRC)my_l_apply.c		\
@@ -27,6 +26,7 @@ FILES_C 	= $(D_SRC)my_l_init.c		\
 		  $(D_SRC)my_l_free.c		\
 		  $(D_SRC)my_l_rev.c		\
 		  $(D_SRC)my_l_iem.c		\
+		  $(D_SRC)my_l_find.c		\
 
 FILES_H		= my_list.h
 
