@@ -68,7 +68,6 @@ void		init_map(t_game *game)
 	  cas = &(game->map[y][x]);
 	  while (++i < M_CARD)
 	    cas->card[i] = init_case(game, i, y, x);
-	  cas->cas = NULL;
 	}
     }
 }
