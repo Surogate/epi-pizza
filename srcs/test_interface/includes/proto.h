@@ -11,7 +11,14 @@
 #ifndef		PROTO_H
 # define	PROTO_H
 
-/*event func*/
+/*game func*/
+void		init_game(t_game *game);
+void		exit_func();
+
+/*key func*/
+void		key_func(t_game *game);
+
+/*mouse func*/
 void		mouse_move(t_game *game);
 void		mouse_up(t_game *game);
 void		mouse_down(t_game *game);

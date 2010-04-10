@@ -11,6 +11,8 @@
 NAME		= interface
 SRCS		= main.c	\
 		  xsdl.c	\
+		  key.c		\
+		  init.c	\
 		  mouse.c
 OBJS		= $(SRCS:.c=.o)
 
