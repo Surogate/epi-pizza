@@ -49,8 +49,8 @@ typedef struct
 typedef struct
 {
   int			sock;
-  int			type;
-  t_cbuf		buf;
+  int			team;
+  t_cbuf		cbuf;
   t_packet		packet[10];
   int			used;
   int			cons;

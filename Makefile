@@ -38,16 +38,25 @@ SRC_S	=	$(DIR_SRC_S)main.c		\
 		$(DIR_SRC_S)server_map.c	\
 		$(DIR_SRC_S)test_map.c		\
 		$(DIR_SRC_S)server_stt.c	\
+		$(DIR_SRC_S)server_fct.c	\
 		$(DIR_SRC_S)instr_broadcast.c	\
 		$(DIR_SRC_S)instr_connect.c	\
 		$(DIR_SRC_S)instr_expulse.c	\
 		$(DIR_SRC_S)instr_multi.c	\
 		$(DIR_SRC_S)instr_incant.c	\
+		$(DIR_SRC_S)client_fct.c	\
+
 
 SRC_C	=	$(DIR_SRC_C)main.c
 
 
-SRC_CO	=	
+SRC_CO	=	$(DIR_SRC_CO)cbuf/cbuf_io.c		\
+		$(DIR_SRC_CO)cbuf/cbuf_new.c		\
+		$(DIR_SRC_CO)cbuf/cbuf_debug.c		\
+		$(DIR_SRC_CO)vector/vector_new.c	\
+		$(DIR_SRC_CO)vector/llist_new.c		\
+		$(DIR_SRC_CO)vector/llist_mod.c		\
+		$(DIR_SRC_CO)vector/llist_access.c	\
 
 
 SRC_INC	=	$(DIR_INC)xfunc.h		\
@@ -58,6 +67,9 @@ SRC_INC	=	$(DIR_INC)xfunc.h		\
 		$(DIR_INC)t_svr_stc.h		\
 		$(DIR_INC)define.h		\
 		$(DIR_INC)s_cbuf.h		\
+		$(DIR_INC)s_vector.h		\
+		$(DIR_INC)client_fct.h		\
+		$(DIR_INC)server_fct.h		\
 
 
 SRC_LIB	=	$(DIR_INC)libxfunc$_*.a		\
