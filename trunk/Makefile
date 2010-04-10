@@ -45,6 +45,10 @@ SRC_S	=	$(DIR_SRC_S)main.c		\
 		$(DIR_SRC_S)instr_multi.c	\
 		$(DIR_SRC_S)instr_incant.c	\
 		$(DIR_SRC_S)client_fct.c	\
+		$(DIR_SRC_S)pars_main.c		\
+		$(DIR_SRC_S)pars_init_teams.c	\
+		$(DIR_SRC_S)pars_option.c	\
+		$(DIR_SRC_S)pars_display.c	\
 
 
 SRC_C	=	$(DIR_SRC_C)main.c
