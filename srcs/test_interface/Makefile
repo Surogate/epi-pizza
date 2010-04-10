@@ -8,21 +8,21 @@
 ## Last update Sun Apr  4 22:27:28 2010 frederic1 pierronnet
 ##
 
-NAME		= interface
-SRCS		= main.c	\
-		  xsdl.c	\
-		  key.c		\
-		  init.c	\
-		  mouse.c
+NAME		= client_graphique
+SRCS		= srcs/main.c	\
+		  srcs/xsdl.c	\
+		  srcs/key.c	\
+		  srcs/init.c	\
+		  srcs/mouse.c
 OBJS		= $(SRCS:.c=.o)
 
 CC		= gcc
 RM		= rm -fv
 OSNAME		= $(shell uname -s)
 OSNAME		!= uname -s
-CFLAGS		= -W -Wall -Wextra -ansi -pedantic -I. -Imenu -D_BSD_SOURCE -D_SVID_SOURCE -D_XOPEN_SOURCE -D_ISOC99_SOURCE
-LDFLAGS_Linux	= -lSDLmain -lSDL -lSDL_ttf -lm
-LDFLAGS_FreeBSD	= -L/usr/local/lib -Wl,-rpath,/usr/local/lib -lSDL -lpthread -lSDL_ttf -lm
+CFLAGS		= -W -Wall -Wextra -ansi -pedantic
+LDFLAGS_Linux	= -lSDLmain -lSDL -lSDL_ttf
+LDFLAGS_FreeBSD	= -L/usr/local/lib -Wl,-rpath,/usr/local/lib -lSDL -lpthread -lSDL_ttf
 
 all		: $(NAME)
 

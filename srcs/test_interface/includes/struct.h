@@ -33,6 +33,7 @@ typedef struct	s_game
 {
   SDL_Event	event;
   SDL_Surface	*screen;
+  int		dir;
   t_pos		pos;
   t_mouse	mouse;
 }		t_game;
