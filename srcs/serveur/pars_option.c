@@ -10,6 +10,9 @@
 
 #include		<string.h>
 #include		<stdlib.h>
+
+#include		"my_list.h"
+#include		"define.h"
 #include		"pars_init_teams.h"
 #include		"pars_display.h"
 #include		"pars_main.h"

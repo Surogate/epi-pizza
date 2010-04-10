@@ -92,12 +92,16 @@ DEFINE_i386-FreeBSD	=
 DEFINE_i686-Linux	=
 DEFINE			=	$(DEFINE_$(TAG))
 
-LFLAGS_i386-Darwin	=	-lxfunc_$(TAG)
+LFLAGS_i386-Darwin	=	-lxfunc_$(TAG)				\
+				-lmylist_$(TAG)
+
 LFLAGS_i386-FreeBSD	=	-lxfunc_$(TAG)				\
 				 `sdl-config --cflags --libs` -lSDL
+
 LFLAGS_i686-Linux	=	-lxfunc_$(TAG)				\
 				-lmylist_$(TAG)			\
 				`sdl-config --cflags --libs` -lSDL
+
 LFLAGS			=	-L$(DIR_LIB) $(LFLAGS_$(TAG))
 
 IFLAGS		=	-I$(DIR_INC)
