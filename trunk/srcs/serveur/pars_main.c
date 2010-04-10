@@ -11,6 +11,9 @@
 #include		<string.h>
 #include		<unistd.h>
 #include		<stdlib.h>
+
+#include		"my_list.h"
+#include		"define.h"
 #include		"pars_option.h"
 #include		"t_struct.h"
 

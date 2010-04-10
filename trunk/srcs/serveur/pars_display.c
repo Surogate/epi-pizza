@@ -11,6 +11,9 @@
 #include		<stdlib.h>
 #include		<string.h>
 #include		<stdio.h>
+
+#include		"my_list.h"
+#include		"define.h"
 #include		"t_struct.h"
 #include		"pars_main.h"
 #include		"pars_define.h"
