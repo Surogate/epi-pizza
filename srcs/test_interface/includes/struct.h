@@ -23,4 +23,18 @@ typedef struct	s_pos
   int		y;
 }		t_pos;
 
+typedef struct	s_mouse
+{
+  int		clicked;
+  t_pos		move;
+}		t_mouse;
+
+typedef struct	s_game
+{
+  SDL_Event	event;
+  SDL_Surface	*screen;
+  t_pos		pos;
+  t_mouse	mouse;
+}		t_game;
+
 #endif		/*STRUCT_H*/

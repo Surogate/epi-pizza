@@ -16,38 +16,38 @@
 #include	"includes/define.h"
 #include	"includes/struct.h"
 
-void		mouse_move(SDL_Event *event, int *clicked, t_pos *pos, t_pos *move)
+void		mouse_move(t_game *game)
 {
-  if (*clicked)
+  if (game->mouse.clicked)
     {
-      pos->x += move->x - event->button.x;
-      pos->y -= move->y - event->button.y;
-      printf("drag : new pos is x = [%d], y = [%d].\n", pos->x, pos->y);
-      move->x = event->button.x;
-      move->y = event->button.y;
+      game->pos.x += game->mouse.move.x - game->event.button.x;
+      game->pos.y -= game->mouse.move.y - game->event.button.y;
+      printf("drag : new pos is x = [%d], y = [%d].\n", game->pos.x, game->pos.y);
+      game->mouse.move.x = game->event.button.x;
+      game->mouse.move.y = game->event.button.y;
     }
 }
 
-void		mouse_up(SDL_Event *event, int *clicked, t_pos *pos)
+void		mouse_up(t_game *game)
 {
-  if (event->button.button == SDL_BUTTON_LEFT)
+  if (game->event.button.button == SDL_BUTTON_LEFT)
     {
-      printf("release at x = [%d], y = [%d] pos.\n", pos->x, pos->y);
-      *clicked = 0;
+      printf("release at x = [%d], y = [%d] pos.\n", game->pos.x, game->pos.y);
+      game->mouse.clicked = 0;
     }
 }
 
-void		mouse_down(SDL_Event *event, int *clicked, t_pos *pos, t_pos *move)
+void		mouse_down(t_game *game)
 {
-  if (event->button.button == SDL_BUTTON_LEFT)
+  if (game->event.button.button == SDL_BUTTON_LEFT)
     {
       printf("click\n");
-      *clicked = 1;
-      move->x = event->button.x;
-      move->y = event->button.y;
+      game->mouse.clicked = 1;
+      game->mouse.move.x = game->event.button.x;
+      game->mouse.move.y = game->event.button.y;
     }
-  else if (event->button.button == SDL_BUTTON_RIGHT)
+  else if (game->event.button.button == SDL_BUTTON_RIGHT)
     printf("case selected : x = [%d], y = [%d]\n",
-	   pos->x + event->button.x,
-	   pos->y + (MAP_CH * CASE_H - event->button.y));
+	   game->pos.x + game->event.button.x,
+	   game->pos.y + (MAP_CH * CASE_H - game->event.button.y));
 }

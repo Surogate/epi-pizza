@@ -17,13 +17,13 @@
 #include	"includes/struct.h"
 #include	"includes/proto.h"
 
-void		key_func(SDL_Event *event)
+void		key_func(t_game *game)
 {
-  if (event->key.keysym.sym == SDLK_LEFT)
+  if (game->event.key.keysym.sym == SDLK_LEFT)
     printf("Left rotation\n");
-  else if (event->key.keysym.sym == SDLK_RIGHT)
+  else if (game->event.key.keysym.sym == SDLK_RIGHT)
     printf("Right rotation\n");
-  else if (event->key.keysym.sym == SDLK_ESCAPE)
+  else if (game->event.key.keysym.sym == SDLK_ESCAPE)
     exit(EXIT_SUCCESS);
 }
 
@@ -48,7 +48,6 @@ SDL_Surface	*load_window()
 {
   SDL_Surface	*screen;
 
-
   xSDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
   screen = xSDL_SetVideoMode(CASE_W * MAP_CW, CASE_H * MAP_CH,
 			    WIN_COLOR, SDL_HWSURFACE | SDL_DOUBLEBUF);
@@ -56,27 +55,28 @@ SDL_Surface	*load_window()
   return (screen);
 }
 
+void		init_game(t_game *game)
+{
+  game->mouse.clicked = 0;
+  game->pos.x = 0;
+  game->pos.y = 0;
+  game->screen = load_window();
+}
+
 int		main(void)
 {
-  SDL_Event	event;
-  SDL_Surface	*screen;
-  t_pos		pos;
-  t_pos		move;
+  t_game	game;
   int		i;
-  int		clicked;
 
-  clicked = 0;
-  pos.x = 0;
-  pos.y = 0;
-  screen = load_window();
+  init_game(&game);
   while (1)
-    if (SDL_PollEvent(&event))
+    if (SDL_PollEvent(&game.event))
       {
 	i = 0;
 	while (event_type[i].type)
 	  {
-	    if (event.type == event_type[i].type)
-	      event_type[i].func(&event, &clicked, &pos, &move);
+	    if (game.event.type == event_type[i].type)
+	      event_type[i].func(&game);
 	    i++;
 	  }
       }
