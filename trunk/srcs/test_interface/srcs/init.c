@@ -31,9 +31,9 @@ SDL_Surface	*load_window()
 void		init_game(t_game *game)
 {
   game->mouse.clicked = 0;
-  game->view.pos.x = 0;
-  game->view.pos.y = 0;
-  game->view.screen = load_window();
-  game->view.size_h = 100;
-  game->view.size_w = 100;
+  game->info.pos.x = 0;
+  game->info.pos.y = 0;
+  game->screen = load_window();
+  game->info.size_h = 100;
+  game->info.size_w = 100;
 }

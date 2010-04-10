@@ -29,19 +29,19 @@ typedef struct	s_mouse
   t_pos		move;
 }		t_mouse;
 
-typedef struct	s_view
+typedef struct	s_info
 {
-  SDL_Surface	*screen;
   t_pos		pos;
   int		dir;
   int		size_h;
   int		size_w;
-}		t_view;
+}		t_info;
 
 typedef struct	s_game
 {
   SDL_Event	event;
-  t_view	view;
+  SDL_Surface	*screen;
+  t_info	info;
   t_mouse	mouse;
 }		t_game;
 
