@@ -45,6 +45,19 @@ typedef struct
   int		ress[RESS_NUM];
 }		t_player;
 
+typedef struct		s_team
+{
+  char			*team;
+  struct s_team		*next;
+}			t_team;
+
+typedef struct		s_opt
+{
+  char			*option;
+  int			value;
+  t_team		*team;
+}			t_opt;
+
 # ifndef	T_SERVER_INCLUDED
 #  define	T_SERVER_INCLUDED
 
@@ -53,7 +66,7 @@ typedef struct
   int		port;
   int		height;
   int		width;
-  t_list	*teamname;
+  t_team	*teamname;
   int		nb_client;
   int		delay;
 }		t_server;
