@@ -36,7 +36,15 @@ static int	check_read(char *str)
   return (0);
 }
 
-int		execute_order_66(t_vector *client, t_select *slt_par, 
+
+void		instr_catch(char *str, t_client *cli, t_game *game)
+{
+  printf("readed : %s\n", str);
+  cli = cli;
+  game = game;
+}
+
+int		execute_order_66(t_vector *client, t_select *slt_par,
 				 t_game *game)
 {
   t_client	*tmp;
@@ -53,9 +61,8 @@ int		execute_order_66(t_vector *client, t_select *slt_par,
 	      client->erase(client, client->gns_pos, free);
 	    }
 	  else if ((readed = cbuf_read(&(tmp->cbuf), check_read)))
-	    printf("readed : %s\n", readed);
+	    instr_catch(readed, tmp, game);
 	}
     }
-  game = game;
   return (EXIT_SUCCESS);
 }
