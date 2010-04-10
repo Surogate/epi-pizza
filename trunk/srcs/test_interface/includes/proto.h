@@ -12,12 +12,9 @@
 # define	PROTO_H
 
 /*event func*/
-void		mouse_move(SDL_Event *event, int *clicked,
-			   t_pos *pos, t_pos *move);
-void		mouse_up(SDL_Event *event, int *clicked,
-			 t_pos *pos);
-void		mouse_down(SDL_Event *event, int *clicked,
-			   t_pos *pos, t_pos *move);
+void		mouse_move(t_game *game);
+void		mouse_up(t_game *game);
+void		mouse_down(t_game *game);
 
 /*xSDL*/
 void		xSDL_Flip(SDL_Surface *screen);
