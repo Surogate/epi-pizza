@@ -1,5 +1,11 @@
 /*
+** server_fct for project in /u/all/ancel_a/cu/travail/c/
 **
+** Made by francois1 ancel
+** Login   <ancel_a@epitech.net>
+**
+** Started on  Sat Apr 10 15:11:57 2010 francois1 ancel
+** Last update Sat Apr 10 15:11:57 2010 francois1 ancel
 */
 
 #include		<string.h>
