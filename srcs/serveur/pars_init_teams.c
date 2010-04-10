@@ -1,5 +1,11 @@
 /*
+** server_fct for project in /u/all/ancel_a/cu/travail/c/
 **
+** Made by francois1 ancel
+** Login   <ancel_a@epitech.net>
+**
+** Started on  Sat Apr 10 15:11:57 2010 francois1 ancel
+** Last update Sat Apr 10 15:11:57 2010 francois1 ancel
 */
 
 #include		<stdio.h>
@@ -21,7 +27,8 @@ void			create_new_team(t_opt *opt, char *team_name)
   if (first)
     while (cur->next != 0)
       cur = cur->next;
-  if ((new->team = malloc((strlen(team_name) + 1) * sizeof(*team_name))) == NULL)
+  if ((new->team = malloc((strlen(team_name) + 1) *
+			  sizeof(*team_name))) == NULL)
     puterr("Unable to malloc\n", 1);
   new->team = strcpy(new->team, team_name);
   if (!first)

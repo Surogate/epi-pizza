@@ -1,5 +1,11 @@
 /*
+** server_fct for project in /u/all/ancel_a/cu/travail/c/
 **
+** Made by francois1 ancel
+** Login   <ancel_a@epitech.net>
+**
+** Started on  Sat Apr 10 15:11:57 2010 francois1 ancel
+** Last update Sat Apr 10 15:11:57 2010 francois1 ancel
 */
 
 #include		<stdlib.h>
@@ -30,7 +36,7 @@ void			display_values(t_server *server, t_team *team)
   int			i;
 
   i = 1;
-  printf("\033[1;31m/*****************Server Infos*****************/\033[m\n\n");
+  printf("\n\033[1;31m/***************Server Infos***************/\033[m\n\n");
   printf("\033[1;32mServer Port\033[m -> %d\n", server->port);
   printf("\033[1;32mMap height\033[m  -> %d\n", server->height);
   printf("\033[1;32mMap width\033[m   -> %d\n", server->width);
