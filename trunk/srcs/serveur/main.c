@@ -51,11 +51,9 @@ int main(int ac, char **av)
   ac = ac;
   av = av;
   game = init_game();
-  test_map(game);
-  test_aff_map(game);
-/*  if (svr_start(&(game->server)) == EXIT_FAILURE)
+  printf("server port : %i\n", game->server.port);
+  if (svr_start(&(game->server)) == EXIT_FAILURE)
     perror("svr start error\n");
-*/
   free_map(game);
   return (EXIT_SUCCESS);
 }
