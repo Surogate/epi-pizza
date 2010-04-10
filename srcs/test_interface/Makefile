@@ -9,11 +9,13 @@
 ##
 
 NAME		= interface
-SRCS		= main.c
+SRCS		= main.c	\
+		  xsdl.c	\
+		  mouse.c
 OBJS		= $(SRCS:.c=.o)
 
 CC		= gcc
-RM		= rm -rf
+RM		= rm -fv
 OSNAME		= $(shell uname -s)
 OSNAME		!= uname -s
 CFLAGS		= -W -Wall -Wextra -ansi -pedantic -I. -Imenu -D_BSD_SOURCE -D_SVID_SOURCE -D_XOPEN_SOURCE -D_ISOC99_SOURCE

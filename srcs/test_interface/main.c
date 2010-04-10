@@ -13,8 +13,9 @@
 #include	<stdio.h>
 #include	<unistd.h>
 #include	<sys/types.h>
-#include	"define.h"
-#include	"struct.h"
+#include	"includes/define.h"
+#include	"includes/struct.h"
+#include	"includes/proto.h"
 
 void		key_func(SDL_Event *event)
 {
@@ -24,42 +25,6 @@ void		key_func(SDL_Event *event)
     printf("Right rotation\n");
   else if (event->key.keysym.sym == SDLK_ESCAPE)
     exit(EXIT_SUCCESS);
-}
-
-void		mouse_move(SDL_Event *event, int *clicked, t_pos *pos, t_pos *move)
-{
-  if (*clicked)
-    {
-      pos->x += move->x - event->button.x;
-      pos->y -= move->y - event->button.y;
-      printf("drag : new pos is x = [%d], y = [%d].\n", pos->x, pos->y);
-      move->x = event->button.x;
-      move->y = event->button.y;
-    }
-}
-
-void		mouse_up(SDL_Event *event, int *clicked, t_pos *pos, t_pos *move)
-{
-  if (event->button.button == SDL_BUTTON_LEFT)
-    {
-      printf("release at x = [%d], y = [%d] pos.\n", pos->x, pos->y);
-      *clicked = 0;
-    }
-}
-
-void		mouse_down(SDL_Event *event, int *clicked, t_pos *pos, t_pos *move)
-{
-  if (event->button.button == SDL_BUTTON_LEFT)
-    {
-      printf("click\n");
-      *clicked = 1;
-      move->x = event->button.x;
-      move->y = event->button.y;
-    }
-  else if (event->button.button == SDL_BUTTON_RIGHT)
-    printf("case selected : x = [%d], y = [%d]\n",
-	   pos->x + event->button.x,
-	   pos->y + (MAP_CH * CASE_H - event->button.y));
 }
 
 void		exit_func()
@@ -79,31 +44,14 @@ t_event		event_type[]=
   {0,0}
 };
 
-void		xSDL_Flip(SDL_Surface *screen)
-{
-  if (SDL_Flip(screen) == -1)
-    {
-      fprintf(stderr, "Refresh fail\n");
-      exit(EXIT_FAILURE);
-    }
-}
-
 SDL_Surface	*load_window()
 {
   SDL_Surface	*screen;
 
-  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) < 0)
-    {
-      fprintf(stderr, "Cant init sdl!\n");
-      exit(EXIT_FAILURE);
-    }
-  screen = SDL_SetVideoMode(CASE_W * MAP_CW, CASE_H * MAP_CH,
+
+  xSDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
+  screen = xSDL_SetVideoMode(CASE_W * MAP_CW, CASE_H * MAP_CH,
 			    WIN_COLOR, SDL_HWSURFACE | SDL_DOUBLEBUF);
-  if (screen == NULL)
-    {
-      fprintf(stderr, "Window's create fail!\n");
-      exit(EXIT_FAILURE);
-    }
   SDL_WM_SetCaption("LemIPC", NULL);
   return (screen);
 }
