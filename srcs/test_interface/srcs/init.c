@@ -28,12 +28,30 @@ SDL_Surface	*load_window()
   return (screen);
 }
 
+SDL_Surface	*img_load(char *path)
+{
+  SDL_Surface	*img;
+  SDL_Surface	*tmp;
+
+  tmp = SDL_LoadBMP(path);
+  if (tmp)
+    {
+      img = SDL_DisplayFormat(tmp);
+      SDL_FreeSurface(tmp);
+      return (img);
+    }
+  return (NULL);
+}
+
 void		init_game(t_game *game)
 {
+  game->screen = load_window();
   game->mouse.clicked = 0;
+  game->mouse.img[0] = img_load("images/main_ouverte.bmp");
+  game->mouse.img[1] = img_load("images/main_fermer.bmp");
   game->info.pos.x = 0;
   game->info.pos.y = 0;
-  game->screen = load_window();
   game->info.size_h = 100;
   game->info.size_w = 100;
+  SDL_ShowCursor(0);
 }

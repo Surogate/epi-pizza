@@ -16,6 +16,23 @@
 #include	"../includes/define.h"
 #include	"../includes/struct.h"
 
+void		display_mouse(t_game *game)
+{
+  unsigned int	co;
+  SDL_Rect	pos;
+  int		x;
+  int		y;
+
+  SDL_GetMouseState(&x,&y);
+  pos.x = x;
+  pos.y = y;
+  co = SDL_MapRGB(game->screen->format, 255, 0, 0);
+  SDL_SetColorKey(game->mouse.img[game->mouse.clicked],
+		  SDL_RLEACCEL | SDL_SRCCOLORKEY, co);
+  SDL_BlitSurface(game->mouse.img[game->mouse.clicked],
+		  NULL, game->screen, &pos);
+}
+
 void		mouse_move(t_game *game)
 {
   if (game->mouse.clicked)
