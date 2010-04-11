@@ -46,6 +46,8 @@ static void	instr_catch(char *str, t_client *cli, t_game *game)
       /* if team indefinis alors check si on peut cree le joueurs
 	 sinon definir le temps associer a cette instr */
       /* en attendant */
+      printf("cons : %i\nused : %i\nac : %i\n", cli->cons, cli->used, 
+	     cli->packet[cli->cons].ac);
       i = 0;
       while (i < cli->packet[cli->cons].ac)
 	{
@@ -53,6 +55,8 @@ static void	instr_catch(char *str, t_client *cli, t_game *game)
 	  i++;
 	}
       free_packet(cli); /* si l'instr est invalide */
+      printf("cons : %i\nused : %i\nac : %i\n", cli->cons, cli->used, 
+	     cli->packet[cli->cons].ac);
     }
   game = game;
 }
