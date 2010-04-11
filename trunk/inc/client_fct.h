@@ -14,4 +14,7 @@
 t_client		*new_client(int s);
 int			add_client(t_vector *client, t_select *slt_par, 
 				   int svr_sock);
+int			client_parse_instr(char *str, t_client *cli);
+void			free_packet(t_client *cli);
+
 #endif

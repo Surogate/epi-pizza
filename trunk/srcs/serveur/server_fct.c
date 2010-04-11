@@ -23,6 +23,7 @@
 #include "s_vector.h"
 #include "t_struct.h"
 #include "t_svr_stc.h"
+#include "client_fct.h"
 
 static int	check_read(char *str)
 {
@@ -36,12 +37,38 @@ static int	check_read(char *str)
   return (0);
 }
 
-
-void		instr_catch(char *str, t_client *cli, t_game *game)
+static void	instr_catch(char *str, t_client *cli, t_game *game)
 {
-  printf("readed : %s\n", str);
-  cli = cli;
+  int		i;
+
+  if (client_parse_instr(str, cli) == EXIT_SUCCESS)
+    {
+      /* if team indefinis alors check si on peut cree le joueurs
+	 sinon definir le temps associer a cette instr */
+      /* en attendant */
+      i = 0;
+      while (i < cli->packet[cli->cons].ac)
+	{
+	  printf("readed : %s\n", cli->packet[cli->cons].av[i]);
+	  i++;
+	}
+      free_packet(cli); /* si l'instr est invalide */
+    }
   game = game;
+}
+
+static void	free_client(t_client *cli)
+{
+  int		i;
+  int		used;
+  int		cons;
+
+  used = cli->used;
+  cons = cli->cons;
+  i = -1;
+  while (++i < used)
+    free_packet(cli);
+  free (cli);
 }
 
 int		execute_order_66(t_vector *client, t_select *slt_par,
@@ -58,7 +85,7 @@ int		execute_order_66(t_vector *client, t_select *slt_par,
 	    {
 	      printf("client %i timeout\n", tmp->sock);
 	      FD_CLR(tmp->sock, &(slt_par->fd_read));
-	      client->erase(client, client->gns_pos, free);
+	      client->erase(client, client->gns_pos, free_client);
 	    }
 	  else if ((readed = cbuf_read(&(tmp->cbuf), check_read)))
 	    instr_catch(readed, tmp, game);

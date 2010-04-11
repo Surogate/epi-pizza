@@ -31,20 +31,21 @@ typedef struct
 
 typedef struct
 {
-  int		id_player;
-  char		*mess;
-}		t_rep;
+  int			id_player;
+  char			*mess;
+}			t_rep;
 
 typedef struct
 {
-  int		player_id;
-  int		ac;
-  char		**av;
-  int		time;
-  t_rep		*response; /* tableau */
-}		t_packet;
+  int			player_id;
+  int			ac;
+  char			*av[2];
+  struct timeval	time;
+  int			duration;
+  t_rep			*response; /* tableau */
+}			t_packet;
 
-# endif		/* !T_PACKET_INCLUDED */
+# endif			/* !T_PACKET_INCLUDED */
 
 typedef struct
 {
@@ -63,4 +64,4 @@ typedef struct
   struct timeval	timeout;
 }			t_select;
 
-#endif		/* !T_SVR_STC_INCLUDED */
+#endif			/* !T_SVR_STC_INCLUDED */
