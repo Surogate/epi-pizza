@@ -26,6 +26,7 @@ typedef struct	s_pos
 typedef struct	s_mouse
 {
   int		clicked;
+  SDL_Surface	*img[2];
   t_pos		move;
 }		t_mouse;
 

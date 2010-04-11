@@ -34,15 +34,25 @@ int		main(void)
 
   init_game(&game);
   while (1)
-    if (SDL_PollEvent(&game.event))
-      {
-	i = 0;
-	while (event_type[i].type)
-	  {
-	    if (game.event.type == event_type[i].type)
+    {
+      if (SDL_PollEvent(&game.event))
+	{
+	  i = 0;
+	  while (event_type[i].type)
+	    {
+	      if (game.event.type == event_type[i].type)
 	      event_type[i].func(&game);
-	    i++;
-	  }
-      }
+	      i++;
+	    }
+	}
+      SDL_FillRect(game.screen, NULL,
+		   SDL_MapRGB(game.screen->format, 0, 0, 0));
+      display_mouse(&game);
+      if (SDL_Flip(game.screen) == -1)
+	{
+	  printf("Refresh fail\n");
+	  exit(EXIT_FAILURE);
+	}
+     }
   return (EXIT_SUCCESS);
 }
