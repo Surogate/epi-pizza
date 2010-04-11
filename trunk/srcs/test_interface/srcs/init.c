@@ -35,5 +35,5 @@ void		init_game(t_game *game)
   game->info.pos.y = 0;
   game->screen = load_window();
   game->info.size_h = 100;
-  game->info.size_w = 101;
+  game->info.size_w = 100;
 }
