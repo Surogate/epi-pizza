@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:24 2010 francois1 ancel
-** Last update Fri Apr  9 14:16:11 2010 Florian Chanioux
+** Last update Sat Apr 10 18:50:35 2010 pierre1 boutbel
 */
 
 #ifndef		T_STRUCT_INCLUDED
@@ -98,6 +98,12 @@ typedef struct
 }		t_inst;
 
 # endif		/* !T_PACKET_INCLUDED */
+
+typedef struct
+{
+  t_map		*cas;
+  char		*team;
+}		t_eggs;
 
 typedef struct
 {

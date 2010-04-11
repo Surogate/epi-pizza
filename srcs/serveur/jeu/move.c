@@ -20,20 +20,23 @@ static t_dir_m	gl_dir[5] = {
 void		try_turn_left(t_packet *packet, t_player *player)
 {
   player->dir = gl_dir[player->dir].dir_left;
-  packet->response = OK;
-  packet->time = 7;
+  packet->response->mess = OK;
+  packet->response->id_player = packet->player_id;
 }
 
 void		try_turn_right(t_packet *packet, t_player *player)
 {
   player->dir = gl_dir[player->dir].dir_right;
-  packet->response = OK;
-  packet->time = 7;
+  packet->response->mess = OK;
+  packet->response->id_player = packet->player_id;
 }
 
 void		try_move(t_packet *packet, t_player *player)
 {
   player->pos = player->pos->card[gl_dir[player->dir].front];
-  packet->response = OK;
-  packet->time = 7;
+  
+  /*Retirer de la liste des joueurs de la case*/
+
+  packet->response->mess = OK;
+  packet->response->id_player = packet->player_id;
 }

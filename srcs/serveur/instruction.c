@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Apr  6 15:01:49 2010 Florian Chanioux
-** Last update Fri Apr  9 14:47:02 2010 Florian Chanioux
+** Last update Sat Apr 10 18:47:27 2010 pierre1 boutbel
 */
 
 #include <stdlib.h>
@@ -28,10 +28,10 @@ t_instr		tab_instr[NB_INST] =
   {"inventaire", try_invent},
   {"prendre", try_take_obj},
   {"pose", try_drop_obj},
-  {"expulse", expulse},
+  {"expulse", try_expulse},
   {"broadcat",broadcast},
-  {"incant", incant},
-  {"fork", multi},
+  {"incant", try_incant},
+  {"fork", try_fork},
   {"connect", connect},
   {NULL, NULL}
 };
@@ -41,7 +41,7 @@ int		find_elem(void *ref, void *test)
   int		tmp;
 
   temp = (int)ref;
-  printf("%i\n",temp);
+  printf("%i\n", temp);
   return (1);
 }
 
@@ -59,5 +59,6 @@ void		treatment_intr(t_game *game, t_packet *packet)
       tab_instr[i].ptr_func(packet, player);
       break;
     }
-  
+  if (strcmp(packet->av[0], "fork"))
+    do_fork(game, player);
 }
