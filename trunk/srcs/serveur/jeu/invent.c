@@ -19,26 +19,22 @@ void		try_drop_obj(t_packet *packet, t_player *player)
   int		num_ress;
 
   num_ress = 0;
-  packet->response = NULL;
+  packet->response->mess = NULL;
+  packet->response->id_player = packet->player_id;
   if (packet->ac == 2)
     {
       name_res = packet->av[1];
       while (num_ress != RESS_NUM && strcmp(name_res, msg_ress[num_ress]) != 0)
 	num_ress++;
-      if (num_ress == RESS_NUM)
-	packet->response = KO;
-      if (player->ress[num_ress] == 0)
-	packet->response = KO;
+      if (num_ress >= RESS_NUM || player->ress[num_ress] == 0)
+	packet->response->mess = KO;
       player->ress[num_ress]--;
       player->pos->cas.ress[num_ress]++;
       if (packet->response == NULL)
-	{
-	  packet->response = OK;
-	  packet->time = 7;
-	}
+	packet->response->mess = OK;
     }
   else
-    packet->response = KO;
+    packet->response->mess = KO;
 }
 
 void		try_take_obj(t_packet *packet, t_player *player)
@@ -48,26 +44,22 @@ void		try_take_obj(t_packet *packet, t_player *player)
   int		num_ress;
 
   num_ress = 0;
-  packet->response = NULL;
+  packet->response->mess = NULL;
+  packet->response->id_player = packet->player_id;
   if (packet->ac == 2)
     {
       name_res = packet->av[1];
       while (num_ress != RESS_NUM && strcmp(name_res, msg_ress[num_ress]) != 0)
 	num_ress++;
-      if (num_ress == RESS_NUM)
-	packet->response = KO;
-      if (player->pos->cas.ress[num_ress] == 0)
-	packet->response = KO;
+      if (num_ress == RESS_NUM || player->pos->cas.ress[num_ress] == 0)
+	packet->response->mess = KO;
       player->ress[num_ress]++;
       player->pos->cas.ress[num_ress]--;
       if (packet->response == NULL)
-	{
-	  packet->response = OK;
-	  packet->time = 7;
-	}
+	packet->response->mess = OK;
     }
   else
-    packet->response = KO;
+    packet->response->mess = KO;
 }
 
 static int	my_dec_pow(int nb)
@@ -126,6 +118,6 @@ void		try_invent(t_packet *packet, t_player *player)
       num_ress++;
     }
   free(nb_ress);
-  packet->response = msg;
-  packet->time = 1;
+  packet->response->mess = msg;
+  packet->response->id_player = packet->player_id;
 }

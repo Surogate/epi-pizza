@@ -12,8 +12,6 @@
 #include	"../../../inc/t_game_stc.h"
 #include	"../../../inc/xfunc.h"
 
-void		free_list_vision(t_vision *s_vision);
-
 char		*add_player(t_vision *cur_case, char *msg)
 {
   t_list	*cur_player;
@@ -88,6 +86,5 @@ char		*concatene_msg(t_vision *list)
     }
   msg = xrealloc(msg, strlen(msg) + 1);
   msg = strcat(msg, "}");
-  free_list_vision(list);
   return (msg);
 }

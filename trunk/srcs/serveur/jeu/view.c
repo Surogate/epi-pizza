@@ -42,7 +42,7 @@ static t_vision *add_case(t_vision *list, t_map *map, int level)
   t_vision	*cur;
   t_vision	*old;
 
-  new = xmalloc(sizeof(t_vision));  
+  new = xmalloc(sizeof(t_vision));
   cur = list;
   old = cur;
   while (cur != NULL)
@@ -76,7 +76,7 @@ static t_vision	*add_level(t_vision *s_vision, t_dir_v *dir, int level)
   return (s_vision);
 }
 
-void		free_list_vision(t_vision *s_vision)
+static void	free_list_vision(t_vision *s_vision)
 {
   t_vision	*next;
 
@@ -89,7 +89,7 @@ void		free_list_vision(t_vision *s_vision)
     }
 }
 
-char		*try_view(t_packet *packet, t_player *player)
+void		try_view(t_packet *packet, t_player *player)
 {
   t_vision	*s_vision;
   int		i;
@@ -105,6 +105,7 @@ char		*try_view(t_packet *packet, t_player *player)
       s_vision = add_level(s_vision, &gl_dir[player->dir - 1], i);
       i++;
     }
-  packet->response = concatene_msg(s_vision);
-  packet->time = 7;
+  packet->response->mess = concatene_msg(s_vision);
+  packet->response->id_player = packet->player_id;
+  free_list_vision(s_vision);
 }
