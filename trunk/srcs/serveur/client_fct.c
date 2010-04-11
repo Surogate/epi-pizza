@@ -110,5 +110,5 @@ void			free_packet(t_client *cli)
 {
   free(cli->packet[cli->cons].av[0]);
   --(cli->used);
-  ++(cli->cons);
+  cli->cons = (cli->cons + 1) % 10;
 }
