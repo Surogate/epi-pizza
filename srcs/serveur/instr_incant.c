@@ -10,10 +10,12 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <sys/time.h>
 
 #include "define.h"
 #include "my_list.h"
 #include "t_struct.h"
+#include "t_packet.h"
 #include "server.h"
 
 void		incant(t_packet *packet, t_player *player)

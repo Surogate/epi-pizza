@@ -73,32 +73,6 @@ typedef struct
 
 # endif		/* !T_SERVER_INCLUDED */
 
-# ifndef	T_PACKET_INCLUDED
-#  define	T_PACKET_INCLUDED
-
-typedef struct
-{
-  int		id_player;
-  char		*mess;
-}		t_rep;
-
-typedef struct
-{
-  int		player_id;
-  int		ac;
-  char		**av;
-  int		time;
-  t_rep		*response; /* tableau */
-}		t_packet;
-
-typedef struct
-{
-  char		*inst;
-  void		(*ptr_func)();
-}		t_inst;
-
-# endif		/* !T_PACKET_INCLUDED */
-
 typedef struct
 {
   t_map		*cas;

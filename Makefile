@@ -105,7 +105,7 @@ LFLAGS_i686-Linux	=	-lxfunc_$(TAG)				\
 LFLAGS			=	-L$(DIR_LIB) $(LFLAGS_$(TAG))
 
 IFLAGS		=	-I$(DIR_INC)
-CFLAGS		+=	-O3 -W -Wall -ansi -pedantic $(DEFINE) $(IFLAGS)
+CFLAGS		+=	-g3 -W -Wall -ansi -pedantic $(DEFINE) $(IFLAGS)
 
 ############### BINARIES
 
