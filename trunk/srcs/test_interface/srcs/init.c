@@ -17,7 +17,7 @@
 #include	"../includes/struct.h"
 #include	"../includes/proto.h"
 # define	FONT_DIR	"./font/MONACO.ttf"
-# define	MFONT_SIZE	30
+# define	MFONT_SIZE	7
 
 SDL_Surface	*load_window()
 {
@@ -85,6 +85,7 @@ void		init_game(t_game *game)
       exit(EXIT_FAILURE);
     }
   game->font = TTF_OpenFont(FONT_DIR, MFONT_SIZE);
+  printf("[%d]\n",game->font);
   game->info.pos.x = 0;
   game->info.pos.y = 0;
   game->info.size_h = 100;
