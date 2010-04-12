@@ -3,12 +3,14 @@ Header
  */
 
 #include	<sys/types.h>
+#include	<sys/time.h>
 #include	<stdlib.h>
-#include	"../../../inc/my_list.h"
-#include	"../../../inc/define.h"
-#include	"../../../inc/t_struct.h"
-#include	"../../../inc/t_game_stc.h"
-#include	"../../../inc/xfunc.h"
+#include	"my_list.h"
+#include	"define.h"
+#include	"t_struct.h"
+#include	"t_packet.h"
+#include	"t_game_stc.h"
+#include	"xfunc.h"
 
 char		*concatene_msg(t_vision *list);
 
@@ -28,9 +30,7 @@ static t_map	*find_left(t_vision *list, t_dir_v *dir, int level)
   while (cur != NULL)
     {
       if (cur->level == level)
-	{
-	  return (cur->cas->card[dir->up_left]);
-	}
+	return (cur->cas->card[dir->up_left]);
       cur = cur->next;
     }
   return (NULL);
@@ -52,8 +52,8 @@ static t_vision *add_case(t_vision *list, t_map *map, int level)
     }
   old->next = new;
   new->next = NULL;
-  new->level = level + 1;
   new->cas = map;
+  new->level = level + 1;
   new->num = old->num + 1;
   return (list);
 }

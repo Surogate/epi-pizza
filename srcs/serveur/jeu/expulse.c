@@ -3,13 +3,15 @@
 */
 
 #include	<sys/types.h>
+#include	<sys/time.h>
 #include	<string.h>
 #include	<stdio.h>
-#include	"../../../inc/my_list.h"
-#include	"../../../inc/define.h"
-#include	"../../../inc/t_struct.h"
-#include	"../../../inc/t_game_stc.h"
-#include	"../../../inc/xfunc.h"
+#include	"my_list.h"
+#include	"define.h"
+#include	"t_struct.h"
+#include	"t_packet.h"
+#include	"t_game_stc.h"
+#include	"xfunc.h"
 
 void		do_expulse(t_packet *packet, t_player *player)
 {
