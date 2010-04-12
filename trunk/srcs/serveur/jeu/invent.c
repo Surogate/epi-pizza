@@ -3,18 +3,20 @@
 */
 
 #include	<sys/types.h>
+#include	<sys/time.h>
 #include	<string.h>
 #include	<stdlib.h>
 
-#include	"../../../inc/my_list.h"
-#include	"../../../inc/define.h"
-#include	"../../../inc/t_struct.h"
-#include	"../../../inc/t_game_stc.h"
-#include	"../../../inc/xfunc.h"
+#include	"my_list.h"
+#include	"define.h"
+#include	"t_struct.h"
+#include	"t_game_stc.h"
+#include	"t_packet.h"
+#include	"xfunc.h"
 
 void		try_drop_obj(t_packet *packet, t_player *player)
 {
-  char		msg_ress[RESS_NUM][10] = {MSG_RESS};
+  char		msg_ress[RESS_NUM][11] = {MSG_RESS};
   char		*name_res;
   int		num_ress;
 
@@ -27,11 +29,13 @@ void		try_drop_obj(t_packet *packet, t_player *player)
       while (num_ress != RESS_NUM && strcmp(name_res, msg_ress[num_ress]) != 0)
 	num_ress++;
       if (num_ress >= RESS_NUM || player->ress[num_ress] == 0)
-	packet->response->mess = KO;
-      player->ress[num_ress]--;
-      player->pos->cas.ress[num_ress]++;
-      if (packet->response == NULL)
-	packet->response->mess = OK;
+	  packet->response->mess = KO;
+      else
+	{
+	  player->ress[num_ress]--;
+	  player->pos->cas.ress[num_ress]++;
+	  packet->response->mess = OK;
+	}
     }
   else
     packet->response->mess = KO;
@@ -39,13 +43,14 @@ void		try_drop_obj(t_packet *packet, t_player *player)
 
 void		try_take_obj(t_packet *packet, t_player *player)
 {
-  char		msg_ress[RESS_NUM][10] = {MSG_RESS};
+  char		msg_ress[RESS_NUM][11] = {MSG_RESS};
   char		*name_res;
   int		num_ress;
 
   num_ress = 0;
   packet->response->mess = NULL;
   packet->response->id_player = packet->player_id;
+
   if (packet->ac == 2)
     {
       name_res = packet->av[1];
@@ -53,10 +58,12 @@ void		try_take_obj(t_packet *packet, t_player *player)
 	num_ress++;
       if (num_ress == RESS_NUM || player->pos->cas.ress[num_ress] == 0)
 	packet->response->mess = KO;
-      player->ress[num_ress]++;
-      player->pos->cas.ress[num_ress]--;
-      if (packet->response == NULL)
-	packet->response->mess = OK;
+      else
+	{
+	  packet->response->mess = OK;
+	  player->ress[num_ress]++;
+	  player->pos->cas.ress[num_ress]--;
+	}
     }
   else
     packet->response->mess = KO;
@@ -82,14 +89,19 @@ static char	*int_to_str(int nbr)
   char		*str;
   int		len;
 
-  len = 11;
-  str = xmalloc(11 * sizeof(char));
-  while (len)
+  if (nbr == 0)
     {
-      str[11 - len] = ((nbr % my_dec_pow(len + 1)) / my_dec_pow(len)) + '0';
-      len--;
+      str = xmalloc(2 * sizeof(char));      
+      str[0] = '0';
+      str[1] = '\0';
+      return (str);
     }
-  str[11] = '\0';
+  len = 12;
+  str = xmalloc(12 * sizeof(char));
+  while (--len)
+    str[11 - len] = ((nbr % my_dec_pow(len + 1)) / my_dec_pow(len)) + '0';
+  str[11] = (nbr % my_dec_pow(len + 1)) + '0';
+  str[12] = '\0';
   len = 0;
   while (str[0] == '0')
     str++;
@@ -98,7 +110,7 @@ static char	*int_to_str(int nbr)
 
 void		try_invent(t_packet *packet, t_player *player)
 {
-  char		msg_ress[RESS_NUM][10] = {MSG_RESS};
+  char		msg_ress[RESS_NUM][11] = {MSG_RESS};
   int		num_ress;
   char		*nb_ress;
   char		*msg;
@@ -111,13 +123,15 @@ void		try_invent(t_packet *packet, t_player *player)
     {
       nb_ress = int_to_str(player->ress[num_ress]);
       msg = xrealloc(msg, strlen(msg) + strlen(msg_ress[num_ress]) + 
-		    strlen(nb_ress) + 2);
+		     strlen(nb_ress) + 3);
       msg = strcat(msg, msg_ress[num_ress]);
       msg = strcat(msg, " ");
       msg = strcat(msg, nb_ress);
-      num_ress++;
+      if (++num_ress != RESS_NUM)
+	msg = strcat(msg, ", ");
+      /*free(nb_ress);*/
     }
-  free(nb_ress);
+  msg = strcat(msg, "}");
   packet->response->mess = msg;
   packet->response->id_player = packet->player_id;
 }
