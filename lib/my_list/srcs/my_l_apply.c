@@ -5,14 +5,14 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Wed Oct 21 13:55:42 2009 florian chanioux
-** Last update Mon Nov 30 14:57:14 2009 florian chanioux
+** Last update Mon Apr 12 19:08:54 2010 Florian Chanioux
 */
 
 #include "my_list.h"
 
 int		my_l_apply(t_list *begin, int (*f)())
 {
-  while (begin != 0)
+  while (begin->data != 0)
     {
       f(begin->data);
       begin = begin->next;
