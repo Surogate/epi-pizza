@@ -47,6 +47,7 @@ int		main(void)
 	}
       SDL_FillRect(game.screen, NULL,
 		   SDL_MapRGB(game.screen->format, 0, 0, 0));
+      display_map(&game);
       display_mouse(&game);
       if (SDL_Flip(game.screen) == -1)
 	{

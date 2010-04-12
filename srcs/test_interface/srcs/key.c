@@ -27,8 +27,10 @@ void		key_func(t_game *game)
     exit(EXIT_SUCCESS);
 }
 
-void		exit_func()
+void		exit_func(t_game *game)
 {
+  TTF_CloseFont(game->font);
+  TTF_Quit();
   exit(EXIT_SUCCESS);
 }
 
