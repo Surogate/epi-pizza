@@ -38,8 +38,8 @@ void		display_case(t_game *game, int x, int y)
 
   pos.x = (x * CASE_W) - (game->info.pos.x % CASE_W);
   pos.y = (CASE_H * MAP_CH) - ((y * CASE_H) - (game->info.pos.y % CASE_H));
-  sprintf(test, "%d,%d", (game->info.pos.y + y) % game->info.size_h,
-	  (game->info.pos.x + x) % game->info.size_w);
+  sprintf(test, "%d,%d", ((game->info.pos.y / CASE_H) + y) % game->info.size_h,
+	  ((game->info.pos.x / CASE_W) + x) % game->info.size_w);
   SDL_BlitSurface(game->map.fond, NULL, game->screen, &pos);
   blit_writing(game, &pos, test);
 }
