@@ -9,10 +9,11 @@
 ##
 
 NAME		= client_graphique
-SRCS		= srcs/main.c	\
-		  srcs/xsdl.c	\
-		  srcs/key.c	\
-		  srcs/init.c	\
+SRCS		= srcs/main.c		\
+		  srcs/xsdl.c		\
+		  srcs/key.c		\
+		  srcs/init.c		\
+		  srcs/display.c	\
 		  srcs/mouse.c
 OBJS		= $(SRCS:.c=.o)
 

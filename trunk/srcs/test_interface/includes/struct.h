@@ -38,12 +38,34 @@ typedef struct	s_info
   int		size_w;
 }		t_info;
 
+typedef struct	s_play
+{
+  int		lv;
+  t_pos		pos;
+  int		id;
+  struct s_play	*next;
+}		t_player;
+
+typedef struct	s_case
+{
+  int		obj[7];
+  t_player	*player;
+}		t_case;
+
+typedef struct	s_map
+{
+  t_case	**t_case;
+  SDL_Surface	*fond;
+}		t_map;
+
 typedef struct	s_game
 {
   SDL_Event	event;
   SDL_Surface	*screen;
   t_info	info;
   t_mouse	mouse;
+  t_map		map;
+  TTF_Font	*font;
 }		t_game;
 
 #endif		/*STRUCT_H*/

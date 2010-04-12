@@ -35,23 +35,43 @@ void		display_mouse(t_game *game)
 
 void		mouse_move(t_game *game)
 {
+  /*---variable de debug---*/
+  int		x;
+  int		x_max;
+  int		y;
+  int		y_max;
+  /*-----------------------*/
   if (game->mouse.clicked)
     {
       game->info.pos.x += game->mouse.move.x - game->event.button.x;
       game->info.pos.y -= game->mouse.move.y - game->event.button.y;
       if (game->info.pos.x < 0)
-	game->info.pos.x = CASE_W * game->info.size_w - 1;
+	game->info.pos.x = CASE_W * game->info.size_w + game->info.pos.x;
       if (game->info.pos.y < 0)
-	game->info.pos.y = CASE_H * game->info.size_h - 1;
+	game->info.pos.y = CASE_H * game->info.size_h + game->info.pos.y;
       game->info.pos.x = game->info.pos.x % (CASE_W * game->info.size_w);
       game->info.pos.y = game->info.pos.y % (CASE_H * game->info.size_h);
+      /*--------DEBUG POS----------*/
       printf("drag : new pos is x = [%d], y = [%d].\ncase current : x=[%d], y=[%d]\n",
 	     game->info.pos.x,
 	     game->info.pos.y,
 	     game->info.pos.x / CASE_W,
 	     game->info.pos.y / CASE_H);
+      /*--------FIN DEBUG----------*/
       game->mouse.move.x = game->event.button.x;
       game->mouse.move.y = game->event.button.y;
+      /*------DEBUG DISPLAY------*/
+      y_max = (game->info.pos.y / CASE_H) + (game->info.size_h / 2);
+      if (y_max > game->info.size_h)
+	y_max = y_max % game->info.size_h;
+      y = y_max - game->info.size_h;
+      x_max = (game->info.pos.x / CASE_W) + (game->info.size_w / 2);
+      if (x_max > game->info.size_w)
+	x_max = x_max % game->info.size_w;
+      x = x_max - game->info.size_w;
+      printf("display info :\ny min : [%d] y max  : [%d]\nx min : [%d] x max : [%d]\n",
+	     y, y_max, x, x_max);
+      /*-------FIN DEBUG------*/
     }
 }
 
