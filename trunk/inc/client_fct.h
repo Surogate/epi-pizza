@@ -8,13 +8,14 @@
 ** Last update Sat Apr 10 15:18:53 2010 francois1 ancel
 */
 
-#ifndef CLIENT_FCT_C_INCLUDED
-# define CLIENT_FCT_C_INCLUDED
+#ifndef			CLIENT_FCT_C_INCLUDED
+# define		CLIENT_FCT_C_INCLUDED
 
 t_client		*new_client(int s);
 int			add_client(t_vector *client, t_select *slt_par, 
 				   int svr_sock);
 int			client_parse_instr(char *str, t_client *cli);
 void			free_packet(t_client *cli);
+int			close_client(t_vector *client, t_select *slt_par);
 
-#endif
+#endif			/* !CLIENT_FCT_C_INCLUDED */

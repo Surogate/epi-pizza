@@ -25,7 +25,7 @@
 
 void		init_server(t_server *server)
 {
-  server->port = 1337;
+  server->port = 1338;
   server->height = 2;
   server->width = 2;
   server->teamname = NULL;
@@ -53,7 +53,7 @@ int main(int ac, char **av)
   game = init_game();
   printf("server port : %i\n", game->server.port);
   if (svr_start(&(game->server)) == EXIT_FAILURE)
-    perror("svr start error\n");
+    perror("svr start error");
   free_map(game);
   return (EXIT_SUCCESS);
 }

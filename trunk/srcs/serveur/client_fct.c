@@ -21,6 +21,7 @@
 #include "my_list.h"
 #include "s_vector.h"
 #include "s_cbuf.h"
+#include "cbuf_io.h"
 #include "t_svr_stc.h"
 
 t_client		*new_client(int s)
@@ -60,6 +61,7 @@ int			add_client(t_vector *client, t_select *slt_par,
   client->push_front(client, tmp);
   if (tmp->sock > slt_par->fd_max)
     slt_par->fd_max = tmp->sock;
+  sock_write(tmp->sock, "BIENVENUE\n");
   return (EXIT_SUCCESS);
 }
 
@@ -71,17 +73,19 @@ static int		parse_word(char *str, t_packet *pak)
   strstk = malloc(strlen(str) * sizeof(*strstk));
   if (strstk)
     {
-      strncpy(strstk, str, strlen(str));
+      strncpy(strstk, str, strlen(str) + 1);
       pak->av[0] = strstk;
       pak->ac = 1;
-      i = -1;
-      while (strstk[++i] && (strstk[++i] != '\n') && (strstk[++i] == ' '));
+      i = 0;
+      while (strstk[i] && (strstk[i] != '\n') && (strstk[i] != ' '))
+	i++;
       if (strstk[i] == ' ')
 	{
 	  strstk[i] = '\0';
 	  pak->av[1] = strstk + i + 1;
 	  pak->ac = 2;
-	  while (strstk[++i] && (strstk[++i] != '\n'));
+	  while (strstk[i] && (strstk[i] != '\n'))
+	    i++;
 	}
       if (strstk[i] == '\n')
 	strstk[i] = '\0';
