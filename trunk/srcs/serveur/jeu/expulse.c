@@ -15,28 +15,30 @@
 
 void		do_expulse(t_packet *packet, t_player *player)
 {
-/*  t_list	*cur_player;
+  char		*msg;
+  t_player	*pl;
+  t_list	*cur_player;
   int		i;
 
   packet->response = xmalloc((my_l_size(player->pos->cas.player) + 1) *
 			     sizeof(packet->response));
-  packet->response[0] = OK;
+  packet->response[0].mess = OK;
   cur_player = player->pos->cas.player;
+  msg = xmalloc(LEN_EXP * sizeof(char));
   msg = EXPULSE_VIC;
   i = 0;
   while (cur_player != NULL)
     {
       msg[POS_EXP_K] = (player->dir + 1) % 4 + '0';
       packet->response[i].mess = msg;
-      packet->response[i++].id_player = cur_player->player_id;
+      pl = (t_player*)cur_player;
+      packet->response[i++].id_player = pl->player_id;
       cur_player = cur_player->next;
       }*/
 }
 
 void		try_expulse(t_packet *packet, t_player *player)
 {
-  char		msg[LEN_EXP];
-  
   if (my_l_size(player->pos->cas.player) == 1)
     {
       packet->response->mess = KO;
