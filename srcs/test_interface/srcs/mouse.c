@@ -46,11 +46,11 @@ void		mouse_move(t_game *game)
       game->info.pos.x = game->info.pos.x % (CASE_W * game->info.size_w);
       game->info.pos.y = game->info.pos.y % (CASE_H * game->info.size_h);
       /*--------DEBUG POS----------*/
-      printf("drag : new pos is x = [%d], y = [%d].\ncase current : x=[%d], y=[%d]\n",
-	     game->info.pos.x,
-	     game->info.pos.y,
-	     game->info.pos.x / CASE_W,
-	     game->info.pos.y / CASE_H);
+     /*  printf("drag : new pos is x = [%d], y = [%d].\ncase current : x=[%d], y=[%d]\n", */
+/* 	     game->info.pos.x, */
+/* 	     game->info.pos.y, */
+/* 	     game->info.pos.x / CASE_W, */
+/* 	     game->info.pos.y / CASE_H); */
       /*--------FIN DEBUG----------*/
       game->mouse.move.x = game->event.button.x;
       game->mouse.move.y = game->event.button.y;
