@@ -15,7 +15,7 @@
 
 void		do_expulse(t_packet *packet, t_player *player)
 {
-  t_list	*cur_player;
+/*  t_list	*cur_player;
   int		i;
 
   packet->response = xmalloc((my_l_size(player->pos->cas.player) + 1) *
@@ -30,7 +30,7 @@ void		do_expulse(t_packet *packet, t_player *player)
       packet->response[i].mess = msg;
       packet->response[i++].id_player = cur_player->player_id;
       cur_player = cur_player->next;
-    }
+      }*/
 }
 
 void		try_expulse(t_packet *packet, t_player *player)

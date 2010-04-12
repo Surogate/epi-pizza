@@ -16,7 +16,7 @@ void		do_expulse(t_packet *packet, t_player *player);
 void		try_expulse(t_packet *packet, t_player *player);
 
 /*hatch.c*/
-void		do_fork(t_game *game, t_player player);
+void		do_fork(t_game *game, t_player *player);
 void		try_fork(t_packet *packet, t_player *player);
 
 /*incant.h*/
@@ -34,6 +34,13 @@ void		try_move(t_packet *packet, t_player *player);
 
 /*view.h*/
 void		try_view(t_packet *packet, t_player *player);
+
+
+void		broadcast(t_packet *packet, t_player *player);
+void		expulse(t_packet *packet, t_player *player);
+void		incant(t_packet *packet, t_player *player);
+void		multi(t_packet *packet, t_player *player);
+void		connect(t_packet *packet, t_player *player);
 
 #endif		/*__GAME_CMD_H__*/
 

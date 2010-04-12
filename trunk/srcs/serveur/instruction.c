@@ -5,47 +5,67 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Apr  6 15:01:49 2010 Florian Chanioux
-** Last update Sat Apr 10 18:47:27 2010 pierre1 boutbel
+** Last update Mon Apr 12 19:19:48 2010 Florian Chanioux
 */
 
+#include <sys/time.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 
 #include "define.h"
 #include "my_list.h"
 #include "t_struct.h"
-#include "t_svr_stc.h"
-#include "server.h"
+#include "t_packet.h"
+#include "t_game_stc.h"
+#include "game_cmd.h"
 
-# define	NB_INST		(12)
-
-t_instr		tab_instr[NB_INST] =
+t_inst		tab_instr[NB_INST] =
 {
-  {"avance", try_move},
-  {"droite", try_turn_right},
-  {"gauche", try_turn_left},
-  {"voir", try_view},
-  {"inventaire", try_invent},
-  {"prendre", try_take_obj},
-  {"pose", try_drop_obj},
-  {"expulse", try_expulse},
-  {"broadcat",broadcast},
-  {"incant", try_incant},
-  {"fork", try_fork},
-  {"connect", connect},
-  {NULL, NULL}
+  {"avance", try_move, 7},
+  {"droite", try_turn_right, 7},
+  {"gauche", try_turn_left, 7},
+  {"voir", try_view, 7},
+  {"inventaire", try_invent, 1},
+  {"prendre", try_take_obj, 7},
+  {"pose", try_drop_obj, 7},
+  {"expulse", try_expulse, 7},
+  {"broadcat",broadcast, 7},
+  {"incant", try_incant, 300},
+  {"fork", try_fork, 42},
+  {"connect", connect, 0}
 };
 
 int		find_elem(void *ref, void *test)
 {
   int		tmp;
 
-  temp = (int)ref;
-  printf("%i\n", temp);
+  tmp = (int)ref;
+  test = test;
+  printf("%i\n", tmp);
   return (1);
 }
 
 void		treatment_intr(t_game *game, t_packet *packet)
+{
+  int		i;
+  t_player	*player;
+
+  i = -1;
+  player = (t_player *)my_l_find(game->player,
+				     (void *)(packet->player_id),
+				     find_elem);
+  while (++i < NB_INST)
+    if (strcmp(packet->av[0], tab_instr[i].inst))
+    {
+      tab_instr[i].ptr_func(packet, player);
+      break;
+    }
+  if (strcmp(packet->av[0], "fork"))
+    do_fork(game, player);
+}
+
+void		treatment_duration(t_game *game, t_packet *packet)
 {
   int		i;
 
@@ -53,12 +73,8 @@ void		treatment_intr(t_game *game, t_packet *packet)
   while (++i < NB_INST)
     if (strcmp(packet->av[0], tab_instr[i].inst))
     {
-      player = (t_player *)my_l_find(game->player,
-				     (void *)(packet->player_id),
-				     find_elem());
-      tab_instr[i].ptr_func(packet, player);
+      packet->duration = tab_instr[i].delay * game->server.delay;
       break;
     }
-  if (strcmp(packet->av[0], "fork"))
-    do_fork(game, player);
 }
+
