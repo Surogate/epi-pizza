@@ -62,6 +62,7 @@ typedef struct
   int			fd_max;
   fd_set		fd_read;
   struct timeval	timeout;
+  struct timeval	*timeval;
 }			t_select;
 
 #endif			/* !T_SVR_STC_INCLUDED */

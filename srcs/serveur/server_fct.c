@@ -43,37 +43,44 @@ static void	instr_catch(char *str, t_client *cli, t_game *game)
 
   if (client_parse_instr(str, cli) == EXIT_SUCCESS)
     {
-      /* if team indefinis alors check si on peut cree le joueurs
-	 sinon definir le temps associer a cette instr */
-      /* en attendant */
-      printf("cons : %i\nused : %i\nac : %i\n", cli->cons, cli->used, 
-	     cli->packet[cli->cons].ac);
+      /*
+	 if team indefinis alors check si on peut cree le joueurs
+	 sinon definir le temps associer a cette instr
+	 if (!cli->team)
+	 result = authent(cli->packet + cli->cons);
+	 else
+	 result = det_duration(cli->packet + cli->cons);
+      */
       i = 0;
       while (i < cli->packet[cli->cons].ac)
 	{
 	  printf("readed : %s\n", cli->packet[cli->cons].av[i]);
 	  i++;
 	}
+      /* if (result == EXIT_FAILURE) */
       free_packet(cli); /* si l'instr est invalide */
-      printf("cons : %i\nused : %i\nac : %i\n", cli->cons, cli->used, 
-	     cli->packet[cli->cons].ac);
     }
   game = game;
 }
 
 static void	free_client(t_client *cli)
 {
-  int		i;
-  int		used;
-  int		cons;
-
-  used = cli->used;
-  cons = cli->cons;
-  i = -1;
-  while (++i < used)
+  close(cli->sock);
+  while (cli->used)
     free_packet(cli);
   free (cli);
 }
+
+int		close_client(t_vector *client, t_select *slt_par)
+{
+  t_client	*tmp;
+
+  while ((tmp = (t_client *)client->getnxts(client)) != NULL)
+    FD_CLR(tmp->sock, &(slt_par->fd_read));
+  client->destruc(client, free_client);
+  return (EXIT_SUCCESS);
+}
+
 
 int		execute_order_66(t_vector *client, t_select *slt_par,
 				 t_game *game)

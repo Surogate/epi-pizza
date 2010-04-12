@@ -30,41 +30,9 @@
 #include "t_svr_stc.h"
 #include "client_fct.h"
 #include "server_fct.h"
+#include "server_ini.h"
 
 static int		slt_cont;
-
-int			init_svr(int sock, t_server *svr, t_select *slt_par)
-{
-  struct sockaddr_in	sin;
-
-  sin.sin_family = AF_INET;
-  sin.sin_port = htons(svr->port);
-  sin.sin_addr.s_addr = INADDR_ANY;
-  if (bind(sock, (struct sockaddr *)&sin, (socklen_t)sizeof(sin)) < 0)
-    return (EXIT_FAILURE);
-  if (listen(sock, 42) < 0)
-    return (EXIT_FAILURE);
-  slt_par->fd_max = sock + 1;
-  FD_ZERO(&(slt_par->fd_read));
-  FD_SET(sock, &(slt_par->fd_read));
-  return (EXIT_SUCCESS);
-}
-
-int		init_svr_par(t_select *slt_par, t_vector *client, int svr_sock)
-{
-  t_client	*tmp;
-
-  FD_SET(svr_sock, &(slt_par->fd_read));
-  slt_par->fd_max = svr_sock;
-  while ((tmp = (t_client *)client->getnxts(client)) != NULL)
-    {
-      FD_SET(tmp->sock, &(slt_par->fd_read));
-      if (tmp->sock > slt_par->fd_max)
-	slt_par->fd_max = tmp->sock;
-    }
-  ++(slt_par->fd_max);
-  return (EXIT_SUCCESS);
-}
 
 void		signal_handler()
 {
@@ -80,7 +48,8 @@ int		select_loop(int svr_sock, t_select *slt_par, t_game *game)
   client = vector_new(NULL);
   while (slt_cont)
     {
-      err = select(slt_par->fd_max, &(slt_par->fd_read), NULL, NULL, NULL);
+      err = select(slt_par->fd_max, &(slt_par->fd_read), NULL, NULL, 
+		   slt_par->timeval);
       if (err < 0)
 	{
 	  if (errno == EINTR)
@@ -96,6 +65,7 @@ int		select_loop(int svr_sock, t_select *slt_par, t_game *game)
 	}
       init_svr_par(slt_par, client, svr_sock);
     }
+  close_client(client, slt_par);
   return (EXIT_SUCCESS);
 }
 
