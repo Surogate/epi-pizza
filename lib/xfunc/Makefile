@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Mon Oct 19 11:33:57 2009 florian chanioux
-## Last update Wed Feb 24 15:25:22 2010 Florian Chanioux
+## Last update Mon Apr 12 19:47:47 2010 Florian Chanioux
 ##
 
 NAME		= libxfunc_`uname -m`-`uname -s`.a
@@ -15,6 +15,7 @@ D_INC		= inc/
 
 FILES_C		= $(D_SRC)my_aff_err.c			\
 		  $(D_SRC)xmalloc.c			\
+		  $(D_SRC)xrealloc.c			\
 		  $(D_SRC)xread.c			\
 		  $(D_SRC)xwrite.c			\
 		  $(D_SRC)xopen.c			\

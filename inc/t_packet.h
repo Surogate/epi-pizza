@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Sun Apr 11 14:39:48 2010 francois1 ancel
-** Last update Sun Apr 11 14:39:48 2010 francois1 ancel
+** Last update Mon Apr 12 16:16:52 2010 Florian Chanioux
 */
 
 #ifndef			T_PACKET_INCLUDED
@@ -31,6 +31,7 @@ typedef struct
 {
   char			*inst;
   void			(*ptr_func)();
+  int			delay;
 }			t_inst;
 
 #endif			/* !T_PACKET_INCLUDED */

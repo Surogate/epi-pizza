@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ## 
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Fri Apr  9 17:24:57 2010 Florian Chanioux
+## Last update Mon Apr 12 19:50:10 2010 Florian Chanioux
 ##
 
 STAG	= 	$(shell uname -s)
@@ -34,22 +34,26 @@ DIR_SRC_C	=	$(DIR_SRC)client/
 DIR_SRC_CO	=	$(DIR_SRC)commun/
 
 
-SRC_S	=	$(DIR_SRC_S)main.c		\
-		$(DIR_SRC_S)server_map.c	\
-		$(DIR_SRC_S)test_map.c		\
-		$(DIR_SRC_S)server_stt.c	\
-		$(DIR_SRC_S)server_fct.c	\
-		$(DIR_SRC_S)server_ini.c	\
-		$(DIR_SRC_S)instr_broadcast.c	\
-		$(DIR_SRC_S)instr_connect.c	\
-		$(DIR_SRC_S)instr_expulse.c	\
-		$(DIR_SRC_S)instr_multi.c	\
-		$(DIR_SRC_S)instr_incant.c	\
-		$(DIR_SRC_S)client_fct.c	\
-		$(DIR_SRC_S)pars_main.c		\
-		$(DIR_SRC_S)pars_init_teams.c	\
-		$(DIR_SRC_S)pars_option.c	\
-		$(DIR_SRC_S)pars_display.c	\
+SRC_S	=	$(DIR_SRC_S)main.c			\
+		$(DIR_SRC_S)server_map.c		\
+		$(DIR_SRC_S)test_map.c			\
+		$(DIR_SRC_S)server_stt.c		\
+		$(DIR_SRC_S)server_fct.c		\
+		$(DIR_SRC_S)instruction.c		\
+		$(DIR_SRC_S)jeu/hatch.c			\
+		$(DIR_SRC_S)jeu/incant.c		\
+		$(DIR_SRC_S)jeu/instr_broadcast.c	\
+		$(DIR_SRC_S)jeu/invent.c		\
+		$(DIR_SRC_S)jeu/move.c			\
+		$(DIR_SRC_S)jeu/view.c			\
+		$(DIR_SRC_S)jeu/expulse.c		\
+		$(DIR_SRC_S)jeu/instr_connect.c		\
+		$(DIR_SRC_S)jeu/concatene_msg_view.c	\
+		$(DIR_SRC_S)client_fct.c		\
+		$(DIR_SRC_S)pars_main.c			\
+		$(DIR_SRC_S)pars_init_teams.c		\
+		$(DIR_SRC_S)pars_option.c		\
+		$(DIR_SRC_S)pars_display.c		\
 
 
 SRC_C	=	$(DIR_SRC_C)main.c
