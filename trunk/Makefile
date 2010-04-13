@@ -41,6 +41,7 @@ SRC_S	=	$(DIR_SRC_S)main.c			\
 		$(DIR_SRC_S)server_stt.c		\
 		$(DIR_SRC_S)server_fct.c		\
 		$(DIR_SRC_S)server_ini.c		\
+		$(DIR_SRC_S)response.c			\
 		$(DIR_SRC_S)instruction.c		\
 		$(DIR_SRC_S)jeu/hatch.c			\
 		$(DIR_SRC_S)jeu/incant.c		\
@@ -113,7 +114,7 @@ LFLAGS_i686-Linux	=	-lxfunc_$(TAG)				\
 LFLAGS			=	-L$(DIR_LIB) $(LFLAGS_$(TAG))
 
 IFLAGS		=	-I$(DIR_INC)
-CFLAGS		+=	-g3 -W -Wall -ansi -pedantic $(DEFINE) $(IFLAGS)
+CFLAGS		+=	-O3 -W -Wall -ansi -pedantic $(DEFINE) $(IFLAGS) -D_XOPEN_SOURCE=500
 
 ############### BINARIES
 

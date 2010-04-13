@@ -24,6 +24,7 @@
 #include "t_struct.h"
 #include "t_svr_stc.h"
 #include "client_fct.h"
+#include "instruction.h"
 
 static int	check_read(char *str)
 {
@@ -40,25 +41,22 @@ static int	check_read(char *str)
 static void	instr_catch(char *str, t_client *cli, t_game *game)
 {
   int		i;
+  int		result;
 
   if (client_parse_instr(str, cli) == EXIT_SUCCESS)
     {
-      /*
-	 if team indefinis alors check si on peut cree le joueurs
-	 sinon definir le temps associer a cette instr
-	 if (!cli->team)
-	 result = authent(cli->packet + cli->cons);
-	 else
-	 result = det_duration(cli->packet + cli->cons);
-      */
+      if (!cli->team)
+	result = authent(game, cli->packet + cli->cons);
+      else
+	result = treatment_duration(game, cli->packet + cli->cons);
       i = 0;
       while (i < cli->packet[cli->cons].ac)
 	{
 	  printf("readed : %s\n", cli->packet[cli->cons].av[i]);
 	  i++;
 	}
-      /* if (result == EXIT_FAILURE) */
-      free_packet(cli); /* si l'instr est invalide */
+      if (result == EXIT_FAILURE) 
+	free_packet(cli);
     }
   game = game;
 }
