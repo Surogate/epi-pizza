@@ -37,8 +37,8 @@ void		display_case(t_game *game, int x, int y)
   char		test[50];
   unsigned int	co;
 
-  pos.x = (MAP_CW / 2) * CASE_W - y * CASE_W / 2;
-  pos.y = (MAP_CH * CASE_H) - (y * CASE_H / 2);
+  pos.x = (MAP_CW / 2) * CASE_W - y * CASE_W / 2 - CASE_W / 2;
+  pos.y = (MAP_CH * CASE_H) - (y * CASE_H / 2) - CASE_H;
   pos.x += x * CASE_W / 2;
   pos.y -= x * CASE_H /2;
   sprintf(test, "%d,%d",
@@ -50,7 +50,6 @@ void		display_case(t_game *game, int x, int y)
   SDL_BlitSurface(game->map.fond, NULL, game->screen, &pos); 
   pos.x += CASE_W / 4;
   pos.y += CASE_H / 3;
-
   blit_writing(game, &pos, test);
 }
 
@@ -62,8 +61,8 @@ void		display_map(t_game *game)
   int		y_max;
 
   y = 0;
-  y_max = MAP_CH + 2;
-  x_max = MAP_CW + 1;
+  y_max = MAP_CH;
+  x_max = MAP_CW;
   while (y < y_max)
     {
       x= 0;
