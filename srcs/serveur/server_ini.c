@@ -52,9 +52,9 @@ void			gen_counterback(t_select *slt_par, t_client *tmp,
   pak = tmp->packet + tmp->cons;
   counterback = pak->time.tv_sec + pak->duration - ac_time->tv_sec;
   if (!counterback)
-    {
-      /* execute action !!!! */
-    }
+    /*
+      execute action
+     */
   if (!slt_par->timeout.tv_sec)
     {
       slt_par->timeout.tv_sec = counterback;

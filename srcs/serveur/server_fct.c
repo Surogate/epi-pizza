@@ -55,10 +55,9 @@ static void	instr_catch(char *str, t_client *cli, t_game *game)
 	  printf("readed : %s\n", cli->packet[cli->cons].av[i]);
 	  i++;
 	}
-      if (result == EXIT_FAILURE) 
+      if (!cli->packet[cli->cons].duration) 
 	free_packet(cli);
     }
-  game = game;
 }
 
 static void	free_client(t_client *cli)

@@ -37,7 +37,8 @@ t_game		*init_game(int ac, char **av)
 {
   static t_game		game;
 
-  check(ac, av, &(game.server));
+  /* check(ac, av, &(game.server)); */
+  init_server(&(game.server));
   init_map(&game);
   game.player = NULL;
   game.eggs = NULL;
@@ -49,8 +50,8 @@ int main(int ac, char **av)
   t_game	*game;
 
   game = init_game(ac, av);
-  test_aff_map(game);
-  test_map(game);
+  /* test_aff_map(game);
+     test_map(game); */
   printf("server port : %i\n", game->server.port);
   if (svr_start(&(game->server)) == EXIT_FAILURE)
     perror("svr start error");
