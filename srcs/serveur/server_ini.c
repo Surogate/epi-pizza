@@ -39,6 +39,7 @@ int			init_svr(int sock, t_server *svr, t_select *slt_par)
   slt_par->fd_max = sock + 1;
   FD_ZERO(&(slt_par->fd_read));
   FD_SET(sock, &(slt_par->fd_read));
+  slt_par->timeval = NULL;
   return (EXIT_SUCCESS);
 }
 

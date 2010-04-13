@@ -60,8 +60,7 @@ char		*add_ressource(t_vision *cur_case, char *msg)
 }
 
 char		*explore_case(t_vision *cur_case, char *msg)
-{
-  
+{  
   if (cur_case->cas->cas.player != NULL)
     msg = add_player(cur_case, msg);
   msg = add_ressource(cur_case, msg);

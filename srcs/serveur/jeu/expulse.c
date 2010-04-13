@@ -34,7 +34,7 @@ void		do_expulse(t_packet *packet, t_player *player)
       pl = (t_player*)cur_player;
       packet->response[i++].id_player = pl->player_id;
       cur_player = cur_player->next;
-      }*/
+      }
 }
 
 void		try_expulse(t_packet *packet, t_player *player)
