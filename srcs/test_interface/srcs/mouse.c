@@ -37,14 +37,18 @@ void		mouse_move(t_game *game)
 {
   if (game->mouse.clicked)
     {
-      game->info.pos.x += game->mouse.move.x - game->event.button.x;
+      game->info.pos.x -= game->mouse.move.y - game->event.button.y;
       game->info.pos.y -= game->mouse.move.y - game->event.button.y;
+      game->info.pos.x -= game->mouse.move.x - game->event.button.x;
+      game->info.pos.y += game->mouse.move.x - game->event.button.x;
       if (game->info.pos.x < 0)
 	game->info.pos.x = CASE_W * game->info.size_w + game->info.pos.x;
       if (game->info.pos.y < 0)
 	game->info.pos.y = CASE_H * game->info.size_h + game->info.pos.y;
-      game->info.pos.x = game->info.pos.x % (CASE_W * game->info.size_w);
-      game->info.pos.y = game->info.pos.y % (CASE_H * game->info.size_h);
+      if (game->info.pos.x >= CASE_W * game->info.size_w)
+	game->info.pos.x = game->info.pos.x % (CASE_W * game->info.size_w);
+      if (game->info.pos.y >= CASE_H * game->info.size_h)
+	game->info.pos.y = game->info.pos.y % (CASE_H * game->info.size_h);
       game->mouse.move.x = game->event.button.x;
       game->mouse.move.y = game->event.button.y;
     }
