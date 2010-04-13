@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Apr 13 12:00:53 2010 Florian Chanioux
-** Last update Tue Apr 13 13:38:49 2010 Florian Chanioux
+** Last update Tue Apr 13 16:39:38 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -21,7 +21,6 @@
 void		free_map(t_game *game)
 {
   int		y;
-
 
   y = 0;
   while (y < game->server.height)

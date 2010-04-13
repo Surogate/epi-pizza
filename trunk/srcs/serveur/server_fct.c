@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Sat Apr 10 15:11:57 2010 francois1 ancel
-** Last update Sat Apr 10 15:11:57 2010 francois1 ancel
+** Last update Tue Apr 13 16:25:10 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -24,7 +24,6 @@
 #include "t_struct.h"
 #include "t_svr_stc.h"
 #include "client_fct.h"
-#include "instruction.h"
 
 static int	check_read(char *str)
 {
