@@ -42,7 +42,7 @@ void			last_check(t_server *server)
       puterr(", redefining value to \033[2;32m4242\033[m\n\n", 0);
       server->port = 4242;
     }
-  else if (server->port < 3000 && server-> 65000)
+  else if (server->port < 3000 || server->port > 65000)
     {
       puterr("\033[1;31m Port is out of range [3000 - 65000]\033[m", 0);
       put_usage(" -p");

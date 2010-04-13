@@ -14,6 +14,7 @@
 
 #include		"my_list.h"
 #include		"define.h"
+#include		"pars_display.h"
 #include		"pars_option.h"
 #include		"t_struct.h"
 
