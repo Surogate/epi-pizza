@@ -89,6 +89,8 @@ void		init_game(t_game *game)
   game->info.pos.y = 0;
   game->info.size_h = 100;
   game->info.size_w = 100;
+  game->ticks = SDL_GetTicks();
+  printf("[%u]\n", game->ticks);
   init_map(game);
   SDL_ShowCursor(0);
 }
