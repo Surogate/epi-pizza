@@ -18,9 +18,9 @@
 #define CHAR_OPT1	"-p"
 #define VALUE_OPT1	4242
 #define CHAR_OPT2	"-x"
-#define VALUE_OPT2	100
+#define VALUE_OPT2	10
 #define CHAR_OPT3	"-y"
-#define VALUE_OPT3	100
+#define VALUE_OPT3	10
 #define CHAR_OPT4	"-n"
 #define VALUE_OPT4	0
 #define CHAR_OPT5	"-c"
