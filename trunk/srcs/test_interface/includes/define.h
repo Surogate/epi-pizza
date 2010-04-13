@@ -11,10 +11,10 @@
 #ifndef		DEFINE_H
 # define	DEFINE_H
 
-# define	CASE_W		32
-# define	CASE_H		32
-# define	MAP_CW		20
-# define	MAP_CH		20
-#  define	WIN_COLOR	16
+# define	CASE_W		65
+# define	CASE_H		33
+# define	MAP_CW		22
+# define	MAP_CH		22
+# define	WIN_COLOR	16
 
 #endif		/*DEFINE_H*/
