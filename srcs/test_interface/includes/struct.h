@@ -65,7 +65,6 @@ typedef struct	s_game
   t_info	info;
   t_mouse	mouse;
   t_map		map;
-  Uint32	ticks;
   TTF_Font	*font;
 }		t_game;
 
