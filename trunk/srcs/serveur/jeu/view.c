@@ -105,7 +105,9 @@ void		try_view(t_packet *packet, t_player *player)
       s_vision = add_level(s_vision, &gl_dir[player->dir - 1], i);
       i++;
     }
+  packet->response = xmalloc(sizeof(t_rep)); 
   packet->response->mess = concatene_msg(s_vision);
   packet->response->id_player = packet->player_id;
+  packet->ac_rep = 1;
   free_list_vision(s_vision);
 }

@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Mon Apr 12 19:29:06 2010 Florian Chanioux
-** Last update Mon Apr 12 19:32:47 2010 Florian Chanioux
+** Last update Tue Apr 13 13:16:32 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -35,6 +35,9 @@ void		do_fork(t_game *game, t_player *player)
 
 void		try_fork(t_packet *packet, t_player *player)
 {
+  packet->response = xmalloc(sizeof(t_rep));
+  packet->reponse->mess = xmalloc(3 * sizeof(char));
   packet->response->mess = OK;
   packet->response->id_player = player->player_id;
+  packet->ac_re[ = 1;
 }
