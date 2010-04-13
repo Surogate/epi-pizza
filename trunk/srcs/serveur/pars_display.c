@@ -44,7 +44,7 @@ void			last_check(t_server *server)
     }
   else if (server->port < 3000 || server->port > 65000)
     {
-      puterr("\033[1;31m Port is out of range [3000 - 65000]\033[m", 0);
+      puterr("\n\033[1;31m Port is out of range [3000 - 65000]\033[m\n\n", 0);
       put_usage(" -p");
     }
   if (server->width == 0 || server->height == 0)
