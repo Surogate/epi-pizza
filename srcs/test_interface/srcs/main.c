@@ -50,11 +50,14 @@ int		main(void)
       display_map(&game);
       display_mouse(&game);
       if (SDL_GetTicks() % 5 == 0)
-	if (SDL_Flip(game.screen) == -1)
-	  {
-	    printf("Refresh fail\n");
-	    exit(EXIT_FAILURE);
-	  }
+	{
+	  if (SDL_Flip(game.screen) == -1)
+	    {
+	      printf("Refresh fail\n");
+	      exit(EXIT_FAILURE);
+	    }
+	  SDL_Delay(10);
+	}
      }
   return (EXIT_SUCCESS);
 }
