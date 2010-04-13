@@ -64,15 +64,11 @@ void			check(int ac, char **av, t_server *server)
 {
   t_opt			*opt;
   t_team		*team;
-  
+
   opt = parser(ac, av);
   fill_server(opt, server);
   team = server->teamname;
-  if (server->width == 0 || server->height == 0)
-    {
-      puterr("\n\033[1mWidth/Height must be superior to 0\033[m\n\n", 0);
-      put_usage(" -y/-x");
-    }
+  last_check(server);
   display_values(server, team);
   free_opt(opt);
 }
