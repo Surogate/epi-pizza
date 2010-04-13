@@ -47,6 +47,8 @@ int		find_elem(void *ref, void *test)
 }
 /*
   Bordel elle sert a quoi cette fonction !!!
+  A quoi ca sert une fonction qui caste une adresse en int ?
+  pourquoi elle s'appelle "find_elem" alors qu'elle cherche rien ?
 */
 
 void		treatment_intr(t_game *game, t_packet *packet)
