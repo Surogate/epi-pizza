@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Sun Apr 11 14:39:48 2010 francois1 ancel
-** Last update Mon Apr 12 16:16:52 2010 Florian Chanioux
+** Last update Tue Apr 13 13:12:17 2010 pierre1 boutbel
 */
 
 #ifndef			T_PACKET_INCLUDED
@@ -20,6 +20,7 @@ typedef struct
 typedef struct
 {
   int			player_id;
+  int			ac_rep;
   int			ac;
   char			*av[2];
   struct timeval	time;
