@@ -21,7 +21,8 @@ void		try_drop_obj(t_packet *packet, t_player *player)
   int		num_ress;
 
   num_ress = 0;
-  packet->response->mess = NULL;
+  packet->response = xmalloc(sizeof(t_rep));
+  packet->response->mess = xmalloc(3 * sizeof(char));
   packet->response->id_player = packet->player_id;
   if (packet->ac == 2)
     {
@@ -39,6 +40,7 @@ void		try_drop_obj(t_packet *packet, t_player *player)
     }
   else
     packet->response->mess = KO;
+  packet->ac_rep = 1;
 }
 
 void		try_take_obj(t_packet *packet, t_player *player)
@@ -48,9 +50,9 @@ void		try_take_obj(t_packet *packet, t_player *player)
   int		num_ress;
 
   num_ress = 0;
-  packet->response->mess = NULL;
+  packet->response = xmalloc(sizeof(t_rep));
+  packet->response->mess = xmalloc(3 * sizeof(char));
   packet->response->id_player = packet->player_id;
-
   if (packet->ac == 2)
     {
       name_res = packet->av[1];
@@ -67,6 +69,7 @@ void		try_take_obj(t_packet *packet, t_player *player)
     }
   else
     packet->response->mess = KO;
+  packet->ac_rep = 1;
 }
 
 static int	my_dec_pow(int nb)
@@ -132,6 +135,8 @@ void		try_invent(t_packet *packet, t_player *player)
       /*free(nb_ress);*/
     }
   msg = strcat(msg, "}");
+  packet->response = xmalloc(sizeof(t_rep));
   packet->response->mess = msg;
   packet->response->id_player = packet->player_id;
+  packet->ac_rep = 1;
 }
