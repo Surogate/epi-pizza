@@ -34,6 +34,25 @@ void			put_usage(char *opt)
   exit(EXIT_FAILURE);
 }
 
+void			last_check(t_server *server)
+{
+  if (server->port == 0)
+    {
+      puterr("\n\033[1;31m!!! Warning \033[m: Port is out of range");
+      puterr(", redefining value to \033[2;32m4242\033[m\n\n");
+      server->port = 4242;
+    }
+  else if (server->port < 3000 && server-> 65000)
+    {
+      puterr("\033[1;31m Port is out of range [3000 - 65000]\033[m");
+    }
+  if (server->width == 0 || server->height == 0)
+    {
+      puterr("\n\033[1mWidth/Height must be superior to 0\033[m\n\n", 0);
+      put_usage(" -y/-x");
+    }
+}
+
 void			display_values(t_server *server, t_team *team)
 {
   int			i;

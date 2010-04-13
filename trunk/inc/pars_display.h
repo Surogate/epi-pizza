@@ -15,5 +15,6 @@
 
 void			put_usage(char *opt);
 void			display_values(t_server *server, t_team *team);
+void			last_check(t_server *server);
 
 #endif			/*H_PARS_DISPLAY_INCLUDED*/
