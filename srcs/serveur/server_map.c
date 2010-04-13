@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Wed Apr  7 18:05:33 2010 Florian Chanioux
-** Last update Fri Apr  9 16:52:58 2010 Florian Chanioux
+** Last update Tue Apr 13 13:27:56 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -52,13 +52,14 @@ static t_map 	*init_card(t_game *game, int orient, int y, int x)
 
   yf = y + card[orient].y;
   xf = x + card[orient].x;
-  if (xf < 0)
+
+    if (xf < 0)
     xf = game->server.width - 1;
-  else if (xf >= game->server.width)
+  else if (xf > game->server.width - 1)
     xf = 0;
   if (yf < 0)
     yf = game->server.height - 1;
-  else if (yf >= game->server.height)
+  else if (yf > game->server.height - 1)
     yf = 0;
   return (&(game->map[yf][xf]));
 }
@@ -85,20 +86,27 @@ void		init_map(t_game *game)
 	  cas = &(game->map[y][x]);
 	  while (++i < M_CARD)
 	    cas->card[i] = init_card(game, i, y, x);
+	  puts("");
 	  init_case(&(cas->cas));
 	}
     }
 }
 
-void		free_map(t_game *game)
+int		reload_ress(t_game *game)
 {
+  int		x;
   int		y;
+  t_map		*cas;
 
-  y = 0;
-  while (y < game->server.height)
-  {
-    free(game->map[y]);
-    y++;
-  }
-  free(game->map);
+   y = -1;
+  while (++y < game->server.height)
+    {
+      x = -1;
+      while (++x < game->server.width)
+      {
+	cas = &(game->map[y][x]);
+	init_case(&(cas->cas));
+      }
+    }
+  return (0);
 }

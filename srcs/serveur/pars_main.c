@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Sat Apr 10 15:11:57 2010 francois1 ancel
-** Last update Sat Apr 10 15:11:57 2010 francois1 ancel
+** Last update Tue Apr 13 13:22:26 2010 Florian Chanioux
 */
 
 #include		<string.h>
@@ -53,8 +53,11 @@ void			fill_server(t_opt *opt, t_server *server)
 void			check(int ac, char **av, t_server *server)
 {
   t_opt			*opt;
-
+  t_team		*team;
+  
   opt = parser(ac, av);
   fill_server(opt, server);
+  team = server->teamname;
+  display_values(server, team);
 }
 

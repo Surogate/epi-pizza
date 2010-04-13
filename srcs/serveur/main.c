@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:15:36 2010 francois1 ancel
-** Last update Fri Apr  9 17:23:21 2010 Florian Chanioux
+** Last update Tue Apr 13 13:30:50 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -33,11 +33,11 @@ void		init_server(t_server *server)
   server->delay = 0;
 }
 
-t_game		*init_game()
+t_game		*init_game(int ac, char **av)
 {
   static t_game		game;
 
-  init_server(&(game.server));
+  check(ac, av, &(game.server));
   init_map(&game);
   game.player = NULL;
   game.eggs = NULL;
@@ -48,9 +48,9 @@ int main(int ac, char **av)
 {
   t_game	*game;
 
-  ac = ac;
-  av = av;
-  game = init_game();
+  game = init_game(ac, av);
+  test_aff_map(game);
+  test_map(game);
   printf("server port : %i\n", game->server.port);
   if (svr_start(&(game->server)) == EXIT_FAILURE)
     perror("svr start error");
