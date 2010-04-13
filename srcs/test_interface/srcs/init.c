@@ -78,14 +78,13 @@ void		init_game(t_game *game)
   game->mouse.clicked = 0;
   game->mouse.img[0] = img_load("images/main_ouverte.bmp");
   game->mouse.img[1] = img_load("images/main_fermer.bmp");
-  game->map.fond = img_load("images/fond_map.bmp");
+  game->map.fond = img_load("images/fond_losange.bmp");
   if (TTF_Init() < 0)
     {
       fprintf(stderr, "TTF error : %s", TTF_GetError());
       exit(EXIT_FAILURE);
     }
   game->font = TTF_OpenFont(FONT_DIR, MFONT_SIZE);
-  printf("[%d]\n",game->font);
   game->info.pos.x = 0;
   game->info.pos.y = 0;
   game->info.size_h = 100;
