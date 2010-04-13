@@ -17,7 +17,7 @@
 #include		"pars_option.h"
 #include		"t_struct.h"
 
-void			freeopt(t_opt *opt)
+void			free_opt(t_opt *opt)
 {
   int			i;
 
