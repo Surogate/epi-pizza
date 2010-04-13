@@ -17,6 +17,16 @@
 #include		"pars_option.h"
 #include		"t_struct.h"
 
+void			freeopt(t_opt *opt)
+{
+  int			i;
+
+  i = 0;
+  while (i < 6)
+    free(opt[i++].option);
+  free(opt);
+}
+
 void			puterr(char *str, int quit)
 {
   if (write(2, str, strlen(str)) == -1 || quit == 1)
@@ -59,5 +69,5 @@ void			check(int ac, char **av, t_server *server)
   fill_server(opt, server);
   team = server->teamname;
   display_values(server, team);
+  free_opt(opt);
 }
-
