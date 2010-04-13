@@ -22,7 +22,7 @@ RM		= rm -fv
 OSNAME		= $(shell uname -s)
 OSNAME		!= uname -s
 CFLAGS		= -W -Wall -Wextra -ansi -pedantic
-LDFLAGS_Linux	= -lSDLmain -lSDL -lSDL_ttf
+LDFLAGS_Linux	= -lSDLmain -lSDL -lSDL_ttf -lm
 LDFLAGS_FreeBSD	= -L/usr/local/lib -Wl,-rpath,/usr/local/lib -lSDL -lpthread -lSDL_ttf
 
 all		: $(NAME)

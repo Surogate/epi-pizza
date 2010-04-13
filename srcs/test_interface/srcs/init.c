@@ -26,7 +26,7 @@ SDL_Surface	*load_window()
   xSDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
   screen = xSDL_SetVideoMode(CASE_W * MAP_CW, CASE_H * MAP_CH,
 			    WIN_COLOR, SDL_HWSURFACE | SDL_DOUBLEBUF);
-  SDL_WM_SetCaption("LemIPC", NULL);
+  SDL_WM_SetCaption("Zappy", NULL);
   return (screen);
 }
 

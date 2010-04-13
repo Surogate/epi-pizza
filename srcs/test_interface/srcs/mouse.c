@@ -13,9 +13,10 @@
 #include	<stdio.h>
 #include	<unistd.h>
 #include	<sys/types.h>
+#include	<math.h>
 #include	"../includes/define.h"
 #include	"../includes/struct.h"
-
+#define		PI	3.14159265
 void		display_mouse(t_game *game)
 {
   unsigned int	co;
@@ -35,12 +36,18 @@ void		display_mouse(t_game *game)
 
 void		mouse_move(t_game *game)
 {
+  int		decl_x;
+  int		decl_y;
+
   if (game->mouse.clicked)
     {
-      game->info.pos.x -= game->mouse.move.y - game->event.button.y;
-      game->info.pos.y -= game->mouse.move.y - game->event.button.y;
-      game->info.pos.x -= game->mouse.move.x - game->event.button.x;
-      game->info.pos.y += game->mouse.move.x - game->event.button.x;
+      decl_x = game->mouse.move.x - game->event.button.x;
+      decl_y = -(game->mouse.move.y - game->event.button.y);
+      printf("y = %d,x = %d\n",
+	     (int)(-1 *(decl_x * cos(PI/4) - decl_y * sin(PI/4))),
+	     (int)(1 * (decl_x * sin(PI/4) + decl_y * cos(PI/4))));
+      game->info.pos.y += (int)(-1 *(decl_x * cos(PI/4) - decl_y * sin(PI/4)));
+      game->info.pos.x += (int)(1 * (decl_x * sin(PI/4) + decl_y * cos(PI/4)));
       if (game->info.pos.x < 0)
 	game->info.pos.x = CASE_W * game->info.size_w + game->info.pos.x;
       if (game->info.pos.y < 0)
