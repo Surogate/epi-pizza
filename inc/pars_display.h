@@ -1,5 +1,11 @@
 /*
+** define for project in /u/all/ancel_a/cu/travail/c/
 **
+** Made by francois1 ancel
+** Login   <ancel_a@epitech.net>
+**
+** Started on  Mon Apr  5 18:18:10 2010 francois1 ancel
+** Last update Fri Apr  9 16:36:54 2010 Florian Chanioux
 */
 
 #ifndef			H_PARS_DISPLAY_INCLUDED

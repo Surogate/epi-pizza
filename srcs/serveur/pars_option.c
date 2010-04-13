@@ -47,6 +47,20 @@ void			init_opt(t_opt *opt, t_team *team)
   opt[6].value = 0;
 }
 
+int			isnum(char *str)
+{
+  int			i;
+
+  i = 0;
+  while (str[i] != 0)
+    {
+      if (str[i] < '0' || str[i] > '9')
+	return (0);
+      i++;
+    }
+  return (1);
+}
+
 void			modif_struc(t_opt *opt, int ac, char **av, int *i)
 {
   int			j;
@@ -60,7 +74,7 @@ void			modif_struc(t_opt *opt, int ac, char **av, int *i)
 	{
 	  if (!strcmp(opt[j].option, "-n"))
 	    init_teams(opt, av, ac, i);
-	  else if ((*i + 1) < ac && av[*i + 1][0] != '-')
+	  else if ((*i + 1) < ac && av[*i + 1][0] != '-' && isnum(av[*i + 1]))
 	    {
 	      opt[j].value = atoi(av[*i + 1]);
 	      *i += 1;;
