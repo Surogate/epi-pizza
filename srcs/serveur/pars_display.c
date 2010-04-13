@@ -44,15 +44,12 @@ void			display_values(t_server *server, t_team *team)
   printf("\033[1;32mMap height\033[m  -> %d\n", server->height);
   printf("\033[1;32mMap width\033[m   -> %d\n", server->width);
   printf("\033[1;32mTeams Name\033[m :\n");
-  if (!strcmp(team->team, STD_TEAM_NAME))
-    printf("\t1 : %s\n", STD_TEAM_NAME);
-  else
-    while (team != 0)
-      {
-	printf("\t%d : %s\n", i, team->team);
-	i++;
-	team = team->next;
-      }
+  while (team != 0)
+    {
+      printf("\t%d : %s\n", i, team->team);
+      i++;
+      team = team->next;
+    }
   printf("\033[1;32mNb client\033[m   -> %d\n", server->nb_client);
   printf("\033[1;32mTime delay\033[m  -> %d\n\n", server->delay);
 }
