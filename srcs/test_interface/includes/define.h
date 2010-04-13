@@ -11,8 +11,8 @@
 #ifndef		DEFINE_H
 # define	DEFINE_H
 
-# define	CASE_W		65
-# define	CASE_H		33
+# define	CASE_W		64
+# define	CASE_H		32
 # define	MAP_CW		22
 # define	MAP_CH		22
 # define	WIN_COLOR	16
