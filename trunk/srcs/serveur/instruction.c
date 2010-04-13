@@ -1,9 +1,9 @@
 /*
 ** instruction.c for  in /home/Ayden/Epitech/Projet/Zappy/srcs/serveur
-** 
+**
 ** Made by Florian Chanioux
 ** Login   <chanio_f@epitech.net>
-** 
+**
 ** Started on  Tue Apr  6 15:01:49 2010 Florian Chanioux
 ** Last update Mon Apr 12 19:19:48 2010 Florian Chanioux
 */
@@ -45,6 +45,9 @@ int		find_elem(void *ref, void *test)
   printf("%i\n", tmp);
   return (1);
 }
+/*
+  Bordel elle sert a quoi cette fonction !!!
+*/
 
 void		treatment_intr(t_game *game, t_packet *packet)
 {
@@ -53,28 +56,30 @@ void		treatment_intr(t_game *game, t_packet *packet)
 
   i = -1;
   player = (t_player *)my_l_find(game->player,
-				     (void *)(packet->player_id),
-				     find_elem);
+				 (void *)(packet->player_id),
+				 find_elem);
   while (++i < NB_INST)
-    if (strcmp(packet->av[0], tab_instr[i].inst))
+    if (!strcmp(packet->av[0], tab_instr[i].inst))
     {
       tab_instr[i].ptr_func(packet, player);
       break;
     }
-  if (strcmp(packet->av[0], "fork"))
+  if (!strcmp(packet->av[0], "fork"))
     do_fork(game, player);
 }
 
-void		treatment_duration(t_game *game, t_packet *packet)
+int		treatment_duration(t_game *game, t_packet *packet)
 {
   int		i;
 
   i = -1;
   while (++i < NB_INST)
-    if (strcmp(packet->av[0], tab_instr[i].inst))
+    if (!strcmp(packet->av[0], tab_instr[i].inst))
     {
       packet->duration = tab_instr[i].delay * game->server.delay;
-      break;
+      return (EXIT_SUCCESS);
     }
+  packet->duration = 0;
+  return (EXIT_FAILURE);
 }
 
