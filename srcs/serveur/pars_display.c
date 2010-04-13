@@ -38,13 +38,14 @@ void			last_check(t_server *server)
 {
   if (server->port == 0)
     {
-      puterr("\n\033[1;31m!!! Warning \033[m: Port is out of range");
-      puterr(", redefining value to \033[2;32m4242\033[m\n\n");
+      puterr("\n\033[1;31m!!! Warning \033[m: Port is out of range", 0);
+      puterr(", redefining value to \033[2;32m4242\033[m\n\n", 0);
       server->port = 4242;
     }
   else if (server->port < 3000 && server-> 65000)
     {
-      puterr("\033[1;31m Port is out of range [3000 - 65000]\033[m");
+      puterr("\033[1;31m Port is out of range [3000 - 65000]\033[m", 0);
+      put_usage(" -p");
     }
   if (server->width == 0 || server->height == 0)
     {
