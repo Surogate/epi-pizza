@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:24 2010 francois1 ancel
-** Last update Sat Apr 10 18:50:35 2010 pierre1 boutbel
+** Last update Wed Apr 14 14:55:08 2010 pierre1 boutbel
 */
 
 #ifndef		T_STRUCT_INCLUDED
@@ -48,6 +48,7 @@ typedef struct
 typedef struct		s_team
 {
   char			*team;
+  int			lim;
   struct s_team		*next;
 }			t_team;
 
@@ -75,8 +76,8 @@ typedef struct
 
 typedef struct
 {
-  t_map		*cas;
-  char		*team;
+  t_map		*pos;
+  int		team;
 }		t_eggs;
 
 typedef struct
