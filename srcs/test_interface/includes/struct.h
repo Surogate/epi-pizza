@@ -19,8 +19,8 @@ typedef struct	s_event
 
 typedef struct	s_pos
 {
-  int		x;
-  int		y;
+  float		x;
+  float		y;
 }		t_pos;
 
 typedef struct	s_mouse
@@ -56,6 +56,7 @@ typedef struct	s_map
 {
   t_case	**t_case;
   SDL_Surface	*fond;
+  SDL_Surface	*ori;
 }		t_map;
 
 typedef struct	s_game

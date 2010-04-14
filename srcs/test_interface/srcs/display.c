@@ -42,12 +42,18 @@ void		display_case(t_game *game, int x, int y)
   pos.x += x * CASE_W / 2;
   pos.y -= x * CASE_H /2;
   sprintf(test, "%d,%d",
-	  ((game->info.pos.y / CASE_H) + y ) % (game->info.size_h + 1),
-	  ((game->info.pos.x / CASE_W) + x) % (game->info.size_w + 1));
+	  (((int)game->info.pos.y / CASE_H) + y ) % (game->info.size_h + 1),
+	  (((int)game->info.pos.x / CASE_W) + x) % (game->info.size_w + 1));
   co = SDL_MapRGB(game->screen->format, 255, 0, 0);
-  SDL_SetColorKey(game->map.fond,
-		  SDL_RLEACCEL | SDL_SRCCOLORKEY, co);
-  SDL_BlitSurface(game->map.fond, NULL, game->screen, &pos); 
+  SDL_SetColorKey(game->map.fond, SDL_RLEACCEL | SDL_SRCCOLORKEY, co);
+  if ((((int)game->info.pos.y / CASE_H) + y ) % (game->info.size_h + 1) ||
+      (((int)game->info.pos.x / CASE_W) + x) % (game->info.size_w + 1))
+    SDL_BlitSurface(game->map.fond, NULL, game->screen, &pos); 
+  else
+    {
+      SDL_SetColorKey(game->map.ori, SDL_RLEACCEL | SDL_SRCCOLORKEY, co);
+      SDL_BlitSurface(game->map.ori, NULL, game->screen, &pos); 
+    }
   pos.x += CASE_W / 4;
   pos.y += CASE_H / 3;
   blit_writing(game, &pos, test);

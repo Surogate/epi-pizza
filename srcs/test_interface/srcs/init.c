@@ -79,6 +79,7 @@ void		init_game(t_game *game)
   game->mouse.img[0] = img_load("images/main_ouverte.bmp");
   game->mouse.img[1] = img_load("images/main_fermer.bmp");
   game->map.fond = img_load("images/fond_losange.bmp");
+  game->map.ori = img_load("images/fond_ori.bmp");
   if (TTF_Init() < 0)
     {
       fprintf(stderr, "TTF error : %s", TTF_GetError());
