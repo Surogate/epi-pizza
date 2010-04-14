@@ -5,9 +5,10 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Apr 13 12:03:06 2010 Florian Chanioux
-** Last update Tue Apr 13 17:31:27 2010 Florian Chanioux
+** Last update Tue Apr 13 23:59:26 2010 pierre1 boutbel
 */
 
+#include <sys/time.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -17,6 +18,7 @@
 #include "xfunc.h"
 #include "my_list.h"
 #include "t_struct.h"
+#include "t_packet.h"
 
 t_player	*create_player(int player_id, int team)
 {
@@ -47,8 +49,9 @@ t_player	*init_player(t_game *game, int player_id, int team)
   player = create_player(player_id, team);
   cas = &(game->map[y][x]);
   player->pos = cas;
-  cas->player = my_l_insert(cas->player, player);
+  cas->cas.player = my_l_insert(cas->cas.player, player);
   game->player = my_l_insert(game->player, player);
+  return (player);
 }
 
 t_player	*insert_player(t_game *game, t_player *player,
@@ -59,8 +62,9 @@ t_player	*insert_player(t_game *game, t_player *player,
   srand(time(NULL));
   cas = &(game->map[y][x]);
   player->pos = cas;
-  cas->player = my_l_insert(cas->player, player);
+  cas->cas.player = my_l_insert(cas->cas.player, player);
   game->player = my_l_insert(game->player, player);
+  return (player);
 }
 
 int		find_player(t_player *ref, t_player *data)
@@ -76,9 +80,14 @@ t_player	*rm_player(t_game *game, t_packet *packet)
   struct s_map	*cas;
 
   srand(time(NULL));
+
+  /*
   cas = &(game->map[y][x]);
   player->pos = cas;
-  player = (t_player *)my_l_find(game->player, packet, find_elem);
+  */
+
+  player = (t_player *)my_l_find(game->player, packet, find_player);
   game->player = my_l_rm(game->player, player, find_player);
+  return (player);
 }
 
