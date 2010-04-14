@@ -48,29 +48,29 @@ void		mouse_move(t_game *game)
       decl_x = (game->event.button.x - (MAP_CW / 2) * CASE_W - CASE_W / 2) * cos(PI/4) - (game->event.button.y + CASE_H) * sin(PI/4) + game->event.button.x;
       decl_oy = (game->mouse.move.x - (MAP_CW / 2) * CASE_W - CASE_W / 2) * sin(PI/4) + (game->mouse.move.y + CASE_H) * cos(PI/4) + game->mouse.move.y;
       decl_y = (game->event.button.x - (MAP_CW / 2) * CASE_W - CASE_W / 2) * sin(PI/4) + (game->event.button.y + CASE_H) * cos(PI/4) + game->event.button.y;
-      printf("en float :\nx [%f], y [%f]\nen int :\nx [%f], y [%f]\n",
-	     - decl_x + decl_ox,
-	     decl_y - decl_oy,
-	     (float)(int)(- decl_x + decl_ox),
-	     (float)(int)(decl_y - decl_oy));
-      game->info.pos.x -= (decl_x - decl_ox);
-      game->info.pos.y += (decl_y - decl_oy);
-      /*
-      decl_x = game->mouse.move.x - game->event.button.x;
-      decl_y = -(game->mouse.move.y - game->event.button.y);
-      printf("move x : %f, move y : %f\n", decl_x, decl_y);
-      temp.x = (1 *(decl_x * cos(PI/8) - decl_y * sin(PI/8))) + game->mouse.move.x;
-      temp.y = (1 * (decl_x * sin(PI/8) + decl_y * cos(PI/8))) + game->mouse.move.y;
-      printf("mouvement obtenu : x = %f, y = %f\n",
-	     temp.x - game->mouse.move.x,
-	     temp.y - game->mouse.move.y);
-      game->info.pos.x += temp.x - game->mouse.move.x;
-      game->info.pos.y -= temp.y - game->mouse.move.y;
-      */
-      /*
-      game->info.pos.y += (-1 *(decl_x * cos(PI/8) - decl_y * sin(PI/8)));
-      game->info.pos.x += (1 * (decl_x * sin(PI/8) + decl_y * cos(PI/8)));
-      */
+   /*    printf("x [%f], y [%f]\n", */
+/* 	     - decl_x + decl_ox, */
+/* 	     decl_y - decl_oy); */
+      if ((- decl_x + decl_ox > 0 && decl_y - decl_oy > 0) ||
+	  (- decl_x + decl_ox < 0 && decl_y - decl_oy < 0))
+	{
+	  game->info.pos.x -= (decl_x - decl_ox);
+	/*   game->info.pos.y += (decl_y - decl_oy) / 2; */
+/* 	  printf("decalage x\n"); */
+	}
+      else if ((- decl_x + decl_ox > 0 && decl_y - decl_oy < 0) ||
+	       (- decl_x + decl_ox < 0 && decl_y - decl_oy > 0))
+	{
+/* 	  game->info.pos.x -= (decl_x - decl_ox) / 2; */
+	  game->info.pos.y += (decl_y - decl_oy) / 2;
+	/*   printf("decalage y\n"); */
+	}
+      else
+	{
+	  game->info.pos.x -= (decl_x - decl_ox);
+	  game->info.pos.y += (decl_y - decl_oy);
+	}
+
       if (game->info.pos.x < 0)
 	game->info.pos.x = CASE_W * game->info.size_w + (int)game->info.pos.x;
       if (game->info.pos.y < 0)
