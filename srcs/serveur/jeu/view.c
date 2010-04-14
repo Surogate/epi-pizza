@@ -1,10 +1,17 @@
 /*
-Header
- */
+** view.c for zappy in /u/all/boutbe_a/cu/rendu/c/projets/epi-pizza/srcs/serveur/jeu
+** 
+** Made by pierre1 boutbel
+** Login   <boutbe_a@epitech.net>
+** 
+** Started on  Wed Apr 14 13:20:07 2010 pierre1 boutbel
+** Last update Wed Apr 14 13:20:09 2010 pierre1 boutbel
+*/
 
 #include	<sys/types.h>
 #include	<sys/time.h>
 #include	<stdlib.h>
+
 #include	"my_list.h"
 #include	"define.h"
 #include	"t_struct.h"

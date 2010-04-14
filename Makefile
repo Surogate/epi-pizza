@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ## 
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Tue Apr 13 12:48:22 2010 Florian Chanioux
+## Last update Wed Apr 14 17:15:57 2010 pierre1 boutbel
 ##
 
 STAG	= 	$(shell uname -s)
@@ -40,7 +40,9 @@ SRC_S	=	$(DIR_SRC_S)main.c			\
 		$(DIR_SRC_S)test_map.c			\
 		$(DIR_SRC_S)server_stt.c		\
 		$(DIR_SRC_S)server_fct.c		\
+		$(DIR_SRC_S)server_insert_player.c	\
 		$(DIR_SRC_S)server_ini.c		\
+		$(DIR_SRC_S)server_ress.c		\
 		$(DIR_SRC_S)response.c			\
 		$(DIR_SRC_S)instruction.c		\
 		$(DIR_SRC_S)jeu/hatch.c			\
@@ -52,6 +54,7 @@ SRC_S	=	$(DIR_SRC_S)main.c			\
 		$(DIR_SRC_S)jeu/expulse.c		\
 		$(DIR_SRC_S)jeu/instr_connect.c		\
 		$(DIR_SRC_S)jeu/concatene_msg_view.c	\
+		$(DIR_SRC_S)jeu/eat.c			\
 		$(DIR_SRC_S)client_fct.c		\
 		$(DIR_SRC_S)pars_main.c			\
 		$(DIR_SRC_S)pars_init_teams.c		\
@@ -104,7 +107,8 @@ DEFINE			=	$(DEFINE_$(TAG))
 LFLAGS_i386-Darwin	=	-lxfunc_$(TAG)				\
 				-lmylist_$(TAG)
 
-LFLAGS_i386-FreeBSD	=	-lxfunc_$(TAG)				\
+LFLAGS_i386-FreeBSD	=	-lmylist_$(TAG)				\
+				-lxfunc_$(TAG)				\
 				 `sdl-config --cflags --libs` -lSDL
 
 LFLAGS_i686-Linux	=	-lxfunc_$(TAG)				\

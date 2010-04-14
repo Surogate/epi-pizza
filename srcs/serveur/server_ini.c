@@ -5,16 +5,21 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr 12 11:24:31 2010 francois1 ancel
-** Last update Mon Apr 12 11:24:31 2010 francois1 ancel
+** Last update Wed Apr 14 17:23:38 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <arpa/inet.h>
+#include <netinet/in.h>
 #include <sys/time.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+
+#if defined (__FreeBSD__)
+# include <sys/select.h>
+#endif
 
 #include "define.h"
 #include "xfunc.h"
