@@ -1,5 +1,11 @@
 /*
-Header
+** incant.c for zappy in /u/all/boutbe_a/cu/rendu/c/projets/epi-pizza/srcs/serveur/jeu
+** 
+** Made by pierre1 boutbel
+** Login   <boutbe_a@epitech.net>
+** 
+** Started on  Wed Apr 14 13:19:30 2010 pierre1 boutbel
+** Last update Wed Apr 14 16:44:14 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -7,12 +13,13 @@ Header
 #include	<string.h>
 #include	<stdlib.h>
 #include	<stdio.h>
-#include	"../../../inc/my_list.h"
-#include	"../../../inc/define.h"
-#include	"../../../inc/t_struct.h"
-#include	"../../../inc/t_game_stc.h"
-#include	"../../../inc/t_packet.h"
-#include	"../../../inc/xfunc.h"
+
+#include	"my_list.h"
+#include	"define.h"
+#include	"t_struct.h"
+#include	"t_game_stc.h"
+#include	"t_packet.h"
+#include	"xfunc.h"
 
 static t_incant	gl_incant[INCANT_NUM + 1] = {
   {1, {0, 1, 0, 0, 0, 0, 0}},

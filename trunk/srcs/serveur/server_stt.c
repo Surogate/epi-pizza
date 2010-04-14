@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Tue Apr  6 17:58:29 2010 francois1 ancel
-** Last update Tue Apr  6 17:58:29 2010 francois1 ancel
+** Last update Wed Apr 14 17:24:33 2010 pierre1 boutbel
 */
 
 #include <sys/types.h>
@@ -18,6 +18,10 @@
 #include <stdio.h>
 #include <errno.h>
 #include <signal.h>
+
+#if defined (__FreeBSD__)
+# include <sys/select.h>
+#endif
 
 #include "define.h"
 #include "xfunc.h"
@@ -75,7 +79,9 @@ int		svr_start(t_game *game)
   int		result;
   t_select	slt_par;
 
-  svr_sock = socket(PF_INET, SOCK_STREAM, 0);
+  /*  svr_sock = socket(PF_INET, SOCK_STREAM, 0);*/
+  svr_sock = socket(AF_INET, SOCK_STREAM, 0);
+
   if (svr_sock > 0)
     {
       signal(SIGINT, signal_handler);

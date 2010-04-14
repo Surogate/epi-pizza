@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:15:36 2010 francois1 ancel
-** Last update Tue Apr 13 16:39:41 2010 Florian Chanioux
+** Last update Wed Apr 14 17:24:04 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
@@ -13,6 +13,10 @@
 #include <stdio.h>
 #include <sys/time.h>
 #include <sys/types.h>
+
+#if defined (__FreeBSD__)
+# include <sys/select.h>
+#endif
 
 #include "define.h"
 #include "my_list.h"

@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Wed Apr  7 18:05:33 2010 Florian Chanioux
-** Last update Tue Apr 13 13:27:56 2010 Florian Chanioux
+** Last update Wed Apr 14 17:21:47 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
@@ -34,13 +34,15 @@ static void	init_case(t_case *the_case)
 {
   int		alea;
   int		i;
-
+  
   i = -1;
   while (++i < RESS_NUM)
   {
     alea = rand() % MAX_RESS;
-    the_case->ress[i] = alea;
+    the_case->ress[i] = 0;
   }
+
+
   the_case->player = my_l_init();
 }
 

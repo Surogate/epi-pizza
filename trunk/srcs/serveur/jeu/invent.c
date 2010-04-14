@@ -1,5 +1,11 @@
 /*
-  Header
+** invent.c for zappy in /u/all/boutbe_a/cu/rendu/c/projets/epi-pizza/srcs/serveur/jeu
+** 
+** Made by pierre1 boutbel
+** Login   <boutbe_a@epitech.net>
+** 
+** Started on  Wed Apr 14 13:19:43 2010 pierre1 boutbel
+** Last update Wed Apr 14 13:19:44 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
