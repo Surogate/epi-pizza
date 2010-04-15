@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ## 
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Thu Apr 15 16:54:10 2010 Florian Chanioux
+## Last update Thu Apr 15 16:47:58 2010 pierre1 boutbel
 ##
 
 STAG		= $(shell uname -s)
@@ -72,6 +72,7 @@ SRC_CO		= $(DIR_SRC_CO)cbuf/cbuf_io.c		\
 		$(DIR_SRC_CO)vector/llist_new.c		\
 		$(DIR_SRC_CO)vector/llist_mod.c		\
 		$(DIR_SRC_CO)vector/llist_access.c	\
+		$(DIR_SRC_CO)count_player.c		\
 
 
 SRC_INC		= $(DIR_INC)xfunc.h			\
