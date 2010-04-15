@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Tue Apr 13 17:13:24 2010 Florian Chanioux
+** Last update Thu Apr 15 21:46:22 2010 Florian Chanioux
 */
 #include	<SDL/SDL.h>
 #include	<SDL/SDL_ttf.h>
@@ -97,5 +97,5 @@ void		init_game(t_game *game)
   game->ticks = SDL_GetTicks();
   printf("[%u]\n", game->ticks);
   init_map(game);
-  SDL_ShowCursor(0);
+  SDL_ShowCursor(1);
 }
