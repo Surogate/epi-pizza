@@ -5,36 +5,36 @@
 ## Login   <chanio_f@epitech.net>
 ## 
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Wed Apr 14 17:15:57 2010 pierre1 boutbel
+## Last update Thu Apr 15 16:54:10 2010 Florian Chanioux
 ##
 
-STAG		 = $(shell uname -s)
+STAG		= $(shell uname -s)
 STAG		!= uname -s
-MTAG		 = $(shell uname -m)
+MTAG		= $(shell uname -m)
 MTAG		!= uname -m
 
-TAG		 = $(MTAG)-$(STAG)
+TAG		= $(MTAG)-$(STAG)
 
 ############### PROJECT
 
-NAME		 = zappi
-NAME_C		 = client
-NAME_S		 = serveur
+NAME		= zappi
+NAME_C		= client
+NAME_S		= serveur
 
 ############### DIRECTORIES
 
-DIR_SRC		 = ./srcs/
-DIR_INC		 = ./inc/
-DIR_LIB		 = ./lib/
+DIR_SRC		= ./srcs/
+DIR_INC		= ./inc/
+DIR_LIB		= ./lib/
 
 ############### FILES
 
-DIR_SRC_S	 = $(DIR_SRC)serveur/
-DIR_SRC_C	 = $(DIR_SRC)client/
-DIR_SRC_CO	 = $(DIR_SRC)commun/
+DIR_SRC_S	= $(DIR_SRC)serveur/
+DIR_SRC_C	= $(DIR_SRC)client/
+DIR_SRC_CO	= $(DIR_SRC)commun/
 
 
-SRC_S		 = $(DIR_SRC_S)main.c			\
+SRC_S		= $(DIR_SRC_S)main.c			\
 		$(DIR_SRC_S)server_map.c		\
 		$(DIR_SRC_S)server_free.c		\
 		$(DIR_SRC_S)test_map.c			\
@@ -62,10 +62,10 @@ SRC_S		 = $(DIR_SRC_S)main.c			\
 		$(DIR_SRC_S)pars_display.c		\
 
 
-SRC_C		 = $(DIR_SRC_C)main.c
+SRC_C		= $(DIR_SRC_C)main.c
 
 
-SRC_CO		 = $(DIR_SRC_CO)cbuf/cbuf_io.c		\
+SRC_CO		= $(DIR_SRC_CO)cbuf/cbuf_io.c		\
 		$(DIR_SRC_CO)cbuf/cbuf_new.c		\
 		$(DIR_SRC_CO)cbuf/cbuf_debug.c		\
 		$(DIR_SRC_CO)vector/vector_new.c	\
@@ -74,7 +74,7 @@ SRC_CO		 = $(DIR_SRC_CO)cbuf/cbuf_io.c		\
 		$(DIR_SRC_CO)vector/llist_access.c	\
 
 
-SRC_INC		 = $(DIR_INC)xfunc.h			\
+SRC_INC		= $(DIR_INC)xfunc.h			\
 		$(DIR_INC)my_list.h			\
 		$(DIR_INC)server.h			\
 		$(DIR_INC)server_map.h			\
@@ -88,13 +88,13 @@ SRC_INC		 = $(DIR_INC)xfunc.h			\
 		$(DIR_INC)server_ini.h			\
 
 
-SRC_LIB		 = $(DIR_INC)libxfunc$_*.a		\
+SRC_LIB		= $(DIR_INC)libxfunc$_*.a		\
 		$(DIR_INC)libmy_list_*.a		\
 
 
-OBJ_S		 = $(SRC_S:.c=.o)
-OBJ_C		 = $(SRC_C:.c=.o)
-OBJ_CO		 = $(SRC_CO:.c=.o)
+OBJ_S		= $(SRC_S:.c=.o)
+OBJ_C		= $(SRC_C:.c=.o)
+OBJ_CO		= $(SRC_CO:.c=.o)
 
 
 ############### FLAGS
