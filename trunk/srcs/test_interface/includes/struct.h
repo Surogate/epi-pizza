@@ -19,8 +19,8 @@ typedef struct	s_event
 
 typedef struct	s_pos
 {
-  float		x;
-  float		y;
+  int		x;
+  int		y;
 }		t_pos;
 
 typedef struct	s_mouse
