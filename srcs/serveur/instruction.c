@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Tue Apr  6 15:01:49 2010 Florian Chanioux
-** Last update Mon Apr 12 19:19:48 2010 Florian Chanioux
+** Last update Thu Apr 15 16:52:03 2010 pierre1 boutbel
 */
 
 #include <sys/time.h>
@@ -72,7 +72,7 @@ int		treatment_duration(t_game *game, t_packet *packet)
   return (EXIT_FAILURE);
 }
 
-int		count_player(t_game *game, int team)
+static int	count_player(t_game *game, int team)
 {
   t_list	*tmp;
   t_player	*pla;
