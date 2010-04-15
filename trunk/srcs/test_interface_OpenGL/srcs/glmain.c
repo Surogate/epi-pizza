@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Wed Apr 14 14:36:35 2010 Florian Chanioux
-** Last update Wed Apr 14 15:35:39 2010 Florian Chanioux
+** Last update Thu Apr 15 23:19:41 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -101,7 +101,7 @@ void Init( void)
 void Reshape( int w, int h)
 {
   glViewport( 0, 0, w, h);
-  glMatrixMode( GL_PROJECTION);
+  glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   gluPerspective( 70.0, (GLfloat) w/ (GLfloat) h, 1, 300000.0);
   glMatrixMode( GL_MODELVIEW);
@@ -122,22 +122,46 @@ void camera( int cx, int cy, int cz, int px, int py, int pz, int *mvt)
 	     0, 0, 1);
 }
 
-void draw_map(int *table)
+void draw_map(int *table, t_game *game)
 {
   int cx, cy, cz, px, py, pz;
+  int	h;
+  int	w;
 
-  cx=50;
-  cy=-50;
-  cz=50;
-  px=0;
-  py=0;
-  pz=0;
+  h = game->info.pos.y / CASE_H + game->info.pos.y % CASE_H;
+  w = game->info.pos.x / CASE_W + game->info.pos.x % CASE_W;
+  cx = h;
+  cy = w;
+  cz = 70;
+  px = h + CASE_H * 2;
+  py = w + CASE_W * 2;
+  pz = 0;
   glMatrixMode( GL_MODELVIEW);
   glLoadIdentity();
   camera(cx, cy, cz, px, py, pz, table);
   /*
+    
     code map a faire
   */
+  h = -2;
+  while (++h < MAP_CH)
+  {
+    w = -2;
+    while (++w < MAP_CW)
+    {
+      glBegin(GL_QUADS);
+      glColor3ub(255,255, 255);
+      glVertex2d(w * CASE_W, h * CASE_H); /*(0, 0)*/
+      glColor3ub(0, 0, 255);
+      glVertex2d(w *  CASE_W, h * CASE_H + CASE_H);/* (0, 1)*/
+      glColor3ub(255,255, 255);
+      glVertex2d(w *  CASE_W + CASE_W, h * CASE_H + CASE_H);/*(1, 1)*/
+      glColor3ub(0, 0, 0);
+      glVertex2d(w *  CASE_W + CASE_W, h * CASE_H);/*(1, 0)*/
+      glEnd();
+    }
+  }
+  
   glFlush();
 }
 
@@ -162,19 +186,8 @@ void mainloop(t_game *game)
   {
     done = interaction(move, game);
     glClear( GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT) ;
-    draw_map(move);
+    draw_map(move, game);
     draw_mob();
     SDL_GL_SwapBuffers();
-    if( thenTicks > 0)
-    {
-      nowTicks = SDL_GetTicks ();
-      delay+=( 1000/ fps- ( nowTicks- thenTicks));
-      thenTicks= nowTicks;
-      if( delay< 0)
-	delay= 1000/ fps;
-    }
-    else
-      thenTicks= SDL_GetTicks();
-    SDL_Delay( delay);
   }
 }

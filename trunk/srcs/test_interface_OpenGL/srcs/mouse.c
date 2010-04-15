@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Mon Apr  5 00:06:03 2010 frederic1 pierronnet
+** Last update Thu Apr 15 22:11:47 2010 Florian Chanioux
 */
 #include	<SDL/SDL.h>
 #include	<SDL/SDL_ttf.h>
@@ -45,6 +45,13 @@ void		mouse_move(t_game *game)
 	game->info.pos.y = CASE_H * game->info.size_h + game->info.pos.y;
       game->info.pos.x = game->info.pos.x % (CASE_W * game->info.size_w);
       game->info.pos.y = game->info.pos.y % (CASE_H * game->info.size_h);
+      /*--------DEBUG POS----------*/
+     /*  printf("drag : new pos is x = [%d], y = [%d].\ncase current : x=[%d], y=[%d]\n", */
+/*  	     game->info.pos.x, */
+/* 	     game->info.pos.y, */
+/*  	     game->info.pos.x / CASE_W, */
+/*  	     game->info.pos.y / CASE_H); */
+      /*--------FIN DEBUG----------*/
       game->mouse.move.x = game->event.button.x;
       game->mouse.move.y = game->event.button.y;
     }
@@ -74,6 +81,6 @@ void		mouse_down(t_game *game)
     }
   else if (game->event.button.button == SDL_BUTTON_RIGHT)
     printf("case selected : x = [%d], y = [%d]\n",
-	   (game->info.pos.x + game->event.button.x) / CASE_W,
-	   (game->info.pos.y + (MAP_CH * CASE_H - game->event.button.y)) / CASE_H);
+	   (game->info.pos.x + game->event.button.x),
+	   (game->info.pos.y + (MAP_CH * CASE_H - game->event.button.y)));
 }
