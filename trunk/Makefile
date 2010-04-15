@@ -5,7 +5,11 @@
 ## Login   <chanio_f@epitech.net>
 ## 
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
+<<<<<<< .mine
+## Last update Thu Apr 15 18:51:25 2010 Florian Chanioux
+=======
 ## Last update Thu Apr 15 16:47:58 2010 pierre1 boutbel
+>>>>>>> .r157
 ##
 
 STAG		= $(shell uname -s)
@@ -60,6 +64,7 @@ SRC_S		= $(DIR_SRC_S)main.c			\
 		$(DIR_SRC_S)pars_init_teams.c		\
 		$(DIR_SRC_S)pars_option.c		\
 		$(DIR_SRC_S)pars_display.c		\
+		$(DIR_SRC_S)pathfinding.c		\
 
 
 SRC_C		= $(DIR_SRC_C)main.c

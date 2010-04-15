@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr  9 15:22:12 2010 Florian Chanioux
-** Last update Fri Apr  9 17:01:56 2010 Florian Chanioux
+** Last update Thu Apr 15 19:06:29 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -52,6 +52,7 @@ void		test_map(t_game *game)
       while (++i < M_CARD)
         printf("card : %i = %p\n", i, (void *)cas->card[i]);
       i = -1;
+      printf("#cout : = %i\n\n", cas->cout);
       while (++i < RESS_NUM)
         printf("##res : %i = %i\n", i, cas->cas.ress[i]);
       printf("#nb_player : = %i\n\n", my_l_size(cas->cas.player));
@@ -59,3 +60,21 @@ void		test_map(t_game *game)
   }
 }
 
+void		test_pathfinding_map(t_game *game)
+{
+  int		x;
+  int		y;
+  t_map		*cas;
+
+  y = -1;
+  while (++y < game->server.height)
+  {
+    x = -1;
+    while (++x < game->server.width)
+    {
+      cas = &(game->map[y][x]);
+      printf("%i ", cas->cout);
+    }
+    printf("\n");
+  }
+}
