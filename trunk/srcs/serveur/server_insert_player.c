@@ -41,7 +41,7 @@ t_player	*init_player(t_game *game, int player_id, int team)
   int		x;
   int		y;
   t_player	*player;
-  struct s_map	*cas;
+  t_map		*cas;
 
   srand(time(NULL));
   y = rand() % game->server.height;
