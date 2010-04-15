@@ -20,6 +20,7 @@
 #include "t_game_stc.h"
 #include "game_cmd.h"
 #include "response.h"
+#include "count_player.h"
 
 t_inst		tab_instr[NB_INST] =
 {
@@ -72,29 +73,11 @@ int		treatment_duration(t_game *game, t_packet *packet)
   return (EXIT_FAILURE);
 }
 
-static int	count_player(t_game *game, int team)
-{
-  t_list	*tmp;
-  t_player	*pla;
-  int		count;
-
-  count = 0;
-  tmp = game->player;
-  while (tmp)
-    {
-      pla = tmp->data;
-      if (pla && (pla->team == team))
-	++count;
-      tmp = tmp->next;
-    }
-  return (count);
-}
-
 int		authent(t_game *game, t_packet *packet)
 {
   t_team	*tmp;
   int		i;
-  int		num_client;
+  int		num;
 
   tmp = game->server.teamname;
   i = 0;
@@ -102,18 +85,15 @@ int		authent(t_game *game, t_packet *packet)
     return (-1);
   while (tmp)
     {
-      num_client = game->server.nb_client - count_player(game, i);
-      if (!strcmp(tmp->team, packet->av[0]) && num_client > 0)
+      num = game->server.nb_client - count_player(game, i);
+      if (!strcmp(tmp->team, packet->av[0]) && num > 0)
 	{
-	  /* add player */
 	  packet->duration = 0;
 	  packet->response = malloc(sizeof(*(packet->response)));
 	  if (packet->response)
-	    {
-	      fill_response_auth(packet->response, packet->player_id, num_client, game);
-	      return (1);
-	    }
+	    return (fill_response_auth(packet->response, packet->player_id, num, game));
 	}
+      tmp = tmp->next;
       i++;
     }
   return (0);

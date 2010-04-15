@@ -16,6 +16,7 @@
 #include	"llist_new.h"
 #include	"llist_access.h"
 #include	"llist_mod.h"
+#include	"llist_sort.h"
 
 t_vector	*vector_new(void *strct)
 {
@@ -50,4 +51,7 @@ void		vector_init(t_vector *new)
   new->destruc = llist_des;
   new->getnxts = llist_getnxts;
   new->erase = llist_erase;
+  new->delete = llist_del;
+  new->insert_sort = llist_insert_sort;
+  new->find_pos = llist_find_pos;
 }

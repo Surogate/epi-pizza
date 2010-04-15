@@ -1,9 +1,9 @@
 ##
 ## Makefile for  in /home/Ayden/Epitech/my_ftp
-## 
+##
 ## Made by Florian Chanioux
 ## Login   <chanio_f@epitech.net>
-## 
+##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
 ## Last update Thu Apr 15 19:34:37 2010 Florian Chanioux
 ##
@@ -40,6 +40,8 @@ SRC_S		= $(DIR_SRC_S)main.c			\
 		$(DIR_SRC_S)test_map.c			\
 		$(DIR_SRC_S)server_stt.c		\
 		$(DIR_SRC_S)server_fct.c		\
+		$(DIR_SRC_S)server_action.c		\
+		$(DIR_SRC_S)server_kick.c		\
 		$(DIR_SRC_S)server_insert_player.c	\
 		$(DIR_SRC_S)server_ini.c		\
 		$(DIR_SRC_S)server_ress.c		\
@@ -73,8 +75,8 @@ SRC_CO		= $(DIR_SRC_CO)cbuf/cbuf_io.c		\
 		$(DIR_SRC_CO)vector/llist_new.c		\
 		$(DIR_SRC_CO)vector/llist_mod.c		\
 		$(DIR_SRC_CO)vector/llist_access.c	\
+		$(DIR_SRC_CO)vector/llist_sort.c	\
 		$(DIR_SRC_CO)count_player.c		\
-
 
 SRC_INC		= $(DIR_INC)xfunc.h			\
 		$(DIR_INC)my_list.h			\

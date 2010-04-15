@@ -14,5 +14,6 @@
 int			init_svr(int sock, t_server *svr, t_select *slt_par);
 int			init_svr_par(t_select *slt_par, 
 				     t_vector *client, int svr_sock);
+void		init_timeout(t_svr_vector *vec, t_select *slt);
 
 #endif

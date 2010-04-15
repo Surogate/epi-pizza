@@ -9,6 +9,7 @@
 */
 
 #include	<stdlib.h>
+#include	<stdio.h>
 
 #include	"define.h"
 #include	"my_list.h"

@@ -77,7 +77,7 @@ int		find_player(t_player *ref, t_player *data)
 t_player	*rm_player(t_game *game, t_packet *packet)
 {
   t_player	*player;
-  struct s_map	*cas;
+  /*  struct s_map	*cas; */
 
   srand(time(NULL));
 

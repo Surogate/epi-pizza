@@ -46,22 +46,15 @@ typedef struct
   int		ress[RESS_NUM];
 }		t_player;
 
+# ifndef	T_SERVER_INCLUDED
+#  define	T_SERVER_INCLUDED
+
 typedef struct		s_team
 {
   char			*team;
   int			lim;
   struct s_team		*next;
 }			t_team;
-
-typedef struct		s_opt
-{
-  char			*option;
-  int			value;
-  t_team		*team;
-}			t_opt;
-
-# ifndef	T_SERVER_INCLUDED
-#  define	T_SERVER_INCLUDED
 
 typedef struct
 {
@@ -74,6 +67,14 @@ typedef struct
 }		t_server;
 
 # endif		/* !T_SERVER_INCLUDED */
+
+typedef struct		s_opt
+{
+  char			*option;
+  int			value;
+  t_team		*team;
+}			t_opt;
+
 
 typedef struct
 {

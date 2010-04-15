@@ -11,7 +11,7 @@
 #ifndef SERVER_FCT_C_INCLUDED
 # define SERVER_FCT_C_INCLUDED
 
-int		execute_order_66(t_vector *client, t_select *slt_par, 
-				 t_game *game);
+int		fetch_instr(t_vector *client, t_select *slt_par, t_game *game);
+void		free_client(t_client *cli);
 
 #endif

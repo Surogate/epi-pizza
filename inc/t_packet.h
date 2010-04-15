@@ -20,12 +20,13 @@ typedef struct
 typedef struct
 {
   int			player_id;
-  int			ac_rep;
+  int			type;
   int			ac;
   char			*av[2];
   struct timeval	time;
   int			duration;
-  t_rep			*response; /* tableau */
+  int			ac_rep;
+  t_rep			*response;
 }			t_packet;
 
 typedef struct

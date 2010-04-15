@@ -14,38 +14,24 @@
 # ifndef		T_SERVER_INCLUDED
 #  define		T_SERVER_INCLUDED
 
+typedef struct		s_team
+{
+  char			*team;
+  int			lim;
+  struct s_team		*next;
+}			t_team;
+
 typedef struct
 {
   int			port;
   int			height;
   int			width;
-  t_list		*teamname;
+  t_team		*teamname;
   int			nb_client;
   int			delay;
 }			t_server;
 
 # endif			/* !T_SERVER_INCLUDED */
-
-# ifndef		T_PACKET_INCLUDED
-#  define		T_PACKET_INCLUDED
-
-typedef struct
-{
-  int			id_player;
-  char			*mess;
-}			t_rep;
-
-typedef struct
-{
-  int			player_id;
-  int			ac;
-  char			*av[2];
-  struct timeval	time;
-  int			duration;
-  t_rep			*response; /* tableau */
-}			t_packet;
-
-# endif			/* !T_PACKET_INCLUDED */
 
 typedef struct
 {
@@ -62,7 +48,13 @@ typedef struct
   int			fd_max;
   fd_set		fd_read;
   struct timeval	timeout;
-  struct timeval	*timeval;
+  struct timeval	*time;
 }			t_select;
+
+typedef struct
+{
+  t_vector		*client;
+  t_vector		*action;
+}			t_svr_vector;
 
 #endif			/* !T_SVR_STC_INCLUDED */

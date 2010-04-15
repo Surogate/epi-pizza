@@ -22,7 +22,9 @@
 #include "s_vector.h"
 #include "s_cbuf.h"
 #include "cbuf_io.h"
+#include "t_packet.h"
 #include "t_svr_stc.h"
+#include "server_kick.h"
 
 t_client		*new_client(int s)
 {
@@ -50,18 +52,21 @@ t_client		*new_client(int s)
   return (new);
 }
 
-int			add_client(t_vector *client, t_select *slt_par,
+int			add_client(t_svr_vector *vec, t_select *slt_par,
 				   int svr_sock)
 {
   t_client		*tmp;
+  t_vector		*client;
 
+  client = vec->client;
   tmp = new_client(svr_sock);
   if (tmp == NULL)
     return (EXIT_FAILURE);
-  client->push_front(client, tmp);
+  client->push_front(vec->client, tmp);
   if (tmp->sock > slt_par->fd_max)
     slt_par->fd_max = tmp->sock;
   sock_write(tmp->sock, "BIENVENUE\n");
+  create_kick(vec, tmp->sock);
   return (EXIT_SUCCESS);
 }
 
