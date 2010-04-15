@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:24 2010 francois1 ancel
-** Last update Wed Apr 14 15:46:09 2010 pierre1 boutbel
+** Last update Thu Apr 15 17:48:45 2010 Florian Chanioux
 */
 
 #ifndef		T_STRUCT_INCLUDED
@@ -32,6 +32,7 @@ typedef struct
 typedef struct	s_map
 {
   struct s_map	*card[M_CARD];
+  int		cout;
   t_case	cas;
 }		t_map;
 

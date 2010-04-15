@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:15:36 2010 francois1 ancel
-** Last update Wed Apr 14 17:24:04 2010 pierre1 boutbel
+** Last update Thu Apr 15 19:28:25 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -54,7 +54,9 @@ int main(int ac, char **av)
 
   game = init_game(ac, av);
   test_aff_map(game);
-  test_map(game);
+/*  test_map(game);*/
+  pathfinding(game, 0, 0);
+  test_pathfinding_map(game);
   printf("server port : %i\n", game->server.port);
   if (svr_start(&(game->server)) == EXIT_FAILURE)
     perror("svr start error");
