@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Thu Apr 15 18:04:21 2010 Florian Chanioux
-** Last update Thu Apr 15 19:26:04 2010 Florian Chanioux
+** Last update Thu Apr 15 19:38:53 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -41,7 +41,7 @@ void		reset_pathfinding(t_game *game)
   }
 }
 
-void		pathfinding_line(int ref, t_map *casemap)
+static void	pathfinding_line(int ref, t_map *casemap)
 {
   int		i;
   t_map		*cmap[2];
