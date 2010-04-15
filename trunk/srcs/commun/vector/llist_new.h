@@ -14,5 +14,6 @@
 t_llist		*llist_new(void *strct, t_llist *nxt, t_llist *prv);
 void		llist_des(t_vector *vec, void strct_des());
 void		llist_display(t_vector *vec, void (*disp)());
+void		*llist_del(t_vector *vec, int at);
 
 #endif		/*__LLIST_NEW_C_INCLUDED__*/

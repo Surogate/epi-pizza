@@ -63,6 +63,8 @@ int		llist_insert(t_vector *vec, void *strct, int at)
       new = llist_new(strct, tmp->nxt, tmp);
       if (new)
 	{
+	  if (tmp->nxt)
+	    (tmp->nxt)->prv = new;
 	  tmp->nxt = new;
 	  vec->size++;
 	  return (EXIT_SUCCESS);
@@ -73,25 +75,9 @@ int		llist_insert(t_vector *vec, void *strct, int at)
 
 void		llist_erase(t_vector *vec, int at, void (*destruct)())
 {
-  t_llist	*tmp;
-  t_llist	*nxt;
-  t_llist	*prv;
+  void		*strct;
 
-  tmp = llist_goto(vec, at);
-  if (at == vec->gns_pos)
-    vec->gns = (vec->gns)->prv;
-  if (tmp)
-    {
-      nxt = tmp->nxt;
-      prv = tmp->prv;
-      if (nxt)
-	nxt->prv = prv;
-      if (prv)
-	prv->nxt = nxt;
-      destruct(tmp->strct);
-      free(tmp);
-      if (at == 0)
-	vec->start = nxt;
-      vec->size--;
-    }
+  strct = llist_del(vec, at);
+  if (strct)
+    destruct(strct);
 }

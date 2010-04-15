@@ -21,9 +21,12 @@
 #include "cbuf_define.h"
 #include "cbuf_io.h"
 #include "s_vector.h"
+#include "t_packet.h"
 #include "t_struct.h"
 #include "t_svr_stc.h"
 #include "client_fct.h"
+#include "server_kick.h"
+#include "instruction.h"
 
 static int	check_read(char *str)
 {
@@ -37,15 +40,22 @@ static int	check_read(char *str)
   return (0);
 }
 
-static void	instr_catch(char *str, t_client *cli, t_game *game)
+static void	instr_catch(char *str, t_client *cli, t_game *game, 
+			    t_svr_vector *vec)
 {
-  int		i;
+  /*  int		i;*/
   int		result;
 
   if (client_parse_instr(str, cli) == EXIT_SUCCESS)
     {
       if (!cli->team)
-	result = authent(game, cli->packet + cli->cons);
+	{
+	  delete_kick(vec, cli->sock);
+	  result = authent(game, cli->packet + cli->cons);
+	  if (!result)
+	    create_kick(vec, cli->sock);
+	}
+      /*
       else
 	result = treatment_duration(game, cli->packet + cli->cons);
       i = 0;
@@ -55,11 +65,14 @@ static void	instr_catch(char *str, t_client *cli, t_game *game)
 	  i++;
 	}
       if (!cli->packet[cli->cons].duration) 
-	free_packet(cli);
+	free_packet(cli);         
+	 if (used == 1)
+	 add le packet dans la list des action
+      */
     }
 }
 
-static void	free_client(t_client *cli)
+void		free_client(t_client *cli)
 {
   close(cli->sock);
   while (cli->used)
@@ -77,13 +90,14 @@ int		close_client(t_vector *client, t_select *slt_par)
   return (EXIT_SUCCESS);
 }
 
-
-int		execute_order_66(t_vector *client, t_select *slt_par,
+int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
 				 t_game *game)
 {
   t_client	*tmp;
   char		*readed;
+  t_vector	*client;
 
+  client = vec->client;
   while ((tmp = (t_client *)client->getnxts(client)) != NULL)
     {
       if (FD_ISSET(tmp->sock, &(slt_par->fd_read)))
@@ -95,7 +109,7 @@ int		execute_order_66(t_vector *client, t_select *slt_par,
 	      client->erase(client, client->gns_pos, free_client);
 	    }
 	  else if ((readed = cbuf_read(&(tmp->cbuf), check_read)))
-	    instr_catch(readed, tmp, game);
+	    instr_catch(readed, tmp, game, vec);
 	}
     }
   return (EXIT_SUCCESS);

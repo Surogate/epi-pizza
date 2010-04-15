@@ -20,8 +20,10 @@
 
 #include "define.h"
 #include "my_list.h"
+#include "s_vector.h"
 #include "s_cbuf.h"
 #include "t_struct.h"
+#include "t_packet.h"
 #include "t_svr_stc.h"
 #include "server.h"
 #include "server_map.h"
@@ -54,12 +56,12 @@ int main(int ac, char **av)
   t_game	*game;
 
   game = init_game(ac, av);
-  test_aff_map(game);
-/*  test_map(game);*/
+  /* test_aff_map(game);
+     test_map(game);
   pathfinding(game, 0, 0);
   test_pathfinding_map(game);
   reset_pathfinding(game);
-  test_pathfinding_map(game);
+  test_pathfinding_map(game);*/
   printf("server port : %i\n", game->server.port);
   if (svr_start(&(game->server)) == EXIT_FAILURE)
     perror("svr start error");

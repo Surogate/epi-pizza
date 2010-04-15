@@ -19,15 +19,17 @@
 #include "t_struct.h"
 #include "t_game_stc.h"
 
+#define	AUTH_REP_SIZ 35
+
 int	fill_response_auth(t_rep *rep, int player_id, int num_client, t_game *game)
 {
   rep->id_player = player_id;
-  rep->mess = malloc(34 * sizeof(*rep->mess));
+  rep->mess = malloc(AUTH_REP_SIZ * sizeof(*rep->mess));
   if (rep->mess)
     {
-      snprintf(rep->mess, 34, "%i\n%i %i\n", num_client, 
+      snprintf(rep->mess, AUTH_REP_SIZ, "%i\n%i %i\n", num_client, 
 	       game->server.width, game->server.height);
-      return (EXIT_SUCCESS);
+      return (1);
     }
-  return (EXIT_FAILURE);
+  return (1);
 }

@@ -27,6 +27,7 @@
 #include "s_cbuf.h"
 #include "cbuf_define.h"
 #include "s_vector.h"
+#include "t_packet.h"
 #include "t_struct.h"
 #include "t_svr_stc.h"
 
@@ -44,29 +45,8 @@ int			init_svr(int sock, t_server *svr, t_select *slt_par)
   slt_par->fd_max = sock + 1;
   FD_ZERO(&(slt_par->fd_read));
   FD_SET(sock, &(slt_par->fd_read));
-  slt_par->timeval = NULL;
+  slt_par->time = NULL;
   return (EXIT_SUCCESS);
-}
-
-void			gen_counterback(t_select *slt_par, t_client *tmp,
-					struct timeval *ac_time)
-{
-  t_packet		*pak;
-  int			counterback;
-
-  pak = tmp->packet + tmp->cons;
-  counterback = pak->time.tv_sec + pak->duration - ac_time->tv_sec;
-  if (!counterback)
-    /*
-      execute action
-     */
-  if (!slt_par->timeout.tv_sec)
-    {
-      slt_par->timeout.tv_sec = counterback;
-      slt_par->timeval = &(slt_par->timeout);
-    }
-  else if (slt_par->timeout.tv_sec >= counterback)
-    slt_par->timeout.tv_sec = counterback;
 }
 
 int			init_svr_par(t_select *slt_par,
@@ -78,17 +58,33 @@ int			init_svr_par(t_select *slt_par,
   gettimeofday(&ac_time, NULL);
   FD_SET(svr_sock, &(slt_par->fd_read));
   slt_par->fd_max = svr_sock;
-  slt_par->timeout.tv_sec = 0;
-  slt_par->timeout.tv_usec = 0;
-  slt_par->timeval = NULL;
   while ((tmp = (t_client *)client->getnxts(client)) != NULL)
     {
       FD_SET(tmp->sock, &(slt_par->fd_read));
       if (tmp->sock > slt_par->fd_max)
 	slt_par->fd_max = tmp->sock;
-      if (tmp->used)
-	gen_counterback(slt_par, tmp, &ac_time);
     }
   ++(slt_par->fd_max);
   return (EXIT_SUCCESS);
+}
+
+void		init_timeout(t_svr_vector *vec, t_select *slt)
+{
+  t_vector *action;
+  t_packet *pak;
+
+  action = vec->action;
+  slt->timeout.tv_sec = 0;
+  slt->timeout.tv_usec = 0;
+  slt->time = NULL;
+  while ((pak = action->getnxts(action)) != NULL)
+    {
+      if (slt->time == NULL)
+	{
+	  slt->timeout.tv_sec = pak->time.tv_sec;
+	  slt->time = &(slt->timeout);
+	}
+      else if (pak->time.tv_sec <= slt->timeout.tv_sec)
+	slt->timeout.tv_sec = pak->time.tv_sec;
+    }
 }

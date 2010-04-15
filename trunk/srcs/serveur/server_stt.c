@@ -31,10 +31,11 @@
 #include "cbuf_io.h"
 #include "s_vector.h"
 #include "t_struct.h"
+#include "t_packet.h"
 #include "t_svr_stc.h"
-#include "client_fct.h"
 #include "server_fct.h"
 #include "server_ini.h"
+#include "client_fct.h"
 
 static int		slt_cont;
 
@@ -43,17 +44,30 @@ void		signal_handler()
   slt_cont = 0;
 }
 
+static void		init_vector(t_svr_vector *vec)
+{
+  vec->client = vector_new(NULL);
+  vec->action = vector_new(NULL);
+}
+
+static void	end_loop(t_svr_vector *vec, t_select *slt_par, 
+			 t_game *game, int svr_sock)
+{
+  execute_action(vec, game, slt_par);
+  init_svr_par(slt_par, vec->client, svr_sock);
+  init_timeout(vec, slt_par);
+}
+
 int		select_loop(int svr_sock, t_select *slt_par, t_game *game)
 {
-  t_vector	*client;
+  t_svr_vector	vec;
   int		err;
 
   slt_cont = 1;
-  client = vector_new(NULL);
+  init_vector(&vec);
   while (slt_cont)
     {
-      err = select(slt_par->fd_max, &(slt_par->fd_read), NULL, NULL, 
-		   slt_par->timeval);
+      err = select(slt_par->fd_max, &(slt_par->fd_read), NULL, NULL, slt_par->time);
       if (err < 0)
 	{
 	  if (errno == EINTR)
@@ -63,15 +77,14 @@ int		select_loop(int svr_sock, t_select *slt_par, t_game *game)
       if (err > 0)
 	{
 	  if (FD_ISSET(svr_sock, &(slt_par->fd_read)))
-	    if (add_client(client, slt_par, svr_sock) == EXIT_FAILURE)
-	      return (EXIT_FAILURE);
-	  execute_order_66(client, slt_par, game);
+	    if (add_client(&vec, slt_par, svr_sock) == EXIT_FAILURE)
+	      fprintf(stderr, "add client error");
+	  fetch_instr(vec.client, slt_par, game);
 	}
-      init_svr_par(slt_par, client, svr_sock);
+      end_loop(&vec, slt_par, game, svr_sock);
     }
-  close_client(client, slt_par);
-  return (EXIT_SUCCESS);
-}
+  close_client(vec.client, slt_par);
+  return (EXIT_SUCCESS);}
 
 int		svr_start(t_game *game)
 {
@@ -97,6 +110,6 @@ int		svr_start(t_game *game)
 	}
       return (result);
     }
-  fprintf(stderr, "socket creation error\n");
+  fprintf(stderr, "socket crexation error\n");
   return (EXIT_FAILURE);
 }
