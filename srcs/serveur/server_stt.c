@@ -36,6 +36,7 @@
 #include "server_fct.h"
 #include "server_ini.h"
 #include "client_fct.h"
+#include "server_action.h"
 
 static int		slt_cont;
 

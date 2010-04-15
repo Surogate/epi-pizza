@@ -13,6 +13,7 @@
 
 int			sort_duration(t_packet *data, t_packet *strct);
 int			player_id_find(t_packet *data, int *player_id);
-int			execute_action(t_svr_vector *vec, t_game *game);
+int			execute_action(t_svr_vector *vec, t_game *game, 
+				       t_select *slt_par);
 
 #endif
