@@ -49,10 +49,14 @@ int		main(void)
 		   SDL_MapRGB(game.screen->format, 0, 0, 0));
       display_map(&game);
       display_mouse(&game);
-      if (SDL_Flip(game.screen) == -1)
+      if (SDL_GetTicks() % 5 == 0)
 	{
-	  printf("Refresh fail\n");
-	  exit(EXIT_FAILURE);
+	  if (SDL_Flip(game.screen) == -1)
+	    {
+	      printf("Refresh fail\n");
+	      exit(EXIT_FAILURE);
+	    }
+	  SDL_Delay(10);
 	}
      }
   return (EXIT_SUCCESS);
