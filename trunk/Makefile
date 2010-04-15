@@ -5,11 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ## 
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-<<<<<<< .mine
-## Last update Thu Apr 15 18:51:25 2010 Florian Chanioux
-=======
-## Last update Thu Apr 15 16:47:58 2010 pierre1 boutbel
->>>>>>> .r157
+## Last update Thu Apr 15 19:34:37 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)

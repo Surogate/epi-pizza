@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Thu Apr  8 16:28:40 2010 francois1 ancel
-** Last update Fri Apr  9 15:23:09 2010 Florian Chanioux
+** Last update Thu Apr 15 19:41:08 2010 Florian Chanioux
 */
 
 #ifndef SERVER_MAP_C_INCLUDED
@@ -16,5 +16,6 @@ void		free_map(t_game *game);
 
 void		test_aff_map(t_game *game);
 void		test_map(t_game *game);
+void		test_pathfinding_map(t_game *game);
 
 #endif

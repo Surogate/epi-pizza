@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:15:36 2010 francois1 ancel
-** Last update Thu Apr 15 19:28:25 2010 Florian Chanioux
+** Last update Thu Apr 15 19:39:18 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -26,6 +26,7 @@
 #include "server.h"
 #include "server_map.h"
 #include "server_stt.h"
+#include "pars_main.h"
 
 void		init_server(t_server *server)
 {
@@ -56,6 +57,8 @@ int main(int ac, char **av)
   test_aff_map(game);
 /*  test_map(game);*/
   pathfinding(game, 0, 0);
+  test_pathfinding_map(game);
+  reset_pathfinding(game);
   test_pathfinding_map(game);
   printf("server port : %i\n", game->server.port);
   if (svr_start(&(game->server)) == EXIT_FAILURE)

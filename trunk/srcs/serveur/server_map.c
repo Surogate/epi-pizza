@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Wed Apr  7 18:05:33 2010 Florian Chanioux
-** Last update Thu Apr 15 18:01:49 2010 Florian Chanioux
+** Last update Thu Apr 15 19:40:42 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -48,7 +48,7 @@ static void	init_case(t_case *the_case)
 }
 
 
-static		t_map 	*init_card(t_game *game, int orient, int y, int x)
+static t_map 	*init_card(t_game *game, int orient, int y, int x)
 {
   int		xf;
   int		yf;
