@@ -21,6 +21,7 @@
 #include "game_cmd.h"
 #include "response.h"
 #include "count_player.h"
+#include "server_born.h"
 
 t_inst		tab_instr[NB_INST] =
 {

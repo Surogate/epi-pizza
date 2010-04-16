@@ -23,6 +23,7 @@
 #include "t_svr_stc.h"
 #include "server_action.h"
 #include "server_kick.h"
+#include "server_eat.h"
 #include "server_debug.h"
 
 static int	find_eat_fct(t_packet *in, int *player_id)

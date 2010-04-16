@@ -28,6 +28,7 @@
 #include "server_kick.h"
 #include "instruction.h"
 #include "server_action.h"
+#include "server_eat.h"
 
 static int	check_read(char *str)
 {
