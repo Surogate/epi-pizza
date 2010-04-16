@@ -44,7 +44,7 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 			    t_svr_vector *vec)
 {
   /*  int		i;*/
-  int		result;
+  /* int		result; */
 
   if (client_parse_instr(str, cli) == EXIT_SUCCESS)
     {
