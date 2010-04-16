@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Apr  6 15:02:15 2010 Florian Chanioux
-** Last update Thu Apr 15 19:38:29 2010 Florian Chanioux
+** Last update Fri Apr 16 13:35:36 2010 Florian Chanioux
 */
 
 #ifndef		_SERVEUR_H_
@@ -16,7 +16,7 @@ void		treatment_intr(t_game *game, t_packet *packet);
 void		treatment_duration(t_game *game, t_packet *packet);
 
 void		reset_pathfinding(t_game *game);
-void		pathfinding(t_game *game, int y, int x);
+void		pathfinding(t_game *game, t_map *cas);
 
 
 
