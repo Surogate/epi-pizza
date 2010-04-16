@@ -52,7 +52,7 @@ int			execute_action(t_svr_vector *vec, t_game *game,
   game = game;
   while ((tmp = action->getnxts(action)) != NULL)
     {
-      if ((tmp->time.tv_sec + tmp->duration) < time.tv_sec)
+      if ((tmp->time.tv_sec + tmp->duration) <= time.tv_sec)
 	{
 	  if (!tmp->type)
 	    {
