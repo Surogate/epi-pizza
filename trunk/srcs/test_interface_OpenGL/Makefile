@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Fri Apr 16 15:54:23 2010 Florian Chanioux
+## Last update Fri Apr 16 15:57:46 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -45,6 +45,7 @@ SRC_LIB		= $(DIR_INC)libxfunc$_*.a		\
 
 
 OBJ		= $(SRC:.c=.o)
+
 
 
 ############### FLAGS
