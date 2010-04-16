@@ -64,6 +64,33 @@ SDL_Surface	*img_load(char *path)
   return (NULL);
 }
 
+void		init_map(t_game *game)
+{
+  int		y;
+  int		x;
+  int		temp;
+
+  game->map.t_case= malloc(game->info.size_h * sizeof(*(game->map.t_case)));
+  y = 0;
+  while (y < game->info.size_h)
+    {
+      game->map.t_case[y] = malloc(game->info.size_w * sizeof(t_case));
+      x = 0;
+      while (x < game->info.size_w)
+	{
+	  game->map.t_case[y][x].player = 0;
+	  temp = 0;
+	  while (temp < 7)
+	    {
+	      game->map.t_case[y][x].obj[temp] = 0;
+	      temp++;
+	    }
+	  x++;
+	}
+      y++;
+    }
+}
+
 void		init_game(t_game *game)
 {
   game->screen = load_window();
@@ -81,7 +108,5 @@ void		init_game(t_game *game)
   game->info.pos.y = 0;
   game->info.size_h = 100;
   game->info.size_w = 100;
-  game->ticks = SDL_GetTicks();
-  printf("[%u]\n", game->ticks);
-
+  init_map(game);
 }
