@@ -5,14 +5,26 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Fri Apr 16 16:00:07 2010 Florian Chanioux
+** Last update Fri Apr 16 18:17:40 2010 Florian Chanioux
 */
-#include	<SDL/SDL.h>
-#include	<SDL/SDL_ttf.h>
-#include	<stdlib.h>
-#include	<stdio.h>
-#include	<unistd.h>
-#include	<sys/types.h>
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+#ifdef __APPLE__
+#include "SDL.h"
+#include <GLUT/GLUT.h>
+#else
+#include <SDL/SDL.h>
+#include <SDL/SDL_ttf.h>
+#include <GL/glut.h>
+#include <GL/glu.h>
+#include <GL/gl.h>
+#endif
 
 #include	"define.h"
 #include	"struct.h"
@@ -31,7 +43,7 @@ SDL_Surface	*load_window()
   if (FULLSCREEN)
     flags|= SDL_FULLSCREEN;
   xSDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
-  screen = xSDL_SetVideoMode(CASE_W * MAP_CW, CASE_H * MAP_CH,
+  screen = xSDL_SetVideoMode(WIN_W, WIN_H,
 			    WIN_COLOR, flags);
   SDL_WM_SetCaption("Zappy", NULL);
   return (screen);
@@ -50,33 +62,6 @@ SDL_Surface	*img_load(char *path)
       return (img);
     }
   return (NULL);
-}
-
-void		init_map(t_game *game)
-{
-  int		y;
-  int		x;
-  int		temp;
-
-  game->map.t_case= malloc(game->info.size_h * sizeof(*(game->map.t_case)));
-  y = 0;
-  while (y < game->info.size_h)
-    {
-      game->map.t_case[y] = malloc(game->info.size_w * sizeof(t_case));
-      x = 0;
-      while (x < game->info.size_w)
-	{
-	  game->map.t_case[y][x].player = 0;
-	  temp = 0;
-	  while (temp < 7)
-	    {
-	      game->map.t_case[y][x].obj[temp] = 0;
-	      temp++;
-	    }
-	  x++;
-	}
-      y++;
-    }
 }
 
 void		init_game(t_game *game)
@@ -98,6 +83,5 @@ void		init_game(t_game *game)
   game->info.size_w = 100;
   game->ticks = SDL_GetTicks();
   printf("[%u]\n", game->ticks);
-  init_map(game);
-  SDL_ShowCursor(1);
+
 }

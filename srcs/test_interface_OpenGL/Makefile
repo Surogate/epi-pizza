@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Fri Apr 16 15:57:46 2010 Florian Chanioux
+## Last update Fri Apr 16 18:34:25 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -31,14 +31,20 @@ SRC		= $(DIR_SRC)main.c		\
 		  $(DIR_SRC)xsdl.c		\
 		  $(DIR_SRC)key.c		\
 		  $(DIR_SRC)init.c		\
-		  $(DIR_SRC)display.c		\
-		  $(DIR_SRC)glmain.c		\
+		  $(DIR_SRC)initgl.c		\
+		  $(DIR_SRC)mainloop.c		\
+		  $(DIR_SRC)camera.c		\
 		  $(DIR_SRC)interaction.c	\
 		  $(DIR_SRC)mouse.c
+		  $(DIR_SRC)draw_map.c		\
+		  $(DIR_SRC)draw_mob.c		\
+		  $(DIR_SRC)test_opengl.c	\
 
 
-SRC_INC		= $(DIR_INC)
 
+SRC_INC		= $(DIR_INC)/proto.h		\
+		$(DIR_INC)/define.h		\
+		$(DIR_INC)/struct.h
 
 SRC_LIB		= $(DIR_INC)libxfunc$_*.a		\
 		$(DIR_INC)libmy_list_*.a		\
