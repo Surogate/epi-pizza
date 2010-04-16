@@ -19,17 +19,40 @@
 #include "t_struct.h"
 #include "t_game_stc.h"
 
-#define	AUTH_REP_SIZ 35
+#define	AUTH_OK_SIZ 35
+#define AUTH_FAIL_SIZ 4
 
-int	fill_response_auth(t_rep *rep, int player_id, int num_client, t_game *game)
+int	auth_ok(t_packet *pak, int num_client, t_game *game)
 {
-  rep->id_player = player_id;
-  rep->mess = malloc(AUTH_REP_SIZ * sizeof(*rep->mess));
-  if (rep->mess)
+  t_rep	*rep;
+
+  pak->ac_rep = 1;
+  pak->response = malloc(sizeof(*(pak->response)));
+  if (pak->response)
     {
-      snprintf(rep->mess, AUTH_REP_SIZ, "%i\n%i %i\n", num_client, 
-	       game->server.width, game->server.height);
-      return (1);
+      rep = pak->response;
+      rep[0].id_player = pak->player_id;
+      rep[0].mess = malloc(AUTH_OK_SIZ * sizeof(*rep->mess));
+      if (rep->mess)
+	snprintf(rep->mess, AUTH_OK_SIZ, "%i\n%i %i\n", num_client,
+		 game->server.width, game->server.height);
     }
   return (1);
+}
+
+int	auth_fail(t_packet *pak)
+{
+  t_rep	*rep;
+
+  pak->ac_rep = 1;
+  pak->response = malloc(sizeof(*(pak->response)));
+  if (pak->response)
+    {
+      rep = pak->response;
+      rep[0].id_player = pak->player_id;
+      rep[0].mess = malloc(AUTH_FAIL_SIZ * sizeof(*(rep[0].mess)));
+      if (rep[0].mess)
+	snprintf(rep[0].mess, AUTH_FAIL_SIZ, "KO\n");
+    }
+  return (0);
 }

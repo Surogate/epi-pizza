@@ -85,7 +85,6 @@ void			init_timeout(t_svr_vector *vec, t_select *slt)
   slt->time = NULL;
   while ((pak = action->getnxts(action)) != NULL)
     {
-      debug_packet(pak);
       end = (pak->time.tv_sec + pak->duration) - ac_time.tv_sec;
       if (slt->time == NULL)
 	{

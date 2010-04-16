@@ -11,6 +11,7 @@
 #ifndef RESPONSE_C_INCLUDED
 # define RESPONSE_C_INCLUDED
 
-int	fill_response_auth(t_rep *rep, int player_id, int num_client, t_game *game);
+int	auth_ok(t_packet *pak, int num_client, t_game *game);
+int	auth_fail(t_packet *pak);
 
 #endif
