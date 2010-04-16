@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 18:32:28 2010 Florian Chanioux
-** Last update Fri Apr 16 18:32:30 2010 Florian Chanioux
+** Last update Fri Apr 16 20:26:39 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -27,9 +27,9 @@
 #include	"struct.h"
 #include	"proto.h"
 
-void		initAttributes()
+void			initAttributes()
 {
-  int		value;
+  int			value;
 
   value = 1;
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, value);
@@ -48,43 +48,57 @@ void Init( void)
   static float lmodel_ambient[]= {0.4, 0.4, 0.4, 1.0};
   static float lmodel_localviewer[]= {0.0};
   GLfloat map1[4] = {0.0, 0.0, 0.0, 0.0};
-  GLfloat map2[4] = {0.0, 0.0, 0.0, 0.0};*/
-  /*
-  glFrontFace( GL_CCW);
-  glDepthFunc( GL_LESS);
-  glEnable( GL_DEPTH_TEST);
-  glLightfv( GL_LIGHT0, GL_AMBIENT, ambient);
-  glLightfv( GL_LIGHT0, GL_DIFFUSE, diffuse);
-  glLightfv( GL_LIGHT0, GL_POSITION, position);
-  glLightModelfv( GL_LIGHT_MODEL_AMBIENT, lmodel_ambient);
-  glLightModelfv( GL_LIGHT_MODEL_LOCAL_VIEWER, lmodel_localviewer);
-  glEnable( GL_LIGHTING);
-  glEnable( GL_LIGHT0);
-  glMaterialfv( GL_FRONT_AND_BACK, GL_SHININESS, mat_shininess);
-  glMaterialfv( GL_FRONT_AND_BACK, GL_SPECULAR, mat_specular);
-  glMaterialfv( GL_FRONT_AND_BACK, GL_DIFFUSE, mat_diffuse);
-  glMaterialfv( GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient);
+  GLfloat map2[4] = {0.0, 0.0, 0.0, 0.0};
 */
 }
 
-void init_fog()
+static void		init_light(int light)
 {
-  static float fog_color[4] = {0.5, 0.5, 0.5, 1.0};
-  GLint fogmode;
+  static GLfloat	ambient[] = {0.15f, 0.15f, 0.15f, 1.0f};
+  static GLfloat	diffuse[] = {0.5f, 0.5f, 0.5f, 1.0f};
+  static GLfloat	light0_position [] = {0.0f, -10.0f, 0.0f, 0.0f};
+  static GLfloat	specular_reflexion[] = {0.8f, 0.8f, 0.8f, 1.0f};
+  static GLubyte	shiny_obj = 128;
 
-  fogmode = GL_EXP;
-  glEnable(GL_FOG);
-  glFogi (GL_FOG_MODE, fogmode) ;
-  glFogfv(GL_FOG_COLOR, fog_color) ;
-  glFogf(GL_FOG_DENSITY, 0.01) ;
-  glFogf(GL_FOG_START, 1.0) ;
-  glFogf(GL_FOG_END, 5.0) ;
-  glClearColor(0.5, 0.5, 0.5, 1.0);
+  if (light)
+  {
+    glEnable(GL_LIGHT0);
+    glEnable(GL_LIGHTING);
+    glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
+    glLightfv(GL_LIGHT0, GL_POSITION, light0_position);
+    glEnable(GL_COLOR_MATERIAL);
+    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambient);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuse);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular_reflexion);
+    glMateriali(GL_FRONT_AND_BACK, GL_SHININESS, shiny_obj);
+    glEnable(GL_NORMALIZE);
+  }
+}
+
+static void		init_fog(int fog)
+{
+  static float		fog_color[4] = {0.5, 0.5, 0.5, 1.0};
+  GLint			fogmode;
+
+  if (fog)
+  {
+    fogmode = GL_EXP2;
+    glEnable(GL_FOG);
+    glFogi (GL_FOG_MODE, fogmode) ;
+    glFogfv(GL_FOG_COLOR, fog_color) ;
+    glFogf(GL_FOG_DENSITY, 0.3) ;
+    glFogf(GL_FOG_START, 1.0) ;
+    glFogf(GL_FOG_END, 5.0) ;
+    glClearColor(0.5, 0.5, 0.5, 1.0);
+  }
 }
 
 void initGL()
 {
   Init();
-  init_fog();
+  init_fog(0);
+  init_light(1);
   Reshape();
 }

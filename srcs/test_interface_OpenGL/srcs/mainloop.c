@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 18:24:06 2010 Florian Chanioux
-** Last update Fri Apr 16 18:25:04 2010 Florian Chanioux
+** Last update Fri Apr 16 20:33:35 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -29,20 +29,17 @@
 
 void mainloop(t_game *game)
 {
-  int move[7] = { 0, 0, 0, 0, 0, 0, 0};
-  int done = 0;
-  int fps = 25;
-  int delay= 1000 / fps;
-  int thenTicks = -1;
-  int nowTicks;
+  int exit;
 
+  exit = 1;
   SDL_EnableKeyRepeat(100, 20);
-  while (!done)
+  while (exit)
   {
-    done = interaction(game);
-    glClear( GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    exit = interaction(game);
+    camera(game);
     make_calllistes();
-    draw_map(move, game);
+    draw_map(game);
     draw_mob();
     SDL_GL_SwapBuffers();
   }

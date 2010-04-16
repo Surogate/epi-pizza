@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Fri Apr 16 18:34:25 2010 Florian Chanioux
+## Last update Fri Apr 16 18:43:09 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -35,7 +35,7 @@ SRC		= $(DIR_SRC)main.c		\
 		  $(DIR_SRC)mainloop.c		\
 		  $(DIR_SRC)camera.c		\
 		  $(DIR_SRC)interaction.c	\
-		  $(DIR_SRC)mouse.c
+		  $(DIR_SRC)mouse.c		\
 		  $(DIR_SRC)draw_map.c		\
 		  $(DIR_SRC)draw_mob.c		\
 		  $(DIR_SRC)test_opengl.c	\

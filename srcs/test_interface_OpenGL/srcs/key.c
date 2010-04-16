@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Fri Apr 16 18:03:19 2010 Florian Chanioux
+** Last update Fri Apr 16 20:37:01 2010 Florian Chanioux
 */
 #include <sys/types.h>
 #include <unistd.h>
@@ -28,20 +28,21 @@
 #include	"struct.h"
 #include	"proto.h"
 
-void		key_func(t_game *game)
+int		key_func(t_game *game)
 {
   if (game->event.key.keysym.sym == SDLK_LEFT)
     printf("Left rotation\n");
   else if (game->event.key.keysym.sym == SDLK_RIGHT)
     printf("Right rotation\n");
   else if (game->event.key.keysym.sym == SDLK_ESCAPE)
-    exit(EXIT_SUCCESS);
+    return (0);
+  return (1);
 }
 
-void		exit_func(t_game *game)
+int		exit_func(t_game *game)
 {
   TTF_CloseFont(game->font);
   TTF_Quit();
-  exit(EXIT_SUCCESS);
+  return (0);
 }
 

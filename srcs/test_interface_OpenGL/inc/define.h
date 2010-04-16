@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Fri Apr 16 17:25:16 2010 Florian Chanioux
+** Last update Fri Apr 16 19:46:33 2010 Florian Chanioux
 */
 
 #ifndef		DEFINE_H

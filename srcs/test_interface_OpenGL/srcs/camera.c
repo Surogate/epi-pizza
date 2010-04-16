@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 18:30:49 2010 Florian Chanioux
-** Last update Fri Apr 16 18:33:23 2010 Florian Chanioux
+** Last update Fri Apr 16 20:08:20 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -32,14 +32,25 @@ void Reshape()
   glViewport(0, 0, WIN_W, WIN_H);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluPerspective(70.0, (GLfloat)WIN_W / (GLfloat)WIN_H, 1, 300000.0);
-  glMatrixMode(GL_MODELVIEW);
-  glEnable(GL_DEPTH_TEST);
+  gluPerspective(70.0, (GLfloat)(WIN_W / WIN_H), 1, 1000.0);
 }
 
-void camera( int cx, int cy, int cz, int px, int py, int pz, int *mvt)
+void camera(t_game *game)
 {
-  gluLookAt( mvt[0]+cx, mvt[1]+cy, cz,
-	     mvt[0]+px, mvt[1]+py, pz,
-	     0, 0, 1);
+  int x;
+  int y;
+  int z;
+  int px;
+  int py;
+  int pz;
+
+  x = game->info.pos.y / CASE_H + game->info.pos.y % CASE_H;
+  y = game->info.pos.x / CASE_W + game->info.pos.x % CASE_W;
+  z = 80;
+  px = x + CASE_H * 2;
+  py = y + CASE_W * 2;
+  pz = 0;
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
+  gluLookAt(x, y, z, px, py, pz, 0, 0, 1);
 }

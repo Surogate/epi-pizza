@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Fri Apr 16 18:17:30 2010 Florian Chanioux
+** Last update Fri Apr 16 20:32:40 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -36,10 +36,10 @@ int		main(void)
   init_game(&game);
   initAttributes(&game);
   SDL_ShowCursor(1);
-  /* createSurface(0); Create GL context */
   printAttributes();
   initGL();
   mainloop(&game);
+  puts("end of program");
   SDL_Quit();
   return (EXIT_SUCCESS);
 }
