@@ -20,6 +20,7 @@
 #include "define.h"
 #include "my_list.h"
 #include "s_cbuf.h"
+#include "cbuf_io.h"
 #include "s_vector.h"
 #include "t_packet.h"
 #include "t_struct.h"
@@ -38,6 +39,15 @@ int			player_id_find(t_packet *data, int *player_id)
   if (data->player_id == *player_id)
     return (1);
   return (0);
+}
+
+void			return_packet(t_packet *pak)
+{
+  int		i;
+
+  i = -1;
+  while (++i < pak->ac_rep)
+    sock_write(pak->response[i].id_player, pak->response[i].mess);
 }
 
 int			execute_action(t_svr_vector *vec, t_game *game,

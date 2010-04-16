@@ -27,6 +27,7 @@
 #include "client_fct.h"
 #include "server_kick.h"
 #include "instruction.h"
+#include "server_action.h"
 
 static int	check_read(char *str)
 {
@@ -40,7 +41,7 @@ static int	check_read(char *str)
   return (0);
 }
 
-static void	instr_catch(char *str, t_client *cli, t_game *game, 
+static void	instr_catch(char *str, t_client *cli, t_game *game,
 			    t_svr_vector *vec)
 {
   /*  int		i;*/
@@ -54,6 +55,8 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	  cli->team = authent(game, cli->packet + cli->cons);
 	  if (!cli->team)
 	    create_kick(vec, cli->sock);
+	  return_packet(cli->packet + cli->cons);
+	  free_packet(cli);
 	}
       /*
       else
@@ -63,10 +66,8 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	{
 	  printf("readed : %s\n", cli->packet[cli->cons].av[i]);
 	  i++;
-	}
-      if (!cli->packet[cli->cons].duration) 
-	free_packet(cli);         
-	 if (used == 1)
+	  }*/
+      /*if (used == 1)
 	 add le packet dans la list des action
       */
     }

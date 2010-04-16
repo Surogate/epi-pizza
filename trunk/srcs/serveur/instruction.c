@@ -87,15 +87,9 @@ int		authent(t_game *game, t_packet *packet)
     {
       num = game->server.nb_client - count_player(game, i);
       if (!strcmp(tmp->team, packet->av[0]) && num > 0)
-	{
-	  packet->duration = 0;
-	  packet->response = malloc(sizeof(*(packet->response)));
-	  if (packet->response)
-	    return (fill_response_auth(packet->response,
-				       packet->player_id, num, game));
-	}
+	return (auth_ok(packet, num - 1, game));
       tmp = tmp->next;
       i++;
     }
-  return (0);
+  return (auth_fail(packet));
 }
