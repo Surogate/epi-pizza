@@ -17,6 +17,12 @@ typedef struct	s_event
   void		(*func)();
 }		t_event;
 
+typedef struct	s_msg
+{
+  char		*name;
+  void		(*func)();
+}		t_msg;
+
 typedef struct	s_pos
 {
   float		x;
