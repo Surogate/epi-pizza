@@ -34,10 +34,14 @@
 int			init_svr(int sock, t_server *svr, t_select *slt_par)
 {
   struct sockaddr_in	sin;
+  int			value;
 
+  value = 1;
   sin.sin_family = AF_INET;
   sin.sin_port = htons(svr->port);
   sin.sin_addr.s_addr = INADDR_ANY;
+  if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &value, sizeof(value)) < 0)
+    return (EXIT_FAILURE);
   if (bind(sock, (struct sockaddr *)&sin, (socklen_t)sizeof(sin)) < 0)
     return (EXIT_FAILURE);
   if (listen(sock, 42) < 0)
@@ -87,7 +91,7 @@ void			init_timeout(t_svr_vector *vec, t_select *slt)
 	  slt->time = &(slt->timeout);
 	  slt->time->tv_sec = end;
 	}
-      else if (end < slt->time->tv_sec)
+      else if (end < (unsigned int)slt->time->tv_sec)
 	slt->time->tv_sec = end;
     }
   if (slt->time)
