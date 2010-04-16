@@ -25,6 +25,7 @@
 #include "server_kick.h"
 #include "server_eat.h"
 #include "server_debug.h"
+#include "eat.h"
 
 static int	find_eat_fct(t_packet *in, int *player_id)
 {
