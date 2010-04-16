@@ -1,0 +1,87 @@
+/*
+** server_eat for project in /u/all/ancel_a/cu/travail/c/
+**
+** Made by francois1 ancel
+** Login   <ancel_a@epitech.net>
+**
+** Started on  Fri Apr 16 15:18:56 2010 francois1 ancel
+** Last update Fri Apr 16 15:18:56 2010 francois1 ancel
+*/
+
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/time.h>
+
+#include "define.h"
+#include "my_list.h"
+#include "t_struct.h"
+#include "s_cbuf.h"
+#include "cbuf_io.h"
+#include "s_vector.h"
+#include "t_packet.h"
+#include "t_svr_stc.h"
+#include "server_action.h"
+#include "server_kick.h"
+#include "server_debug.h"
+
+static int	find_eat_fct(t_packet *in, int *player_id)
+{
+  if ((in->type == 2) && (in->player_id == *player_id))
+    return (1);
+  return (0);
+}
+
+int		create_eat(t_svr_vector *vec, int player_id)
+{
+  t_packet	*pak;
+  t_vector	*action;
+
+  action = vec->action;
+  pak = malloc(sizeof(*pak));
+  if (pak)
+    {
+      pak->player_id = player_id;
+      pak->type = 2;
+      gettimeofday(&(pak->time), NULL);
+      pak->duration = 3;
+      pak->ac = 0;
+      pak->ac_rep = 0;
+      action->insert_sort(action, pak, sort_duration);
+      llist_display(vec->action, debug_packet);
+      printf("=>  eat create  <=\n");
+      return (EXIT_SUCCESS);
+    }
+  printf("eat create fail\n");
+  return (EXIT_FAILURE);
+}
+
+int		server_eat(t_svr_vector *vec, t_select *slt_par, 
+			   int player_id, t_game *game)
+{
+  if (try_eat(game, player_id) == EXIT_FAILURE)
+    {
+      sock_write(player_id, "mort\n");
+      printf("player %i died, eat is essential to live\n", player_id);
+      server_kick(vec, slt_par, player_id);
+      return (EXIT_FAILURE);
+    }
+  delete_eat(vec, player_id);
+  create_eat(vec, player_id);
+  return (EXIT_SUCCESS);
+}
+
+int		delete_eat(t_svr_vector *vec, int player_id)
+{
+  t_vector	*action;
+  int		pos;
+
+  action = vec->action;
+  while ((pos = action->find_pos(action, &player_id, find_eat_fct)) >= 0)
+    {
+      fprintf(stderr, "=>>> delete eat at %i\n", pos);
+      action->erase(action, pos, free);
+    }
+  llist_display(vec->action, debug_packet);
+  return (EXIT_SUCCESS);
+}

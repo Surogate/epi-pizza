@@ -33,7 +33,10 @@ int		try_eat(t_game *game, int id_player)
   if (player->ress[0] > 0)
     player->ress[0]--;
   else
-    return (EXIT_FAILURE);
+    {
+      
+      return (EXIT_FAILURE);
+    }
   return (EXIT_SUCCESS);
 }
 
