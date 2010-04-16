@@ -19,12 +19,19 @@
 #include		"t_struct.h"
 #include		"pars_define.h"
 
+void			malloc_team(t_opt *opt)
+{
+  if ((opt[3].team->team = malloc(strlen(STD_TEAM_NAME) * 
+				  sizeof(*(opt[3].team->team)))) == NULL)
+    puterr("Unable to malloc -> Struct Team\n", 1);
+}
+
 void			init_opt(t_opt *opt, t_team *team)
 {
   int			i;
 
   i = 0;
-  while (i < 7)
+  while (i < 8)
     opt[i++].option = malloc(10 * sizeof(opt[0].option));
   opt[0].option = strcpy(opt[0].option, CHAR_OPT1);
   opt[0].value = VALUE_OPT1;
@@ -35,16 +42,17 @@ void			init_opt(t_opt *opt, t_team *team)
   opt[3].option = strcpy(opt[3].option, CHAR_OPT4);
   opt[3].value = VALUE_OPT4;
   opt[3].team = team;
-  if ((opt[3].team->team = malloc(strlen(STD_TEAM_NAME) * 
-				  sizeof(*(opt[3].team->team)))) == NULL)
-    puterr("Unable to malloc\n", 1);
+  malloc_team(opt);
   opt[3].team->team = strcpy(opt[3].team->team, STD_TEAM_NAME);
+  opt[3].team->lim = VALUE_OPT5;
   opt[4].option = strcpy(opt[4].option, CHAR_OPT5);
   opt[4].value = VALUE_OPT5;
   opt[5].option = strcpy(opt[5].option, CHAR_OPT6);
   opt[5].value = VALUE_OPT6;
-  opt[6].option = 0;
-  opt[6].value = 0;
+  opt[6].option = strcpy(opt[6].option, CHAR_OPT7);
+  opt[6].value = VALUE_OPT7;
+  opt[7].value = 0;
+  opt[7].option = 0;
 }
 
 int			isnum(char *str)

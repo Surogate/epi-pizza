@@ -42,10 +42,10 @@ t_opt			*parser(int ac, char **av)
   
   i = 0;
   if ((team = malloc(sizeof(*team))) == NULL)
-    puterr("Unable to malloc", 1);
+    puterr("pars_main.c : In parser\nUnable to malloc -> team\n", 1);
   team->next = 0;
-  if ((opt = malloc(7 * sizeof(*opt))) == NULL)
-    puterr("Unable to malloc", 1);
+  if ((opt = malloc(8 * sizeof(*opt))) == NULL)
+    puterr("pars_main.c : In parser\nUnable to malloc -> opt\n", 1);
   init_opt(opt, team);
   parse_option(opt, ac, av);
   return (opt);
@@ -59,6 +59,7 @@ void			fill_server(t_opt *opt, t_server *server)
   server->teamname = opt[3].team;
   server->nb_client = opt[4].value;
   server->delay = opt[5].value;
+  server->debug = opt[6].value;
 }
 
 void			check(int ac, char **av, t_server *server)

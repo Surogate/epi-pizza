@@ -18,15 +18,17 @@
 #define CHAR_OPT1	"-p"
 #define VALUE_OPT1	4242
 #define CHAR_OPT2	"-x"
-#define VALUE_OPT2	10
+#define VALUE_OPT2	2
 #define CHAR_OPT3	"-y"
-#define VALUE_OPT3	10
+#define VALUE_OPT3	2
 #define CHAR_OPT4	"-n"
 #define VALUE_OPT4	0
 #define CHAR_OPT5	"-c"
 #define VALUE_OPT5	5
 #define CHAR_OPT6	"-t"
 #define VALUE_OPT6	1
+#define CHAR_OPT7	"--debug"
+#define VALUE_OPT7	0
 
 /*
 ** DEFINE USAGE

@@ -39,12 +39,12 @@ void			last_check(t_server *server)
   if (server->port == 0)
     {
       puterr("\n\033[1;31m!!! Warning \033[m: Port is out of range", 0);
-      puterr(", redefining value to \033[2;32m4242\033[m\n\n", 0);
+      puterr(", redefining value to \033[1;31m4242\033[m\n", 0);
       server->port = 4242;
     }
   else if (server->port < 3000 || server->port > 65000)
     {
-      puterr("\n\033[1;31m Port is out of range [3000 - 65000]\033[m\n\n", 0);
+      puterr("\n\033[1;31mPort is out of range [3000 - 65000]\033[m\n\n", 0);
       put_usage(" -p");
     }
   if (server->width == 0 || server->height == 0)
@@ -59,6 +59,8 @@ void			display_values(t_server *server, t_team *team)
   int			i;
 
   i = 1;
+  if (server->debug == 1)
+    printf("\n\033[1;4;5;7;31m\t!!!!!!! WARNING : SERVER IN DEBUG MODE\033[m\n");
   printf("\n\033[1;31m/***************Server Infos***************/\033[m\n\n");
   printf("\033[1;32mServer Port\033[m -> %d\n", server->port);
   printf("\033[1;32mMap height\033[m  -> %d\n", server->height);
