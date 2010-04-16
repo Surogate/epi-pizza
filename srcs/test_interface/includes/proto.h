@@ -11,10 +11,6 @@
 #ifndef		PROTO_H
 # define	PROTO_H
 
-/*display func*/
-void		display_mouse(t_game *game);
-void		display_map(t_game *game);
-
 /*game func*/
 void		init_game(t_game *game);
 void		exit_func();
