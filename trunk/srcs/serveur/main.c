@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:15:36 2010 francois1 ancel
-** Last update Fri Apr 16 15:15:47 2010 Florian Chanioux
+** Last update Fri Apr 16 15:36:21 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -57,12 +57,12 @@ int main(int ac, char **av)
     t_map	*cas;
   
   game = init_game(ac, av);
-  if (game->server.debug == 1)
+  if (game->server.debug)
   {
     test_aff_map(game);
     test_map(game);
     cas = &(game->map[0][0]);
-    pathfinding(game,cas);
+    pathfinding(cas);
     test_pathfinding_map(game);
     reset_pathfinding(game);
     test_pathfinding_map(game);
