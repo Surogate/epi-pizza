@@ -57,16 +57,16 @@ int main(int ac, char **av)
   t_map	*cas;
   
   game = init_game(ac, av);
-  test_aff_map(game);
+  /*  test_aff_map(game);
   test_map(game);
   cas = &(game->map[0][0]);
   pathfinding(game,cas);
   test_pathfinding_map(game);
   reset_pathfinding(game);
   test_pathfinding_map(game);
-  printf("server port : %i\n", game->server.port);
-  /* if (svr_start(&(game->server)) == EXIT_FAILURE)
-     perror("svr start error");*/
+  printf("server port : %i\n", game->server.port);*/
+  if (svr_start(&(game->server)) == EXIT_FAILURE)
+     perror("svr start error");
   free_map(game);
   return (EXIT_SUCCESS);
 }
