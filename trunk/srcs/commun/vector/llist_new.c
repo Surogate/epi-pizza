@@ -81,7 +81,7 @@ void		llist_display(t_vector *vec, void (*disp)())
 
   tmp = vec->start;
   i = 0;
-  printf("==== Start display =====\n");
+  printf("\033[1;31m==== Start display =====\033[m\n");
   printf("taille : %i\nposition du gns : %i\n", vec->size, vec->gns_pos);
   while (tmp)
   {
@@ -94,5 +94,5 @@ void		llist_display(t_vector *vec, void (*disp)())
       printf("no struct in");
     tmp = tmp->nxt;
   }
-  printf("==== End display =====\n");
+  printf("\033[1;31m==== End display =====\033[m\n");
 }

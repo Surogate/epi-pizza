@@ -46,6 +46,8 @@ int		llist_push_front(t_vector *vec, void *strct)
   if (new)
     {
       vec->start = new;
+      if (new->nxt)
+	(new->nxt)->prv = new;
       vec->size++;
       return (EXIT_SUCCESS);
     }
