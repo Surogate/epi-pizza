@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Oct 20 16:03:31 2009 florian chanioux
-** Last update Fri Apr  9 14:41:20 2010 Florian Chanioux
+** Last update Fri Apr 16 17:57:57 2010 Florian Chanioux
 */
 
 #include <stdlib.h>
@@ -15,9 +15,9 @@
 
 void			*my_l_find(t_list *begin, void *ref, int (*func)())
 {
-  while (begin != 0)
+  while (begin != NULL)
     {
-      if (func(ref, begin->data) == 0)
+      if (func(ref, begin->data) == EXIT_SUCCESS)
         return (begin->data);
       begin = begin->next;
     }
