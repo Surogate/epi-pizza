@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:15:36 2010 francois1 ancel
-** Last update Fri Apr 16 13:41:32 2010 Florian Chanioux
+** Last update Fri Apr 16 15:15:47 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -54,17 +54,20 @@ t_game		*init_game(int ac, char **av)
 int main(int ac, char **av)
 {
   t_game	*game;
-  /*  t_map	*cas; */
+    t_map	*cas;
   
   game = init_game(ac, av);
-  /*  test_aff_map(game);
-  test_map(game);
-  cas = &(game->map[0][0]);
-  pathfinding(game,cas);
-  test_pathfinding_map(game);
-  reset_pathfinding(game);
-  test_pathfinding_map(game);
-  printf("server port : %i\n", game->server.port);*/
+  if (game->server.debug == 1)
+  {
+    test_aff_map(game);
+    test_map(game);
+    cas = &(game->map[0][0]);
+    pathfinding(game,cas);
+    test_pathfinding_map(game);
+    reset_pathfinding(game);
+    test_pathfinding_map(game);
+    printf("server port : %i\n", game->server.port);
+  }
   if (svr_start(&(game->server)) == EXIT_FAILURE)
      perror("svr start error");
   free_map(game);
