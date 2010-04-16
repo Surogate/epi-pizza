@@ -64,6 +64,7 @@ typedef struct
   t_team	*teamname;
   int		nb_client;
   int		delay;
+  int		debug;
 }		t_server;
 
 # endif		/* !T_SERVER_INCLUDED */
