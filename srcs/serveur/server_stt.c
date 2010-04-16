@@ -80,7 +80,7 @@ int		select_loop(int svr_sock, t_select *slt_par, t_game *game)
 	  if (FD_ISSET(svr_sock, &(slt_par->fd_read)))
 	    if (add_client(&vec, slt_par, svr_sock) == EXIT_FAILURE)
 	      fprintf(stderr, "add client error");
-	  fetch_instr(vec.client, slt_par, game);
+	  fetch_instr(&vec, slt_par, game);
 	}
       end_loop(&vec, slt_par, game, svr_sock);
     }

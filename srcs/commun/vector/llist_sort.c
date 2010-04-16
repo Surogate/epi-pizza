@@ -24,7 +24,7 @@ void		llist_insert_sort(t_vector *vec, void *strct, int (*sort_fct)())
 
   tmp = vec->start;
   i = 0;
-  while (sort_fct(tmp->strct, strct))
+  while (tmp && (tmp->strct) && !sort_fct(tmp->strct, strct))
     {
       tmp = tmp->nxt;
       ++i;
@@ -51,7 +51,7 @@ int		llist_find_pos(t_vector *vec, void *strct, int (*find_fct)())
 
   tmp = vec->start;
   i = 0;
-  while (!find_fct(tmp->strct, strct))
+  while (tmp && (tmp->strct) && !find_fct(tmp->strct, strct))
     {
       tmp = tmp->nxt;
       ++i;
