@@ -54,6 +54,8 @@ int		create_kick(t_svr_vector *vec, int player_id)
       pak->ac = 0;
       pak->ac_rep = 0;
       action->insert_sort(action, pak, sort_duration);
+      llist_display(vec->action, debug_packet);
+      printf("kick create\n");
       return (EXIT_SUCCESS);
     }
   fprintf(stderr, "kick create fail\n");
