@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Thu Apr 15 16:49:21 2010 pierre1 boutbel
-** Last update Thu Apr 15 17:10:35 2010 pierre1 boutbel
+** Last update Fri Apr 16 17:13:14 2010 pierre1 boutbel
 */
 
 #include	<stdlib.h>
@@ -24,10 +24,7 @@ int		count_player(t_game *game, int num_team)
   count = 0;
   list = game->player;
   if (list == NULL)
-    {
-      printf("Count : %i\n", count);
-      return (0);
-    }
+    return (0);
   while (list != NULL)
     {
       pl = (t_player*)list->data;

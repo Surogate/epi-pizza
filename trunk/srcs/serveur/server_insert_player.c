@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Apr 13 12:03:06 2010 Florian Chanioux
-** Last update Fri Apr 16 09:34:44 2010 pierre1 boutbel
+** Last update Fri Apr 16 18:30:23 2010 pierre1 boutbel
 */
 
 #include <sys/time.h>
@@ -75,19 +75,16 @@ int		find_player(t_player *ref, t_player *data)
   return (0);
 }
 
-t_player	*rm_player(t_game *game, t_packet *packet)
+t_player	*rm_player(t_game *game, int id_player)
 {
   t_player	*player;
-  /*  struct s_map	*cas; */
+  int		i;
 
-  srand(time(NULL));
-
-  /*
-  cas = &(game->map[y][x]);
-  player->pos = cas;
-  */
-
-  player = (t_player *)my_l_find(game->player, packet, find_player);
+  player = (t_player *)my_l_find(game->player, &id_player, find_player);
+  i = -1;
+  while (++i != RESS_NUM)
+    player->pos->cas.ress[i] = player->pos->cas.ress[i] + player->ress[i];
+  player->pos->cas.player = my_l_rm(player->pos->cas.player ,player, find_player);
   game->player = my_l_rm(game->player, player, find_player);
   supp_ress(game);
   return (player);

@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Fri Apr 16 09:28:58 2010 pierre1 boutbel
+## Last update Fri Apr 16 17:09:08 2010 pierre1 boutbel
 ##
 
 STAG		= $(shell uname -s)
@@ -48,6 +48,7 @@ SRC_S		= $(DIR_SRC_S)main.c			\
 		$(DIR_SRC_S)server_debug.c		\
 		$(DIR_SRC_S)server_ress.c		\
 		$(DIR_SRC_S)server_born.c		\
+		$(DIR_SRC_S)server_ending.c		\
 		$(DIR_SRC_S)response.c			\
 		$(DIR_SRC_S)instruction.c		\
 		$(DIR_SRC_S)jeu/hatch.c			\
