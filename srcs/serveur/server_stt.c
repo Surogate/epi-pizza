@@ -94,7 +94,7 @@ int		svr_start(t_game *game)
   int		result;
   t_select	slt_par;
 
-  /*  svr_sock = socket(PF_INET, SOCK_STREAM, 0);*/
+  /*svr_sock = socket(PF_INET, SOCK_STREAM, 0);*/
   svr_sock = socket(AF_INET, SOCK_STREAM, 0);
 
   if (svr_sock > 0)

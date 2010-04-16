@@ -51,8 +51,8 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
       if (!cli->team)
 	{
 	  delete_kick(vec, cli->sock);
-	  result = authent(game, cli->packet + cli->cons);
-	  if (!result)
+	  cli->team = authent(game, cli->packet + cli->cons);
+	  if (!cli->team)
 	    create_kick(vec, cli->sock);
 	}
       /*

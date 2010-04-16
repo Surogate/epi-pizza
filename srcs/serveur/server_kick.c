@@ -29,6 +29,7 @@
 #include "server_action.h"
 #include "server_fct.h"
 #include "server_kick.h"
+#include "server_debug.h"
 
 int		find_kick_fct(t_packet *in, int *player_id)
 {
@@ -86,5 +87,9 @@ void		delete_kick(t_svr_vector *vec, int player_id)
 
   action = vec->action;
   while ((pos = action->find_pos(action, &player_id, find_kick_fct)) >= 0)
-    action->erase(action, pos, free);
+    {
+      fprintf(stderr, "delete kick at %i\n", pos);
+      action->erase(action, pos, free);
+    }
+  llist_display(vec->action, debug_packet);
 }
