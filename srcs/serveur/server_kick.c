@@ -76,6 +76,7 @@ int		server_kick(t_svr_vector *vec, t_select *slt_par, int player_id)
       FD_CLR(player_id, &(slt_par->fd_read));
       client->erase(client, pos, free_client);
       delete_kick(vec, player_id);
+      delete_eat(vec, player_id);
       return (EXIT_SUCCESS);
     }
   fprintf(stderr, "player %i unknow", player_id);

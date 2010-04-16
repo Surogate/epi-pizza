@@ -55,6 +55,8 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	  cli->team = authent(game, cli->packet + cli->cons);
 	  if (!cli->team)
 	    create_kick(vec, cli->sock);
+	  else if (cli->team > 0)
+	    create_eat(vec, cli->sock);
 	  return_packet(cli->packet + cli->cons);
 	  free_packet(cli);
 	}

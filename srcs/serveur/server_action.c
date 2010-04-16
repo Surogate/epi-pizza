@@ -71,9 +71,7 @@ int			execute_action(t_svr_vector *vec, t_game *game,
 	  if (tmp->type == 1)
 	    server_kick(vec, slt_par, tmp->player_id);
 	  if (tmp->type == 2)
-	    {
-	      /* le player mange */
-	    }
+	    server_eat(vec, slt_par, tmp->player_id, game);
 	}
     }
   return (EXIT_SUCCESS);

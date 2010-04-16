@@ -54,7 +54,6 @@ static void		init_vector(t_svr_vector *vec)
 static void	end_loop(t_svr_vector *vec, t_select *slt_par, 
 			 t_game *game, int svr_sock)
 {
-  printf("######  select loop #######\n");
   execute_action(vec, game, slt_par);
   init_svr_par(slt_par, vec->client, svr_sock);
   init_timeout(vec, slt_par);
@@ -95,9 +94,7 @@ int		svr_start(t_game *game)
   int		result;
   t_select	slt_par;
 
-  /*svr_sock = socket(PF_INET, SOCK_STREAM, 0);*/
   svr_sock = socket(AF_INET, SOCK_STREAM, 0);
-
   if (svr_sock > 0)
     {
       signal(SIGINT, signal_handler);
