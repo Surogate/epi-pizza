@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr  9 14:51:20 2010 Florian Chanioux
-** Last update Fri Apr 16 13:38:28 2010 Florian Chanioux
+** Last update Fri Apr 16 14:38:59 2010 Florian Chanioux
 */
 
 #include <stdlib.h>
@@ -18,8 +18,9 @@
 #include "t_packet.h"
 #include "server.h"
 
-void		broadcast(t_packet *packet, t_player *player)
+void		broadcast(t_packet *packet, t_player *player, t_game *game)
 {
+  pathfinding(game, player);
   packet = packet;
   player = player;
 }

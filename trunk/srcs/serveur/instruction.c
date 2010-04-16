@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Tue Apr  6 15:01:49 2010 Florian Chanioux
-** Last update Thu Apr 15 16:52:03 2010 pierre1 boutbel
+** Last update Fri Apr 16 14:38:01 2010 Florian Chanioux
 */
 
 #include <sys/time.h>
@@ -53,7 +53,7 @@ void		treatment_intr(t_game *game, t_packet *packet)
   player = (t_player *)my_l_find(game->player, packet, find_elem);
   while (++i < NB_INST)
     if (!strcmp(packet->av[0], tab_instr[i].inst))
-      tab_instr[i].ptr_func(packet, player);
+      tab_instr[i].ptr_func(packet, player, game);
   if (!strcmp(packet->av[0], "fork"))
     do_fork(game, player);
 }
@@ -91,7 +91,8 @@ int		authent(t_game *game, t_packet *packet)
 	  packet->duration = 0;
 	  packet->response = malloc(sizeof(*(packet->response)));
 	  if (packet->response)
-	    return (fill_response_auth(packet->response, packet->player_id, num, game));
+	    return (fill_response_auth(packet->response,
+				       packet->player_id, num, game));
 	}
       tmp = tmp->next;
       i++;
