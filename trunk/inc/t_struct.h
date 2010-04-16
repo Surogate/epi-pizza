@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:24 2010 francois1 ancel
-** Last update Thu Apr 15 17:48:45 2010 Florian Chanioux
+** Last update Fri Apr 16 13:37:51 2010 Florian Chanioux
 */
 
 #ifndef		T_STRUCT_INCLUDED
@@ -49,12 +49,12 @@ typedef struct
 # ifndef	T_SERVER_INCLUDED
 #  define	T_SERVER_INCLUDED
 
-typedef struct		s_team
+typedef struct	s_team
 {
-  char			*team;
-  int			lim;
-  struct s_team		*next;
-}			t_team;
+  char		*team;
+  int		lim;
+  struct s_team	*next;
+}		t_team;
 
 typedef struct
 {
@@ -68,12 +68,12 @@ typedef struct
 
 # endif		/* !T_SERVER_INCLUDED */
 
-typedef struct		s_opt
+typedef struct	s_opt
 {
-  char			*option;
-  int			value;
-  t_team		*team;
-}			t_opt;
+  char		*option;
+  int		value;
+  t_team	*team;
+}		t_opt;
 
 
 typedef struct
