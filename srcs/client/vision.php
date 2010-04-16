@@ -11,7 +11,7 @@ function clean(&$str)
 	echo "CLEAN \n";
 	$str = str_replace("{", "", $str);
 	$str = str_replace("}", "", $str);
-	$str = str_replace("\n", "", $str);
+	$str = str_replace("\n", " ", $str);
 }
 
 function what_see($around, $player)

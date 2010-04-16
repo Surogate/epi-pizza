@@ -18,6 +18,7 @@ function init_player($x, $y, $sock, $name)
 	$player['size_x'] = 0;
 	$player['size_y'] = 0;
 	$player['socket'] = $sock;
+	echo "init socket = " . $sock . "\n";
 	$player['send'] = "";
 	$player['flag'] = 0;
 	return ($player);
