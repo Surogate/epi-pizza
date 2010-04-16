@@ -54,7 +54,7 @@ static void		init_vector(t_svr_vector *vec)
 static void	end_loop(t_svr_vector *vec, t_select *slt_par, 
 			 t_game *game, int svr_sock)
 {
-  printf("######  select loop\n #######");
+  printf("######  select loop #######\n");
   execute_action(vec, game, slt_par);
   init_svr_par(slt_par, vec->client, svr_sock);
   init_timeout(vec, slt_par);
@@ -112,6 +112,6 @@ int		svr_start(t_game *game)
 	}
       return (result);
     }
-  fprintf(stderr, "socket crexation error\n");
+  fprintf(stderr, "socket creation error\n");
   return (EXIT_FAILURE);
 }
