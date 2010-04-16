@@ -73,7 +73,7 @@ int		select_loop(int svr_sock, t_select *slt_par, t_game *game)
       if (err < 0)
 	{
 	  if (errno == EINTR)
-	    return (EXIT_SUCCESS);
+	    break;
 	  return (EXIT_FAILURE);
 	}
       if (err > 0)
@@ -85,8 +85,9 @@ int		select_loop(int svr_sock, t_select *slt_par, t_game *game)
 	}
       end_loop(&vec, slt_par, game, svr_sock);
     }
-  close_client(vec.client, slt_par);
-  return (EXIT_SUCCESS);}
+  close_client(&vec, slt_par);
+  return (EXIT_SUCCESS);
+}
 
 int		svr_start(t_game *game)
 {
