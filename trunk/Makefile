@@ -44,6 +44,7 @@ SRC_S		= $(DIR_SRC_S)main.c			\
 		$(DIR_SRC_S)server_kick.c		\
 		$(DIR_SRC_S)server_insert_player.c	\
 		$(DIR_SRC_S)server_ini.c		\
+		$(DIR_SRC_S)server_debug.c		\
 		$(DIR_SRC_S)server_ress.c		\
 		$(DIR_SRC_S)server_born.c		\
 		$(DIR_SRC_S)response.c			\

@@ -53,9 +53,7 @@ int			init_svr_par(t_select *slt_par,
 				     t_vector *client, int svr_sock)
 {
   t_client		*tmp;
-  struct timeval	ac_time;
 
-  gettimeofday(&ac_time, NULL);
   FD_SET(svr_sock, &(slt_par->fd_read));
   slt_par->fd_max = svr_sock;
   while ((tmp = (t_client *)client->getnxts(client)) != NULL)
@@ -68,23 +66,30 @@ int			init_svr_par(t_select *slt_par,
   return (EXIT_SUCCESS);
 }
 
-void		init_timeout(t_svr_vector *vec, t_select *slt)
+void			init_timeout(t_svr_vector *vec, t_select *slt)
 {
-  t_vector *action;
-  t_packet *pak;
+  t_vector		*action;
+  t_packet		*pak;
+  unsigned int		end;
+  struct timeval	ac_time;
 
+  gettimeofday(&ac_time, NULL);
   action = vec->action;
   slt->timeout.tv_sec = 0;
   slt->timeout.tv_usec = 0;
   slt->time = NULL;
   while ((pak = action->getnxts(action)) != NULL)
     {
+      debug_packet(pak);
+      end = (pak->time.tv_sec + pak->duration) - ac_time.tv_sec;
       if (slt->time == NULL)
 	{
-	  slt->timeout.tv_sec = pak->time.tv_sec;
 	  slt->time = &(slt->timeout);
+	  slt->time->tv_sec = end;
 	}
-      else if (pak->time.tv_sec <= slt->timeout.tv_sec)
-	slt->timeout.tv_sec = pak->time.tv_sec;
+      else if (end < slt->time->tv_sec)
+	slt->time->tv_sec = end;
     }
+  if (slt->time)
+    fprintf(stderr, "timeout value %i\n", (int)slt->time->tv_sec);
 }

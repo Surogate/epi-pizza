@@ -50,6 +50,8 @@ int		create_kick(t_svr_vector *vec, int player_id)
       pak->type = 1;
       gettimeofday(&(pak->time), NULL);
       pak->duration = 3;
+      pak->ac = 0;
+      pak->ac_rep = 0;
       action->insert_sort(action, pak, sort_duration);
       return (EXIT_SUCCESS);
     }
