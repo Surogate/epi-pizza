@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Fri Apr 16 09:31:52 2010 pierre1 boutbel
-** Last update Fri Apr 16 09:50:19 2010 pierre1 boutbel
+** Last update Fri Apr 16 15:43:24 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -29,7 +29,7 @@ void		player_born(t_game *game, int id_player, int team)
     init_player(game, id_player, team);
   else
     {
-      pl = my_l_find(game->player, team, find_player);
+      pl = my_l_find(game->player, &team, find_player);
       if (pl == NULL)
 	init_player(game, id_player, team);
       else
