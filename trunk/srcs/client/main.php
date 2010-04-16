@@ -12,12 +12,18 @@ require_once 'elevation.php';
 
 function main_loop($player)
 	{
+		$i = 0;
 		while (1)
 		{
+			echo "player send = " . $player['send'] . "\n";
+			echo "fd read = " . $read[0] . "\n";
 			$read   = array($player['socket']);
-			echo "player['send'] = " . $player['send'] . "\n";
+			echo "fd read = " . $read[0] . "\n";
 			if ($player['send'] != "")
-				$write  = array($player['socket']);
+				{
+					$write  = array($player['socket']);
+					echo "fd write = " . $write[0] . "\n";
+				}
 			else
 				$write  = array();
 			$except = NULL;
@@ -30,7 +36,22 @@ function main_loop($player)
 						to_read($value, &$player);
 					foreach ($write as $val)
 						to_write($val, &$player);
-				}		
+				}
+			else
+				{
+					echo "J'ATTENDS : ";
+					echo $num_changed_sockets . "\n";
+					/*
+					echo "i = " . $i . "\n";
+					$i++;
+					if ($i == 5)
+						{
+							$player['send'] = "RETOURNE \n";
+						}
+					if ($i == 50)
+						while (1);
+					*/
+				}
 		}
 
 	}
