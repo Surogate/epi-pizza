@@ -30,6 +30,7 @@
 #include "t_packet.h"
 #include "t_struct.h"
 #include "t_svr_stc.h"
+#include "server_debug.h"
 
 int			init_svr(int sock, t_server *svr, t_select *slt_par)
 {

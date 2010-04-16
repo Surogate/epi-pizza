@@ -54,7 +54,7 @@ t_game		*init_game(int ac, char **av)
 int main(int ac, char **av)
 {
   t_game	*game;
-  t_map	*cas;
+  /*  t_map	*cas; */
   
   game = init_game(ac, av);
   /*  test_aff_map(game);
