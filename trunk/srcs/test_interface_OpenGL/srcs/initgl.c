@@ -1,11 +1,11 @@
 /*
-** glmain.c for  in /home/Ayden/Epitech/Projet/Zappy/srcs/test_interface_OpenGL
+** initgl.c for  in /home/Ayden/Epitech/Projet/Zappy/srcs/test_interface_OpenGL
 ** 
 ** Made by Florian Chanioux
 ** Login   <chanio_f@epitech.net>
 ** 
-** Started on  Wed Apr 14 14:36:35 2010 Florian Chanioux
-** Last update Fri Apr 16 18:31:39 2010 Florian Chanioux
+** Started on  Fri Apr 16 18:32:28 2010 Florian Chanioux
+** Last update Fri Apr 16 18:32:30 2010 Florian Chanioux
 */
 
 #include <stdio.h>

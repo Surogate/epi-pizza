@@ -5,17 +5,28 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Fri Apr 16 16:00:52 2010 Florian Chanioux
+** Last update Fri Apr 16 18:17:30 2010 Florian Chanioux
 */
-#include	<SDL/SDL.h>
-#include	<SDL/SDL_ttf.h>
-#include	<stdlib.h>
-#include	<stdio.h>
-#include	<unistd.h>
-#include	<sys/types.h>
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+#ifdef __APPLE__
+#include "SDL.h"
+#include <GLUT/GLUT.h>
+#else
+#include <SDL/SDL.h>
+#include <SDL/SDL_ttf.h>
+#include <GL/glu.h>
+#include <GL/gl.h>
+#endif
+
 #include	"define.h"
 #include	"struct.h"
-#include	"proto.h"
 
 int		main(void)
 {
@@ -23,36 +34,12 @@ int		main(void)
   int		i;
 
   init_game(&game);
-  initAttributes();
+  initAttributes(&game);
+  SDL_ShowCursor(1);
   /* createSurface(0); Create GL context */
   printAttributes();
   initGL();
   mainloop(&game);
   SDL_Quit();
-
-  /*
-  while (1)
-  {
-    if (SDL_PollEvent(&game.event))
-    {
-      i = 0;
-      while (event_type[i].type)
-      {
-	if (game.event.type == event_type[i].type)
-	  event_type[i].func(&game);
-	i++;
-      }
-    }
-    SDL_FillRect(game.screen, NULL,
-		 SDL_MapRGB(game.screen->format, 0, 0, 0));
-    display_map(&game);
-    display_mouse(&game);
-    if (SDL_Flip(game.screen) == -1)
-    {
-      printf("Refresh fail\n");
-      exit(EXIT_FAILURE);
-    }
-  }
-  */
   return (EXIT_SUCCESS);
 }

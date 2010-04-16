@@ -5,17 +5,27 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Fri Apr 16 16:01:02 2010 Florian Chanioux
+** Last update Fri Apr 16 18:20:07 2010 Florian Chanioux
 */
-#include	<SDL/SDL.h>
-#include	<SDL/SDL_ttf.h>
-#include	<stdlib.h>
-#include	<stdio.h>
-#include	<unistd.h>
-#include	<sys/types.h>
+
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+#ifdef __APPLE__
+#include "SDL.h"
+#include <GLUT/GLUT.h>
+#else
+#include <SDL/SDL.h>
+#include <SDL/SDL_ttf.h>
+#include <GL/glu.h>
+#include <GL/gl.h>
+#endif
+
 #include	"define.h"
 #include	"struct.h"
-
 void		display_mouse(t_game *game)
 {
   unsigned int	co;
@@ -51,8 +61,7 @@ void		mouse_move(t_game *game)
 /* 	     game->info.pos.y, */
 /*  	     game->info.pos.x / CASE_W, */
 /*  	     game->info.pos.y / CASE_H); */
-      /*--------FIN DEBUG----------*/
-      game->mouse.move.x = game->event.button.x;
+      /*--------FIN DEBUG----------*/      game->mouse.move.x = game->event.button.x;
       game->mouse.move.y = game->event.button.y;
     }
 }

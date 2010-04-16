@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Mon Apr  5 00:06:03 2010 frederic1 pierronnet
+** Last update Fri Apr 16 17:32:21 2010 Florian Chanioux
 */
 
 #ifndef		STRUCT_H
@@ -58,10 +58,16 @@ typedef struct	s_map
   SDL_Surface	*fond;
 }		t_map;
 
+typedef struct
+{
+  GLuint	floor;
+}		t_texture;
+
 typedef struct	s_game
 {
   SDL_Event	event;
   SDL_Surface	*screen;
+  t_texture	texture;
   t_info	info;
   t_mouse	mouse;
   t_map		map;
