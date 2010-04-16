@@ -38,12 +38,14 @@ void		llist_des(t_vector *vec, void strct_des())
   while (start)
     {
       nxttmp = start->nxt;
-      strct_des(start->strct);
+      if (start->strct)
+	strct_des(start->strct);
       free(start);
       start = nxttmp;
     }
   vec->start = NULL;
   vec->size = 0;
+  free(vec);
 }
 
 void		*llist_del(t_vector *vec, int at)

@@ -81,13 +81,18 @@ void		free_client(t_client *cli)
   free (cli);
 }
 
-int		close_client(t_vector *client, t_select *slt_par)
+int		close_client(t_svr_vector *vec, t_select *slt_par)
 {
+  t_vector	*client;
+  t_vector	*action;
   t_client	*tmp;
 
+  client = vec->client;
+  action = vec->action;
   while ((tmp = (t_client *)client->getnxts(client)) != NULL)
     FD_CLR(tmp->sock, &(slt_par->fd_read));
   client->destruc(client, free_client);
+  action->destruc(action, free);
   return (EXIT_SUCCESS);
 }
 
