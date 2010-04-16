@@ -1,4 +1,4 @@
-B1;2202;0c<?php
+<?php
 function	pars_init_tab()
 {
   $pars[0] = "-n";
@@ -94,5 +94,5 @@ function	pars_main($argc, $argv)
   return ($par);
 }
 
-pars_main($argc, $argv);
+
 ?>
