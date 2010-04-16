@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Fri Apr 16 17:32:21 2010 Florian Chanioux
+** Last update Fri Apr 16 20:31:22 2010 Florian Chanioux
 */
 
 #ifndef		STRUCT_H
@@ -14,7 +14,7 @@
 typedef struct	s_event
 {
   Uint8		type;
-  void		(*func)();
+  int		(*func)();
 }		t_event;
 
 typedef struct	s_pos

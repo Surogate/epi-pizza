@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 16:46:50 2010 Florian Chanioux
-** Last update Fri Apr 16 17:21:01 2010 Florian Chanioux
+** Last update Fri Apr 16 20:01:50 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -43,23 +43,11 @@ void make_calllistes()
   glEndList();
 }
 
-void draw_map(int *table, t_game *game)
+void draw_map(t_game *game)
 {
-  int cx, cy, cz, px, py, pz;
   int	h;
   int	w;
 
-  h = game->info.pos.y / CASE_H + game->info.pos.y % CASE_H;
-  w = game->info.pos.x / CASE_W + game->info.pos.x % CASE_W;
-  cx = h;
-  cy = w;
-  cz = 70;
-  px = h + CASE_H * 2;
-  py = w + CASE_W * 2;
-  pz = 0;
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
-  camera(cx, cy, cz, px, py, pz, table);
   h = -2;
   while (++h < MAP_CH)
   {

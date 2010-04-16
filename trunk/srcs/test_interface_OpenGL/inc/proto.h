@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Mon Apr  5 00:06:03 2010 frederic1 pierronnet
+** Last update Fri Apr 16 20:36:10 2010 Florian Chanioux
 */
 
 #ifndef		PROTO_H
@@ -13,15 +13,15 @@
 
 /*game func*/
 void		init_game(t_game *game);
-void		exit_func();
+int		exit_func();
 
 /*key func*/
-void		key_func(t_game *game);
+int		key_func(t_game *game);
 
 /*mouse func*/
-void		mouse_move(t_game *game);
-void		mouse_up(t_game *game);
-void		mouse_down(t_game *game);
+int		mouse_move(t_game *game);
+int		mouse_up(t_game *game);
+int		mouse_down(t_game *game);
 
 /*xSDL*/
 void		xSDL_Flip(SDL_Surface *screen);

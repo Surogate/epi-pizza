@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Fri Apr 16 18:20:07 2010 Florian Chanioux
+** Last update Fri Apr 16 20:35:58 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -26,6 +26,7 @@
 
 #include	"define.h"
 #include	"struct.h"
+
 void		display_mouse(t_game *game)
 {
   unsigned int	co;
@@ -43,7 +44,7 @@ void		display_mouse(t_game *game)
 		  NULL, game->screen, &pos);
 }
 
-void		mouse_move(t_game *game)
+int		mouse_move(t_game *game)
 {
   if (game->mouse.clicked)
     {
@@ -64,9 +65,10 @@ void		mouse_move(t_game *game)
       /*--------FIN DEBUG----------*/      game->mouse.move.x = game->event.button.x;
       game->mouse.move.y = game->event.button.y;
     }
+  return (1);
 }
 
-void		mouse_up(t_game *game)
+int		mouse_up(t_game *game)
 {
   if (game->event.button.button == SDL_BUTTON_LEFT)
     {
@@ -77,9 +79,10 @@ void		mouse_up(t_game *game)
 	     game->info.pos.y / CASE_H);
       game->mouse.clicked = 0;
     }
+  return (1);
 }
 
-void		mouse_down(t_game *game)
+int		mouse_down(t_game *game)
 {
   if (game->event.button.button == SDL_BUTTON_LEFT)
     {
@@ -92,4 +95,5 @@ void		mouse_down(t_game *game)
     printf("case selected : x = [%d], y = [%d]\n",
 	   (game->info.pos.x + game->event.button.x),
 	   (game->info.pos.y + (MAP_CH * CASE_H - game->event.button.y)));
+  return (1);
 }
