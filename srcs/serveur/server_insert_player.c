@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Apr 13 12:03:06 2010 Florian Chanioux
-** Last update Tue Apr 13 23:59:26 2010 pierre1 boutbel
+** Last update Fri Apr 16 09:34:44 2010 pierre1 boutbel
 */
 
 #include <sys/time.h>
@@ -51,6 +51,7 @@ t_player	*init_player(t_game *game, int player_id, int team)
   player->pos = cas;
   cas->cas.player = my_l_insert(cas->cas.player, player);
   game->player = my_l_insert(game->player, player);
+  generate_ress(game);
   return (player);
 }
 
@@ -88,6 +89,7 @@ t_player	*rm_player(t_game *game, t_packet *packet)
 
   player = (t_player *)my_l_find(game->player, packet, find_player);
   game->player = my_l_rm(game->player, player, find_player);
+  supp_ress(game);
   return (player);
 }
 

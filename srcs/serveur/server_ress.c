@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Wed Apr 14 16:37:56 2010 pierre1 boutbel
-** Last update Thu Apr 15 10:49:05 2010 pierre1 boutbel
+** Last update Thu Apr 15 16:27:05 2010 pierre1 boutbel
 */
 
 #include	<unistd.h>
@@ -77,12 +77,12 @@ void		generate_bouffe(t_game *game)
     contient la ressource.
   Mais bon... c'est "un peu" lourd a mettre en place pour pas grand chose...
 */
+
 static t_map	*find_supp_case(t_game *game, int *i)
 {
   t_map		*cur_case;
   int		lim_try;
   int		y;
-
   
   y = 0;
   cur_case = find_case(game);
@@ -97,6 +97,22 @@ static t_map	*find_supp_case(t_game *game, int *i)
 	}
     }
   return (cur_case);
+
+
+  /*
+  double	lim;
+  double	prob;
+  double	perc;
+
+  perc = 100;
+  prob = (double)game->server.height * (double)game->server.width;
+  lim = perc / prob;
+  while (lim <= 1)
+    {
+      lim = lim *10;
+      perc = perc * 10;
+    }
+  */
 }
 
 void		supp_ress(t_game *game)
@@ -105,6 +121,19 @@ void		supp_ress(t_game *game)
   int		nb_ress[RESS_NUM] = {NB_RESS};
   t_map		*cur_case;
   int		i;
+
+  /*
+  double	lim;
+  double	perc;
+
+  perc = 100;
+  lim = perc / (double)game->server.height * (double)game->server.width;
+  while (lim <= 1)
+    {
+      lim = lim *10;
+      perc = perc * 10;
+    }
+  */
 
   i = 0;
   nb_ress_total = 0;

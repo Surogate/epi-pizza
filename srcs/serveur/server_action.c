@@ -5,13 +5,17 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Wed Apr 14 15:17:07 2010 francois1 ancel
-** Last update Wed Apr 14 15:17:07 2010 francois1 ancel
+** Last update Fri Apr 16 09:30:14 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/time.h>
+
+#if defined (__FreeBSD__)
+# include <sys/select.h>
+#endif
 
 #include "define.h"
 #include "my_list.h"
