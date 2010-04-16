@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:10 2010 francois1 ancel
-** Last update Wed Apr 14 16:54:34 2010 pierre1 boutbel
+** Last update Fri Apr 16 18:38:05 2010 pierre1 boutbel
 */
 
 #ifndef DEFINE_INCLUDED
@@ -15,6 +15,8 @@
 
 
 # define INCANT_NUM	7
+# define MAX_LEVEL	8
+# define NB_WIN		6
 
 # define RESS_NUM	7
 # define MAX_RESS	(8)

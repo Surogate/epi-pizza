@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:15:36 2010 francois1 ancel
-** Last update Fri Apr 16 15:36:21 2010 Florian Chanioux
+** Last update Fri Apr 16 18:50:36 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
@@ -48,6 +48,7 @@ t_game		*init_game(int ac, char **av)
   init_map(&game);
   game.player = NULL;
   game.eggs = NULL;
+  game.state = -1;
   return (&game);
 }
 
@@ -55,7 +56,7 @@ int main(int ac, char **av)
 {
   t_game	*game;
   t_map	*cas;
-    
+
   game = init_game(ac, av);
   if (game->server.debug)
   {

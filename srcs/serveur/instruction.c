@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Tue Apr  6 15:01:49 2010 Florian Chanioux
-** Last update Fri Apr 16 14:38:01 2010 Florian Chanioux
+** Last update Fri Apr 16 17:57:30 2010 pierre1 boutbel
 */
 
 #include <sys/time.h>
@@ -41,8 +41,8 @@ t_inst		tab_instr[NB_INST] =
 int		find_elem(t_packet *ref, t_player *data)
 {
   if (ref->player_id == data->player_id)
-    return (1);
-  return (0);
+    return (EXIT_SUCCESS);
+  return (EXIT_FAILURE);
 }
 
 void		treatment_intr(t_game *game, t_packet *packet)
@@ -57,6 +57,8 @@ void		treatment_intr(t_game *game, t_packet *packet)
       tab_instr[i].ptr_func(packet, player, game);
   if (!strcmp(packet->av[0], "fork"))
     do_fork(game, player);
+  if (!strcmp(packet->av[0], "incant"))
+    is_ending(game);
 }
 
 int		treatment_duration(t_game *game, t_packet *packet)

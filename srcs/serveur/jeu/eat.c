@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Wed Apr 14 13:18:39 2010 pierre1 boutbel
-** Last update Wed Apr 14 13:27:03 2010 pierre1 boutbel
+** Last update Fri Apr 16 18:50:19 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -34,7 +34,7 @@ int		try_eat(t_game *game, int id_player)
     player->ress[0]--;
   else
     {
-      
+      rm_player(game, player->player_id);
       return (EXIT_FAILURE);
     }
   return (EXIT_SUCCESS);

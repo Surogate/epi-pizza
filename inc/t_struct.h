@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:24 2010 francois1 ancel
-** Last update Fri Apr 16 13:37:51 2010 Florian Chanioux
+** Last update Fri Apr 16 18:46:39 2010 pierre1 boutbel
 */
 
 #ifndef		T_STRUCT_INCLUDED
@@ -90,6 +90,7 @@ typedef struct
   struct s_map 	**map;
   t_list	*player;
   t_list	*eggs;
+  int		state;
 }		t_game;
 
 #endif		/* !T_STRUCT_INCLUDED */

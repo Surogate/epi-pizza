@@ -5,9 +5,10 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Fri Apr 16 09:31:52 2010 pierre1 boutbel
-** Last update Fri Apr 16 15:43:24 2010 Florian Chanioux
+** Last update Fri Apr 16 17:59:24 2010 pierre1 boutbel
 */
 
+#include	<stdlib.h>
 #include	<stdio.h>
 
 #include	"define.h"
@@ -17,8 +18,8 @@
 static int	find_player(void *ref, t_player *player)
 {
   if (ref == (t_player *)player->team && player->player_id < 0)
-    return (1);
-  return (0);
+    return (EXIT_SUCCESS);
+  return (EXIT_FAILURE);
 }
 
 void		player_born(t_game *game, int id_player, int team)
