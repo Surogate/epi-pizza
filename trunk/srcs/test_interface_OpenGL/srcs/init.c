@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Thu Apr 15 21:46:22 2010 Florian Chanioux
+** Last update Fri Apr 16 16:00:07 2010 Florian Chanioux
 */
 #include	<SDL/SDL.h>
 #include	<SDL/SDL_ttf.h>
@@ -13,9 +13,11 @@
 #include	<stdio.h>
 #include	<unistd.h>
 #include	<sys/types.h>
-#include	"../includes/define.h"
-#include	"../includes/struct.h"
-#include	"../includes/proto.h"
+
+#include	"define.h"
+#include	"struct.h"
+#include	"proto.h"
+
 # define	FONT_DIR	"./font/MONACO.ttf"
 # define	MFONT_SIZE	7
 # define	FULLSCREEN	0

@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Mon Apr  5 00:06:03 2010 frederic1 pierronnet
+** Last update Fri Apr 16 15:59:25 2010 Florian Chanioux
 */
 #include	<SDL/SDL.h>
 #include	<SDL/SDL_ttf.h>
@@ -13,9 +13,9 @@
 #include	<stdio.h>
 #include	<unistd.h>
 #include	<sys/types.h>
-#include	"../includes/define.h"
-#include	"../includes/struct.h"
-#include	"../includes/proto.h"
+#include	"define.h"
+#include	"struct.h"
+#include	"proto.h"
 
 void		blit_writing(t_game *game, SDL_Rect *pos, char *str)
 {

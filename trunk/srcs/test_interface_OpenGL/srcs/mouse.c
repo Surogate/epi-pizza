@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Thu Apr 15 22:11:47 2010 Florian Chanioux
+** Last update Fri Apr 16 16:01:02 2010 Florian Chanioux
 */
 #include	<SDL/SDL.h>
 #include	<SDL/SDL_ttf.h>
@@ -13,8 +13,8 @@
 #include	<stdio.h>
 #include	<unistd.h>
 #include	<sys/types.h>
-#include	"../includes/define.h"
-#include	"../includes/struct.h"
+#include	"define.h"
+#include	"struct.h"
 
 void		display_mouse(t_game *game)
 {
