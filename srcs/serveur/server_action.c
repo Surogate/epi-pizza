@@ -26,6 +26,8 @@
 #include "t_struct.h"
 #include "t_svr_stc.h"
 #include "server_kick.h"
+#include "server_eat.h"
+#include "server_action.h"
 
 int			sort_duration(t_packet *data, t_packet *strct)
 {

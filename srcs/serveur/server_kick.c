@@ -29,6 +29,7 @@
 #include "server_action.h"
 #include "server_fct.h"
 #include "server_kick.h"
+#include "server_eat.h"
 #include "server_debug.h"
 
 int		find_kick_fct(t_packet *in, int *player_id)
