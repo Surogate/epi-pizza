@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Wed Apr 14 14:36:35 2010 Florian Chanioux
-** Last update Thu Apr 15 23:31:29 2010 Florian Chanioux
+** Last update Fri Apr 16 15:59:51 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -23,9 +23,9 @@
 #include <GL/gl.h>
 #endif
 
-#include	"../includes/define.h"
-#include	"../includes/struct.h"
-#include	"../includes/proto.h"
+#include	"define.h"
+#include	"struct.h"
+#include	"proto.h"
 
 #define WIDTH 800
 #define HEIGTH 600

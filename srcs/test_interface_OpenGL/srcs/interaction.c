@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Wed Apr 14 14:50:42 2010 Florian Chanioux
-** Last update Wed Apr 14 15:30:00 2010 Florian Chanioux
+** Last update Fri Apr 16 16:00:27 2010 Florian Chanioux
 */
 
 
@@ -24,9 +24,9 @@
 #endif
 
 
-#include	"../includes/define.h"
-#include	"../includes/struct.h"
-#include	"../includes/proto.h"
+#include	"define.h"
+#include	"struct.h"
+#include	"proto.h"
 
 t_event		event_type[]=
 {
