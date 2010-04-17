@@ -27,8 +27,8 @@ int		count_player(t_game *game, int num_team)
     return (0);
   while (list != NULL)
     {
-      pl = (t_player*)list->data;
-      if (pl->team == num_team)
+      pl = (t_player *)list->data;
+      if (pl && pl->team == num_team)
 	count++;
       list = list->next;
     }
