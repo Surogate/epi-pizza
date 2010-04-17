@@ -17,7 +17,7 @@
 
 static int	find_player(void *ref, t_player *player)
 {
-  if (ref == (t_player *)player->team && player->player_id < 0)
+  if (player &&(ref == (t_player *)player->team) && (player->player_id < 0))
     return (EXIT_SUCCESS);
   return (EXIT_FAILURE);
 }

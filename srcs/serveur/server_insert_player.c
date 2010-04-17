@@ -70,7 +70,7 @@ t_player	*insert_player(t_game *game, t_player *player,
 
 int		find_player(t_player *ref, t_player *data)
 {
-  if (ref->player_id == data->player_id)
+  if (data && (ref->player_id == data->player_id))
     return (1);
   return (0);
 }
