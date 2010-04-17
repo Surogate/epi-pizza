@@ -12,7 +12,7 @@
 # define SERVER_ACTION_C_INCLUDED
 
 int			sort_duration(t_packet *data, t_packet *strct);
-int			player_id_find(t_packet *data, int *player_id);
+int			player_id_find(t_client *data, int *player_id);
 void			return_packet(t_packet *pak);
 int			execute_action(t_svr_vector *vec, t_game *game, 
 				       t_select *slt_par);

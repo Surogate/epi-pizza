@@ -56,7 +56,7 @@ int		create_kick(t_svr_vector *vec, int player_id, int time)
       pak->ac = 0;
       pak->ac_rep = 0;
       action->insert_sort(action, pak, sort_duration);
-      /* llist_display(vec->action, debug_packet); */
+      llist_display(vec->action, debug_packet);
       printf("=>  kick create  <=\n");
       return (EXIT_SUCCESS);
     }
@@ -70,6 +70,7 @@ int		server_kick(t_svr_vector *vec, t_select *slt_par, int player_id)
   int		pos;
 
   client = vec->client;
+  printf("player_id = %i\n", player_id);
   pos = client->find_pos(client, &player_id, player_id_find);
   if (pos >= 0)
     {
@@ -78,11 +79,10 @@ int		server_kick(t_svr_vector *vec, t_select *slt_par, int player_id)
       FD_CLR(player_id, &(slt_par->fd_read));
       client->erase(client, pos, free_client);
       delete_kick(vec, player_id);
-      delete_eat(vec, player_id);
-      delete_plaction(vec, player_id);
       return (EXIT_SUCCESS);
     }
-  fprintf(stderr, "player %i unknow", player_id);
+  delete_kick(vec, player_id);
+  fprintf(stderr, "player %i unknow\n", player_id);
   return (EXIT_FAILURE);
 }
 
@@ -97,5 +97,5 @@ void		delete_kick(t_svr_vector *vec, int player_id)
       fprintf(stderr, "=>>> delete kick at %i\n", pos);
       action->erase(action, pos, free);
     }
-  /* llist_display(vec->action, debug_packet); */
+  llist_display(vec->action, debug_packet);
 }

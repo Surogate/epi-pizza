@@ -37,9 +37,9 @@ int			sort_duration(t_packet *data, t_packet *strct)
   return (0);
 }
 
-int			player_id_find(t_packet *data, int *player_id)
+int			player_id_find(t_client *data, int *player_id)
 {
-  if (data->player_id == *player_id)
+  if (data->sock == *player_id)
     return (1);
   return (0);
 }

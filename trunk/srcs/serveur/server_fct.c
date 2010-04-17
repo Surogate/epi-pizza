@@ -48,9 +48,10 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 {
   if (client_parse_instr(str, cli) == EXIT_SUCCESS)
     {
-      if (!cli->team)
+      if (!cli->team && cli->auth < 3)
 	{
 	  delete_kick(vec, cli->sock);
+	  ++(cli->auth);
 	  cli->team = authent(game, cli->packet + cli->cons);
 	  if (!cli->team)
 	    create_kick(vec, cli->sock, 3);
@@ -59,14 +60,14 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	  return_packet(cli->packet + cli->cons);
 	  free_packet(cli);
 	}
-      else
+      /*      else
 	{
 	  treatment_duration(game, cli->packet + cli->cons);
-	  /*
+	  
 	  if (cli->used == 1)
 	    create_plaction(vec, cli);
-	  */
-	}
+	 
+	}*/
     }
 }
 
@@ -109,6 +110,9 @@ int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
 	    {
 	      printf("client %i timeout\n", tmp->sock);
 	      FD_CLR(tmp->sock, &(slt_par->fd_read));
+	      delete_eat(vec, tmp->sock);
+	      delete_plaction(vec, tmp->sock);
+	      delete_kick(vec, tmp->sock);
 	      client->erase(client, client->gns_pos, free_client);
 	    }
 	  else if ((readed = cbuf_read(&(tmp->cbuf), check_read)))
