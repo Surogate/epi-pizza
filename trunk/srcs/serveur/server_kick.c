@@ -56,7 +56,7 @@ int		create_kick(t_svr_vector *vec, int player_id, int time)
       pak->ac = 0;
       pak->ac_rep = 0;
       action->insert_sort(action, pak, sort_duration);
-      llist_display(vec->action, debug_packet);
+      /* llist_display(vec->action, debug_packet); */
       printf("=>  kick create  <=\n");
       return (EXIT_SUCCESS);
     }
@@ -97,5 +97,5 @@ void		delete_kick(t_svr_vector *vec, int player_id)
       fprintf(stderr, "=>>> delete kick at %i\n", pos);
       action->erase(action, pos, free);
     }
-  llist_display(vec->action, debug_packet);
+  /* llist_display(vec->action, debug_packet); */
 }
