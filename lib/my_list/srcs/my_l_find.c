@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Oct 20 16:03:31 2009 florian chanioux
-** Last update Fri Apr 16 17:57:57 2010 Florian Chanioux
+** Last update Sat Apr 17 18:13:11 2010 Florian Chanioux
 */
 
 #include <stdlib.h>
@@ -21,6 +21,5 @@ void			*my_l_find(t_list *begin, void *ref, int (*func)())
         return (begin->data);
       begin = begin->next;
     }
-  printf("\n ref not found.\n");
   return (NULL);
 }
