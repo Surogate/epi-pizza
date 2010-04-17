@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 18:32:28 2010 Florian Chanioux
-** Last update Fri Apr 16 20:26:39 2010 Florian Chanioux
+** Last update Sat Apr 17 19:33:30 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -24,9 +24,9 @@
 #include <GL/gl.h>
 #endif
 
-#include	"define.h"
-#include	"struct.h"
-#include	"proto.h"
+#include "define.h"
+#include "struct.h"
+#include "proto.h"
 
 void			initAttributes()
 {
@@ -36,7 +36,7 @@ void			initAttributes()
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, value);
 }
 
-void Init( void)
+static void		Init(void)
 {
 /*
   static float ambient[]= {0.2, 0.2, 0.2, 1.0};
@@ -85,13 +85,13 @@ static void		init_fog(int fog)
 
   if (fog)
   {
-    fogmode = GL_EXP2;
+    fogmode = GL_LINEAR;
     glEnable(GL_FOG);
     glFogi (GL_FOG_MODE, fogmode) ;
     glFogfv(GL_FOG_COLOR, fog_color) ;
     glFogf(GL_FOG_DENSITY, 0.3) ;
-    glFogf(GL_FOG_START, 1.0) ;
-    glFogf(GL_FOG_END, 5.0) ;
+    glFogf(GL_FOG_START, 250.0) ;
+    glFogf(GL_FOG_END, 450.0) ;
     glClearColor(0.5, 0.5, 0.5, 1.0);
   }
 }
@@ -99,7 +99,7 @@ static void		init_fog(int fog)
 void initGL()
 {
   Init();
-  init_fog(0);
+  init_fog(1);
   init_light(1);
   Reshape();
 }
