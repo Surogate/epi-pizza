@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Apr 13 12:03:06 2010 Florian Chanioux
-** Last update Fri Apr 16 18:30:23 2010 pierre1 boutbel
+** Last update Sat Apr 17 16:23:40 2010 pierre1 boutbel
 */
 
 #include <sys/time.h>
@@ -30,7 +30,9 @@ t_player	*create_player(int player_id, int team)
   player->team = team;
   player->dir = 1 + rand() % 3;
   player->pos = NULL;
-  player->ress[(i = 0)] = 10;
+  /*****************************************/
+  player->ress[(i = 0)] = 2;
+  /*****************************************/
   while (++i < RESS_NUM)
     player->ress[i] = 0;
   return (player);
@@ -71,8 +73,8 @@ t_player	*insert_player(t_game *game, t_player *player,
 int		find_player(t_player *ref, t_player *data)
 {
   if (data && (ref->player_id == data->player_id))
-    return (1);
-  return (0);
+    return (EXIT_SUCCESS);
+  return (EXIT_FAILURE);
 }
 
 t_player	*rm_player(t_game *game, int id_player)
@@ -81,17 +83,23 @@ t_player	*rm_player(t_game *game, int id_player)
   int		i;
 
   player = (t_player *)my_l_find(game->player, &id_player, find_player);
-  if (player)
+  printf("Nombre de joueurs : %i\n", my_l_size(game->player));
+  if (player != NULL)
     {
       i = -1;
       while (++i != RESS_NUM)
-	(player->pos)->cas.ress[i] = (player->pos)->cas.ress[i] + player->ress[i];
-      player->pos->cas.player = my_l_rm(player->pos->cas.player ,player, find_player);
+	(player->pos)->cas.ress[i] = (player->pos)->cas.ress[i] +
+	  player->ress[i];
+
+      player->pos->cas.player = my_l_rm(player->pos->cas.player , player,
+					find_player);
+
       game->player = my_l_rm(game->player, player, find_player);
       supp_ress(game);
     }
   else
-    printf("player %i pas trouver\n", id_player);
+      printf("player %i pas trouver\n", id_player);
+  printf("Nombre de joueurs : %i\n", my_l_size(game->player));
   return (player);
 }
 
