@@ -29,6 +29,7 @@
 #include "instruction.h"
 #include "server_action.h"
 #include "server_eat.h"
+#include "server_plaction.h"
 
 static int	check_read(char *str)
 {
@@ -45,9 +46,6 @@ static int	check_read(char *str)
 static void	instr_catch(char *str, t_client *cli, t_game *game,
 			    t_svr_vector *vec)
 {
-  /*  int		i;*/
-  /* int		result; */
-
   if (client_parse_instr(str, cli) == EXIT_SUCCESS)
     {
       if (!cli->team)
@@ -55,24 +53,20 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	  delete_kick(vec, cli->sock);
 	  cli->team = authent(game, cli->packet + cli->cons);
 	  if (!cli->team)
-	    create_kick(vec, cli->sock);
+	    create_kick(vec, cli->sock, 3);
 	  else if (cli->team > 0)
 	    create_eat(vec, cli->sock);
 	  return_packet(cli->packet + cli->cons);
 	  free_packet(cli);
 	}
-      /*
       else
-	result = treatment_duration(game, cli->packet + cli->cons);
-      i = 0;
-      while (i < cli->packet[cli->cons].ac)
 	{
-	  printf("readed : %s\n", cli->packet[cli->cons].av[i]);
-	  i++;
-	  }*/
-      /*if (used == 1)
-	 add le packet dans la list des action
-      */
+	  treatment_duration(game, cli->packet + cli->cons);
+	  /*
+	  if (cli->used == 1)
+	    create_plaction(vec, cli);
+	  */
+	}
     }
 }
 

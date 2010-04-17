@@ -27,6 +27,7 @@
 #include "t_svr_stc.h"
 #include "server_kick.h"
 #include "server_eat.h"
+#include "server_plaction.h"
 #include "server_action.h"
 
 int			sort_duration(t_packet *data, t_packet *strct)
@@ -52,6 +53,17 @@ void			return_packet(t_packet *pak)
     sock_write(pak->response[i].id_player, pak->response[i].mess);
 }
 
+void			delete_action(t_svr_vector *vec, int type, int pos)
+{
+  t_vector		*action;
+
+  action = vec->action;
+  if (!type)
+    action->delete(action, pos);
+  else
+    action->erase(action, pos, free);
+}
+
 int			execute_action(t_svr_vector *vec, t_game *game,
 				       t_select *slt_par)
 {
@@ -67,13 +79,12 @@ int			execute_action(t_svr_vector *vec, t_game *game,
       if ((tmp->time.tv_sec + tmp->duration) <= time.tv_sec)
 	{
 	  if (!tmp->type)
-	    {
-	      /* execute action */
-	    }
+	    exec_plaction(vec, tmp, game);
 	  if (tmp->type == 1)
 	    server_kick(vec, slt_par, tmp->player_id);
 	  if (tmp->type == 2)
 	    server_eat(vec, slt_par, tmp->player_id, game);
+	  delete_action(vec, tmp->type, action->gns_pos);
 	}
     }
   return (EXIT_SUCCESS);

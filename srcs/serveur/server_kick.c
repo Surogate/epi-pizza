@@ -30,6 +30,7 @@
 #include "server_fct.h"
 #include "server_kick.h"
 #include "server_eat.h"
+#include "server_plaction.h"
 #include "server_debug.h"
 
 int		find_kick_fct(t_packet *in, int *player_id)
@@ -39,7 +40,7 @@ int		find_kick_fct(t_packet *in, int *player_id)
   return (0);
 }
 
-int		create_kick(t_svr_vector *vec, int player_id)
+int		create_kick(t_svr_vector *vec, int player_id, int time)
 {
   t_packet	*pak;
   t_vector	*action;
@@ -51,7 +52,7 @@ int		create_kick(t_svr_vector *vec, int player_id)
       pak->player_id = player_id;
       pak->type = 1;
       gettimeofday(&(pak->time), NULL);
-      pak->duration = 3;
+      pak->duration = time;
       pak->ac = 0;
       pak->ac_rep = 0;
       action->insert_sort(action, pak, sort_duration);
@@ -76,8 +77,8 @@ int		server_kick(t_svr_vector *vec, t_select *slt_par, int player_id)
       printf("player %i ass kicked\n", player_id);
       FD_CLR(player_id, &(slt_par->fd_read));
       client->erase(client, pos, free_client);
-      delete_kick(vec, player_id);
       delete_eat(vec, player_id);
+      delete_plaction(vec, player_id);
       return (EXIT_SUCCESS);
     }
   fprintf(stderr, "player %i unknow", player_id);
