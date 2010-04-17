@@ -52,6 +52,7 @@ void		treatment_intr(t_game *game, t_packet *packet)
 
   i = -1;
   player = (t_player *)my_l_find(game->player, packet, find_elem);
+  printf("%s\n", packet->av[0]);
   while (++i < NB_INST)
     if (!strcmp(packet->av[0], tab_instr[i].inst))
       tab_instr[i].ptr_func(packet, player, game);
@@ -66,12 +67,15 @@ int		treatment_duration(t_game *game, t_packet *packet)
   int		i;
 
   i = -1;
+  printf("%s\n", packet->av[0]);
+  /*
   while (++i < NB_INST)
     if (!strcmp(packet->av[0], tab_instr[i].inst))
     {
-      packet->duration = tab_instr[i].delay * game->server.delay;
+      packet->duration = tab_instr[i].delay;
       return (EXIT_SUCCESS);
     }
+  */
   packet->duration = 0;
   return (EXIT_FAILURE);
 }

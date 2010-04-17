@@ -19,6 +19,7 @@ typedef struct
 
 typedef struct
 {
+  void			*player;
   int			player_id;
   int			type;
   int			ac;

@@ -66,7 +66,7 @@ int			add_client(t_svr_vector *vec, t_select *slt_par,
   if (tmp->sock > slt_par->fd_max)
     slt_par->fd_max = tmp->sock;
   sock_write(tmp->sock, "BIENVENUE\n");
-  create_kick(vec, tmp->sock);
+  create_kick(vec, tmp->sock, 3);
   return (EXIT_SUCCESS);
 }
 
@@ -106,18 +106,28 @@ int			client_parse_instr(char *str, t_client *cli)
   if (cli->used >= 10)
     return (EXIT_FAILURE);
   pak = cli->packet + ((cli->cons + cli->used) % 10);
-  if (gettimeofday(&(pak->time), NULL) < 0)
-    return (EXIT_FAILURE);
   if (parse_word(str, pak) == EXIT_FAILURE)
     return (EXIT_FAILURE);
   pak->player_id = cli->sock;
+  pak->player = cli;
+  pak->type = 0;
   ++(cli->used);
   return (EXIT_SUCCESS);
 }
 
 void			free_packet(t_client *cli)
 {
-  free(cli->packet[cli->cons].av[0]);
+  int			i;
+  t_packet		*pak;
+
+  pak = cli->packet + cli->cons;
+  i = -1;
+  free(pak->av[0]);
+  while (++i < pak->ac_rep)
+    {
+      free(pak->response[i].mess);
+      free(pak->response + i);
+    }
   --(cli->used);
   cli->cons = (cli->cons + 1) % 10;
 }

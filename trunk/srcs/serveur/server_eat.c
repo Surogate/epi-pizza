@@ -72,7 +72,6 @@ int		server_eat(t_svr_vector *vec, t_select *slt_par,
       server_kick(vec, slt_par, player_id);
       return (EXIT_FAILURE);
     }
-  delete_eat(vec, player_id);
   create_eat(vec, player_id);
   return (EXIT_SUCCESS);
 }
