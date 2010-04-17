@@ -15,69 +15,108 @@ MTAG		!= uname -m
 
 TAG		= $(MTAG)-$(STAG)
 
-############### PROJECT
+
+############### PROJECT ###############
 
 NAME		= zappy
 
-############### DIRECTORIES
+
+############### DIRECTORIES ###############
 
 DIR_SRC		= ./srcs/
 DIR_INC		= ./inc/
 DIR_LIB		= ./lib/
 
-############### FILES
 
-SRC		= $(DIR_SRC)main.c		\
-		  $(DIR_SRC)xsdl.c		\
-		  $(DIR_SRC)key.c		\
-		  $(DIR_SRC)init.c		\
-		  $(DIR_SRC)initgl.c		\
-		  $(DIR_SRC)mainloop.c		\
-		  $(DIR_SRC)camera.c		\
-		  $(DIR_SRC)interaction.c	\
-		  $(DIR_SRC)mouse.c		\
-		  $(DIR_SRC)draw_map.c		\
-		  $(DIR_SRC)draw_mob.c		\
-		  $(DIR_SRC)test_opengl.c	\
+############### FILES ###############
+
+SRC		= \
+		$(DIR_SRC)main.c		\
+		$(DIR_SRC)xsdl.c		\
+		$(DIR_SRC)key.c			\
+		$(DIR_SRC)init.c		\
+		$(DIR_SRC)initgl.c		\
+		$(DIR_SRC)mainloop.c		\
+		$(DIR_SRC)camera.c		\
+		$(DIR_SRC)interaction.c		\
+		$(DIR_SRC)mouse.c		\
+		$(DIR_SRC)draw_map.c		\
+		$(DIR_SRC)draw_mob.c		\
+		$(DIR_SRC)test_opengl.c		\
+	
 
 
-
-SRC_INC		= $(DIR_INC)/proto.h		\
+SRC_INC		= \
+		$(DIR_INC)/proto.h		\
 		$(DIR_INC)/define.h		\
 		$(DIR_INC)/struct.h
 
-SRC_LIB		= $(DIR_INC)libxfunc$_*.a		\
+
+SRC_LIB		= \
+		$(DIR_INC)libxfunc$_*.a		\
 		$(DIR_INC)libmy_list_*.a		\
 
 
 OBJ		= $(SRC:.c=.o)
 
 
-
-############### FLAGS
+############### FLAGS ###############
+#########  DEFINES
 
 DEFINE_i386-Darwin	=
+
 DEFINE_i386-FreeBSD	= 
+
 DEFINE_i686-Linux	= 
+
 DEFINE			= $(DEFINE_$(TAG))
 
-LFLAGS_i386-Darwin	= 
 
-LFLAGS_i386-FreeBSD	= -L/usr/local/lib -Wl,-rpath,/usr/local/lib -lSDL -lpthread -lSDL_ttf
+#########  INCLUDES
 
-LFLAGS_i686-Linux	= `sdl-config --cflags --libs` -lSDL -lSDL_ttf  -lGL -lGLU -lglut
+IFLAGS_i386-Darwin	= \
+		-I$(HOME)/Library/Frameworks/SDL_ttf.framework/Headers	\
+		-I$(HOME)/Library/Frameworks/SDL.framework/Headers	\
+		-I/Library/Frameworks/SDL_ttf.framework/Headers		\
+		-I/Library/Frameworks/SDL.framework/Headers
+
+IFLAGS_i386-FreeBSD	=
+
+IFLAGS_i686-Linux	=
+
+IFLAGS			= $(IFLAGS_$(TAG)) -I$(DIR_INC) 
+
+
+#########  LIBRARIES
+
+LFLAGS_i386-Darwin	= \
+			-framework SDL		\
+			-framework GLUT		\
+			-framework OpenGL	\
+			-framework SDL_ttf
+
+LFLAGS_i386-FreeBSD	= \
+			-L/usr/local/lib -Wl,-rpath,/usr/local/lib	\
+			-lSDL -lpthread -lSDL_ttf
+
+LFLAGS_i686-Linux	= \
+			`sdl-config --cflags --libs` \
+			-lSDL -lSDL_ttf  -lGL -lGLU -lglut
 
 LFLAGS			= -L$(DIR_LIB) $(LFLAGS_$(TAG))
 
-IFLAGS			= -I$(DIR_INC)
+
+#########  COMPILE FLAGS
+
 CFLAGS			+= -g3 -W -Wall -ansi -pedantic $(DEFINE) $(IFLAGS)
 
-############### BINARIES
+
+############### BINARIES ###############
 
 CC_FreeBSD	= gcc
 CC_SunOS	= /usr/sfw/bin/gcc
 CC_Linux	= gcc
-CC_Darwin	= gcc
+CC_Darwin	= gcc -arch i386
 CC		= $(CC_$(STAG))
 
 RM		= rm -f
@@ -90,7 +129,8 @@ ECHO_Linux	= echo -e
 ECHO_Darwin	= echo
 ECHO		= $(ECHO_$(STAG))
 
-############### COLOR
+
+############### COLORS ###############
 
 END	= \033[m
 RED	= \033[31m
@@ -98,7 +138,8 @@ GREEN	= \033[32m
 CYAN	= \033[36m
 GREY	= \033[37m
 
-############### OTHERS
+
+############### COMMANDS ###############
 
 all		: $(NAME)
 
@@ -121,7 +162,8 @@ tar		:
 		$(SRC)
 	@$(ECHO) "$(CYAN)[TAR] - DONE$(END)"
 
-############### SUFFIXIES
+
+############### SUFFIXIES ###############
 
 .SUFIXIES	: .c .o
 .c.o		:
@@ -129,7 +171,8 @@ tar		:
 	$(CC) $(CFLAGS) -c $< -o $@
 	@$(ECHO) "[OBJ] -DONE$(END)"
 
-############### CLEAN OPTION
+
+############### CLEAN OPTION ###############
 
 clean		:
 	@$(ECHO) "$(RED)[CLEAN]"
@@ -149,7 +192,12 @@ cleanall	:fclean
 	$(RM) TAGS
 	@$(ECHO) "$(GREEN)[CLEANALL] -DONE$(END)"
 
+
+
+
 re		:fclean	all
+
+############### CLEAN OPTION ###############
 
 .PHONY		:$(NAME) all .c.o library clean fclean re cleanall
 
