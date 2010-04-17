@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 18:24:06 2010 Florian Chanioux
-** Last update Fri Apr 16 20:33:35 2010 Florian Chanioux
+** Last update Sat Apr 17 19:45:37 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -24,9 +24,9 @@
 #include <GL/gl.h>
 #endif
 
-#include	"define.h"
-#include	"struct.h"
-#include	"proto.h"
+#include "define.h"
+#include "struct.h"
+#include "proto.h"
 
 void mainloop(t_game *game)
 {
@@ -38,10 +38,8 @@ void mainloop(t_game *game)
   {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     exit = interaction(game);
-    camera(game);
-    make_calllistes();
-    draw_map(game);
-    draw_mob();
+    camera();
+    draw_gl(game);
     SDL_GL_SwapBuffers();
   }
 }

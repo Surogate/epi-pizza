@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 16:46:50 2010 Florian Chanioux
-** Last update Fri Apr 16 20:01:50 2010 Florian Chanioux
+** Last update Sat Apr 17 19:40:44 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -33,13 +33,13 @@ void make_calllistes()
   glNewList(MAP_CASE,GL_COMPILE);
   glBegin(GL_QUADS);
   glColor3ub(255,255, 255);
-  glVertex2d(0, 0);
+  glVertex3d(0, 0, 0);
   glColor3ub(0, 0, 255);
-  glVertex2d(0, CASE_H);
+  glVertex3d(CASE_W, 0, 0);
   glColor3ub(255,255, 255);
-  glVertex2d(CASE_W, CASE_H);
+  glVertex3d(CASE_W, CASE_H, 0);
   glColor3ub(0, 0, 0);
-  glVertex2d(CASE_W, 0);
+  glVertex3d(0, CASE_H, 0);
   glEnd();
   glEndList();
 }
@@ -49,17 +49,19 @@ void draw_map(t_game *game)
   int	h;
   int	w;
 
-  h = -2;
+  glPushMatrix();
+  h = -1;
   while (++h < MAP_CH)
   {
-    w = -2;
+    w = -1;
     while (++w < MAP_CW)
     {
       glPushMatrix();
-      glTranslated(w * CASE_W, h *  CASE_H, 0);
+      glTranslated(h * CASE_H, w *  CASE_W, 0);
       glCallList(MAP_CASE);
       glPopMatrix();
     }
   }
+  glPopMatrix();
   glFlush();
 }

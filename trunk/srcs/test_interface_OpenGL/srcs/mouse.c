@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Fri Apr 16 20:35:58 2010 Florian Chanioux
+** Last update Sat Apr 17 20:17:00 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -51,19 +51,15 @@ int		mouse_move(t_game *game)
     {
       game->info.pos.x += game->mouse.move.x - game->event.button.x;
       game->info.pos.y -= game->mouse.move.y - game->event.button.y;
+/*
       if (game->info.pos.x < 0)
 	game->info.pos.x = CASE_W * game->info.size_w + game->info.pos.x;
       if (game->info.pos.y < 0)
 	game->info.pos.y = CASE_H * game->info.size_h + game->info.pos.y;
+*/
       game->info.pos.x = game->info.pos.x % (CASE_W * game->info.size_w);
       game->info.pos.y = game->info.pos.y % (CASE_H * game->info.size_h);
-      /*--------DEBUG POS----------*/
-     /*  printf("drag : new pos is x = [%d], y = [%d].\ncase current : x=[%d], y=[%d]\n", */
-/*  	     game->info.pos.x, */
-/* 	     game->info.pos.y, */
-/*  	     game->info.pos.x / CASE_W, */
-/*  	     game->info.pos.y / CASE_H); */
-      /*--------FIN DEBUG----------*/      game->mouse.move.x = game->event.button.x;
+      game->mouse.move.x = game->event.button.x;
       game->mouse.move.y = game->event.button.y;
     }
   return (1);
