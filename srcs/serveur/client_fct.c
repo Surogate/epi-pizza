@@ -48,6 +48,8 @@ t_client		*new_client(int s)
       cbuf_init(&(new->cbuf));
       new->used = 0;
       new->cons = 0;
+      new->team = 0;
+      new->auth = 0;
     }
   return (new);
 }

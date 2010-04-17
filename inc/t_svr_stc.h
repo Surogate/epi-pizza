@@ -38,6 +38,7 @@ typedef struct
   int			sock;
   int			team;
   t_cbuf		cbuf;
+  int			auth;
   t_packet		packet[10];
   int			used;
   int			cons;
