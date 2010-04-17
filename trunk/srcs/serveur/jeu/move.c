@@ -54,9 +54,9 @@ int		find_player_by_id(void *data, void *ref)
   pl_data = (t_player*)data;
   pl_ref = (t_player*)ref;
   if (pl_data->player_id == pl_ref->player_id)
-    return (1);
-  else
     return (0);
+  else
+    return (1);
 }
 
 void		try_move(t_packet *packet, t_player *player)

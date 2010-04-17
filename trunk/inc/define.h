@@ -11,7 +11,7 @@
 #ifndef DEFINE_INCLUDED
 # define DEFINE_INCLUDED
 
-# define NB_INST	(12)
+# define NB_INST	(11)
 
 
 # define INCANT_NUM	7
