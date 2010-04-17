@@ -5,11 +5,12 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Wed Apr 14 13:19:56 2010 pierre1 boutbel
-** Last update Wed Apr 14 13:20:15 2010 pierre1 boutbel
+** Last update Sat Apr 17 18:03:32 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
 #include	<sys/time.h>
+#include	<stdlib.h>
 
 #include	"my_list.h"
 #include	"define.h"
@@ -54,24 +55,18 @@ int		find_player_by_id(void *data, void *ref)
   pl_data = (t_player*)data;
   pl_ref = (t_player*)ref;
   if (pl_data->player_id == pl_ref->player_id)
-    return (0);
+    return (EXIT_SUCCESS);
   else
-    return (1);
+    return (EXIT_FAILURE);
 }
 
 void		try_move(t_packet *packet, t_player *player)
 {
   packet->response = xmalloc(sizeof(t_rep));
   packet->response->mess = xmalloc(3 * sizeof(char));
-
   player->pos->cas.player = my_l_rm(player->pos->cas.player, 
-				    player->player_id, find_player_by_id);
+				    player, find_player_by_id);
   player->pos = player->pos->card[gl_dir[player->dir].front];
-  
-
-
-  /*Retirer de la liste des joueurs de la case*/
-
   packet->response->mess = OK;
   packet->response->id_player = packet->player_id;
   packet->ac_rep = 1;
