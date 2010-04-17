@@ -7,12 +7,25 @@
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
 ** Last update Mon Apr  5 00:06:03 2010 frederic1 pierronnet
 */
-#include	<SDL/SDL.h>
-#include	<SDL/SDL_ttf.h>
-#include	<stdlib.h>
-#include	<stdio.h>
-#include	<unistd.h>
-#include	<sys/types.h>
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+#ifdef __APPLE__
+#include "SDL.h"
+#include "SDL_ttf.h"
+#include <GLUT/GLUT.h>
+#else
+#include <SDL/SDL.h>
+#include <SDL/SDL_ttf.h>
+#include <GL/glut.h>
+#include <GL/glu.h>
+#include <GL/gl.h>
+#endif
 
 void		xSDL_Flip(SDL_Surface *screen)
 {
