@@ -84,7 +84,6 @@ int			execute_action(t_svr_vector *vec, t_game *game,
 	    server_kick(vec, slt_par, tmp->player_id);
 	  if (tmp->type == 2)
 	    server_eat(vec, slt_par, tmp->player_id, game);
-	  delete_action(vec, tmp->type, action->gns_pos);
 	}
     }
   return (EXIT_SUCCESS);

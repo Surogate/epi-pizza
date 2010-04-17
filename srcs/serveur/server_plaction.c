@@ -59,6 +59,7 @@ int			exec_plaction(t_svr_vector *vec, t_packet *pak,
   printf("==> action execute\n");
   return_packet(pak);
   free_packet(cli);
+  delete_plaction(vec, pak->player_id);
   if (cli->used)
     create_plaction(vec, cli);
   llist_display(vec->action, debug_packet);
