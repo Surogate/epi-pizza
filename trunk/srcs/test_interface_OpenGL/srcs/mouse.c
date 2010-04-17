@@ -89,6 +89,7 @@ int		mouse_down(t_game *game)
     {
       printf("click\n");
       game->mouse.clicked = 1;
+     /*  SDL_WarpMouse(MAP_CW * CASE_W / 2, MAP_CH * CASE_H / 2); */
       game->mouse.move.x = game->event.button.x;
       game->mouse.move.y = game->event.button.y;
     }
