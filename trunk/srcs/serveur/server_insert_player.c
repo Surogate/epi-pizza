@@ -81,12 +81,17 @@ t_player	*rm_player(t_game *game, int id_player)
   int		i;
 
   player = (t_player *)my_l_find(game->player, &id_player, find_player);
-  i = -1;
-  while (++i != RESS_NUM)
-    player->pos->cas.ress[i] = player->pos->cas.ress[i] + player->ress[i];
-  player->pos->cas.player = my_l_rm(player->pos->cas.player ,player, find_player);
-  game->player = my_l_rm(game->player, player, find_player);
-  supp_ress(game);
+  if (player)
+    {
+      i = -1;
+      while (++i != RESS_NUM)
+	(player->pos)->cas.ress[i] = (player->pos)->cas.ress[i] + player->ress[i];
+      player->pos->cas.player = my_l_rm(player->pos->cas.player ,player, find_player);
+      game->player = my_l_rm(game->player, player, find_player);
+      supp_ress(game);
+    }
+  else
+    printf("player %i pas trouver\n", id_player);
   return (player);
 }
 

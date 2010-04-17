@@ -26,6 +26,7 @@ void		player_born(t_game *game, int id_player, int team)
 {
   t_player	*pl;
 
+  printf("id_player born = %i\n", id_player);
   if (game->player == NULL)
     init_player(game, id_player, team);
   else
@@ -36,4 +37,5 @@ void		player_born(t_game *game, int id_player, int team)
       else
 	pl->player_id = id_player;
     }
+  printf("player created\n");
 }
