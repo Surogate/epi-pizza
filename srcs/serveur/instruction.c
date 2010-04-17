@@ -52,10 +52,12 @@ void		treatment_intr(t_game *game, t_packet *packet)
 
   i = -1;
   player = (t_player *)my_l_find(game->player, packet, find_elem);
-  printf("%s\n", packet->av[0]);
   while (++i < NB_INST)
-    if (!strcmp(packet->av[0], tab_instr[i].inst))
-      tab_instr[i].ptr_func(packet, player, game);
+    {
+      /* printf("%s\n", tab_instr[i].inst); */
+      if (!strncmp(packet->av[0], tab_instr[i].inst, strlen(packet->av[0])))
+	tab_instr[i].ptr_func(packet, player, game);
+    }
   if (!strcmp(packet->av[0], "fork"))
     do_fork(game, player);
   if (!strcmp(packet->av[0], "incant"))
@@ -68,14 +70,15 @@ int		treatment_duration(t_game *game, t_packet *packet)
 
   i = -1;
   printf("%s\n", packet->av[0]);
-  /*
   while (++i < NB_INST)
-    if (!strcmp(packet->av[0], tab_instr[i].inst))
     {
-      packet->duration = tab_instr[i].delay;
-      return (EXIT_SUCCESS);
+      /* printf("%s\n", tab_instr[i].inst); */
+      if (!strncmp(packet->av[0], tab_instr[i].inst, strlen(packet->av[0])))
+	{
+	  packet->duration = tab_instr[i].delay;
+	  return (EXIT_SUCCESS);
+	}
     }
-  */
   packet->duration = 0;
   return (EXIT_FAILURE);
 }

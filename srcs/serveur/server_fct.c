@@ -60,14 +60,12 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	  return_packet(cli->packet + cli->cons);
 	  free_packet(cli);
 	}
-      /*      else
+      else
 	{
 	  treatment_duration(game, cli->packet + cli->cons);
-	  
 	  if (cli->used == 1)
 	    create_plaction(vec, cli);
-	 
-	}*/
+	}
     }
 }
 

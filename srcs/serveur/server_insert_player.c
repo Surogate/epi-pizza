@@ -31,7 +31,7 @@ t_player	*create_player(int player_id, int team)
   player->dir = 1 + rand() % 3;
   player->pos = NULL;
   /*****************************************/
-  player->ress[(i = 0)] = 2;
+  player->ress[(i = 0)] = 10;
   /*****************************************/
   while (++i < RESS_NUM)
     player->ress[i] = 0;
