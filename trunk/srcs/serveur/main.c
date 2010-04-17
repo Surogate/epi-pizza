@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:15:36 2010 francois1 ancel
-** Last update Fri Apr 16 18:50:36 2010 pierre1 boutbel
+** Last update Sat Apr 17 15:03:26 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
@@ -46,10 +46,18 @@ t_game		*init_game(int ac, char **av)
 
   check(ac, av, &(game.server));
   init_map(&game);
-  game.player = NULL;
-  game.eggs = NULL;
+  game.player = my_l_init();
+  game.eggs = my_l_init();
   game.state = -1;
   return (&game);
+}
+
+int		power_up(void *data)
+{
+  t_player	*pl;
+
+  pl = (t_player*)data;
+  pl->level = 8;
 }
 
 int main(int ac, char **av)
@@ -67,10 +75,23 @@ int main(int ac, char **av)
     test_pathfinding_map(game);
     reset_pathfinding(game);
     test_pathfinding_map(game);
+
+    /*
+    init_player(game, 1594, 1);
+    init_player(game, 11594, 1);
+    init_player(game, 31594, 1);
+    init_player(game, 152394, 1);
+    init_player(game, 5954, 1);
+    init_player(game, 2159314, 1);
+    printf("Il y a %i joueurs\n", my_l_size(game->player));
+    rm_player(game, 1594);
+    printf("Il y a %i joueurs\n", my_l_size(game->player));
+    */
+
     printf("server port : %i\n", game->server.port);
   }
   if (svr_start(&(game->server)) == EXIT_FAILURE)
-     perror("svr start error");
+    perror("svr start error");
   free_map(game);
   return (EXIT_SUCCESS);
 }
