@@ -50,10 +50,12 @@ typedef struct
   fd_set		fd_read;
   struct timeval	timeout;
   struct timeval	*time;
+  struct timeval	delay;
 }			t_select;
 
 typedef struct
 {
+  t_select		*slt;
   t_vector		*client;
   t_vector		*action;
 }			t_svr_vector;

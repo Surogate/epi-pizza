@@ -45,8 +45,9 @@ void		signal_handler()
   slt_cont = 0;
 }
 
-static void		init_vector(t_svr_vector *vec)
+static void		init_vector(t_svr_vector *vec, t_select *slt)
 {
+  vec->slt = slt;
   vec->client = vector_new(NULL);
   vec->action = vector_new(NULL);
 }
@@ -55,7 +56,6 @@ static void	end_loop(t_svr_vector *vec, t_select *slt_par,
 			 t_game *game, int svr_sock)
 {
   execute_action(vec, game, slt_par);
-  test_map(game);
   init_svr_par(slt_par, vec->client, svr_sock);
   init_timeout(vec, slt_par);
 }
@@ -66,7 +66,7 @@ int		select_loop(int svr_sock, t_select *slt_par, t_game *game)
   int		err;
 
   slt_cont = 1;
-  init_vector(&vec);
+  init_vector(&vec, slt_par);
   while (slt_cont)
     {
       err = select(slt_par->fd_max, &(slt_par->fd_read), NULL, NULL, slt_par->time);

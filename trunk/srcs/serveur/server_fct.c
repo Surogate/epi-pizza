@@ -54,9 +54,9 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	  ++(cli->auth);
 	  cli->team = authent(game, cli->packet + cli->cons);
 	  if (!cli->team)
-	    create_kick(vec, cli->sock, 3);
+	    create_kick(vec, vec->slt, cli->sock, 3);
 	  else if (cli->team > 0)
-	    create_eat(vec, cli->sock);
+	    create_eat(vec, vec->slt, cli->sock);
 	  return_packet(cli->packet + cli->cons);
 	  free_packet(cli);
 	}
@@ -64,10 +64,7 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	{
 	  treatment_duration(game, cli->packet + cli->cons);
 	  if (cli->used == 1)
-	    {
-	      printf("create plaction\n");
-	      create_plaction(vec, cli);
-	    }
+	    create_plaction(vec, cli, vec->slt);
 	}
     }
 }

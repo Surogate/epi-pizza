@@ -32,6 +32,7 @@
 #include "server_eat.h"
 #include "server_plaction.h"
 #include "server_debug.h"
+#include "time_fct.h"
 
 int		find_kick_fct(t_packet *in, int *player_id)
 {
@@ -40,7 +41,8 @@ int		find_kick_fct(t_packet *in, int *player_id)
   return (0);
 }
 
-int		create_kick(t_svr_vector *vec, int player_id, int time)
+int		create_kick(t_svr_vector *vec, t_select *slt, 
+			    int player_id, int time)
 {
   t_packet	*pak;
   t_vector	*action;
@@ -51,12 +53,11 @@ int		create_kick(t_svr_vector *vec, int player_id, int time)
     {
       pak->player_id = player_id;
       pak->type = 1;
-      gettimeofday(&(pak->time), NULL);
-      pak->duration = time;
+      gettimeofday(&(pak->end), NULL);
+      pak->end.tv_sec += time;
       pak->ac = 0;
       pak->ac_rep = 0;
       action->insert_sort(action, pak, sort_duration);
-      /* llist_display(vec->action, debug_packet); */
       printf("=>  kick create  <=\n");
       return (EXIT_SUCCESS);
     }
@@ -71,7 +72,6 @@ int		server_kick(t_svr_vector *vec, t_select *slt_par,
   int		pos;
 
   client = vec->client;
-  printf("player_id = %i\n", player_id);
   pos = client->find_pos(client, &player_id, player_id_find);
   if (pos >= 0)
     {
@@ -81,8 +81,8 @@ int		server_kick(t_svr_vector *vec, t_select *slt_par,
       rm_player(game, player_id);
       client->erase(client, pos, free_client);
       delete_kick(vec, player_id);
-      delete_eat(vec, tmp->sock);
-      delete_plaction(vec, tmp->sock);
+      delete_eat(vec, player_id);
+      delete_plaction(vec, player_id);
       return (EXIT_SUCCESS);
     }
   delete_kick(vec, player_id);
@@ -101,5 +101,4 @@ void		delete_kick(t_svr_vector *vec, int player_id)
       fprintf(stderr, "=>>> delete kick at %i\n", pos);
       action->erase(action, pos, free);
     }
-  /* llist_display(vec->action, debug_packet); */
 }

@@ -50,6 +50,7 @@ SRC_S		= $(DIR_SRC_S)main.c			\
 		$(DIR_SRC_S)server_ress.c		\
 		$(DIR_SRC_S)server_born.c		\
 		$(DIR_SRC_S)server_ending.c		\
+		$(DIR_SRC_S)time_fct.c			\
 		$(DIR_SRC_S)response.c			\
 		$(DIR_SRC_S)instruction.c		\
 		$(DIR_SRC_S)jeu/hatch.c			\

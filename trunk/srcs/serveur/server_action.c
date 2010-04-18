@@ -29,6 +29,7 @@
 #include "server_eat.h"
 #include "server_plaction.h"
 #include "server_action.h"
+#include "time_fct.h"
 
 int			sort_duration(t_packet *data, t_packet *strct)
 {
@@ -75,7 +76,8 @@ int			execute_action(t_svr_vector *vec, t_game *game,
   gettimeofday(&time, NULL);
   while ((tmp = action->getnxts(action)) != NULL)
     {
-      if ((tmp->time.tv_sec + tmp->duration) <= time.tv_sec)
+      printf("compare de time %i", time_cmp(&time, &(tmp->end)));
+      if (time_cmp(&time, &(tmp->end)) >= 0)
 	{
 	  if (!tmp->type)
 	    exec_plaction(vec, tmp, game);
