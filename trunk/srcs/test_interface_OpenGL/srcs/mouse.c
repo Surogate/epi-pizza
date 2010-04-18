@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Sat Apr 17 20:17:00 2010 Florian Chanioux
+** Last update Sun Apr 18 18:49:56 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -23,10 +23,13 @@
 #include <SDL/SDL_ttf.h>
 #include <GL/glu.h>
 #include <GL/gl.h>
+#include <GL/freeglut_std.h>
 #endif
 
 #include	"define.h"
 #include	"struct.h"
+# define SIZE	512
+
 
 void		display_mouse(t_game *game)
 {
@@ -82,16 +85,19 @@ int		mouse_up(t_game *game)
 int		mouse_down(t_game *game)
 {
   if (game->event.button.button == SDL_BUTTON_LEFT)
-    {
-      printf("click\n");
-      game->mouse.clicked = 1;
-     /*  SDL_WarpMouse(MAP_CW * CASE_W / 2, MAP_CH * CASE_H / 2); */
-      game->mouse.move.x = game->event.button.x;
-      game->mouse.move.y = game->event.button.y;
-    }
+  {
+    printf("click\n");
+    game->mouse.clicked = 1;
+    /*  SDL_WarpMouse(MAP_CW * CASE_W / 2, MAP_CH * CASE_H / 2); */
+    game->mouse.move.x = game->event.button.x;
+    game->mouse.move.y = game->event.button.y;
+  }
   else if (game->event.button.button == SDL_BUTTON_RIGHT)
+  {
     printf("case selected : x = [%d], y = [%d]\n",
 	   (game->info.pos.x + game->event.button.x),
 	   (game->info.pos.y + (MAP_CH * CASE_H - game->event.button.y)));
+    /* mouse(game, game->event.button.x, game->event.button.y);*/
+  }
   return (1);
 }

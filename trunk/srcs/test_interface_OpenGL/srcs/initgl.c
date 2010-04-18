@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 18:32:28 2010 Florian Chanioux
-** Last update Sun Apr 18 15:47:18 2010 Florian Chanioux
+** Last update Sun Apr 18 18:54:43 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -28,29 +28,12 @@
 #include "struct.h"
 #include "proto.h"
 
-void			initAttributes()
+static void		init_doublebuffer()
 {
   int			value;
 
   value = 1;
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, value);
-}
-
-static void		Init(void)
-{
-/*
-  static float ambient[]= {0.2, 0.2, 0.2, 1.0};
-  static float diffuse[]= {1.0, 1.0, 1.0, 1.0};
-  static float position[]= {0.0, 1.0, 0.0, 0.0};
-  static float mat_shininess[]= {90.0};
-  static float mat_specular[]= {0.8, 0.8, 0.8, 1.0};
-  static float mat_diffuse[]= {0.46, 0.66, 0.795, 1.0};
-  static float mat_ambient[]= {0.3, 0.4, 0.5, 1.0};
-  static float lmodel_ambient[]= {0.4, 0.4, 0.4, 1.0};
-  static float lmodel_localviewer[]= {0.0};
-  GLfloat map1[4] = {0.0, 0.0, 0.0, 0.0};
-  GLfloat map2[4] = {0.0, 0.0, 0.0, 0.0};
-*/
 }
 
 static void		init_light(int light)
@@ -98,10 +81,11 @@ static void		init_fog(int fog)
 
 void initGL()
 {
-  Init();
+
   init_fog(1);
   init_light(1);
   Reshape();
+  init_doublebuffer();
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_TEXTURE_2D);
 }

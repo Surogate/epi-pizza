@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 16:46:50 2010 Florian Chanioux
-** Last update Sun Apr 18 16:16:32 2010 Florian Chanioux
+** Last update Sun Apr 18 18:58:46 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -78,10 +78,11 @@ void		make_calllistes(t_game *game)
   glEndList();
 }
 
-void		draw_map(t_game *game)
+void		draw_map(t_game *game, GLenum mode)
 {
   int		h;
   int		w;
+  GLuint	name;
 
   glPushMatrix();
   h = -1;
@@ -97,5 +98,4 @@ void		draw_map(t_game *game)
     }
   }
   glPopMatrix();
-  glFlush();
 }
