@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Sat Apr 17 19:46:48 2010 Florian Chanioux
+## Last update Sun Apr 18 15:26:25 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -36,6 +36,7 @@ SRC		= \
 		$(DIR_SRC)key.c			\
 		$(DIR_SRC)init.c		\
 		$(DIR_SRC)initgl.c		\
+		$(DIR_SRC)loadtexture.c		\
 		$(DIR_SRC)mainloop.c		\
 		$(DIR_SRC)camera.c		\
 		$(DIR_SRC)interaction.c		\
@@ -101,7 +102,7 @@ LFLAGS_i386-FreeBSD	= \
 
 LFLAGS_i686-Linux	= \
 			`sdl-config --cflags --libs` \
-			-lSDL -lSDL_ttf  -lGL -lGLU -lglut
+			-lSDL_image -lSDL -lSDL_ttf  -lGL -lGLU -lglut
 
 LFLAGS			= -L$(DIR_LIB) $(LFLAGS_$(TAG))
 

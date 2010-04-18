@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Fri Apr 16 18:17:40 2010 Florian Chanioux
+** Last update Sun Apr 18 16:16:13 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -27,13 +27,9 @@
 #include <GL/gl.h>
 #endif
 
-#include	"define.h"
-#include	"struct.h"
-#include	"proto.h"
-
-# define	FONT_DIR	"./font/MONACO.ttf"
-# define	MFONT_SIZE	7
-# define	FULLSCREEN	0
+#include "define.h"
+#include "struct.h"
+#include "proto.h"
 
 SDL_Surface	*load_window()
 {
@@ -96,6 +92,8 @@ void		init_game(t_game *game)
 {
   game->screen = load_window();
   game->mouse.clicked = 0;
+  game->texture.floor = loadTexture("images/lawn.jpg", 0);
+  game->texture.side = loadTexture("images/side.jpg", 0);
   game->mouse.img[0] = img_load("images/main_ouverte.bmp");
   game->mouse.img[1] = img_load("images/main_fermer.bmp");
   game->map.fond = img_load("images/fond_losange.bmp");

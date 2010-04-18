@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Fri Apr 16 20:31:22 2010 Florian Chanioux
+** Last update Sun Apr 18 15:53:59 2010 Florian Chanioux
 */
 
 #ifndef		STRUCT_H
@@ -61,6 +61,7 @@ typedef struct	s_map
 typedef struct
 {
   GLuint	floor;
+  GLuint	side;
 }		t_texture;
 
 typedef struct	s_game
