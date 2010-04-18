@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:24 2010 francois1 ancel
-** Last update Fri Apr 16 18:46:39 2010 pierre1 boutbel
+** Last update Sat Apr 17 21:27:30 2010 pierre1 boutbel
 */
 
 #ifndef		T_STRUCT_INCLUDED
@@ -34,6 +34,8 @@ typedef struct	s_map
   struct s_map	*card[M_CARD];
   int		cout;
   t_case	cas;
+  int		x;
+  int		y;
 }		t_map;
 
 typedef struct
@@ -75,7 +77,6 @@ typedef struct	s_opt
   int		value;
   t_team	*team;
 }		t_opt;
-
 
 typedef struct
 {

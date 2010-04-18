@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Wed Apr  7 18:05:33 2010 Florian Chanioux
-** Last update Thu Apr 15 19:40:42 2010 Florian Chanioux
+** Last update Sat Apr 17 14:28:11 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
@@ -68,6 +68,12 @@ static t_map 	*init_card(t_game *game, int orient, int y, int x)
   return (&(game->map[yf][xf]));
 }
 
+static int	init_xy(t_map *map, int x, int y)
+{
+  map->x = x;
+  map->y = y;
+}
+
 void		init_map(t_game *game)
 {
   int		x;
@@ -91,11 +97,13 @@ void		init_map(t_game *game)
 	  while (++i < M_CARD)
 	    cas->card[i] = init_card(game, i, y, x);
 	  init_case(&(cas->cas));
+	  init_xy(cas, x, y);
 	  cas->cout = 0;
 	}
     }
 }
 
+/*
 int		reload_ress(t_game *game)
 {
   int		x;
@@ -114,3 +122,4 @@ int		reload_ress(t_game *game)
     }
   return (0);
 }
+*/

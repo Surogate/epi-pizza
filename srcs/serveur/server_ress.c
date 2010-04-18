@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Wed Apr 14 16:37:56 2010 pierre1 boutbel
-** Last update Fri Apr 16 18:04:35 2010 pierre1 boutbel
+** Last update Sat Apr 17 11:02:18 2010 pierre1 boutbel
 */
 
 #include	<unistd.h>
@@ -69,7 +69,7 @@ static t_map	*find_supp_case(t_game *game, int *i)
 
   y = 0;
   cur_case = find_case(game);
-  lim_try = game->server.height * game->server.width * 2;
+  lim_try = game->server.height * game->server.width * 3;
   while (cur_case->cas.ress[*i] == 0)
     {
       cur_case = find_case(game);
