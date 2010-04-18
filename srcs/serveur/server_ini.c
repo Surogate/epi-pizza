@@ -86,6 +86,7 @@ void			init_timeout(t_svr_vector *vec, t_select *slt)
   while ((pak = action->getnxts(action)) != NULL)
     {
       end = (pak->time.tv_sec + pak->duration) - ac_time.tv_sec;
+      printf("***** %i *****\n", end);
       if (slt->time == NULL)
 	{
 	  slt->time = &(slt->timeout);

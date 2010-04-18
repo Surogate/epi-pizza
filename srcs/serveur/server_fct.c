@@ -64,7 +64,10 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	{
 	  treatment_duration(game, cli->packet + cli->cons);
 	  if (cli->used == 1)
-	    create_plaction(vec, cli);
+	    {
+	      printf("create plaction\n");
+	      create_plaction(vec, cli);
+	    }
 	}
     }
 }

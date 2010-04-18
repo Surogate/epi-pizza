@@ -50,11 +50,11 @@ int		create_eat(t_svr_vector *vec, int player_id)
       pak->player_id = player_id;
       pak->type = 2;
       gettimeofday(&(pak->time), NULL);
-      pak->duration = 3;
+      pak->duration = 126;
       pak->ac = 0;
       pak->ac_rep = 0;
       action->insert_sort(action, pak, sort_duration);
-      llist_display(vec->action, debug_packet);
+      /* llist_display(vec->action, debug_packet); */
       printf("=>  eat create  <=\n");
       return (EXIT_SUCCESS);
     }
@@ -70,7 +70,7 @@ int		server_eat(t_svr_vector *vec, t_select *slt_par,
       sock_write(player_id, "mort\n");
       printf("player %i died, eat is essential to live\n", player_id);
       delete_eat(vec, player_id);
-      server_kick(vec, slt_par, player_id);
+      server_kick(vec, slt_par, player_id, game);
       return (EXIT_FAILURE);
     }
   delete_eat(vec, player_id);
@@ -89,6 +89,6 @@ int		delete_eat(t_svr_vector *vec, int player_id)
       fprintf(stderr, "=>>> delete eat at %i\n", pos);
       action->erase(action, pos, free);
     }
-  llist_display(vec->action, debug_packet);
+  /* llist_display(vec->action, debug_packet); */
   return (EXIT_SUCCESS);
 }

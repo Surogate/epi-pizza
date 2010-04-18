@@ -55,6 +55,7 @@ static void	end_loop(t_svr_vector *vec, t_select *slt_par,
 			 t_game *game, int svr_sock)
 {
   execute_action(vec, game, slt_par);
+  test_map(game);
   init_svr_par(slt_par, vec->client, svr_sock);
   init_timeout(vec, slt_par);
 }

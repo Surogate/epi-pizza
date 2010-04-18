@@ -18,12 +18,14 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "define.h"
 #include "my_list.h"
 #include "s_vector.h"
 #include "s_cbuf.h"
 #include "cbuf_io.h"
 #include "t_packet.h"
 #include "t_svr_stc.h"
+#include "t_struct.h"
 #include "server_kick.h"
 
 t_client		*new_client(int s)
@@ -127,6 +129,7 @@ void			free_packet(t_client *cli)
   free(pak->av[0]);
   while (++i < pak->ac_rep)
     {
+      printf("##### %s #####\n", pak->response[i].mess);
       free(pak->response[i].mess);
       free(pak->response + i);
     }

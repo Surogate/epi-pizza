@@ -73,7 +73,6 @@ int			execute_action(t_svr_vector *vec, t_game *game,
 
   action = vec->action;
   gettimeofday(&time, NULL);
-  game = game;
   while ((tmp = action->getnxts(action)) != NULL)
     {
       if ((tmp->time.tv_sec + tmp->duration) <= time.tv_sec)
@@ -81,7 +80,7 @@ int			execute_action(t_svr_vector *vec, t_game *game,
 	  if (!tmp->type)
 	    exec_plaction(vec, tmp, game);
 	  if (tmp->type == 1)
-	    server_kick(vec, slt_par, tmp->player_id);
+	    server_kick(vec, slt_par, tmp->player_id, game);
 	  if (tmp->type == 2)
 	    server_eat(vec, slt_par, tmp->player_id, game);
 	}

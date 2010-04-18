@@ -79,7 +79,7 @@ int			delete_plaction(t_svr_vector *vec, int player_id)
   while ((pos = action->find_pos(action, &player_id, find_act_fct)) >= 0)
     {
       fprintf(stderr, "=>>> delete kick at %i\n", pos);
-      action->erase(action, pos, free);
+      action->delete(action, pos);
     }
   llist_display(vec->action, debug_packet);
   return (EXIT_SUCCESS);
