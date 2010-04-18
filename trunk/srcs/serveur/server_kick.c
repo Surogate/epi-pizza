@@ -42,8 +42,7 @@ int		find_kick_fct(t_packet *in, int *player_id)
   return (0);
 }
 
-int		create_kick(t_svr_vector *vec, t_select *slt, 
-			    int player_id, int time)
+int		create_kick(t_svr_vector *vec, int player_id, int time)
 {
   t_packet	*pak;
   t_vector	*action;
