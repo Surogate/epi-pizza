@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Sun Apr 18 20:25:49 2010 Florian Chanioux
+## Last update Sun Apr 18 20:11:29 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -100,7 +100,9 @@ LFLAGS_i386-Darwin	= \
 
 LFLAGS_i386-FreeBSD	= \
 			-L/usr/local/lib -Wl,-rpath,/usr/local/lib	\
-			-lSDL -lpthread -lSDL_ttf
+			-lSDL_image -lSDL -lSDL_ttf			\
+			-lGL -lGLU -lglut				\
+			-lpthread
 
 LFLAGS_i686-Linux	= \
 			`sdl-config --cflags --libs` \
