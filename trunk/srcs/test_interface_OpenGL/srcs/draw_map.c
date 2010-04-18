@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 16:46:50 2010 Florian Chanioux
-** Last update Sat Apr 17 19:40:44 2010 Florian Chanioux
+** Last update Sun Apr 18 16:16:32 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -24,30 +24,64 @@
 #include <GL/gl.h>
 #endif
 
-#include	"define.h"
-#include	"struct.h"
-#include	"proto.h"
+#include "define.h"
+#include "struct.h"
+#include "proto.h"
 
-void make_calllistes()
+static void	make_floor(t_game *game)
 {
-  glNewList(MAP_CASE,GL_COMPILE);
+  glBindTexture(GL_TEXTURE_2D, game->texture.floor);
   glBegin(GL_QUADS);
-  glColor3ub(255,255, 255);
+  glTexCoord2d(0, 0);
   glVertex3d(0, 0, 0);
-  glColor3ub(0, 0, 255);
+  glTexCoord2d(1, 0);
   glVertex3d(CASE_W, 0, 0);
-  glColor3ub(255,255, 255);
+  glTexCoord2d(1, 1);
   glVertex3d(CASE_W, CASE_H, 0);
-  glColor3ub(0, 0, 0);
+  glTexCoord2d(0, 1);
   glVertex3d(0, CASE_H, 0);
   glEnd();
+}
+
+static void	make_side(t_game *game)
+{
+  glBindTexture(GL_TEXTURE_2D, game->texture.side);
+  glBegin(GL_QUADS);
+  glTexCoord2d(0, 0);
+  glVertex3d(0, 0, 0);
+  glTexCoord2d(1, 0);
+  glVertex3d(CASE_W, 0, 0);
+  glTexCoord2d(1, 1);
+  glVertex3d(CASE_W, 0, -10);
+  glTexCoord2d(0, 1);
+  glVertex3d(0, 0, -10);
+  glEnd();
+}
+
+void		make_calllistes(t_game *game)
+{
+  glNewList(MAP_CASE,GL_COMPILE);
+  make_side(game);
+  glPushMatrix();
+  glTranslated(0, CASE_H, 0);
+  make_side(game);
+  glPopMatrix();
+  glPushMatrix();
+  glRotated(90, 0, 0 , 1);
+  make_side(game);
+  glPushMatrix();
+  glTranslated(0, -CASE_H, 0);
+  make_side(game);
+  glPopMatrix();
+  glPopMatrix();
+  make_floor(game);
   glEndList();
 }
 
-void draw_map(t_game *game)
+void		draw_map(t_game *game)
 {
-  int	h;
-  int	w;
+  int		h;
+  int		w;
 
   glPushMatrix();
   h = -1;

@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Sat Apr 17 19:43:59 2010 Florian Chanioux
-** Last update Sat Apr 17 20:14:21 2010 Florian Chanioux
+** Last update Sun Apr 18 15:36:16 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -33,14 +33,14 @@ void		draw_gl(t_game *game)
   int		x;
   int		y;
 
-  x = -game->info.pos.x;
-  y = -game->info.pos.y;
-  printf("val x=%i\n   y=%i\n", x, y);
-  make_calllistes();
+  x = game->info.pos.x * 0.2;
+  y = game->info.pos.y * 0.5;
+  printf("val x=%i\n   y=%i\n", game->event.button.x, game->event.button.y);
+  make_calllistes(game);
   glPushMatrix();
-  glTranslated(x, y, 0);
+  glTranslated(-x, -y, 0);
   glPushMatrix();
-  glRotated(45, 0, 0, 1);
+  /* glRotated(45, 0, 0, 1); */
   draw_map(game);
   draw_mob();
   glPopMatrix();

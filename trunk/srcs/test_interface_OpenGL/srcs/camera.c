@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 18:30:49 2010 Florian Chanioux
-** Last update Sat Apr 17 20:11:50 2010 Florian Chanioux
+** Last update Sat Apr 17 22:04:46 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -46,10 +46,10 @@ void		camera()
   int pz;
 
   x = 0;
-  y = 0;
+  y = -CAM_O_Y;
   z = CAM_Z;
   px = x;
-  py = y + CAM_O_Y;
+  py = 0;
   pz = CAM_O_Z;
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();

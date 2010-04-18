@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 18:32:28 2010 Florian Chanioux
-** Last update Sat Apr 17 19:33:30 2010 Florian Chanioux
+** Last update Sun Apr 18 15:47:18 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -102,4 +102,6 @@ void initGL()
   init_fog(1);
   init_light(1);
   Reshape();
+  glEnable(GL_DEPTH_TEST);
+  glEnable(GL_TEXTURE_2D);
 }
