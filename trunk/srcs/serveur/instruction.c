@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Tue Apr  6 15:01:49 2010 Florian Chanioux
-** Last update Fri Apr 16 17:57:30 2010 pierre1 boutbel
+** Last update Sun Apr 18 12:29:36 2010 pierre1 boutbel
 */
 
 #include <sys/time.h>
@@ -22,6 +22,7 @@
 #include "response.h"
 #include "count_player.h"
 #include "server_born.h"
+#include "server_ending.h"
 
 t_inst		tab_instr[NB_INST] =
 {
@@ -64,7 +65,7 @@ void		treatment_intr(t_game *game, t_packet *packet)
     is_ending(game);
 }
 
-int		treatment_duration(t_game *game, t_packet *packet)
+int		treatment_duration(t_packet *packet)
 {
   int		i;
 

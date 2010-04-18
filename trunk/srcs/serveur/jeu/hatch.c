@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Mon Apr 12 19:29:06 2010 Florian Chanioux
-** Last update Fri Apr 16 09:17:34 2010 pierre1 boutbel
+** Last update Sun Apr 18 12:24:18 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -20,9 +20,9 @@
 #include	"t_game_stc.h"
 #include	"xfunc.h"
 
-static int	find_egg(void *ref, t_eggs *egg)
+static int	find_egg(int *ref, t_eggs *egg)
 {
-  if (ref == (t_eggs *)egg->pos)
+  if (*ref == egg->id)
     return (1);
   return (0);
 }
@@ -34,7 +34,7 @@ void		do_hatch(t_packet *packet, t_game *game, int id_egg)
   t_player	*pl;
   int		i;
 
-  egg = my_l_find(game->eggs, id_egg, find_egg);
+  egg = my_l_find(game->eggs, &id_egg, find_egg);
   srand(time(NULL));
   packet->ac_rep = 0;
   packet->player_id = egg->id;
@@ -51,7 +51,7 @@ void		do_hatch(t_packet *packet, t_game *game, int id_egg)
   game->player = my_l_insert(game->player, player);
   pl = (t_player *)game->player->data;
   pl->pos->cas.player = my_l_insert(pl->pos->cas.player, player);
-  game->eggs = my_l_rm(game->eggs, id_egg, find_egg);
+  game->eggs = my_l_rm(game->eggs, &id_egg, find_egg);
 }
 
 void		do_fork(t_game *game, t_player *player)

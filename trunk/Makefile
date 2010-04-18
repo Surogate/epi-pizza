@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Sun Apr 18 11:29:21 2010 pierre1 boutbel
+## Last update Sun Apr 18 17:09:51 2010 pierre1 boutbel
 ##
 
 STAG		= $(shell uname -s)
@@ -123,7 +123,7 @@ OBJ_CO		= $(SRC_CO:.c=.o)
 ############### FLAGS
 
 DEFINE_i386-Darwin	=
-DEFINE_i386-FreeBSD	= -D_XOPEN_SOURCE=500
+DEFINE_i386-FreeBSD	= 
 DEFINE_i686-Linux	= -D_XOPEN_SOURCE=500
 DEFINE			= $(DEFINE_$(TAG))
 

@@ -27,8 +27,10 @@ char		*tna(char *msg, t_game *game)
   team = game->server.teamname;
   while (team != NULL)
     {
-      msg = xrealloc(msg, (strlen(msg) + 13) * sizeof(char));
-      snprintf(msg, strlen(msg) + 12, "%stan %i\n", msg, team->team);
+      msg = xrealloc(msg, (strlen(msg) + strlen(team->team) + 1) * 
+		     sizeof(char));
+      snprintf(msg, strlen(msg) + strlen(team->team), "%stan %s\n", msg, 
+	       team->team);
       team = team->next;
     }
   return (msg);
