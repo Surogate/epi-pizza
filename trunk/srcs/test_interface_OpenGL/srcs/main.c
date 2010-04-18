@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Sun Apr 18 18:51:46 2010 Florian Chanioux
+** Last update Sun Apr 18 20:59:29 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -34,8 +34,8 @@ int		main(int argc, char *argv[])
   t_game	game;
 
   init_game(&game);
-  SDL_ShowCursor(1);
   printAttributes();
+  init_doublebuffer(1);
   initGL();
   mainloop(&game);
   puts("end of program");

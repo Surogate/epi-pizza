@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 18:30:49 2010 Florian Chanioux
-** Last update Sat Apr 17 22:04:46 2010 Florian Chanioux
+** Last update Sun Apr 18 20:56:48 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -28,7 +28,7 @@
 #include "struct.h"
 #include "proto.h"
 
-void		Reshape()
+void		reshape()
 {
   glViewport(0, 0, WIN_W, WIN_H);
   glMatrixMode(GL_PROJECTION);
@@ -45,12 +45,12 @@ void		camera()
   int py;
   int pz;
 
-  x = 0;
-  y = -CAM_O_Y;
-  z = CAM_Z;
-  px = x;
-  py = 0;
+  px = CAM_O_X;
+  py = CAM_O_Y;
   pz = CAM_O_Z;
+  x = px;
+  y = py + 200;
+  z = CAM_Z;
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
   gluLookAt(x, y, z,
