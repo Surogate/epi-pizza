@@ -32,8 +32,8 @@ enum {M_E, M_NE, M_N, M_NO, M_O, M_SO, M_S, M_SE};
 # define MSG_RESS	"bouffe", "linemate", "deraumere", "sibur", "mendiane", "phiras", "thystame"
 # define NB_RESS	10, 12, 10, 12, 7, 8, 3
 
-# define OK		"OK\n"
-# define KO		"KO\n"
+# define OK		"OK"
+# define KO		"KO"
 # define ELEV_OK	"elevation en cours"
 # define ELEV_DONE	"niveau actuel : K"
 # define LEN_ELEV	17

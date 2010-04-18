@@ -12,6 +12,7 @@
 #include	<sys/time.h>
 #include	<string.h>
 #include	<stdlib.h>
+#include	<stdio.h>
 
 #include	"my_list.h"
 #include	"define.h"
