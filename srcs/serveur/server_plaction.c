@@ -47,12 +47,17 @@ int			create_plaction(t_svr_vector *vec, t_client *cli,
   t_packet		*pak;
 
   pak = cli->packet + cli->cons;
-  action = vec->action;
-  gettimeofday(&(pak->time), NULL);
-  timeend(&(pak->end), &(pak->time), &(slt->delay), pak->duration);
-  action->insert_sort(action, pak, sort_duration);
-  llist_display(vec->action, debug_packet);
-  printf("=>  action create  <=\n");
+  if (pak->duration)
+    {
+      action = vec->action;
+      gettimeofday(&(pak->time), NULL);
+      timeend(&(pak->end), &(pak->time), &(slt->delay), pak->duration);
+      action->insert_sort(action, pak, sort_duration);
+      /* llist_display(vec->action, debug_packet); */
+      printf("=>  action create  <=\n");
+    }
+  else
+    free_packet(cli);
   return (EXIT_SUCCESS);
 }
 
@@ -69,7 +74,6 @@ int			exec_plaction(t_svr_vector *vec, t_packet *pak,
   delete_plaction(vec, pak->player_id);
   if (cli->used)
     create_plaction(vec, cli, vec->slt);
-  llist_display(vec->action, debug_packet);
   return (EXIT_SUCCESS);
 }
 
@@ -84,6 +88,5 @@ int			delete_plaction(t_svr_vector *vec, int player_id)
       fprintf(stderr, "=>>> delete kick at %i\n", pos);
       action->delete(action, pos);
     }
-  llist_display(vec->action, debug_packet);
   return (EXIT_SUCCESS);
 }

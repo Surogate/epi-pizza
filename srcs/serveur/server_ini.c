@@ -97,7 +97,5 @@ void			init_timeout(t_svr_vector *vec, t_select *slt)
 	      (time_cmp(&(slt->timeout), &tmp) > 0))
 	    timeminus(&(slt->timeout), &(pak->end), &ac_time);
 	}
-      printf("######## time out sec :%i usec : %i#########\n", 
-	     slt->time->tv_sec, slt->time->tv_usec);
     }
 }

@@ -58,9 +58,6 @@ int		main(int ac, char **av)
   t_map		*cas;
 
   game = init_game(ac, av);
-
-  printf("******Addr : %p***********\n", game);
-
   if (game->server.debug)
   {
     test_aff_map(game);
@@ -82,8 +79,6 @@ int		main(int ac, char **av)
     rm_player(game, 1594);
     printf("Il y a %i joueurs\n", my_l_size(game->player));
     */
-
-    printf("server port : %i\n", game->server.port);
   }
   if (svr_start(&(game->server)) == EXIT_FAILURE)
     perror("svr start error");

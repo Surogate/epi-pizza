@@ -70,10 +70,8 @@ int		treatment_duration(t_packet *packet)
   int		i;
 
   i = -1;
-  printf("%s\n", packet->av[0]);
   while (++i < NB_INST)
     {
-      /* printf("%s\n", tab_instr[i].inst); */
       if (!strncmp(packet->av[0], tab_instr[i].inst, strlen(packet->av[0])))
 	{
 	  packet->duration = tab_instr[i].delay;

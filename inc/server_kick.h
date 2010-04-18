@@ -12,8 +12,7 @@
 # define SERVER_KICK_C_INCLUDED
 
 int		find_kick_fct(t_packet *in, int *player_id);
-int		create_kick(t_svr_vector *vec, t_select *slt,
-			    int player_id, int time);
+int		create_kick(t_svr_vector *vec, int player_id, int time);
 int		server_kick(t_svr_vector *vec, t_select *slt_par, 
 			    int player_id, t_game *game);
 void		delete_kick(t_svr_vector *vec, int player_id);
