@@ -37,7 +37,7 @@ void		init_server(t_server *server)
   server->width = 2;
   server->teamname = NULL;
   server->nb_client = 1;
-  server->delay = 0;
+  server->delay = 100;
 }
 
 t_game		*init_game(int ac, char **av)

@@ -33,8 +33,8 @@ void		try_turn_left(t_packet *packet, t_player *player)
 {
   player->dir = gl_dir[player->dir].dir_left;
   packet->response = xmalloc(sizeof(t_rep));
-  packet->response->mess = xmalloc(strlen(OK) * sizeof(char));
-  snprintf(packet->response->mess, strlen(OK), "%s", OK);
+  packet->response->mess = xmalloc(4 * sizeof(char));
+  snprintf(packet->response->mess, 4, "OK\n");
   packet->response->id_player = packet->player_id;
   packet->ac_rep = 1;
 }
@@ -42,9 +42,9 @@ void		try_turn_left(t_packet *packet, t_player *player)
 void		try_turn_right(t_packet *packet, t_player *player)
 {
   packet->response = xmalloc(sizeof(t_rep));
-  packet->response->mess = xmalloc(strlen(OK) * sizeof(char));
+  packet->response->mess = xmalloc(4 * sizeof(char));
   player->dir = gl_dir[player->dir].dir_right;
-  snprintf(packet->response->mess, strlen(OK) + 1, "%s\n", OK);
+  snprintf(packet->response->mess, 4, "OK\n");
   packet->response->id_player = packet->player_id;
   packet->ac_rep = 1;
 }
@@ -60,12 +60,12 @@ int		find_player_by_id(t_player *data, t_player *ref)
 void		try_move(t_packet *packet, t_player *player)
 {
   packet->response = xmalloc(sizeof(t_rep));
-  packet->response->mess = xmalloc(strlen(OK) * sizeof(char));
+  packet->response->mess = xmalloc(4 * sizeof(char));
   player->pos->cas.player = my_l_rm(player->pos->cas.player, 
 				    player, find_player_by_id);
   player->pos = player->pos->card[gl_dir[player->dir].front];
   player->pos->cas.player = my_l_insert(player->pos->cas.player, player);
-  snprintf(packet->response->mess, strlen(OK), "%s", OK);
+  snprintf(packet->response->mess, 4, "OK\n");
   packet->response->id_player = packet->player_id;
   packet->ac_rep = 1;
 }

@@ -26,6 +26,7 @@ typedef struct
   char			*av[2];
   struct timeval	time;
   int			duration;
+  struct timeval	end;
   int			ac_rep;
   char			*graph_rep;
   t_rep			*response;

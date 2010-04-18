@@ -31,6 +31,7 @@
 #include "t_struct.h"
 #include "t_svr_stc.h"
 #include "server_debug.h"
+#include "time_fct.h"
 
 int			init_svr(int sock, t_server *svr, t_select *slt_par)
 {
@@ -51,6 +52,7 @@ int			init_svr(int sock, t_server *svr, t_select *slt_par)
   FD_ZERO(&(slt_par->fd_read));
   FD_SET(sock, &(slt_par->fd_read));
   slt_par->time = NULL;
+  gen_delay(&(slt_par->delay), svr->delay);
   return (EXIT_SUCCESS);
 }
 
@@ -75,26 +77,27 @@ void			init_timeout(t_svr_vector *vec, t_select *slt)
 {
   t_vector		*action;
   t_packet		*pak;
-  unsigned int		end;
   struct timeval	ac_time;
+  struct timeval	tmp;
 
   gettimeofday(&ac_time, NULL);
   action = vec->action;
-  slt->timeout.tv_sec = 0;
-  slt->timeout.tv_usec = 0;
   slt->time = NULL;
   while ((pak = action->getnxts(action)) != NULL)
     {
-      end = (pak->time.tv_sec + pak->duration) - ac_time.tv_sec;
-      printf("***** %i *****\n", end);
-      if (slt->time == NULL)
+      if ((slt->time == NULL) && 
+	  (timeminus(&(slt->timeout), &(pak->end), &ac_time) == EXIT_SUCCESS))
 	{
+	  timeminus(&(slt->timeout), &(pak->end), &ac_time);
 	  slt->time = &(slt->timeout);
-	  slt->time->tv_sec = end;
 	}
-      else if (end < (unsigned int)slt->time->tv_sec)
-	slt->time->tv_sec = end;
+      else 
+	{
+	  if ((timeminus(&tmp, &(pak->end), &ac_time) == EXIT_SUCCESS) &&
+	      (time_cmp(&(slt->timeout), &tmp) > 0))
+	    timeminus(&(slt->timeout), &(pak->end), &ac_time);
+	}
+      printf("######## time out sec :%i usec : %i#########\n", 
+	     slt->time->tv_sec, slt->time->tv_usec);
     }
-  if (slt->time)
-    fprintf(stderr, "timeout value %i\n", (int)slt->time->tv_sec);
 }

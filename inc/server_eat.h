@@ -11,7 +11,7 @@
 #ifndef SERVER_EAT_C_INCLUDED
 # define SERVER_EAT_C_INCLUDED
 
-int		create_eat(t_svr_vector *vec, int player_id);
+int		create_eat(t_svr_vector *vec, t_select *slt, int player_id);
 int		server_eat(t_svr_vector *vec, t_select *slt_par, 
 			   int player_id, t_game *game);
 int		delete_eat(t_svr_vector *vec, int player_id);

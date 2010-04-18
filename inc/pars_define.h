@@ -26,7 +26,7 @@
 #define CHAR_OPT5	"-c"
 #define VALUE_OPT5	5
 #define CHAR_OPT6	"-t"
-#define VALUE_OPT6	1
+#define VALUE_OPT6	100
 #define CHAR_OPT7	"--debug"
 #define VALUE_OPT7	0
 

@@ -70,7 +70,7 @@ int			add_client(t_svr_vector *vec, t_select *slt_par,
   if (tmp->sock > slt_par->fd_max)
     slt_par->fd_max = tmp->sock;
   sock_write(tmp->sock, "BIENVENUE\n");
-  create_kick(vec, tmp->sock, 3);
+  create_kick(vec, slt_par, tmp->sock, 3);
   return (EXIT_SUCCESS);
 }
 
