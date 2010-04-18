@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Wed Apr  7 18:05:33 2010 Florian Chanioux
-** Last update Sat Apr 17 14:28:11 2010 pierre1 boutbel
+** Last update Sun Apr 18 12:39:47 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
@@ -68,7 +68,7 @@ static t_map 	*init_card(t_game *game, int orient, int y, int x)
   return (&(game->map[yf][xf]));
 }
 
-static int	init_xy(t_map *map, int x, int y)
+static void	init_xy(t_map *map, int x, int y)
 {
   map->x = x;
   map->y = y;

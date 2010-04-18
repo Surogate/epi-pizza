@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Wed Apr 14 13:18:39 2010 pierre1 boutbel
-** Last update Fri Apr 16 18:50:19 2010 pierre1 boutbel
+** Last update Sun Apr 18 12:19:52 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -17,6 +17,7 @@
 #include	"t_struct.h"
 #include	"t_game_stc.h"
 #include	"xfunc.h"
+#include	"server_insert_player.h"
 
 static int	find_player(void *ref, t_player *data)
 {

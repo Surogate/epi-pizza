@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Wed Apr 14 16:37:56 2010 pierre1 boutbel
-** Last update Sat Apr 17 11:02:18 2010 pierre1 boutbel
+** Last update Sun Apr 18 12:34:04 2010 pierre1 boutbel
 */
 
 #include	<unistd.h>
@@ -53,7 +53,7 @@ void		generate_ress(t_game *game)
     }
 }
 
-void		generate_bouffe(t_game *game)
+void		generate_food(t_game *game)
 {
   t_map		*cur_case;
   

@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:15:36 2010 francois1 ancel
-** Last update Sat Apr 17 15:43:02 2010 pierre1 boutbel
+** Last update Sun Apr 18 12:47:29 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
@@ -50,14 +50,6 @@ t_game		*init_game(int ac, char **av)
   game.eggs = my_l_init();
   game.state = -1;
   return (&game);
-}
-
-int		power_up(void *data)
-{
-  t_player	*pl;
-
-  pl = (t_player*)data;
-  pl->level = 8;
 }
 
 int		main(int ac, char **av)

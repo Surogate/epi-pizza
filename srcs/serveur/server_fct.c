@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Sat Apr 10 15:11:57 2010 francois1 ancel
-** Last update Tue Apr 13 16:25:10 2010 Florian Chanioux
+** Last update Sun Apr 18 12:29:28 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
@@ -62,7 +62,7 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	}
       else
 	{
-	  treatment_duration(game, cli->packet + cli->cons);
+	  treatment_duration(cli->packet + cli->cons);
 	  if (cli->used == 1)
 	    create_plaction(vec, cli, vec->slt);
 	}
