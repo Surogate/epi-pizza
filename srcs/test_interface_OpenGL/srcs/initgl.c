@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 18:32:28 2010 Florian Chanioux
-** Last update Sun Apr 18 18:54:43 2010 Florian Chanioux
+** Last update Sun Apr 18 21:34:26 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -28,12 +28,9 @@
 #include "struct.h"
 #include "proto.h"
 
-static void		init_doublebuffer()
+void		init_doublebuffer(int db)
 {
-  int			value;
-
-  value = 1;
-  SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, value);
+  SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, db);
 }
 
 static void		init_light(int light)
@@ -63,7 +60,7 @@ static void		init_light(int light)
 
 static void		init_fog(int fog)
 {
-  static float		fog_color[4] = {0.5, 0.5, 0.5, 1.0};
+  static float		fog_color[4] = {0, 0, 0, 1.0};
   GLint			fogmode;
 
   if (fog)
@@ -73,19 +70,18 @@ static void		init_fog(int fog)
     glFogi (GL_FOG_MODE, fogmode) ;
     glFogfv(GL_FOG_COLOR, fog_color) ;
     glFogf(GL_FOG_DENSITY, 0.3) ;
-    glFogf(GL_FOG_START, 250.0) ;
-    glFogf(GL_FOG_END, 450.0) ;
-    glClearColor(0.5, 0.5, 0.5, 1.0);
+    glFogf(GL_FOG_START, 580.0) ;
+    glFogf(GL_FOG_END, 700.0) ;
+    /*   glClearColor(0.5, 0.5, 0.5, 1.0);*/
   }
 }
 
 void initGL()
 {
 
+  init_light(0);
   init_fog(1);
-  init_light(1);
-  Reshape();
-  init_doublebuffer();
+  reshape();
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_TEXTURE_2D);
 }

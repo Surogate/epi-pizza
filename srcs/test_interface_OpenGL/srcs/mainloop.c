@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 18:24:06 2010 Florian Chanioux
-** Last update Sun Apr 18 18:59:27 2010 Florian Chanioux
+** Last update Sun Apr 18 21:29:51 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -31,6 +31,7 @@
 void mainloop(t_game *game)
 {
   int exit;
+  float Light1Pos[4] = {CAM_O_X, CAM_O_Y, CAM_O_Z, 1};
 
   exit = 1;
   SDL_EnableKeyRepeat(100, 20);
@@ -40,6 +41,7 @@ void mainloop(t_game *game)
     exit = interaction(game);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     camera();
+    glLightfv(GL_LIGHT0, GL_POSITION, Light1Pos);
     draw_gl(game);
     glFlush();
     SDL_GL_SwapBuffers();
