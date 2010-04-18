@@ -33,6 +33,7 @@
 #include "server_plaction.h"
 #include "server_debug.h"
 #include "time_fct.h"
+#include "server_insert_player.h"
 
 int		find_kick_fct(t_packet *in, int *player_id)
 {
