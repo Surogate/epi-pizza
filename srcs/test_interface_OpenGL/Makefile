@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Sun Apr 18 15:26:25 2010 Florian Chanioux
+## Last update Sun Apr 18 18:09:07 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -44,7 +44,8 @@ SRC		= \
 		$(DIR_SRC)draw_map.c		\
 		$(DIR_SRC)draw_mob.c		\
 		$(DIR_SRC)draw_gl.c		\
-		$(DIR_SRC)test_opengl.c
+		$(DIR_SRC)test_opengl.c		\
+		$(DIR_SRC)position.c		\
 
 
 SRC_INC		= \
