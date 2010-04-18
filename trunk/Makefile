@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Fri Apr 16 17:09:08 2010 pierre1 boutbel
+## Last update Sun Apr 18 11:29:21 2010 pierre1 boutbel
 ##
 
 STAG		= $(shell uname -s)
@@ -62,6 +62,19 @@ SRC_S		= $(DIR_SRC_S)main.c			\
 		$(DIR_SRC_S)jeu/instr_connect.c		\
 		$(DIR_SRC_S)jeu/concatene_msg_view.c	\
 		$(DIR_SRC_S)jeu/eat.c			\
+		$(DIR_SRC_S)communication/grp_action.c	\
+		$(DIR_SRC_S)communication/grp_connex.c	\
+		$(DIR_SRC_S)communication/grp_egg.c	\
+		$(DIR_SRC_S)communication/grp_ending.c	\
+		$(DIR_SRC_S)communication/grp_move.c	\
+		$(DIR_SRC_S)communication/grp_object.c	\
+		$(DIR_SRC_S)communication/bct.c		\
+		$(DIR_SRC_S)communication/msz_tna_pnw.c	\
+		$(DIR_SRC_S)communication/pdr_pgt_pdi.c	\
+		$(DIR_SRC_S)communication/pex_pbc_pix.c	\
+		$(DIR_SRC_S)communication/ppo_plv_pin.c	\
+		$(DIR_SRC_S)communication/pfk_ex.c	\
+		$(DIR_SRC_S)communication/sx.c		\
 		$(DIR_SRC_S)client_fct.c		\
 		$(DIR_SRC_S)pars_main.c			\
 		$(DIR_SRC_S)pars_init_teams.c		\
@@ -118,7 +131,7 @@ LFLAGS_i386-Darwin	= -lxfunc_$(TAG)				\
 
 LFLAGS_i386-FreeBSD	= -lmylist_$(TAG)				\
 			-lxfunc_$(TAG)					\
-				 `sdl-config --cflags --libs` -lSDL
+			`sdl-config --cflags --libs` -lSDL
 
 LFLAGS_i686-Linux	= -lxfunc_$(TAG)				\
 			-lmylist_$(TAG)					\

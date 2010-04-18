@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Sun Apr 11 14:39:48 2010 francois1 ancel
-** Last update Tue Apr 13 13:12:17 2010 pierre1 boutbel
+** Last update Sat Apr 17 11:32:06 2010 pierre1 boutbel
 */
 
 #ifndef			T_PACKET_INCLUDED
@@ -27,6 +27,7 @@ typedef struct
   struct timeval	time;
   int			duration;
   int			ac_rep;
+  char			*graph_rep;
   t_rep			*response;
 }			t_packet;
 

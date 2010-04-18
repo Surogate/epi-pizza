@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:15:36 2010 francois1 ancel
-** Last update Sat Apr 17 15:03:26 2010 pierre1 boutbel
+** Last update Sat Apr 17 15:43:02 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
@@ -66,6 +66,9 @@ int		main(int ac, char **av)
   t_map		*cas;
 
   game = init_game(ac, av);
+
+  printf("******Addr : %p***********\n", game);
+
   if (game->server.debug)
   {
     test_aff_map(game);
