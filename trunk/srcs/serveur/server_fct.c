@@ -30,6 +30,7 @@
 #include "server_action.h"
 #include "server_eat.h"
 #include "server_plaction.h"
+#include "server_insert_player.h"
 
 static int	check_read(char *str)
 {
