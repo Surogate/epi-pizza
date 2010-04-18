@@ -114,6 +114,8 @@ int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
 	      delete_eat(vec, tmp->sock);
 	      delete_plaction(vec, tmp->sock);
 	      delete_kick(vec, tmp->sock);
+	      if (tmp->team > 0)
+		rm_player(game, tmp->sock);
 	      client->erase(client, client->gns_pos, free_client);
 	    }
 	  else if ((readed = cbuf_read(&(tmp->cbuf), check_read)))

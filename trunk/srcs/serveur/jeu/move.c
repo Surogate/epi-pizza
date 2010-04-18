@@ -11,6 +11,8 @@
 #include	<sys/types.h>
 #include	<sys/time.h>
 #include	<stdlib.h>
+#include	<stdio.h>
+#include	<string.h>
 
 #include	"my_list.h"
 #include	"define.h"
@@ -42,7 +44,7 @@ void		try_turn_right(t_packet *packet, t_player *player)
   packet->response = xmalloc(sizeof(t_rep));
   packet->response->mess = xmalloc(strlen(OK) * sizeof(char));
   player->dir = gl_dir[player->dir].dir_right;
-  snprintf(packet->response->mess, strlen(OK), "%s", OK);
+  snprintf(packet->response->mess, strlen(OK) + 1, "%s\n", OK);
   packet->response->id_player = packet->player_id;
   packet->ac_rep = 1;
 }
