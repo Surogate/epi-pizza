@@ -77,28 +77,28 @@ int			add_client(t_svr_vector *vec, t_select *slt_par,
 
 static int		parse_word(char *str, t_packet *pak)
 {
-  char			*strstk;
   int			i;
+  char			*copy;
 
-  strstk = malloc(strlen(str) * sizeof(*strstk));
-  if (strstk)
+  copy = malloc(strlen(str) * sizeof(*copy));
+  if (copy)
     {
-      strncpy(strstk, str, strlen(str) + 1);
-      pak->av[0] = strstk;
+      strncpy(copy, str, strlen(str));
+      pak->av[0] = copy;
       pak->ac = 1;
       i = 0;
-      while (strstk[i] && (strstk[i] != '\n') && (strstk[i] != ' '))
+      while (copy[i] && (copy[i] != '\n') && (copy[i] != ' '))
 	i++;
-      if (strstk[i] == ' ')
+      if (copy[i] == ' ')
 	{
-	  strstk[i] = '\0';
-	  pak->av[1] = strstk + i + 1;
+	  copy[i] = '\0';
+	  pak->av[1] = copy + i + 1;
 	  pak->ac = 2;
-	  while (strstk[i] && (strstk[i] != '\n'))
+	  while (copy[i] && (copy[i] != '\n'))
 	    i++;
 	}
-      if (strstk[i] == '\n')
-	strstk[i] = '\0';
+      if (copy[i] == '\n')
+	copy[i] = '\0';
       return (EXIT_SUCCESS);
     }
   return (EXIT_FAILURE);
