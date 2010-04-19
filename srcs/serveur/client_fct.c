@@ -78,10 +78,9 @@ int			add_client(t_svr_vector *vec, t_select *slt_par,
 static int		parse_word(char *str, t_packet *pak)
 {
   int			i;
-      
+
   i = 0;
-  pak->av[0] = malloc(strlen(str) * sizeof(*(pak->av[0])));
-  if (pak->av[0])
+  if ((pak->av[0] = malloc(strlen(str) * sizeof(*(pak->av[0])))))
     {
       strncpy(pak->av[0], str, strlen(str));
       pak->ac = 1;
@@ -114,9 +113,7 @@ int			client_parse_instr(char *str, t_client *cli)
     return (EXIT_FAILURE);
   pak = cli->packet + ((cli->cons + cli->used) % 10);
   if (parse_word(str, pak) == EXIT_FAILURE)
-    return (EXIT_FAILURE);  
-  for (i = 0; i < pak->ac; i++)
-    printf("av[%i] = %s\n", i, pak->av[i]);
+    return (EXIT_FAILURE);
   if (cli->team && (treatment_duration(pak) == EXIT_FAILURE))
     {
       i = -1;
@@ -127,7 +124,7 @@ int			client_parse_instr(char *str, t_client *cli)
   pak->player_id = cli->sock;
   pak->player = cli;
   pak->type = 0;
-  pak->ac_rep = 0;  
+  pak->ac_rep = 0;
   ++(cli->used);
   return (EXIT_SUCCESS);
 }
@@ -139,10 +136,11 @@ void			free_packet(t_client *cli)
 
   pak = cli->packet + cli->cons;
   i = -1;
-  free(pak->av[0]);
+  while (++i < pak->ac)
+    free(pak->av[i]);
+  i = -1;
   while (++i < pak->ac_rep)
     {
-      printf("##### %s #####\n", pak->response[i].mess);
       free(pak->response[i].mess);
       free(pak->response + i);
     }
