@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Mon Nov 30 14:23:30 2009 florian chanioux
-** Last update Fri Apr 16 13:54:12 2010 Florian Chanioux
+** Last update Mon Apr 19 18:15:43 2010 pierre1 boutbel
 */
 
 #include <stdlib.h>
@@ -16,7 +16,7 @@ void			my_l_free(t_list *list, void (*func)())
 {
   t_list		*tmp;
 
-  while (list != NULL)
+  while (list->data != NULL)
     {
       tmp = list->next;
       func(list->data);
