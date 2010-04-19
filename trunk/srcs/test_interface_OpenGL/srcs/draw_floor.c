@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Mon Apr 19 13:15:43 2010 Florian Chanioux
-** Last update Mon Apr 19 15:04:59 2010 Florian Chanioux
+** Last update Mon Apr 19 16:23:38 2010 Florian Chanioux
 */
 
 
@@ -29,6 +29,7 @@
 #include "struct.h"
 #include "proto.h"
 
+
 void		floor_with_t(t_game *game, int x, int y)
 {
   glBindTexture(GL_TEXTURE_2D, game->texture.floor);
@@ -36,30 +37,35 @@ void		floor_with_t(t_game *game, int x, int y)
   glTexCoord2d(0, 0);
   glVertex3d(x * CASE_W, y * CASE_H,0);
   glTexCoord2d(1, 0);
-  glVertex3d(x *  CASE_W, y * CASE_H + CASE_H,0);
+  glVertex3d(x * CASE_W, y * CASE_H + CASE_H,0);
   glTexCoord2d(1, 1);
-  glVertex3d(x *  CASE_W + CASE_W, y * CASE_H + CASE_H,0);
+  glVertex3d(x * CASE_W + CASE_W, y * CASE_H + CASE_H,0);
   glTexCoord2d(0, 1);
-  glVertex3d(x *  CASE_W + CASE_W, y * CASE_H,0);
+  glVertex3d(x * CASE_W + CASE_W, y * CASE_H,0);
   glEnd();
 }
 
 void		floor_without_t(int x, int y)
 {
   glBegin(GL_QUADS);
-  glColor3ub(255,255, 255);
+
+  glColor3ub(255, 0, 255);
   glVertex3d(x * CASE_W, y * CASE_H,0);
-  glColor3ub(255,255, 255);
-  glVertex3d(x *  CASE_W, y * CASE_H + CASE_H,0);
-  glColor3ub(255,255, 255);
-  glVertex3d(x *  CASE_W + CASE_W, y * CASE_H + CASE_H,0);
-  glColor3ub(255,255, 255);
-  glVertex3d(x *  CASE_W + CASE_W, y * CASE_H,0);
+
+  glColor3ub(255, 0, 255);
+  glVertex3d(x * CASE_W, y * CASE_H + CASE_H,0);
+
+  glColor3ub(255, 0, 255);
+  glVertex3d(x * CASE_W + CASE_W, y * CASE_H + CASE_H,0);
+
+  glColor3ub(255, 0, 255);
+  glVertex3d(x * CASE_W + CASE_W, y * CASE_H,0);
+
   glEnd();
 }
 
 
-static void	side_with_t(t_game *game, int x, int y)
+void		side_with_t(t_game *game, int x, int y)
 {
   glBindTexture(GL_TEXTURE_2D, game->texture.side);
   glBegin(GL_QUADS);
@@ -74,15 +80,15 @@ static void	side_with_t(t_game *game, int x, int y)
   glEnd();
 }
 
-static void	side_without_t(int x, int y)
+void		side_without_t(int x, int y)
 {
   glBegin(GL_QUADS);
   glColor3ub(255,255, 255);
   glVertex3d(x * CASE_W, 0, 0);
   glColor3ub(255,255, 255);
-  glVertex3d(x * CASE_W + CASE_W, 0, 0);
+  glVertex3d(x * CASE_W + CASE_W, y * CASE_H, 0);
   glColor3ub(255,255, 255);
-  glVertex3d(x * CASE_W + CASE_W, 0, -10);
+  glVertex3d(x * CASE_W + CASE_W, y * CASE_H, -10);
   glColor3ub(255,255, 255);
   glVertex3d(x * CASE_W, 0, -10);
   glEnd();

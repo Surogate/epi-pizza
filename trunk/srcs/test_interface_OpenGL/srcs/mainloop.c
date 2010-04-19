@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 18:24:06 2010 Florian Chanioux
-** Last update Mon Apr 19 14:42:27 2010 Florian Chanioux
+** Last update Mon Apr 19 16:18:50 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -28,9 +28,9 @@
 #include "struct.h"
 #include "proto.h"
 
-void mainloop(t_game *game)
+void		mainloop(t_game *game)
 {
-  int exit;
+  int		exit;
 
   exit = 1;
   SDL_EnableKeyRepeat(100, 20);
