@@ -79,14 +79,14 @@ static int		parse_word(char *str, t_packet *pak)
 {
   int			i;
   char			*copy;
-
+      
+  i = 0;
   copy = malloc(strlen(str) * sizeof(*copy));
   if (copy)
     {
       strncpy(copy, str, strlen(str));
       pak->av[0] = copy;
       pak->ac = 1;
-      i = 0;
       while (copy[i] && (copy[i] != '\n') && (copy[i] != ' '))
 	i++;
       if (copy[i] == ' ')
@@ -97,8 +97,7 @@ static int		parse_word(char *str, t_packet *pak)
 	  while (copy[i] && (copy[i] != '\n'))
 	    i++;
 	}
-      if (copy[i] == '\n')
-	copy[i] = '\0';
+      copy[strlen(str)] = '\0';
       return (EXIT_SUCCESS);
     }
   return (EXIT_FAILURE);
@@ -107,12 +106,15 @@ static int		parse_word(char *str, t_packet *pak)
 int			client_parse_instr(char *str, t_client *cli)
 {
   t_packet		*pak;
+  int			i;
 
   if (cli->used >= 10)
     return (EXIT_FAILURE);
   pak = cli->packet + ((cli->cons + cli->used) % 10);
   if (parse_word(str, pak) == EXIT_FAILURE)
     return (EXIT_FAILURE);
+  for (i = 0; i < pak->ac; i++)
+    printf("av[%i] = %s\n", i, pak->av[i]);
   if (cli->team && (treatment_duration(pak) == EXIT_FAILURE))
     {
       free(pak->av[0]);

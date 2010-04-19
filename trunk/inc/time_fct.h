@@ -13,8 +13,7 @@
 
 int	time_cmp(struct timeval *one, struct timeval *two);
 int	timeminus(struct timeval *to, struct timeval *one, struct timeval *two);
-void	timeend(struct timeval *end, struct timeval *start,
-		struct timeval *delay, int nbr);
+void	timeend(struct timeval *end, struct timeval *delay, int nbr);
 void	gen_delay(struct timeval *delay, int nbr);
 
 #endif

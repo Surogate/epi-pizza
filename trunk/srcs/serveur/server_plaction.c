@@ -40,7 +40,7 @@ int			find_act_fct(t_packet *in, int *player_id)
   return (0);
 }
 
-int			create_plaction(t_svr_vector *vec, t_client *cli, 
+int			create_plaction(t_svr_vector *vec, t_client *cli,
 					t_select *slt)
 {
   t_vector		*action;
@@ -50,10 +50,9 @@ int			create_plaction(t_svr_vector *vec, t_client *cli,
   if (pak->duration)
     {
       action = vec->action;
-      gettimeofday(&(pak->time), NULL);
-      timeend(&(pak->end), &(pak->time), &(slt->delay), pak->duration);
+      timeend(&(pak->end), &(slt->delay), pak->duration);
       action->insert_sort(action, pak, sort_duration);
-      /* llist_display(vec->action, debug_packet); */
+      llist_display(vec->action, debug_packet);
       printf("=>  action create  <=\n");
     }
   else
@@ -61,7 +60,7 @@ int			create_plaction(t_svr_vector *vec, t_client *cli,
   return (EXIT_SUCCESS);
 }
 
-int			exec_plaction(t_svr_vector *vec, t_packet *pak, 
+int			exec_plaction(t_svr_vector *vec, t_packet *pak,
 				      t_game *game)
 {
   t_client	*cli;
