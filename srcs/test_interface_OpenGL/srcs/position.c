@@ -75,49 +75,94 @@ void processHits (GLint hits, GLuint buffer[])
    }
 }
 */
+
 void processHits (GLint hits, GLuint buffer[])
 {
-   unsigned int i, j;
-   GLuint ii, jj, names, *ptr;
+/*  unsigned int i, j;
+  GLuint ii, jj, names, *ptr;
 
-   printf ("hits = %d\n", hits);
-   ptr = (GLuint *) buffer;
-   for (i = 0; i < hits; i++) { /*  for each hit  */
-      names = *ptr;
-      printf (" number of names for this hit = %d\n", names);
-         ptr++;
-      printf("  z1 is %g;", (float) *ptr/0x7fffffff); ptr++;
-      printf(" z2 is %g\n", (float) *ptr/0x7fffffff); ptr++;
-      printf ("   names are ");
-      for (j = 0; j < names; j++) { /*  for each name */
-         printf ("%d ", *ptr);
-         if (j == 0)  /*  set row and column  */
-            ii = *ptr;
-         else if (j == 1)
-            jj = *ptr;
-         ptr++;
-      }
-      printf ("\n");
-   }
+  printf ("hits = %d\n", hits);
+  ptr = (GLuint *) buffer;
+  for (i = 0; i < hits; i++) {
+    names = *ptr;
+    printf (" number of names for this hit = %d\n", names);
+    ptr++;
+    printf("  z1 is %g;", (float) *ptr/0x7fffffff); ptr++;
+    printf(" z2 is %g\n", (float) *ptr/0x7fffffff); ptr++;
+    printf ("   names are ");
+    for (j = 0; j < names; j++) {
+      printf ("%d ", *ptr);
+      if (j == 0)
+	ii = *ptr;
+      else if (j == 1)
+	jj = *ptr;
+      ptr++;
+    }
+    printf ("\n");
+  }
+*/
+
+  GLint i, j, numberOfNames;
+  GLuint names, *ptr, minZ,*ptrNames;
+
+  ptr = (GLuint *) buffer;
+  minZ = 0xffffffff;
+  for (i = 0; i < hits; i++) {	
+    names = *ptr;
+    ptr++;
+    if (*ptr < minZ) {
+      numberOfNames = names;
+      minZ = *ptr;
+      ptrNames = ptr+2;
+    }
+	  
+    ptr += names+2;
+  }
+  if (numberOfNames > 0) {
+    printf ("You picked snowman  ");
+    ptr = ptrNames;
+    for (j = 0; j < numberOfNames; j++,ptr++) { 
+      printf ("%d ", *ptr);
+    }
+  }
+  else
+    printf("You didn't click a snowman!");
+  printf ("\n");
 }
 
-void			picking_mouse(t_game *game, int x, int y)
+void		picking_mouse(t_game *game, int x, int y)
 {
-  static  GLuint	selectBuf[BUFSIZE];
-  GLint			viewport[4];
-  GLint			hits;
+  GLuint	selectBuf[BUFSIZE];
+  GLint		hits;
+  GLint viewport[4];
+  GLfloat ratio;
 
-  glSelectBuffer(BUFSIZE,selectBuf);
+  glSelectBuffer (BUFSIZE, selectBuf);
   glGetIntegerv(GL_VIEWPORT,viewport);
   glRenderMode(GL_SELECT);
   glInitNames();
   glMatrixMode(GL_PROJECTION);
   glPushMatrix();
   glLoadIdentity();
-  gluPickMatrix(x, viewport[3]-y, 5, 5, viewport);
+/*  create 5x5 pixel picking region near cursor location      */
+  gluPickMatrix((GLdouble)x, (GLdouble)y, 5.0, 5.0, viewport);
+  ratio = (GLfloat)(viewport[2] / viewport[3]);
+  gluPerspective(WIN_FOC, ratio, WIN_NEAR, WIN_FAR);
+  glMatrixMode(GL_MODELVIEW);
+  draw_gl(game, GL_SELECT);
+/*
+  glMatrixMode(GL_PROJECTION);
+  glPopMatrix();
   glMatrixMode(GL_MODELVIEW);
   hits = glRenderMode(GL_RENDER);
-  processHits (hits, selectBuf);
+  processHits(hits, selectBuf);
+*/
+  glMatrixMode(GL_PROJECTION);
+  glPopMatrix();
+  glMatrixMode(GL_MODELVIEW);
+  hits = glRenderMode(GL_RENDER);
+  if (hits != 0)
+    processHits(hits, selectBuf);
 }
 
 /*

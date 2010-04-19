@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Mon Apr 19 19:43:55 2010 Florian Chanioux
+** Last update Mon Apr 19 22:59:42 2010 Florian Chanioux
 */
 
 #ifndef		DEFINE_H
@@ -13,6 +13,12 @@
 
 # define	WIN_W		800
 # define	WIN_H		600
+
+# define	WIN_FOC		70.0
+# define	WIN_NEAR	150.0
+# define	WIN_FAR		800.0
+
+
 # define	WIN_COLOR	32
 
 # define	CASE_W		32

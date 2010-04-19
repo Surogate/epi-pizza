@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Mon Apr 19 17:27:17 2010 Florian Chanioux
+** Last update Mon Apr 19 23:02:02 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -72,9 +72,9 @@ void		init_game(t_game *game)
 {
   game->screen = load_window();
   game->mouse.clicked = 0;
-  game->video.text = 0;
+  game->video.text = 1;
   game->video.fog = 0;
-  game->video.light = 1;
+  game->video.light = 0;
   game->texture.floor = loadtexture("images/lawn.jpg", 0);
   game->texture.side = loadtexture("images/side.jpg", 0);
   game->mouse.img[0] = img_load("images/main_ouverte.bmp");
