@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Wed Apr 14 13:18:55 2010 pierre1 boutbel
-** Last update Sun Apr 18 17:48:35 2010 pierre1 boutbel
+** Last update Mon Apr 19 16:57:52 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -21,26 +21,34 @@
 char		*add_player(t_vision *cur_case, char *msg)
 {
   t_list	*cur_player;
-  int		flag;
 
   cur_player = cur_case->cas->cas.player;
-  flag = 0;
-  while (cur_player != NULL)
+  while (cur_player->data != NULL)
     {
-      msg = xrealloc(msg, strlen(msg) + strlen(MSG_JOUEUR) + flag);
-      msg = strcat(msg, MSG_JOUEUR);
+      msg = xrealloc(msg, strlen(msg) + strlen(MSG_JOUEUR));
+      snprintf(msg, strlen(msg) + strlen(MSG_JOUEUR) + 3, "%s%s ", msg, 
+	       MSG_JOUEUR);
       cur_player = cur_player->next;
-      if (flag == 1 && cur_player != NULL)
-	msg = strcat(msg, " ");
-      if (flag == 0)
-	flag++;
     }
   return (msg);
 }
 
+static int	find_last_ress(t_case cas)
+{
+  int		i;
+  
+  i = RESS_NUM;
+  while (cas.ress[i] != 0 && i != 0)
+    i--;
+  if (i == 0)
+    return (RESS_NUM - 1);
+  else 
+    return (i - 1);
+}
+
 char		*add_ressource(t_vision *cur_case, char *msg)
 {
-  char		msg_ress[RESS_NUM][10] = {MSG_RESS};
+  char		msg_ress[RESS_NUM][11] = {MSG_RESS};
   int		num_ress;
   int		nb_ress;
   int		flag;
@@ -53,10 +61,14 @@ char		*add_ressource(t_vision *cur_case, char *msg)
       while (nb_ress != 0)
 	{
 	  msg = xrealloc(msg, strlen(msg) + strlen(msg_ress[num_ress]) + flag);
-	  msg = strcat(msg, msg_ress[num_ress]);
+	  if (nb_ress == 1 && num_ress == find_last_ress(cur_case->cas->cas))
+	    {
+	      printf("case : %i  => %s : %i %i\n", cur_case->num, msg_ress[num_ress], num_ress, nb_ress);
+	      snprintf(msg, strlen(msg) + 14, "%s%s", msg, msg_ress[num_ress]);
+	    }
+	  else
+	    snprintf(msg, strlen(msg) + 14, "%s%s ", msg, msg_ress[num_ress]);
 	  nb_ress--;
-	  if (flag == 1 && nb_ress != 0)
-	    msg = strcat(msg, " ");
 	  if (flag == 0)
 	    flag = 1;
 	}
@@ -70,8 +82,8 @@ char		*explore_case(t_vision *cur_case, char *msg)
   if (cur_case->cas->cas.player != NULL)
     msg = add_player(cur_case, msg);
   msg = add_ressource(cur_case, msg);
-  msg = xrealloc(msg, strlen(msg) + 1);
-  msg = strcat(msg, ",");
+  msg = xrealloc(msg, strlen(msg) + 2);
+  msg = strcat(msg, ", ");
   return (msg);
 }
 
@@ -79,6 +91,7 @@ char		*concatene_msg(t_vision *list)
 {
   char		*msg;
   t_vision	*cur;
+  int		len;
 
   cur = list;
   msg = xmalloc(2 * sizeof(char));
@@ -89,7 +102,10 @@ char		*concatene_msg(t_vision *list)
       msg = explore_case(cur, msg);
       cur = cur->next;
     }
-  msg = xrealloc(msg, strlen(msg) + 2);
-  msg = strcat(msg, "}\n");
+  msg = xrealloc(msg, strlen(msg) + 3);
+  len = strlen(msg);
+  msg[len - 1] = '}';
+  msg[len] = '\n';
+  msg[len + 1] = '\0';
   return (msg);
 }

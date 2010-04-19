@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Apr 13 12:03:06 2010 Florian Chanioux
-** Last update Sun Apr 18 12:32:49 2010 pierre1 boutbel
+** Last update Mon Apr 19 17:15:43 2010 pierre1 boutbel
 */
 
 #include <sys/time.h>
@@ -29,7 +29,8 @@ t_player	*create_player(int player_id, int team)
   player = xmalloc(sizeof(t_player));
   player->player_id = player_id;
   player->team = team;
-  player->dir = 1 + rand() % 3;
+  player->level = 1;
+  player->dir = rand() % 4;
   player->pos = NULL;
   player->ress[(i = 0)] = 10;
   while (++i < RESS_NUM)
