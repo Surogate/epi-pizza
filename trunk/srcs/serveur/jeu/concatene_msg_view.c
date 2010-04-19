@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Wed Apr 14 13:18:55 2010 pierre1 boutbel
-** Last update Mon Apr 19 18:52:25 2010 pierre1 boutbel
+** Last update Mon Apr 19 19:13:33 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -48,21 +48,9 @@ static int	find_last_ress(t_case cas)
 {
   int		i;
   
-  printf("Calcul de ressource\n");
-
   i = RESS_NUM - 1;
-
-  /*  printf("On a i = %i et : %i \n", i, cas.ress[i]); 
-   */
-
   while (cas.ress[i] == 0 && i != -1)
-    {
-
-      /*      printf("Ress : %i - val %i\n", i, cas.ress[i]);
-       */
-
-      i--;
-    }
+    i--;
   if (cas.ress[RESS_NUM - 1] != 0 || i == -1)
     return (RESS_NUM - 1);
   else 
@@ -75,31 +63,16 @@ char		*add_ressource(t_vision *cur_case, char *msg)
   int		num_ress;
   int		nb_ress;
 
-
-  int		i = -1;
-
-  puts("");
-
-  /*
-  printf("Last ress : %i\n", find_last_ress(cur_case->cas->cas));
-  while (++i != RESS_NUM)
-    printf("%i %s : %i\n", i, msg_ress[i], cur_case->cas->cas.ress[i]);
-  */
-
   num_ress = -1;
   while (++num_ress != RESS_NUM)
     {
-      
-
-     nb_ress = cur_case->cas->cas.ress[num_ress] + 1;
+      nb_ress = cur_case->cas->cas.ress[num_ress] + 1;
       while (--nb_ress >= 2)
 	{
 	  msg = xrealloc(msg, strlen(msg) + strlen(msg_ress[num_ress]) + 2);
 	  snprintf(msg, strlen(msg) + 14, "%s%s ", msg, msg_ress[num_ress]);
 	}
       msg = xrealloc(msg, strlen(msg) + strlen(msg_ress[num_ress]) + 2);
-
-
       if (nb_ress != 0)
 	{
 	  if (num_ress == find_last_ress(cur_case->cas->cas))
@@ -108,9 +81,6 @@ char		*add_ressource(t_vision *cur_case, char *msg)
 	    snprintf(msg, strlen(msg) + 14, "%s%s ", msg, msg_ress[num_ress]);
 	}	
     }
-
-  puts("");
-
   return (msg);
 }
 
@@ -121,17 +91,9 @@ char		*explore_case(t_vision *cur_case, char *msg)
   if (cur_case->cas->cas.player != NULL)
     msg = add_player(cur_case, msg);
   msg = add_ressource(cur_case, msg);
-
-
-  printf("next : %p\n", cur_case->next);
-
-  
+  msg = xrealloc(msg, strlen(msg) + 1);
   if (cur_case->next == NULL)
-    {
-      puts("**********************************");
-      msg = xrealloc(msg, strlen(msg) + 1);
-      msg = strcat(msg, ",");
-    }
+    msg = strcat(msg, ",");
 
   if (cur_case->next != NULL)
     {
@@ -139,20 +101,12 @@ char		*explore_case(t_vision *cur_case, char *msg)
       while (++i != RESS_NUM)
 	if (cur_case->next->cas->cas.ress[i] != 0)
 	  break;
-
-      printf("i : %i, next->player %p\n", i, cur_case->next->cas->cas.player);
-
       if (i == RESS_NUM)
-	{
-	  puts("444444444444444444444444444444444444");
-	  msg = xrealloc(msg, strlen(msg) + 1);
-	  msg = strcat(msg, ",");
-	}
+	msg = strcat(msg, ",");
       else
 	{
-	  puts("2322222222222222222222222222222");
 	  msg = xrealloc(msg, strlen(msg) + 2);
-	    msg = strcat(msg, ", ");
+	  msg = strcat(msg, ", ");
 	}
     }
   return (msg);
