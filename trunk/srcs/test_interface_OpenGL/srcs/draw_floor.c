@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Mon Apr 19 13:15:43 2010 Florian Chanioux
-** Last update Mon Apr 19 16:23:38 2010 Florian Chanioux
+** Last update Mon Apr 19 17:18:24 2010 Florian Chanioux
 */
 
 
@@ -35,32 +35,27 @@ void		floor_with_t(t_game *game, int x, int y)
   glBindTexture(GL_TEXTURE_2D, game->texture.floor);
   glBegin(GL_QUADS);
   glTexCoord2d(0, 0);
-  glVertex3d(x * CASE_W, y * CASE_H,0);
+  glVertex2d(x * CASE_W, y * CASE_H);
   glTexCoord2d(1, 0);
-  glVertex3d(x * CASE_W, y * CASE_H + CASE_H,0);
+  glVertex2d(x * CASE_W, y * CASE_H + CASE_H);
   glTexCoord2d(1, 1);
-  glVertex3d(x * CASE_W + CASE_W, y * CASE_H + CASE_H,0);
+  glVertex2d(x * CASE_W + CASE_W, y * CASE_H + CASE_H);
   glTexCoord2d(0, 1);
-  glVertex3d(x * CASE_W + CASE_W, y * CASE_H,0);
+  glVertex2d(x * CASE_W + CASE_W, y * CASE_H);
   glEnd();
 }
 
 void		floor_without_t(int x, int y)
 {
   glBegin(GL_QUADS);
-
-  glColor3ub(255, 0, 255);
-  glVertex3d(x * CASE_W, y * CASE_H,0);
-
-  glColor3ub(255, 0, 255);
-  glVertex3d(x * CASE_W, y * CASE_H + CASE_H,0);
-
-  glColor3ub(255, 0, 255);
-  glVertex3d(x * CASE_W + CASE_W, y * CASE_H + CASE_H,0);
-
-  glColor3ub(255, 0, 255);
-  glVertex3d(x * CASE_W + CASE_W, y * CASE_H,0);
-
+  glColor3ub(255, 255, 255);
+  glVertex2d(x * CASE_W, y * CASE_H);
+  glColor3ub(255, 255, 255);
+  glVertex2d(x * CASE_W, y * CASE_H + CASE_H);
+  glColor3ub(255, 255, 255);
+  glVertex2d(x * CASE_W + CASE_W, y * CASE_H + CASE_H);
+  glColor3ub(255, 255, 255);
+  glVertex2d(x * CASE_W + CASE_W, y * CASE_H);
   glEnd();
 }
 
