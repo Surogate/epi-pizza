@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 **
 ** Started on  Wed Apr 14 13:20:07 2010 pierre1 boutbel
-** Last update Wed Apr 14 13:20:09 2010 pierre1 boutbel
+** Last update Mon Apr 19 17:18:07 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -34,10 +34,16 @@ static t_map	*find_left(t_vision *list, t_dir_v *dir, int level)
   t_vision	*cur;
 
   cur = list;
+
   while (cur != NULL)
     {
-      if (cur->level == level)
-	return (cur->cas->card[dir->up_left]);
+      if (cur->level == level || level == 1)
+	{
+	  return (cur->cas->card[dir->up_left]);
+	}
+
+      if (cur->level == 5)
+	exit(0);
       cur = cur->next;
     }
   return (NULL);
@@ -49,7 +55,7 @@ static t_vision *add_case(t_vision *list, t_map *map, int level)
   t_vision	*cur;
   t_vision	*old;
 
-  new = xmalloc(sizeof(t_vision));
+  new = xmalloc(sizeof(*new));
   cur = list;
   old = cur;
   while (cur != NULL)
@@ -107,7 +113,7 @@ void		try_view(t_packet *packet, t_player *player)
   s_vision->level = 0;
   s_vision->num = 0;
   s_vision->cas = player->pos;
-  while (player->level < i)
+  while (player->level != i - 1)
     {
       s_vision = add_level(s_vision, &gl_dir[player->dir - 1], i);
       i++;
