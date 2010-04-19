@@ -19,7 +19,7 @@ void		debug_packet(t_packet *pak)
 {
   fprintf (stderr, "========\n");
   if (pak)
-    fprintf(stderr, "player id : %i\ntype : %i\nac : %i\ntime %i\nduration : %i\n", pak->player_id, pak->type, pak->ac, (int)pak->time.tv_sec, pak->duration);
+    fprintf(stderr, "player id : %i\ntype : %i\nac : %i\ntime %i\nduration : %i\n", pak->player_id, pak->type, pak->ac, (int)pak->end.tv_sec, pak->duration);
   else
     fprintf(stderr, "pak non allouer\n");
   fprintf(stderr, "========\n");

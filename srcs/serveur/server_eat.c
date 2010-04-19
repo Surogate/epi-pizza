@@ -50,9 +50,8 @@ int		create_eat(t_svr_vector *vec, t_select *slt, int player_id)
     {
       pak->player_id = player_id;
       pak->type = 2;
-      gettimeofday(&(pak->time), NULL);
       pak->duration = 126;
-      timeend(&(pak->end), &(pak->time), &(slt->delay), pak->duration);
+      timeend(&(pak->end), &(slt->delay), pak->duration);
       pak->ac = 0;
       pak->ac_rep = 0;
       action->insert_sort(action, pak, sort_duration);

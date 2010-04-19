@@ -43,8 +43,7 @@ int	timeminus(struct timeval *to, struct timeval *one, struct timeval *two)
   return (EXIT_SUCCESS);
 }
 
-void	timeend(struct timeval *end, struct timeval *start,
-		struct timeval *delay, int nbr)
+void	timeend(struct timeval *end, struct timeval *delay, int nbr)
 {
   struct timeval timestart;
   int	usec;

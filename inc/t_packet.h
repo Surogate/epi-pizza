@@ -24,7 +24,6 @@ typedef struct
   int			type;
   int			ac;
   char			*av[2];
-  struct timeval	time;
   int			duration;
   struct timeval	end;
   int			ac_rep;

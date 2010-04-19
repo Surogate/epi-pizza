@@ -76,7 +76,7 @@ int			execute_action(t_svr_vector *vec, t_game *game,
   gettimeofday(&time, NULL);
   while ((tmp = action->getnxts(action)) != NULL)
     {
-      printf("compare de time %i", time_cmp(&time, &(tmp->end)));
+      printf("compare de time %i\n", time_cmp(&time, &(tmp->end)));
       if (time_cmp(&time, &(tmp->end)) >= 0)
 	{
 	  if (!tmp->type)
