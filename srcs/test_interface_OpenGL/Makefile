@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Sun Apr 18 20:11:29 2010 Florian Chanioux
+## Last update Mon Apr 19 13:26:40 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -42,6 +42,7 @@ SRC		= \
 		$(DIR_SRC)camera.c		\
 		$(DIR_SRC)interaction.c		\
 		$(DIR_SRC)mouse.c		\
+		$(DIR_SRC)draw_floor.c		\
 		$(DIR_SRC)draw_map.c		\
 		$(DIR_SRC)draw_mob.c		\
 		$(DIR_SRC)draw_gl.c		\
@@ -57,7 +58,7 @@ SRC_INC		= \
 
 SRC_LIB		= \
 		$(DIR_INC)libxfunc$_*.a		\
-		$(DIR_INC)libmy_list_*.a		\
+		$(DIR_INC)libmy_list_*.a	\
 
 
 OBJ		= $(SRC:.c=.o)
@@ -105,8 +106,9 @@ LFLAGS_i386-FreeBSD	= \
 			-lpthread
 
 LFLAGS_i686-Linux	= \
-			`sdl-config --cflags --libs` \
-			-lSDL_image -lSDL -lSDL_ttf  -lGL -lGLU -lglut
+			`sdl-config --cflags --libs`			\
+			-lSDL_image -lSDL -lSDL_ttf			\
+			-lGL -lGLU -lglut
 
 LFLAGS			= -L$(DIR_LIB) $(LFLAGS_$(TAG))
 

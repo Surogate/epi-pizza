@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 16:46:50 2010 Florian Chanioux
-** Last update Sun Apr 18 21:30:17 2010 Florian Chanioux
+** Last update Mon Apr 19 14:31:00 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -28,37 +28,6 @@
 #include "struct.h"
 #include "proto.h"
 
-static void	make_floor(t_game *game, int x, int y)
-{
-  glBindTexture(GL_TEXTURE_2D, game->texture.floor);
-  glBegin(GL_QUADS);
-  glTexCoord2d(0, 0);
-  glVertex3d(x * CASE_W, y * CASE_H,0);
-  glTexCoord2d(1, 0);
-  glVertex3d(x *  CASE_W, y * CASE_H + CASE_H,0);
-  glTexCoord2d(1, 1);
-  glVertex3d(x *  CASE_W + CASE_W, y * CASE_H + CASE_H,0);
-  glTexCoord2d(0, 1);
-  glVertex3d(x *  CASE_W + CASE_W, y * CASE_H,0);
-  glEnd();
-}
-
-static void	make_side(t_game *game)
-{
-  /*glBindTexture(GL_TEXTURE_2D, game->texture.side);*/
-
-  glBegin(GL_QUADS);
-  /*glTexCoord2d(0, 0);*/
-  glVertex3d(0, 0, 0);
-/*  glTexCoord2d(1, 0);*/
-  glVertex3d(CASE_W, 0, 0);
-  /* glTexCoord2d(1, 1);*/
-  glVertex3d(CASE_W, 0, -10);
-  /*glTexCoord2d(0, 1);*/
-  glVertex3d(0, 0, -10);
-  glEnd();
-}
-
 void		make_calllistes(t_game *game)
 {
   glNewList(MAP_CASE,GL_COMPILE);
@@ -77,7 +46,7 @@ void		make_calllistes(t_game *game)
   glPopMatrix();
   glPopMatrix();
 */
-  make_floor(game, 0, 0);
+  floor_without_t(0, 0);
   glEndList();
 }
 
@@ -91,7 +60,8 @@ void		draw_map(t_game *game)
   {
     w = -1;
     while (++w < MAP_CW)
-      make_floor(game, h, w);
+      floor_without_t(h, w);
+/*      floor_with_t(game, h, w);*/
   }
 }
 

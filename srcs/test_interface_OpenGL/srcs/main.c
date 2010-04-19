@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Sun Apr 18 20:59:29 2010 Florian Chanioux
+** Last update Mon Apr 19 13:05:02 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -26,8 +26,8 @@
 #include <GL/gl.h>
 #endif
 
-#include	"define.h"
-#include	"struct.h"
+#include "define.h"
+#include "struct.h"
 
 int		main(int argc, char *argv[])
 {
@@ -35,7 +35,6 @@ int		main(int argc, char *argv[])
 
   init_game(&game);
   printAttributes();
-  init_doublebuffer(1);
   initGL();
   mainloop(&game);
   puts("end of program");
