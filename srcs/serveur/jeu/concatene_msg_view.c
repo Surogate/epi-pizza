@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Wed Apr 14 13:18:55 2010 pierre1 boutbel
-** Last update Wed Apr 14 13:18:55 2010 pierre1 boutbel
+** Last update Sun Apr 18 17:48:35 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -89,7 +89,7 @@ char		*concatene_msg(t_vision *list)
       msg = explore_case(cur, msg);
       cur = cur->next;
     }
-  msg = xrealloc(msg, strlen(msg) + 1);
-  msg = strcat(msg, "}");
+  msg = xrealloc(msg, strlen(msg) + 2);
+  msg = strcat(msg, "}\n");
   return (msg);
 }

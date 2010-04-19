@@ -5,12 +5,13 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Mon Apr 12 19:29:06 2010 Florian Chanioux
-** Last update Sun Apr 18 12:24:18 2010 pierre1 boutbel
+** Last update Mon Apr 19 13:49:22 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
 #include	<sys/time.h>
 #include	<stdlib.h>
+#include	<stdio.h>
 #include	<time.h>
 
 #include	"my_list.h"
@@ -72,8 +73,8 @@ void		try_fork(t_packet *packet, t_player *player)
 {
 
   packet->response = xmalloc(sizeof(t_rep));
-  packet->response->mess = xmalloc(3 * sizeof(char));
-  packet->response->mess = OK;
+  packet->response->mess = xmalloc(LEN_OK * sizeof(char));
+  snprintf(packet->response->mess, LEN_OK, "%s\n", OK);
   packet->response->id_player = player->player_id;
   packet->ac_rep = 1;
 }
