@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 18:30:49 2010 Florian Chanioux
-** Last update Sun Apr 18 20:56:48 2010 Florian Chanioux
+** Last update Mon Apr 19 13:01:22 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -33,7 +33,7 @@ void		reshape()
   glViewport(0, 0, WIN_W, WIN_H);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluPerspective(70.0, (GLfloat)(WIN_W / WIN_H), 1, 1000.0);
+  gluPerspective(70.0, (GLfloat)(WIN_W / WIN_H), 150, 800.0);
 }
 
 void		camera()
