@@ -46,10 +46,12 @@ int	timeminus(struct timeval *to, struct timeval *one, struct timeval *two)
 void	timeend(struct timeval *end, struct timeval *start,
 		struct timeval *delay, int nbr)
 {
+  struct timeval timestart;
   int	usec;
 
-  end->tv_sec = start->tv_sec + (nbr * delay->tv_sec);
-  usec = start->tv_usec + (nbr * delay->tv_usec);
+  gettimeofday(&timestart, NULL);
+  end->tv_sec = timestart.tv_sec + (nbr * delay->tv_sec);
+  usec = timestart.tv_usec + (nbr * delay->tv_usec);
   end->tv_sec += usec / 1000000;
   end->tv_usec = usec % 1000000;
 }
