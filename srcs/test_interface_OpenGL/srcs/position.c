@@ -75,39 +75,51 @@ void processHits (GLint hits, GLuint buffer[])
    }
 }
 */
-#define SIZE 512
- /*
-void mouse(t_game *game, int x, int y)
+void processHits (GLint hits, GLuint buffer[])
 {
-   GLuint selectBuf[SIZE];
-   GLint hits;
-   GLint viewport[4];
+   unsigned int i, j;
+   GLuint ii, jj, names, *ptr;
 
-   glGetIntegerv (GL_VIEWPORT, viewport);
-   glSelectBuffer (SIZE, selectBuf);
-   glRenderMode(GL_SELECT);
-
-   glInitNames();
-   glPushName(0);
-
-   glMatrixMode (GL_PROJECTION);
-   glPushMatrix ();
-   glLoadIdentity ();
-
-   gluPickMatrix ((GLdouble) x, (GLdouble) (viewport[3] - y), 
-                  5.0, 5.0, viewport);
-   gluOrtho2D (-2.0, 2.0, -2.0, 2.0);
-
-
-   glMatrixMode (GL_PROJECTION);
-   glPopMatrix ();
-   glFlush ();
-
-   hits = glRenderMode (GL_RENDER);
-   processHits (hits, selectBuf);
-
+   printf ("hits = %d\n", hits);
+   ptr = (GLuint *) buffer;
+   for (i = 0; i < hits; i++) { /*  for each hit  */
+      names = *ptr;
+      printf (" number of names for this hit = %d\n", names);
+         ptr++;
+      printf("  z1 is %g;", (float) *ptr/0x7fffffff); ptr++;
+      printf(" z2 is %g\n", (float) *ptr/0x7fffffff); ptr++;
+      printf ("   names are ");
+      for (j = 0; j < names; j++) { /*  for each name */
+         printf ("%d ", *ptr);
+         if (j == 0)  /*  set row and column  */
+            ii = *ptr;
+         else if (j == 1)
+            jj = *ptr;
+         ptr++;
+      }
+      printf ("\n");
+   }
 }
- */
+
+void			picking_mouse(t_game *game, int x, int y)
+{
+  static  GLuint	selectBuf[BUFSIZE];
+  GLint			viewport[4];
+  GLint			hits;
+
+  glSelectBuffer(BUFSIZE,selectBuf);
+  glGetIntegerv(GL_VIEWPORT,viewport);
+  glRenderMode(GL_SELECT);
+  glInitNames();
+  glMatrixMode(GL_PROJECTION);
+  glPushMatrix();
+  glLoadIdentity();
+  gluPickMatrix(x, viewport[3]-y, 5, 5, viewport);
+  glMatrixMode(GL_MODELVIEW);
+  hits = glRenderMode(GL_RENDER);
+  processHits (hits, selectBuf);
+}
+
 /*
 void reshape(int w, int h)
 {

@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Sat Apr 17 19:43:59 2010 Florian Chanioux
-** Last update Mon Apr 19 16:00:33 2010 Florian Chanioux
+** Last update Mon Apr 19 19:45:56 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -36,11 +36,11 @@ void		draw_gl(t_game *game)
   x = game->info.pos.x * 0.2;
   y = game->info.pos.y * 0.5;
   glPushMatrix();
-    glTranslated(x, y, 0);
-    glPushMatrix();
-    /*glRotated(45, 0, 0, 1); */
-      draw_map(game);
-      draw_mob();
-    glPopMatrix();
+  glTranslated(x, y, 0);
+  glPushMatrix();
+  /*glRotated(45, 0, 0, 1); */
+  draw_map(game);
+  draw_mob();
+  glPopMatrix();
   glPopMatrix();
 }
