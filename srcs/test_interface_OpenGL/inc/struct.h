@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Sun Apr 18 15:53:59 2010 Florian Chanioux
+** Last update Mon Apr 19 15:47:07 2010 Florian Chanioux
 */
 
 #ifndef		STRUCT_H
@@ -64,10 +64,20 @@ typedef struct
   GLuint	side;
 }		t_texture;
 
+
+typedef struct
+{
+  int		text;
+  int		light;
+  int		fog;
+}		t_conf;
+
+
 typedef struct	s_game
 {
   SDL_Event	event;
   SDL_Surface	*screen;
+  t_conf	video;
   t_texture	texture;
   t_info	info;
   t_mouse	mouse;

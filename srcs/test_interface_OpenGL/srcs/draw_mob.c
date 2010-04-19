@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 17:10:54 2010 Florian Chanioux
-** Last update Sun Apr 18 15:53:09 2010 Florian Chanioux
+** Last update Mon Apr 19 16:24:11 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -29,7 +29,7 @@
 #include "proto.h"
 
 
-void draw_mob()
+void		draw_mob()
 {
   /*
     code  POUR LES MOB
