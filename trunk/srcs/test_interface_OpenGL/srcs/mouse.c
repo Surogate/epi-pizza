@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Mon Apr 19 19:31:57 2010 Florian Chanioux
+** Last update Mon Apr 19 22:01:03 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -97,7 +97,8 @@ int		mouse_down(t_game *game)
     printf("case selected : x = [%d], y = [%d]\n",
 	   (game->info.pos.x + game->event.button.x),
 	   (game->info.pos.y + (MAP_CH * CASE_H - game->event.button.y)));
-     picking_mouse(game, game->event.button.x, game->event.button.y);
+    printf("val x=%i   y=%i\n", game->event.button.x, game->event.button.y);
+    picking_mouse(game, game->event.button.x, game->event.button.y);
   }
   return (1);
 }

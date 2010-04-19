@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 16:46:50 2010 Florian Chanioux
-** Last update Mon Apr 19 20:36:01 2010 Florian Chanioux
+** Last update Mon Apr 19 22:49:53 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -36,7 +36,7 @@ void		make_calllistes(t_game *game)
   glEndList();
 }
 
-void		draw_map(t_game *game)
+void		draw_map(t_game *game, GLenum mode)
 {
   int		h;
   int		w;
@@ -51,13 +51,17 @@ void		draw_map(t_game *game)
     w = -1;
     while (++w < MAP_CW)
     {
-      glPushName(++i);
+      if (mode == GL_SELECT)
+	glPushName(++i);
       if (game->video.text)
 	floor_with_t(game, h, w);
       else
 	floor_without_t(h, w);
-      glPopName ();
+      if (mode == GL_SELECT)
+	glPopName();
     }
   }
+  if (mode == GL_SELECT)
+    printf("%i\n", i);
   glDisable(GL_TEXTURE_2D);
 }
