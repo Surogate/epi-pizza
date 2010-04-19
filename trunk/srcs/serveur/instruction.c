@@ -55,7 +55,6 @@ void		treatment_intr(t_game *game, t_packet *packet)
   player = (t_player *)my_l_find(game->player, packet, find_elem);
   while (++i < NB_INST)
     {
-      /* printf("%s\n", tab_instr[i].inst); */
       if (!strncmp(packet->av[0], tab_instr[i].inst, strlen(packet->av[0])))
 	tab_instr[i].ptr_func(packet, player, game);
     }
