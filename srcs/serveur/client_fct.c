@@ -78,26 +78,28 @@ int			add_client(t_svr_vector *vec, t_select *slt_par,
 static int		parse_word(char *str, t_packet *pak)
 {
   int			i;
-  char			*copy;
       
   i = 0;
-  copy = malloc(strlen(str) * sizeof(*copy));
-  if (copy)
+  pak->av[0] = malloc(strlen(str) * sizeof(*(pak->av[0])));
+  if (pak->av[0])
     {
-      strncpy(copy, str, strlen(str));
-      pak->av[0] = copy;
+      strncpy(pak->av[0], str, strlen(str));
       pak->ac = 1;
-      while (copy[i] && (copy[i] != '\n') && (copy[i] != ' '))
-	i++;
-      if (copy[i] == ' ')
+      while (pak->av[0][i] && (pak->av[0][i] != '\n') && (pak->av[0][i] != ' '))
+	++i;
+      if (pak->av[0][i] == ' ')
 	{
-	  copy[i] = '\0';
-	  pak->av[1] = copy + i + 1;
-	  pak->ac = 2;
-	  while (copy[i] && (copy[i] != '\n'))
-	    i++;
+	  pak->av[0][i] = '\0';
+	  pak->av[1] = malloc((strlen(str) - i) * sizeof(*(pak->av[1])));
+	  if (pak->av[1])
+	    {
+	      strncpy(pak->av[1], str + i + 1, strlen(str) - i - 1);
+	      pak->ac = 2;
+	      pak->av[1][strlen(str)- i - 1] = '\0';
+	    }
 	}
-      copy[strlen(str)] = '\0';
+      else
+	pak->av[0][strlen(str)] = '\0';
       return (EXIT_SUCCESS);
     }
   return (EXIT_FAILURE);
@@ -112,12 +114,14 @@ int			client_parse_instr(char *str, t_client *cli)
     return (EXIT_FAILURE);
   pak = cli->packet + ((cli->cons + cli->used) % 10);
   if (parse_word(str, pak) == EXIT_FAILURE)
-    return (EXIT_FAILURE);
+    return (EXIT_FAILURE);  
   for (i = 0; i < pak->ac; i++)
     printf("av[%i] = %s\n", i, pak->av[i]);
   if (cli->team && (treatment_duration(pak) == EXIT_FAILURE))
     {
-      free(pak->av[0]);
+      i = -1;
+      while (++i < pak->ac)
+	free(pak->av[i]);
       return (EXIT_FAILURE);
     }
   pak->player_id = cli->sock;
