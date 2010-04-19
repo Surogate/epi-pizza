@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Mon Apr 19 22:01:03 2010 Florian Chanioux
+** Last update Mon Apr 19 23:14:40 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -28,7 +28,7 @@
 
 #include	"define.h"
 #include	"struct.h"
-# define SIZE	512
+#include	"proto.h"
 
 
 void		display_mouse(t_game *game)
