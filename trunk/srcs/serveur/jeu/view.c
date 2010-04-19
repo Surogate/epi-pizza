@@ -1,9 +1,9 @@
 /*
 ** view.c for zappy in /u/all/boutbe_a/cu/rendu/c/projets/epi-pizza/srcs/serveur/jeu
-** 
+**
 ** Made by pierre1 boutbel
 ** Login   <boutbe_a@epitech.net>
-** 
+**
 ** Started on  Wed Apr 14 13:20:07 2010 pierre1 boutbel
 ** Last update Wed Apr 14 13:20:09 2010 pierre1 boutbel
 */
@@ -102,7 +102,7 @@ void		try_view(t_packet *packet, t_player *player)
   int		i;
 
   i = 0;
-  s_vision = xmalloc(sizeof(s_vision));
+  s_vision = xmalloc(sizeof(*s_vision));
   s_vision->next = NULL;
   s_vision->level = 0;
   s_vision->num = 0;
@@ -112,7 +112,7 @@ void		try_view(t_packet *packet, t_player *player)
       s_vision = add_level(s_vision, &gl_dir[player->dir - 1], i);
       i++;
     }
-  packet->response = xmalloc(sizeof(t_rep)); 
+  packet->response = xmalloc(sizeof(*(packet->response)));
   packet->response->mess = concatene_msg(s_vision);
   packet->response->id_player = packet->player_id;
   packet->ac_rep = 1;
