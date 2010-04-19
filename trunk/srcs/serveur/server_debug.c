@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Fri Apr 16 09:15:22 2010 francois1 ancel
-** Last update Fri Apr 16 09:15:22 2010 francois1 ancel
+** Last update Sun Apr 18 17:51:36 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
@@ -21,6 +21,6 @@ void		debug_packet(t_packet *pak)
   if (pak)
     fprintf(stderr, "player id : %i\ntype : %i\nac : %i\ntime %i\nduration : %i\n", pak->player_id, pak->type, pak->ac, (int)pak->end.tv_sec, pak->duration);
   else
-    fprintf(stderr, "pak non allouer\n");
+    fprintf(stderr, "pak non alloue\n");
   fprintf(stderr, "========\n");
 }

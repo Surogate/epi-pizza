@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Wed Apr 14 13:19:43 2010 pierre1 boutbel
-** Last update Sun Apr 18 12:21:00 2010 pierre1 boutbel
+** Last update Mon Apr 19 13:50:07 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -29,7 +29,7 @@ void		try_drop_obj(t_packet *packet, t_player *player)
 
   num_ress = 0;
   packet->response = xmalloc(sizeof(t_rep));
-  packet->response->mess = xmalloc(3 * sizeof(char));
+  packet->response->mess = xmalloc(LEN_OK * sizeof(char));
   packet->response->id_player = packet->player_id;
   if (packet->ac == 2)
     {
@@ -37,16 +37,16 @@ void		try_drop_obj(t_packet *packet, t_player *player)
       while (num_ress != RESS_NUM && strcmp(name_res, msg_ress[num_ress]) != 0)
 	num_ress++;
       if (num_ress >= RESS_NUM || player->ress[num_ress] == 0)
-	  packet->response->mess = KO;
+	snprintf(packet->response->mess, LEN_OK, "%s\n", KO);
       else
 	{
 	  player->ress[num_ress]--;
 	  player->pos->cas.ress[num_ress]++;
-	  packet->response->mess = OK;
+	  snprintf(packet->response->mess, LEN_OK, "%s\n", OK);
 	}
     }
   else
-    packet->response->mess = KO;
+    snprintf(packet->response->mess, LEN_OK, "%s\n", KO);
   packet->ac_rep = 1;
 }
 
@@ -66,16 +66,16 @@ void		try_take_obj(t_packet *packet, t_player *player)
       while (num_ress != RESS_NUM && strcmp(name_res, msg_ress[num_ress]) != 0)
 	num_ress++;
       if (num_ress == RESS_NUM || player->pos->cas.ress[num_ress] == 0)
-	packet->response->mess = KO;
+	snprintf(packet->response->mess, LEN_OK, "%s\n", KO);
       else
 	{
-	  packet->response->mess = OK;
+	  snprintf(packet->response->mess, LEN_OK, "%s\n", OK);
 	  player->ress[num_ress]++;
 	  player->pos->cas.ress[num_ress]--;
 	}
     }
   else
-    packet->response->mess = KO;
+    snprintf(packet->response->mess, LEN_OK, "%s\n", KO);
   packet->ac_rep = 1;
 }
 
@@ -83,33 +83,22 @@ void		try_invent(t_packet *packet, t_player *player)
 {
   char		msg_ress[RESS_NUM][11] = {MSG_RESS};
   int		num_ress;
-  /*  char		*nb_ress;*/
   char		*msg;
 
   num_ress = 0;
-  msg = xmalloc(sizeof(char) * 2);
-  msg[0] = '{';
-  msg[1] = '\0';
+  msg = xmalloc(sizeof(char));
+  msg[0] = '\0'; 
   while (num_ress != RESS_NUM)
     {
-      /*      nb_ress = int_to_str(player->ress[num_ress]);*/
-
       msg = xrealloc(msg, strlen(msg) + strlen(msg_ress[num_ress]) + 13);
-      if (++num_ress != RESS_NUM)
+      if (++num_ress == 1)
+	sprintf(msg, "{%i", player->ress[num_ress]);
+      else if (num_ress != RESS_NUM)
 	sprintf(msg, "%s %i,", msg, player->ress[num_ress]);
       else
 	sprintf(msg, "%s %i", msg, player->ress[num_ress]);
-
-      /*
-      msg = strcat(msg, msg_ress[num_ress]);
-      msg = strcat(msg, " ");
-      msg = strcat(msg, nb_ress);
-
-      if (++num_ress != RESS_NUM)
-      msg = strcat(msg, ", ");*/
-      /*free(nb_ress);*/
     }
-  msg = strcat(msg, "}");
+  msg = strcat(msg, "}\n");
   packet->response = xmalloc(sizeof(t_rep));
   packet->response->mess = msg;
   packet->response->id_player = packet->player_id;

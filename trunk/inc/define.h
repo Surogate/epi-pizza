@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:10 2010 francois1 ancel
-** Last update Fri Apr 16 18:38:05 2010 pierre1 boutbel
+** Last update Mon Apr 19 13:52:16 2010 pierre1 boutbel
 */
 
 #ifndef DEFINE_INCLUDED
@@ -34,11 +34,12 @@ enum {M_E, M_NE, M_N, M_NO, M_O, M_SO, M_S, M_SE};
 
 # define OK		"OK"
 # define KO		"KO"
+# define LEN_OK		4
 # define ELEV_OK	"elevation en cours"
 # define ELEV_DONE	"niveau actuel : K"
-# define LEN_ELEV	17
+# define LEN_ELEV	18
 # define POS_ELEV_K	16	
-# define EXPULSE_VIC	"deplacement K\n"
+# define EXPULSE_VIC	"deplacement K"
 # define LEN_EXP	14
 # define POS_EXP_K	12
 

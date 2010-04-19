@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Wed Apr 14 13:19:30 2010 pierre1 boutbel
-** Last update Wed Apr 14 16:44:14 2010 pierre1 boutbel
+** Last update Mon Apr 19 13:49:31 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -66,7 +66,7 @@ void		create_rep(t_packet *packet, t_player *player)
       cur_pl->level = cur_pl->level + 1;
       packet->response[packet->ac_rep].id_player = cur_pl->player_id;
       msg[POS_ELEV_K] = cur_pl->level + '0';
-      packet->response[packet->ac_rep].mess = msg;
+      snprintf(packet->response[packet->ac_rep].mess, LEN_ELEV, "%s\n", msg);
       list = list->next;
       packet->ac_rep++;
     }

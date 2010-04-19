@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Tue Apr 13 09:15:30 2010 pierre1 boutbel
-** Last update Sun Apr 18 12:53:22 2010 pierre1 boutbel
+** Last update Mon Apr 19 14:25:43 2010 pierre1 boutbel
 */
 
 
@@ -13,6 +13,7 @@
 #include	<sys/time.h>
 #include	<string.h>
 #include	<stdio.h>
+
 #include	"my_list.h"
 #include	"define.h"
 #include	"t_struct.h"
@@ -20,29 +21,41 @@
 #include	"t_game_stc.h"
 #include	"xfunc.h"
 
-void		do_expulse(t_packet *packet, t_player *player)
+static void	expulse_list_msg(t_packet *packet, t_player *player)
 {
   char		*msg;
   t_player	*pl;
   t_list	*cur_player;
 
-  packet->response = xmalloc((my_l_size(player->pos->cas.player) + 1) *
-			     sizeof(packet->response));
-  packet->response[0].mess = xmalloc(4 * sizeof(char));
-  packet->response[0].mess = OK;
-  cur_player = (t_list *)player->pos->cas.player;
   msg = strdup(EXPULSE_VIC);
-  packet->ac_rep = 1;
+  cur_player = (t_list *)player->pos->cas.player;
   while (cur_player->data != NULL)
     {
       pl = (t_player*)cur_player->data;
-      packet->response[packet->ac_rep].mess = xmalloc(LEN_EXP * sizeof(char));
-      msg[POS_EXP_K] = (player->dir + 1) % 4 + '0';
-      packet->response[packet->ac_rep].mess = msg;
-      pl->pos = pl->pos->card[(player->dir + 1) % 4];
-      packet->response[packet->ac_rep++].id_player = pl->player_id;
+      if (pl->player_id != player->player_id)
+	{
+	  packet->response[packet->ac_rep].mess = xmalloc(LEN_EXP * 
+							  sizeof(char));
+	  msg[POS_EXP_K] = (player->dir + 1) % 4 + '0';
+	  snprintf(packet->response[packet->ac_rep].mess, LEN_EXP + 1, 
+		   "%s\n", msg);
+	  pl->pos = pl->pos->card[(player->dir + 1) % 4];
+	  packet->response[packet->ac_rep].id_player = pl->player_id;
+	  packet->ac_rep++;
+	}
       cur_player = cur_player->next;
     }
+}
+
+void		do_expulse(t_packet *packet, t_player *player)
+{
+  packet->response = xmalloc((my_l_size(player->pos->cas.player) + 1) *
+			     sizeof(*(packet->response)));
+  packet->response[0].mess = xmalloc((LEN_OK + 2) * sizeof(char));
+  snprintf(packet->response[0].mess, LEN_OK, "%s\n", OK);
+  packet->response[0].id_player = player->player_id;
+  packet->ac_rep = 1;
+  expulse_list_msg(packet, player);
 }
 
 void		try_expulse(t_packet *packet, t_player *player)
@@ -50,8 +63,8 @@ void		try_expulse(t_packet *packet, t_player *player)
   if (my_l_size(player->pos->cas.player) == 1)
     {
       packet->response = xmalloc(sizeof(t_rep));
-      packet->response->mess = xmalloc(4 * sizeof(char));
-      packet->response->mess = KO;
+      packet->response->mess = xmalloc(LEN_OK * sizeof(char));
+      snprintf(packet->response->mess, LEN_OK, "%s\n", KO);
       packet->response->id_player = packet->player_id;
       packet->ac_rep = 1;
     }

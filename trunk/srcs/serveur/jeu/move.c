@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Wed Apr 14 13:19:56 2010 pierre1 boutbel
-** Last update Sat Apr 17 18:03:32 2010 pierre1 boutbel
+** Last update Mon Apr 19 14:02:35 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -33,8 +33,8 @@ void		try_turn_left(t_packet *packet, t_player *player)
 {
   player->dir = gl_dir[player->dir].dir_left;
   packet->response = xmalloc(sizeof(t_rep));
-  packet->response->mess = xmalloc(4 * sizeof(char));
-  snprintf(packet->response->mess, 4, "OK\n");
+  packet->response->mess = xmalloc(LEN_OK * sizeof(char));
+  snprintf(packet->response->mess, LEN_OK, "%s\n", OK);
   packet->response->id_player = packet->player_id;
   packet->ac_rep = 1;
 }
@@ -42,14 +42,14 @@ void		try_turn_left(t_packet *packet, t_player *player)
 void		try_turn_right(t_packet *packet, t_player *player)
 {
   packet->response = xmalloc(sizeof(t_rep));
-  packet->response->mess = xmalloc(4 * sizeof(char));
+  packet->response->mess = xmalloc(LEN_OK * sizeof(char));
   player->dir = gl_dir[player->dir].dir_right;
-  snprintf(packet->response->mess, 4, "OK\n");
+  snprintf(packet->response->mess, LEN_OK, "%s\n", OK);
   packet->response->id_player = packet->player_id;
   packet->ac_rep = 1;
 }
 
-int		find_player_by_id(t_player *data, t_player *ref)
+static int	find_player_by_id(t_player *data, t_player *ref)
 {
   if (data->player_id == ref->player_id)
     return (EXIT_SUCCESS);
@@ -60,12 +60,12 @@ int		find_player_by_id(t_player *data, t_player *ref)
 void		try_move(t_packet *packet, t_player *player)
 {
   packet->response = xmalloc(sizeof(t_rep));
-  packet->response->mess = xmalloc(4 * sizeof(char));
+  packet->response->mess = xmalloc(LEN_OK * sizeof(char));
   player->pos->cas.player = my_l_rm(player->pos->cas.player, 
 				    player, find_player_by_id);
   player->pos = player->pos->card[gl_dir[player->dir].front];
   player->pos->cas.player = my_l_insert(player->pos->cas.player, player);
-  snprintf(packet->response->mess, 4, "OK\n");
+  snprintf(packet->response->mess, LEN_OK, "%s\n", OK);
   packet->response->id_player = packet->player_id;
   packet->ac_rep = 1;
 }
