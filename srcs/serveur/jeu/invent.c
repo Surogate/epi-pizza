@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Wed Apr 14 13:19:43 2010 pierre1 boutbel
-** Last update Mon Apr 19 13:50:07 2010 pierre1 boutbel
+** Last update Mon Apr 19 22:26:01 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -85,14 +85,14 @@ void		try_invent(t_packet *packet, t_player *player)
   int		num_ress;
   char		*msg;
 
-  num_ress = 0;
+  num_ress = -1;
   msg = xmalloc(sizeof(char));
   msg[0] = '\0'; 
-  while (num_ress != RESS_NUM)
+  while (++num_ress != RESS_NUM)
     {
       msg = xrealloc(msg, strlen(msg) + strlen(msg_ress[num_ress]) + 13);
-      if (++num_ress == 1)
-	sprintf(msg, "{%i", player->ress[num_ress]);
+      if (num_ress == 0)
+	sprintf(msg, "{%i,", player->ress[num_ress]);
       else if (num_ress != RESS_NUM)
 	sprintf(msg, "%s %i,", msg, player->ress[num_ress]);
       else
