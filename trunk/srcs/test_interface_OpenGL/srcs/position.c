@@ -27,103 +27,31 @@
 #include "struct.h"
 #include "proto.h"
 
-/*
-void init()
-{
-   glClearColor (0.0, 0.0, 0.0, 0.0);
-}
-
-void drawObjects(GLenum mode)
-{
-	if(mode == GL_SELECT)
-	  glLoadName(6);
-	glColor3f(1.0, 0.0, 0.0);
-	glRectf(-0.5, -0.5, 1.0, 1.0);
-	if(mode == GL_SELECT)
-	  glLoadName(2);
-	glColor3f(0.0, 0.0, 1.0);
-	glRectf(-1.0, -1.0, 0.5, 0.5);
-}
-
-void display()
-{
-	glClear(GL_COLOR_BUFFER_BIT);
-	drawObjects(GL_RENDER);
-	glFlush();
-}
-*/
-/*  processHits prints out the contents of the 
- *  selection array.
- */
-/*
 void processHits (GLint hits, GLuint buffer[])
 {
-   unsigned int i, j;
-   GLuint names, *ptr;
-
-   printf ("hits = %d\n", hits);
-   ptr = (GLuint *) buffer; 
-   for (i = 0; i < hits; i++) {
-      names = *ptr;
-	  ptr+=3;
-      for (j = 0; j < names; j++) {
-         if(*ptr==1) printf ("red rectangle\n");
-         else printf ("blue rectangle\n");
-         ptr++;
-      }
-      printf ("\n");
-   }
-}
-*/
-
-void processHits (GLint hits, GLuint buffer[])
-{
-/*  unsigned int i, j;
-  GLuint ii, jj, names, *ptr;
-
-  printf ("hits = %d\n", hits);
-  ptr = (GLuint *) buffer;
-  for (i = 0; i < hits; i++) {
-    names = *ptr;
-    printf (" number of names for this hit = %d\n", names);
-    ptr++;
-    printf("  z1 is %g;", (float) *ptr/0x7fffffff); ptr++;
-    printf(" z2 is %g\n", (float) *ptr/0x7fffffff); ptr++;
-    printf ("   names are ");
-    for (j = 0; j < names; j++) {
-      printf ("%d ", *ptr);
-      if (j == 0)
-	ii = *ptr;
-      else if (j == 1)
-	jj = *ptr;
-      ptr++;
-    }
-    printf ("\n");
-  }
-*/
-
   GLint i, j, numberOfNames;
   GLuint names, *ptr, minZ,*ptrNames;
 
   ptr = (GLuint *) buffer;
   minZ = 0xffffffff;
-  for (i = 0; i < hits; i++) {	
+  for (i = 0; i < hits; i++)
+  {
     names = *ptr;
     ptr++;
-    if (*ptr < minZ) {
+    if (*ptr < minZ)
+    {
       numberOfNames = names;
       minZ = *ptr;
       ptrNames = ptr+2;
     }
-	  
     ptr += names+2;
   }
-  if (numberOfNames > 0) {
+  if (numberOfNames > 0)
+  {
     printf ("You picked snowman  ");
     ptr = ptrNames;
-    for (j = 0; j < numberOfNames; j++,ptr++) { 
+    for (j = 0; j < numberOfNames; j++,ptr++)
       printf ("%d ", *ptr);
-    }
   }
   else
     printf("You didn't click a snowman!");
@@ -145,18 +73,11 @@ void		picking_mouse(t_game *game, int x, int y)
   glPushMatrix();
   glLoadIdentity();
 /*  create 5x5 pixel picking region near cursor location      */
-  gluPickMatrix((GLdouble)x, (GLdouble)y, 5.0, 5.0, viewport);
+  gluPickMatrix((GLdouble)x, (GLdouble)(viewport[3] - y), 5, 5, viewport);
   ratio = (GLfloat)(viewport[2] / viewport[3]);
   gluPerspective(WIN_FOC, ratio, WIN_NEAR, WIN_FAR);
   glMatrixMode(GL_MODELVIEW);
   draw_gl(game, GL_SELECT);
-/*
-  glMatrixMode(GL_PROJECTION);
-  glPopMatrix();
-  glMatrixMode(GL_MODELVIEW);
-  hits = glRenderMode(GL_RENDER);
-  processHits(hits, selectBuf);
-*/
   glMatrixMode(GL_PROJECTION);
   glPopMatrix();
   glMatrixMode(GL_MODELVIEW);
@@ -164,43 +85,3 @@ void		picking_mouse(t_game *game, int x, int y)
   if (hits != 0)
     processHits(hits, selectBuf);
 }
-
-/*
-void reshape(int w, int h)
-{
-   glViewport(0, 0, w, h);
-   glMatrixMode(GL_PROJECTION);
-   glLoadIdentity();
-   gluOrtho2D (-2.0, 2.0, -2.0, 2.0);
-   glMatrixMode(GL_MODELVIEW);
-   glLoadIdentity();
-}
-*/
- /*
-void keyboard(unsigned char key, int x, int y)
-{
-   switch (key) {
-      case 27:
-         exit(0);
-         break;
-   }
-}
- */
-/* Main Loop */
-/*
-  int main(int argc, char** argv)
-{
-   glutInit(&argc, argv);
-   glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
-   glutInitWindowSize (500, 500);
-   glutInitWindowPosition (100, 100);
-   glutCreateWindow (argv[0]);
-   init ();
-   glutReshapeFunc (reshape);
-   glutDisplayFunc(display);
-   glutMouseFunc (mouse);
-   glutKeyboardFunc (keyboard);
-   glutMainLoop();
-   return 0; 
-}
-*/

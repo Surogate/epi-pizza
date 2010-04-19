@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Mon Apr 19 23:04:41 2010 Florian Chanioux
+** Last update Mon Apr 19 23:10:55 2010 Florian Chanioux
 */
 
 #ifndef		__PROTO_H__
@@ -37,6 +37,7 @@ int		mouse_move(t_game *game);
 int		mouse_up(t_game *game);
 int		mouse_down(t_game *game);
 
+void		picking_mouse(t_game *game, int x, int y);
 
 /* camera */
 void		reshape();
@@ -44,6 +45,7 @@ void		camera();
 
 /* Draw */
 void		mainloop(t_game *game);
+
 
 void		make_calllistes(t_game *game);
 void		draw_gl(t_game *game, GLenum mode);
