@@ -58,6 +58,7 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	  if (!cli->team)
 	    {
 	      create_kick(vec, cli->sock, 3);
+	      gh_new_client(vec, game, cli->sock);
 	    }
 	  else if (cli->team > 0)
 	    create_eat(vec, vec->slt, cli->sock);
