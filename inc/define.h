@@ -5,13 +5,13 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:10 2010 francois1 ancel
-** Last update Tue Apr 20 12:53:02 2010 pierre1 boutbel
+** Last update Tue Apr 20 16:56:54 2010 pierre1 boutbel
 */
 
 #ifndef DEFINE_INCLUDED
 # define DEFINE_INCLUDED
 
-# define NB_INST	(11)
+# define NB_INST	(12)
 
 
 # define INCANT_NUM	7

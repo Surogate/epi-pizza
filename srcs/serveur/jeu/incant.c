@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Wed Apr 14 13:19:30 2010 pierre1 boutbel
-** Last update Tue Apr 20 12:49:42 2010 pierre1 boutbel
+** Last update Tue Apr 20 16:51:29 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -75,7 +75,7 @@ void		create_rep(t_packet *packet, t_player *player)
     }
 }
 
-void		try_incant(t_packet *packet, t_player *player)
+void		try_incant(t_packet *packet, t_player *player, t_game *game)
 {
   int		res;
 
@@ -89,6 +89,7 @@ void		try_incant(t_packet *packet, t_player *player)
       packet->response[0].id_player = player->player_id;
       packet->ac_rep = 1;
       create_rep(packet, player);
+      is_ending(game);
     }
   else
     {

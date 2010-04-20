@@ -36,7 +36,11 @@ void		try_move(t_packet *packet, t_player *player);
 /*view.h*/
 void		try_view(t_packet *packet, t_player *player);
 
+/*connect_nbr.h*/
+void		find_connect_nbr(t_packet *packet, t_player *player,
+				 t_game *game);
 
+/*broadcast*/
 void		broadcast(t_packet *packet, t_player *player);
 void		expulse(t_packet *packet, t_player *player);
 void		incant(t_packet *packet, t_player *player);
