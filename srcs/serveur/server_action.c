@@ -83,6 +83,8 @@ int			execute_action(t_svr_vector *vec, t_game *game,
 	  server_kick(vec, slt_par, tmp->player_id, game);
 	if (tmp->type == 2)
 	  server_eat(vec, slt_par, tmp->player_id, game);
+	if (tmp->type == 3)
+	  server_hatch(vec, tmp, game);
       }
   return (EXIT_SUCCESS);
 }

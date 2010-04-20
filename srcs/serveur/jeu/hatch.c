@@ -28,7 +28,7 @@ static int	find_egg(int *ref, t_eggs *egg)
   return (0);
 }
 
-void		do_hatch(t_packet *packet, t_game *game, int id_egg)
+void		do_hatch(t_game *game, int id_egg)
 {
   t_player	*player;
   t_eggs	*egg;
@@ -37,9 +37,6 @@ void		do_hatch(t_packet *packet, t_game *game, int id_egg)
 
   egg = my_l_find(game->eggs, &id_egg, find_egg);
   srand(time(NULL));
-  packet->ac_rep = 0;
-  packet->player_id = egg->id;
-  packet->response = NULL;
   player = xmalloc(sizeof(player));
   player->player_id = egg->id;
   player->team = egg->team;
@@ -71,7 +68,6 @@ void		do_fork(t_game *game, t_player *player)
 
 void		try_fork(t_packet *packet, t_player *player)
 {
-
   packet->response = xmalloc(sizeof(t_rep));
   packet->response->mess = xmalloc(LEN_OK * sizeof(char));
   snprintf(packet->response->mess, LEN_OK, "%s\n", OK);

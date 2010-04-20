@@ -67,6 +67,9 @@ int			exec_plaction(t_svr_vector *vec, t_packet *pak,
 
   cli = pak->player;
   treatment_intr(game, pak);
+  if (pak->type < 0)
+    server_hatch(vec, game, pak->type);
+  pak->type = 0;
   printf("==> action execute\n");
   return_packet(pak);
   free_packet(cli);
@@ -89,3 +92,4 @@ int			delete_plaction(t_svr_vector *vec, int player_id)
     }
   return (EXIT_SUCCESS);
 }
+
