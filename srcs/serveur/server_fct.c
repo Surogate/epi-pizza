@@ -56,13 +56,13 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	  ++(cli->auth);
 	  cli->team = authent(game, cli->packet + cli->cons);
 	  if (!cli->team)
+	    create_kick(vec, cli->sock, 3);
+	  else if (cli->team > 0)
 	    {
-	      create_kick(vec, cli->sock, 3);
+	      create_eat(vec, vec->slt, cli->sock);
 	      gh_new_client(vec, game, cli->sock);
 	    }
-	  else if (cli->team > 0)
-	    create_eat(vec, vec->slt, cli->sock);
-	  else
+	  else if (cli->team < 0)
 	    new_gh(vec, cli, game);
 	  return_packet(cli->packet + cli->cons);
 	  free_packet(cli);
