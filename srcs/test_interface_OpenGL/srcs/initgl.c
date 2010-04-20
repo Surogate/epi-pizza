@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 18:32:28 2010 Florian Chanioux
-** Last update Tue Apr 20 14:29:36 2010 Florian Chanioux
+** Last update Wed Apr 21 00:34:28 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -84,11 +84,27 @@ static void		init_fog(int fog, GLint fogmode)
     puts("FOG OFF");
 }
 
+static void		init_aliasing(int aliasing)
+{
+  if (aliasing == 1)
+  {
+    puts("ALIASING ON");
+    glEnable(GL_POLYGON_SMOOTH);
+  }
+  else
+  {
+    puts("ALIASING OFF");
+    glDisable(GL_POLYGON_SMOOTH);
+  }
+}
+
 void initGL(t_game *game)
 {
   init_doublebuffer();
   init_fog(game->video.fog, GL_LINEAR);
   init_light(game->video.light);
+  init_aliasing(game->video.aliasing);
   reshape();
   glEnable(GL_DEPTH_TEST);
+
 }

@@ -5,23 +5,22 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Tue Apr 20 12:44:56 2010 Florian Chanioux
+** Last update Wed Apr 21 00:28:15 2010 Florian Chanioux
 */
 
 #ifndef		__PROTO_H__
 # define	__PROTO_H__
 
-/*xSDL*/
-void		xSDL_Flip(SDL_Surface *screen);
-int		xSDL_Init(Uint32 flags);
-SDL_Surface	*xSDL_SetVideoMode(int width, int height, int bpp, Uint32 flags);
-
 /* init */
 void		init_game(t_game *game);
+void		init_3dsmodel(t_game *game);
+void		init_texture(t_game *game);
+void		init_video(t_game *game);
 void		initGL(t_game *game);
 void		printAttributes();
 
 /* load */
+SDL_Surface	*load_window();
 SDL_Surface	*img_load(char *path);
 GLuint		loadtexture(const char * filename,int useMipMap);
 

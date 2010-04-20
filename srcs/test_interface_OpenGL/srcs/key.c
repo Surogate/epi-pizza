@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Tue Apr 20 14:29:06 2010 Florian Chanioux
+** Last update Wed Apr 21 00:39:57 2010 Florian Chanioux
 */
 #include <sys/types.h>
 #include <unistd.h>
@@ -47,8 +47,10 @@ int		key_func(t_game *game)
 
 int		exit_func(t_game *game)
 {
-  TTF_CloseFont(game->font);
-  TTF_Quit();
+  /*
+    TTF_CloseFont(game->font);
+    TTF_Quit();
+  */
   return (0);
 }
 

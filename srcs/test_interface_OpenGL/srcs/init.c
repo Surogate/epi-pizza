@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Tue Apr 20 18:07:21 2010 Florian Chanioux
+** Last update Wed Apr 21 00:39:38 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -32,22 +32,7 @@
 #include "struct.h"
 #include "proto.h"
 
-static SDL_Surface	*load_window()
-{
-  SDL_Surface		*screen;
-  Uint32		flags;
-
-  flags= SDL_OPENGL;
-  if (FULLSCREEN)
-    flags |= SDL_FULLSCREEN;
-  xSDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
-  screen = xSDL_SetVideoMode(WIN_W, WIN_H,
-			    WIN_COLOR, flags);
-  SDL_WM_SetCaption("Zappy", NULL);
-  return (screen);
-}
-
-void		init_map(t_game *game)
+static void	init_map(t_game *game)
 {
   int		y;
   int		x;
@@ -73,22 +58,17 @@ void		init_game(t_game *game)
 {
   game->screen = load_window();
   game->mouse.clicked = 0;
-  game->video.text = 1;
-  game->video.fog = 1;
-  game->video.light = 0;
-  game->texture.floor = loadtexture("images/lawn.jpg", 0);
-  game->texture.side = loadtexture("images/side.jpg", 0);
-  puts("coucou");
-  puts("byebye");
-  game->mouse.img[0] = img_load("images/main_ouverte.bmp");
-  game->mouse.img[1] = img_load("images/main_fermer.bmp");
-  game->map.fond = img_load("images/fond_losange.bmp");
-  if (TTF_Init() < 0)
+  /*
+    game->mouse.img[0] = img_load("images/main_ouverte.bmp");
+    game->mouse.img[1] = img_load("images/main_fermer.bmp");
+    game->map.fond = img_load("images/fond_losange.bmp");
+  */
+/*  if (TTF_Init() < 0)
   {
     fprintf(stderr, "TTF error : %s", TTF_GetError());
     exit(EXIT_FAILURE);
   }
-  game->font = TTF_OpenFont(FONT_DIR, MFONT_SIZE);
+  game->font = TTF_OpenFont(FONT_DIR, MFONT_SIZE);*/
   game->info.pos.x = 0;
   game->info.pos.y = 0;
   game->info.size_h = 100;

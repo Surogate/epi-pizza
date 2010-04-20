@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Tue Apr 20 14:15:05 2010 Florian Chanioux
+## Last update Wed Apr 21 00:39:25 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -35,7 +35,9 @@ SRC		= \
 		$(DIR_SRC)xsdl.c		\
 		$(DIR_SRC)key.c			\
 		$(DIR_SRC)init.c		\
+		$(DIR_SRC)init_load.c		\
 		$(DIR_SRC)initgl.c		\
+		$(DIR_SRC)load_window.c		\
 		$(DIR_SRC)load_image.c		\
 		$(DIR_SRC)loadtexture.c		\
 		$(DIR_SRC)3dsloader.c		\
@@ -103,13 +105,13 @@ LFLAGS_i386-Darwin	= \
 
 LFLAGS_i386-FreeBSD	= \
 			-L/usr/local/lib -Wl,-rpath,/usr/local/lib	\
-			-lSDL_image -lSDL -lSDL_ttf			\
+			-lSDL_image					\
 			-lGL -lGLU -lglut				\
 			-lpthread
 
 LFLAGS_i686-Linux	= \
 			`sdl-config --cflags --libs`			\
-			-lSDL_image -lSDL -lSDL_ttf			\
+			-lSDL_image					\
 			-lGL -lGLU -lglut
 
 LFLAGS			= -L$(DIR_LIB) $(LFLAGS_$(TAG))
@@ -144,6 +146,9 @@ ECHO		= $(ECHO_$(STAG))
 END	= \033[m
 RED	= \033[31m
 GREEN	= \033[32m
+ORANGE	= \033[33m
+BLUE	= \033[34m
+PINK	= \033[35m
 CYAN	= \033[36m
 GREY	= \033[37m
 
@@ -176,9 +181,9 @@ tar		:
 
 .SUFIXIES	: .c .o
 .c.o		:
-	@$(ECHO) "$(GREY)[OBJ]"
+	@$(ECHO) "$(ORANGE)[OBJ]$(GREY)"
 	$(CC) $(CFLAGS) -c $< -o $@
-	@$(ECHO) "[OBJ] -DONE$(END)"
+	@$(ECHO) "$(ORANGE)[OBJ] -DONE$(END)"
 
 
 ############### CLEAN OPTION ###############
