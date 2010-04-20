@@ -46,8 +46,9 @@ int			create_hatch(t_svr_vector *vec, int egg)
       action->insert_sort(action, pak, sort_duration);
       llist_display(vec->action, debug_packet);
       printf("=>  action create  <=\n");
+      return (EXIT_SUCCESS);
     }
-  return (EXIT_SUCCESS);
+  return (EXIT_FAILURE);
 }
 
 int			server_hatch(t_svr_vector *vec, t_game *game, 
