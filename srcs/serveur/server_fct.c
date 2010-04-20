@@ -60,7 +60,6 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	  else if (cli->team > 0)
 	    {
 	      create_eat(vec, vec->slt, cli->sock);
-	      gh_new_client(vec, game, cli->sock);
 	    }
 	  else if (cli->team < 0)
 	    new_gh(vec, cli, game);
