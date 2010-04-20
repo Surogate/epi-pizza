@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr  9 14:51:20 2010 Florian Chanioux
-** Last update Tue Apr 20 17:16:58 2010 Florian Chanioux
+** Last update Tue Apr 20 17:19:32 2010 Florian Chanioux
 */
 
 #include <sys/time.h>
@@ -70,8 +70,11 @@ void		broadcast(t_packet *packet, t_player *player, t_game *game)
     pl = (t_player *)temp->data;
     if (pl->player_id != player->player_id)
       msg_broad(pl, packet->av, &(packet->response[i]));
-    /*else
-       mettre le ok */
+    else
+    {
+      packet->response[i].id_player = pl->player_id;
+      strncpy(packet->response[i].mess, OK, strlen(OK));
+    }
     temp = temp->next;
   }
   reset_pathfinding(game);
