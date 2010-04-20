@@ -18,7 +18,7 @@ function main_loop($player)
 			echo "fd read = " . $read[0] . "\n";
 			$read   = array($player['socket']);
 			echo "fd read = " . $read[0] . "\n";
-			if ($player['send'] != "")
+			if ($player['send'][0] != "")
 				{
 					$write  = array($player['socket']);
 					echo "fd write = " . $write[0] . "\n";

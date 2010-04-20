@@ -16,7 +16,7 @@ function init_player($x, $y, $sock, $name)
 	$player['last_receive'] = "";
 	$player['level'] = 1;
 	$player['nb_joueur_last'] = -1;
-	$player['send'] = "";
+	$player['send'] = array();
 	$player['size_x'] = 0;
 	$player['size_y'] = 0;
 	$player['socket'] = $sock;
