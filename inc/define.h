@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:18:10 2010 francois1 ancel
-** Last update Mon Apr 19 15:16:56 2010 pierre1 boutbel
+** Last update Tue Apr 20 12:53:02 2010 pierre1 boutbel
 */
 
 #ifndef DEFINE_INCLUDED
@@ -30,6 +30,9 @@ enum {M_E, M_NE, M_N, M_NO, M_O, M_SO, M_S, M_SE};
 
 # define MSG_JOUEUR	"joueur"
 # define MSG_RESS	"nourriture", "linemate", "deraumere", "sibur", "mendiane", "phiras", "thystame"
+
+# define BEGIN_BOUFFE	10
+
 # define NB_RESS	10, 12, 10, 12, 7, 8, 3
 
 # define OK		"OK"

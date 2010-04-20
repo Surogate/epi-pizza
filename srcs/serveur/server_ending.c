@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Fri Apr 16 16:39:00 2010 pierre1 boutbel
-** Last update Fri Apr 16 18:48:37 2010 pierre1 boutbel
+** Last update Tue Apr 20 12:27:25 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -45,7 +45,7 @@ void		is_ending(t_game *game)
   while (++i != nb_teams + 1)
     people_team[i] = 0;
   list = game->player;
-  while (list != NULL)
+  while (list->data != NULL)
     {
       cur_pl = (t_player *)list->data;
       if (cur_pl->level == MAX_LEVEL)

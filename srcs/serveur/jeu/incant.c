@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Wed Apr 14 13:19:30 2010 pierre1 boutbel
-** Last update Mon Apr 19 13:49:31 2010 pierre1 boutbel
+** Last update Tue Apr 20 12:49:42 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -38,7 +38,7 @@ static int	check_incant(t_player *player)
   int		len;
   
   len = my_l_size(player->pos->cas.player);
-  if (player->level <= 8)
+  if (player->level < 8)
     if (gl_incant[player->level - 1].nb_player != len)
       return (EXIT_FAILURE);
   i = 1;
@@ -58,6 +58,8 @@ void		create_rep(t_packet *packet, t_player *player)
   t_player	*cur_pl;
   char		*msg;
 
+  int		i;
+
   msg = strdup(ELEV_DONE);
   list = player->pos->cas.player;
   while (list->data != NULL)
@@ -65,10 +67,13 @@ void		create_rep(t_packet *packet, t_player *player)
       cur_pl = (t_player *)list->data;
       cur_pl->level = cur_pl->level + 1;
       packet->response[packet->ac_rep].id_player = cur_pl->player_id;
+      packet->response[packet->ac_rep].mess = xmalloc(LEN_ELEV * 
+						      sizeof(char));
       msg[POS_ELEV_K] = cur_pl->level + '0';
-      snprintf(packet->response[packet->ac_rep].mess, LEN_ELEV, "%s\n", msg);
-      list = list->next;
+      snprintf(packet->response[packet->ac_rep].mess, LEN_ELEV + 2, "%s\n", 
+	       msg);
       packet->ac_rep++;
+      list = list->next;
     }
 }
 
@@ -79,13 +84,20 @@ void		try_incant(t_packet *packet, t_player *player)
   res = check_incant(player);
   if (res == EXIT_SUCCESS)
     {
-      packet->response = xmalloc((my_l_size(player->pos->cas.player) + 2) *
-				 sizeof(packet->response));
-      packet->response[0].mess = strdup(ELEV_OK);
+      packet->response = xmalloc((my_l_size(player->pos->cas.player) + 1) *
+				 sizeof(*(packet->response)));
+      packet->response[0].mess = xmalloc((strlen(ELEV_OK) + 2) * sizeof(char));
+      snprintf(packet->response[0].mess, strlen(ELEV_OK) + 2, "%s\n", ELEV_OK);
       packet->response[0].id_player = player->player_id;
       packet->ac_rep = 1;
       create_rep(packet, player);
     }
   else
-    packet->response->mess = KO;
+    {
+      packet->response = xmalloc(sizeof(t_rep));
+      packet->response->mess = xmalloc(LEN_OK * sizeof(char));
+      snprintf(packet->response->mess, LEN_OK, "%s\n", KO);
+      packet->response->id_player = packet->player_id;
+      packet->ac_rep = 1;
+    }
 }
