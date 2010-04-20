@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Mon Apr 19 23:02:02 2010 Florian Chanioux
+** Last update Tue Apr 20 14:37:51 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -27,6 +27,7 @@
 #include <GL/gl.h>
 #endif
 
+#include "3dsloader.h"
 #include "define.h"
 #include "struct.h"
 #include "proto.h"
@@ -73,10 +74,13 @@ void		init_game(t_game *game)
   game->screen = load_window();
   game->mouse.clicked = 0;
   game->video.text = 1;
-  game->video.fog = 0;
+  game->video.fog = 1;
   game->video.light = 0;
   game->texture.floor = loadtexture("images/lawn.jpg", 0);
   game->texture.side = loadtexture("images/side.jpg", 0);
+  puts("coucou");
+  Load3DS("3DS/totoro.3ds", &(game->model.trantorien));
+  puts("byebye");
   game->mouse.img[0] = img_load("images/main_ouverte.bmp");
   game->mouse.img[1] = img_load("images/main_fermer.bmp");
   game->map.fond = img_load("images/fond_losange.bmp");

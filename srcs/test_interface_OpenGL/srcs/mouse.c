@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Mon Apr 19 23:14:40 2010 Florian Chanioux
+** Last update Tue Apr 20 14:33:02 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -26,9 +26,10 @@
 #include <GL/freeglut_std.h>
 #endif
 
-#include	"define.h"
-#include	"struct.h"
-#include	"proto.h"
+#include "3dsloader.h"
+#include "define.h"
+#include "struct.h"
+#include "proto.h"
 
 
 void		display_mouse(t_game *game)

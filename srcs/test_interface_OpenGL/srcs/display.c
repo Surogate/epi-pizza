@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Fri Apr 16 18:03:49 2010 Florian Chanioux
+** Last update Tue Apr 20 14:31:20 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -26,9 +26,10 @@
 #include <GL/gl.h>
 #endif
 
-#include	"define.h"
-#include	"struct.h"
-#include	"proto.h"
+#include "3dsloader.h"
+#include "define.h"
+#include "struct.h"
+#include "proto.h"
 
 void		blit_writing(t_game *game, SDL_Rect *pos, char *str)
 {

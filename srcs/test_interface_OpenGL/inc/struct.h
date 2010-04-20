@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Mon Apr 19 16:43:38 2010 Florian Chanioux
+** Last update Tue Apr 20 14:28:44 2010 Florian Chanioux
 */
 
 #ifndef		STRUCT_H
@@ -66,6 +66,13 @@ typedef struct
 
 typedef struct
 {
+  obj_type_ptr	trantorien;
+  obj_type_ptr	ressource;
+  obj_type_ptr	eggs;
+}		t_model;
+
+typedef struct
+{
   int		text;
   int		light;
   int		fog;
@@ -76,6 +83,7 @@ typedef struct	s_game
   SDL_Event	event;
   SDL_Surface	*screen;
   t_conf	video;
+  t_model	model;
   t_texture	texture;
   t_info	info;
   t_mouse	mouse;
