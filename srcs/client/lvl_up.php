@@ -47,7 +47,7 @@ function lvl_up($player)
 		{
 			$go_lvl = check_stone($player, $next_l);
 			if ($go_lvl == 1)
-				$player['level'] += 1;
+				go_incante(&$player);
 			else
 				return ($player);
 		}
