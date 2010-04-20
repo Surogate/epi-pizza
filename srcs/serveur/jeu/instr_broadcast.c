@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr  9 14:51:20 2010 Florian Chanioux
-** Last update Tue Apr 20 17:19:32 2010 Florian Chanioux
+** Last update Tue Apr 20 22:29:31 2010 Florian Chanioux
 */
 
 #include <sys/time.h>
@@ -20,22 +20,27 @@
 #include "server.h"
 #include "xfunc.h"
 
+void		test_pathfinding_map(t_game *game);
+
 static int	dir_of_msg(t_player *player, t_map *cas)
 {
-  int		or[4];
   int		pos;
-  int		res;
+  int		ref;
   int		i;
   int		j;
 
   pos = player->dir;
   i = -1;
   j = 0;
+  ref = cas->cout;
   while (++i < 8)
-    if (cas->card[i]->cout == (cas->cout - 1))
-      or[j++] = i;
-  res = rand() % j;
-  return (pos - or[res] + 1);
+    if (ref > cas->card[i]->cout)
+    {
+      ref = cas->card[i]->cout;
+      j = i;
+    }
+  printf("%i %i \n", pos, j);
+  return (pos - j + 1);
 }
 
 
@@ -60,23 +65,21 @@ void		broadcast(t_packet *packet, t_player *player, t_game *game)
   int		i;
 
   pathfinding(player->pos);
+  test_pathfinding_map(game);
   temp = game->player;
   i = my_l_size(temp);
   packet->ac_rep = i;
-  printf("i : %i\n", i);
-  packet->response = xmalloc(sizeof(*(packet->response)) * i);
+  packet->response = xmalloc(sizeof(*(packet->response)) * (i + 1));
   while (--i >= 0)
     {
-      printf("je boucle dans broad\n");
       pl = (t_player *)temp->data;
       if (pl->player_id != player->player_id)
 	{
 	  msg_broad(pl, packet->av, packet->response + i);
-	  printf("je crie a un autre\n");
+
 	}
       else
 	{
-	  printf("je cree un mess pour moi\n");
 	  packet->response[i].id_player = pl->player_id;
 	  packet->response[i].mess = xmalloc(5 * sizeof(char));
 	  snprintf(packet->response[i].mess, 5, "OK\n");

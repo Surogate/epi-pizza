@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Thu Apr 15 18:04:21 2010 Florian Chanioux
-** Last update Fri Apr 16 15:35:36 2010 Florian Chanioux
+** Last update Tue Apr 20 21:46:01 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -49,16 +49,18 @@ static void	pathfinding_line(int ref, t_map *casemap)
   cmap[RIGHT] = casemap;
   cmap[LEFT] = casemap;
   i = ref;
-    do
-    {
-      cmap[RIGHT]->cout = i;
-      cmap[LEFT]->cout = i;
-      i++;
-      cmap[RIGHT] = cmap[RIGHT]->card[M_E];
-      cmap[LEFT] = cmap[LEFT]->card[M_O];
-      cmap[LEFT]->cout = i;
-    }
-    while (cmap[RIGHT] != cmap[LEFT]);
+  do
+  {
+    cmap[RIGHT]->cout = i;
+    cmap[LEFT]->cout = i;
+    i++;
+    cmap[RIGHT] = cmap[RIGHT]->card[M_E];
+    cmap[LEFT] = cmap[LEFT]->card[M_O];
+  }
+  while (cmap[RIGHT] != cmap[LEFT] &&
+	 (cmap[RIGHT]->cout == 0 || cmap[RIGHT]->cout == 0));
+  if (cmap[RIGHT] == cmap[LEFT])
+    cmap[LEFT]->cout = i;
 }
 
 void		pathfinding(t_map *cas)
@@ -69,6 +71,7 @@ void		pathfinding(t_map *cas)
   ref = 0;
   cmap[UP] = cas;
   cmap[DOWN] = cas;
+  pathfinding_line(ref, cmap[DOWN]);
   do
   {
     cmap[UP]->cout = ref;
@@ -77,8 +80,11 @@ void		pathfinding(t_map *cas)
     pathfinding_line(ref, cmap[DOWN]);
     cmap[UP] = cmap[UP]->card[M_N];
     cmap[DOWN] = cmap[DOWN]->card[M_S];
-    pathfinding_line(++ref, cmap[DOWN]);
+    ++ref;
   }
-  while (cmap[UP] != cmap[DOWN]);
+  while (cmap[UP] != cmap[DOWN] &&
+	 (cmap[UP]->cout == 0 || cmap[DOWN]->cout == 0));
+  if (cmap[UP] == cmap[DOWN])
+    pathfinding_line(ref, cmap[DOWN]);
 }
 

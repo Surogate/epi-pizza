@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Tue Apr 20 14:37:51 2010 Florian Chanioux
+** Last update Tue Apr 20 18:07:21 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -79,7 +79,6 @@ void		init_game(t_game *game)
   game->texture.floor = loadtexture("images/lawn.jpg", 0);
   game->texture.side = loadtexture("images/side.jpg", 0);
   puts("coucou");
-  Load3DS("3DS/totoro.3ds", &(game->model.trantorien));
   puts("byebye");
   game->mouse.img[0] = img_load("images/main_ouverte.bmp");
   game->mouse.img[1] = img_load("images/main_fermer.bmp");
