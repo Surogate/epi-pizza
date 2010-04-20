@@ -39,6 +39,7 @@ typedef struct	s_vector
   void		(*erase)();
   void		(*insert_sort)();
   int		(*find_pos)();
+  void		(*swap)();
 }		t_vector;
 
 t_vector	*vector_new();
@@ -102,7 +103,7 @@ elle doit renvoyer un int >=1 tant que l'on ne doit pas insert la strct
 Renvoie la position de la strct dont la fonction find_fct renvoie 1 ou plus
 find_fct doit etre de la forme :
 
-int	find_fct(votre_struct *inline, (void *)strct)
+int find_fct(votre_struct *inline, (void *)strct)
 
 inline correspond au struct contenue dans le vector
 si aucune position valide est trouver, la fonction renvoie -1

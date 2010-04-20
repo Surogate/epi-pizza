@@ -75,17 +75,14 @@ int			execute_action(t_svr_vector *vec, t_game *game,
   action = vec->action;
   gettimeofday(&time, NULL);
   while ((tmp = action->getnxts(action)) != NULL)
-    {
-      printf("compare de time %i\n", time_cmp(&time, &(tmp->end)));
-      if (time_cmp(&time, &(tmp->end)) >= 0)
-	{
-	  if (!tmp->type)
-	    exec_plaction(vec, tmp, game);
-	  if (tmp->type == 1)
-	    server_kick(vec, slt_par, tmp->player_id, game);
-	  if (tmp->type == 2)
-	    server_eat(vec, slt_par, tmp->player_id, game);
-	}
-    }
+    if (time_cmp(&time, &(tmp->end)) >= 0)
+      {
+	if (!tmp->type)
+	  exec_plaction(vec, tmp, game);
+	if (tmp->type == 1)
+	  server_kick(vec, slt_par, tmp->player_id, game);
+	if (tmp->type == 2)
+	  server_eat(vec, slt_par, tmp->player_id, game);
+      }
   return (EXIT_SUCCESS);
 }

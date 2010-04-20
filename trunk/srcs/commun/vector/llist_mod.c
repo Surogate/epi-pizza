@@ -29,7 +29,7 @@ int		llist_push_back(t_vector *vec, void *strct)
 	while(tmp->nxt)
 	  tmp = tmp->nxt;
       else
-	vec->start = llist_new(strct, NULL, NULL);
+	return (vec->push_front(vec, strct));
       tmp->nxt = new;
       new->prv = tmp;
       vec->size++;
@@ -72,6 +72,8 @@ int		llist_insert(t_vector *vec, void *strct, int at)
 	  return (EXIT_SUCCESS);
 	}
     }
+  else
+    vec->push_back(vec, strct);
   return (EXIT_FAILURE);
 }
 
