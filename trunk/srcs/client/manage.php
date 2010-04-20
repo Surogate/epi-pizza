@@ -27,7 +27,6 @@ function manage($cmd_serv, &$player)
 		{
 			clean(&$cmd_serv);
 			echo "cmd clean \n";
-			while (1);
 			what_see($cmd_serv, &$player);
 		}
 	clean(&$cmd_serv);

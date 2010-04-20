@@ -12,8 +12,6 @@ require_once 'elevation.php';
 
 function main_loop($player)
 	{
-		$around = "{linemate sibur,nourriture,, phiras}";
-		what_see($around, &$player);
 		while (1)
 		{
 			echo "player send = " . $player['send'] . "\n";
@@ -38,6 +36,7 @@ function main_loop($player)
 					foreach ($write as $val)
 						to_write($val, &$player);
 				}
+			echo "RE\n";
 		}
 
 	}
