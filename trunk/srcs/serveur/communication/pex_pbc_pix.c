@@ -14,23 +14,23 @@
 
 char		*pex(char *msg, t_player *player)
 {
-  msg = xrealloc(msg, (strlen(msg) + 16) * sizeof(char));
-  snprintf(msg, strlen(msg) + 15, "%spex %i\n", msg, player->player_id);
-  return(msg);
+  msg = xrealloc(msg, (strlen(msg) + 15) * sizeof(char));
+  snprintf(msg + strlen(msg), 15, "pex %i\n", player->player_id);
+  return (msg);
 }
 
 char		*pbc(char *msg, t_player *player, char *broad)
 {
   msg = xrealloc(msg, (strlen(msg) + 16 + strlen(broad)) * sizeof(char));
-  snprintf(msg, strlen(msg) + 15, "%spbc %i %s\n", msg, player->player_id,
-	   broad);
-  return(msg);
+  snprintf(msg + strlen(msg), 16 + strlen(broad), "pbc %i %s\n",
+	   player->player_id, broad);
+  return (msg);
 }
 
 char		*pie(char *msg, t_player *player, int res)
 {
-  msg = xrealloc(msg, (strlen(msg) + 28) * sizeof(char));
-  snprintf(msg, strlen(msg) + 28, "%spie %i %i %i\n", msg, player->pos->x, 
+  msg = xrealloc(msg, (strlen(msg) + 37) * sizeof(char));
+  snprintf(msg + strlen(msg), 37, "pie %i %i %i\n", player->pos->x,
 	   player->pos->y, res);
   return (msg);
 }
@@ -41,17 +41,16 @@ char		*pic(char *msg, t_player *player)
   t_list	*list;
 
   msg = xrealloc(msg, (strlen(msg) + 39) * sizeof(char));
-  snprintf(msg, strlen(msg) + 28, "%spic %i %i %i", msg, player->pos->x, 
+  snprintf(msg + strlen(msg), 28, "pic %i %i %i", player->pos->x,
 	   player->pos->y, player->level);
   list = player->pos->cas.player;
   while (list->data != NULL)
     {
       pl = (t_player*)list->data;
-      msg = xrealloc(msg, (strlen(msg) + 13) * sizeof(char));
-      snprintf(msg, strlen(msg) + 12, "%s %i", msg, pl->player_id);
+      msg = xrealloc(msg, (strlen(msg) + 11) * sizeof(char));
+      snprintf(msg + strlen(msg), 11, " %i", pl->player_id);
       list = list->next;
     }
-  snprintf(msg, strlen(msg) + 1, "%s\n", msg);
+  snprintf(msg + strlen(msg), 1, "\n");
   return (msg);
 }
-

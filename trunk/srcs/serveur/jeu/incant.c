@@ -58,8 +58,6 @@ void		create_rep(t_packet *packet, t_player *player)
   t_player	*cur_pl;
   char		*msg;
 
-  int		i;
-
   msg = strdup(ELEV_DONE);
   list = player->pos->cas.player;
   while (list->data != NULL)

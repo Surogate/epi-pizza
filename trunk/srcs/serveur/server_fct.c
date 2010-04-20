@@ -31,6 +31,7 @@
 #include "server_eat.h"
 #include "server_plaction.h"
 #include "server_insert_player.h"
+#include "server_graph.h"
 
 static int	check_read(char *str)
 {
@@ -55,11 +56,13 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	  ++(cli->auth);
 	  cli->team = authent(game, cli->packet + cli->cons);
 	  if (!cli->team)
-	    create_kick(vec, cli->sock, 3);
+	    {
+	      create_kick(vec, cli->sock, 3);
+	    }
 	  else if (cli->team > 0)
 	    create_eat(vec, vec->slt, cli->sock);
 	  else
-	    new_graph(vec, cli, game);
+	    new_gh(vec, cli, game);
 	  return_packet(cli->packet + cli->cons);
 	  free_packet(cli);
 	}
