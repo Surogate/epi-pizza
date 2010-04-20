@@ -12,7 +12,8 @@ require_once 'elevation.php';
 
 function main_loop($player)
 	{
-		$i = 0;
+		$around = "{linemate sibur,nourriture,, phiras}";
+		what_see($around, &$player);
 		while (1)
 		{
 			echo "player send = " . $player['send'] . "\n";
@@ -36,21 +37,6 @@ function main_loop($player)
 						to_read($value, &$player);
 					foreach ($write as $val)
 						to_write($val, &$player);
-				}
-			else
-				{
-					echo "J'ATTENDS : ";
-					echo $num_changed_sockets . "\n";
-					/*
-					echo "i = " . $i . "\n";
-					$i++;
-					if ($i == 5)
-						{
-							$player['send'] = "RETOURNE \n";
-						}
-					if ($i == 50)
-						while (1);
-					*/
 				}
 		}
 
