@@ -56,7 +56,7 @@ void		*llist_del(t_vector *vec, int at)
   void		*strct;
 
   tmp = llist_goto(vec, at);
-  if (at == vec->gns_pos)
+  if (at == vec->gns_pos && vec->gns)
     vec->gns = (vec->gns)->prv;
   if (tmp)
     {

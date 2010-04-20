@@ -57,6 +57,7 @@ typedef struct
 {
   t_select		*slt;
   t_vector		*client;
+  t_vector		*graph;
   t_vector		*action;
 }			t_svr_vector;
 

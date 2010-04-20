@@ -58,6 +58,8 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	    create_kick(vec, cli->sock, 3);
 	  else if (cli->team > 0)
 	    create_eat(vec, vec->slt, cli->sock);
+	  else
+	    new_graph(vec, cli, game);
 	  return_packet(cli->packet + cli->cons);
 	  free_packet(cli);
 	}
@@ -78,14 +80,17 @@ int		close_client(t_svr_vector *vec, t_select *slt_par)
 {
   t_vector	*client;
   t_vector	*action;
+  t_vector	*graph;
   t_client	*tmp;
 
   client = vec->client;
   action = vec->action;
+  graph = vec->graph;
   while ((tmp = (t_client *)client->getnxts(client)) != NULL)
     FD_CLR(tmp->sock, &(slt_par->fd_read));
   client->destruc(client, free_client);
   action->destruc(action, free);
+  graph->destruc(graph, free_client);
   return (EXIT_SUCCESS);
 }
 
@@ -98,23 +103,21 @@ int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
 
   client = vec->client;
   while ((tmp = (t_client *)client->getnxts(client)) != NULL)
-    {
-      if (FD_ISSET(tmp->sock, &(slt_par->fd_read)))
-	{
-	  if (cbuf_write(&tmp->cbuf, tmp->sock) == EXPIPE)
-	    {
-	      printf("client %i timeout\n", tmp->sock);
-	      FD_CLR(tmp->sock, &(slt_par->fd_read));
-	      delete_eat(vec, tmp->sock);
-	      delete_plaction(vec, tmp->sock);
-	      delete_kick(vec, tmp->sock);
-	      if (tmp->team > 0)
-		rm_player(game, tmp->sock);
-	      client->erase(client, client->gns_pos, free_client);
-	    }
-	  else if ((readed = cbuf_read(&(tmp->cbuf), check_read)))
-	    instr_catch(readed, tmp, game, vec);
-	}
-    }
+    if (FD_ISSET(tmp->sock, &(slt_par->fd_read)))
+      {
+	if (cbuf_write(&tmp->cbuf, tmp->sock) == EXPIPE)
+	  {
+	    printf("client %i timeout\n", tmp->sock);
+	    FD_CLR(tmp->sock, &(slt_par->fd_read));
+	    delete_eat(vec, tmp->sock);
+	    delete_plaction(vec, tmp->sock);
+	    delete_kick(vec, tmp->sock);
+	    if (tmp->team > 0)
+	      rm_player(game, tmp->sock);
+	    client->erase(client, client->gns_pos, free_client);
+	  }
+	else if ((readed = cbuf_read(&(tmp->cbuf), check_read)))
+	  instr_catch(readed, tmp, game, vec);
+      }
   return (EXIT_SUCCESS);
 }

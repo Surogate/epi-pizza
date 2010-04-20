@@ -50,6 +50,7 @@ static void		init_vector(t_svr_vector *vec, t_select *slt)
   vec->slt = slt;
   vec->client = vector_new(NULL);
   vec->action = vector_new(NULL);
+  vec->graph = vector_new(NULL);
 }
 
 static void	end_loop(t_svr_vector *vec, t_select *slt_par, 

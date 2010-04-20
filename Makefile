@@ -44,6 +44,7 @@ SRC_S		= $(DIR_SRC_S)main.c			\
 		$(DIR_SRC_S)server_kick.c		\
 		$(DIR_SRC_S)server_eat.c		\
 		$(DIR_SRC_S)server_plaction.c		\
+		$(DIR_SRC_S)server_graph.c		\
 		$(DIR_SRC_S)server_insert_player.c	\
 		$(DIR_SRC_S)server_ini.c		\
 		$(DIR_SRC_S)server_debug.c		\
@@ -95,6 +96,7 @@ SRC_CO		= $(DIR_SRC_CO)cbuf/cbuf_io.c		\
 		$(DIR_SRC_CO)vector/llist_mod.c		\
 		$(DIR_SRC_CO)vector/llist_access.c	\
 		$(DIR_SRC_CO)vector/llist_sort.c	\
+		$(DIR_SRC_CO)vector/llist_swap.c	\
 		$(DIR_SRC_CO)count_player.c		\
 
 SRC_INC		= $(DIR_INC)xfunc.h			\

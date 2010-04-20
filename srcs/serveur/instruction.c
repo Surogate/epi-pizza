@@ -34,7 +34,7 @@ t_inst		tab_instr[NB_INST] =
   {"prendre", try_take_obj, 7},
   {"pose", try_drop_obj, 7},
   {"expulse", try_expulse, 7},
-  {"broadcat",broadcast, 7},
+  {"broadcast",broadcast, 7},
   {"incant", try_incant, 300},
   {"fork", try_fork, 42}
 };
