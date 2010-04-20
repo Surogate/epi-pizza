@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Mon Apr 12 19:29:06 2010 Florian Chanioux
-** Last update Mon Apr 19 15:41:41 2010 pierre1 boutbel
+** Last update Tue Apr 20 17:06:19 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -52,25 +52,22 @@ void		do_hatch(t_game *game, int id_egg)
   game->eggs = my_l_rm(game->eggs, &id_egg, find_egg);
 }
 
-void		do_fork(t_game *game, t_player *player)
+void		try_fork(t_packet *packet, t_player *player, t_game *game)
 {
-  static int	id = -1;
+  static int	id = 0;
   t_eggs	*new_egg;
 
-  if (id < -64000)
+  if (--id < -64000)
     id = -1;
-  new_egg = xmalloc(sizeof(t_eggs));
-  new_egg->team = player->team;
-  new_egg->pos = player->pos;
-  new_egg->id = id--;
-  game->eggs = my_l_insert(game->eggs, new_egg);
-}
-
-void		try_fork(t_packet *packet, t_player *player)
-{
   packet->response = xmalloc(sizeof(t_rep));
   packet->response->mess = xmalloc(LEN_OK * sizeof(char));
   snprintf(packet->response->mess, LEN_OK, "%s\n", OK);
   packet->response->id_player = player->player_id;
   packet->ac_rep = 1;
+  packet->type = id;
+  new_egg = xmalloc(sizeof(t_eggs));
+  new_egg->team = player->team;
+  new_egg->pos = player->pos;
+  new_egg->id = id;
+  game->eggs = my_l_insert(game->eggs, new_egg);
 }
