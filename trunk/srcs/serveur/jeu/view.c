@@ -113,7 +113,7 @@ void		try_view(t_packet *packet, t_player *player)
   s_vision->level = 0;
   s_vision->num = 0;
   s_vision->cas = player->pos;
-  while (player->level != i - 1)
+  while (player->level != (i - 1))
     {
       s_vision = add_level(s_vision, &gl_dir[player->dir - 1], i);
       i++;
