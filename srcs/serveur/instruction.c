@@ -31,11 +31,11 @@ t_inst		tab_instr[NB_INST] =
   {"gauche", try_turn_left, 7},
   {"voir", try_view, 7},
   {"inventaire", try_invent, 1},
-  {"prendre", try_take_obj, 7},
+  {"prend", try_take_obj, 7},
   {"pose", try_drop_obj, 7},
   {"expulse", try_expulse, 7},
   {"broadcast",broadcast, 7},
-  {"incant", try_incant, 300},
+  {"incantation", try_incant, 300},
   {"fork", try_fork, 42}
 };
 
