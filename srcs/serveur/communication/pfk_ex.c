@@ -14,36 +14,36 @@
 
 char		*pfk(char *msg, t_player *player)
 {
-  msg = xrealloc(msg, (strlen(msg) + 13) * sizeof(char));
-  snprintf(msg, strlen(msg) + 13, "%spdr %i \n", msg, player->player_id);
+  msg = xrealloc(msg, (strlen(msg) + 15) * sizeof(char));
+  snprintf(msg + strlen(msg), 15, "pdr %i\n", player->player_id);
   return (msg);
 }
 
 char		*enw(char *msg, t_player *player, t_eggs *egg)
 {
-  msg = xrealloc(msg, (strlen(msg) + 49) * sizeof(char));
-  snprintf(msg, strlen(msg) + 48, "%senw %i %i% i %i\n", msg, egg->id, 
+  msg = xrealloc(msg, (strlen(msg) + 48) * sizeof(char));
+  snprintf(msg + strlen(msg), 48, "enw %i %i% i %i\n", egg->id, 
 	   player->player_id, player->pos->x, player->pos->y);
   return (msg);
 }
 
 char		*eht(char *msg, t_eggs *egg)
 {
-  msg = xrealloc(msg, (strlen(msg) + 13) * sizeof(char));
-  snprintf(msg, strlen(msg) + 12, "%seht %i\n", msg, egg->id);
+  msg = xrealloc(msg, (strlen(msg) + 15) * sizeof(char));
+  snprintf(msg + strlen(msg), 15, "eht %i\n", egg->id);
   return (msg);
 }
 
 char		*ebo(char *msg, t_eggs *egg)
 {
-  msg = xrealloc(msg, (strlen(msg) + 13) * sizeof(char));
-  snprintf(msg, strlen(msg) + 12, "%sebo %i\n", msg, egg->id);
+  msg = xrealloc(msg, (strlen(msg) + 15) * sizeof(char));
+  snprintf(msg + strlen(msg), 15, "ebo %i\n", egg->id);
   return (msg);
 }
 
 char		*edi(char *msg, t_eggs *egg)
 {
-  msg = xrealloc(msg, (strlen(msg) + 13) * sizeof(char));
-  snprintf(msg, strlen(msg) + 12, "%sedi %i\n", msg, egg->id);
+  msg = xrealloc(msg, (strlen(msg) + 15) * sizeof(char));
+  snprintf(msg + strlen(msg), 15, "edi %i\n", egg->id);
   return (msg);
 }

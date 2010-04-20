@@ -44,13 +44,12 @@ static void	msg_broad(t_player *player, char **msg, t_rep *rep)
   int		size;
   int		dir;
 
-  size = 14;
+  size = 15;
   size += strlen(msg[0]);
   size += strlen(msg[1]);
   rep->id_player = player->player_id;
   dir = dir_of_msg(player, player->pos);
   rep->mess = xmalloc(sizeof(char) * size);
-  memset(rep->mess, 0, sizeof(char) * size);
   snprintf(rep->mess, size, "%s %i,%s\n", msg[0], dir, msg[1]);
 }
 
@@ -63,19 +62,26 @@ void		broadcast(t_packet *packet, t_player *player, t_game *game)
   pathfinding(player->pos);
   temp = game->player;
   i = my_l_size(temp);
-  packet->ac_rep = i - 1;
-  packet->response = xmalloc(sizeof(t_rep) * i);
-  while (--i > 0)
-  {
-    pl = (t_player *)temp->data;
-    if (pl->player_id != player->player_id)
-      msg_broad(pl, packet->av, &(packet->response[i]));
-    else
+  packet->ac_rep = i;
+  printf("i : %i\n", i);
+  packet->response = xmalloc(sizeof(*(packet->response)) * i);
+  while (--i >= 0)
     {
-      packet->response[i].id_player = pl->player_id;
-      strncpy(packet->response[i].mess, OK, strlen(OK));
+      printf("je boucle dans broad\n");
+      pl = (t_player *)temp->data;
+      if (pl->player_id != player->player_id)
+	{
+	  msg_broad(pl, packet->av, packet->response + i);
+	  printf("je crie a un autre\n");
+	}
+      else
+	{
+	  printf("je cree un mess pour moi\n");
+	  packet->response[i].id_player = pl->player_id;
+	  packet->response[i].mess = xmalloc(5 * sizeof(char));
+	  snprintf(packet->response[i].mess, 5, "OK\n");
+	}
+      temp = temp->next;
     }
-    temp = temp->next;
-  }
   reset_pathfinding(game);
 }

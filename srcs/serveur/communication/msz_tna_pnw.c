@@ -15,7 +15,7 @@
 char		*msz(char *msg, t_game *game)
 {
   msg = xrealloc(msg, (strlen(msg) + 27) * sizeof(char));
-  snprintf(msg, strlen(msg) + 26, "%smsz %i %i\n", msg, game->server.width,
+  snprintf(msg + strlen(msg), 26, "msz %i %i\n", game->server.width,
 	   game->server.height);
   return (msg);
 }
@@ -27,9 +27,9 @@ char		*tna(char *msg, t_game *game)
   team = game->server.teamname;
   while (team != NULL)
     {
-      msg = xrealloc(msg, (strlen(msg) + strlen(team->team) + 1) * 
+      msg = xrealloc(msg, (strlen(msg) + strlen(team->team) + 6) *
 		     sizeof(char));
-      snprintf(msg, strlen(msg) + strlen(team->team), "%stan %s\n", msg, 
+      snprintf(msg + strlen(msg), strlen(team->team) + 6, "tna %s\n",
 	       team->team);
       team = team->next;
     }
@@ -40,20 +40,19 @@ char		*pnw(char *msg, t_player *player, t_game *game)
 {
   t_team	*team;
   int		count;
- 
+
   count = -1;
   team = game->server.teamname;
-  while (team != NULL && player->team != ++count)
-    team = team->next;  
-
+  while ((team != NULL) && (player->team != ++count))
+    team = team->next;
   if (team != NULL)
     {
-      msg = xrealloc(msg, (strlen(msg) + 52 + strlen(team->team)) * 
+      msg = xrealloc(msg, (strlen(msg) + 61 + strlen(team->team)) *
 		     sizeof(char));
-      snprintf(msg, strlen(msg) + 51 + strlen(team->team) , 
-	       "%spnw %i %i %i %i %i %s\n", msg, player->player_id,
-	       player->pos->x, player->pos->y, player->dir + 1, player->level,
-	       team->team);
+      snprintf(msg + strlen(msg), 61 + strlen(team->team),
+	       "pnw %i %i %i %i %i %s\n", player->player_id,
+	       player->pos->x, player->pos->y, player->dir + 1, 
+	       player->level, team->team);
     }
   return (msg);
 }
