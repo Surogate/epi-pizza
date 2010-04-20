@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 **
 ** Started on  Wed Apr 14 13:18:55 2010 pierre1 boutbel
-** Last update Mon Apr 19 19:13:33 2010 pierre1 boutbel
+** Last update Tue Apr 20 16:41:20 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -88,13 +88,10 @@ char		*explore_case(t_vision *cur_case, char *msg)
 
   if (cur_case->cas->cas.player != NULL)
     msg = add_player(cur_case, msg);
-  printf("%s\n", msg);
   msg = add_ressource(cur_case, msg);
-  printf("%s\n", msg);
   msg = xrealloc(msg, strlen(msg) + 1);
   if (cur_case->next == NULL)
     msg = strcat(msg, ",");
-  printf("%s\n", msg);
   if (cur_case->next != NULL)
     {
       i = -1;
@@ -109,7 +106,6 @@ char		*explore_case(t_vision *cur_case, char *msg)
 	  msg = strcat(msg, ", ");
 	}
     }
-  printf("%s\n", msg);
   return (msg);
 }
 
@@ -123,7 +119,6 @@ char		*concatene_msg(t_vision *list)
   msg = xmalloc(2 * sizeof(char));
   msg[0] = '{';
   msg[1] = '\0';
-  printf("%s\n", msg);
   while (cur != NULL)
     {
       msg = explore_case(cur, msg);

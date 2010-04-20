@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Fri Apr 16 16:39:00 2010 pierre1 boutbel
-** Last update Tue Apr 20 12:27:25 2010 pierre1 boutbel
+** Last update Tue Apr 20 17:01:34 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -20,7 +20,7 @@ static int	count_team(t_team *begin)
 {
   t_team	*next;
   int		count;
-
+  
   count = 0;
   next = begin;
   while (next != NULL)

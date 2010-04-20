@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Tue Apr  6 15:01:49 2010 Florian Chanioux
-** Last update Tue Apr 20 12:53:46 2010 pierre1 boutbel
+** Last update Tue Apr 20 18:33:06 2010 pierre1 boutbel
 */
 
 #include <sys/time.h>
@@ -36,7 +36,8 @@ t_inst		tab_instr[NB_INST] =
   {"expulse", try_expulse, 7},
   {"broadcast",broadcast, 7},
   {"incantation", try_incant, 300},
-  {"fork", try_fork, 42}
+  {"fork", try_fork, 42},
+  {"connect_nbr", find_connect_nbr, 1}
 };
 
 int		find_elem(t_packet *ref, t_player *data)
@@ -58,10 +59,6 @@ void		treatment_intr(t_game *game, t_packet *packet)
       if (!strncmp(packet->av[0], tab_instr[i].inst, strlen(packet->av[0])))
 	tab_instr[i].ptr_func(packet, player, game);
     }
-  if (!strcmp(packet->av[0], "fork"))
-    do_fork(game, player);
-  if (!strcmp(packet->av[0], "incant"))
-    is_ending(game);
 }
 
 int		treatment_duration(t_packet *packet)

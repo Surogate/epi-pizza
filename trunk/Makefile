@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Sun Apr 18 17:09:51 2010 pierre1 boutbel
+## Last update Tue Apr 20 18:33:47 2010 pierre1 boutbel
 ##
 
 STAG		= $(shell uname -s)
@@ -60,6 +60,7 @@ SRC_S		= $(DIR_SRC_S)main.c			\
 		$(DIR_SRC_S)jeu/instr_broadcast.c	\
 		$(DIR_SRC_S)jeu/invent.c		\
 		$(DIR_SRC_S)jeu/move.c			\
+		$(DIR_SRC_S)jeu/connect_nbr.c		\
 		$(DIR_SRC_S)jeu/view.c			\
 		$(DIR_SRC_S)jeu/expulse.c		\
 		$(DIR_SRC_S)jeu/instr_connect.c		\
