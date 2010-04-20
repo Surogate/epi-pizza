@@ -2,7 +2,21 @@
 
 function go_to(&$player, &$move)
 {
-	
+	while ($move['move_forw'] != 0)
+		{
+			fifo_in(&$player, "avance\n");
+			$move['move_forw']--;
+		}
+	while ($move['move_right'] != 0)
+		{
+			fifo_in(&$player, "droite\n");
+			$move['move_right']--;
+		}
+	while ($move['move_left'] != 0)
+		{
+			fifo_in(&$player, "gauche\n");
+			$move['move_left']--;
+		}
 }
 
 function coord(&$move, $get_pos, &$player, $niv)
