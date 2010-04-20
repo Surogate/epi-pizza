@@ -140,10 +140,8 @@ void			free_packet(t_client *cli)
     free(pak->av[i]);
   i = -1;
   while (++i < pak->ac_rep)
-    {
-      free(pak->response[i].mess);
-      free(pak->response + i);
-    }
+    free(pak->response[i].mess);
+  free(pak->response);
   --(cli->used);
   cli->cons = (cli->cons + 1) % 10;
 }

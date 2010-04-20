@@ -51,8 +51,7 @@ char		*grp_connex_monit(t_game *game)
   int		y;
   char		*msg;
 
-  msg = xmalloc(2 * sizeof(char));
-  msg = msz(msg, game);
+  msg = msz(NULL, game);
   x = -1;
   while (++x != game->server.height)
     {
