@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Apr 13 12:03:06 2010 Florian Chanioux
-** Last update Mon Apr 19 17:15:43 2010 pierre1 boutbel
+** Last update Tue Apr 20 12:53:06 2010 pierre1 boutbel
 */
 
 #include <sys/time.h>
@@ -32,7 +32,7 @@ t_player	*create_player(int player_id, int team)
   player->level = 1;
   player->dir = rand() % 4;
   player->pos = NULL;
-  player->ress[(i = 0)] = 10;
+  player->ress[(i = 0)] = BEGIN_BOUFFE;
   while (++i < RESS_NUM)
     player->ress[i] = 0;
   return (player);
