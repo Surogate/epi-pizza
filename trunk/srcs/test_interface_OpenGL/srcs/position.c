@@ -23,6 +23,7 @@
 #include <GL/freeglut_std.h>
 #endif
 
+#include "3dsloader.h"
 #include "define.h"
 #include "struct.h"
 #include "proto.h"
@@ -48,13 +49,13 @@ void processHits (GLint hits, GLuint buffer[])
   }
   if (numberOfNames > 0)
   {
-    printf ("You picked snowman  ");
+    printf ("You picked case  ");
     ptr = ptrNames;
     for (j = 0; j < numberOfNames; j++,ptr++)
       printf ("%d ", *ptr);
   }
   else
-    printf("You didn't click a snowman!");
+    printf("You didn't click on case");
   printf ("\n");
 }
 

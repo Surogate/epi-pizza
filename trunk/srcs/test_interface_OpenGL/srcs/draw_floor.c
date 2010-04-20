@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Mon Apr 19 13:15:43 2010 Florian Chanioux
-** Last update Mon Apr 19 17:18:24 2010 Florian Chanioux
+** Last update Tue Apr 20 14:31:28 2010 Florian Chanioux
 */
 
 
@@ -25,6 +25,7 @@
 #include <GL/gl.h>
 #endif
 
+#include "3dsloader.h"
 #include "define.h"
 #include "struct.h"
 #include "proto.h"

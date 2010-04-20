@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Mon Apr 19 21:12:10 2010 Florian Chanioux
+## Last update Tue Apr 20 14:15:05 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -38,6 +38,7 @@ SRC		= \
 		$(DIR_SRC)initgl.c		\
 		$(DIR_SRC)load_image.c		\
 		$(DIR_SRC)loadtexture.c		\
+		$(DIR_SRC)3dsloader.c		\
 		$(DIR_SRC)mainloop.c		\
 		$(DIR_SRC)camera.c		\
 		$(DIR_SRC)interaction.c		\
@@ -45,6 +46,7 @@ SRC		= \
 		$(DIR_SRC)draw_floor.c		\
 		$(DIR_SRC)draw_map.c		\
 		$(DIR_SRC)draw_mob.c		\
+		$(DIR_SRC)draw_ressource.c	\
 		$(DIR_SRC)draw_gl.c		\
 		$(DIR_SRC)test_opengl.c		\
 		$(DIR_SRC)position.c		\

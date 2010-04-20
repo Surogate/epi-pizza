@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Mon Apr 19 21:05:46 2010 Florian Chanioux
+** Last update Tue Apr 20 14:28:21 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -26,6 +26,7 @@
 #include <GL/gl.h>
 #endif
 
+#include "3dsloader.h"
 #include "define.h"
 #include "struct.h"
 #include "proto.h"

@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Mon Apr 19 23:10:55 2010 Florian Chanioux
+** Last update Tue Apr 20 12:44:56 2010 Florian Chanioux
 */
 
 #ifndef		__PROTO_H__
@@ -51,7 +51,7 @@ void		make_calllistes(t_game *game);
 void		draw_gl(t_game *game, GLenum mode);
 void		draw_map(t_game *game, GLenum mode);
 void		draw_mob(t_game *game, GLenum mode);
-
+void		draw_ressource(t_game *game, GLenum mode);
 void		floor_with_t(t_game *game, int x, int y);
 void		floor_without_t(int x, int y);
 void		side_with_t(t_game *game, int x, int y);

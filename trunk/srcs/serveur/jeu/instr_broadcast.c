@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr  9 14:51:20 2010 Florian Chanioux
-** Last update Fri Apr 16 15:39:24 2010 Florian Chanioux
+** Last update Tue Apr 20 17:16:58 2010 Florian Chanioux
 */
 
 #include <sys/time.h>
@@ -20,17 +20,38 @@
 #include "server.h"
 #include "xfunc.h"
 
-void		dir_of_msg(int player_id, char **msg, t_rep *rep)
+static int	dir_of_msg(t_player *player, t_map *cas)
+{
+  int		or[4];
+  int		pos;
+  int		res;
+  int		i;
+  int		j;
+
+  pos = player->dir;
+  i = -1;
+  j = 0;
+  while (++i < 8)
+    if (cas->card[i]->cout == (cas->cout - 1))
+      or[j++] = i;
+  res = rand() % j;
+  return (pos - or[res] + 1);
+}
+
+
+static void	msg_broad(t_player *player, char **msg, t_rep *rep)
 {
   int		size;
+  int		dir;
 
   size = 14;
   size += strlen(msg[0]);
   size += strlen(msg[1]);
-  rep->id_player = player_id;
+  rep->id_player = player->player_id;
+  dir = dir_of_msg(player, player->pos);
   rep->mess = xmalloc(sizeof(char) * size);
   memset(rep->mess, 0, sizeof(char) * size);
-  snprintf(rep->mess, size, "%s %i,%s\n", msg[0], player_id, msg[1]);
+  snprintf(rep->mess, size, "%s %i,%s\n", msg[0], dir, msg[1]);
 }
 
 void		broadcast(t_packet *packet, t_player *player, t_game *game)
@@ -48,7 +69,7 @@ void		broadcast(t_packet *packet, t_player *player, t_game *game)
   {
     pl = (t_player *)temp->data;
     if (pl->player_id != player->player_id)
-      dir_of_msg(pl->player_id, packet->av, &(packet->response[i]));
+      msg_broad(pl, packet->av, &(packet->response[i]));
     /*else
        mettre le ok */
     temp = temp->next;

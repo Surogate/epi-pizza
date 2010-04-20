@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 17:12:18 2010 Florian Chanioux
-** Last update Fri Apr 16 17:12:32 2010 Florian Chanioux
+** Last update Tue Apr 20 14:33:33 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -24,9 +24,10 @@
 #include <GL/gl.h>
 #endif
 
-#include	"define.h"
-#include	"struct.h"
-#include	"proto.h"
+#include "3dsloader.h"
+#include "define.h"
+#include "struct.h"
+#include "proto.h"
 
 void		printAttributes()
 {

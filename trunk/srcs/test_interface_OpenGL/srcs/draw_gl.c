@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Sat Apr 17 19:43:59 2010 Florian Chanioux
-** Last update Mon Apr 19 22:38:49 2010 Florian Chanioux
+** Last update Tue Apr 20 14:32:26 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -24,6 +24,7 @@
 #include <GL/gl.h>
 #endif
 
+#include "3dsloader.h"
 #include "define.h"
 #include "struct.h"
 #include "proto.h"
@@ -41,6 +42,7 @@ void		draw_gl(t_game *game, GLenum mode)
 /*  glRotated(45, 0, 0, 1);*/
   draw_map(game, mode);
   draw_mob(game, mode);
+  draw_ressource(game, mode);
   glPopMatrix();
   glPopMatrix();
 }

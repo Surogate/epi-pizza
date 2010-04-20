@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 16:46:50 2010 Florian Chanioux
-** Last update Mon Apr 19 22:49:53 2010 Florian Chanioux
+** Last update Tue Apr 20 14:32:26 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -24,6 +24,7 @@
 #include <GL/gl.h>
 #endif
 
+#include "3dsloader.h"
 #include "define.h"
 #include "struct.h"
 #include "proto.h"
@@ -42,7 +43,7 @@ void		draw_map(t_game *game, GLenum mode)
   int		w;
   int		i;
 
-  i = -1;
+  i = 0;
   h = -1;
   if (game->video.text)
     glEnable(GL_TEXTURE_2D);
@@ -61,7 +62,5 @@ void		draw_map(t_game *game, GLenum mode)
 	glPopName();
     }
   }
-  if (mode == GL_SELECT)
-    printf("%i\n", i);
   glDisable(GL_TEXTURE_2D);
 }

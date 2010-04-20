@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Sat Apr 17 17:43:54 2010 Florian Chanioux
+** Last update Tue Apr 20 14:29:06 2010 Florian Chanioux
 */
 #include <sys/types.h>
 #include <unistd.h>
@@ -25,9 +25,10 @@
 #include <GL/gl.h>
 #endif
 
-#include	"define.h"
-#include	"struct.h"
-#include	"proto.h"
+#include "3dsloader.h"
+#include "define.h"
+#include "struct.h"
+#include "proto.h"
 
 int		key_func(t_game *game)
 {

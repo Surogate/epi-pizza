@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Wed Apr 14 14:50:42 2010 Florian Chanioux
-** Last update Fri Apr 16 20:35:44 2010 Florian Chanioux
+** Last update Tue Apr 20 14:32:10 2010 Florian Chanioux
 */
 
 
@@ -24,9 +24,10 @@
 #include <GL/gl.h>
 #endif
 
-#include	"define.h"
-#include	"struct.h"
-#include	"proto.h"
+#include "3dsloader.h"
+#include "define.h"
+#include "struct.h"
+#include "proto.h"
 
 t_event		event_type[]=
 {
