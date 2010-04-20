@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Tue Apr 20 23:44:31 2010 Florian Chanioux
+** Last update Wed Apr 21 00:33:54 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -22,6 +22,7 @@
 #else
 #include <SDL/SDL.h>
 #include <SDL/SDL_ttf.h>
+#include <GL/glut.h>
 #include <GL/glu.h>
 #include <GL/gl.h>
 #endif
@@ -31,19 +32,27 @@
 #include "struct.h"
 #include "proto.h"
 
-int		main(int argc, char *argv[])
+void		init_3dsmodel(t_game *game)
 {
-  t_game	game;
+  Load3DS(&(game->model.trantorien),"3DS/totoro.3ds");
+}
 
-  argc = argc;
-  argv = argv;
-  init_video(&game);
-  init_game(&game);
-  printAttributes();
-  init_texture(&game);
-  initGL(&game);
-  mainloop(&game);
-  puts("end of program");
-  SDL_Quit();
-  return (EXIT_SUCCESS);
+void		init_texture(t_game *game)
+{
+  if (game->video.text)
+  {
+    puts("TEXTURE ON");
+    game->texture.floor = loadtexture("images/lawn.jpg", 0);
+    game->texture.side = loadtexture("images/side.jpg", 0);
+  }
+  else
+    puts("TEXTURE OFF");
+}
+
+void		init_video(t_game *game)
+{
+  game->video.text = 0;
+  game->video.fog = 0;
+  game->video.light = 0;
+  game->video.aliasing = 0;
 }

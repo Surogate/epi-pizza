@@ -8,9 +8,9 @@
  *
  *
  * Tutorial 4: 3d engine - 3ds models loader
- * 
+ *
  * Include File: 3dsloader.cpp
- *  
+ *
  */
 
 #include <unistd.h>
@@ -29,45 +29,44 @@
  *
  * This function loads a mesh from a 3ds file.
  * Please note that we are loading only the vertices, polygons and mapping lists.
- * If you need to load meshes with advanced features as for example: 
+ * If you need to load meshes with advanced features as for example:
  * multi objects, materials, lights and so on, you must insert other chunk parsers.
  *
  *********************************************************/
 
-char Load3DS (obj_type_ptr p_object, const char *p_filename)
+char			Load3DS (obj_type_ptr p_object, const char *p_filename)
 {
-  int i; /*Index variable */
-  FILE *l_file; /*  File pointer */
-  unsigned short l_chunk_id; /*  Chunk identifier */
-  unsigned int l_chunk_lenght; /*  Chunk lenght */
+  int			i; /*Index variable */
+  FILE			*l_file; /*  File pointer */
+  unsigned short	l_chunk_id; /*  Chunk identifier */
+  unsigned int		l_chunk_lenght; /*  Chunk lenght */
 
-  unsigned char l_char; /*  Char variable */
-  unsigned short l_qty; /*  Number of elements in each chunk */
+  unsigned char		l_char; /*  Char variable */
+  unsigned short	l_qty; /*  Number of elements in each chunk */
 
-  unsigned short l_face_flags; /*  Flag that stores some face information */
-  struct stat	filestat;
-  
+  unsigned short	l_face_flags; /*  Flag that stores some face information */
+  struct stat		filestat;
+
   /*
   ** CRAPPY clean and backup
   */
 
-  unsigned int	bkText = p_object->id_texture;
-  float		scale[3] = {p_object->scale[0],
-			    p_object->scale[1],
-			    p_object->scale[2]};
+  unsigned int		bkText = p_object->id_texture;
+  float			scale[3];
 
+  scale[0]= p_object->scale[0];
+  scale[1]= p_object->scale[1];
+  scale[2]= p_object->scale[2];
   memset(p_object, 0, sizeof(*p_object));
-
   p_object->id_texture = bkText;
   p_object->scale[0] = scale[0];
   p_object->scale[1] = scale[1];
   p_object->scale[2] = scale[2];
-
   /*
   **
   */
 
-  l_file = fopen(p_filename, "r");
+  l_file = fopen(p_filename, "rb");
 
   if (l_file == NULL)
   {
@@ -75,7 +74,6 @@ char Load3DS (obj_type_ptr p_object, const char *p_filename)
     return 0; /*  Open the file */
   }
   stat(p_filename, &filestat);
-  printf("taille du fichier %i\n", ftell (l_file));
   while (ftell (l_file) < filestat.st_size) /*  Loop to scan the whole file */
   {
     /*  getche();  Insert this command for debug (to wait for keypress for each chuck reading) */
@@ -89,30 +87,30 @@ char Load3DS (obj_type_ptr p_object, const char *p_filename)
     {
       /*----------------- MAIN3DS -----------------
       ** Description: Main chunk, contains all the other chunks
-      ** Chunk ID: 4d4d 
+      ** Chunk ID: 4d4d
       ** Chunk Lenght: 0 + sub chunks
       **-------------------------------------------
       */
-    case 0x4d4d: 
-      break;    
+    case 0x4d4d:
+      break;
 
       /*
       **----------------- EDIT3DS -----------------
-      ** Description: 3D Editor chunk, objects layout info 
+      ** Description: 3D Editor chunk, objects layout info
       ** Chunk ID: 3d3d (hex)
       ** Chunk Lenght: 0 + sub chunks
       **-------------------------------------------
       */
     case 0x3d3d:
       break;
-			
+
       /*--------------- EDIT_OBJECT ---------------
       ** Description: Object block, info for each object
       ** Chunk ID: 4000 (hex)
       ** Chunk Lenght: len(object name) + sub chunks
       **-------------------------------------------
       */
-    case 0x4000: 
+    case 0x4000:
       i=0;
       do
       {
@@ -130,16 +128,16 @@ char Load3DS (obj_type_ptr p_object, const char *p_filename)
       */
     case 0x4100:
       break;
-			
+
       /*--------------- TRI_VERTEXL ---------------
       ** Description: Vertices list
       ** Chunk ID: 4110 (hex)
-      ** Chunk Lenght: 1 x unsigned short (number of vertices) 
+      ** Chunk Lenght: 1 x unsigned short (number of vertices)
       **             + 3 x float (vertex coordinates) x (number of vertices)
       **             + sub chunks
       **-------------------------------------------
       */
-    case 0x4110: 
+    case 0x4110:
       fread (&l_qty, sizeof (unsigned short), 1, l_file);
       p_object->vertices_qty = l_qty;
       /*  printf("Number of vertices: %d\n",l_qty); */
@@ -157,7 +155,7 @@ char Load3DS (obj_type_ptr p_object, const char *p_filename)
       /*--------------- TRI_FACEL1 ----------------
       ** Description: Polygons (faces) list
       ** Chunk ID: 4120 (hex)
-      ** Chunk Lenght: 1 x unsigned short (number of polygons) 
+      ** Chunk Lenght: 1 x unsigned short (number of polygons)
       **             + 3 x unsigned short (polygon points) x (number of polygons)
       **             + sub chunks
       **-------------------------------------------
@@ -178,11 +176,10 @@ char Load3DS (obj_type_ptr p_object, const char *p_filename)
 	/*  printf("Face flags: %x\n",l_face_flags); */
       }
       break;
-
       /*------------- TRI_MAPPINGCOORS ------------
       ** Description: Vertices list
       ** Chunk ID: 4140 (hex)
-      ** Chunk Lenght: 1 x unsigned short (number of mapping points) 
+      ** Chunk Lenght: 1 x unsigned short (number of mapping points)
       **             + 2 x float (mapping coordinates) x (number of mapping points)
       **             + sub chunks
       **-------------------------------------------
@@ -197,7 +194,6 @@ char Load3DS (obj_type_ptr p_object, const char *p_filename)
 	/*  printf("Mapping list v: %f\n",p_object->mapcoord[i].v); */
       }
       break;
-
       /*----------- Skip unknow chunks ------------
       ** We need to skip all the chunks that currently we don't use
       ** We use the chunk lenght information to set the file pointer
@@ -206,9 +202,8 @@ char Load3DS (obj_type_ptr p_object, const char *p_filename)
       */
     default:
       fseek(l_file, l_chunk_lenght-6, SEEK_CUR);
-    } 
+    }
   }
   fclose (l_file); /*   Closes the file stream */
   return (1); /*   Returns ok */
 }
-
