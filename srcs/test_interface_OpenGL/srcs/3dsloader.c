@@ -46,28 +46,19 @@ char			Load3DS (obj_type_ptr p_object, const char *p_filename)
 
   unsigned short	l_face_flags; /*  Flag that stores some face information */
   struct stat		filestat;
-
-  /*
-  ** CRAPPY clean and backup
-  */
-
   unsigned int		bkText = p_object->id_texture;
   float			scale[3];
 
-  scale[0]= p_object->scale[0];
-  scale[1]= p_object->scale[1];
-  scale[2]= p_object->scale[2];
+  scale[0] = p_object->scale[0];
+  scale[1] = p_object->scale[1];
+  scale[2] = p_object->scale[2];
   memset(p_object, 0, sizeof(*p_object));
   p_object->id_texture = bkText;
   p_object->scale[0] = scale[0];
   p_object->scale[1] = scale[1];
   p_object->scale[2] = scale[2];
-  /*
-  **
-  */
 
   l_file = fopen(p_filename, "rb");
-
   if (l_file == NULL)
   {
     /*  printf("File not found.\n"); */
@@ -76,7 +67,10 @@ char			Load3DS (obj_type_ptr p_object, const char *p_filename)
   stat(p_filename, &filestat);
   while (ftell (l_file) < filestat.st_size) /*  Loop to scan the whole file */
   {
-    /*  getche();  Insert this command for debug (to wait for keypress for each chuck reading) */
+    /*
+      getche();  Insert this command for debug
+      (to wait for keypress for each chuck reading)
+    */
 
     fread (&l_chunk_id, 2, 1, l_file); /*  Read the chunk header */
     /*  printf("ChunkID: %x\n",l_chunk_id); */
@@ -180,7 +174,8 @@ char			Load3DS (obj_type_ptr p_object, const char *p_filename)
       ** Description: Vertices list
       ** Chunk ID: 4140 (hex)
       ** Chunk Lenght: 1 x unsigned short (number of mapping points)
-      **             + 2 x float (mapping coordinates) x (number of mapping points)
+      **             + 2 x float (mapping coordinates) x
+      **                     (number of mapping points)
       **             + sub chunks
       **-------------------------------------------
       */

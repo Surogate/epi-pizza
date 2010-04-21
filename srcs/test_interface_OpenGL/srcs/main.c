@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Tue Apr 20 23:44:31 2010 Florian Chanioux
+** Last update Wed Apr 21 13:37:38 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -41,6 +41,7 @@ int		main(int argc, char *argv[])
   init_game(&game);
   printAttributes();
   init_texture(&game);
+  init_3dsmodel(&game);
   initGL(&game);
   mainloop(&game);
   puts("end of program");
