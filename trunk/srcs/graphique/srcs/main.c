@@ -37,9 +37,9 @@ int		main(int ac, char *av[])
 {
   t_game	game;
 
-/*   if (ac > 2) */
-/*     { */
-/*       connect_to_serv(&game, av); */
+  if (ac > 2)
+    {
+      connect_to_serv(&game, av);
       init_video(&game);
       init_game(&game);
       printAttributes();
@@ -49,8 +49,8 @@ int		main(int ac, char *av[])
       mainloop(&game);
       puts("end of program");
       SDL_Quit();
-/*     } */
-/*   else */
-/*     printf("Usage : ./zappy addr port\n"); */
+    }
+  else
+    printf("Usage : ./zappy addr port\n");
   return (EXIT_SUCCESS);
 }
