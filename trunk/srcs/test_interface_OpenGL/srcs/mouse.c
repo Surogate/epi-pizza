@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Tue Apr 20 14:33:02 2010 Florian Chanioux
+** Last update Wed Apr 21 20:39:06 2010 Florian Chanioux
 */
 
 #include	<unistd.h>
@@ -54,6 +54,7 @@ int		mouse_move(t_game *game)
 {
   if (game->mouse.clicked)
     {
+
       game->info.pos.x += game->mouse.move.x - game->event.button.x;
       game->info.pos.y -= game->mouse.move.y - game->event.button.y;
 /*

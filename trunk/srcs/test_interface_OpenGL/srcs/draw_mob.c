@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 17:10:54 2010 Florian Chanioux
-** Last update Wed Apr 21 13:55:20 2010 Florian Chanioux
+** Last update Wed Apr 21 18:27:14 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -43,26 +43,25 @@ void		draw_mesh(obj_type *mesh)
   l_index = -1;
   while (++l_index < mesh->polygons_qty)
   {
-    glTexCoord2f( mesh->mapcoord[ mesh->polygon[l_index].a ].u,
-		  mesh->mapcoord[ mesh->polygon[l_index].a ].v);
-    glVertex3f( mesh->vertex[ mesh->polygon[l_index].a ].x,
-		mesh->vertex[ mesh->polygon[l_index].a ].y,
-		mesh->vertex[ mesh->polygon[l_index].a ].z);
-    glTexCoord2f( mesh->mapcoord[ mesh->polygon[l_index].b ].u,
-		  mesh->mapcoord[ mesh->polygon[l_index].b ].v);
-    glVertex3f( mesh->vertex[ mesh->polygon[l_index].b ].x,
-		mesh->vertex[ mesh->polygon[l_index].b ].y,
-		mesh->vertex[ mesh->polygon[l_index].b ].z);
-    glTexCoord2f( mesh->mapcoord[ mesh->polygon[l_index].c ].u,
-		  mesh->mapcoord[ mesh->polygon[l_index].c ].v);
-    glVertex3f( mesh->vertex[ mesh->polygon[l_index].c ].x,
-		mesh->vertex[ mesh->polygon[l_index].c ].y,
-		mesh->vertex[ mesh->polygon[l_index].c ].z);
+    glTexCoord2f(mesh->mapcoord[ mesh->polygon[l_index].a ].u,
+		 mesh->mapcoord[ mesh->polygon[l_index].a ].v);
+    glVertex3f(mesh->vertex[ mesh->polygon[l_index].a ].x,
+	       mesh->vertex[ mesh->polygon[l_index].a ].y,
+	       mesh->vertex[ mesh->polygon[l_index].a ].z);
+    glTexCoord2f(mesh->mapcoord[ mesh->polygon[l_index].b ].u,
+		 mesh->mapcoord[ mesh->polygon[l_index].b ].v);
+    glVertex3f(mesh->vertex[ mesh->polygon[l_index].b ].x,
+	       mesh->vertex[ mesh->polygon[l_index].b ].y,
+	       mesh->vertex[ mesh->polygon[l_index].b ].z);
+    glTexCoord2f(mesh->mapcoord[ mesh->polygon[l_index].c ].u,
+		 mesh->mapcoord[ mesh->polygon[l_index].c ].v);
+    glVertex3f(mesh->vertex[ mesh->polygon[l_index].c ].x,
+	       mesh->vertex[ mesh->polygon[l_index].c ].y,
+	       mesh->vertex[ mesh->polygon[l_index].c ].z);
   }
   glEnd();
   glPopMatrix();
 }
-
 
 void		draw_mob(t_game *game, GLenum mode)
 {

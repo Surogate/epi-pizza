@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Wed Apr 21 16:23:45 2010 Florian Chanioux
+** Last update Wed Apr 21 20:39:28 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -80,8 +80,8 @@ void		init_texture(t_game *game)
 
 void		init_video(t_game *game)
 {
-  game->video.text = 1;
+  game->video.text = 0;
   game->video.fog = 0;
-  game->video.light = 1;
+  game->video.light = 0;
   game->video.aliasing = 0;
 }
