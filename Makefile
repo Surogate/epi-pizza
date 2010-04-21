@@ -61,6 +61,7 @@ SRC_S		= \
 		$(DIR_SRC_S)server_ending.c		\
 		$(DIR_SRC_S)time_fct.c			\
 		$(DIR_SRC_S)response.c			\
+		$(DIR_SRC_S)player_debug.c			\
 		$(DIR_SRC_S)instruction.c		\
 		$(DIR_SRC_S)jeu/hatch.c			\
 		$(DIR_SRC_S)jeu/incant.c		\
