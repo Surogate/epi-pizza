@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:30:49 2010 Florian Chanioux
-** Last update Wed Apr 21 20:31:50 2010 Florian Chanioux
+** Last update Wed Apr 21 21:07:51 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -47,9 +47,9 @@ void		camera()
   int py;
   int pz;
 
-  px = 0;
-  py = 0;
-  pz = 0;
+  px = CAM_O_X;
+  py = CAM_O_Y;
+  pz = CAM_O_Z;
   x = px;
   y = py + 200;
   z = CAM_Z;

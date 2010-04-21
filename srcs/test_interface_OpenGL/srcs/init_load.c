@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Wed Apr 21 20:39:28 2010 Florian Chanioux
+** Last update Thu Apr 22 01:13:25 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -70,9 +70,9 @@ void		init_texture(t_game *game)
   if (game->video.text)
   {
     puts("TEXTURE ON");
-    game->texture.floor_s = loadtexture("images/lawn_s.jpg", 0);
-    game->texture.floor = loadtexture("images/lawn.jpg", 0);
-    game->texture.side = loadtexture("images/side.jpg", 0);
+    game->texture.floor_s = loadtexture("images/lawn_s.jpg");
+    game->texture.floor = loadtexture("images/lawn.jpg");
+    game->texture.side = loadtexture("images/side.jpg");
   }
   else
     puts("TEXTURE OFF");
@@ -80,8 +80,8 @@ void		init_texture(t_game *game)
 
 void		init_video(t_game *game)
 {
-  game->video.text = 0;
+  game->video.text = 1;
   game->video.fog = 0;
   game->video.light = 0;
-  game->video.aliasing = 0;
+  game->video.aliasing = 1;
 }

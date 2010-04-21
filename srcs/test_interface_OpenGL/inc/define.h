@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Wed Apr 21 19:09:39 2010 Florian Chanioux
+** Last update Thu Apr 22 01:09:46 2010 Florian Chanioux
 */
 
 #ifndef		DEFINE_H
@@ -22,12 +22,16 @@
 # define	WIN_FAR		800.0
 
 
+# define	WIN_BPP		32
 # define	WIN_COLOR	32
 
+# define	SIZE_I_W	250
+# define	SIZE_I_H	250
 # define	CASE_W		32
 # define	CASE_H		32
-# define	MAP_CW		20
-# define	MAP_CH		20
+# define	MAP_CW		400
+# define	MAP_CH		400
+
 
 # define	MAP_CASE	1
 

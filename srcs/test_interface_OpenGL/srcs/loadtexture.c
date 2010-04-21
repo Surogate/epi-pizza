@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Sat Apr 17 21:15:54 2010 Florian Chanioux
-** Last update Mon Apr 19 16:12:53 2010 Florian Chanioux
+** Last update Wed Apr 21 23:51:35 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -27,6 +27,9 @@
 #include <GL/glu.h>
 #include <GL/gl.h>
 #endif
+
+#include	"define.h"
+#include	"xsdl.h"
 
 static SDL_Surface	*flipSurface(SDL_Surface * surface)
 {
@@ -55,7 +58,18 @@ static SDL_Surface	*flipSurface(SDL_Surface * surface)
   return (fliped_surface);
 }
 
-GLuint			loadtexture(const char * filename,int useMipMap)
+static SDL_Rect	pos_img(int x, int y)
+{
+  SDL_Rect	res;
+
+  res.x = x * SIZE_I_H;
+  res.y = y * SIZE_I_W;
+  res.h = SIZE_I_H;
+  res.w = SIZE_I_W;
+  return (res);
+}
+
+GLuint			loadtexture(const char * filename)
 {
   GLuint		glID;
   SDL_Surface		*picture_surface = NULL;
@@ -68,6 +82,7 @@ GLuint			loadtexture(const char * filename,int useMipMap)
   SDL_PixelFormat	format;
 
   picture_surface = IMG_Load(filename);
+  puts(filename);
   if (picture_surface == NULL)
     return (0);
   format = *(picture_surface->format);
@@ -92,21 +107,10 @@ GLuint			loadtexture(const char * filename,int useMipMap)
   gl_fliped_surface = flipSurface(gl_surface);
   glGenTextures(1, &glID);
   glBindTexture(GL_TEXTURE_2D, glID);
-  if (useMipMap)
-  {
-    gluBuild2DMipmaps(GL_TEXTURE_2D, 4, gl_fliped_surface->w,
-		      gl_fliped_surface->h, GL_RGBA,GL_UNSIGNED_BYTE,
-		      gl_fliped_surface->pixels);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,
-		    GL_LINEAR_MIPMAP_LINEAR);
-  }
-  else
-  {
-    glTexImage2D(GL_TEXTURE_2D, 0, 4, gl_fliped_surface->w,
-		 gl_fliped_surface->h, 0, GL_RGBA,GL_UNSIGNED_BYTE,
-		 gl_fliped_surface->pixels);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-  }
+  glTexImage2D(GL_TEXTURE_2D, 0, 4, gl_fliped_surface->w,
+	       gl_fliped_surface->h, 0, GL_RGBA,GL_UNSIGNED_BYTE,
+	       gl_fliped_surface->pixels);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
   SDL_FreeSurface(gl_fliped_surface);
   SDL_FreeSurface(gl_surface);

@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Wed Apr 21 18:37:55 2010 Florian Chanioux
+** Last update Wed Apr 21 23:52:29 2010 Florian Chanioux
 */
 
 #ifndef		__PROTO_H__
@@ -22,7 +22,7 @@ void		printAttributes();
 /* load */
 SDL_Surface	*load_window();
 SDL_Surface	*img_load(char *path);
-GLuint		loadtexture(const char * filename,int useMipMap);
+GLuint		loadtexture(const char * filename);
 
 /* game func interation keybord/mouse */
 int		interaction(t_game *game);
@@ -47,16 +47,13 @@ void		mainloop(t_game *game);
 
 void		draw_interface();
 
-void		make_calllistes(t_game *game);
-
 void		draw_gl(t_game *game, GLenum mode);
 void		draw_map(t_game *game, GLenum mode);
 void		draw_mob(t_game *game, GLenum mode);
 void		draw_ressource(t_game *game, GLenum mode);
 
-void		floor_with_t(t_game *game, int x, int y, int select);
-void		floor_without_t(int x, int y);
-void		side_with_t(t_game *game, int x, int y);
-void		side_without_t(int x, int y);
+void		floor_render(int x, int y, GLuint select);
+void		floor_picking();
 
+void		side(t_game *game, int x);
 #endif
