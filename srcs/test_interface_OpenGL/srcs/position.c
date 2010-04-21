@@ -6,29 +6,30 @@
 
 /* demonstrates picking used selection mode */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
+#include	<stdio.h>
+#include	<stdlib.h>
+#include	<string.h>
+#include	<math.h>
+#include	<sys/select.h>
 
-#ifdef __APPLE__
-#include "SDL.h"
-#include "SDL_ttf.h"
-#include <GLUT/GLUT.h>
+#ifdef		__APPLE__
+# include	"SDL.h"
+# include	"SDL_ttf.h"
+# include	<GLUT/GLUT.h>
 #else
-#include <SDL/SDL.h>
-#include <SDL/SDL_ttf.h>
-#include <GL/glu.h>
-#include <GL/gl.h>
-#include <GL/freeglut_std.h>
+# include	<SDL/SDL.h>
+# include	<SDL/SDL_ttf.h>
+# include	<GL/glu.h>
+# include	<GL/gl.h>
+# include	<GL/freeglut_std.h>
 #endif
 
-#include "3dsloader.h"
-#include "define.h"
-#include "struct.h"
-#include "proto.h"
+#include	"3dsloader.h"
+#include	"define.h"
+#include	"struct.h"
+#include	"proto.h"
 
-void processHits (GLint hits, GLuint buffer[])
+void		processHits(GLint hits, GLuint buffer[])
 {
   GLint i, j, numberOfNames;
   GLuint names, *ptr, minZ,*ptrNames;
@@ -63,8 +64,8 @@ void		picking_mouse(t_game *game, int x, int y)
 {
   GLuint	selectBuf[BUFSIZE];
   GLint		hits;
-  GLint viewport[4];
-  GLfloat ratio;
+  GLint		viewport[4];
+  GLfloat	ratio;
 
   glSelectBuffer (BUFSIZE, selectBuf);
   glGetIntegerv(GL_VIEWPORT,viewport);
