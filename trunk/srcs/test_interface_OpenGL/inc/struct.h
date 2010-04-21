@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Wed Apr 21 13:26:36 2010 Florian Chanioux
+** Last update Wed Apr 21 16:37:48 2010 Florian Chanioux
 */
 
 #ifndef		STRUCT_H
@@ -55,12 +55,13 @@ typedef struct	s_case
 typedef struct	s_map
 {
   t_case	**t_case;
-  SDL_Surface	*fond;
+  int		select;
 }		t_map;
 
 typedef struct
 {
   GLuint	floor;
+  GLuint	floor_s;
   GLuint	side;
 }		t_texture;
 

@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Mon Apr 19 13:15:43 2010 Florian Chanioux
-** Last update Tue Apr 20 14:31:28 2010 Florian Chanioux
+** Last update Wed Apr 21 16:47:12 2010 Florian Chanioux
 */
 
 
@@ -31,9 +31,12 @@
 #include	"struct.h"
 #include	"proto.h"
 
-void		floor_with_t(t_game *game, int x, int y)
+void		floor_with_t(t_game *game, int x, int y, int select)
 {
-  glBindTexture(GL_TEXTURE_2D, game->texture.floor);
+  if (select == game->map.select)
+    glBindTexture(GL_TEXTURE_2D, game->texture.floor_s);
+  else
+    glBindTexture(GL_TEXTURE_2D, game->texture.floor);
   glBegin(GL_QUADS);
   glTexCoord2d(0, 0);
   glVertex2d(x * CASE_W, y * CASE_H);

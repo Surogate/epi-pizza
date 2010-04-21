@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 16:46:50 2010 Florian Chanioux
-** Last update Tue Apr 20 14:32:26 2010 Florian Chanioux
+** Last update Wed Apr 21 16:53:35 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -53,10 +53,11 @@ void		draw_map(t_game *game, GLenum mode)
     w = -1;
     while (++w < MAP_CW)
     {
+      ++i;
       if (mode == GL_SELECT)
-	glPushName(++i);
+	glPushName(i);
       if (game->video.text)
-	floor_with_t(game, h, w);
+	floor_with_t(game, h, w, i);
       else
 	floor_without_t(h, w);
       if (mode == GL_SELECT)

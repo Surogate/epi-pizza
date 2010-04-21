@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Wed Apr 21 13:50:42 2010 Florian Chanioux
+** Last update Wed Apr 21 16:23:45 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -58,9 +58,9 @@ void		init_3dsmodel(t_game *game)
 
   game->model.trantorien = malloc(sizeof(obj_type));
   trantorien = game->model.trantorien;
-  trantorien->scale[0] = 50.0f;
-  trantorien->scale[1] = 50.0f;
-  trantorien->scale[2] = 50.0f;
+  trantorien->scale[0] = 15.0f;
+  trantorien->scale[1] = 15.0f;
+  trantorien->scale[2] = 15.0f;
   load_textureBMP("3DS/totoro.bmp", &trantorien->id_texture);
   Load3DS(trantorien,"3DS/totoro.3ds");
 }
@@ -70,6 +70,7 @@ void		init_texture(t_game *game)
   if (game->video.text)
   {
     puts("TEXTURE ON");
+    game->texture.floor_s = loadtexture("images/lawn_s.jpg", 0);
     game->texture.floor = loadtexture("images/lawn.jpg", 0);
     game->texture.side = loadtexture("images/side.jpg", 0);
   }
