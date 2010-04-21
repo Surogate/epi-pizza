@@ -29,9 +29,10 @@
 #include	"struct.h"
 #include	"proto.h"
 
-void		processHits(GLint hits, GLuint buffer[])
+static int	processHits(GLint hits, GLuint buffer[])
 {
   GLint i, j, numberOfNames;
+  int res;
   GLuint names, *ptr, minZ,*ptrNames;
 
   ptr = (GLuint *) buffer;
@@ -53,11 +54,15 @@ void		processHits(GLint hits, GLuint buffer[])
     printf ("You picked case  ");
     ptr = ptrNames;
     for (j = 0; j < numberOfNames; j++,ptr++)
-      printf ("%d ", *ptr);
+    {
+      res = *ptr;
+      printf ("%d", *ptr);
+    }
   }
   else
     printf("You didn't click on case");
   printf ("\n");
+  return (res);
 }
 
 void		picking_mouse(t_game *game, int x, int y)
@@ -74,7 +79,6 @@ void		picking_mouse(t_game *game, int x, int y)
   glMatrixMode(GL_PROJECTION);
   glPushMatrix();
   glLoadIdentity();
-/*  create 5x5 pixel picking region near cursor location      */
   gluPickMatrix((GLdouble)x, (GLdouble)(viewport[3] - y), 5, 5, viewport);
   ratio = (GLfloat)(viewport[2] / viewport[3]);
   gluPerspective(WIN_FOC, ratio, WIN_NEAR, WIN_FAR);
@@ -85,5 +89,6 @@ void		picking_mouse(t_game *game, int x, int y)
   glMatrixMode(GL_MODELVIEW);
   hits = glRenderMode(GL_RENDER);
   if (hits != 0)
-    processHits(hits, selectBuf);
+    game->map.select = processHits(hits, selectBuf);
+
 }
