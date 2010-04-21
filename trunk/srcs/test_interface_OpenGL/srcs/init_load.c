@@ -8,29 +8,30 @@
 ** Last update Wed Apr 21 13:50:42 2010 Florian Chanioux
 */
 
-#include <sys/types.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
+#include	<sys/types.h>
+#include	<unistd.h>
+#include	<stdio.h>
+#include	<stdlib.h>
+#include	<string.h>
+#include	<math.h>
+#include	<sys/select.h>
 
-#ifdef __APPLE__
-#include "SDL.h"
-#include "SDL_ttf.h"
-#include <GLUT/GLUT.h>
+#ifdef		__APPLE__
+#include	"SDL.h"
+#include	"SDL_ttf.h"
+#include	<GLUT/GLUT.h>
 #else
-#include <SDL/SDL.h>
-#include <SDL/SDL_ttf.h>
-#include <GL/glut.h>
-#include <GL/glu.h>
-#include <GL/gl.h>
+#include	<SDL/SDL.h>
+#include	<SDL/SDL_ttf.h>
+#include	<GL/glut.h>
+#include	<GL/glu.h>
+#include	<GL/gl.h>
 #endif
 
-#include "3dsloader.h"
-#include "define.h"
-#include "struct.h"
-#include "proto.h"
+#include	"3dsloader.h"
+#include	"define.h"
+#include	"struct.h"
+#include	"proto.h"
 
 static int	load_textureBMP(const char *path, unsigned int *textureId)
 {

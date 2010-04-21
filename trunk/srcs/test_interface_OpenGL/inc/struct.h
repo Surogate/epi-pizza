@@ -79,6 +79,13 @@ typedef struct
   int		aliasing;
 }		t_conf;
 
+typedef struct	s_serv
+{
+  int		socket;
+  fd_set	fd_read;
+  fd_set	fd_write;
+}		t_serv;
+
 typedef struct	s_game
 {
   SDL_Event	event;
@@ -91,6 +98,7 @@ typedef struct	s_game
   t_map		map;
   Uint32	ticks;
   TTF_Font	*font;
+  t_serv	serv;
 }		t_game;
 
 #endif		/*STRUCT_H*/

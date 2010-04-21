@@ -8,22 +8,23 @@
 ** Last update Tue Apr 20 14:33:02 2010 Florian Chanioux
 */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
+#include	<unistd.h>
+#include	<stdio.h>
+#include	<stdlib.h>
+#include	<string.h>
+#include	<math.h>
+#include	<sys/select.h>
 
-#ifdef __APPLE__
-#include "SDL.h"
-#include "SDL_ttf.h"
-#include <GLUT/GLUT.h>
+#ifdef		__APPLE__
+# include	"SDL.h"
+# include	"SDL_ttf.h"
+# include	<GLUT/GLUT.h>
 #else
-#include <SDL/SDL.h>
-#include <SDL/SDL_ttf.h>
-#include <GL/glu.h>
-#include <GL/gl.h>
-#include <GL/freeglut_std.h>
+# include	<SDL/SDL.h>
+# include	<SDL/SDL_ttf.h>
+# include	<GL/glu.h>
+# include	<GL/gl.h>
+# include	<GL/freeglut_std.h>
 #endif
 
 #include "3dsloader.h"

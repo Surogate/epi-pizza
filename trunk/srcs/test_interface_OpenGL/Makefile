@@ -52,6 +52,7 @@ SRC		= \
 		$(DIR_SRC)draw_gl.c		\
 		$(DIR_SRC)test_opengl.c		\
 		$(DIR_SRC)position.c		\
+		$(DIR_SRC)connect.c		\
 
 
 SRC_INC		= \
