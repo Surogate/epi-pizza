@@ -1,5 +1,6 @@
 <?php
 
+require_once 'priority.php';
 require_once 'str_func.php';
 
 function what_see($around, &$player)
@@ -10,7 +11,6 @@ function what_see($around, &$player)
 	$tab = explode(',', $around);
 	$i = 0;
 	$y = 0;
-	echo "je suis dans What_see\n";
 	while ($i < $case)
 	{
 		$tab_len = strlen($tab[$i]);
