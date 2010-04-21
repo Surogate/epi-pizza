@@ -77,7 +77,8 @@ typedef struct
   int		light;
   int		fog;
   int		aliasing;
-}		t_conf;
+  int		cam[3];
+}		t_video;
 
 typedef struct	s_serv
 {
@@ -90,7 +91,7 @@ typedef struct	s_game
 {
   SDL_Event	event;
   SDL_Surface	*screen;
-  t_conf	video;
+  t_video	video;
   t_model	model;
   t_texture	texture;
   t_info	info;
