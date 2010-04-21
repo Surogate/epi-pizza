@@ -55,13 +55,21 @@ void		my_recv(t_game *game)
 
 void		search_msg(t_game *game)
 {
+  int		ready;
+
   FD_ZERO(&(game->serv.fd_read));
   FD_SET(0, &(game->serv.fd_read));
-  if (select(game->serv.socket + 1, &game->serv.fd_read,
-	     &game->serv.fd_write, NULL, NULL))
+  ready = select(game->serv.socket + 1, &game->serv.fd_read,
+		 &game->serv.fd_write, NULL, NULL);
+  if (ready > 0)
     {
       if (FD_ISSET(0, &game->serv.fd_read))
 	my_recv(game);
+    }
+  if (ready < 0)
+    {
+      printf("Sa chie dans la colle!\n");
+      exit(EXIT_FAILURE);
     }
 }
 
