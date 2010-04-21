@@ -55,6 +55,7 @@ int		create_eat(t_svr_vector *vec, t_select *slt, int player_id)
       pak->ac = 0;
       pak->ac_rep = 0;
       action->insert_sort(action, pak, sort_duration);
+      /* llist_display(vec->action, debug_packet); */
       printf("=>  eat create  <=\n");
       return (EXIT_SUCCESS);
     }
@@ -88,6 +89,7 @@ int		delete_eat(t_svr_vector *vec, int player_id)
     {
       fprintf(stderr, "=>>> delete eat at %i\n", pos);
       action->erase(action, pos, free);
+      /* llist_display(vec->action, debug_packet); */
     }
   return (EXIT_SUCCESS);
 }

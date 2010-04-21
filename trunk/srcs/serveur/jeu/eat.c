@@ -19,11 +19,11 @@
 #include	"xfunc.h"
 #include	"server_insert_player.h"
 
-static int	find_player(void *ref, t_player *data)
+static int	find_player(int *ref, t_player *data)
 {
-  if ((int)ref == data->player_id)
-    return (1);
-  return (0);
+  if (*ref == data->player_id)
+    return (EXIT_SUCCESS);
+  return (EXIT_FAILURE);
 }
 
 int		try_eat(t_game *game, int id_player)
@@ -34,10 +34,7 @@ int		try_eat(t_game *game, int id_player)
   if (player->ress[0] > 0)
     player->ress[0]--;
   else
-    {
-      rm_player(game, player->player_id);
-      return (EXIT_FAILURE);
-    }
+    return (EXIT_FAILURE);
   return (EXIT_SUCCESS);
 }
 

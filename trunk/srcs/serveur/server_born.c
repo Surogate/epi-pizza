@@ -15,6 +15,7 @@
 #include	"my_list.h"
 #include	"t_struct.h"
 #include	"server_insert_player.h"
+#include	"player_debug.h"
 
 static int	find_player(void *ref, t_player *player)
 {
@@ -38,5 +39,7 @@ void		player_born(t_game *game, int id_player, int team)
       else
 	pl->player_id = id_player;
     }
+  printf("@@@@ player born : ");
+  list_debug(game->player, debug_player);
   printf("player created\n");
 }

@@ -77,12 +77,12 @@ int		server_kick(t_svr_vector *vec, t_select *slt_par,
     {
       sock_write(player_id, "You have been kicked\n");
       printf("player %i ass kicked\n", player_id);
-      FD_CLR(player_id, &(slt_par->fd_read));
       rm_player(game, player_id);
       client->erase(client, pos, free_client);
       delete_kick(vec, player_id);
       delete_eat(vec, player_id);
       delete_plaction(vec, player_id);
+      FD_CLR(player_id, &(slt_par->fd_read));
       return (EXIT_SUCCESS);
     }
   delete_kick(vec, player_id);
