@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Wed Apr 21 00:33:54 2010 Florian Chanioux
+** Last update Wed Apr 21 13:50:42 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -32,9 +32,36 @@
 #include "struct.h"
 #include "proto.h"
 
+static int	load_textureBMP(const char *path, unsigned int *textureId)
+{
+  SDL_Surface*	TextureSurface = NULL;
+  TextureSurface = SDL_LoadBMP(path);
+
+  if (TextureSurface != NULL)
+  {
+    glGenTextures(1, textureId);
+    glBindTexture(GL_TEXTURE_2D, *textureId);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, TextureSurface->w,
+		 TextureSurface->h, 0, GL_BGR, GL_UNSIGNED_BYTE,
+		 TextureSurface->pixels);
+    SDL_FreeSurface(TextureSurface);
+    return (1);
+  }
+  return (0);
+}
+
 void		init_3dsmodel(t_game *game)
 {
-  Load3DS(&(game->model.trantorien),"3DS/totoro.3ds");
+  obj_type	*trantorien;
+
+  game->model.trantorien = malloc(sizeof(obj_type));
+  trantorien = game->model.trantorien;
+  trantorien->scale[0] = 50.0f;
+  trantorien->scale[1] = 50.0f;
+  trantorien->scale[2] = 50.0f;
+  load_textureBMP("3DS/totoro.bmp", &trantorien->id_texture);
+  Load3DS(trantorien,"3DS/totoro.3ds");
 }
 
 void		init_texture(t_game *game)
@@ -51,8 +78,8 @@ void		init_texture(t_game *game)
 
 void		init_video(t_game *game)
 {
-  game->video.text = 0;
+  game->video.text = 1;
   game->video.fog = 0;
-  game->video.light = 0;
+  game->video.light = 1;
   game->video.aliasing = 0;
 }

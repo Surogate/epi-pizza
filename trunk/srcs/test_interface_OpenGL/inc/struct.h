@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Tue Apr 20 23:39:28 2010 Florian Chanioux
+** Last update Wed Apr 21 13:26:36 2010 Florian Chanioux
 */
 
 #ifndef		STRUCT_H
@@ -66,9 +66,9 @@ typedef struct
 
 typedef struct
 {
-  obj_type	trantorien;
-  obj_type	ressource;
-  obj_type	eggs;
+  obj_type	*trantorien;
+  obj_type	*ressource;
+  obj_type	*eggs;
 }		t_model;
 
 typedef struct
