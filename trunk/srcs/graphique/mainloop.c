@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:24:06 2010 Florian Chanioux
-** Last update Tue Apr 20 14:32:46 2010 Florian Chanioux
+** Last update Wed Apr 21 15:18:55 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -25,10 +25,10 @@
 # include	<GL/gl.h>
 #endif
 
-#include	"3dsloader.h"
-#include	"define.h"
-#include	"struct.h"
-#include	"proto.h"
+#include	"graphique/3dsloader.h"
+#include	"graphique/define.h"
+#include	"graphique/struct.h"
+#include	"graphique/proto.h"
 
 /*include for select*/
 #include	<sys/time.h>
@@ -55,21 +55,13 @@ void		my_recv(t_game *game)
 
 void		search_msg(t_game *game)
 {
-  int		ready;
-
   FD_ZERO(&(game->serv.fd_read));
   FD_SET(0, &(game->serv.fd_read));
-  ready = select(game->serv.socket + 1, &game->serv.fd_read,
-		 &game->serv.fd_write, NULL, NULL);
-  if (ready > 0)
+  if (select(game->serv.socket + 1, &game->serv.fd_read,
+	     &game->serv.fd_write, NULL, NULL))
     {
       if (FD_ISSET(0, &game->serv.fd_read))
 	my_recv(game);
-    }
-  if (ready < 0)
-    {
-      printf("Sa chie dans la colle!\n");
-      exit(EXIT_FAILURE);
     }
 }
 

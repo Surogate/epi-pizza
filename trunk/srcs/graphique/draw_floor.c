@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Mon Apr 19 13:15:43 2010 Florian Chanioux
-** Last update Tue Apr 20 14:31:28 2010 Florian Chanioux
+** Last update Wed Apr 21 15:16:47 2010 Florian Chanioux
 */
 
 
@@ -26,10 +26,10 @@
 # include	<GL/gl.h>
 #endif
 
-#include	"3dsloader.h"
-#include	"define.h"
-#include	"struct.h"
-#include	"proto.h"
+#include	"graphique/3dsloader.h"
+#include	"graphique/define.h"
+#include	"graphique/struct.h"
+#include	"graphique/proto.h"
 
 void		floor_with_t(t_game *game, int x, int y)
 {
