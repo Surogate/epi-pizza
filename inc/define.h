@@ -1,47 +1,48 @@
 /*
-** window.c for lemipc in /u/all/pierro_a/cu/rendu/c/lemipc/screen
+** define for project in /u/all/ancel_a/cu/travail/c/
 **
-** Made by frederic1 pierronnet
-** Login   <pierro_a@epitech.net>
+** Made by francois1 ancel
+** Login   <ancel_a@epitech.net>
 **
-** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Tue Apr 20 23:09:01 2010 Florian Chanioux
+** Started on  Mon Apr  5 18:18:10 2010 francois1 ancel
+** Last update Tue Apr 20 16:56:54 2010 pierre1 boutbel
 */
 
-#ifndef		DEFINE_H
-# define	DEFINE_H
+#ifndef DEFINE_INCLUDED
+# define DEFINE_INCLUDED
 
-# define	WIN_W		800
-# define	WIN_H		600
+# define NB_INST	(12)
 
-# define	WIN_FOC		70.0
-# define	WIN_NEAR	150.0
-# define	WIN_FAR		800.0
+# define INCANT_NUM	7
+# define MAX_LEVEL	8
+# define NB_WIN		6
 
+# define RESS_NUM	7
+# define MAX_RESS	(8)
 
-# define	WIN_COLOR	32
+# define MAP_SIZ	8
 
-# define	CASE_W		32
-# define	CASE_H		32
-# define	MAP_CW		50
-# define	MAP_CH		50
+# define M_CARD		(8)
 
-# define	MAP_CASE	1
+enum {DIR_N, DIR_E, DIR_S, DIR_O};
+enum {M_E, M_NE, M_N, M_NO, M_O, M_SO, M_S, M_SE};
 
-# define	BUFF_SIZE	1024
+# define MSG_JOUEUR	"joueur"
+# define MSG_RESS	"nourriture", "linemate", "deraumere", "sibur", "mendiane", "phiras", "thystame"
 
-# define	FONT_DIR	"./font/MONACO.ttf"
-# define	MFONT_SIZE	7
-# define	FULLSCREEN	0
+# define BEGIN_BOUFFE	10
 
-# define	CAM_Z		(200)
+# define NB_RESS	10, 12, 10, 12, 7, 8, 3
 
-# define	CAM_O_X		((CASE_W * MAP_CW) / 2)
-# define	CAM_O_Y		((CASE_H * MAP_CH) / 2)
-# define	CAM_O_Z		(0)
+# define OK		"OK"
+# define KO		"KO"
+# define LEN_OK		4
+# define ELEV_OK	"elevation en cours"
+# define ELEV_DONE	"niveau actuel : K"
+# define LEN_ELEV	18
+# define POS_ELEV_K	16	
+# define EXPULSE_VIC	"deplacement K"
+# define LEN_EXP	14
+# define POS_EXP_K	12
 
-# define	RENDER		1
-# define	SELECT		2
-# define	BUFSIZE		1024
-
-#endif		/*DEFINE_H*/
+#endif
