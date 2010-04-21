@@ -31,13 +31,19 @@
 
 static int	processHits(GLint hits, GLuint buffer[])
 {
-  GLint i, j, numberOfNames;
+  GLint i;
+  GLint j;
+  GLint numberOfNames;
   int res;
-  GLuint names, *ptr, minZ,*ptrNames;
+  GLuint names;
+  GLuint *ptr;
+  GLuint minZ;
+  GLuint *ptrNames;
 
   ptr = (GLuint *) buffer;
   minZ = 0xffffffff;
-  for (i = 0; i < hits; i++)
+  i = -1;
+  while (++i < hits)
   {
     names = *ptr;
     ptr++;
@@ -54,10 +60,7 @@ static int	processHits(GLint hits, GLuint buffer[])
     printf ("You picked case  ");
     ptr = ptrNames;
     for (j = 0; j < numberOfNames; j++,ptr++)
-    {
-      res = *ptr;
-      printf ("%d", *ptr);
-    }
+      printf ("%d", (res = *ptr));
   }
   else
     printf("You didn't click on case");
@@ -90,5 +93,4 @@ void		picking_mouse(t_game *game, int x, int y)
   hits = glRenderMode(GL_RENDER);
   if (hits != 0)
     game->map.select = processHits(hits, selectBuf);
-
 }

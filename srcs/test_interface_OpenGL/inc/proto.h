@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Wed Apr 21 16:30:45 2010 Florian Chanioux
+** Last update Wed Apr 21 18:37:55 2010 Florian Chanioux
 */
 
 #ifndef		__PROTO_H__
@@ -45,12 +45,15 @@ void		camera();
 /* Draw */
 void		mainloop(t_game *game);
 
+void		draw_interface();
 
 void		make_calllistes(t_game *game);
+
 void		draw_gl(t_game *game, GLenum mode);
 void		draw_map(t_game *game, GLenum mode);
 void		draw_mob(t_game *game, GLenum mode);
 void		draw_ressource(t_game *game, GLenum mode);
+
 void		floor_with_t(t_game *game, int x, int y, int select);
 void		floor_without_t(int x, int y);
 void		side_with_t(t_game *game, int x, int y);

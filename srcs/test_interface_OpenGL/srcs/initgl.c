@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:32:28 2010 Florian Chanioux
-** Last update Wed Apr 21 16:20:20 2010 Florian Chanioux
+** Last update Wed Apr 21 20:10:02 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -108,5 +108,4 @@ void initGL(t_game *game)
   reshape();
   glEnable(GL_DEPTH_TEST);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }
