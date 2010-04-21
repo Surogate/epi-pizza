@@ -21,6 +21,7 @@ function to_read($socket, &$player)
 	echo "read : " . $socket . "\n";
 	socket_recv($socket, $buff, 4096, 0);
 	echo "Received data : " . $buff . "\n";
+	debug($buff);
 	$player['last_receive'] = $buff;
 	manage($buff, &$player);
 }

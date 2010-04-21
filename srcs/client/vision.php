@@ -1,18 +1,6 @@
 <?php
 
-function many_case($chaine)
-{
-	$chaine = str_replace(',', ',', $chaine, $counter);
-	return ($counter + 1);
-}
-
-function clean(&$str)
-{
-	echo "CLEAN \n";
-	$str = str_replace("{", "", $str);
-	$str = str_replace("}", "", $str);
-	$str = str_replace("\n", " ", $str);
-}
+require_once 'str_func.php';
 
 function what_see($around, &$player)
 {
@@ -38,7 +26,7 @@ function what_see($around, &$player)
 			echo $tab[$i] . "\n \n";
 		$i++;
 	}
-	while (1);
+	define_prio(&$player, &$tab);
 }
 
 ?>
