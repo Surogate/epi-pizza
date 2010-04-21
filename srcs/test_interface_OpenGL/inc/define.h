@@ -23,8 +23,8 @@
 
 # define	CASE_W		32
 # define	CASE_H		32
-# define	MAP_CW		50
-# define	MAP_CH		50
+# define	MAP_CW		20
+# define	MAP_CH		20
 
 # define	MAP_CASE	1
 

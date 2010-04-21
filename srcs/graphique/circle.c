@@ -42,6 +42,7 @@ t_circle	*new_circ(int num)
   circ = xmalloc(sizeof(*circ));
   circ->cur = 0;
   circ->next = 0;
+  circ->num = num;
   return (circ);
 }
 
@@ -69,4 +70,10 @@ void		circle_read(t_serv *serv)
       exit(EXIT_FAILURE);
     }
   game->serv.current->cur += read_return;
+  if (serv->current->cur == BUFSIZE)
+    {
+      if (!serv->current->next)
+	serv->current->next = new_circ(serv.current.num);
+      serv->current = serv->current->next;
+    }
 }
