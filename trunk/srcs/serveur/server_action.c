@@ -28,6 +28,7 @@
 #include "server_kick.h"
 #include "server_eat.h"
 #include "server_plaction.h"
+#include "server_hatch.h"
 #include "server_action.h"
 #include "time_fct.h"
 
@@ -65,8 +66,7 @@ void			delete_action(t_svr_vector *vec, int type, int pos)
     action->erase(action, pos, free);
 }
 
-int			execute_action(t_svr_vector *vec, t_game *game,
-				       t_select *slt_par)
+int			execute_action(t_svr_vector *vec, t_game *game)
 {
   t_vector		*action;
   t_packet		*tmp;
@@ -80,11 +80,11 @@ int			execute_action(t_svr_vector *vec, t_game *game,
 	if (!tmp->type)
 	  exec_plaction(vec, tmp, game);
 	if (tmp->type == 1)
-	  server_kick(vec, slt_par, tmp->player_id, game);
+	  server_kick(vec, tmp->player_id, game);
 	if (tmp->type == 2)
-	  server_eat(vec, slt_par, tmp->player_id, game);
+	  server_eat(vec, tmp->player_id, game);
 	if (tmp->type == 3)
-	  server_hatch(vec, game, tmp);
+	  server_hatch(vec, tmp, game);
       }
   return (EXIT_SUCCESS);
 }

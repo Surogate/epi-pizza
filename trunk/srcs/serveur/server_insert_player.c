@@ -55,8 +55,6 @@ t_player	*init_player(t_game *game, int player_id, int team)
   cas->cas.player = my_l_insert(cas->cas.player, player);
   game->player = my_l_insert(game->player, player);
   generate_ress(game);
-  /* printf("#### insert player debug : \n"); */
-/*   list_debug(game->player, debug_player); */
   return (player);
 }
 
@@ -82,14 +80,12 @@ static int	find_player(t_player *ref, t_player *data)
 t_player	*rm_player(t_game *game, int id_player)
 {
   t_player	ref;
-   t_player	*player;
+  t_player	*player;
   int		i;
 
   ref.player_id = id_player;
   printf("mort du joueurs %i\n", id_player);
   player = (t_player *)my_l_find(game->player, &ref, find_player);
-  printf("&&&& rm_player debug 1 : ");
-  list_debug(game->player, debug_player);
   if (player != NULL)
     {
       i = -1;
@@ -101,10 +97,6 @@ t_player	*rm_player(t_game *game, int id_player)
       game->player = my_l_rm(game->player, player, find_player);
       supp_ress(game);
     }
-  else
-      printf("player %i pas trouver\n", id_player);
-  printf("&&&& rm_player debug 2 : ");
-  list_debug(game->player, debug_player);
   return (player);
 }
 

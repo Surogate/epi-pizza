@@ -28,6 +28,7 @@
 #include "client_fct.h"
 #include "time_fct.h"
 #include "server_plaction.h"
+#include "server_eat.h"
 #include "server_hatch.h"
 
 int		find_hatch_fct(t_packet *in, int *player_id)
@@ -62,12 +63,11 @@ int	       	create_hatch(t_svr_vector *vec, int egg)
   return (EXIT_FAILURE);
 }
 
-int	       	server_hatch(t_svr_vector *vec, t_game *game, t_packet *pak)
+int	       	server_hatch(t_svr_vector *vec, t_packet *pak, t_game *game)
 {
-  char		*str;
-
-  printf("%i\n", pak->player_id);
+  printf("eclosion de l'oeuf : %i\n", pak->player_id);
   do_hatch(game, pak->player_id);
+  create_eat(vec, pak->player_id);
   delete_hatch(vec, pak->player_id);
   return (EXIT_SUCCESS);
 }

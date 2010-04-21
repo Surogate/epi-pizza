@@ -31,6 +31,7 @@
 #include "instruction.h"
 #include "client_fct.h"
 #include "time_fct.h"
+#include "server_hatch.h"
 #include "server_plaction.h"
 
 int			find_act_fct(t_packet *in, int *player_id)
