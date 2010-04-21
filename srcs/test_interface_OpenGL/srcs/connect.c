@@ -47,7 +47,6 @@ void		connect_to_serv(t_game *game, char **av)
       perror("Can't connect");
       exit(EXIT_FAILURE);
     }
-  sleep(1);
   write(game->serv.socket, TEAM, strlen(TEAM));
   printf("Connect at %s\n", av[1]);
   FD_ZERO(&game->serv.fd_read);
