@@ -58,25 +58,19 @@ char			Load3DS (obj_type_ptr p_object, const char *p_filename)
   p_object->scale[1] = scale[1];
   p_object->scale[2] = scale[2];
 
-  l_file = fopen(p_filename, "rb");
-  if (l_file == NULL)
-  {
-    /*  printf("File not found.\n"); */
-    return 0; /*  Open the file */
-  }
+  if ((l_file = fopen(p_filename, "rb")) == NULL)
+    return 0;
   stat(p_filename, &filestat);
-  while (ftell (l_file) < filestat.st_size) /*  Loop to scan the whole file */
+  while (ftell (l_file) < filestat.st_size)
   {
     /*
       getche();  Insert this command for debug
       (to wait for keypress for each chuck reading)
     */
-
     fread (&l_chunk_id, 2, 1, l_file); /*  Read the chunk header */
     /*  printf("ChunkID: %x\n",l_chunk_id); */
     fread (&l_chunk_lenght, 4, 1, l_file); /*  Read the lenght of the chunk */
     /*  printf("ChunkLenght: %x\n",l_chunk_lenght); */
-
     switch (l_chunk_id)
     {
       /*----------------- MAIN3DS -----------------
@@ -199,6 +193,6 @@ char			Load3DS (obj_type_ptr p_object, const char *p_filename)
       fseek(l_file, l_chunk_lenght-6, SEEK_CUR);
     }
   }
-  fclose (l_file); /*   Closes the file stream */
+  fclose(l_file); /*   Closes the file stream */
   return (1); /*   Returns ok */
 }
