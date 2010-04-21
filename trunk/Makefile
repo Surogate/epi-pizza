@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Wed Apr 21 15:20:54 2010 Florian Chanioux
+## Last update Wed Apr 21 16:08:31 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -279,7 +279,9 @@ $(NAME_GR)	: $(OBJ_GR)
 
 tags		:
 	@$(ECHO) "$(CYAN)[TAGGING]$(END)"
-	$(ETAGS) $(SRC_INC) $(SRC_S) $(SRC_CO) $(SRC_C) 
+	$(ETAGS) -o TAGS_$(NAME_S) $(SRC_INC_S) $(SRC_CO) $(SRC_S)
+	$(ETAGS) -o TAGS_$(NAME_C) $(SRC_INC_C) $(SRC_CO) $(SRC_C)
+	$(ETAGS) -o TAGS_$(NAME_GR) $(SRC_INC_GR) $(SRC_GR)
 	@$(ECHO) "$(GREEN)[TAGGING] - DONE$(END)"
 
 tar		:
