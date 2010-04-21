@@ -13,7 +13,7 @@
 
 int		find_hatch_fct(t_packet *in, int *player_id);
 int	       	create_hatch(t_svr_vector *vec, int egg);
-int	       	server_hatch(t_svr_vector *vec, t_game *game, t_packet *pak);
+int	       	server_hatch(t_svr_vector *vec, t_packet *pak, t_game *game);
 void		delete_hatch(t_svr_vector *vec, int player_id);
 
 #endif

@@ -39,7 +39,7 @@ static int	find_eat_fct(t_packet *in, int *player_id)
   return (0);
 }
 
-int		create_eat(t_svr_vector *vec, t_select *slt, int player_id)
+int		create_eat(t_svr_vector *vec, int player_id)
 {
   t_packet	*pak;
   t_vector	*action;
@@ -51,11 +51,10 @@ int		create_eat(t_svr_vector *vec, t_select *slt, int player_id)
       pak->player_id = player_id;
       pak->type = 2;
       pak->duration = 126;
-      timeend(&(pak->end), &(slt->delay), pak->duration);
+      timeend(&(pak->end), &(vec->slt->delay), pak->duration);
       pak->ac = 0;
       pak->ac_rep = 0;
       action->insert_sort(action, pak, sort_duration);
-      /* llist_display(vec->action, debug_packet); */
       printf("=>  eat create  <=\n");
       return (EXIT_SUCCESS);
     }
@@ -63,19 +62,18 @@ int		create_eat(t_svr_vector *vec, t_select *slt, int player_id)
   return (EXIT_FAILURE);
 }
 
-int		server_eat(t_svr_vector *vec, t_select *slt_par, 
-			   int player_id, t_game *game)
+int		server_eat(t_svr_vector *vec, int player_id, t_game *game)
 {
   if (try_eat(game, player_id) == EXIT_FAILURE)
     {
       sock_write(player_id, "mort\n");
       printf("player %i died, eat is essential to live\n", player_id);
       delete_eat(vec, player_id);
-      server_kick(vec, slt_par, player_id, game);
+      server_kick(vec, player_id, game);
       return (EXIT_FAILURE);
     }
   delete_eat(vec, player_id);
-  create_eat(vec, slt_par, player_id);
+  create_eat(vec, player_id);
   return (EXIT_SUCCESS);
 }
 

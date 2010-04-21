@@ -57,10 +57,8 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	  cli->team = authent(game, cli->packet + cli->cons);
 	  if (!cli->team)
 	    create_kick(vec, cli->sock, 3);
-	  else if (cli->team > 0)
-	    {
-	      create_eat(vec, vec->slt, cli->sock);
-	    }
+	  else if (cli->team == 1)
+	    create_eat(vec, cli->sock);
 	  else if (cli->team < 0)
 	    new_gh(vec, cli, game);
 	  return_packet(cli->packet + cli->cons);
@@ -110,13 +108,13 @@ int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
       {
 	if (cbuf_write(&tmp->cbuf, tmp->sock) == EXPIPE)
 	  {
-	    printf("666 client %i timeout 666\n", tmp->sock);
+	    printf("client %i timeout\n", tmp->sock);
 	    FD_CLR(tmp->sock, &(slt_par->fd_read));
 	    delete_eat(vec, tmp->sock);
 	    delete_plaction(vec, tmp->sock);
 	    delete_kick(vec, tmp->sock);
-	    /* if (tmp->team > 0) */
-/* 	      rm_player(game, tmp->sock); */
+	    if (tmp->team > 0)
+ 	      rm_player(game, tmp->sock);
 	    client->erase(client, client->gns_pos, free_client);
 	  }
 	else if ((readed = cbuf_read(&(tmp->cbuf), check_read)))

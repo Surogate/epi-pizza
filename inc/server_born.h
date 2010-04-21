@@ -11,6 +11,6 @@
 #ifndef SERVER_BORN_C_INCLUDED
 # define SERVER_BORN_C_INCLUDED
 
-void		player_born(t_game *game, int id_player, int team);
+int		player_born(t_game *game, int id_player, int team);
 
 #endif

@@ -93,8 +93,8 @@ int		authent(t_game *game, t_packet *packet)
       num = game->server.nb_client - count_player(game, i);
       if (!strcmp(tmp->team, packet->av[0]) && num > 0)
 	{
-	  player_born(game, packet->player_id, i);
-	  return (auth_ok(packet, num - 1, game));
+	  auth_ok(packet, num - 1, game);
+	  return (player_born(game, packet->player_id, i));
 	}
       tmp = tmp->next;
       ++i;

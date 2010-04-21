@@ -24,22 +24,21 @@ static int	find_player(void *ref, t_player *player)
   return (EXIT_FAILURE);
 }
 
-void		player_born(t_game *game, int id_player, int team)
+int		player_born(t_game *game, int id_player, int team)
 {
   t_player	*pl;
 
-  printf("id_player born = %i\n", id_player);
   if (game->player == NULL)
-    init_player(game, id_player, team);
-  else
     {
-      pl = my_l_find(game->player, &team, find_player);
-      if (pl == NULL)
-	init_player(game, id_player, team);
-      else
-	pl->player_id = id_player;
+      init_player(game, id_player, team);
+      return (1);
     }
-  printf("@@@@ player born : ");
-  list_debug(game->player, debug_player);
-  printf("player created\n");
+  pl = my_l_find(game->player, &team, find_player);
+  if (pl == NULL)
+    {
+      init_player(game, id_player, team);
+      return (1);
+    }
+  pl->player_id = id_player;
+  return (2);
 }
