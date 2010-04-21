@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Mon Apr  5 00:06:03 2010 frederic1 pierronnet
+** Last update Wed Apr 21 22:51:24 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -26,6 +26,13 @@
 #include <GL/glu.h>
 #include <GL/gl.h>
 #endif
+
+void		sdlerror()
+{
+  if (fprintf(stderr, "SDL Error : %s\n", SDL_GetError()) == -1)
+    fprintf(stderr, "SDL error failed, it's really anoying :/");
+  exit(EXIT_FAILURE);
+}
 
 void		xSDL_Flip(SDL_Surface *screen)
 {
@@ -60,4 +67,25 @@ SDL_Surface	*xSDL_SetVideoMode(int width, int height, int bpp, Uint32 flags)
       exit(EXIT_FAILURE);
     }
   return (screen);
+}
+
+void		xSDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect,
+				 SDL_Surface *dst, SDL_Rect *dstrect)
+{
+  if (SDL_BlitSurface(src, srcrect, dst, dstrect) == -1)
+    sdlerror();
+}
+
+
+SDL_Surface		*xSDL_CreateRGBSurface(Uint32 flags, int width,
+					      int height, int bitsperpixel,
+					      Uint32 rmask, Uint32 gmask,
+					      Uint32 bmask, Uint32 amask)
+{
+  SDL_Surface		*surface;
+
+  if ((surface = SDL_CreateRGBSurface(flags, width, height, bitsperpixel,
+				      rmask, gmask, bmask, amask)) == NULL)
+    sdlerror();
+  return (surface);
 }

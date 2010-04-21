@@ -1,11 +1,11 @@
 /*
 ** draw_interfaces.c for  in /home/Ayden/Epitech/Projet/Zappy/srcs/test_interface_OpenGL
-** 
+**
 ** Made by Florian Chanioux
 ** Login   <chanio_f@epitech.net>
-** 
+**
 ** Started on  Wed Apr 21 18:05:56 2010 Florian Chanioux
-** Last update Wed Apr 21 18:43:26 2010 Florian Chanioux
+** Last update Wed Apr 21 21:16:44 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
