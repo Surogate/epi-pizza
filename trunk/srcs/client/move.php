@@ -1,5 +1,7 @@
 <?php
 
+require_once 'fifo.php';
+
 function go_to(&$player, &$move)
 {
 	while ($move['move_forw'] != 0)

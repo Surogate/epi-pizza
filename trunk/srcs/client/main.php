@@ -21,7 +21,6 @@ function connect($ip, $port, $name)
 		else
 			echo "Connect on " . $ip . "\n";
 		$player = init_player(1, 2, $s, $name);
-		$test = array();
 		main_loop($player);
 	}
 
