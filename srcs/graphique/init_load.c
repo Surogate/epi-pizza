@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Wed Apr 21 13:50:42 2010 Florian Chanioux
+** Last update Wed Apr 21 15:17:44 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -28,10 +28,10 @@
 #include	<GL/gl.h>
 #endif
 
-#include	"3dsloader.h"
-#include	"define.h"
-#include	"struct.h"
-#include	"proto.h"
+#include	"graphique/3dsloader.h"
+#include	"graphique/define.h"
+#include	"graphique/struct.h"
+#include	"graphique/proto.h"
 
 static int	load_textureBMP(const char *path, unsigned int *textureId)
 {

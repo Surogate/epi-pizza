@@ -39,7 +39,7 @@
 # define	CAM_O_Y		((CASE_H * MAP_CH) / 2)
 # define	CAM_O_Z		(0)
 
-#define		RENDER		1
-#define		SELECT		2
-#define		BUFSIZE 1024
+#define RENDER					1
+#define SELECT					2
+#define BUFSIZE 1024
 #endif		/*DEFINE_H*/
