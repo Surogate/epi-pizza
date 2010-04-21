@@ -49,19 +49,29 @@ void		my_recv(t_game *game)
   char		buff[1024];
 
   init_buff(buff, 1024);
-  read(game->serv.socket, buff, 1024);
-  write(1, buff, 1024);
+  if (read(game->serv.socket, buff, 1024) > 0)
+    printf("msg = %s\n", buff);
 }
 
 void		search_msg(t_game *game)
 {
-  FD_ZERO(&(game->serv.fd_read));
-  FD_SET(0, &(game->serv.fd_read));
-  if (select(game->serv.socket + 1, &game->serv.fd_read,
-	     &game->serv.fd_write, NULL, NULL))
+  int		ready;
+
+  FD_ZERO(&game->serv.fd_read);
+  FD_ZERO(&game->serv.fd_write);
+  FD_SET(game->serv.socket, &game->serv.fd_read);
+  FD_SET(game->serv.socket, &game->serv.fd_write);
+  ready = select(game->serv.socket + 1, &game->serv.fd_read,
+		 &game->serv.fd_write, NULL, NULL);
+  if (ready > 0)
     {
-      if (FD_ISSET(0, &game->serv.fd_read))
+      if (FD_ISSET(game->serv.socket, &game->serv.fd_read))
 	my_recv(game);
+    }
+  if (ready < 0)
+    {
+      printf("serveur has gone away...\n");
+      exit(EXIT_FAILURE);
     }
 }
 

@@ -58,20 +58,20 @@ typedef struct	s_map
   SDL_Surface	*fond;
 }		t_map;
 
-typedef struct
+typedef struct	s_texture
 {
   GLuint	floor;
   GLuint	side;
 }		t_texture;
 
-typedef struct
+typedef struct	s_model
 {
   obj_type	*trantorien;
   obj_type	*ressource;
   obj_type	*eggs;
 }		t_model;
 
-typedef struct
+typedef struct	s_video
 {
   int		text;
   int		light;
