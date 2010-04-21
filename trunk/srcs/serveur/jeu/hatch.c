@@ -46,6 +46,7 @@ void		do_hatch(t_game *game, int id_egg)
   i = -1;
   while (++i != RESS_NUM)
     player->ress[i] = 0;
+  player->ress[0] = 10;
   game->player = my_l_insert(game->player, player);
   pl = (t_player *)game->player->data;
   pl->pos->cas.player = my_l_insert(pl->pos->cas.player, player);
