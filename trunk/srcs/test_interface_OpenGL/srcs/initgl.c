@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr 16 18:32:28 2010 Florian Chanioux
-** Last update Wed Apr 21 00:34:28 2010 Florian Chanioux
+** Last update Wed Apr 21 14:02:07 2010 Florian Chanioux
 */
 
 #include <stdio.h>
@@ -39,6 +39,12 @@ void		init_doublebuffer()
 
 static void		init_light(int light)
 {
+float			AmbientColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
+float			LightDiffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
+float			LightPosition[] = {0.0f, 5.0f, 5.0f};
+
+
+  
   static GLfloat	ambient[] = {0.15f, 0.15f, 0.15f, 1.0f};
   static GLfloat	diffuse[] = {0.5f, 0.5f, 0.5f, 1.0f};
   static GLfloat	light0_position [] = {0, 0, 100, 0.0f};
@@ -106,5 +112,6 @@ void initGL(t_game *game)
   init_aliasing(game->video.aliasing);
   reshape();
   glEnable(GL_DEPTH_TEST);
-
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }
