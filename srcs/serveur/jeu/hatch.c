@@ -24,8 +24,8 @@
 static int	find_egg(int *ref, t_eggs *egg)
 {
   if (*ref == egg->id)
-    return (1);
-  return (0);
+    return (EXIT_SUCCESS);
+  return (EXIT_FAILURE);
 }
 
 void		do_hatch(t_game *game, int id_egg)
@@ -37,14 +37,14 @@ void		do_hatch(t_game *game, int id_egg)
 
   egg = my_l_find(game->eggs, &id_egg, find_egg);
   srand(time(NULL));
-  player = xmalloc(sizeof(player));
+  player = xmalloc(sizeof(*player));
   player->player_id = egg->id;
   player->team = egg->team;
   player->level = 1;
   player->dir = random() % 4;
   player->pos = egg->pos;
   i = -1;
-  while (--i != RESS_NUM)
+  while (++i != RESS_NUM)
     player->ress[i] = 0;
   game->player = my_l_insert(game->player, player);
   pl = (t_player *)game->player->data;
