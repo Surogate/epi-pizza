@@ -59,7 +59,8 @@ void		gh_new_client(t_svr_vector *vec, t_game *game, int player_id)
   t_player	*pla;
 
   pla = my_l_find(game->player, &player_id, find_player);
-  str = pnw(NULL, pla, game);
+  str = malloc(sizeof(char));
+  str = pnw(str, pla, game);
   if (str)
     {
       gh_broad(vec, str);
