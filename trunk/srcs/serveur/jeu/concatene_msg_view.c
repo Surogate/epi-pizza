@@ -47,9 +47,9 @@ static int	find_last_ress(t_case cas)
   int		i;
 
   i = RESS_NUM - 1;
-  while (cas.ress[i] == 0 && i != -1)
+  while ((cas.ress[i] == 0) && (i != -1))
     i--;
-  if (cas.ress[RESS_NUM - 1] != 0 || i == -1)
+  if ((cas.ress[RESS_NUM - 1] != 0) || (i == -1))
     return (RESS_NUM - 1);
   else
     return (i);
@@ -68,9 +68,10 @@ char		*add_ressource(t_vision *cur_case, char *msg)
       while (--nb_ress >= 2)
 	{
 	  msg = xrealloc(msg, strlen(msg) + strlen(msg_ress[num_ress]) + 2);
-	  snprintf(msg + strlen(msg), 14, "%s ", msg_ress[num_ress]);
+	  snprintf(msg + strlen(msg), 12, "%s ", 
+		   msg_ress[num_ress]);
 	}
-      msg = xrealloc(msg, strlen(msg) + strlen(msg_ress[num_ress]) + 2);
+      msg = xrealloc(msg, strlen(msg) + 14);
       if (nb_ress != 0)
 	{
 	  if (num_ress == find_last_ress(cur_case->cas->cas))
@@ -89,7 +90,7 @@ char		*explore_case(t_vision *cur_case, char *msg)
   if (cur_case->cas->cas.player != NULL)
     msg = add_player(cur_case, msg);
   msg = add_ressource(cur_case, msg);
-  msg = xrealloc(msg, strlen(msg) + 1);
+  msg = xrealloc(msg, strlen(msg) + 3);
   if (cur_case->next == NULL)
     msg = strcat(msg, ",");
   if (cur_case->next != NULL)
@@ -116,7 +117,7 @@ char		*concatene_msg(t_vision *list)
   int		len;
 
   cur = list;
-  msg = xmalloc(2 * sizeof(char));
+  msg = xmalloc(2 * sizeof(*msg));
   msg[0] = '{';
   msg[1] = '\0';
   while (cur != NULL)
@@ -124,11 +125,10 @@ char		*concatene_msg(t_vision *list)
       msg = explore_case(cur, msg);
       cur = cur->next;
     }
-  msg = xrealloc(msg, strlen(msg) + 3);
+  msg = xrealloc(msg, strlen(msg) + 5);
   len = strlen(msg);
   msg[len - 1] = '}';
   msg[len] = '\n';
   msg[len + 1] = '\0';
-  printf("%s\n", msg);
   return (msg);
 }
