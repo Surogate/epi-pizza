@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Mon Apr 19 13:15:43 2010 Florian Chanioux
-** Last update Thu Apr 22 10:56:49 2010 Florian Chanioux
+** Last update Thu Apr 22 14:09:59 2010 Florian Chanioux
 */
 
 
@@ -47,6 +47,8 @@ void		floor_picking(int x, int y)
 
 void		floor_clic(GLuint texture)
 {
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glBindTexture(GL_TEXTURE_2D, texture);
   glBegin(GL_QUADS);
   glTexCoord2f(0, 0);
@@ -58,6 +60,7 @@ void		floor_clic(GLuint texture)
   glTexCoord2f(1, 0);
   glVertex2d(CASE_H, 0);
   glEnd();
+  glDisable(GL_BLEND);
 }
 
 void		floor_render(int h, int w, GLuint texture)

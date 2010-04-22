@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Thu Apr 22 11:21:45 2010 Florian Chanioux
+** Last update Thu Apr 22 14:02:34 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -70,7 +70,7 @@ void		init_texture(t_game *game)
   if (game->video.text)
   {
     puts("TEXTURE ON");
-    game->texture.floor_s = loadtexture("images/lawn_s.jpg");
+    game->texture.floor_s = loadtexture("images/Circle.png");
     game->texture.floor = loadtexture("images/lawn.jpg");
     game->texture.side = loadtexture("images/side.jpg");
   }
