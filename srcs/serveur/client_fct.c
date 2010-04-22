@@ -89,10 +89,11 @@ static int		parse_word(char *str, t_packet *pak)
       if (pak->av[0][i] == ' ')
 	{
 	  pak->av[0][i] = '\0';
+	  i++;
 	  pak->av[1] = malloc((strlen(str) - i) * sizeof(*(pak->av[1])));
-	  if (pak->av[1])
+	  if (pak->av[1] && ((strlen(str) - i) > 0))
 	    {
-	      strncpy(pak->av[1], str + i + 1, strlen(str) - i - 1);
+	      strncpy(pak->av[1], str + i, strlen(str + i));
 	      pak->ac = 2;
 	      pak->av[1][strlen(str)- i - 1] = '\0';
 	    }
@@ -143,6 +144,6 @@ void			free_packet(t_client *cli)
   while (++i < pak->ac_rep)
     free(pak->response[i].mess);
   free(pak->response);
-  --(cli->used);
+  cli->used = cli->used - 1;
   cli->cons = (cli->cons + 1) % 10;
 }
