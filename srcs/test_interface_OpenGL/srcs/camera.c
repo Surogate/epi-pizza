@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:30:49 2010 Florian Chanioux
-** Last update Thu Apr 22 13:24:28 2010 Florian Chanioux
+** Last update Thu Apr 22 15:15:16 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -59,7 +59,7 @@ void		camera(t_game *game)
   py =  game->video.cam[1];
   pz = game->video.cam[2];
   x = px;
-  y = py + game->video.cam[3];
+  y = py - game->video.cam[3];
   z = game->video.cam[3];
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();

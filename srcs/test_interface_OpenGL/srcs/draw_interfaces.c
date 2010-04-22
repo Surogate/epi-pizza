@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Wed Apr 21 18:05:56 2010 Florian Chanioux
-** Last update Thu Apr 22 11:18:58 2010 Florian Chanioux
+** Last update Thu Apr 22 16:52:31 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -26,46 +26,39 @@
 # include	<GL/freeglut_std.h>
 #endif
 
-static void	interface_up_with_transp()
+#include	"3dsloader.h"
+#include	"define.h"
+#include	"struct.h"
+
+static void	interface_up(GLuint texture)
 {
+  glBindTexture(GL_TEXTURE_2D, texture);
   glBegin(GL_QUADS);
-    glVertex3f(-0.6, 0.8, 0.5);
-    glVertex3f(0.6, 0.8, 0.5);
-    glVertex3f(0.6, 1, 0.5);
-    glVertex3f(-0.6, 1, 0.5);
+  glTexCoord2f(0, 0);
+  glVertex3f(-0.4, 0.85, 0.5);
+  glTexCoord2f(1, 0);
+  glVertex3f(0.4, 0.85, 0.5);
+  glTexCoord2f(1, 1);
+  glVertex3f(0.4, 1, 0.5);
+  glTexCoord2f(0, 1);
+  glVertex3f(-0.4, 1, 0.5);
   glEnd();
 }
 
-static void	interface_up_without_transp()
+static void	interface_down(GLuint texture)
 {
+  glBindTexture(GL_TEXTURE_2D, texture);
   glBegin(GL_QUADS);
-    glVertex3f(-0.6, 0.8, 0.5);
-    glVertex3f(0.6, 0.8, 0.5);
-    glVertex3f(0.6, 1, 0.5);
-    glVertex3f(-0.6, 1, 0.5);
+  glTexCoord2f(0, 0);
+  glVertex3f(0.45, -0.45, 0.9);
+  glTexCoord2f(0, 1);
+  glVertex3f(1, -0.45, 0.9);
+  glTexCoord2f(1, 1);
+  glVertex3f(1, -1, 0.9);
+  glTexCoord2f(1, 0);
+  glVertex3f(0.45, -1, 0.9);
   glEnd();
 }
-
-static void	interface_down_left_with_transp()
-{
-  glBegin(GL_QUADS);
-  glVertex3f(0.3, -0.6, 0.5);
-  glVertex3f(1, -0.6, 0.5);
-  glVertex3f(1, -1, 0.5);
-  glVertex3f(0.3, -1, 0.5);
-  glEnd();
-}
-
-static void	interface_down_left_without_transp()
-{
-  glBegin(GL_QUADS);
-  glVertex3f(0.6, -0.8, 0.5);
-  glVertex3f(1, -0.8, 0.5);
-  glVertex3f(1, -1, 0.5);
-  glVertex3f(0.6, -1, 0.5);
-  glEnd();
-}
-
 
 void DrawStr(const char *str)
 {
@@ -78,18 +71,21 @@ void DrawStr(const char *str)
     glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, str[i]);
 }
 
-void		draw_interface()
+void		draw_interface(t_game *game)
 {
-  glDisable(GL_TEXTURE_2D);
-  glColor3ub(255,255, 255);
   glMatrixMode(GL_PROJECTION);
   glPushMatrix();
   glLoadIdentity();
   glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
   glLoadIdentity();
-  interface_up_without_transp();
-  interface_down_left_with_transp();
+  glEnable(GL_TEXTURE_2D);
+
+  interface_up(game->texture->inter_u);
+
+  interface_down(game->texture->inter_d);
+
+  glDisable(GL_TEXTURE_2D);
   glPopMatrix();
   glMatrixMode(GL_PROJECTION);
   glPopMatrix();

@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:24:06 2010 Florian Chanioux
-** Last update Thu Apr 22 13:25:03 2010 Florian Chanioux
+** Last update Thu Apr 22 16:46:10 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -88,10 +88,10 @@ void		mainloop(t_game *game)
   while (exit)
   {
     exit = interaction(game);
-    search_msg(game);
+/*    search_msg(game);*/
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     camera(game);
-    draw_interface();
+   draw_interface(game);
     draw_gl(game, GL_RENDER);
     glFlush();
     SDL_GL_SwapBuffers();
