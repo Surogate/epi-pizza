@@ -21,17 +21,17 @@ function go_to(&$player, &$move)
 		}
 }
 
-function coord(&$move, $get_pos, &$player, $niv)
+function coord(&$move, $pos, &$player, $niv)
 {	
 	$move['move_forw'] = $niv;
-	if ($move['case_n'] < $get_pos)
-		$move['move_left'] = $get_pos - $move['case_n'];
-	else if ($move['case_n'] > $get_pos)
-		$move['move_right'] = $move['case_n'] - $get_pos;
+	if ($move['case_n'] < $pos)
+		$move['move_left'] = $pos - $move['case_n'];
+	else if ($move['case_n'] > $pos)
+		$move['move_right'] = $move['case_n'] - $pos;
 	return (1);
 }
 	
-function get_pos($lvl)	
+function pos_max($lvl)	
 {
 	$pos = 0;
 	$decal = 2;
@@ -56,9 +56,9 @@ function get_there($case_num, &$player)
 		$niv = 1;
 		while (($niv <= $player['level']) && ($end != 1))
 		{
-			$get_pos = pos_max($niv);
-			if (($case_num >= ($get_pos - $niv)) && (($case_num) <= $get_pos + $niv))
-				$end = coord(&$move, $get_pos, &$player, $niv);
+			$pos = pos_max($niv);
+			if (($case_num >= ($pos - $niv)) && (($case_num) <= $pos + $niv))
+				$end = coord(&$move, $pos, &$player, $niv);
 			else
 				$niv++;
 		}
