@@ -150,6 +150,7 @@ SRC_GR		= \
 		$(DIR_SRC_GR)draw_gl.c			\
 		$(DIR_SRC_GR)test_opengl.c		\
 		$(DIR_SRC_GR)position.c			\
+		$(DIR_SRC_GR)circle.c			\
 		$(DIR_SRC_GR)connect.c
 
 

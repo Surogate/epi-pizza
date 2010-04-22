@@ -40,7 +40,6 @@ t_circle	*new_circ(int num)
   t_circle	*circ;
 
   circ = xmalloc(sizeof(*circ));
-  circ->cur = 0;
   circ->next = 0;
   circ->num = num;
   return (circ);
@@ -57,6 +56,46 @@ void		init_circ(t_game *game)
   game->serv.current = &game->serv.circ;
 }
 
+int		find_end(char *msg, int n)
+{
+  int		i;
+
+  i = 0;
+  while (msg[i] && msg[i] != '\n' && i < n)
+    i++;
+  return (i);
+}
+
+char		*circle_get(t_serv *serv)
+{
+  char		*res;
+  t_circle	*circle;
+  int		size;
+
+  res = 0;
+  circle = &serv->circ;
+  while (circle->num != serv->beg[0])
+    circle = circle->next;
+  size = find_end(&circle->buff[serv->beg[1]], BUFSIZE - serv->beg[1]);
+  if (size)
+    {
+      res = malloc((size + 1) * sizeof(*res));
+      res[size] = 0;
+      strncpy(res, &circle->buff[serv->beg[1]], size);
+      serv->beg[1] += size + 1;
+      if (serv->beg[1] == circle->cur)
+	{
+	  serv->current = &serv->circ;
+	  serv->current->cur = 0;
+	  serv->beg[1] = 0;
+	  serv->beg[0] = 0;
+	  init_buff(serv->current->buff, BUFSIZE);
+	  printf("retour au debut du buffer\n");
+	}
+    }
+  return (res);
+}
+
 void		circle_read(t_serv *serv)
 {
   int		read_return;
@@ -69,11 +108,13 @@ void		circle_read(t_serv *serv)
       perror("read fail");
       exit(EXIT_FAILURE);
     }
-  game->serv.current->cur += read_return;
+  serv->current->cur += read_return;
   if (serv->current->cur == BUFSIZE)
     {
       if (!serv->current->next)
-	serv->current->next = new_circ(serv.current.num);
+	serv->current->next = new_circ(serv->current->num + 1);
       serv->current = serv->current->next;
+      serv->current->cur = 0;
+      init_buff(serv->current->buff, BUFSIZE);
     }
 }

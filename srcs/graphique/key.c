@@ -42,16 +42,32 @@ int		key_func(t_game *game)
   else if (game->event.key.keysym.sym == SDLK_DOWN)
     printf("down rotation\n");
   else if (game->event.key.keysym.sym == SDLK_ESCAPE)
-    return (0);
+    return (exit_func(game));
   return (1);
 }
 
 int		exit_func(t_game *game)
 {
-  /*
-    TTF_CloseFont(game->font);
-    TTF_Quit();
-  */
+  t_circle	*current;
+  t_circle	*next;
+
+  printf("\033[31mEXITING\033[00m\n");
+  current = game->serv.circ.next;
+  if (current)
+    {
+      next = current->next;
+      free(current);
+    }
+  else
+    next = 0;
+  while (next)
+    {
+      current = next;
+      next = current->next;
+      free(current);
+    }
+/*     TTF_CloseFont(game->font); */
+/*     TTF_Quit(); */
   return (0);
 }
 
