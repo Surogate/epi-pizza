@@ -19,7 +19,6 @@ function fifo_in(&$player, $commande)
 	if ($commande[$len -1] != '\n')
 		$commande =  $commande . "\n";
 	$player['send'][$y] = $commande;
-	
 }
 
 ?>

@@ -8,6 +8,7 @@ require_once 'write.php';
 require_once 'vision.php';
 require_once 'lvl_up.php';
 require_once 'display.php';
+require_once 'broadcast.php';
 require_once 'elevation.php';
 require_once 'main_loop.php';
 
@@ -21,6 +22,8 @@ function connect($ip, $port, $name)
 		else
 			echo "Connect on " . $ip . "\n";
 		$player = init_player(1, 2, $s, $name);
+		broad_recv(&$player, "message 8, bonjour toi");
+		
 		main_loop($player);
 	}
 
