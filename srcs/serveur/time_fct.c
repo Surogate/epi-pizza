@@ -43,16 +43,17 @@ int	timeminus(struct timeval *to, struct timeval *one, struct timeval *two)
   return (EXIT_SUCCESS);
 }
 
-void	timeend(struct timeval *end, struct timeval *delay, int nbr)
+void			timeend(struct timeval *end, struct timeval *delay,
+				int nbr)
 {
-  struct timeval timestart;
-  int	usec;
+  struct timeval	timestart;
+  int			usec;
 
   gettimeofday(&timestart, NULL);
   end->tv_sec = timestart.tv_sec + (nbr * delay->tv_sec);
   usec = timestart.tv_usec + (nbr * delay->tv_usec);
-  end->tv_sec += usec / 1000000;
-  end->tv_usec = usec % 1000000;
+  end->tv_sec += (usec / 1000000);
+  end->tv_usec = (usec % 1000000);
 }
 
 void	gen_delay(struct timeval *delay, int nbr)

@@ -13,5 +13,6 @@
 
 int		fetch_instr(t_svr_vector *vec, t_select *slt_par, t_game *game);
 void		free_client(t_client *cli);
+int		check_read(char *str);
 
 #endif
