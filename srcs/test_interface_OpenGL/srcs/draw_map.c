@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 16:46:50 2010 Florian Chanioux
-** Last update Thu Apr 22 13:44:10 2010 Florian Chanioux
+** Last update Thu Apr 22 14:01:54 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -83,7 +83,7 @@ static void	clic(t_game *game)
 	       x * CASE_W + (CASE_W / 2), .1);
   glPushMatrix();
   i %= 360;
-  glRotated((i+= 5), 0 ,0 ,1);
+  glRotated((i+= 2), 0 ,0 ,1);
   glTranslatef(-CASE_H / 2, -CASE_W /2, 0);
   floor_clic(game->texture.floor_s);
   glPopMatrix();
