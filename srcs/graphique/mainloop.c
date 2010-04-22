@@ -95,11 +95,11 @@ void		mainloop(t_game *game)
   {
     exit = interaction(game);
     search_msg(game);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    camera();
-    draw_gl(game, GL_RENDER);
-    glFlush();
-    SDL_GL_SwapBuffers();
+/*     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); */
+/*     camera(); */
+/*     draw_gl(game, GL_RENDER); */
+/*     glFlush(); */
+/*     SDL_GL_SwapBuffers(); */
   }
 }
 
