@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Sat Apr 17 21:15:54 2010 Florian Chanioux
-** Last update Wed Apr 21 23:51:35 2010 Florian Chanioux
+** Last update Thu Apr 22 13:23:38 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -56,17 +56,6 @@ static SDL_Surface	*flipSurface(SDL_Surface * surface)
   SDL_UnlockSurface(fliped_surface);
   SDL_UnlockSurface(surface);
   return (fliped_surface);
-}
-
-static SDL_Rect	pos_img(int x, int y)
-{
-  SDL_Rect	res;
-
-  res.x = x * SIZE_I_H;
-  res.y = y * SIZE_I_W;
-  res.h = SIZE_I_H;
-  res.w = SIZE_I_W;
-  return (res);
 }
 
 GLuint			loadtexture(const char * filename)

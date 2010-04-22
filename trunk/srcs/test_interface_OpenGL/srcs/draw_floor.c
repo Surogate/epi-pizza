@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Mon Apr 19 13:15:43 2010 Florian Chanioux
-** Last update Thu Apr 22 00:49:14 2010 Florian Chanioux
+** Last update Thu Apr 22 10:56:49 2010 Florian Chanioux
 */
 
 
@@ -62,12 +62,6 @@ void		floor_clic(GLuint texture)
 
 void		floor_render(int h, int w, GLuint texture)
 {
-  float	fh;
-  float	fw;
-
-  fh = 1.0 / (float)h;
-  fw = 1.0 / (float)w;
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
   glBindTexture(GL_TEXTURE_2D, texture);
   glBegin(GL_QUADS);
   glTexCoord2f(0, 0);
@@ -81,15 +75,15 @@ void		floor_render(int h, int w, GLuint texture)
   glEnd();
 }
 
-void		side(t_game *game, int x)
+void		side(int x, GLuint texture)
 {
-  glBindTexture(GL_TEXTURE_2D, game->texture.side);
+  glBindTexture(GL_TEXTURE_2D, texture);
   glBegin(GL_QUADS);
   glTexCoord2d(0, 0);
   glVertex3d(0, 0, 0);
-  glTexCoord2d(1, 0);
+  glTexCoord2f(x, 0);
   glVertex3d(x * CASE_W, 0, 0);
-  glTexCoord2d(1, 1);
+  glTexCoord2d(x, 1);
   glVertex3d(x * CASE_W, 0, -10);
   glTexCoord2d(0, 1);
   glVertex3d(0, 0, -10);

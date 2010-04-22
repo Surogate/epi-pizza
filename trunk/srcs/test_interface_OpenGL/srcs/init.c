@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Wed Apr 21 00:39:38 2010 Florian Chanioux
+** Last update Thu Apr 22 13:19:59 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -70,6 +70,8 @@ void		init_game(t_game *game)
     exit(EXIT_FAILURE);
   }
   game->font = TTF_OpenFont(FONT_DIR, MFONT_SIZE);*/
+  game->map.h = 20;
+  game->map.w = 20;
   game->info.pos.x = 0;
   game->info.pos.y = 0;
   game->info.size_h = 100;

@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Sat Apr 17 19:43:59 2010 Florian Chanioux
-** Last update Thu Apr 22 01:13:32 2010 Florian Chanioux
+** Last update Thu Apr 22 12:22:42 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -44,7 +44,7 @@ void		draw_gl(t_game *game, GLenum mode)
   glTranslated(x, y, 0);
   glPushMatrix();
   draw_map(game, mode);
- draw_mob(game, mode);
+  draw_mob(game, mode);
   draw_ressource(game, mode);
   glPopMatrix();
   glPopMatrix();

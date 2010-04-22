@@ -29,43 +29,54 @@
 #include	"struct.h"
 #include	"proto.h"
 
+static int	calc_res(GLuint *ptr[2],
+			 GLuint minZ, GLuint names, GLint numberOfNames)
+{
+  int j;
+  int res;
+
+    if (numberOfNames > 0)
+  {
+    printf ("You picked element #:");
+    ptr[0] = ptr[1];
+    j = 0;
+    while (j < numberOfNames)
+    {
+      printf("%d", (res = *(ptr[0])));
+	j++;
+	ptr[0]++;
+    }
+  }
+  else
+    printf("You didn't click on case");
+  printf("\n");
+  return (res);
+}
+
 static int	processHits(GLint hits, GLuint buffer[])
 {
   GLint i;
-  GLint j;
   GLint numberOfNames;
-  int res;
   GLuint names;
-  GLuint *ptr;
   GLuint minZ;
-  GLuint *ptrNames;
+  GLuint *ptr[2];
 
-  ptr = (GLuint *) buffer;
+  ptr[0] = (GLuint *)buffer;
   minZ = 0xffffffff;
   i = -1;
   while (++i < hits)
   {
-    names = *ptr;
-    ptr++;
-    if (*ptr < minZ)
+    names = *(ptr[0]);
+    (ptr[0])++;
+    if (*(ptr[0]) < minZ)
     {
       numberOfNames = names;
-      minZ = *ptr;
-      ptrNames = ptr+2;
+      minZ = *(ptr[0]);
+      ptr[1] = ptr[0] + 2;
     }
-    ptr += names+2;
+    ptr[0] += names + 2;
   }
-  if (numberOfNames > 0)
-  {
-    printf ("You picked case  ");
-    ptr = ptrNames;
-    for (j = 0; j < numberOfNames; j++,ptr++)
-      printf ("%d", (res = *ptr));
-  }
-  else
-    printf("You didn't click on case");
-  printf ("\n");
-  return (res);
+  return (calc_res(ptr, minZ, names, numberOfNames));
 }
 
 void		picking_mouse(t_game *game, int x, int y)

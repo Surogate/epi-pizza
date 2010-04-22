@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Thu Apr 22 01:13:25 2010 Florian Chanioux
+** Last update Thu Apr 22 11:21:45 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -83,5 +83,5 @@ void		init_video(t_game *game)
   game->video.text = 1;
   game->video.fog = 0;
   game->video.light = 0;
-  game->video.aliasing = 1;
+  game->video.aliasing = 0;
 }
