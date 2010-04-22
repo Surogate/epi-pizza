@@ -53,8 +53,6 @@ int			create_plaction(t_svr_vector *vec, t_client *cli,
       action = vec->action;
       timeend(&(pak->end), &(slt->delay), pak->duration);
       action->insert_sort(action, pak, sort_duration);
-      llist_display(vec->action, debug_packet);
-      printf("=>  action create  <=\n");
     }
   else
     free_packet(cli);
@@ -71,7 +69,6 @@ int			exec_plaction(t_svr_vector *vec, t_packet *pak,
   if (pak->type < 0)
     create_hatch(vec, pak->type);
   pak->type = 0;
-  printf("==> action execute\n");
   return_packet(pak);
   free_packet(cli);
   delete_plaction(vec, pak->player_id);
@@ -88,7 +85,6 @@ int			delete_plaction(t_svr_vector *vec, int player_id)
   action = vec->action;
   while ((pos = action->find_pos(action, &player_id, find_act_fct)) >= 0)
     {
-      fprintf(stderr, "=>>> delete kick at %i\n", pos);
       action->delete(action, pos);
     }
   return (EXIT_SUCCESS);

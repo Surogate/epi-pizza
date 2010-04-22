@@ -55,10 +55,8 @@ int		create_eat(t_svr_vector *vec, int player_id)
       pak->ac = 0;
       pak->ac_rep = 0;
       action->insert_sort(action, pak, sort_duration);
-      printf("=>  eat create  <=\n");
       return (EXIT_SUCCESS);
     }
-  printf("eat create fail\n");
   return (EXIT_FAILURE);
 }
 
@@ -72,6 +70,7 @@ int		server_eat(t_svr_vector *vec, int player_id, t_game *game)
       server_kick(vec, player_id, game);
       return (EXIT_FAILURE);
     }
+  printf("player %i eat\n", player_id);
   delete_eat(vec, player_id);
   create_eat(vec, player_id);
   return (EXIT_SUCCESS);
@@ -85,9 +84,7 @@ int		delete_eat(t_svr_vector *vec, int player_id)
   action = vec->action;
   while ((pos = action->find_pos(action, &player_id, find_eat_fct)) >= 0)
     {
-      fprintf(stderr, "=>>> delete eat at %i\n", pos);
       action->erase(action, pos, free);
-      /* llist_display(vec->action, debug_packet); */
     }
   return (EXIT_SUCCESS);
 }
