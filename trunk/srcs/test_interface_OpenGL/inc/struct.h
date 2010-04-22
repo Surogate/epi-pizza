@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Thu Apr 22 13:18:29 2010 Florian Chanioux
+** Last update Thu Apr 22 16:40:30 2010 Florian Chanioux
 */
 
 #ifndef		STRUCT_H
@@ -63,8 +63,10 @@ typedef struct	s_map
 typedef struct
 {
   GLuint	floor;
-  GLuint	floor_s;
   GLuint	side;
+  GLuint	floor_s;
+  GLuint	inter_u;
+  GLuint	inter_d;
 }		t_texture;
 
 typedef struct
@@ -96,7 +98,7 @@ typedef struct	s_game
   SDL_Surface	*screen;
   t_conf	video;
   t_model	model;
-  t_texture	texture;
+  t_texture	*texture;
   t_info	info;
   t_mouse	mouse;
   t_map		map;

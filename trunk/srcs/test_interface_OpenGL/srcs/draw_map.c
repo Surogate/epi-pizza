@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 16:46:50 2010 Florian Chanioux
-** Last update Thu Apr 22 14:01:54 2010 Florian Chanioux
+** Last update Thu Apr 22 16:41:57 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -33,20 +33,20 @@
 
 static void	picking_map(t_game *game)
 {
-  int		h;
-  int		w;
+  int		x;
+  int		y;
   int		i;
 
   i = -1;
-  h = -1;
-  while (++h < game->map.h)
+  x = -1;
+  while (++x < game->map.h)
   {
-    w = -1;
-    while (++w < game->map.w)
+    y = -1;
+    while (++y < game->map.w)
     {
       ++i;
       glPushName(i);
-      floor_picking(h, w);
+      floor_picking(y, x);
       glPopName();
     }
   }
@@ -54,17 +54,17 @@ static void	picking_map(t_game *game)
 
 static void	around(int h, int w, GLuint texture)
 {
-  side(h, texture);
+  side(w, texture);
   glPushMatrix();
-  glTranslated(0, w * CASE_W, 0);
-  side(h, texture);
+  glTranslated(0, h * CASE_H, 0);
+  side(w, texture);
   glPopMatrix();
   glPushMatrix();
   glRotated(90, 0, 0, 1);
-  side(w, texture);
+  side(h, texture);
   glPushMatrix();
-  glTranslated(0, -h * CASE_H, 0 );
-  side(w, texture);
+  glTranslated(0, -w * CASE_W, 0 );
+  side(h, texture);
   glPopMatrix();
   glPopMatrix();
 }
@@ -75,32 +75,33 @@ static void	clic(t_game *game)
   int		x;
   int		y;
 
-  x = game->map.select % game->map.h;
-  y = game->map.select / game->map.h;
-
+  x = game->map.select % game->map.w;
+  y = game->map.select / game->map.w;
   glPushMatrix();
-  glTranslatef(y * CASE_H + (CASE_H / 2),
-	       x * CASE_W + (CASE_W / 2), .1);
+  glTranslatef(x * CASE_H + (CASE_H / 2),
+	       y * CASE_W + (CASE_W / 2), .1);
   glPushMatrix();
   i %= 360;
   glRotated((i+= 2), 0 ,0 ,1);
   glTranslatef(-CASE_H / 2, -CASE_W /2, 0);
-  floor_clic(game->texture.floor_s);
+  floor_clic(game->texture->floor_s);
   glPopMatrix();
   glPopMatrix();
 }
 
 void		draw_map(t_game *game, GLenum mode)
 {
-  if (game->video.text)
-    glEnable(GL_TEXTURE_2D);
   if (mode == GL_RENDER)
   {
-    floor_render(game->map.h, game->map.w, game->texture.floor);
+    glEnable(GL_TEXTURE_2D);
+    around(game->map.h, game->map.w, game->texture->side);
+    floor_render(game->map.h, game->map.w, game->texture->floor);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     clic(game);
+    glDisable(GL_BLEND);
+    glDisable(GL_TEXTURE_2D);
   }
   else
     picking_map(game);
-  around(game->map.h, game->map.w, game->texture.side);
-  glDisable(GL_TEXTURE_2D);
 }

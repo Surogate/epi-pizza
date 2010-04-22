@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Sat Apr 17 21:15:54 2010 Florian Chanioux
-** Last update Thu Apr 22 13:23:38 2010 Florian Chanioux
+** Last update Thu Apr 22 16:35:30 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -71,7 +71,6 @@ GLuint			loadtexture(const char * filename)
   SDL_PixelFormat	format;
 
   picture_surface = IMG_Load(filename);
-  puts(filename);
   if (picture_surface == NULL)
     return (0);
   format = *(picture_surface->format);

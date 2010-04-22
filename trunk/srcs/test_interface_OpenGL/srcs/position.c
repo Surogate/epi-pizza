@@ -30,7 +30,7 @@
 #include	"proto.h"
 
 static int	calc_res(GLuint *ptr[2],
-			 GLuint minZ, GLuint names, GLint numberOfNames)
+			 GLint numberOfNames)
 {
   int j;
   int res;
@@ -76,7 +76,7 @@ static int	processHits(GLint hits, GLuint buffer[])
     }
     ptr[0] += names + 2;
   }
-  return (calc_res(ptr, minZ, names, numberOfNames));
+  return (calc_res(ptr, numberOfNames));
 }
 
 void		picking_mouse(t_game *game, int x, int y)

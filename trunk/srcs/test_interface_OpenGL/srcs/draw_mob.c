@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 17:10:54 2010 Florian Chanioux
-** Last update Thu Apr 22 13:28:46 2010 Florian Chanioux
+** Last update Thu Apr 22 16:36:29 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -35,7 +35,6 @@ void		draw_mesh(obj_type *mesh)
   int		l_index;
 
   glBindTexture(GL_TEXTURE_2D, mesh->id_texture);
-  glEnable(GL_TEXTURE_2D);
   glColor3f(1.0f, 1.0f, 1.0f);
   glPushMatrix();
   glScalef(mesh->scale[0], mesh->scale[1], mesh->scale[2]);
@@ -68,11 +67,14 @@ void		draw_mob(t_game *game, GLenum mode)
   game = game;
   mode = mode;
 
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glEnable(GL_TEXTURE_2D);
   glPushMatrix();
   glRotated(180, 0, 0, 1);
   glTranslated(-(game->video.cam[0]), -(game->video.cam[1]), 0);
   draw_mesh(game->model.trantorien);
   glPopMatrix();
+  glDisable(GL_TEXTURE_2D);
 }
 
 

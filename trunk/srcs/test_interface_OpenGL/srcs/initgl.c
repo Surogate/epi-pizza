@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:32:28 2010 Florian Chanioux
-** Last update Thu Apr 22 13:35:47 2010 Florian Chanioux
+** Last update Thu Apr 22 16:36:42 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -50,21 +50,12 @@ static void		init_light(int light)
   static float lmodel_ambient[] = {0.4, 0.4, 0.4, 1.0};
   static float lmodel_localviewer[] = {0.0};
 
-  /*
-    static GLfloat	ambient[] = {0.15f, 0.15f, 0.15f, 1.0f};
-    static GLfloat	diffuse[] = {0.5f, 0.5f, 0.5f, 1.0f};
-    static GLfloat	light0_position [] = {0, 0, 100, 0.0f};
-    static GLfloat	specular_reflexion[] = {0.8f, 0.8f, 0.8f, 1.0f};
-    static GLubyte	shiny_obj = 128;
-  */
   if (light)
   {
     puts("LIGHT ON");
-   glFrontFace(GL_CCW);
-
+    glFrontFace(GL_CCW);
     glDepthFunc(GL_LESS);
     glEnable(GL_DEPTH_TEST);
-
     glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
     glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
     glLightfv(GL_LIGHT0, GL_POSITION, position);
@@ -72,13 +63,11 @@ static void		init_light(int light)
     glLightModelfv(GL_LIGHT_MODEL_LOCAL_VIEWER, lmodel_localviewer);
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
-
     glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, mat_shininess);
     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, mat_specular);
     glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, mat_diffuse);
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient);
     glEnable(GL_NORMALIZE);
-
   }
   else
     puts("LIGHT OFF");
