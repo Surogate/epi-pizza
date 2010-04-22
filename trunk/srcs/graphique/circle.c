@@ -103,7 +103,7 @@ void		circle_read(t_serv *serv)
 
   pos = serv->current->cur;
   read_return = read(serv->socket, &(serv->current->buff[pos]), BUFSIZE - pos);
-  if (read_return == -1)
+  if (read_return < 1)
     {
       perror("read fail");
       exit(EXIT_FAILURE);
