@@ -24,6 +24,15 @@
 #include "t_packet.h"
 #include "t_struct.h"
 #include "t_svr_stc.h"
+#include "client_fct.h"
+#include "server_kick.h"
+#include "instruction.h"
+#include "server_fct.h"
+#include "server_action.h"
+#include "server_eat.h"
+#include "server_plaction.h"
+#include "server_insert_player.h"
+#include "server_graph.h"
 #include "communication.h"
 
 static int	find_player(int *player_id, t_player *pla)
@@ -67,5 +76,22 @@ void		gh_fct(t_svr_vector *vec, t_game *game,
       str = fct(str, pla, game);
       gh_broad(vec, str);
       free(str);
+    }
+}
+
+int		graph_inst(t_client *cli, t_svr_vector *vec)
+{
+  char		*readed;
+
+  if (FD_ISSET(cli->sock, &(vec->slt->fd_read)))
+    {
+      	if (cbuf_write(&cli->cbuf, cli->sock) == EXPIPE)
+	  {
+	    printf("le client graphique %i a un soucis\n", cli->sock);
+	    FD_CLR(cli->sock, &(vec->slt->fd_read));
+	    vec->graph->erase(vec->graph, vec->graph->gns_pos, free_client);
+	  }
+	else if ((readed = cbuf_read(&(cli->cbuf), check_read)))
+	  printf("readed : %s\n", readed);
     }
 }

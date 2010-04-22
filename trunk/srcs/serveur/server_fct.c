@@ -34,7 +34,7 @@
 #include "server_graph.h"
 #include "communication.h"
 
-static int	check_read(char *str)
+int		check_read(char *str)
 {
   int		i;
 
@@ -99,6 +99,8 @@ int		close_client(t_svr_vector *vec, t_select *slt_par)
   return (EXIT_SUCCESS);
 }
 
+
+
 int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
 				 t_game *game)
 {
@@ -125,5 +127,7 @@ int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
 	else if ((readed = cbuf_read(&(tmp->cbuf), check_read)))
 	  instr_catch(readed, tmp, game, vec);
       }
+  while ((tmp = (t_client *)vec->graph->getnxts(vec->graph)) != NULL)
+    graph_inst(tmp, vec);
   return (EXIT_SUCCESS);
 }
