@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Wed Apr 21 16:08:31 2010 Florian Chanioux
+## Last update Thu Apr 22 09:47:47 2010 pierre1 boutbel
 ##
 
 STAG		= $(shell uname -s)
@@ -195,7 +195,8 @@ IFLAGS_i386-FreeBSD	=
 
 IFLAGS_i686-Linux	=
 
-IFLAGS			= $(IFLAGS_$(TAG)) -I$(DIR_INC) 
+IFLAGS			= $(IFLAGS_$(TAG)) -I$(DIR_INC) -I$(DIR_INC_S)	\
+			  -I$(DIR_INC_C) -I$(DIR_INC_GR)
 
 
 #########  LIBRARIES
@@ -261,7 +262,7 @@ GREY	= \033[37m
 
 ############### COMMANDS ###############
 
-all		: $(NAME_C) $(NAME_S)  $(NAME_GR)
+all		: $(NAME_C) $(NAME_S) $(NAME_GR)
 
 $(NAME_C)	: $(OBJ_C) $(OBJ_CO)
 	@$(ECHO) "$(CYAN)[LINKING]: $(NAME_C)$(END)"
