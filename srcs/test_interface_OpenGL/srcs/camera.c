@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:30:49 2010 Florian Chanioux
-** Last update Wed Apr 21 21:07:51 2010 Florian Chanioux
+** Last update Thu Apr 22 13:24:28 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -30,6 +30,14 @@
 #include	"struct.h"
 #include	"proto.h"
 
+void		init_camera(t_game *game)
+{
+  game->video.cam[0] = (game->map.h * CASE_W) / 2;
+  game->video.cam[1] = (game->map.h * CASE_H) / 2;
+  game->video.cam[2] = 0;
+  game->video.cam[3] = CAM_Z;
+}
+
 void		reshape()
 {
   glViewport(0, 0, WIN_W, WIN_H);
@@ -38,7 +46,7 @@ void		reshape()
   gluPerspective(WIN_FOC, (GLfloat)(WIN_W / WIN_H), WIN_NEAR, WIN_FAR);
 }
 
-void		camera()
+void		camera(t_game *game)
 {
   int x;
   int y;
@@ -47,15 +55,13 @@ void		camera()
   int py;
   int pz;
 
-  px = CAM_O_X;
-  py = CAM_O_Y;
-  pz = CAM_O_Z;
+  px = game->video.cam[0];
+  py =  game->video.cam[1];
+  pz = game->video.cam[2];
   x = px;
-  y = py + 200;
-  z = CAM_Z;
+  y = py + game->video.cam[3];
+  z = game->video.cam[3];
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
-  gluLookAt(x, y, z,
-	    px, py, pz,
-	    0, 0, 1);
+  gluLookAt(x, y, z, px, py, pz, 0, 0, 1);
 }

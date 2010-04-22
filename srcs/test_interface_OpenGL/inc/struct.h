@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Wed Apr 21 16:37:48 2010 Florian Chanioux
+** Last update Thu Apr 22 13:18:29 2010 Florian Chanioux
 */
 
 #ifndef		STRUCT_H
@@ -54,6 +54,8 @@ typedef struct	s_case
 
 typedef struct	s_map
 {
+  int		w;
+  int		h;
   t_case	**t_case;
   int		select;
 }		t_map;
@@ -78,6 +80,7 @@ typedef struct
   int		light;
   int		fog;
   int		aliasing;
+  int		cam[4];
 }		t_conf;
 
 typedef struct	s_serv

@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Wed Apr 21 23:52:29 2010 Florian Chanioux
+** Last update Thu Apr 22 13:24:50 2010 Florian Chanioux
 */
 
 #ifndef		__PROTO_H__
@@ -40,7 +40,7 @@ void		picking_mouse(t_game *game, int x, int y);
 
 /* camera */
 void		reshape();
-void		camera();
+void		camera(t_game *game);
 
 /* Draw */
 void		mainloop(t_game *game);
@@ -55,5 +55,5 @@ void		draw_ressource(t_game *game, GLenum mode);
 void		floor_render(int x, int y, GLuint select);
 void		floor_picking();
 
-void		side(t_game *game, int x);
+void		side(int x, GLuint select);
 #endif

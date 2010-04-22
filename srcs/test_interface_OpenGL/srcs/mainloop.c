@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:24:06 2010 Florian Chanioux
-** Last update Wed Apr 21 20:55:24 2010 Florian Chanioux
+** Last update Thu Apr 22 13:25:03 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -82,8 +82,6 @@ void		timedelay()
 void		mainloop(t_game *game)
 {
   int		exit;
-  int	nowTicks;
-  int	Ticks;
 
   exit = 1;
   SDL_EnableKeyRepeat(100, 20);
@@ -92,13 +90,12 @@ void		mainloop(t_game *game)
     exit = interaction(game);
     search_msg(game);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    if (!game->video.fog)
-      glClearColor(0, 0, 125,1);
-    camera();
+    camera(game);
     draw_interface();
     draw_gl(game, GL_RENDER);
     glFlush();
     SDL_GL_SwapBuffers();
+/*    timedelay();*/
   }
 }
 

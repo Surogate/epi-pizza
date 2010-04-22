@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 16:46:50 2010 Florian Chanioux
-** Last update Thu Apr 22 01:09:25 2010 Florian Chanioux
+** Last update Thu Apr 22 13:44:10 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -39,10 +39,10 @@ static void	picking_map(t_game *game)
 
   i = -1;
   h = -1;
-  while (++h < MAP_CH)
+  while (++h < game->map.h)
   {
     w = -1;
-    while (++w < MAP_CW)
+    while (++w < game->map.w)
     {
       ++i;
       glPushName(i);
@@ -52,19 +52,19 @@ static void	picking_map(t_game *game)
   }
 }
 
-static void	around(t_game *game, int h, int w)
+static void	around(int h, int w, GLuint texture)
 {
-  side(game, h);
+  side(h, texture);
   glPushMatrix();
   glTranslated(0, w * CASE_W, 0);
-  side(game, h);
+  side(h, texture);
   glPopMatrix();
   glPushMatrix();
   glRotated(90, 0, 0, 1);
-  side(game, w);
+  side(w, texture);
   glPushMatrix();
   glTranslated(0, -h * CASE_H, 0 );
-  side(game, w);
+  side(w, texture);
   glPopMatrix();
   glPopMatrix();
 }
@@ -75,29 +75,32 @@ static void	clic(t_game *game)
   int		x;
   int		y;
 
-  x = game->map.select % MAP_CH;
-  y = game->map.select / MAP_CH;
+  x = game->map.select % game->map.h;
+  y = game->map.select / game->map.h;
 
   glPushMatrix();
-  glTranslatef(y * CASE_H, x * CASE_W, .06);
+  glTranslatef(y * CASE_H + (CASE_H / 2),
+	       x * CASE_W + (CASE_W / 2), .1);
+  glPushMatrix();
+  i %= 360;
+  glRotated((i+= 5), 0 ,0 ,1);
+  glTranslatef(-CASE_H / 2, -CASE_W /2, 0);
   floor_clic(game->texture.floor_s);
+  glPopMatrix();
   glPopMatrix();
 }
 
 void		draw_map(t_game *game, GLenum mode)
 {
-
-  
   if (game->video.text)
     glEnable(GL_TEXTURE_2D);
   if (mode == GL_RENDER)
   {
-    floor_render(MAP_CH, MAP_CW,
-		 game->texture.floor);
+    floor_render(game->map.h, game->map.w, game->texture.floor);
     clic(game);
   }
   else
     picking_map(game);
-  around(game, MAP_CH, MAP_CW);
-  glDisable(GL_REPEAT);
+  around(game->map.h, game->map.w, game->texture.side);
+  glDisable(GL_TEXTURE_2D);
 }

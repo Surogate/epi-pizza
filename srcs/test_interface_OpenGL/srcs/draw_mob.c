@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 17:10:54 2010 Florian Chanioux
-** Last update Wed Apr 21 18:27:14 2010 Florian Chanioux
+** Last update Thu Apr 22 13:28:46 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -70,12 +70,9 @@ void		draw_mob(t_game *game, GLenum mode)
 
   glPushMatrix();
   glRotated(180, 0, 0, 1);
-  glTranslated(-CAM_O_X, -CAM_O_Y, 0);
+  glTranslated(-(game->video.cam[0]), -(game->video.cam[1]), 0);
   draw_mesh(game->model.trantorien);
   glPopMatrix();
-  /*
-    code  POUR LES MOB
-  */
 }
 
 

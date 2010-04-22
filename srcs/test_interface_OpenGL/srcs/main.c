@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Wed Apr 21 13:37:38 2010 Florian Chanioux
+** Last update Thu Apr 22 13:33:51 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -27,7 +27,6 @@
 # include	<GL/gl.h>
 #endif
 
-
 #include "3dsloader.h"
 #include "define.h"
 #include "struct.h"
@@ -40,15 +39,15 @@ int		main(int ac, char *av[])
 /*   if (ac > 2) */
 /*     { */
 /*       connect_to_serv(&game, av); */
-      init_video(&game);
-      init_game(&game);
-      printAttributes();
-      init_texture(&game);
-      init_3dsmodel(&game);
-      initGL(&game);
-      mainloop(&game);
-      puts("end of program");
-      SDL_Quit();
+  init_video(&game);
+  init_game(&game);
+  printAttributes();
+  init_texture(&game);
+  init_3dsmodel(&game);
+  initGL(&game);
+  mainloop(&game);
+  puts("end of program");
+  SDL_Quit();
 /*     } */
 /*   else */
 /*     printf("Usage : ./zappy addr port\n"); */

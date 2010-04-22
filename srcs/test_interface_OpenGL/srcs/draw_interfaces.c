@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Wed Apr 21 18:05:56 2010 Florian Chanioux
-** Last update Wed Apr 21 21:16:44 2010 Florian Chanioux
+** Last update Thu Apr 22 11:18:58 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -65,6 +65,19 @@ static void	interface_down_left_without_transp()
   glVertex3f(0.6, -1, 0.5);
   glEnd();
 }
+
+
+void DrawStr(const char *str)
+{
+  GLint i;
+
+  i = -1;
+  if(!str)
+    return ;
+  while(str[++i])
+    glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, str[i]);
+}
+
 void		draw_interface()
 {
   glDisable(GL_TEXTURE_2D);
