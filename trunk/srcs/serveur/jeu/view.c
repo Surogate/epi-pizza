@@ -38,10 +38,7 @@ static t_map	*find_left(t_vision *list, t_dir_v *dir, int level)
   while (cur != NULL)
     {
       if (cur->level == level || level == 1)
-	{
-	  return (cur->cas->card[dir->up_left]);
-	}
-
+	return (cur->cas->card[dir->up_left]);
       if (cur->level == 5)
 	exit(0);
       cur = cur->next;
