@@ -58,6 +58,7 @@ static void	init_map(t_game *game)
 void		init_game(t_game *game)
 {
   game->screen = load_window();
+  init_circ(game);
   game->mouse.clicked = 0;
   /*
     game->mouse.img[0] = img_load("images/main_ouverte.bmp");
@@ -72,8 +73,8 @@ void		init_game(t_game *game)
   game->font = TTF_OpenFont(FONT_DIR, MFONT_SIZE);*/
   game->info.pos.x = 0;
   game->info.pos.y = 0;
-  game->info.size_h = 100;
-  game->info.size_w = 100;
+  game->info.size_h = 10;
+  game->info.size_w = 10;
   init_map(game);
   SDL_ShowCursor(1);
 }

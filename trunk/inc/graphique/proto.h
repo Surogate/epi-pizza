@@ -19,6 +19,12 @@ void		init_video(t_game *game);
 void		initGL(t_game *game);
 void		printAttributes();
 
+/*circle*/
+t_circle	*new_circ(int num);
+void		init_circ(t_game *game);
+char		*circle_get(t_serv *serv);
+void		circle_read(t_serv *serv);
+
 /* load */
 SDL_Surface	*load_window();
 SDL_Surface	*img_load(char *path);

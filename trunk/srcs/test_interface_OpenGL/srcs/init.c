@@ -70,6 +70,7 @@ void		init_game(t_game *game)
     exit(EXIT_FAILURE);
   }
   game->font = TTF_OpenFont(FONT_DIR, MFONT_SIZE);*/
+
   game->map.h = 2;
   game->map.w = 6;
   game->info.pos.x = 0;

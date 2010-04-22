@@ -46,11 +46,21 @@ void		init_buff(char *buff, int size)
 
 void		my_recv(t_game *game)
 {
-  char		buff[1024];
+  char		*msg;
 
-  init_buff(buff, 1024);
-  if (read(game->serv.socket, buff, 1024) > 0)
-    printf("msg = %s\n", buff);
+  circle_read(&game->serv);
+  printf("\033[31mbuff content :\033[00m\n");
+  printf("%s", game->serv.current->buff);
+  printf("\033[31mend content\033[00m\n");
+  do
+    {
+      msg = circle_get(&game->serv);
+      if (msg)
+	{
+	  printf("\033[31mmessage extract :\033[00m\n%s\n",msg);
+	  free(msg);
+	}
+    }while (msg);
 }
 
 void		search_msg(t_game *game)
