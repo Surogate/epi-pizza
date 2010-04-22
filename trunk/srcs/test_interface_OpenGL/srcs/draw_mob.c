@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 17:10:54 2010 Florian Chanioux
-** Last update Thu Apr 22 16:36:29 2010 Florian Chanioux
+** Last update Thu Apr 22 16:54:18 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -67,7 +67,6 @@ void		draw_mob(t_game *game, GLenum mode)
   game = game;
   mode = mode;
 
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   glEnable(GL_TEXTURE_2D);
   glPushMatrix();
   glRotated(180, 0, 0, 1);
