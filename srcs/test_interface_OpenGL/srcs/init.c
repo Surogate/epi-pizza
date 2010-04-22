@@ -70,8 +70,8 @@ void		init_game(t_game *game)
     exit(EXIT_FAILURE);
   }
   game->font = TTF_OpenFont(FONT_DIR, MFONT_SIZE);*/
-  game->map.h = 20;
-  game->map.w = 20;
+  game->map.h = 500;
+  game->map.w = 500;
   game->info.pos.x = 0;
   game->info.pos.y = 0;
   game->info.size_h = 100;

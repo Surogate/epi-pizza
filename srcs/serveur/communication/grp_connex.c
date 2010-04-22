@@ -53,12 +53,12 @@ char		*grp_connex_monit(t_game *game)
 
   msg = xmalloc(sizeof(char));
   msg = msz(msg, game);
-  x = -1;
-  while (++x != game->server.height)
+  y = -1;
+  while (++y < game->server.height)
     {
-      y = -1;
-      while (++y != game->server.width)
-	msg = bct(msg, &(game->map[x][y]));
+      x = -1;
+      while (++x < game->server.width)
+	msg = bct(msg, game->map[y] + x);
     }
   msg = tna(msg, game);
   msg = print_player(msg, game);
