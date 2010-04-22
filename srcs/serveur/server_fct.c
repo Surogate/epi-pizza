@@ -32,6 +32,7 @@
 #include "server_plaction.h"
 #include "server_insert_player.h"
 #include "server_graph.h"
+#include "communication.h"
 
 static int	check_read(char *str)
 {
@@ -60,7 +61,7 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	  else if (cli->team == 1)
 	    {
 	      create_eat(vec, cli->sock);
-	      gh_new_client(vec, game, cli->sock);
+	      gh_fct(vec, game, cli->sock, pnw);
 	    }
 	  else if (cli->team < 0)
 	    new_gh(vec, cli, game);
@@ -116,6 +117,7 @@ int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
 	    delete_eat(vec, tmp->sock);
 	    delete_plaction(vec, tmp->sock);
 	    delete_kick(vec, tmp->sock);
+	    gh_fct(vec, game, tmp->sock, pdi);
 	    if (tmp->team > 0)
  	      rm_player(game, tmp->sock);
 	    client->erase(client, client->gns_pos, free_client);

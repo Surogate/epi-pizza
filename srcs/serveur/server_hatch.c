@@ -30,6 +30,8 @@
 #include "server_plaction.h"
 #include "server_eat.h"
 #include "server_hatch.h"
+#include "server_graph.h"
+#include "communication.h"
 
 int		find_hatch_fct(t_packet *in, int *player_id)
 {
@@ -42,22 +44,16 @@ int	       	create_hatch(t_svr_vector *vec, int egg)
 {
   t_vector     	*action;
   t_packet     	*pak;
-  t_select     	*slt;
 
-  printf("egg : %i\n", egg);
   pak = malloc(sizeof(*pak));
   if (pak)
     {
-      printf("==> pak : %p\n", (void *)pak);
-      slt = vec->slt;
       action = vec->action;
-      timeend(&(pak->end), &(slt->delay), 600);
+      timeend(&(pak->end), &(vec->slt->delay), 600);
       pak->type = 3;
       pak->duration = 600;
       pak->player_id = egg;
       action->insert_sort(action, pak, sort_duration);
-      llist_display(vec->action, debug_packet);
-      printf("=>  hatch create  <=\n");
       return (EXIT_SUCCESS);
     }
   return (EXIT_FAILURE);
@@ -67,6 +63,7 @@ int	       	server_hatch(t_svr_vector *vec, t_packet *pak, t_game *game)
 {
   printf("eclosion de l'oeuf : %i\n", pak->player_id);
   do_hatch(game, pak->player_id);
+  gh_fct(vec, game, pak->player_id, eht);
   create_eat(vec, pak->player_id);
   delete_hatch(vec, pak->player_id);
   return (EXIT_SUCCESS);

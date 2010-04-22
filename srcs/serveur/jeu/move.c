@@ -20,6 +20,7 @@
 #include	"t_packet.h"
 #include	"t_game_stc.h"
 #include	"xfunc.h"
+#include	"communication.h"
 
 static t_dir_m	gl_dir[5] = {
   {DIR_N, DIR_O, M_N, DIR_E},
@@ -37,6 +38,7 @@ void		try_turn_left(t_packet *packet, t_player *player)
   snprintf(packet->response->mess, LEN_OK, "%s\n", OK);
   packet->response->id_player = packet->player_id;
   packet->ac_rep = 1;
+  packet->graph_rep = grp_move(player);
 }
 
 void		try_turn_right(t_packet *packet, t_player *player)
@@ -47,14 +49,14 @@ void		try_turn_right(t_packet *packet, t_player *player)
   snprintf(packet->response->mess, LEN_OK, "%s\n", OK);
   packet->response->id_player = packet->player_id;
   packet->ac_rep = 1;
+  packet->graph_rep = grp_move(player);
 }
 
 static int	find_player_by_id(t_player *data, t_player *ref)
 {
   if (data->player_id == ref->player_id)
     return (EXIT_SUCCESS);
-  else
-    return (EXIT_FAILURE);
+  return (EXIT_FAILURE);
 }
 
 void		try_move(t_packet *packet, t_player *player)
@@ -68,4 +70,5 @@ void		try_move(t_packet *packet, t_player *player)
   snprintf(packet->response->mess, LEN_OK, "%s\n", OK);
   packet->response->id_player = packet->player_id;
   packet->ac_rep = 1;
+  packet->graph_rep = grp_move(player);
 }

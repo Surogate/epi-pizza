@@ -125,6 +125,7 @@ int			client_parse_instr(char *str, t_client *cli)
   pak->player = cli;
   pak->type = 0;
   pak->ac_rep = 0;
+  pak->graph_rep = NULL;
   ++(cli->used);
   return (EXIT_SUCCESS);
 }
