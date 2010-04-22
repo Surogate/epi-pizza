@@ -32,6 +32,7 @@
 #include "client_fct.h"
 #include "time_fct.h"
 #include "server_hatch.h"
+#include "server_graph.h"
 #include "server_plaction.h"
 
 int			find_act_fct(t_packet *in, int *player_id)
@@ -70,6 +71,11 @@ int			exec_plaction(t_svr_vector *vec, t_packet *pak,
     create_hatch(vec, pak->type);
   pak->type = 0;
   return_packet(pak);
+  if (pak->graph_rep)
+    {
+      gh_broad(vec, pak->graph_rep);
+      free(pak->graph_rep);
+    }
   free_packet(cli);
   delete_plaction(vec, pak->player_id);
   if (cli->used)

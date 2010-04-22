@@ -29,8 +29,10 @@
 #include "server_kick.h"
 #include "server_eat.h"
 #include "server_debug.h"
+#include "server_graph.h"
 #include "eat.h"
 #include "time_fct.h"
+#include "communication.h"
 
 static int	find_eat_fct(t_packet *in, int *player_id)
 {
@@ -66,6 +68,7 @@ int		server_eat(t_svr_vector *vec, int player_id, t_game *game)
     {
       sock_write(player_id, "mort\n");
       printf("player %i died, eat is essential to live\n", player_id);
+      gh_fct(vec, game, player_id, pdi);
       delete_eat(vec, player_id);
       server_kick(vec, player_id, game);
       return (EXIT_FAILURE);
@@ -83,8 +86,6 @@ int		delete_eat(t_svr_vector *vec, int player_id)
 
   action = vec->action;
   while ((pos = action->find_pos(action, &player_id, find_eat_fct)) >= 0)
-    {
-      action->erase(action, pos, free);
-    }
+    action->erase(action, pos, free);
   return (EXIT_SUCCESS);
 }

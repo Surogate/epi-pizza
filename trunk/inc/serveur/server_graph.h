@@ -11,6 +11,9 @@
 #ifndef SERVER_GRAPH_C_INCLUDED
 # define SERVER_GRAPH_C_INCLUDED
 
-void	new_graph(t_svr_vector *vec, t_client *cli, t_game *game);
+void		new_gh(t_svr_vector *vec, t_client *cli, t_game *game);
+void		gh_broad(t_svr_vector *vec, char *str);
+void		gh_fct(t_svr_vector *vec, t_game *game, 
+		       int player_id, char *(*fct)());
 
 #endif

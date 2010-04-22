@@ -53,16 +53,17 @@ void		gh_broad(t_svr_vector *vec, char *str)
     sock_write(cli->sock, str);
 }
 
-void		gh_new_client(t_svr_vector *vec, t_game *game, int player_id)
+void		gh_fct(t_svr_vector *vec, t_game *game, 
+		       int player_id, char *(*fct)())
 {
   char		*str;
   t_player	*pla;
 
   pla = my_l_find(game->player, &player_id, find_player);
   str = malloc(sizeof(char));
-  str = pnw(str, pla, game);
-  if (str)
+  if (str && pla)
     {
+      str = fct(str, pla, game);
       gh_broad(vec, str);
       free(str);
     }

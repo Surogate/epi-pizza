@@ -17,7 +17,7 @@ char		*grp_move(t_player *player)
 {
   char		*msg;
 
-  msg = xmalloc(2 * sizeof(char));
+  msg = xmalloc(sizeof(char));
   msg = ppo(msg, player);
   return (msg);
 }

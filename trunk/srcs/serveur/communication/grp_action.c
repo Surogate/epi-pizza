@@ -28,7 +28,7 @@ char		*grp_incant_done(t_player *player, int res)
   t_list	*list;
   char		*msg;
 
-  msg = xmalloc(2 * sizeof(char));
+  msg = xmalloc(sizeof(char));
   msg = pie(msg, player, res);
   list = player->pos->cas.player;
   while (list->data != NULL)
@@ -49,7 +49,7 @@ char		*grp_expulse(t_player *player)
   t_list	*list;
   char		*msg;
 
-  msg = xmalloc(2 * sizeof(char));
+  msg = xmalloc(sizeof(char));
   msg = pex(msg, player);
   list = player->pos->cas.player;
   while (list->data != NULL)
@@ -66,7 +66,7 @@ char		*grp_broad(t_player *player, char *broad)
 {
   char		*msg;
   
-  msg = xmalloc(2 * sizeof(char));
+  msg = xmalloc(sizeof(char));
   msg = pbc(msg, player, broad);
   return (msg);
 }

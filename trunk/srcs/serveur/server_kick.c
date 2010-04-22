@@ -58,10 +58,8 @@ int		create_kick(t_svr_vector *vec, int player_id, int time)
       pak->ac = 0;
       pak->ac_rep = 0;
       action->insert_sort(action, pak, sort_duration);
-      printf("=>  kick create  <=\n");
       return (EXIT_SUCCESS);
     }
-  fprintf(stderr, "kick create fail\n");
   return (EXIT_FAILURE);
 }
 
@@ -110,7 +108,6 @@ void		delete_kick(t_svr_vector *vec, int player_id)
   action = vec->action;
   while ((pos = action->find_pos(action, &player_id, find_kick_fct)) >= 0)
     {
-      fprintf(stderr, "=>>> delete kick at %i\n", pos);
       action->erase(action, pos, free);
     }
 }
