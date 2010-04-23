@@ -27,15 +27,11 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
   if (cbuf->use == 0)
     return (NULL);
   else if (cbuf->prod > cbuf->cons)
-    {
-      strncpy(result, cbuf->buf + cbuf->cons, cbuf->prod - cbuf->cons);
-      result[cbuf->prod - cbuf->cons] = '\0';
-    }
+    strncpy(result, cbuf->buf + cbuf->cons, cbuf->prod - cbuf->cons);
   else
     {
       strncpy(result, cbuf->buf + cbuf->cons, CBUFSIZ - cbuf->cons);
       strncpy(result + (CBUFSIZ - cbuf->cons), cbuf->buf, cbuf->prod);
-      result[CBUFSIZ - cbuf->cons + cbuf->prod] = '\0';
     }
   if ((cmd = check_read(result)) != 0)
     {
@@ -59,7 +55,10 @@ int		sock_write(int sock, char *from)
     {
       result = send(sock, from, strlen(from), 0);
       if (result < 0)
-	return (EXIT_FAILURE);
+	{
+	  perror("sock send\n");
+	  return (EXIT_FAILURE);
+	}
       total += result;
     }
   return (EXIT_SUCCESS);
@@ -69,9 +68,12 @@ int		sock_read(int sock, char *to, int limit)
 {
   int		result;
 
-  result = recv(sock, to , limit, 0);
+  result = recv(sock, to, limit, 0);
   if (result < 0)
-    return (EXIT_FAILURE);
+    {
+      perror("sock recv\n");
+      return (-1);
+    }
   return (result);
 }
 
@@ -84,20 +86,17 @@ int		cbuf_write(t_cbuf *cbuf, int sock)
   if (cbuf->prod >= cbuf->cons)
     {
       total = sock_read(sock, cbuf->buf + cbuf->prod, CBUFSIZ - cbuf->prod);
-      if (total == EXIT_FAILURE)
+      if (total == -1)
 	return (EXIT_FAILURE);
-      cbuf->prod = (cbuf->prod + total) % (CBUFSIZ);
-      cbuf->use += total;
     }
   if (cbuf->prod < cbuf->cons)
     {
       total = sock_read(sock, cbuf->buf + cbuf->prod, cbuf->cons - cbuf->prod);
-      print_cbuf(cbuf);
       if (total == EXIT_FAILURE)
 	return (EXIT_FAILURE);
-      cbuf->prod = (cbuf->prod + total) % (CBUFSIZ);
-      cbuf->use += total;
     }
+  cbuf->prod = (cbuf->prod + total) % (CBUFSIZ);
+  cbuf->use += total;
   if (total == 0)
     return (EXPIPE);
   return (EXIT_SUCCESS);

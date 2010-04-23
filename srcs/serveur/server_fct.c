@@ -41,7 +41,7 @@ int		check_read(char *str)
   i = 0;
   while (str[i] && str[i] != '\n')
     i++;
-  if (str[i])
+  if (str[i] == '\n')
     return (i);
   return (0);
 }
