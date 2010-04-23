@@ -5,9 +5,8 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Mon Apr 19 13:15:43 2010 Florian Chanioux
-** Last update Thu Apr 22 15:23:37 2010 Florian Chanioux
+** Last update Thu Apr 22 21:44:58 2010 Florian Chanioux
 */
-
 
 #include	<stdio.h>
 #include	<stdlib.h>
@@ -31,22 +30,16 @@
 #include	"struct.h"
 #include	"proto.h"
 
-void		floor_picking(int x, int y)
+void		clic_render(GLuint texture)
 {
-  glBegin(GL_QUADS);
-  glColor3ub(255, 255, 255);
-  glVertex2d(x * CASE_W, y * CASE_H);
-  glColor3ub(255, 255, 255);
-  glVertex2d(x * CASE_W, y * CASE_H + CASE_H);
-  glColor3ub(255, 255, 255);
-  glVertex2d(x * CASE_W + CASE_W, y * CASE_H + CASE_H);
-  glColor3ub(255, 255, 255);
-  glVertex2d(x * CASE_W + CASE_W, y * CASE_H);
-  glEnd();
-}
+  static int	i;
 
-void		floor_clic(GLuint texture)
-{
+  glPushMatrix();
+  glTranslatef(CASE_H / 2, CASE_W / 2, 0);
+  glPushMatrix();
+  i %= 360;
+  glRotated((i+= 2), 0 ,0 ,1);
+  glTranslatef(-CASE_H / 2, -CASE_W /2, 0);
   glBindTexture(GL_TEXTURE_2D, texture);
   glBegin(GL_QUADS);
   glTexCoord2f(0, 0);
@@ -58,6 +51,8 @@ void		floor_clic(GLuint texture)
   glTexCoord2f(1, 0);
   glVertex2d(CASE_H, 0);
   glEnd();
+  glPopMatrix();
+  glPopMatrix();
 }
 
 void		floor_render(int h, int w, GLuint texture)

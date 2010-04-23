@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 16:46:50 2010 Florian Chanioux
-** Last update Thu Apr 22 16:41:57 2010 Florian Chanioux
+** Last update Thu Apr 22 21:42:21 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -30,12 +30,36 @@
 #include	"struct.h"
 #include	"proto.h"
 
-
+/*
 static void	picking_map(t_game *game)
 {
   int		x;
   int		y;
   int		i;
+
+  i = -1;
+  x = -1;
+  while (++x < game->map.w)
+  {
+    glPushName(++i);
+    floor_picking_h(x, game->map.h);
+    glPopName();
+  }
+  y = -1;
+  while (++y < game->map.h)
+  {
+    glPushName(++i);
+    floor_picking_w(y, game->map.w);
+    glPopName();
+  }
+}
+*/
+
+static void     picking_map(t_game *game)
+{
+  int           x;
+  int           y;
+  int           i;
 
   i = -1;
   x = -1;
@@ -69,26 +93,6 @@ static void	around(int h, int w, GLuint texture)
   glPopMatrix();
 }
 
-static void	clic(t_game *game)
-{
-  static int	i;
-  int		x;
-  int		y;
-
-  x = game->map.select % game->map.w;
-  y = game->map.select / game->map.w;
-  glPushMatrix();
-  glTranslatef(x * CASE_H + (CASE_H / 2),
-	       y * CASE_W + (CASE_W / 2), .1);
-  glPushMatrix();
-  i %= 360;
-  glRotated((i+= 2), 0 ,0 ,1);
-  glTranslatef(-CASE_H / 2, -CASE_W /2, 0);
-  floor_clic(game->texture->floor_s);
-  glPopMatrix();
-  glPopMatrix();
-}
-
 void		draw_map(t_game *game, GLenum mode)
 {
   if (mode == GL_RENDER)
@@ -98,10 +102,10 @@ void		draw_map(t_game *game, GLenum mode)
     floor_render(game->map.h, game->map.w, game->texture->floor);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    clic(game);
+    clic_map(game);
     glDisable(GL_BLEND);
     glDisable(GL_TEXTURE_2D);
   }
   else
-    picking_map(game);
+  picking_map(game);
 }

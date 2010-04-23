@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Wed Apr 21 22:23:20 2010 Florian Chanioux
+## Last update Thu Apr 22 21:45:47 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -48,10 +48,12 @@ SRC		= \
 		$(DIR_SRC)draw_floor.c		\
 		$(DIR_SRC)draw_map.c		\
 		$(DIR_SRC)draw_mob.c		\
+		$(DIR_SRC)draw_picking.c	\
 		$(DIR_SRC)draw_ressource.c	\
 		$(DIR_SRC)draw_interfaces.c	\
 		$(DIR_SRC)draw_gl.c		\
 		$(DIR_SRC)test_opengl.c		\
+		$(DIR_SRC)clic_mode.c		\
 		$(DIR_SRC)position.c		\
 		$(DIR_SRC)connect.c		\
 

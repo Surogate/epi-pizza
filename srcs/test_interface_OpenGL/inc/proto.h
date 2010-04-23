@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Thu Apr 22 15:55:19 2010 Florian Chanioux
+** Last update Thu Apr 22 21:45:10 2010 Florian Chanioux
 */
 
 #ifndef		__PROTO_H__
@@ -53,9 +53,14 @@ void		draw_map(t_game *game, GLenum mode);
 void		draw_mob(t_game *game, GLenum mode);
 void		draw_ressource(t_game *game, GLenum mode);
 
+void		clic_mob(t_game *game);
+void		clic_map(t_game *game);
+
 void		floor_render(int x, int y, GLuint select);
-void		floor_clic(GLuint texture);
-void		floor_picking();
+void		clic_render(GLuint texture);
+void            floor_picking(int x, int y);
+void		floor_picking_w(int y, int w);
+void		floor_picking_h(int x, int h);
 
 void		side(int x, GLuint select);
 #endif

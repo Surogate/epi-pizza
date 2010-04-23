@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Thu Apr 22 16:46:37 2010 Florian Chanioux
+** Last update Thu Apr 22 18:52:09 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -63,6 +63,7 @@ void		init_3dsmodel(t_game *game)
   trantorien->scale[2] = 15.0f;
   load_textureBMP("3DS/totoro.bmp", &trantorien->id_texture);
   Load3DS(trantorien,"3DS/totoro.3ds");
+  /* Load3DS(trantorien,"3DS/Nympha.max");*/
 }
 
 void		init_texture(t_game *game)

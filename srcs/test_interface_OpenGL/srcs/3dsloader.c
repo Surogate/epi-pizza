@@ -48,6 +48,7 @@ char			Load3DS (obj_type_ptr p_object, const char *p_filename)
   struct stat		filestat;
   unsigned int		bkText = p_object->id_texture;
   float			scale[3];
+  long taille;
 
   scale[0] = p_object->scale[0];
   scale[1] = p_object->scale[1];
@@ -61,7 +62,7 @@ char			Load3DS (obj_type_ptr p_object, const char *p_filename)
   if ((l_file = fopen(p_filename, "rb")) == NULL)
     return 0;
   stat(p_filename, &filestat);
-  while (ftell (l_file) < filestat.st_size)
+  while ((taille = ftell(l_file)) < (filestat.st_size))
   {
     /*
       getche();  Insert this command for debug
@@ -178,7 +179,7 @@ char			Load3DS (obj_type_ptr p_object, const char *p_filename)
       for (i=0; i<l_qty; i++)
       {
 	fread (&p_object->mapcoord[i].u, sizeof (float), 1, l_file);
-	/*  printf("Mapping list u: %f\n",p_object->mapcoord[i].u); */
+	/*printf("Mapping list u: %f\n",p_object->mapcoord[i].u); */
 	fread (&p_object->mapcoord[i].v, sizeof (float), 1, l_file);
 	/*  printf("Mapping list v: %f\n",p_object->mapcoord[i].v); */
       }
