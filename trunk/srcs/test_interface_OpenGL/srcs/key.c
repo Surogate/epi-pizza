@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Thu Apr 22 15:07:58 2010 Florian Chanioux
+** Last update Sat Apr 24 00:38:33 2010 Florian Chanioux
 */
 #include	<sys/types.h>
 #include	<unistd.h>
@@ -34,15 +34,20 @@
 int		key_func(t_game *game)
 {
   if (game->event.key.keysym.sym == SDLK_LEFT)
-    printf("Left rotation\n");
+    game->map.rot += 5;
   else if (game->event.key.keysym.sym == SDLK_RIGHT)
-    printf("Right rotation\n");
+    game->map.rot -= 5;
   else if (game->event.key.keysym.sym == SDLK_UP)
-    printf("UP rotation\n");
+    game->map.z += 5;
   else if (game->event.key.keysym.sym == SDLK_DOWN)
-    printf("down rotation\n");
+    game->map.z -= 5;
   else if (game->event.key.keysym.sym == SDLK_ESCAPE)
     return (0);
+  game->map.rot %= 360;
+  if (game->map.z < 100)
+    game->map.z = 100;
+  if (game->map.z > 400)
+    game->map.z = 400;
   return (1);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Thu Apr 22 17:15:09 2010 Florian Chanioux
+** Last update Sat Apr 24 00:38:48 2010 Florian Chanioux
 */
 
 #ifndef		STRUCT_H
@@ -58,6 +58,8 @@ typedef struct	s_map
   int		h;
   t_case	**t_case;
   int		select;
+  int		rot;
+  int		z;
 }		t_map;
 
 typedef struct

@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:30:49 2010 Florian Chanioux
-** Last update Thu Apr 22 15:15:16 2010 Florian Chanioux
+** Last update Sat Apr 24 01:01:01 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -32,8 +32,8 @@
 
 void		init_camera(t_game *game)
 {
-  game->video.cam[0] = (game->map.h * CASE_W) / 2;
-  game->video.cam[1] = (game->map.h * CASE_H) / 2;
+  game->video.cam[0] = /*-(game->map.h * CASE_W) */ 0;
+  game->video.cam[1] = /*-(game->map.h * CASE_H) */ 0;
   game->video.cam[2] = 0;
   game->video.cam[3] = CAM_Z;
 }

@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Thu Apr 22 13:22:38 2010 Florian Chanioux
+** Last update Sat Apr 24 00:40:52 2010 Florian Chanioux
 */
 
 #ifndef		DEFINE_H
@@ -13,8 +13,8 @@
 
 # define	FPS		30
 
-# define	WIN_W		800
-# define	WIN_H		600
+# define	WIN_W		1024
+# define	WIN_H		768
 
 # define	WIN_FOC		70.0
 # define	WIN_NEAR	1
