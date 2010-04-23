@@ -332,7 +332,7 @@ cleanall	: fclean
 	$(RM) $(DIR_SRC_GR)*~
 	$(RM) $(DIR_INC)*~
 	$(RM) *~
-	$(RM) TAGS
+	$(RM) TAGS*
 	@$(ECHO) "$(GREEN)[CLEANALL] -DONE$(END)"
 
 

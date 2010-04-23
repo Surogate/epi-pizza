@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 17:10:54 2010 Florian Chanioux
-** Last update Thu Apr 22 16:54:18 2010 Florian Chanioux
+** Last update Thu Apr 22 21:55:01 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -61,19 +61,76 @@ void		draw_mesh(obj_type *mesh)
   glEnd();
   glPopMatrix();
 }
-
-void		draw_mob(t_game *game, GLenum mode)
+/*
+static void	picking_mob(t_game *game)
 {
-  game = game;
-  mode = mode;
+  int		x;
+  int		y;
+  int		i;
 
+  i = -1;
+  x = -1;
+  while (++x < game->map.h)
+  {
+    y = -1;
+    while (++y < game->map.w)
+    {
+      ++i;
+      glPushName(i);
+      mod_picking(y, x);
+      glPopName();
+    }
+  }
+}
+*/
+/*
+void		draw_mod(t_game *game, GLenum mode)
+{
+  if (mode == GL_RENDER)
+  {
+    glEnable(GL_TEXTURE_2D);
+    floor_render(game->map.h, game->map.w, game->texture->floor);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    clic_mod(game);
+    glDisable(GL_BLEND);
+    glDisable(GL_TEXTURE_2D);
+  }
+  else
+    picking_mod(game);
+}
+*/
+
+static void	draw_trantorien(t_game *game, int name)
+{
   glEnable(GL_TEXTURE_2D);
   glPushMatrix();
-  glRotated(180, 0, 0, 1);
-  glTranslated(-(game->video.cam[0]), -(game->video.cam[1]), 0);
+  glTranslated((CASE_H / 2), (CASE_W / 2), 0);
+  glPushName(name);
   draw_mesh(game->model.trantorien);
+  glPopName();
   glPopMatrix();
   glDisable(GL_TEXTURE_2D);
 }
 
 
+void		draw_mob(t_game *game, GLenum mode)
+{
+  int		x;
+  int		y;
+  int		name;
+
+  name = game->map.h * game->map.w;
+  x = -1;
+  while (++x < game->map.h)
+  {
+    y = -1;
+    while (++y < game->map.w)
+    {
+      glPushMatrix();
+      glTranslated(y * CASE_H, x * CASE_W, 0);
+      draw_trantorien(game, name++);
+      glPopMatrix();
+    }
+  }
+}

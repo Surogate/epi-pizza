@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Sat Apr 17 19:43:59 2010 Florian Chanioux
-** Last update Thu Apr 22 15:22:52 2010 Florian Chanioux
+** Last update Thu Apr 22 21:55:41 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -34,12 +34,10 @@ void		draw_gl(t_game *game, GLenum mode)
 {
   int		x;
   int		y;
-  static int	i = 0;
 
+  
   x = game->info.pos.x;
   y = game->info.pos.y;
-/*  i %= 360;
-    glRotated((i+= 4), 0 ,0 ,1);*/
   glPushMatrix();
   glTranslated(-x, -y, 0);
   glPushMatrix();

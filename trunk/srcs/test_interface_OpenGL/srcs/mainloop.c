@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:24:06 2010 Florian Chanioux
-** Last update Thu Apr 22 16:54:17 2010 Florian Chanioux
+** Last update Thu Apr 22 21:59:39 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -87,14 +87,14 @@ void		mainloop(t_game *game)
   SDL_EnableKeyRepeat(100, 20);
   while (exit)
   {
-    exit = interaction(game);
 /*    search_msg(game);*/
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    camera(game);
-    draw_interface(game);
-    draw_gl(game, GL_RENDER);
-    glFlush();
-    SDL_GL_SwapBuffers();
+      exit = interaction(game);
+      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+      camera(game);
+      draw_interface(game);
+      draw_gl(game, GL_RENDER);
+      glFlush();
+      SDL_GL_SwapBuffers();
 /*    timedelay();*/
   }
 }
