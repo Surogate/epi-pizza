@@ -48,17 +48,18 @@ void		my_recv(t_game *game)
 {
   char		*msg;
 
-  circle_read(&game->serv);
+  circle_read(game->serv.socket, &game->serv.circ);
   printf("\033[31mbuff content :\033[00m\n");
-  printf("%s", game->serv.current->buff);
+  printf("%s", game->serv.circ.buf);
   printf("\033[31mend content\033[00m\n");
   do
     {
-      msg = circle_get(&game->serv);
+      msg = get_cmd(&game->serv.circ);
       if (msg)
 	{
 	  printf("\033[31mmessage extract :\033[00m\n%s\n",msg);
 	  free(msg);
+	  printf("FREE\n");
 	}
     }while (msg);
 }
@@ -76,7 +77,10 @@ void		search_msg(t_game *game)
   if (ready > 0)
     {
       if (FD_ISSET(game->serv.socket, &game->serv.fd_read))
-	my_recv(game);
+	{
+	  printf("go to recv\n");
+	  my_recv(game);
+	}
     }
   if (ready < 0)
     {

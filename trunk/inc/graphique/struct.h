@@ -17,11 +17,29 @@ typedef struct	s_event
   int		(*func)();
 }		t_event;
 
+typedef struct	s_msg
+{
+  char		*name;
+  void		(*func)();
+}		t_msg;
+
 typedef struct	s_pos
 {
   int		x;
   int		y;
 }		t_pos;
+
+typedef struct	s_play
+{
+  int		id;
+  int		lv;
+  int		sens;
+  t_pos		pos;
+  struct s_play	*next_pc;
+  struct s_play	*next_pg;
+  int		inventaire[7];
+  char		team[50];
+}		t_player;
 
 typedef struct	s_mouse
 {
@@ -34,17 +52,10 @@ typedef struct	s_info
 {
   t_pos		pos;
   int		dir;
+  int		time;
   int		size_h;
   int		size_w;
 }		t_info;
-
-typedef struct	s_play
-{
-  int		lv;
-  t_pos		pos;
-  int		id;
-  struct s_play	*next;
-}		t_player;
 
 typedef struct	s_case
 {
@@ -79,13 +90,23 @@ typedef struct	s_video
   int		aliasing;
   int		cam[3];
 }		t_video;
-
+/*
 typedef struct	s_circ
 {
   char		buff[BUFSIZE];
   int		cur;
   int		num;
   struct s_circ	*next;
+}		t_circle;
+*/
+
+typedef struct	s_circle_buf
+{
+  char		buf[BUFSIZE + 1];
+  int		pos;
+  int		deb;
+  int		nb;
+  int		retour;
 }		t_circle;
 
 typedef struct	s_serv
@@ -95,13 +116,13 @@ typedef struct	s_serv
   fd_set	fd_write;
   int		beg[2];
   t_circle	circ;
-  t_circle	*current;
 }		t_serv;
 
 typedef struct	s_game
 {
   SDL_Event	event;
   SDL_Surface	*screen;
+  t_player	*player;
   t_video	video;
   t_model	model;
   t_texture	texture;

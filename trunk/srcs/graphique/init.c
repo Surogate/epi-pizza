@@ -58,7 +58,7 @@ static void	init_map(t_game *game)
 void		init_game(t_game *game)
 {
   game->screen = load_window();
-  init_circ(game);
+  init_circ(&game->serv.circ);
   game->mouse.clicked = 0;
   /*
     game->mouse.img[0] = img_load("images/main_ouverte.bmp");
@@ -75,6 +75,7 @@ void		init_game(t_game *game)
   game->info.pos.y = 0;
   game->info.size_h = 10;
   game->info.size_w = 10;
+  game->player = 0;
   init_map(game);
   SDL_ShowCursor(1);
 }

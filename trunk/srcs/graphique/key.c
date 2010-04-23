@@ -48,24 +48,24 @@ int		key_func(t_game *game)
 
 int		exit_func(t_game *game)
 {
-  t_circle	*current;
-  t_circle	*next;
+/*   t_circle	*current; */
+/*   t_circle	*next; */
 
-  printf("\033[31mEXITING\033[00m\n");
-  current = game->serv.circ.next;
-  if (current)
-    {
-      next = current->next;
-      free(current);
-    }
-  else
-    next = 0;
-  while (next)
-    {
-      current = next;
-      next = current->next;
-      free(current);
-    }
+/*   printf("\033[31mEXITING\033[00m\n"); */
+/*   current = game->serv.circ.next; */
+/*   if (current) */
+/*     { */
+/*       next = current->next; */
+/*       free(current); */
+/*     } */
+/*   else */
+/*     next = 0; */
+/*   while (next) */
+/*     { */
+/*       current = next; */
+/*       next = current->next; */
+/*       free(current); */
+/*     } */
 /*     TTF_CloseFont(game->font); */
 /*     TTF_Quit(); */
   return (0);
