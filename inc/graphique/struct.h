@@ -37,9 +37,16 @@ typedef struct	s_play
   t_pos		pos;
   struct s_play	*next_pc;
   struct s_play	*next_pg;
+  struct s_play	*next_pt;
   int		inventaire[7];
   char		team[50];
 }		t_player;
+
+typedef struct	s_team
+{
+  char		name[50];
+  t_player	*player;
+}		t_team;
 
 typedef struct	s_mouse
 {

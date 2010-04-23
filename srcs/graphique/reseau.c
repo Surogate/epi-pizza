@@ -231,7 +231,8 @@ void		eggs_die(t_game *game, char **av)
 
 void		time_unite(t_game *game, char **av)
 {
-  game->info.time = av[1];
+  if (av[1])
+    game->info.time = av[1];
 }
 
 void		game_over(t_game *game, char **av)
@@ -243,7 +244,13 @@ void		game_over(t_game *game, char **av)
 
 void		server_msg(t_game *game, char **av)
 {
+  int		i;
 
+  printf("serveur msg :");
+  i = 1;
+  while(av[i])
+    printf("%s ", av[i++]);
+  printf("\n");
 }
 
 void		wrong_func()
