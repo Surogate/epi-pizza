@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Thu Apr 22 21:45:47 2010 Florian Chanioux
+## Last update Sat Apr 24 02:56:45 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -37,6 +37,7 @@ SRC		= \
 		$(DIR_SRC)init.c		\
 		$(DIR_SRC)init_load.c		\
 		$(DIR_SRC)initgl.c		\
+		$(DIR_SRC)CallList.c		\
 		$(DIR_SRC)load_window.c		\
 		$(DIR_SRC)load_image.c		\
 		$(DIR_SRC)loadtexture.c		\

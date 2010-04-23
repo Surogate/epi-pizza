@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 17:10:54 2010 Florian Chanioux
-** Last update Sat Apr 24 00:20:46 2010 Florian Chanioux
+** Last update Sat Apr 24 02:58:14 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -101,13 +101,14 @@ void		draw_mod(t_game *game, GLenum mode)
 }
 */
 
+
 static void	draw_trantorien(t_game *game, int name)
 {
   glEnable(GL_TEXTURE_2D);
   glPushMatrix();
   glTranslated((CASE_H / 2), (CASE_W / 2), 0);
   glPushName(name);
-  draw_mesh(game->model.trantorien);
+  glCallList(TOTORO);
   glPopName();
   glPopMatrix();
   glDisable(GL_TEXTURE_2D);

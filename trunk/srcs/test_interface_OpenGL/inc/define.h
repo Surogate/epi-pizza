@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Sat Apr 24 00:40:52 2010 Florian Chanioux
+** Last update Sat Apr 24 03:18:02 2010 Florian Chanioux
 */
 
 #ifndef		DEFINE_H
@@ -26,7 +26,10 @@
 # define	CASE_W		32
 # define	CASE_H		32
 
-# define	MAP_CASE	1
+# define	TOTORO	1
+# define	TERRAIN	2
+# define	INTER	3
+# define	PICKING	4
 
 
 # define	FONT_DIR	"./font/MONACO.ttf"

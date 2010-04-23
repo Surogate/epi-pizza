@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Sat Apr 24 00:39:08 2010 Florian Chanioux
+** Last update Sat Apr 24 03:27:40 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -55,15 +55,10 @@ static void	init_map(t_game *game)
   }
 }
 
-void		init_game(t_game *game)
+void		init_game(t_game *game, int ac, char *av[])
 {
   game->screen = load_window();
   game->mouse.clicked = 0;
-  /*
-    game->mouse.img[0] = img_load("images/main_ouverte.bmp");
-    game->mouse.img[1] = img_load("images/main_fermer.bmp");
-    game->map.fond = img_load("images/fond_losange.bmp");
-  */
 /*  if (TTF_Init() < 0)
   {
     fprintf(stderr, "TTF error : %s", TTF_GetError());
@@ -73,8 +68,8 @@ void		init_game(t_game *game)
 
   game->map.rot = 0;
   game->map.z = 200;
-  game->map.h = 10;
-  game->map.w = 10;
+  game->map.h = 50;
+  game->map.w = 50;
   game->info.pos.x = 0;
   game->info.pos.y = 0;
   game->info.size_h = 100;

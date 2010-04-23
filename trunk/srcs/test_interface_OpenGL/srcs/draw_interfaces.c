@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Wed Apr 21 18:05:56 2010 Florian Chanioux
-** Last update Thu Apr 22 16:52:31 2010 Florian Chanioux
+** Last update Sat Apr 24 03:07:14 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -30,7 +30,7 @@
 #include	"define.h"
 #include	"struct.h"
 
-static void	interface_up(GLuint texture)
+void	interface_up(GLuint texture)
 {
   glBindTexture(GL_TEXTURE_2D, texture);
   glBegin(GL_QUADS);
@@ -45,7 +45,7 @@ static void	interface_up(GLuint texture)
   glEnd();
 }
 
-static void	interface_down(GLuint texture)
+void	interface_down(GLuint texture)
 {
   glBindTexture(GL_TEXTURE_2D, texture);
   glBegin(GL_QUADS);
@@ -71,24 +71,7 @@ void DrawStr(const char *str)
     glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, str[i]);
 }
 
-void		draw_interface(t_game *game)
+void		draw_interface()
 {
-  glMatrixMode(GL_PROJECTION);
-  glPushMatrix();
-  glLoadIdentity();
-  glMatrixMode(GL_MODELVIEW);
-  glPushMatrix();
-  glLoadIdentity();
-  glEnable(GL_TEXTURE_2D);
-
-  interface_up(game->texture->inter_u);
-
-  interface_down(game->texture->inter_d);
-
-  glDisable(GL_TEXTURE_2D);
-  glPopMatrix();
-  glMatrixMode(GL_PROJECTION);
-  glPopMatrix();
-  glMatrixMode(GL_MODELVIEW);
-
+  glCallList(INTER);
 }

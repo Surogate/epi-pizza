@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Sat Apr 24 00:23:35 2010 Florian Chanioux
+** Last update Sat Apr 24 02:47:17 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -73,7 +73,7 @@ void		init_texture(t_game *game)
     puts("TEXTURE ON");
     game->texture = malloc(sizeof(t_texture));
     game->texture->inter_d = loadtexture("images/interface_down.png");
-      game->texture->inter_u = loadtexture("images/interface_up.png");
+    game->texture->inter_u = loadtexture("images/interface_up.png");
     game->texture->floor = loadtexture("images/lawn.jpg");
     game->texture->side = loadtexture("images/side.jpg");
     game->texture->floor_s = loadtexture("images/Circle.png");

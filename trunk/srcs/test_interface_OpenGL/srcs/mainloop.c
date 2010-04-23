@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:24:06 2010 Florian Chanioux
-** Last update Sat Apr 24 00:50:50 2010 Florian Chanioux
+** Last update Sat Apr 24 02:47:16 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -79,6 +79,8 @@ void		timedelay()
   SDL_Delay(delay);
 }
 
+
+
 void		mainloop(t_game *game)
 {
   int		exit;
@@ -93,6 +95,7 @@ void		mainloop(t_game *game)
       camera(game);
       draw_interface(game);
       draw_gl(game, GL_RENDER);
+
       glFlush();
       SDL_GL_SwapBuffers();
 /*    timedelay();*/

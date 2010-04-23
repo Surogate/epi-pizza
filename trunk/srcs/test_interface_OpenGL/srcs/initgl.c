@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:32:28 2010 Florian Chanioux
-** Last update Thu Apr 22 16:36:42 2010 Florian Chanioux
+** Last update Sat Apr 24 03:14:03 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -117,4 +117,8 @@ void initGL(t_game *game)
   glEnable(GL_DEPTH_TEST);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+  make_calllistes_trantorien(game);
+  make_calllistes_picking(game);
+  make_calllistes_interface(game);
+  make_calllistes_terrain(game);
 }

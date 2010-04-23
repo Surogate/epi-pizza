@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Mon Apr 19 13:15:43 2010 Florian Chanioux
-** Last update Thu Apr 22 21:44:58 2010 Florian Chanioux
+** Last update Sat Apr 24 03:23:06 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -30,7 +30,7 @@
 #include	"struct.h"
 #include	"proto.h"
 
-void		clic_render(GLuint texture)
+void		clic_render()
 {
   static int	i;
 
@@ -39,18 +39,24 @@ void		clic_render(GLuint texture)
   glPushMatrix();
   i %= 360;
   glRotated((i+= 2), 0 ,0 ,1);
-  glTranslatef(-CASE_H / 2, -CASE_W /2, 0);
-  glBindTexture(GL_TEXTURE_2D, texture);
-  glBegin(GL_QUADS);
-  glTexCoord2f(0, 0);
-  glVertex2d(0, 0);
-  glTexCoord2f(0,1);
-  glVertex2d(0, CASE_W);
-  glTexCoord2f(1, 1);
-  glVertex2d(CASE_H, CASE_W);
-  glTexCoord2f(1, 0);
-  glVertex2d(CASE_H, 0);
-  glEnd();
+  glCallList(PICKING);
+  glPopMatrix();
+  glPopMatrix();
+}
+
+void		around(int h, int w, GLuint texture)
+{
+  side(w, texture);
+  glPushMatrix();
+  glTranslated(0, h * CASE_H, 0);
+  side(w, texture);
+  glPopMatrix();
+  glPushMatrix();
+  glRotated(90, 0, 0, 1);
+  side(h, texture);
+  glPushMatrix();
+  glTranslated(0, -w * CASE_W, 0 );
+  side(h, texture);
   glPopMatrix();
   glPopMatrix();
 }
