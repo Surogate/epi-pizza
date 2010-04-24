@@ -34,6 +34,7 @@
 #include	"s_cbuf.h"
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
+#include	"xfunc.h"
 
 void		tempo(t_game *game)
 {
@@ -50,6 +51,41 @@ void		tempo(t_game *game)
 	    }
 	}
     }
+}
+
+void		test_create_player(t_game *game, int id, int team)
+{
+  t_player	*pl;
+  t_player	*new;
+  static long	seed;
+  int		i;
+
+  srandom(seed + time(NULL));
+  seed = random();
+  pl = game->player;
+  if (pl != NULL)
+    while (pl != NULL)
+      pl = pl->next_pg;
+  new = xmalloc(sizeof(t_player));
+  pl->next_pg = new;
+  new->next_pg = NULL;
+  new->id = id;
+  new->lv = random() % 8;
+  new->sens = random() % 4;
+  new->pos.x = random() % 10;
+  new->pos.y = random() % 10;
+  i = -1;
+  while (++i != 8)
+    new->inventaire[i] = random() % 10;
+  i = -1;
+  while (++i != 5)
+    {
+      if (team == 1)
+	new->team[i] = '1';
+      else
+	new->team[i] = '2';
+    }
+  new->team[i] = '\0';
 }
 
 void		test_init_player(t_game *game)
