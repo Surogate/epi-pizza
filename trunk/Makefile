@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Sat Apr 24 07:00:49 2010 Florian Chanioux
+## Last update Sat Apr 24 07:32:13 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -132,28 +132,28 @@ SRC_GR		= \
 		$(DIR_SRC_GR)main.c			\
 		$(DIR_SRC_GR)init.c			\
 		$(DIR_SRC_GR)mainloop.c			\
-		$(DIR_SRC_GR)g_load_image.c		\
-		$(DIR_SRC_GR)g_loadtexture.c		\
-		$(DIR_SRC_GR)g_3dsloader.c		\
-		$(DIR_SRC_GR)g_xsdl.c			\
-		$(DIR_SRC_GR)g_key.c			\
-		$(DIR_SRC_GR)g_init_load.c		\
-		$(DIR_SRC_GR)g_initgl.c			\
-		$(DIR_SRC_GR)g_CallList.c		\
-		$(DIR_SRC_GR)g_load_window.c		\
-		$(DIR_SRC_GR)g_camera.c			\
-		$(DIR_SRC_GR)g_interaction.c		\
-		$(DIR_SRC_GR)g_mouse.c			\
-		$(DIR_SRC_GR)g_draw_floor.c		\
-		$(DIR_SRC_GR)g_draw_map.c		\
-		$(DIR_SRC_GR)g_draw_mob.c		\
-		$(DIR_SRC_GR)g_draw_picking.c		\
-		$(DIR_SRC_GR)g_draw_ressource.c		\
-		$(DIR_SRC_GR)g_draw_interfaces.c	\
-		$(DIR_SRC_GR)g_draw_gl.c		\
-		$(DIR_SRC_GR)g_test_opengl.c		\
-		$(DIR_SRC_GR)g_clic_mode.c		\
-		$(DIR_SRC_GR)g_position.c		\
+		$(DIR_SRC_GR)gl/g_load_image.c		\
+		$(DIR_SRC_GR)gl/g_loadtexture.c		\
+		$(DIR_SRC_GR)gl/g_3dsloader.c		\
+		$(DIR_SRC_GR)gl/g_xsdl.c		\
+		$(DIR_SRC_GR)gl/g_key.c			\
+		$(DIR_SRC_GR)gl/g_init_load.c		\
+		$(DIR_SRC_GR)gl/g_initgl.c		\
+		$(DIR_SRC_GR)gl/g_CallList.c		\
+		$(DIR_SRC_GR)gl/g_load_window.c		\
+		$(DIR_SRC_GR)gl/g_camera.c		\
+		$(DIR_SRC_GR)gl/g_interaction.c		\
+		$(DIR_SRC_GR)gl/g_mouse.c		\
+		$(DIR_SRC_GR)gl/g_draw_floor.c		\
+		$(DIR_SRC_GR)gl/g_draw_map.c		\
+		$(DIR_SRC_GR)gl/g_draw_mob.c		\
+		$(DIR_SRC_GR)gl/g_draw_picking.c	\
+		$(DIR_SRC_GR)gl/g_draw_ressource.c	\
+		$(DIR_SRC_GR)gl/g_draw_interfaces.c	\
+		$(DIR_SRC_GR)gl/g_draw_gl.c		\
+		$(DIR_SRC_GR)gl/g_test_opengl.c		\
+		$(DIR_SRC_GR)gl/g_clic_mode.c		\
+		$(DIR_SRC_GR)gl/g_position.c		\
 		$(DIR_SRC_GR)circle.c			\
 		$(DIR_SRC_GR)reseau.c			\
 		$(DIR_SRC_GR)connect.c
