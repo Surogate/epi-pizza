@@ -61,9 +61,8 @@ void		init_3dsmodel(t_game *game)
   trantorien->scale[0] = 5.0f;
   trantorien->scale[1] = 5.0f;
   trantorien->scale[2] = 8.0f;
-  load_textureBMP("3DS/totoro.bmp", &trantorien->id_texture);
+  load_textureBMP("3DS/totoro8.bmp", &trantorien->id_texture);
   Load3DS(trantorien,"3DS/totoro.3ds");
-  /* Load3DS(trantorien,"3DS/Nympha.max");*/
 }
 
 void		init_texture(t_game *game)
