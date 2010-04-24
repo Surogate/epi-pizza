@@ -51,6 +51,8 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 {
   if (client_parse_instr(str, cli) == EXIT_SUCCESS)
     {
+      printf("######## avant instr ##########\n");
+      debug_client(cli);
       if (!cli->team && cli->auth < 3)
 	{
 	  delete_kick(vec, cli->sock);
@@ -71,6 +73,7 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	create_plaction(vec, cli, vec->slt);
     }
   debug_client(cli);
+  printf("######## apres instr ##########\n");
 }
 
 void		free_client(t_client *cli)
