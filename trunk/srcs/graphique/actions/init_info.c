@@ -86,6 +86,12 @@ void		team_name(t_game *game, char **av)
   old->next = tim;
   /*  tim->name = strcmp(tim->name, av[1]);*/
 
+  if (strlen(av[1]) < 50)
+    {
+      i = -1;
+      while (av[1][++i])
+	tim->name[i] = av[1][i];
+    }
   tim->next = NULL;
 }
 
