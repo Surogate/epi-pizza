@@ -75,7 +75,7 @@ int			init_svr_par(t_select *slt_par,
   while ((tmp = (t_client *)vec->graph->getnxts(vec->graph)) != NULL)
     {
       FD_SET(tmp->sock, &(slt_par->fd_read));
-      if (tmp->sock > &(slt_par->fd_max))
+      if (tmp->sock > (slt_par->fd_max))
 	slt_par->fd_max = tmp->sock;
     }
   ++(slt_par->fd_max);

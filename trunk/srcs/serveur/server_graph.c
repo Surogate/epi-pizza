@@ -94,4 +94,5 @@ int		graph_inst(t_client *cli, t_svr_vector *vec)
 	else if ((readed = cbuf_read(&(cli->cbuf), check_read)))
 	  printf("readed : %s\n", readed);
     }
+  return (EXIT_SUCCESS);
 }
