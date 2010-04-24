@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:32:28 2010 Florian Chanioux
-** Last update Sat Apr 24 04:51:38 2010 Florian Chanioux
+** Last update Sat Apr 24 09:38:33 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -33,6 +33,9 @@
 void		init_doublebuffer()
 {
   int value;
+
+  value = 16;
+  SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, value);
 
   value = 1;
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, value);
