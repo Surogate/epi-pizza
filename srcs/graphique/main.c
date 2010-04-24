@@ -39,7 +39,7 @@ void		tempo(t_game *game)
 {
   while (game->map.h == -42)
     {
-      printf("tour de boucle tempo\n");
+      /* printf("tour de boucle tempo\n"); */
       search_msg(game);
       if (SDL_PollEvent(&(game->event)))
 	{
@@ -72,7 +72,6 @@ int		main(int ac, char *av[])
       game.serv.cbuf = cbuf_new();
       tempo(&game);
       test_init_player(game);
-
       printAttributes();
       init_texture(&game);
       init_3dsmodel(&game);

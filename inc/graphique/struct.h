@@ -41,6 +41,7 @@ typedef struct	s_pos
 typedef struct	s_play
 {
   int		id;
+  GLuint	name;
   int		lv;
   int		sens;
   t_pos		pos;
@@ -52,6 +53,7 @@ typedef struct	s_play
 typedef	struct	s_egg
 {
   int		id;
+  GLuint	name;
   t_pos		pos;
   char		*team;
   struct s_egg	*next;

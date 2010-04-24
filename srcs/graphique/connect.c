@@ -51,6 +51,7 @@ void		connect_to_serv(t_game *game, char **av)
     }
   write(game->serv.socket, TEAM, strlen(TEAM));
   printf("Connect at %s\n", av[1]);
+  printf("serv socket %d\n", game->serv.socket);
   FD_ZERO(&game->serv.fd_read);
   FD_ZERO(&game->serv.fd_write);
   FD_SET(0, &game->serv.fd_read);

@@ -74,6 +74,7 @@ void		my_recv(t_game *game)
 	  temp = split(msg, ' ');
 	  printf("func : %s\n", temp[0]);
 	  traitement(game, temp);
+	  printf("fin du traitement\n");
 	  if (!strncmp(temp[0], "msz", 3))
 	    {
 	      printf("taille de la map : %d, %d\n", game->map.h, game->map.w);
@@ -94,6 +95,7 @@ void		search_msg(t_game *game)
   FD_SET(game->serv.socket, &game->serv.fd_write);
   ready = select(game->serv.socket + 1, &game->serv.fd_read,
 		 &game->serv.fd_write, NULL, NULL);
+  printf("verification du fd %d\n", game->serv.socket);
   if (ready > 0)
     {
       if (FD_ISSET(game->serv.socket, &game->serv.fd_read))
@@ -136,6 +138,7 @@ void		mainloop(t_game *game)
     exit = interaction(game);
     if (i % 3)
       {
+	search_msg(game);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	camera(game);
 	draw_interface(game);
