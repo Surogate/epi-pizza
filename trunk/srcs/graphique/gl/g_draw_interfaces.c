@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Wed Apr 21 18:05:56 2010 Florian Chanioux
-** Last update Sat Apr 24 04:51:38 2010 Florian Chanioux
+** Last update Sat Apr 24 13:26:34 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -23,12 +23,12 @@
 # include	<SDL/SDL_ttf.h>
 # include	<GL/glu.h>
 # include	<GL/gl.h>
-# include	<GL/freeglut_std.h>
 #endif
 
 #include	"graphique/3dsloader.h"
 #include	"graphique/define.h"
 #include	"graphique/struct.h"
+#include	"graphique/proto.h"
 
 void	interface_up(GLuint texture)
 {
@@ -58,17 +58,6 @@ void	interface_down(GLuint texture)
   glTexCoord2f(1, 0);
   glVertex3f(0.45, -1, 0.9);
   glEnd();
-}
-
-void DrawStr(const char *str)
-{
-  GLint i;
-
-  i = -1;
-  if(!str)
-    return ;
-  while(str[++i])
-    glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, str[i]);
 }
 
 void		draw_interface(t_game *game)

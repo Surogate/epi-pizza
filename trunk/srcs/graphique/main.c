@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Sat Apr 24 05:06:50 2010 Florian Chanioux
+** Last update Sat Apr 24 13:10:03 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -23,6 +23,7 @@
 #else
 # include	<SDL/SDL.h>
 # include	<SDL/SDL_ttf.h>
+# include	<GL/freeglut_std.h>
 # include	<GL/glu.h>
 # include	<GL/gl.h>
 #endif
@@ -41,6 +42,7 @@ int		main(int ac, char *av[])
   if (ac > 2)
     {
       /*     connect_to_serv(&game, av);*/
+      glutInit(&ac, av);
       init_video(&game);
       init_game(&game);
       printAttributes();

@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Sat Apr 24 07:48:27 2010 Florian Chanioux
+## Last update Sat Apr 24 13:23:40 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -174,6 +174,7 @@ SRC_GR		= \
 		$(DIR_SRC_GR)gl/g_camera.c		\
 		$(DIR_SRC_GR)gl/g_interaction.c		\
 		$(DIR_SRC_GR)gl/g_mouse.c		\
+		$(DIR_SRC_GR)gl/g_write_screen.c	\
 		$(DIR_SRC_GR)gl/g_draw_floor.c		\
 		$(DIR_SRC_GR)gl/g_draw_map.c		\
 		$(DIR_SRC_GR)gl/g_draw_mob.c		\
