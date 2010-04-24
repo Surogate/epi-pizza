@@ -94,7 +94,6 @@ void		picking_mouse(t_game *game, int x, int y)
   glSelectBuffer (BUFSIZE, selectBuf);
   glGetIntegerv(GL_VIEWPORT,viewport);
   glRenderMode(GL_SELECT);
-  glInitNames();
   glMatrixMode(GL_PROJECTION);
   glPushMatrix();
   glLoadIdentity();

@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Sat Apr 24 02:51:07 2010 Florian Chanioux
-** Last update Sat Apr 24 04:51:38 2010 Florian Chanioux
+** Last update Sun Apr 25 02:03:31 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -67,7 +67,7 @@ void		make_calllistes_trantorien(t_game *game)
     draw_mesh(game->model.trantorien[i]);
     glDisable(GL_TEXTURE_2D);
     glEndList();
-    printf("loading totoro: %i\n - done", i);
+    printf("loading totoro: %i - done\n", i);
   }
 }
 
@@ -83,6 +83,7 @@ void		make_calllistes_terrain(t_game *game)
   puts("load map - done");
   puts("load map_picking");
   glNewList(TERRAIN + 1, GL_COMPILE);
+  glInitNames();
   picking_map(game);
   glEndList();
   puts("load map_picking - done");
@@ -90,10 +91,12 @@ void		make_calllistes_terrain(t_game *game)
 
 void		make_calllistes_interface(t_game *game)
 {
+  puts("load interface");
   glNewList(INTER, GL_COMPILE);
   glEnable(GL_TEXTURE_2D);
   interface_up(game->texture->inter_u);
   interface_down(game->texture->inter_d);
   glDisable(GL_TEXTURE_2D);
   glEndList();
+  puts("load interface - done");
 }
