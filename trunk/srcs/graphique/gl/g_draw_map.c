@@ -31,7 +31,7 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-static void     picking_map(t_game *game)
+void		picking_map(t_game *game)
 {
   int           x;
   int           y;
@@ -45,6 +45,7 @@ static void     picking_map(t_game *game)
     while (++y < game->map.w)
     {
       ++i;
+      printf("val %i,   %i    %i\n", i, game->map.h, game->map.w);
       glPushName(i);
       floor_picking(y, x);
       glPopName();
@@ -60,5 +61,5 @@ void		draw_map(t_game *game, GLenum mode)
     clic_map(game);
   }
   else
-    picking_map(game);
+    glCallList(TERRAIN + 1);
 }
