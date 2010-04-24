@@ -45,8 +45,9 @@ void		init_map(t_game *game, char **av)
   if (ac > 2)
     if (atoi(av[1]) && atoi(av[2]))
       {
-	game->info.size_w = atoi(av[1]);
-	game->info.size_h = atoi(av[2]);
+	printf("INIT MAP\n");
+	game->map.w = atoi(av[1]);
+	game->map.h = atoi(av[2]);
       }
 }
 
@@ -60,8 +61,9 @@ void		put_to_case(t_game *game, char **av)
   ac = 0;
   while (av[ac])
     ac++;
-  if (ac > 10)
+  if (ac > 8)
     {
+      printf("UPDATE CASE\n");
       x = atoi(av[1]);
       y = atoi(av[2]);
       n_obj = 0;
@@ -347,7 +349,7 @@ void		bad_param()
   printf("bad param!\n");
 }
 
-t_msg		mgs_lst[] =
+t_msg		msg_lst[] =
   {
     {"msz", init_map},
     {"bct", put_to_case},
@@ -375,3 +377,16 @@ t_msg		mgs_lst[] =
     {"sbp\n", bad_param},
     {0,0}
   };
+
+void	traitement(t_game *game, char **av)
+{
+  int	i;
+
+  i = 0;
+  while (msg_lst[i].name)
+    {
+      if (!strncmp(msg_lst[i].name, av[0], 3))
+	msg_lst[i].func(game, av);
+      i++;
+    }
+}

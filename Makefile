@@ -186,6 +186,7 @@ SRC_GR		= \
 		$(DIR_SRC_GR)gl/g_clic_mode.c		\
 		$(DIR_SRC_GR)gl/g_position.c		\
 		$(DIR_SRC_GR)reseau.c			\
+		$(DIR_SRC_GR)split.c			\
 		$(DIR_SRC_GR)connect.c
 
 SRC_GR_Darwin	= \

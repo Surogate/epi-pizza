@@ -53,21 +53,22 @@ void		display_mouse(t_game *game)
 
 int		mouse_move(t_game *game)
 {
+  static int	pouet = 0;
+
   if (game->mouse.clicked)
     {
-
-      game->info.pos.x += game->mouse.move.x - game->event.button.x;
-      game->info.pos.y -= game->mouse.move.y - game->event.button.y;
-/*
-      if (game->info.pos.x < 0)
-	game->info.pos.x = CASE_W * game->info.size_w + game->info.pos.x;
-      if (game->info.pos.y < 0)
-	game->info.pos.y = CASE_H * game->info.size_h + game->info.pos.y;
-*/
-      game->info.pos.x = game->info.pos.x % (CASE_W * game->info.size_w);
-      game->info.pos.y = game->info.pos.y % (CASE_H * game->info.size_h);
-      game->mouse.move.x = game->event.button.x;
-      game->mouse.move.y = game->event.button.y;
+      if (!(pouet % 5))
+	{
+	  game->info.pos.x += game->mouse.move.x - game->event.button.x;
+	  game->info.pos.y -= game->mouse.move.y - game->event.button.y;
+	  game->info.pos.x = game->info.pos.x % (CASE_W * game->info.size_w);
+	  game->info.pos.y = game->info.pos.y % (CASE_H * game->info.size_h);
+	  game->mouse.move.x = game->event.button.x;
+	  game->mouse.move.y = game->event.button.y;
+	}
+      pouet++;
+      if (pouet > 20)
+	pouet = 0;
     }
   return (1);
 }
