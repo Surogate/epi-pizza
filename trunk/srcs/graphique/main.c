@@ -37,6 +37,7 @@ int		main(int ac, char *av[])
 {
   t_game	game;
 
+  av = av;
   if (ac > 2)
     {
       /*     connect_to_serv(&game, av);*/

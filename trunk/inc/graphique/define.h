@@ -23,8 +23,8 @@
 # define	WIN_BPP		32
 # define	WIN_COLOR	32
 
-# define	CASE_W		32
-# define	CASE_H		32
+# define	CASE_W		42
+# define	CASE_H		42
 
 # define	TOTORO	1
 # define	TERRAIN	2

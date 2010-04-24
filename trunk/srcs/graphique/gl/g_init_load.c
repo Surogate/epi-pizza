@@ -58,9 +58,9 @@ void		init_3dsmodel(t_game *game)
 
   game->model.trantorien = malloc(sizeof(obj_type));
   trantorien = game->model.trantorien;
-  trantorien->scale[0] = 6.0f;
-  trantorien->scale[1] = 6.0f;
-  trantorien->scale[2] = 6.0f;
+  trantorien->scale[0] = 5.0f;
+  trantorien->scale[1] = 5.0f;
+  trantorien->scale[2] = 8.0f;
   load_textureBMP("3DS/totoro.bmp", &trantorien->id_texture);
   Load3DS(trantorien,"3DS/totoro.3ds");
   /* Load3DS(trantorien,"3DS/Nympha.max");*/
@@ -85,7 +85,7 @@ void		init_texture(t_game *game)
 void		init_video(t_game *game)
 {
   game->video.text = 1;
-  game->video.fog = 0;
-  game->video.light = 0;
-  game->video.aliasing = 0;
+  game->video.fog = 1;
+  game->video.light = 1;
+  game->video.aliasing = 1;
 }
