@@ -80,21 +80,27 @@ void		llist_display(t_vector *vec, void (*disp)())
 {
   t_llist	*tmp;
   int		i;
+  FILE		*debug;
 
   tmp = vec->start;
   i = 0;
-  printf("\033[1;31m==== Start display =====\033[m\n");
-  printf("taille : %i\nposition du gns : %i\n", vec->size, vec->gns_pos);
+  debug = fopen("vector_debug.log", "a");
+  if (!debug)
+    return ;
+  fprintf(debug, "==== Start display =====\n");
+  fprintf(debug, "taille : %i\nposition du gns : %i\n", 
+	  vec->size, vec->gns_pos);
   while (tmp)
   {
     i++;
-    printf("num : %i\nprv : %p, nxt : %p\n", i, 
+    fprintf(debug, "num : %i\nprv : %p, nxt : %p\n", i, 
 	   (void *)tmp->prv, (void *)tmp->nxt);
     if (tmp->strct && disp)
-      disp(tmp->strct);
+      disp(tmp->strct, NULL);
     else
-      printf("no struct in");
+      fprintf(debug, "no struct in");
     tmp = tmp->nxt;
   }
-  printf("\033[1;31m==== End display =====\033[m\n");
+  fprintf(debug, "==== End display =====\n");
+  fclose(debug);
 }

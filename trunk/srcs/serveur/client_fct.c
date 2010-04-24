@@ -123,9 +123,7 @@ int			client_parse_instr(char *str, t_client *cli)
   if (cli->team)
     if (parse_word(pak, len) == EXIT_SUCCESS)
       ++(cli->used);
-  printf("pak->ac : %i\n", pak->ac);
-  for (i = 0; i < pak->ac; i++)
-    printf("pak->av[%i] = %s\n", i, pak->av[i]);
+  debug_instr(pak);
   pak->type = 0;
   pak->ac_rep = 0;
   pak->graph_rep = NULL;

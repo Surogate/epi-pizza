@@ -11,6 +11,6 @@
 #ifndef SERVER_DEBUG_C_INCLUDED
 # define SERVER_DEBUG_C_INCLUDED
 
-void		debug_packet(t_packet *pak);
+void		debug_packet(t_packet *pak, char *str);
 
 #endif
