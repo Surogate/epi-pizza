@@ -43,8 +43,8 @@ void		init_map(t_game *game, char **av)
   if (ac > 2)
     if (atoi(av[1]) && atoi(av[2]))
       {
-	game->info.size_w = atoi(av[1]);
-	game->info.size_h = atoi(av[2]);
+	game->map.w = atoi(av[1]);
+	game->map.h = atoi(av[2]);
       }
 }
 

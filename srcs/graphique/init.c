@@ -60,16 +60,16 @@ void		create_map(t_game *game)
 void		init_game(t_game *game)
 {
   game->screen = load_window();
- /*  game->serv.cbuf = cbuf_new(); */
+  /*game->serv.cbuf = cbuf_new();*/
   game->mouse.clicked = 0;
-/*
-  if (TTF_Init() < 0)
-  {
-  fprintf(stderr, "TTF error : %s", TTF_GetError());
-  exit(EXIT_FAILURE);
-  }
-  game->font = TTF_OpenFont(FONT_DIR, MFONT_SIZE);
-*/
+  /*
+    if (TTF_Init() < 0)
+    {
+    fprintf(stderr, "TTF error : %s", TTF_GetError());
+    exit(EXIT_FAILURE);
+    }
+    game->font = TTF_OpenFont(FONT_DIR, MFONT_SIZE);
+  */
   game->map.rot = 0;
   game->map.z = 200;
   game->info.pos.x = 0;
@@ -77,6 +77,6 @@ void		init_game(t_game *game)
   game->info.size_h = 10;
   game->info.size_w = 10;
   game->player = 0;
-  /* init_map(game); */
+  /*init_map(game);*/
   SDL_ShowCursor(1);
 }
