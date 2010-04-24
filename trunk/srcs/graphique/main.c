@@ -90,7 +90,31 @@ void		test_create_player(t_game *game, int id, int team)
 
 void		test_init_player(t_game *game)
 {
-  /* test_create_player(); */
+  int		x;
+  int		y;
+  int		o;
+
+  test_create_player(game, 1234, 1);
+  test_create_player(game, 34, 1);
+  test_create_player(game, 3234, 1);
+  test_create_player(game, 1534, 1);
+
+  test_create_player(game, 9871, 2);
+  test_create_player(game, 3487, 2);
+  test_create_player(game, 6481, 2);
+  test_create_player(game, 1598, 2);
+
+  x = -1;
+  while (++x != 10)
+    {
+      y = -1;
+      while (++y != 10)
+	{
+	  o = -1;
+	  while (++o != 8)
+	    game->map.t_case[x][y]->obj[i] = 2;
+	}
+    }
 }
 
 int		main(int ac, char *av[])
