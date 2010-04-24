@@ -113,11 +113,12 @@ void		mainloop(t_game *game)
   while (exit)
   {
 /*    search_msg(game);*/
-    exit = interaction(game);
+      exit = interaction(game);
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
       camera(game);
       draw_interface(game);
       draw_gl(game, GL_RENDER);
+      timedelay();
       glFlush();
       SDL_GL_SwapBuffers();
   }

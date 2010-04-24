@@ -75,21 +75,10 @@ void		make_calllistes_terrain(t_game *game)
 void		make_calllistes_interface(t_game *game)
 {
   glNewList(INTER, GL_COMPILE);
-  glDisable(GL_LIGHTING);
-  glMatrixMode(GL_PROJECTION);
-  glPushMatrix();
-  glLoadIdentity();
-  glMatrixMode(GL_MODELVIEW);
-  glPushMatrix();
-  glLoadIdentity();
+
   glEnable(GL_TEXTURE_2D);
   interface_up(game->texture->inter_u);
   interface_down(game->texture->inter_d);
   glDisable(GL_TEXTURE_2D);
-  glPopMatrix();
-  glMatrixMode(GL_PROJECTION);
-  glPopMatrix();
-  glMatrixMode(GL_MODELVIEW);
-  glEnable(GL_LIGHTING);
   glEndList();
 }
