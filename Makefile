@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Sat Apr 24 06:13:23 2010 Florian Chanioux
+## Last update Sat Apr 24 07:00:49 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -158,7 +158,7 @@ SRC_GR		= \
 		$(DIR_SRC_GR)reseau.c			\
 		$(DIR_SRC_GR)connect.c
 
-SRC_GR_M	= \
+SRC_GR_Darwin	= \
 		$(DIR_SRC_GR)SDLMain.m
 
 
@@ -178,7 +178,7 @@ OBJ_S		= $(SRC_S:.c=.o)
 OBJ_C		= $(SRC_C:.c=.o)
 OBJ_CO		= $(SRC_CO:.c=.o)
 OBJ_GR		= $(SRC_GR:.c=.o)
-OBJ_M		= $(SRC_GR_M:.m=.o)
+OBJ_Darwin	= $(SRC_GR_Darwin:.m=.o)
 
 
 ############### FLAGS ###############
@@ -292,9 +292,9 @@ $(NAME_S)	: $(OBJ_S) $(OBJ_CO)
 	$(CC) -o $(NAME_S) $(OBJ_S) $(OBJ_CO) $(LFLAGS)
 	@$(ECHO) "$(GREEN)[LINKING] - DONE$(END)"
 
-$(NAME_GR)	: $(OBJ_GR) $(OBJ_M)
+$(NAME_GR)	: $(OBJ_GR) $(OBJ_$(STAG))
 	@$(ECHO) "$(CYAN)[LINKING]: $(NAME_GR)$(END)"
-	$(CC) -o $(NAME_GR) $(OBJ_M) $(OBJ_GR) $(LFLAGS)
+	$(CC) -o $(NAME_GR) $(OBJ_$(STAG)) $(OBJ_GR) $(LFLAGS)
 	@$(ECHO) "$(GREEN)[LINKING] - DONE$(END)"
 
 tags		:
@@ -338,6 +338,7 @@ clean		:
 	$(RM) $(OBJ_CO)
 	$(RM) $(OBJ_C)
 	$(RM) $(OBJ_GR)
+	$(RM) $(OBJ_$(STAG))
 	@$(ECHO) "$(GREEN)[CLEAN] -DONE$(END)"
 
 fclean		: clean
