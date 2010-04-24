@@ -37,7 +37,19 @@
 
 void		tempo(t_game *game)
 {
-
+  while (game->map.h == -42)
+    {
+      printf("tour de boucle tempo\n");
+      search_msg(game);
+      if (SDL_PollEvent(&(game->event)))
+	{
+	  if (game->event.type == SDL_QUIT)
+	    {
+	      exit_func(game);
+	      exit(EXIT_SUCCESS);
+	    }
+	}
+    }
 }
 
 int		main(int ac, char *av[])
@@ -50,8 +62,10 @@ int		main(int ac, char *av[])
       connect_to_serv(&game, av);
       glutInit(&ac, av);
       init_video(&game);
-      tempo(&game);
       init_game(&game);
+      game.map.h = -42;
+      game.serv.cbuf = cbuf_new();
+      tempo(&game);
       printAttributes();
       init_texture(&game);
       init_3dsmodel(&game);

@@ -70,6 +70,13 @@ void		my_recv(t_game *game)
 	  temp = split(msg, ' ');
 	  printf("func : %s\n", temp[0]);
 	  traitement(game, temp);
+	  if (!strncmp(temp[0], "msz", 3))
+	    {
+	      printf("taille de la map : %d, %d\n", game->map.h, game->map.w);
+	      create_map(game);
+	      printf("fin init map\n");
+	      break;
+	    }
 	}
     }while (msg);
 }

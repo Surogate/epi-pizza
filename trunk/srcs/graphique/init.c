@@ -34,19 +34,19 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-static void	init_map(t_game *game)
+void		create_map(t_game *game)
 {
   int		y;
   int		x;
   int		temp;
 
-  game->map.t_case= malloc(game->info.size_h * sizeof(*(game->map.t_case)));
+  game->map.t_case= malloc(game->map.h * sizeof(*(game->map.t_case)));
   y = -1;
-  while (++y < game->info.size_h)
+  while (++y < game->map.h)
   {
-    game->map.t_case[y] = malloc(game->info.size_w * sizeof(t_case));
+    game->map.t_case[y] = malloc(game->map.w * sizeof(t_case));
     x = -1;
-    while (++x < game->info.size_w)
+    while (++x < game->map.w)
     {
       game->map.t_case[y][x].player = 0;
       temp = -1;
@@ -59,7 +59,7 @@ static void	init_map(t_game *game)
 void		init_game(t_game *game)
 {
   game->screen = load_window();
-  game->serv.cbuf = cbuf_new();
+ /*  game->serv.cbuf = cbuf_new(); */
   game->mouse.clicked = 0;
 /*
   if (TTF_Init() < 0)
@@ -76,6 +76,6 @@ void		init_game(t_game *game)
   game->info.size_h = 10;
   game->info.size_w = 10;
   game->player = 0;
-  init_map(game);
+  /* init_map(game); */
   SDL_ShowCursor(1);
 }
