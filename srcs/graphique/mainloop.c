@@ -36,6 +36,7 @@
 #include	<sys/types.h>
 #include	<unistd.h>
 
+
 void		init_buff(char *buff, int size)
 {
   int		i;
@@ -131,6 +132,7 @@ void		mainloop(t_game *game)
   i = 0;
   while (exit)
   {
+    search_msg(game);
     exit = interaction(game);
     if (i % 3)
       {
