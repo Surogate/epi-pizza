@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:30:49 2010 Florian Chanioux
-** Last update Sat Apr 24 04:51:38 2010 Florian Chanioux
+** Last update Sat Apr 24 09:42:39 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -41,7 +41,6 @@ void		init_camera(t_game *game)
 void		reshape()
 {
   glViewport(0, 0, WIN_W, WIN_H);
-  glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   gluPerspective(WIN_FOC, (GLfloat)(WIN_W / WIN_H), WIN_NEAR, WIN_FAR);
 }

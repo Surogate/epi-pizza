@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:24:06 2010 Florian Chanioux
-** Last update Sat Apr 24 05:06:17 2010 Florian Chanioux
+** Last update Sat Apr 24 08:12:21 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -118,7 +118,7 @@ void		mainloop(t_game *game)
       camera(game);
       draw_interface(game);
       draw_gl(game, GL_RENDER);
-
+      timing();
       glFlush();
       SDL_GL_SwapBuffers();
   }

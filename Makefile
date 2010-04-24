@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Sat Apr 24 07:32:13 2010 Florian Chanioux
+## Last update Sat Apr 24 07:48:27 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -96,18 +96,41 @@ SRC_S		= \
 
 
 SRC_INC_S	= \
-		$(DIR_INC)xfunc.h			\
-		$(DIR_INC)my_list.h			\
-		$(DIR_INC)server.h			\
-		$(DIR_INC)server_map.h			\
-		$(DIR_INC)t_struct.h			\
-		$(DIR_INC)t_svr_stc.h			\
-		$(DIR_INC)define.h			\
-		$(DIR_INC)s_cbuf.h			\
-		$(DIR_INC)s_vector.h			\
-		$(DIR_INC)client_fct.h			\
-		$(DIR_INC)server_fct.h			\
-		$(DIR_INC)server_ini.h			\
+		$(DIR_INC_S)client_fct.h		\
+		$(DIR_INC_S)instruction.h		\
+		$(DIR_INC_S)player_debug.h		\
+		$(DIR_INC_S)server_ending.h		\
+		$(DIR_INC_S)server_insert_player.h	\
+		$(DIR_INC_S)t_game_stc.h		\
+		$(DIR_INC_S)communication.h		\
+		$(DIR_INC_S)pars_define.h		\
+		$(DIR_INC_S)response.h			\
+		$(DIR_INC_S)server_fct.h		\
+		$(DIR_INC_S)server_kick.h		\
+		$(DIR_INC_S)time_fct.h			\
+		$(DIR_INC_S)count_player.h		\
+		$(DIR_INC_S)pars_display.h		\
+		$(DIR_INC_S)server_action.h		\
+		$(DIR_INC_S)server_graph.h		\
+		$(DIR_INC_S)server_map.h		\
+		$(DIR_INC_S)t_packet.h			\
+		$(DIR_INC_S)define.h			\
+		$(DIR_INC_S)pars_init_teams.h		\
+		$(DIR_INC_S)server_born.h		\
+		$(DIR_INC_S)server.h			\
+		$(DIR_INC_S)server_plaction.h		\
+		$(DIR_INC_S)t_struct.h			\
+		$(DIR_INC_S)eat.h			\
+		$(DIR_INC_S)pars_main.h			\
+		$(DIR_INC_S)server_debug.h		\
+		$(DIR_INC_S)server_hatch.h		\
+		$(DIR_INC_S)server_ress.h		\
+		$(DIR_INC_S)t_svr_stc.h			\
+		$(DIR_INC_S)game_cmd.h			\
+		$(DIR_INC_S)pars_option.h		\
+		$(DIR_INC_S)server_eat.h		\
+		$(DIR_INC_S)server_ini.h		\
+		$(DIR_INC_S)server_stt.h
 
 
 SRC_CO		= \
@@ -122,6 +145,13 @@ SRC_CO		= \
 		$(DIR_SRC_CO)vector/llist_swap.c	\
 		$(DIR_SRC_CO)count_player.c		\
 
+SRC_INC_CO	= \
+		$(DIR_INC)xfunc.h			\
+		$(DIR_INC)my_list.h			\
+		$(DIR_INC)cbuf_io.h			\
+		$(DIR_INC)cbuf_define.h			\
+		$(DIR_INC)s_cbuf.h			\
+		$(DIR_INC)s_vector.h			\
 
 SRC_C		= $(DIR_SRC_C)main.c
 
@@ -162,12 +192,13 @@ SRC_GR_Darwin	= \
 		$(DIR_SRC_GR)SDLMain.m
 
 
-SRC_INC_GRAP	= \
+SRC_INC_GR	= \
 		$(DIR_INC_GR)proto.h			\
 		$(DIR_INC_GR)define.h			\
 		$(DIR_INC_GR)struct.h			\
-		$(DIR_INC_GR)3dsloader.h
-
+		$(DIR_INC_GR)3dsloader.h		\
+		$(DIR_INC_GR)SDLMain.h			\
+		$(DIR_INC_GR)xsdl.h
 
 SRC_LIB		= \
 		$(DIR_INC)libxfunc$_*.a			\
@@ -186,7 +217,7 @@ OBJ_Darwin	= $(SRC_GR_Darwin:.m=.o)
 
 DEFINE_i386-Darwin	=
 
-DEFINE_i386-FreeBSD	= 
+DEFINE_i386-FreeBSD	=
 
 DEFINE_i686-Linux	= -D_XOPEN_SOURCE=500
 
