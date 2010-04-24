@@ -87,8 +87,8 @@ static void		init_fog(int fog, GLint fogmode)
     glFogi (GL_FOG_MODE, fogmode) ;
     glFogfv(GL_FOG_COLOR, fog_color) ;
     glFogf(GL_FOG_DENSITY, 0.3) ;
-    glFogf(GL_FOG_START, 500.0) ;
-    glFogf(GL_FOG_END, 700.0) ;
+    glFogf(GL_FOG_START, 400.0) ;
+    glFogf(GL_FOG_END, 500.0) ;
     glClearColor(0.0, 0.5, 0.9, 1.0);
   }
   else

@@ -71,7 +71,23 @@ void DrawStr(const char *str)
     glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, str[i]);
 }
 
-void		draw_interface()
+void		draw_interface(t_game *game)
 {
+  game = game;
+  glDisable(GL_LIGHTING);
+  glMatrixMode(GL_PROJECTION);
+  glPushMatrix();
+  glLoadIdentity();
+  glMatrixMode(GL_MODELVIEW);
+  glPushMatrix();
+  glLoadIdentity();
   glCallList(INTER);
+  timing();
+  glPopMatrix();
+  glMatrixMode(GL_PROJECTION);
+  glPopMatrix();
+  glMatrixMode(GL_MODELVIEW);
+  glEnable(GL_LIGHTING);
+
+  /* AFFICHAGE INFO */
 }

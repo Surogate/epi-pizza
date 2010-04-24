@@ -85,8 +85,8 @@ void		side(int x, GLuint texture)
   glTexCoord2f(x, 0);
   glVertex3d(x * CASE_W, 0, 0);
   glTexCoord2d(x, 1);
-  glVertex3d(x * CASE_W, 0, -10);
+  glVertex3d(x * CASE_W, 0, -20);
   glTexCoord2d(0, 1);
-  glVertex3d(0, 0, -10);
+  glVertex3d(0, 0, -20);
   glEnd();
 }
