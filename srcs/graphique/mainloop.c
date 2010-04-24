@@ -95,7 +95,7 @@ void		search_msg(t_game *game)
   FD_SET(game->serv.socket, &game->serv.fd_write);
   ready = select(game->serv.socket + 1, &game->serv.fd_read,
 		 &game->serv.fd_write, NULL, NULL);
-  printf("verification du fd %d\n", game->serv.socket);
+  /* printf("verification du fd %d\n", game->serv.socket); */
   if (ready > 0)
     {
       if (FD_ISSET(game->serv.socket, &game->serv.fd_read))

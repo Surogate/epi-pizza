@@ -50,8 +50,8 @@ void		eggs_drop(t_game *game, char **av)
   new->id = atoi(av[1]);
   player = find_player(game, atoi(av[2]));
   i = -1;
-  while (player->team[1][++i])
-    new->name[i] = player->team[1][i];
+  while (player->team[++i])
+    new->team[i] = player->team[i];
   new->pos = player->pos;
   new->next = NULL;
   cur->next = new;
