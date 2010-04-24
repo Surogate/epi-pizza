@@ -77,7 +77,6 @@ void		make_calllistes_terrain(t_game *game)
 void		make_calllistes_interface(t_game *game)
 {
   glNewList(INTER, GL_COMPILE);
-
   glEnable(GL_TEXTURE_2D);
   interface_up(game->texture->inter_u);
   interface_down(game->texture->inter_d);

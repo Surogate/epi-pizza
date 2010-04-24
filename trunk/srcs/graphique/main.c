@@ -35,6 +35,11 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
+void		tempo(t_game *game)
+{
+
+}
+
 int		main(int ac, char *av[])
 {
   t_game	game;
@@ -45,6 +50,7 @@ int		main(int ac, char *av[])
       connect_to_serv(&game, av);
       glutInit(&ac, av);
       init_video(&game);
+      tempo(&game);
       init_game(&game);
       printAttributes();
       init_texture(&game);
