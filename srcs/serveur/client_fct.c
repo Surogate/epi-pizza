@@ -75,59 +75,60 @@ int			add_client(t_svr_vector *vec, t_select *slt_par,
   return (EXIT_SUCCESS);
 }
 
-static int		parse_word(char *str, t_packet *pak)
+static int		parse_word(t_packet *pak, int len)
 {
   int			i;
 
   i = 0;
-  if ((pak->av[0] = malloc(strlen(str) * sizeof(*(pak->av[0])))))
+  if ((i = treatment_duration(pak)) == -1)
     {
-      strncpy(pak->av[0], str, strlen(str));
-      pak->ac = 1;
-      while (pak->av[0][i] && (pak->av[0][i] != '\n') && (pak->av[0][i] != ' '))
-	++i;
-      if (pak->av[0][i] == ' ')
-	{
-	  pak->av[0][i] = '\0';
-	  i++;
-	  pak->av[1] = malloc((strlen(str) - i) * sizeof(*(pak->av[1])));
-	  if (pak->av[1] && ((strlen(str) - i) > 0))
-	    {
-	      strncpy(pak->av[1], str + i, strlen(str + i));
-	      pak->ac = 2;
-	      pak->av[1][strlen(str)- i - 1] = '\0';
-	    }
-	}
-      else
-	pak->av[0][strlen(str)] = '\0';
-      return (EXIT_SUCCESS);
+      printf("mauvaise instruction\n");
+      free(pak->av[0]);
+      pak->ac = 0;
+      return (EXIT_FAILURE);
     }
-  return (EXIT_FAILURE);
+  printf("nbr instruct : %i\n", i);
+  if ((i == 5) || (i == 8))
+    {
+      printf("double arg\n");
+      i = 0;
+      while (pak->av[0][i] != ' ')
+	i++;
+      pak->av[0][i] = '\0';
+      i++;
+      pak->av[1] = malloc((len - i + 1) * sizeof(char));
+      strncpy(pak->av[1], pak->av[0] + i, len - i);
+      pak->av[1][len - i] = '\0';
+      pak->ac = 2;
+    }
+  return (EXIT_SUCCESS);
 }
 
 int			client_parse_instr(char *str, t_client *cli)
 {
+
   t_packet		*pak;
   int			i;
+  int			len;
 
-  if (cli->used >= 10)
+  if (cli->used >= 10) 
     return (EXIT_FAILURE);
+  len = strlen(str);
   pak = cli->packet + ((cli->cons + cli->used) % 10);
-  if (parse_word(str, pak) == EXIT_FAILURE)
-    return (EXIT_FAILURE);
-  if (cli->team && (treatment_duration(pak) == EXIT_FAILURE))
-    {
-      i = -1;
-      while (++i < pak->ac)
-	free(pak->av[i]);
-      return (EXIT_FAILURE);
-    }
+  pak->av[0] = malloc((len + 1) * sizeof(*pak->av[0]));
+  strncpy(pak->av[0], str, len + 1);
+  pak->ac = 1;
   pak->player_id = cli->sock;
   pak->player = cli;
+  if (cli->team)
+    if (parse_word(pak, len) == EXIT_SUCCESS)
+      ++(cli->used);
+  printf("pak->ac : %i\n", pak->ac);
+  for (i = 0; i < pak->ac; i++)
+    printf("pak->av[%i] = %s\n", i, pak->av[i]);
   pak->type = 0;
   pak->ac_rep = 0;
   pak->graph_rep = NULL;
-  ++(cli->used);
   return (EXIT_SUCCESS);
 }
 
@@ -137,12 +138,12 @@ void			free_packet(t_client *cli)
   t_packet		*pak;
 
   pak = cli->packet + cli->cons;
-  i = -1;
-  while (++i < pak->ac)
-    free(pak->av[i]);
-  i = -1;
-  while (++i < pak->ac_rep)
-    free(pak->response[i].mess);
+  i = 0;
+  while (i < pak->ac)
+    free(pak->av[i++]);
+  i = 0;
+  while (i < pak->ac_rep)
+    free(pak->response[i++].mess);
   free(pak->response);
   cli->used = cli->used - 1;
   cli->cons = (cli->cons + 1) % 10;

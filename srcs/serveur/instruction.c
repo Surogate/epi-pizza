@@ -31,10 +31,10 @@ t_inst		tab_instr[NB_INST] =
   {"gauche", try_turn_left, 7},
   {"voir", try_view, 7},
   {"inventaire", try_invent, 1},
-  {"prend", try_take_obj, 7},
+  {"prend ", try_take_obj, 7},
   {"pose", try_drop_obj, 7},
   {"expulse", try_expulse, 7},
-  {"broadcast",broadcast, 7},
+  {"broadcast ",broadcast, 7},
   {"incantation", try_incant, 300},
   {"fork", try_fork, 42},
   {"connect_nbr", find_connect_nbr, 1}
@@ -68,14 +68,14 @@ int		treatment_duration(t_packet *packet)
   i = -1;
   while (++i < NB_INST)
     {
-      if (!strncmp(packet->av[0], tab_instr[i].inst, strlen(packet->av[0])))
+      if (!strncmp(packet->av[0], tab_instr[i].inst, strlen(tab_instr[i].inst)))
 	{
 	  packet->duration = tab_instr[i].delay;
-	  return (EXIT_SUCCESS);
+	  return (i);
 	}
     }
   packet->duration = 0;
-  return (EXIT_FAILURE);
+  return (-1);
 }
 
 int		authent(t_game *game, t_packet *packet)

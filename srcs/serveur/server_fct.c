@@ -99,8 +99,6 @@ int		close_client(t_svr_vector *vec, t_select *slt_par)
   return (EXIT_SUCCESS);
 }
 
-
-
 int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
 				 t_game *game)
 {
