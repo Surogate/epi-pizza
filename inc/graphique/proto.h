@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Sat Apr 24 04:04:56 2010 Florian Chanioux
+** Last update Sat Apr 24 13:25:14 2010 Florian Chanioux
 */
 
 #ifndef		__PROTO_H__
@@ -51,6 +51,11 @@ void		reshape();
 void		camera(t_game *game);
 
 /* Draw */
+
+void		DrawStr(const char *str);
+
+void		timing();
+
 
 
 void		mainloop(t_game *game);
