@@ -38,11 +38,11 @@ t_player	*find_player(t_game *game, int pid)
   t_player	*cur;
 
   cur = game->player;
-  while (cur->next != NULL)
+  while (cur->next_pg != NULL)
     {
       if (cur->id == pid)
 	return (cur);
-      cur = cur->next;
+      cur = cur->next_pg;
     }
   return (NULL);
 }
