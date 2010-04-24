@@ -61,22 +61,31 @@ void		make_calllistes_trantorien(t_game *game)
   i = -1;
   while (++i < LVLMAX)
   {
+    printf("loading totoro: %i\n", i);
     glNewList(TOTORO + i, GL_COMPILE);
     glEnable(GL_TEXTURE_2D);
     draw_mesh(game->model.trantorien[i]);
     glDisable(GL_TEXTURE_2D);
     glEndList();
+    printf("loading totoro: %i\n - done", i);
   }
 }
 
 void		make_calllistes_terrain(t_game *game)
 {
+  puts("load map");
   glNewList(TERRAIN, GL_COMPILE);
   glEnable(GL_TEXTURE_2D);
   around(game->map.h, game->map.w, game->texture->side);
   floor_render(game->map.h, game->map.w, game->texture->floor);
   glDisable(GL_TEXTURE_2D);
   glEndList();
+  puts("load map - done");
+  puts("load map_picking");
+  glNewList(TERRAIN + 1, GL_COMPILE);
+  picking_map(game);
+  glEndList();
+  puts("load map_picking - done");
 }
 
 void		make_calllistes_interface(t_game *game)
