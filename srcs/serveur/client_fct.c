@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Sat Apr 10 11:35:02 2010 francois1 ancel
-** Last update Sat Apr 10 11:35:02 2010 francois1 ancel
+** Last update Sat Apr 24 05:56:04 2010 Florian Chanioux
 */
 
 #include <sys/select.h>
@@ -18,16 +18,16 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "define.h"
+#include "serveur/define.h"
 #include "my_list.h"
 #include "s_vector.h"
 #include "s_cbuf.h"
 #include "cbuf_io.h"
-#include "t_packet.h"
-#include "t_svr_stc.h"
-#include "t_struct.h"
-#include "server_kick.h"
-#include "instruction.h"
+#include "serveur/t_packet.h"
+#include "serveur/t_svr_stc.h"
+#include "serveur/t_struct.h"
+#include "serveur/server_kick.h"
+#include "serveur/instruction.h"
 
 t_client		*new_client(int s)
 {

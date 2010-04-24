@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Sat Apr 17 10:23:48 2010 francois1 ancel
-** Last update Sat Apr 17 14:28:34 2010 pierre1 boutbel
+** Last update Sat Apr 24 05:49:10 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -17,23 +17,23 @@
 # include <sys/select.h>
 #endif
 
-#include "define.h"
+#include "serveur/define.h"
 #include "my_list.h"
 #include "s_cbuf.h"
 #include "cbuf_io.h"
 #include "s_vector.h"
-#include "t_packet.h"
-#include "t_struct.h"
-#include "t_svr_stc.h"
-#include "server_action.h"
-#include "server_fct.h"
-#include "server_debug.h"
-#include "instruction.h"
-#include "client_fct.h"
-#include "time_fct.h"
-#include "server_hatch.h"
-#include "server_graph.h"
-#include "server_plaction.h"
+#include "serveur/t_packet.h"
+#include "serveur/t_struct.h"
+#include "serveur/t_svr_stc.h"
+#include "serveur/server_action.h"
+#include "serveur/server_fct.h"
+#include "serveur/server_debug.h"
+#include "serveur/instruction.h"
+#include "serveur/client_fct.h"
+#include "serveur/time_fct.h"
+#include "serveur/server_hatch.h"
+#include "serveur/server_graph.h"
+#include "serveur/server_plaction.h"
 
 int			find_act_fct(t_packet *in, int *player_id)
 {

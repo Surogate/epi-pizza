@@ -7,9 +7,9 @@
 #include	<stdio.h>
 #include	<stdarg.h>
 
-#include	"define.h"
+#include	"serveur/define.h"
 #include	"my_list.h"
-#include	"t_struct.h"
+#include	"serveur/t_struct.h"
 #include	"xfunc.h"
 
 char		*msz(char *msg, t_game *game)

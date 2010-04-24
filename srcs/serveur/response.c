@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Tue Apr 13 12:24:14 2010 francois1 ancel
-** Last update Tue Apr 13 12:24:14 2010 francois1 ancel
+** Last update Sat Apr 24 05:49:11 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -13,11 +13,11 @@
 #include <sys/time.h>
 #include <stdio.h>
 
-#include "define.h"
+#include "serveur/define.h"
 #include "my_list.h"
-#include "t_packet.h"
-#include "t_struct.h"
-#include "t_game_stc.h"
+#include "serveur/t_packet.h"
+#include "serveur/t_struct.h"
+#include "serveur/t_game_stc.h"
 
 #define	AUTH_OK_SIZ 35
 #define AUTH_FAIL_SIZ 4

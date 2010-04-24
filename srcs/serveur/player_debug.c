@@ -5,16 +5,16 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Wed Apr 21 19:44:08 2010 francois1 ancel
-** Last update Wed Apr 21 19:44:08 2010 francois1 ancel
+** Last update Sat Apr 24 05:49:11 2010 Florian Chanioux
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "define.h"
+#include "serveur/define.h"
 #include "my_list.h"
-#include "t_struct.h"
+#include "serveur/t_struct.h"
 
 void debug_player(t_player *pla)
 {

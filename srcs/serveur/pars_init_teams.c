@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Sat Apr 10 15:11:57 2010 francois1 ancel
-** Last update Sat Apr 10 15:11:57 2010 francois1 ancel
+** Last update Sat Apr 24 05:56:50 2010 Florian Chanioux
 */
 
 #include		<stdio.h>
@@ -13,10 +13,10 @@
 #include		<string.h>
 
 #include		"my_list.h"
-#include		"define.h"
-#include		"t_struct.h"
-#include		"pars_display.h"
-#include		"pars_main.h"
+#include		"serveur/define.h"
+#include		"serveur/t_struct.h"
+#include		"serveur/pars_display.h"
+#include		"serveur/pars_main.h"
 
 void			create_new_team(t_opt *opt, char *team_name)
 {

@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr  9 14:51:20 2010 Florian Chanioux
-** Last update Tue Apr 20 22:29:31 2010 Florian Chanioux
+** Last update Sat Apr 24 05:49:08 2010 Florian Chanioux
 */
 
 #include <sys/time.h>
@@ -13,11 +13,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "define.h"
+#include "serveur/define.h"
 #include "my_list.h"
-#include "t_struct.h"
-#include "t_packet.h"
-#include "server.h"
+#include "serveur/t_struct.h"
+#include "serveur/t_packet.h"
+#include "serveur/server.h"
 #include "xfunc.h"
 
 void		test_pathfinding_map(t_game *game);

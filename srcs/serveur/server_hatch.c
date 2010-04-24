@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Tue Apr 20 17:01:41 2010 francois1 ancel
-** Last update Tue Apr 20 17:01:41 2010 francois1 ancel
+** Last update Sat Apr 24 05:49:11 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -13,25 +13,25 @@
 #include <stdio.h>
 #include <sys/time.h>
 
-#include "define.h"
+#include "serveur/define.h"
 #include "my_list.h"
 #include "s_cbuf.h"
 #include "cbuf_io.h"
 #include "s_vector.h"
-#include "t_packet.h"
-#include "t_struct.h"
-#include "t_svr_stc.h"
-#include "server_action.h"
-#include "server_fct.h"
-#include "server_debug.h"
-#include "instruction.h"
-#include "client_fct.h"
-#include "time_fct.h"
-#include "server_plaction.h"
-#include "server_eat.h"
-#include "server_hatch.h"
-#include "server_graph.h"
-#include "communication.h"
+#include "serveur/t_packet.h"
+#include "serveur/t_struct.h"
+#include "serveur/t_svr_stc.h"
+#include "serveur/server_action.h"
+#include "serveur/server_fct.h"
+#include "serveur/server_debug.h"
+#include "serveur/instruction.h"
+#include "serveur/client_fct.h"
+#include "serveur/time_fct.h"
+#include "serveur/server_plaction.h"
+#include "serveur/server_eat.h"
+#include "serveur/server_hatch.h"
+#include "serveur/server_graph.h"
+#include "serveur/communication.h"
 
 int		find_hatch_fct(t_packet *in, int *player_id)
 {

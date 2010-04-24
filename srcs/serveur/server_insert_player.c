@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Tue Apr 13 12:03:06 2010 Florian Chanioux
-** Last update Tue Apr 20 12:53:06 2010 pierre1 boutbel
+** Last update Sat Apr 24 05:49:10 2010 Florian Chanioux
 */
 
 #include <sys/time.h>
@@ -14,13 +14,13 @@
 #include <stdio.h>
 #include <time.h>
 
-#include "define.h"
+#include "serveur/define.h"
 #include "xfunc.h"
 #include "my_list.h"
-#include "t_struct.h"
-#include "t_packet.h"
-#include "server_ress.h"
-#include "player_debug.h"
+#include "serveur/t_struct.h"
+#include "serveur/t_packet.h"
+#include "serveur/server_ress.h"
+#include "serveur/player_debug.h"
 
 t_player	*create_player(int player_id, int team)
 {

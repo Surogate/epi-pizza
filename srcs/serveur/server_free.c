@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Apr 13 12:00:53 2010 Florian Chanioux
-** Last update Mon Apr 19 18:21:42 2010 pierre1 boutbel
+** Last update Sat Apr 24 05:49:11 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -13,10 +13,10 @@
 #include <stdio.h>
 #include <time.h>
 
-#include "define.h"
+#include "serveur/define.h"
 #include "xfunc.h"
 #include "my_list.h"
-#include "t_struct.h"
+#include "serveur/t_struct.h"
 
 static void	free_playerlist(t_player *player)
 {

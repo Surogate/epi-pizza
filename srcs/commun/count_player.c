@@ -5,15 +5,15 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Thu Apr 15 16:49:21 2010 pierre1 boutbel
-** Last update Fri Apr 16 17:13:14 2010 pierre1 boutbel
+** Last update Sat Apr 24 05:59:10 2010 Florian Chanioux
 */
 
 #include	<stdlib.h>
 #include	<stdio.h>
 
-#include	"define.h"
+#include	"serveur/define.h"
 #include	"my_list.h"
-#include	"t_struct.h"
+#include	"serveur/t_struct.h"
 
 int		count_player(t_game *game, int num_team)
 {
