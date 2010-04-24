@@ -38,14 +38,6 @@ typedef struct	s_info
   int		size_w;
 }		t_info;
 
-typedef struct	s_play
-{
-  int		lv;
-  t_pos		pos;
-  int		id;
-  struct s_play	*next;
-}		t_player;
-
 typedef struct	s_case
 {
   int		obj[7];
@@ -54,38 +46,40 @@ typedef struct	s_case
 
 typedef struct	s_map
 {
-  int		w;
-  int		h;
   t_case	**t_case;
-  int		select;
-  int		rot;
-  int		z;
+  SDL_Surface	*fond;
 }		t_map;
 
-typedef struct
+typedef struct	s_texture
 {
   GLuint	floor;
   GLuint	side;
-  GLuint	floor_s;
-  GLuint	inter_u;
-  GLuint	inter_d;
 }		t_texture;
 
-typedef struct
+typedef struct	s_model
 {
   obj_type	*trantorien;
   obj_type	*ressource;
   obj_type	*eggs;
 }		t_model;
 
-typedef struct
+typedef struct	s_video
 {
   int		text;
   int		light;
   int		fog;
   int		aliasing;
-  int		cam[4];
-}		t_conf;
+  int		cam[3];
+}		t_video;
+/*
+typedef struct	s_circ
+{
+  char		buff[BUFSIZE];
+  int		cur;
+  int		num;
+  struct s_circ	*next;
+}		t_circle;
+*/
 
 typedef struct	s_serv
 {
@@ -100,7 +94,7 @@ typedef struct	s_game
   SDL_Surface	*screen;
   t_conf	video;
   t_model	model;
-  t_texture	*texture;
+  t_texture	texture;
   t_info	info;
   t_mouse	mouse;
   t_map		map;
