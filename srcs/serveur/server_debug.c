@@ -46,7 +46,7 @@ void		debug_client(t_client *cli)
   fprintf (stderr, "========\n");
   if (cli)
     {
-      fprintf(stderr, "sock : %i\nteam : %i\nauth %i\nused : %i\ncons : %i\n", 
+      fprintf(stderr, "sock : %i\nteam : %i\nauth : %i\nused : %i\ncons : %i\n", 
 	      cli->sock, cli->team, cli->auth, cli->used, cli->cons);
       for(i = 0; i < cli->used; i++)
 	debug_packet(cli->packet + ((cli->cons + i) % 10));

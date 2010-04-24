@@ -34,8 +34,8 @@ enum {M_E, M_NE, M_N, M_NO, M_O, M_SO, M_S, M_SE};
 
 # define NB_RESS	10, 12, 10, 12, 7, 8, 3
 
-# define OK		"OK"
-# define KO		"KO"
+# define OK		"ok"
+# define KO		"ko"
 # define LEN_OK		4
 # define ELEV_OK	"elevation en cours"
 # define ELEV_DONE	"niveau actuel : K"
