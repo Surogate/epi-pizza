@@ -54,7 +54,7 @@ void		tempo(t_game *game)
 
 void		test_init_player(t_game *game)
 {
-  test_create_player();
+  /* test_create_player(); */
 }
 
 int		main(int ac, char *av[])
@@ -71,10 +71,12 @@ int		main(int ac, char *av[])
       game.map.h = -42;
       game.serv.cbuf = cbuf_new();
       tempo(&game);
-      test_init_player(game);
+      test_init_player(&game);
       printAttributes();
       init_texture(&game);
       init_3dsmodel(&game);
+      /* printf("%d, %d\n", game.map.h, game.map.w); */
+/*       sleep(135); */
       initGL(&game);
       mainloop(&game);
       puts("end of program");
