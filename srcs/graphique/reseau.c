@@ -117,24 +117,83 @@ void		player_connect(t_game *game, char **av)
       game->player = new_player(av);
       player = game->player;
     }
-  if (player)
+  temp = game->map.t_case[player->pos.y][player->pos.x].player;
+  if (temp)
     {
-      temp = game->map.t_case[player->pos.y][player->pos.x].player;
-      if (temp)
+      while (temp->next_pc)
+	temp = temp->next_pc;
+      temp->next_pc = player;
+    }
+  else
+    game->map.t_case[player->pos.y][player->pos.x].player = player;
+}
+
+void		change_player_pos(t_game *game, char **av, t_pos pos, int p_id)
+{
+  t_player	*prec;
+  t_player	*cur;
+  t_case	*t_case;
+
+  if (game->map.t_case[pos.y][pos.x].player->id == p_id)
+    {
+      t_case = &game->map.t_case[pos.y][pos.x];
+      t_case->player = t_case->player->next_pc;
+      cur = game->map.t_case[pos.y][pos.x].player;
+    }
+  else
+    {
+      prec = 0;
+      cur = game->map.t_case[pos.y][pos.x].player;
+      while (cur)
 	{
-	  while (temp->next_pc)
-	    temp = temp->next_pc;
-	  temp->next_pc = player;
+	  if (cur->id == p_id)
+	    {
+	      prec->next_pc = cur->next_pc;
+	      break;
+	    }
+	  else
+	    {
+	      prec = cur;
+	      cur = cur->next_pc;
+	    }
 	}
-      else
-	game->map.t_case[player->pos.y][player->pos.x].player = player;
+    }
+  if (game->map.t_case[atoi(av[2])][atoi(av[3])].player)
+    {
+      prec = game->map.t_case[atoi(av[2])][atoi(av[3])].player;
+      while (prec->next_pc)
+	prec = prec->next_pc;
+      prec->next_pc = cur;
+      prec->next_pc->sens = atoi(av[4]);
+    }
+  else
+    {
+      game->map.t_case[atoi(av[2])][atoi(av[3])].player = cur;
+      game->map.t_case[atoi(av[2])][atoi(av[3])].player->sens = atoi(av[4]);
     }
 }
 
 void		player_pos(t_game *game, char **av)
 {
-  game = game;
-  av = av;
+  int		p_id;
+  t_player	*player;
+  t_pos		pos;
+
+  pos.x = -1;
+  pos.y = -1;
+  player = game->player;
+  p_id = atoi(&av[1][1]);
+  while (player)
+    {
+      if (player->id == p_id)
+	{
+	  pos.x = player->pos.x;
+	  pos.y = player->pos.y;
+	}
+      player = player->next_pg;
+    }
+  if (pos.x > 0 && pos.y > 0)
+    change_player_pos(game, av, pos, p_id);
 }
 
 void		player_level(t_game *game, char **av)
@@ -177,54 +236,53 @@ void		player_expulse(t_game *game, char **av)
 {
   game = game;
   av = av;
-
 }
 
 void		player_broadcast(t_game *game, char **av)
 {
+  int		i;
 
   game = game;
-  av = av;
+  printf("player broadcast :");
+  i = 1;
+  while(av[i])
+    printf("%s ", av[i++]);
+  printf("\n");
+
 }
 
 void		incant(t_game *game, char **av)
 {
   game = game;
   av = av;
-
 }
 
 void		end_incant(t_game *game, char **av)
 {
-
   game = game;
   av = av;
 }
 
 void		player_fork(t_game *game, char **av)
 {
-
   game = game;
   av = av;
 }
 
 void		drop_item(t_game *game, char **av)
 {
-
   game = game;
   av = av;
 }
 
 void		take_item(t_game *game, char **av)
 {
-
   game = game;
   av = av;
 }
 
 void		player_die(t_game *game, char **av)
 {
-
   game = game;
   av = av;
 }
@@ -233,26 +291,22 @@ void		eggs_drop(t_game *game, char **av)
 {
   game = game;
   av = av;
-
 }
 
 void		eggs_ready(t_game *game, char **av)
 {
-
   game = game;
   av = av;
 }
 
 void		eggs_to_player(t_game *game, char **av)
 {
-
   game = game;
   av = av;
 }
 
 void		eggs_die(t_game *game, char **av)
 {
-
   game = game;
   av = av;
 }
@@ -260,7 +314,7 @@ void		eggs_die(t_game *game, char **av)
 void		time_unite(t_game *game, char **av)
 {
   if (av[1])
-    game->info.time = av[1];
+    game->info.time = atoi(av[1]);
 }
 
 void		game_over(t_game *game, char **av)
@@ -274,6 +328,7 @@ void		server_msg(t_game *game, char **av)
 {
   int		i;
 
+  game = game;
   printf("serveur msg :");
   i = 1;
   while(av[i])
