@@ -33,58 +33,11 @@
 #include	"graphique/proto.h"
 #include	"xfunc.h"
 
-void		change_player_pos(t_game *game, char **av, t_pos pos, int p_id)
-{
-  t_player	*prec;
-  t_player	*cur;
-  t_case	*t_case;
-
-  if (game->map.t_case[pos.y][pos.x].player->id == p_id)
-    {
-      t_case = &game->map.t_case[pos.y][pos.x];
-      t_case->player = t_case->player->next_pc;
-      cur = game->map.t_case[pos.y][pos.x].player;
-    }
-  else
-    {
-      prec = 0;
-      cur = game->map.t_case[pos.y][pos.x].player;
-      while (cur)
-	{
-	  if (cur->id == p_id)
-	    {
-	      prec->next_pc = cur->next_pc;
-	      break;
-	    }
-	  else
-	    {
-	      prec = cur;
-	      cur = cur->next_pc;
-	    }
-	}
-    }
-  if (game->map.t_case[atoi(av[2])][atoi(av[3])].player)
-    {
-      prec = game->map.t_case[atoi(av[2])][atoi(av[3])].player;
-      while (prec->next_pc)
-	prec = prec->next_pc;
-      prec->next_pc = cur;
-      prec->next_pc->sens = atoi(av[4]);
-    }
-  else
-    {
-      game->map.t_case[atoi(av[2])][atoi(av[3])].player = cur;
-      game->map.t_case[atoi(av[2])][atoi(av[3])].player->sens = atoi(av[4]);
-    }
-}
-
 void		player_pos(t_game *game, char **av)
 {
   t_player	*player;
   int		p_id;
 
-  pos.x = -1;
-  pos.y = -1;
   p_id = atoi(av[1]);
   player = game->player;
   while (player)

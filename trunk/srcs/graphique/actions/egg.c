@@ -46,8 +46,7 @@ void		eggs_drop(t_game *game, char **av)
       cur = cur->next;
   new = xmalloc(sizeof(t_egg));
   new->id = atoi(av[1]);
-  new->team = 
-  old->next = new;
+  cur->next = new;
 }
 
 void		eggs_ready(t_game *game, char **av)

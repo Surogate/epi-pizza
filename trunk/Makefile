@@ -187,6 +187,7 @@ SRC_GR		= \
 		$(DIR_SRC_GR)gl/g_position.c		\
 		$(DIR_SRC_GR)actions/action.c		\
 		$(DIR_SRC_GR)actions/com_serveur.c	\
+		$(DIR_SRC_GR)actions/common_func.c	\
 		$(DIR_SRC_GR)actions/egg.c		\
 		$(DIR_SRC_GR)actions/info_player.c	\
 		$(DIR_SRC_GR)actions/init_info.c	\

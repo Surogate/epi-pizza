@@ -75,6 +75,7 @@ void		team_name(t_game *game, char **av)
 {
   t_team	*old;
   t_team	*tim;
+  int		i;
 
   tim = game->team;
   while (tim != NULL)
@@ -83,7 +84,8 @@ void		team_name(t_game *game, char **av)
       tim = tim->next;
     }
   old->next = tim;
-  tim->name = strcmp(tim->name, av[1]);
+  /*  tim->name = strcmp(tim->name, av[1]);*/
+
   tim->next = NULL;
 }
 
@@ -101,7 +103,6 @@ static t_player	*new_player(char **av)
       player->sens = atoi(av[4]);
       player->lv = atoi(av[5]);
       strcpy(player->team, av[6]);
-      player->next_pc = 0;
       player->next_pg = 0;
     }
   return (player);
@@ -126,6 +127,7 @@ void		player_connect(t_game *game, char **av)
       player = game->player;
     }
   temp = game->map.t_case[player->pos.y][player->pos.x].player;
+  /*
   if (temp)
     {
       while (temp->next_pc)
@@ -133,5 +135,6 @@ void		player_connect(t_game *game, char **av)
       temp->next_pc = player;
     }
   else
+  */
     game->map.t_case[player->pos.y][player->pos.x].player = player;
 }

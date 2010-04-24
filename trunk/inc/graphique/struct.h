@@ -44,9 +44,7 @@ typedef struct	s_play
   int		lv;
   int		sens;
   t_pos		pos;
-  struct s_play	*next_pc;
   struct s_play	*next_pg;
-  struct s_play	*next_pt;
   int		inventaire[7];
   char		team[50];
 }		t_player;
@@ -55,18 +53,14 @@ typedef	struct	s_egg
 {
   int		id;
   t_pos		pos;
-  /*
-  struct s_play	*next_pc;
-  struct s_play	*next_pg;
-  struct s_play	*next_pt;
-  */
   char		*team;
+  struct s_egg	*next;
 }		t_egg;
 
 typedef struct	s_team
 {
   char		name[50];
-  t_player	*player;
+  struct s_team	*next;
 }		t_team;
 
 typedef struct	s_mouse
@@ -133,6 +127,7 @@ typedef struct	s_game
   SDL_Event	event;
   SDL_Surface	*screen;
   t_player	*player;
+  t_team	*team;
   t_egg		*egg;
   t_video	video;
   t_model	model;
