@@ -8,7 +8,14 @@
 ## Last update Mon Apr 12 19:47:47 2010 Florian Chanioux
 ##
 
-NAME		= libxfunc_`uname -m`-`uname -s`.a
+STAG		= $(shell uname -s)
+STAG		!= uname -s
+MTAG		= $(shell uname -m)
+MTAG		!= uname -m
+
+TAG		= $(MTAG)-$(STAG)
+
+NAME		= libxfunc_$(TAG).a
 
 D_SRC		= srcs/
 D_INC		= inc/
@@ -26,7 +33,13 @@ FILES_H		= xfunc.h
 FILES_O		= $(FILES_C:.c=.o)
 
 ETAGS		= etags
-CC		= gcc
+
+CC_FreeBSD	= gcc
+CC_SunOS	= /usr/sfw/bin/gcc
+CC_Linux	= gcc
+CC_Darwin	= gcc -arch i386
+CC		= $(CC_$(STAG))
+
 AR		= ar
 RANLIB		= ranlib
 RM		= rm -f
