@@ -196,9 +196,11 @@ DEFINE			= $(DEFINE_$(TAG))
 #########  INCLUDES
 
 IFLAGS_i386-Darwin	= \
+		-I$(HOME)/Library/Frameworks/cocoa.framework/Headers	\
 		-I$(HOME)/Library/Frameworks/SDL.framework/Headers	\
 		-I$(HOME)/Library/Frameworks/SDL_image.framework/Headers\
 		-I$(HOME)/Library/Frameworks/SDL_ttf.framework/Headers	\
+		-I/Library/Frameworks/cocoa.framework/Headers		\
 		-I/Library/Frameworks/SDL.framework/Headers		\
 		-I/Library/Frameworks/SDL_image.framework/Headers	\
 		-I/Library/Frameworks/SDL_ttf.framework/Headers
@@ -220,6 +222,7 @@ LFLAGS_i386-Darwin	= \
 			-lmylist_$(TAG)		\
 			-framework SDL		\
 			-framework SDL_image	\
+			-framework Cocoa	\
 			-framework SDL_ttf	\
 			-framework GLUT		\
 			-framework OpenGL
@@ -251,7 +254,7 @@ CFLAGS			+= -g3 -W -Wall -ansi -pedantic $(DEFINE) $(IFLAGS)
 CC_FreeBSD	= gcc
 CC_SunOS	= /usr/sfw/bin/gcc
 CC_Linux	= gcc
-CC_Darwin	= gcc -arch i386 -m32
+CC_Darwin	= gcc -arch i386
 CC		= $(CC_$(STAG))
 
 RM		= rm -f
