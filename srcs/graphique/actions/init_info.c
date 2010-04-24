@@ -33,13 +33,8 @@
 #include	"graphique/proto.h"
 #include	"xfunc.h"
 
-void		init_map(t_game *game, char **av)
+void		init_map(t_game *game, char **av, int ac)
 {
-  int		ac;
-
-  ac = 0;
-  while (av[ac])
-    ac++;
   if (ac > 2)
     if (atoi(av[1]) && atoi(av[2]))
       {
@@ -48,16 +43,12 @@ void		init_map(t_game *game, char **av)
       }
 }
 
-void		put_to_case(t_game *game, char **av)
+void		put_to_case(t_game *game, char **av, int ac)
 {
-  int		ac;
   int		x;
   int		y;
   int		n_obj;
 
-  ac = 0;
-  while (av[ac])
-    ac++;
   if (ac > 10)
     {
       x = atoi(av[1]);
@@ -117,22 +108,29 @@ static t_player	*new_player(char **av)
   return (player);
 }
 
-void		player_connect(t_game *game, char **av)
+void		player_connect(t_game *game, char **av, int ac)
 {
   t_player	*player;
   t_player	*temp;
 
-  player = game->player;
-  if (player)
+  if (ac > 5)
     {
-      while (player->next_pg)
-	player = player->next_pg;
-      player->next_pg = new_player(av);
-      player = player->next_pg;
-    }
-  else
-    {
-      game->player = new_player(av);
       player = game->player;
+      if (player)
+	{
+	  while (player->next_pg)
+	    player = player->next_pg;
+	  player->next_pg = new_player(av);
+	  player = player->next_pg;
+	}
+      else
+	{
+	  game->player = new_player(av);
+	  player = game->player;
+	}
+      player->id = atoi(&av[1][1]);
+      player->pos.x = atoi(av[2]);
+      player->pos.y = atoi(av[3]);
+      player->sens = atoi(av[4]);
     }
 }
