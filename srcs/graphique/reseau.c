@@ -32,6 +32,7 @@
 #include	"graphique/define.h"
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
+#include	"xfunc.h"
 
 void		init_map(t_game *game, char **av)
 {

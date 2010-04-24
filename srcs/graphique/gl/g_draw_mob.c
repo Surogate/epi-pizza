@@ -102,18 +102,17 @@ void		draw_mod(t_game *game, GLenum mode)
 */
 
 
-static void	draw_trantorien(t_game *game, int name)
+static void	draw_trantorien(int name, GLenum mode)
 {
-  glEnable(GL_TEXTURE_2D);
   glPushMatrix();
   glTranslated((CASE_H / 2), (CASE_W / 2), 0);
-  glPushName(name);
+  if (mode == GL_SELECT)
+    glPushName(name);
   glCallList(TOTORO);
-  glPopName();
+  if (mode == GL_SELECT)
+    glPopName();
   glPopMatrix();
-  glDisable(GL_TEXTURE_2D);
 }
-
 
 void		draw_mob(t_game *game, GLenum mode)
 {
@@ -130,7 +129,7 @@ void		draw_mob(t_game *game, GLenum mode)
     {
       glPushMatrix();
       glTranslated(y * CASE_H, x * CASE_W, 0);
-      draw_trantorien(game, name++);
+      draw_trantorien(name++, mode);
       glPopMatrix();
     }
   }

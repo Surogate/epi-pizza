@@ -51,24 +51,40 @@ void		reshape();
 void		camera(t_game *game);
 
 /* Draw */
+
+
 void		mainloop(t_game *game);
 
 void		draw_interface(t_game *game);
 
-void		make_calllistes(t_game *game);
 void		draw_gl(t_game *game, GLenum mode);
 void		draw_map(t_game *game, GLenum mode);
+void		draw_ressource(t_game *game, GLenum mode);
+
+
+void            floor_picking(int x, int y);
+
 void		draw_mob(t_game *game, GLenum mode);
 
 void		clic_mob(t_game *game);
 void		clic_map(t_game *game);
 
-void		floor_render(int x, int y, GLuint select);
 void		clic_render();
-void            floor_picking(int x, int y);
-void		floor_picking_w(int y, int w);
-void		floor_picking_h(int x, int h);
 
+/* Draw (Call by CallList)*/
+
+void		draw_mesh(obj_type *mesh);
+void		floor_render(int x, int y, GLuint select);
+void		around(int h, int w, GLuint texture);
+void		interface_down(GLuint texture);
+void		interface_up(GLuint texture);
 void		side(int x, GLuint select);
+
+/* CALLLIST */
+
+void		make_calllistes_picking(t_game *game);
+void		make_calllistes_trantorien(t_game *game);
+void		make_calllistes_terrain(t_game *game);
+void		make_calllistes_interface(t_game *game);
 
 #endif

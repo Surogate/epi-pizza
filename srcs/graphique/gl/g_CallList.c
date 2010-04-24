@@ -56,7 +56,9 @@ void		make_calllistes_picking(t_game *game)
 void		make_calllistes_trantorien(t_game *game)
 {
   glNewList(TOTORO, GL_COMPILE);
+  glEnable(GL_TEXTURE_2D);
   draw_mesh(game->model.trantorien);
+  glDisable(GL_TEXTURE_2D);
   glEndList();
 }
 
@@ -73,6 +75,7 @@ void		make_calllistes_terrain(t_game *game)
 void		make_calllistes_interface(t_game *game)
 {
   glNewList(INTER, GL_COMPILE);
+  glDisable(GL_LIGHTING);
   glMatrixMode(GL_PROJECTION);
   glPushMatrix();
   glLoadIdentity();
@@ -87,5 +90,6 @@ void		make_calllistes_interface(t_game *game)
   glMatrixMode(GL_PROJECTION);
   glPopMatrix();
   glMatrixMode(GL_MODELVIEW);
+  glEnable(GL_LIGHTING);
   glEndList();
 }

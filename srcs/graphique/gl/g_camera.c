@@ -41,8 +41,10 @@ void		init_camera(t_game *game)
 void		reshape()
 {
   glViewport(0, 0, WIN_W, WIN_H);
+  glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   gluPerspective(WIN_FOC, (GLfloat)(WIN_W / WIN_H), WIN_NEAR, WIN_FAR);
+  glMatrixMode(GL_MODELVIEW);
 }
 
 void		camera(t_game *game)
