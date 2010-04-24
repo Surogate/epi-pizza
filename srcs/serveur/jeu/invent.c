@@ -1,9 +1,9 @@
 /*
 ** invent.c for zappy in /u/all/boutbe_a/cu/rendu/c/projets/epi-pizza/srcs/serveur/jeu
-** 
+**
 ** Made by pierre1 boutbel
 ** Login   <boutbe_a@epitech.net>
-** 
+**
 ** Started on  Wed Apr 14 13:19:43 2010 pierre1 boutbel
 ** Last update Sat Apr 24 05:49:08 2010 Florian Chanioux
 */
@@ -21,9 +21,18 @@
 #include	"serveur/t_packet.h"
 #include	"xfunc.h"
 
+static char	msg_ress[RESS_NUM][11] = {
+  "nourriture",
+  "linemate",
+  "deraumere",
+  "sibur",
+  "mendiane",
+  "phiras",
+  "thystame"
+};
+
 void		try_drop_obj(t_packet *packet, t_player *player)
 {
-  char		msg_ress[RESS_NUM][11] = {MSG_RESS};
   char		*name_res;
   int		num_ress;
 
@@ -52,7 +61,6 @@ void		try_drop_obj(t_packet *packet, t_player *player)
 
 void		try_take_obj(t_packet *packet, t_player *player)
 {
-  char		msg_ress[RESS_NUM][11] = {MSG_RESS};
   char		*name_res;
   int		num_ress;
 
@@ -81,24 +89,24 @@ void		try_take_obj(t_packet *packet, t_player *player)
 
 void		try_invent(t_packet *packet, t_player *player)
 {
-  char		msg_ress[RESS_NUM][11] = {MSG_RESS};
   int		num_ress;
   char		*msg;
 
   num_ress = -1;
-  msg = xmalloc(sizeof(char));
-  msg[0] = '\0'; 
-  while (++num_ress != RESS_NUM)
+  msg = xmalloc((65 + (RESS_NUM * 10)) * sizeof(*msg));
+  msg[0] = '\0';
+  while (++num_ress < RESS_NUM)
     {
-      msg = xrealloc(msg, strlen(msg) + strlen(msg_ress[num_ress]) + 13);
       if (num_ress == 0)
-	sprintf(msg, "{%i,", player->ress[num_ress]);
-      else if (num_ress != RESS_NUM)
-	sprintf(msg, "%s %i,", msg, player->ress[num_ress]);
+	sprintf(msg, "{%s %i, ", msg_ress[num_ress], player->ress[num_ress]);
+      else if (num_ress < (RESS_NUM - 1))
+	sprintf(msg + strlen(msg), "%s %i, ", msg_ress[num_ress],
+		player->ress[num_ress]);
       else
-	sprintf(msg, "%s %i", msg, player->ress[num_ress]);
+	sprintf(msg + strlen(msg), "%s %i", msg_ress[num_ress],
+		player->ress[num_ress]);
     }
-  msg = strcat(msg, "}\n");
+  msg = strncat(msg, "}\n", 3);
   packet->response = xmalloc(sizeof(t_rep));
   packet->response->mess = msg;
   packet->response->id_player = packet->player_id;

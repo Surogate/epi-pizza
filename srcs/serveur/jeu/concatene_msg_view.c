@@ -18,6 +18,17 @@
 #include	"serveur/t_game_stc.h"
 #include	"xfunc.h"
 
+static char		msg_ress[RESS_NUM][12] = 
+  {
+    "nourriture", 
+    "linemate", 
+    "deraumere", 
+    "sibur", 
+    "mendiane", 
+    "phiras", 
+    "thystame"
+  };
+
 char		*add_player(t_vision *cur_case, char *msg)
 {
   t_list	*cur_player;
@@ -57,7 +68,6 @@ static int	find_last_ress(t_case cas)
 
 char		*add_ressource(t_vision *cur_case, char *msg)
 {
-  char		msg_ress[RESS_NUM][11] = {MSG_RESS};
   int		num_ress;
   int		nb_ress;
 
@@ -67,9 +77,8 @@ char		*add_ressource(t_vision *cur_case, char *msg)
       nb_ress = cur_case->cas->cas.ress[num_ress] + 1;
       while (--nb_ress >= 2)
 	{
-	  msg = xrealloc(msg, strlen(msg) + strlen(msg_ress[num_ress]) + 2);
-	  snprintf(msg + strlen(msg), 12, "%s ", 
-		   msg_ress[num_ress]);
+	  msg = xrealloc(msg, strlen(msg) + 14);
+	  snprintf(msg + strlen(msg), 12, "%s ", msg_ress[num_ress]);
 	}
       msg = xrealloc(msg, strlen(msg) + 14);
       if (nb_ress != 0)

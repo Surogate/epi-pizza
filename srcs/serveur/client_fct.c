@@ -115,8 +115,12 @@ int			client_parse_instr(char *str, t_client *cli)
     return (EXIT_FAILURE);
   len = strlen(str);
   pak = cli->packet + ((cli->cons + cli->used) % 10);
-  pak->av[0] = malloc((len + 1) * sizeof(*pak->av[0]));
-  strncpy(pak->av[0], str, len + 1);
+  pak->av[0] = strdup(str);
+  if (pak->av[0] == NULL)
+    {
+      perror("strdup");
+      return (EXIT_FAILURE);
+    }
   pak->ac = 1;
   pak->player_id = cli->sock;
   pak->player = cli;
@@ -139,10 +143,14 @@ void			free_packet(t_client *cli)
   i = 0;
   while (i < pak->ac)
     free(pak->av[i++]);
+  pak->ac = 0;
   i = 0;
   while (i < pak->ac_rep)
     free(pak->response[i++].mess);
   free(pak->response);
+  pak->ac_rep = 0;
+  pak->end.tv_sec = 0;
+  pak->end.tv_usec = 0;
   cli->used = cli->used - 1;
   cli->cons = (cli->cons + 1) % 10;
 }

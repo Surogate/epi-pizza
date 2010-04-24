@@ -20,8 +20,8 @@
 
 void		debug_packet(t_packet *pak, char *str)
 {
-  int i;
-  FILE *debug;
+  int		i;
+  FILE		*debug;
   
   debug = fopen("packet.log", "a");
   if (!debug)
@@ -44,7 +44,7 @@ void		debug_packet(t_packet *pak, char *str)
   else
     fprintf(debug, "pak non alloue\n");
   fprintf(debug, "########\n");
-  fclose(debug);
+fclose(debug);
 }
 
 void		debug_client(t_client *cli, char *str)
