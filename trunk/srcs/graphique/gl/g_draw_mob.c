@@ -109,7 +109,7 @@ static void	draw_trantorien(int name, GLenum mode)
   glTranslated((CASE_H / 2), (CASE_W / 2), 0);
   if (mode == GL_SELECT)
     glPushName(name);
-  glCallList(TOTORO);
+  glCallList(TOTORO + random() % LVLMAX);
   if (mode == GL_SELECT)
     glPopName();
   glPopMatrix();

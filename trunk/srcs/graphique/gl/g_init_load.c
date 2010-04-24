@@ -108,6 +108,7 @@ void		init_texture(t_game *game)
   {
     puts("TEXTURE ON");
     game->texture = malloc(sizeof(t_texture));
+    game->texture->team = loadtexture("images/team-sphere.png");
     game->texture->inter_d = loadtexture("images/interface_down.png");
     game->texture->inter_u = loadtexture("images/interface_up.png");
     game->texture->floor = loadtexture("images/lawn.jpg");

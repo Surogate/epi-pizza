@@ -26,11 +26,12 @@
 # define	CASE_W		42
 # define	CASE_H		42
 
-# define	TOTORO	1
-# define	TERRAIN	2
-# define	INTER	3
-# define	PICKING	4
+# define	TOTORO		1
+# define	TERRAIN		10
+# define	INTER		20
+# define	PICKING		30
 
+# define	LVLMAX		8
 
 # define	FONT_DIR	"./font/MONACO.ttf"
 # define	MFONT_SIZE	7
@@ -38,7 +39,7 @@
 
 # define	CAM_Z		(200)
 
-#define RENDER					1
-#define SELECT					2
-#define BUFSIZE 1024
+#define 	RENDER		1
+#define 	SELECT		2
+#define 	BUFSIZE 	1024
 #endif		/*DEFINE_H*/
