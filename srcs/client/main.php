@@ -1,5 +1,6 @@
 <?php
 
+require_once 'pointf.php';
 require_once 'read.php';
 require_once 'init.php';
 require_once 'move.php';
@@ -22,8 +23,9 @@ function connect($ip, $port, $name)
 		else
 			echo "Connect on " . $ip . "\n";
 		$player = init_player($s, $name);
+		/*
 		broad_recv(&$player, "message 8, bonjour toi");
-		
+		* */
 		main_loop($player);
 	}
 
