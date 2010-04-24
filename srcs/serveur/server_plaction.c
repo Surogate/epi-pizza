@@ -49,7 +49,7 @@ int			create_plaction(t_svr_vector *vec, t_client *cli,
   t_packet		*pak;
 
   pak = cli->packet + (cli->cons % 10);
-  debug_packet(pak);
+  debug_packet(pak, "plaction cree");
   if (pak->duration)
     {
       action = vec->action;

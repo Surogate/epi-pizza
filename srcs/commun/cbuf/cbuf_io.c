@@ -24,6 +24,7 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
   static char	result[CBUFSIZ];
   int		cmd;
 
+  memset(result, 0, CBUFSIZ);
   if (cbuf->use == 0)
     return (NULL);
   else if (cbuf->prod > cbuf->cons)
