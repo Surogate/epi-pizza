@@ -57,7 +57,8 @@ void		make_calllistes_trantorien(t_game *game)
 {
   glNewList(TOTORO, GL_COMPILE);
   glEnable(GL_TEXTURE_2D);
-  draw_mesh(game->model.trantorien);
+  srandom(time(NULL));
+  draw_mesh(game->model.trantorien[random() % 8]);
   glDisable(GL_TEXTURE_2D);
   glEndList();
 }

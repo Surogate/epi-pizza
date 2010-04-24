@@ -121,8 +121,8 @@ typedef struct
 
 typedef struct
 {
-  obj_type	*trantorien;
-  obj_type	*ressource;
+  obj_type	*trantorien[8];
+  obj_type	*ressource[7];
   obj_type	*eggs;
 }		t_model;
 

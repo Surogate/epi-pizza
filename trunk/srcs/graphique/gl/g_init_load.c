@@ -52,17 +52,53 @@ static int	load_textureBMP(const char *path, unsigned int *textureId)
   return (0);
 }
 
+void		init_3dsmodel_ress(t_game *game)
+{
+  obj_type	*ress;
+  char		*path;
+  int		i;
+
+  i = -1;
+  path = strdup("3DS/ressX.bmp");
+  while (++i != 7)
+    {
+      path[8] = i + '1';
+      ress = malloc(sizeof(obj_type));
+      ress->scale[0] = 5.0f;
+      ress->scale[1] = 5.0f;
+      ress->scale[2] = 8.0f;
+      ress->id_texture = loadtexture(path);
+      if (i == 0)
+	Load3DS(ress,"3DS/Tore.3ds");
+      else
+	Load3DS(ress,"3DS/diamond.3ds");
+      game->model.ressource[i] = ress;
+    }
+  free(path);
+}
+
 void		init_3dsmodel(t_game *game)
 {
   obj_type	*trantorien;
+  char		*path;
+  int		i;
 
-  game->model.trantorien = malloc(sizeof(obj_type));
-  trantorien = game->model.trantorien;
-  trantorien->scale[0] = 5.0f;
-  trantorien->scale[1] = 5.0f;
-  trantorien->scale[2] = 8.0f;
-  load_textureBMP("3DS/totoro8.bmp", &trantorien->id_texture);
-  Load3DS(trantorien,"3DS/totoro.3ds");
+  i = -1;
+  path = strdup("3DS/totoroX.bmp");
+  while (++i != 8)
+    {
+      path[10] = i + '1';
+      trantorien = malloc(sizeof(obj_type));
+      trantorien->scale[0] = (5.0f) + i;
+      trantorien->scale[1] = (5.0f) + i;
+      trantorien->scale[2] = (8.0f) + i;
+      /*load_textureBMP("3DS/totoro3.bmp", &trantorien->id_texture);*/
+      trantorien->id_texture = loadtexture(path);
+      Load3DS(trantorien,"3DS/totoro.3ds");
+      game->model.trantorien[i] = trantorien;
+    }
+  free(path);
+  init_3dsmodel_ress(game);
 }
 
 void		init_texture(t_game *game)
