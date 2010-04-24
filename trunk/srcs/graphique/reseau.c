@@ -34,7 +34,9 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 #include	"xfunc.h"
+#include	"proto_actions.h"
 
+/*
 void		init_map(t_game *game, char **av)
 {
   int		ac;
@@ -338,6 +340,7 @@ void		server_msg(t_game *game, char **av)
     printf("%s ", av[i++]);
   printf("\n");
 }
+*/
 
 void		wrong_func()
 {

@@ -185,6 +185,12 @@ SRC_GR		= \
 		$(DIR_SRC_GR)gl/g_test_opengl.c		\
 		$(DIR_SRC_GR)gl/g_clic_mode.c		\
 		$(DIR_SRC_GR)gl/g_position.c		\
+		$(DIR_SRC_GR)actions/action.c		\
+		$(DIR_SRC_GR)actions/com_serveur.c	\
+		$(DIR_SRC_GR)actions/egg.c		\
+		$(DIR_SRC_GR)actions/info_player.c	\
+		$(DIR_SRC_GR)actions/init_info.c	\
+		$(DIR_SRC_GR)actions/object.c		\
 		$(DIR_SRC_GR)reseau.c			\
 		$(DIR_SRC_GR)split.c			\
 		$(DIR_SRC_GR)connect.c

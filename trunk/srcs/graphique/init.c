@@ -33,6 +33,7 @@
 #include	"s_cbuf.h"
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
+#include	"xfunc.h"
 
 void		create_map(t_game *game)
 {
