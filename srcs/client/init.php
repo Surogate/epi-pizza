@@ -1,6 +1,6 @@
 <?php
 
-function init_player($x, $y, $sock, $name)
+function init_player($sock, $name)
 {
 	$player = array();
 	
@@ -11,6 +11,8 @@ function init_player($x, $y, $sock, $name)
 	$player['phiras'] = 0;
 	$player['thystame'] = 0;
 	
+	$player['ans'] = array();
+	$player['did'] = array();
 	$player['flag'] = 0;
 	$player['food'] = 0;
 	$player['last_receive'] = "";
@@ -21,6 +23,8 @@ function init_player($x, $y, $sock, $name)
 	$player['size_y'] = 0;
 	$player['socket'] = $sock;
 	$player['team_name'] = $name;
+	$player['ut'] = 1260;
+	$player['uv'] = 10;
 	
 	return ($player);
 }

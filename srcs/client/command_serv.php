@@ -2,26 +2,34 @@
 
 $cmd_tab = array();
 
-$cmd_tab[0] = "avance"; 
-$cmd_tab[1] = "droite";
-$cmd_tab[2] = "gauche";
-$cmd_tab[3] = "voir";
-$cmd_tab[4] = "inventaire";
-$cmd_tab[5] = "prend objet";
-$cmd_tab[6] = "pose objet";
-$cmd_tab[7] = "expulse";
-$cmd_tab[8] = "broadcast";
-$cmd_tab[9] = "incantation";
-$cmd_tab[10] = "fork";
-$cmd_tab[11] = "connect_nbr";
-$cmd_tab[12] = "-";
+$cmd_tab[0] = "avance\n"; 
+$cmd_tab[1] = "droite\n";
+$cmd_tab[2] = "gauche\n";
+$cmd_tab[3] = "voir\n";
+$cmd_tab[4] = "inventaire\n";
+$cmd_tab[5] = "prend objet\n";
+$cmd_tab[6] = "pose objet\n";
+$cmd_tab[7] = "expulse\n";
+$cmd_tab[8] = "broadcast\n";
+$cmd_tab[9] = "incantation\n";
+$cmd_tab[10] = "fork\n";
+$cmd_tab[11] = "connect_nbr\n";
+$cmd_tab[12] = "-\n";
 
 $rep_tab = array();
 
-$rep_tab[0] = "ok";
-$rep_tab[1] = "ko";
-$rep_tab[2] = "elevation en cours";
-$rep_tab[3] = "niveau actuel :";
-$rep_tab[4] = "BIENVENUE";
+$rep_tab[0] = "ok\n";
+$rep_tab[1] = "ok\n";
+$rep_tab[2] = "ok\n";
+$rep_tab[3] = "{";
+$rep_tab[4] = "{";
+$rep_tab[5] = "ok\n ko\n";
+$rep_tab[6] = "ok\n ko\n";
+$rep_tab[7] = "ok\n ko\n";
+$rep_tab[8] = "ok\n";
+$rep_tab[9] = "elevation en cours\nniveau actuel\n";
+$rep_tab[10] = "ok\n";
+$rep_tab[11] = "\n";
+$rep_tab[12] = "mort\n";
 
 ?>

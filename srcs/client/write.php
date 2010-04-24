@@ -8,6 +8,8 @@ function to_write($socket, &$player)
 	if ($sent != FALSE)
 	{
 		echo "data sent: " . $player['send'][0] . "\n";
+		/*which_ans(&$player, $player['send'][0]);*/
+		in_did(&$player, $player['send'][0]);
 		fifo_out(&$player);
 	}
 	else

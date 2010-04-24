@@ -21,7 +21,7 @@ function connect($ip, $port, $name)
 			exit(0);
 		else
 			echo "Connect on " . $ip . "\n";
-		$player = init_player(1, 2, $s, $name);
+		$player = init_player($s, $name);
 		broad_recv(&$player, "message 8, bonjour toi");
 		
 		main_loop($player);

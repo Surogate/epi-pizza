@@ -9,11 +9,11 @@ function init_conv(&$player)
 	$player['flag'] = 1;
 }
 
-function get_int(&$player, $cmd_serv)
+function get_int(&$player)
 {
 	$size = array();
-	$cmd_serv = str_replace("\n", " ", $cmd_serv);
-	$size = explode(" ", $cmd_serv);
+	$cmd_serv = str_replace("\n", " ", $player['last_receive']);
+	$size = explode(" ", $player['last_receive']);
 	$player['nb_joueur_last'] = intval($size[0]);
 	$player['size_x'] = intval($size[1]);
 	$player['size_y'] = intval($size[2]);
@@ -21,15 +21,15 @@ function get_int(&$player, $cmd_serv)
 	fifo_in(&$player, "voir\n");
 }
 
-function manage($cmd_serv, &$player)
+function manage(&$player)
 {
-	echo "Dans manage avec la commande: " . $cmd_serv . "\n";
-	if (strcasecmp($cmd_serv, "bienvenue\n") == 0)
+	echo "Dans manage avec la commande: " . $player['last_receive'] . "\n";
+	if (strcasecmp($player['last_receive'], "bienvenue\n") == 0)
 		init_conv(&$player);
 	else if ($player['flag'] == 1)
-		get_int(&$player, $cmd_serv);
+		get_int(&$player, );
 	else if ($player['flag'] == 2)
-		loop_manage($cmd_serv, &$player);
+		loop_manage(&$player);
 	else
 		aff_error("Initial talk with server failed \n", 0);
 }
