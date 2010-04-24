@@ -52,7 +52,10 @@ int		check_next_end(char *str)
   i = 0;
   while (str[i] && str[i] != '\n')
     i++;
-  return (i);
+  if (!str[i])
+    return (0);
+  else
+    return (i);
 }
 
 void		my_recv(t_game *game)
@@ -75,7 +78,6 @@ void		my_recv(t_game *game)
 	      printf("taille de la map : %d, %d\n", game->map.h, game->map.w);
 	      create_map(game);
 	      printf("fin init map\n");
-	      break;
 	    }
 	}
     }while (msg);
