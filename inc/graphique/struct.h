@@ -51,6 +51,18 @@ typedef struct	s_play
   char		team[50];
 }		t_player;
 
+typedef	struct	s_egg
+{
+  int		id;
+  t_pos		pos;
+  /*
+  struct s_play	*next_pc;
+  struct s_play	*next_pg;
+  struct s_play	*next_pt;
+  */
+  char		*team;
+}		t_egg;
+
 typedef struct	s_team
 {
   char		name[50];
@@ -121,6 +133,7 @@ typedef struct	s_game
   SDL_Event	event;
   SDL_Surface	*screen;
   t_player	*player;
+  t_egg		*egg;
   t_video	video;
   t_model	model;
   t_texture	*texture;
