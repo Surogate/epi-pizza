@@ -13,7 +13,10 @@
 #include <stdio.h>
 #include <sys/time.h>
 
+#include "s_vector.h"
+#include "s_cbuf.h"
 #include "serveur/t_packet.h"
+#include "serveur/t_svr_stc.h"
 
 void		debug_packet(t_packet *pak)
 {

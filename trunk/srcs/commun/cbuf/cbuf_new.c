@@ -30,5 +30,5 @@ void		cbuf_init(t_cbuf *cbuf)
   cbuf->cons = 0;
   cbuf->prod = 0;
   cbuf->use = 0;
-  memset(cbuf->buf, 0, 1024);
+  memset(cbuf->buf, 0, CBUFSIZ);
 }
