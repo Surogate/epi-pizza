@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:24:06 2010 Florian Chanioux
-** Last update Sat Apr 24 11:11:50 2010 Florian Chanioux
+** Last update Sun Apr 25 01:50:27 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -131,7 +131,6 @@ void		mainloop(t_game *game)
   i = 0;
   while (exit)
   {
-    search_msg(game);
     exit = interaction(game);
     if (i % 3)
       {

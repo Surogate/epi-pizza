@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Sat Apr 24 13:10:03 2010 Florian Chanioux
+** Last update Sun Apr 25 01:50:58 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -59,13 +59,12 @@ int		main(int ac, char *av[])
   av = av;
   if (ac > 2)
     {
-      connect_to_serv(&game, av);
       glutInit(&ac, av);
       init_video(&game);
       init_game(&game);
-      game.map.h = -42;
-      game.serv.cbuf = cbuf_new();
-      tempo(&game);
+      game.map.h = 10;
+      game.map.w = 10;
+      
       printAttributes();
       init_texture(&game);
       init_3dsmodel(&game);
