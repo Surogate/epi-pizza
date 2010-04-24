@@ -56,12 +56,17 @@ void		make_calllistes_picking(t_game *game)
 
 void		make_calllistes_trantorien(t_game *game)
 {
-  glNewList(TOTORO, GL_COMPILE);
-  glEnable(GL_TEXTURE_2D);
-  srandom(time(NULL));
-  draw_mesh(game->model.trantorien[random() % 8]);
-  glDisable(GL_TEXTURE_2D);
-  glEndList();
+  int		i;
+  
+  i = -1;
+  while (++i < LVLMAX)
+  {
+    glNewList(TOTORO + i, GL_COMPILE);
+    glEnable(GL_TEXTURE_2D);
+    draw_mesh(game->model.trantorien[i]);
+    glDisable(GL_TEXTURE_2D);
+    glEndList();
+  }
 }
 
 void		make_calllistes_terrain(t_game *game)

@@ -97,6 +97,7 @@ typedef struct
   GLuint	side;
   GLuint	inter_u;
   GLuint	inter_d;
+  GLuint	team;
 }		t_texture;
 
 typedef struct

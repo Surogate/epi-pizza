@@ -35,5 +35,5 @@ void DrawStr(const char *str)
   if(!str)
     return ;
   while(str[++i])
-    glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, str[i]);
+    glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, str[i]);
 }
