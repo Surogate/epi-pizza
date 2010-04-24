@@ -19,6 +19,9 @@ function get_int(&$player)
 	$player['size_y'] = intval($size[2]);
 	$player['flag'] = 2;
 	fifo_in(&$player, "voir\n");
+	fifo_in(&$player, "inventaire\n");
+	echo $player['send'][0];
+	echo $player['send'][1];
 }
 
 function manage(&$player)
@@ -27,7 +30,7 @@ function manage(&$player)
 	if (strcasecmp($player['last_receive'], "bienvenue\n") == 0)
 		init_conv(&$player);
 	else if ($player['flag'] == 1)
-		get_int(&$player, );
+		get_int(&$player);
 	else if ($player['flag'] == 2)
 		loop_manage(&$player);
 	else

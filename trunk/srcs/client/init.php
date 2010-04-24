@@ -17,6 +17,7 @@ function init_player($sock, $name)
 	$player['food'] = 0;
 	$player['last_receive'] = "";
 	$player['level'] = 1;
+	$player['nb_cmd'] = 0;
 	$player['nb_joueur_last'] = -1;
 	$player['send'] = array();
 	$player['size_x'] = 0;
