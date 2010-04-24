@@ -38,4 +38,6 @@ function init_move(&$move, $case)
 	$move['move_right'] = 0;
 }
 
-?>	
+?>
+
+

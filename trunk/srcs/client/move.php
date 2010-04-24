@@ -9,25 +9,36 @@ function go_to(&$player, &$move)
 			fifo_in(&$player, "avance\n");
 			$move['move_forw']--;
 		}
-	while ($move['move_right'] != 0)
+	if ($move['move_right'] != 0)
 		{
 			fifo_in(&$player, "droite\n");
-			$move['move_right']--;
+			$move['move_right'] = 0;
 		}
-	while ($move['move_left'] != 0)
+	if ($move['move_left'] != 0)
 		{
 			fifo_in(&$player, "gauche\n");
-			$move['move_left']--;
+			$move['move_left'] = 0;
 		}
 }
 
 function coord(&$move, $pos, &$player, $niv)
 {	
 	$move['move_forw'] = $niv;
+	go_to(&$player, &$move);
 	if ($move['case_n'] < $pos)
-		$move['move_left'] = $pos - $move['case_n'];
+		{
+			$move['move_left'] = 1;
+			go_to(&$player, &$move);
+			$move['move_forw'] = ($pos - $move['case_n']);
+			go_to(&$player, &$move);
+		}
 	else if ($move['case_n'] > $pos)
-		$move['move_right'] = $move['case_n'] - $pos;
+		{
+			$move['move_right'] = 1;
+			go_to(&$player, &$move);
+			$move['move_forw'] = ($move['case_n'] - $pos);
+			go_to(&$player, &$move);
+		}
 	return (1);
 }
 	
@@ -45,10 +56,10 @@ function pos_max($lvl)
 	return ($pos);
 }
 	
-function get_there($case_num, &$player)
+function get_there(&$player)
 {
 	$move = array();
-	init_move(&$move, $case_num);
+	init_move(&$move, $player['reach']);
 	
 	if ($case_num != 0)
 	{
@@ -57,12 +68,11 @@ function get_there($case_num, &$player)
 		while (($niv <= $player['level']) && ($end != 1))
 		{
 			$pos = pos_max($niv);
-			if (($case_num >= ($pos - $niv)) && (($case_num) <= $pos + $niv))
+			if (($player['reach'] >= ($pos - $niv)) && (($player['reach']) <= $pos + $niv))
 				$end = coord(&$move, $pos, &$player, $niv);
 			else
 				$niv++;
 		}
-		go_to(&$player, &$move);
 	}
 	else
 		return (0);
