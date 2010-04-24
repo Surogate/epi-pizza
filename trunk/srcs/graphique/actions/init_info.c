@@ -132,15 +132,4 @@ void		player_connect(t_game *game, char **av)
       game->player = new_player(av);
       player = game->player;
     }
-  temp = game->map.t_case[player->pos.y][player->pos.x].player;
-  /*
-  if (temp)
-    {
-      while (temp->next_pc)
-	temp = temp->next_pc;
-      temp->next_pc = player;
-    }
-  else
-  */
-    game->map.t_case[player->pos.y][player->pos.x].player = player;
 }
