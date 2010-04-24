@@ -36,6 +36,7 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
     }
   if ((cmd = check_read(result)) != 0)
     {
+      printf("cmd : %i\n", cmd);
       cbuf->cons = (cbuf->cons + cmd + 1) % CBUFSIZ;
       cbuf->use -= cmd;
       result[cmd] = '\0';
