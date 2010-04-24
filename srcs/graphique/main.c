@@ -29,10 +29,11 @@
 #endif
 
 
-#include "graphique/3dsloader.h"
-#include "graphique/define.h"
-#include "graphique/struct.h"
-#include "graphique/proto.h"
+#include	"graphique/3dsloader.h"
+#include	"graphique/define.h"
+#include	"s_cbuf.h"
+#include	"graphique/struct.h"
+#include	"graphique/proto.h"
 
 int		main(int ac, char *av[])
 {
@@ -41,7 +42,7 @@ int		main(int ac, char *av[])
   av = av;
   if (ac > 2)
     {
-      /*     connect_to_serv(&game, av);*/
+      connect_to_serv(&game, av);
       glutInit(&ac, av);
       init_video(&game);
       init_game(&game);

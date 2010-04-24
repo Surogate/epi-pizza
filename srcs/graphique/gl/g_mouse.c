@@ -29,6 +29,7 @@
 
 #include	"graphique/3dsloader.h"
 #include	"graphique/define.h"
+#include	"s_cbuf.h"
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 

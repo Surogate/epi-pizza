@@ -27,6 +27,7 @@
 
 #include	"graphique/3dsloader.h"
 #include	"graphique/define.h"
+#include	"s_cbuf.h"
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
@@ -44,11 +45,29 @@ void		init_buff(char *buff, int size)
     buff[i++] = 0;
 }
 
+int		check_next_end(char *str)
+{
+  int		i;
+
+  i = 0;
+  while (str[i] && str[i] != '\n')
+    i++;
+  return (i);
+}
+
 void		my_recv(t_game *game)
 {
   char		*msg;
 
-  circle_read(game->serv.socket, &game->serv.circ);
+  cbuf_write(game->serv.cbuf, game->serv.socket);
+do
+  {
+    msg = cbuf_read(game->serv.cbuf, check_next_end);
+    if (msg)
+      printf("msg : %s\n", msg);
+  }while (msg);
+
+  /* circle_read(game->serv.socket, &game->serv.circ); */
   /*
   printf("\033[31mbuff content :\033[00m\n");
   printf("%s", game->serv.circ.buf);
@@ -114,19 +133,19 @@ void		mainloop(t_game *game)
   i = 0;
   while (exit)
   {
-/*    search_msg(game);*/
-      exit = interaction(game);
-      if (i % 2)
-	{
-	  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	  camera(game);
-	  draw_interface(game);
-	  draw_gl(game, GL_RENDER);
-/* 	  timedelay(); */
-	  glFlush();
-	  SDL_GL_SwapBuffers();
-	}
-      i++;
+    search_msg(game);
+    exit = interaction(game);
+    if (i % 2)
+      {
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	camera(game);
+	draw_interface(game);
+	draw_gl(game, GL_RENDER);
+	/* 	  timedelay(); */
+	glFlush();
+	SDL_GL_SwapBuffers();
+      }
+    i++;
   }
 }
 

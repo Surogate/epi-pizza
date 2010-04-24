@@ -17,33 +17,13 @@ typedef struct	s_event
   int		(*func)();
 }		t_event;
 
-/*
-typedef struct	s_circ
-{
-  char		buff[BUFSIZE];
-  int		cur;
-  int		num;
-  struct s_circ	*next;
-}		t_circle;
-*/
-
-
-typedef struct	s_circle_buf
-{
-  char		buf[BUFSIZE + 1];
-  int		pos;
-  int		deb;
-  int		nb;
-  int		retour;
-}		t_circle;
-
 typedef struct	s_serv
 {
   int		socket;
   fd_set	fd_read;
   fd_set	fd_write;
   int		beg[2];
-  t_circle	circ;
+  t_cbuf	*cbuf;
 }		t_serv;
 
 typedef struct	s_msg
