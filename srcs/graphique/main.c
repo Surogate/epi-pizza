@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Wed Apr 21 15:16:57 2010 Florian Chanioux
+** Last update Sat Apr 24 05:06:50 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -39,7 +39,7 @@ int		main(int ac, char *av[])
 
   if (ac > 2)
     {
-      connect_to_serv(&game, av);
+      /*     connect_to_serv(&game, av);*/
       init_video(&game);
       init_game(&game);
       printAttributes();

@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:24:06 2010 Florian Chanioux
-** Last update Sat Apr 24 02:47:16 2010 Florian Chanioux
+** Last update Sat Apr 24 04:51:37 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -25,10 +25,10 @@
 # include	<GL/gl.h>
 #endif
 
-#include	"3dsloader.h"
-#include	"define.h"
-#include	"struct.h"
-#include	"proto.h"
+#include	"graphique/3dsloader.h"
+#include	"graphique/define.h"
+#include	"graphique/struct.h"
+#include	"graphique/proto.h"
 
 /*include for select*/
 #include	<sys/time.h>

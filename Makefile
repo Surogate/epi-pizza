@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Thu Apr 22 09:47:47 2010 pierre1 boutbel
+## Last update Sat Apr 24 05:03:44 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -130,26 +130,30 @@ SRC_INC_C	= \
 
 SRC_GR		= \
 		$(DIR_SRC_GR)main.c			\
-		$(DIR_SRC_GR)xsdl.c			\
-		$(DIR_SRC_GR)key.c			\
 		$(DIR_SRC_GR)init.c			\
-		$(DIR_SRC_GR)init_load.c		\
-		$(DIR_SRC_GR)initgl.c			\
-		$(DIR_SRC_GR)load_window.c		\
-		$(DIR_SRC_GR)load_image.c		\
-		$(DIR_SRC_GR)loadtexture.c		\
-		$(DIR_SRC_GR)3dsloader.c		\
 		$(DIR_SRC_GR)mainloop.c			\
-		$(DIR_SRC_GR)camera.c			\
-		$(DIR_SRC_GR)interaction.c		\
-		$(DIR_SRC_GR)mouse.c			\
-		$(DIR_SRC_GR)draw_floor.c		\
-		$(DIR_SRC_GR)draw_map.c			\
-		$(DIR_SRC_GR)draw_mob.c			\
-		$(DIR_SRC_GR)draw_ressource.c		\
-		$(DIR_SRC_GR)draw_gl.c			\
-		$(DIR_SRC_GR)test_opengl.c		\
-		$(DIR_SRC_GR)position.c			\
+		$(DIR_SRC_GR)g_load_image.c		\
+		$(DIR_SRC_GR)g_loadtexture.c		\
+		$(DIR_SRC_GR)g_3dsloader.c		\
+		$(DIR_SRC_GR)g_xsdl.c			\
+		$(DIR_SRC_GR)g_key.c			\
+		$(DIR_SRC_GR)g_init_load.c		\
+		$(DIR_SRC_GR)g_initgl.c			\
+		$(DIR_SRC_GR)g_CallList.c		\
+		$(DIR_SRC_GR)g_load_window.c		\
+		$(DIR_SRC_GR)g_camera.c			\
+		$(DIR_SRC_GR)g_interaction.c		\
+		$(DIR_SRC_GR)g_mouse.c			\
+		$(DIR_SRC_GR)g_draw_floor.c		\
+		$(DIR_SRC_GR)g_draw_map.c		\
+		$(DIR_SRC_GR)g_draw_mob.c		\
+		$(DIR_SRC_GR)g_draw_picking.c		\
+		$(DIR_SRC_GR)g_draw_ressource.c		\
+		$(DIR_SRC_GR)g_draw_interfaces.c	\
+		$(DIR_SRC_GR)g_draw_gl.c		\
+		$(DIR_SRC_GR)g_test_opengl.c		\
+		$(DIR_SRC_GR)g_clic_mode.c		\
+		$(DIR_SRC_GR)g_position.c		\
 		$(DIR_SRC_GR)circle.c			\
 		$(DIR_SRC_GR)reseau.c			\
 		$(DIR_SRC_GR)connect.c
@@ -197,8 +201,10 @@ IFLAGS_i386-FreeBSD	=
 
 IFLAGS_i686-Linux	=
 
-IFLAGS			= $(IFLAGS_$(TAG)) -I$(DIR_INC) -I$(DIR_INC_S)	\
-			  -I$(DIR_INC_C) -I$(DIR_INC_GR)
+IFLAGS			= \
+			$(IFLAGS_$(TAG)) 	\
+			-I$(DIR_INC)		\
+			-I$(DIR_INC_GR)
 
 
 #########  LIBRARIES

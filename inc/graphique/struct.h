@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Wed Apr 21 13:26:36 2010 Florian Chanioux
+** Last update Sat Apr 24 05:19:12 2010 Florian Chanioux
 */
 
 #ifndef		STRUCT_H
@@ -16,6 +16,35 @@ typedef struct	s_event
   Uint8		type;
   int		(*func)();
 }		t_event;
+
+/*
+typedef struct	s_circ
+{
+  char		buff[BUFSIZE];
+  int		cur;
+  int		num;
+  struct s_circ	*next;
+}		t_circle;
+*/
+
+
+typedef struct	s_circle_buf
+{
+  char		buf[BUFSIZE + 1];
+  int		pos;
+  int		deb;
+  int		nb;
+  int		retour;
+}		t_circle;
+
+typedef struct	s_serv
+{
+  int		socket;
+  fd_set	fd_read;
+  fd_set	fd_write;
+  int		beg[2];
+  t_circle	circ;
+}		t_serv;
 
 typedef struct	s_msg
 {
@@ -74,56 +103,37 @@ typedef struct	s_map
 {
   t_case	**t_case;
   SDL_Surface	*fond;
+  int		rot;
+  int		z;
+  int		h;
+  int		w;
+  int		select;
 }		t_map;
 
-typedef struct	s_texture
+typedef struct
 {
   GLuint	floor;
+  GLuint	floor_s;
   GLuint	side;
+  GLuint	inter_u;
+  GLuint	inter_d;
 }		t_texture;
 
-typedef struct	s_model
+typedef struct
 {
   obj_type	*trantorien;
   obj_type	*ressource;
   obj_type	*eggs;
 }		t_model;
 
-typedef struct	s_video
+typedef struct
 {
   int		text;
   int		light;
   int		fog;
   int		aliasing;
-  int		cam[3];
+  int		cam[4];
 }		t_video;
-/*
-typedef struct	s_circ
-{
-  char		buff[BUFSIZE];
-  int		cur;
-  int		num;
-  struct s_circ	*next;
-}		t_circle;
-*/
-
-typedef struct	s_circle_buf
-{
-  char		buf[BUFSIZE + 1];
-  int		pos;
-  int		deb;
-  int		nb;
-  int		retour;
-}		t_circle;
-
-typedef struct	s_serv
-{
-  int		socket;
-  fd_set	fd_read;
-  fd_set	fd_write;
-  int		beg[2];
-  t_circle	circ;
-}		t_serv;
 
 typedef struct	s_game
 {
@@ -132,7 +142,7 @@ typedef struct	s_game
   t_player	*player;
   t_video	video;
   t_model	model;
-  t_texture	texture;
+  t_texture	*texture;
   t_info	info;
   t_mouse	mouse;
   t_map		map;

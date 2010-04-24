@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:24:06 2010 Florian Chanioux
-** Last update Wed Apr 21 15:18:55 2010 Florian Chanioux
+** Last update Sat Apr 24 05:06:17 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -90,6 +90,20 @@ void		search_msg(t_game *game)
     }
 }
 
+void		timedelay()
+{
+  static int	delay = 1000/ FPS;
+  static int	thenTicks = -1;
+  static int	nowTicks;
+
+  nowTicks = SDL_GetTicks();
+  delay += (1000 / FPS - (nowTicks - thenTicks));
+  thenTicks = nowTicks;
+  if (delay < 0)
+    delay = 1000 / FPS;
+  SDL_Delay(delay);
+}
+
 void		mainloop(t_game *game)
 {
   int		exit;
@@ -98,13 +112,15 @@ void		mainloop(t_game *game)
   SDL_EnableKeyRepeat(100, 20);
   while (exit)
   {
+/*    search_msg(game);*/
     exit = interaction(game);
-    search_msg(game);
-/*     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); */
-/*     camera(); */
-/*     draw_gl(game, GL_RENDER); */
-/*     glFlush(); */
-/*     SDL_GL_SwapBuffers(); */
+      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+      camera(game);
+      draw_interface(game);
+      draw_gl(game, GL_RENDER);
+
+      glFlush();
+      SDL_GL_SwapBuffers();
   }
 }
 

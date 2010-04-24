@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Wed Apr 21 15:17:33 2010 Florian Chanioux
+** Last update Sat Apr 24 05:24:05 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -60,17 +60,18 @@ void		init_game(t_game *game)
   game->screen = load_window();
   init_circ(&game->serv.circ);
   game->mouse.clicked = 0;
-  /*
-    game->mouse.img[0] = img_load("images/main_ouverte.bmp");
-    game->mouse.img[1] = img_load("images/main_fermer.bmp");
-    game->map.fond = img_load("images/fond_losange.bmp");
-  */
-/*  if (TTF_Init() < 0)
+/*
+  if (TTF_Init() < 0)
   {
-    fprintf(stderr, "TTF error : %s", TTF_GetError());
-    exit(EXIT_FAILURE);
+  fprintf(stderr, "TTF error : %s", TTF_GetError());
+  exit(EXIT_FAILURE);
   }
-  game->font = TTF_OpenFont(FONT_DIR, MFONT_SIZE);*/
+  game->font = TTF_OpenFont(FONT_DIR, MFONT_SIZE);
+*/
+  game->map.w = 10;
+  game->map.h = 10;
+  game->map.rot = 0;
+  game->map.z = 200;
   game->info.pos.x = 0;
   game->info.pos.y = 0;
   game->info.size_h = 10;

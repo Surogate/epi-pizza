@@ -20,7 +20,7 @@
 #include <sys/stat.h>
 #include <string.h>
 
-#include "3dsloader.h"
+#include "graphique/3dsloader.h"
 
 
 /**********************************************************

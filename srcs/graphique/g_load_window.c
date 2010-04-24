@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Apr 20 23:13:15 2010 Florian Chanioux
-** Last update Tue Apr 20 23:34:35 2010 Florian Chanioux
+** Last update Sat Apr 24 04:51:37 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -27,8 +27,8 @@
 #include <GL/gl.h>
 #endif
 
-#include "define.h"
-#include "xsdl.h"
+#include "graphique/define.h"
+#include "graphique/xsdl.h"
 
 SDL_Surface	*load_window()
 {
