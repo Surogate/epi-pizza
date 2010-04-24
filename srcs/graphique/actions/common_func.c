@@ -33,37 +33,16 @@
 #include	"graphique/proto.h"
 #include	"xfunc.h"
 
-void		eggs_drop(t_game *game, char **av)
+t_player	*find_player(t_game *game, int pid)
 {
-  t_egg		*new;
-  t_egg		*cur;
+  t_player	*cur;
 
-  printf("Le joueur %i a termine de pondre l'oeuf %i\n", atoi(av[2]), 
-	 atoi(av[1]));
-  cur = game->egg;
-  if (cur != NULL)
-    while (cur->next != NULL)
+  cur = game->player;
+  while (cur->next != NULL)
+    {
+      if (cur->id == pid)
+	return (cur);
       cur = cur->next;
-  new = xmalloc(sizeof(t_egg));
-  new->id = atoi(av[1]);
-  new->team = 
-  old->next = new;
-}
-
-void		eggs_ready(t_game *game, char **av)
-{
-  game = game;
-  av = av;
-}
-
-void		eggs_to_player(t_game *game, char **av)
-{
-  game = game;
-  av = av;
-}
-
-void		eggs_die(t_game *game, char **av)
-{
-  game = game;
-  av = av;
+    }
+  return (NULL);
 }

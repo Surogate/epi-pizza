@@ -36,7 +36,7 @@
 void		player_expulse(t_game *game, char **av)
 {
   game = game;
-  av = av;
+  printf("Le joueur %i a expulse ses petits camarades\n", atoi(av[1]));
 }
 
 /*Broadcast*/
@@ -50,7 +50,6 @@ void		player_broadcast(t_game *game, char **av)
   while(av[i])
     printf("%s ", av[i++]);
   printf("\n");
-
 }
 
 void		incant(t_game *game, char **av)
@@ -64,15 +63,7 @@ void		end_incant(t_game *game, char **av)
   t_player	*pl;
   
   if (av[3] == '1')
-    {
-      pl = game->map.t_case[atoi(av[1])][atoi(av[2])].player;
-      while (pl != NULL)
-	{
-	  pl->lv++;
-	  pl = pl->next_pc;
-	}
-      printf("L'incantation case %s %s a reussie\n", av[1], av[2]);
-    }
+    printf("L'incantation case %s %s a reussie\n", av[1], av[2]);
   else
     printf("L'incantation case %s %s a echoue\n", av[1], av[2]);
 }
@@ -80,5 +71,5 @@ void		end_incant(t_game *game, char **av)
 void		player_fork(t_game *game, char **av)
 {
   game = game;
-  av = av;
+  printf("Le joueur %i commence a pondre\n", atoi(av[1]));
 }

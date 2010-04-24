@@ -73,12 +73,21 @@ void		put_to_case(t_game *game, char **av)
 
 void		team_name(t_game *game, char **av)
 {
+  t_team	*old;
+  t_team	*tim;
 
-  game = game;
-  av = av;
+  tim = game->team;
+  while (tim != NULL)
+    {
+      old = tim;
+      tim = tim->next;
+    }
+  old->next = tim;
+  tim->name = strcmp(tim->name, av[1]);
+  tim->next = NULL;
 }
 
-t_player	*new_player(char **av)
+static t_player	*new_player(char **av)
 {
   t_player	*player;
 

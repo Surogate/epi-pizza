@@ -80,25 +80,24 @@ void		change_player_pos(t_game *game, char **av, t_pos pos, int p_id)
 
 void		player_pos(t_game *game, char **av)
 {
-  int		p_id;
   t_player	*player;
-  t_pos		pos;
+  int		p_id;
 
   pos.x = -1;
   pos.y = -1;
+  p_id = atoi(av[1]);
   player = game->player;
-  p_id = atoi(&av[1][1]);
   while (player)
     {
       if (player->id == p_id)
 	{
-	  pos.x = player->pos.x;
-	  pos.y = player->pos.y;
+	  player->pos.x = atoi(av[2]);
+	  player->pos.y = atoi(av[3]);
+	  player->sens = atoi(av[4]);
+	  break;
 	}
       player = player->next_pg;
     }
-  if (pos.x > 0 && pos.y > 0)
-    change_player_pos(game, av, pos, p_id);
 }
 
 void		player_level(t_game *game, char **av)
