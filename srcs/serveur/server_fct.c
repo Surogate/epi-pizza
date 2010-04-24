@@ -66,11 +66,11 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	  else if (cli->team < 0)
 	    new_gh(vec, cli, game);
 	  return_packet(cli->packet + cli->cons);
-	  free_packet(cli);
 	}
       else if (cli->used)
 	create_plaction(vec, cli, vec->slt);
     }
+  debug_client(cli);
 }
 
 void		free_client(t_client *cli)

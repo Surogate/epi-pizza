@@ -70,10 +70,7 @@ int		sock_read(int sock, char *to, int limit)
 
   result = recv(sock, to, limit, 0);
   if (result < 0)
-    {
-      perror("sock recv\n");
-      return (-1);
-    }
+    perror("sock recv\n");
   return (result);
 }
 
