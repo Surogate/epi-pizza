@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Mon Apr  5 00:06:03 2010 frederic1 pierronnet
+** Last update Sat Apr 24 04:55:27 2010 Florian Chanioux
 */
 #include	<stdio.h>
 #include	<errno.h>
@@ -74,6 +74,8 @@ void		put_to_case(t_game *game, char **av)
 void		team_name(t_game *game, char **av)
 {
 
+  game = game;
+  av = av;
 }
 
 t_player	*new_player(char **av)
@@ -130,7 +132,8 @@ void		player_connect(t_game *game, char **av)
 
 void		player_pos(t_game *game, char **av)
 {
-
+  game = game;
+  av = av;
 }
 
 void		player_level(t_game *game, char **av)
@@ -171,62 +174,86 @@ void		player_invent(t_game *game, char **av)
 
 void		player_expulse(t_game *game, char **av)
 {
+  game = game;
+  av = av;
 
 }
 
 void		player_broadcast(t_game *game, char **av)
 {
 
+  game = game;
+  av = av;
 }
 
 void		incant(t_game *game, char **av)
 {
+  game = game;
+  av = av;
 
 }
 
 void		end_incant(t_game *game, char **av)
 {
 
+  game = game;
+  av = av;
 }
 
 void		player_fork(t_game *game, char **av)
 {
 
+  game = game;
+  av = av;
 }
 
 void		drop_item(t_game *game, char **av)
 {
 
+  game = game;
+  av = av;
 }
 
 void		take_item(t_game *game, char **av)
 {
 
+  game = game;
+  av = av;
 }
 
 void		player_die(t_game *game, char **av)
 {
 
+  game = game;
+  av = av;
 }
 
 void		eggs_drop(t_game *game, char **av)
 {
+  game = game;
+  av = av;
 
 }
 
 void		eggs_ready(t_game *game, char **av)
 {
 
+  game = game;
+  av = av;
 }
 
 void		eggs_to_player(t_game *game, char **av)
 {
 
+  game = game;
+  av = av;
 }
 
 void		eggs_die(t_game *game, char **av)
 {
 
+  game = game;
+  av = av;
 }
 
 void		time_unite(t_game *game, char **av)

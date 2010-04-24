@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Sat Apr 17 21:15:54 2010 Florian Chanioux
-** Last update Thu Apr 22 19:09:08 2010 Florian Chanioux
+** Last update Sat Apr 24 04:51:37 2010 Florian Chanioux
 */
 
 #include <sys/types.h>
@@ -28,8 +28,8 @@
 #include <GL/gl.h>
 #endif
 
-#include	"define.h"
-#include	"xsdl.h"
+#include	"graphique/define.h"
+#include	"graphique/xsdl.h"
 
 static SDL_Surface	*flipSurface(SDL_Surface * surface)
 {

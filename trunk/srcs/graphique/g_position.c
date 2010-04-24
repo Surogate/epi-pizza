@@ -24,10 +24,10 @@
 # include	<GL/freeglut_std.h>
 #endif
 
-#include	"3dsloader.h"
-#include	"define.h"
-#include	"struct.h"
-#include	"proto.h"
+#include	"graphique/3dsloader.h"
+#include	"graphique/define.h"
+#include	"graphique/struct.h"
+#include	"graphique/proto.h"
 
 static int	calc_res(GLuint *ptr[2],
 			 GLint numberOfNames)

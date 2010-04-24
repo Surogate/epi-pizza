@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 17:10:54 2010 Florian Chanioux
-** Last update Sat Apr 24 02:58:14 2010 Florian Chanioux
+** Last update Sat Apr 24 04:53:05 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -25,10 +25,10 @@
 # include	<GL/gl.h>
 #endif
 
-#include	"3dsloader.h"
-#include	"define.h"
-#include	"struct.h"
-#include	"proto.h"
+#include	"graphique/3dsloader.h"
+#include	"graphique/define.h"
+#include	"graphique/struct.h"
+#include	"graphique/proto.h"
 
 void		draw_mesh(obj_type *mesh)
 {

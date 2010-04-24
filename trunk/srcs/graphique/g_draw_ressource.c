@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Tue Apr 20 12:41:25 2010 Florian Chanioux
-** Last update Tue Apr 20 14:32:00 2010 Florian Chanioux
+** Last update Sat Apr 24 04:53:57 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -25,10 +25,10 @@
 #include	<GL/gl.h>
 #endif
 
-#include	"3dsloader.h"
-#include	"define.h"
-#include	"struct.h"
-#include	"proto.h"
+#include	"graphique/3dsloader.h"
+#include	"graphique/define.h"
+#include	"graphique/struct.h"
+#include	"graphique/proto.h"
 
 
 void		draw_ressource(t_game *game, GLenum mode)

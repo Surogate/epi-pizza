@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Wed Apr 21 18:05:56 2010 Florian Chanioux
-** Last update Sat Apr 24 03:07:14 2010 Florian Chanioux
+** Last update Sat Apr 24 04:51:38 2010 Florian Chanioux
 */
 
 #include	<stdio.h>
@@ -26,9 +26,9 @@
 # include	<GL/freeglut_std.h>
 #endif
 
-#include	"3dsloader.h"
-#include	"define.h"
-#include	"struct.h"
+#include	"graphique/3dsloader.h"
+#include	"graphique/define.h"
+#include	"graphique/struct.h"
 
 void	interface_up(GLuint texture)
 {
