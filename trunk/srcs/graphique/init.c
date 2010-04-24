@@ -30,6 +30,7 @@
 
 #include	"graphique/3dsloader.h"
 #include	"graphique/define.h"
+#include	"s_cbuf.h"
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
@@ -58,7 +59,7 @@ static void	init_map(t_game *game)
 void		init_game(t_game *game)
 {
   game->screen = load_window();
-  init_circ(&game->serv.circ);
+  game->serv.cbuf = cbuf_new();
   game->mouse.clicked = 0;
 /*
   if (TTF_Init() < 0)

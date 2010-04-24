@@ -61,7 +61,7 @@ SRC_S		= \
 		$(DIR_SRC_S)server_ending.c		\
 		$(DIR_SRC_S)time_fct.c			\
 		$(DIR_SRC_S)response.c			\
-		$(DIR_SRC_S)player_debug.c			\
+		$(DIR_SRC_S)player_debug.c		\
 		$(DIR_SRC_S)instruction.c		\
 		$(DIR_SRC_S)jeu/hatch.c			\
 		$(DIR_SRC_S)jeu/incant.c		\
@@ -185,7 +185,6 @@ SRC_GR		= \
 		$(DIR_SRC_GR)gl/g_test_opengl.c		\
 		$(DIR_SRC_GR)gl/g_clic_mode.c		\
 		$(DIR_SRC_GR)gl/g_position.c		\
-		$(DIR_SRC_GR)circle.c			\
 		$(DIR_SRC_GR)reseau.c			\
 		$(DIR_SRC_GR)connect.c
 
@@ -324,9 +323,9 @@ $(NAME_S)	: $(OBJ_S) $(OBJ_CO)
 	$(CC) -o $(NAME_S) $(OBJ_S) $(OBJ_CO) $(LFLAGS)
 	@$(ECHO) "$(GREEN)[LINKING] - DONE$(END)"
 
-$(NAME_GR)	: $(OBJ_GR) $(OBJ_$(STAG))
+$(NAME_GR)	: $(OBJ_GR) $(OBJ_$(STAG)) $(OBJ_CO)
 	@$(ECHO) "$(CYAN)[LINKING]: $(NAME_GR)$(END)"
-	$(CC) -o $(NAME_GR) $(OBJ_$(STAG)) $(OBJ_GR) $(LFLAGS)
+	$(CC) -o $(NAME_GR) $(OBJ_CO) $(OBJ_$(STAG)) $(OBJ_GR) $(LFLAGS)
 	@$(ECHO) "$(GREEN)[LINKING] - DONE$(END)"
 
 tags		:
