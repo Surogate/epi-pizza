@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:15:36 2010 francois1 ancel
-** Last update Sun Apr 18 12:47:29 2010 pierre1 boutbel
+** Last update Sat Apr 24 05:53:27 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -18,17 +18,17 @@
 # include <sys/select.h>
 #endif
 
-#include "define.h"
+#include "serveur/define.h"
 #include "my_list.h"
 #include "s_vector.h"
 #include "s_cbuf.h"
-#include "t_struct.h"
-#include "t_packet.h"
-#include "t_svr_stc.h"
-#include "server.h"
-#include "server_map.h"
-#include "server_stt.h"
-#include "pars_main.h"
+#include "serveur/t_struct.h"
+#include "serveur/t_packet.h"
+#include "serveur/t_svr_stc.h"
+#include "serveur/server.h"
+#include "serveur/server_map.h"
+#include "serveur/server_stt.h"
+#include "serveur/pars_main.h"
 
 void		init_server(t_server *server)
 {

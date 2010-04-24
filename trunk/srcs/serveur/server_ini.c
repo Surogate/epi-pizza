@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr 12 11:24:31 2010 francois1 ancel
-** Last update Wed Apr 14 17:23:38 2010 pierre1 boutbel
+** Last update Sat Apr 24 05:49:10 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -21,17 +21,17 @@
 # include <sys/select.h>
 #endif
 
-#include "define.h"
+#include "serveur/define.h"
 #include "xfunc.h"
 #include "my_list.h"
 #include "s_cbuf.h"
 #include "cbuf_define.h"
 #include "s_vector.h"
-#include "t_packet.h"
-#include "t_struct.h"
-#include "t_svr_stc.h"
-#include "server_debug.h"
-#include "time_fct.h"
+#include "serveur/t_packet.h"
+#include "serveur/t_struct.h"
+#include "serveur/t_svr_stc.h"
+#include "serveur/server_debug.h"
+#include "serveur/time_fct.h"
 
 int			init_svr(int sock, t_server *svr, t_select *slt_par)
 {

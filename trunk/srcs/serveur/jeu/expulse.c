@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Tue Apr 13 09:15:30 2010 pierre1 boutbel
-** Last update Mon Apr 19 14:25:43 2010 pierre1 boutbel
+** Last update Sat Apr 24 05:49:08 2010 Florian Chanioux
 */
 
 
@@ -15,10 +15,10 @@
 #include	<stdio.h>
 
 #include	"my_list.h"
-#include	"define.h"
-#include	"t_struct.h"
-#include	"t_packet.h"
-#include	"t_game_stc.h"
+#include	"serveur/define.h"
+#include	"serveur/t_struct.h"
+#include	"serveur/t_packet.h"
+#include	"serveur/t_game_stc.h"
 #include	"xfunc.h"
 
 static void	expulse_list_msg(t_packet *packet, t_player *player)

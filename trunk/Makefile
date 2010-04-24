@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Sat Apr 24 05:03:44 2010 Florian Chanioux
+## Last update Sat Apr 24 06:13:23 2010 Florian Chanioux
 ##
 
 STAG		= $(shell uname -s)
@@ -158,6 +158,9 @@ SRC_GR		= \
 		$(DIR_SRC_GR)reseau.c			\
 		$(DIR_SRC_GR)connect.c
 
+SRC_GR_M	= \
+		$(DIR_SRC_GR)SDLMain.m
+
 
 SRC_INC_GRAP	= \
 		$(DIR_INC_GR)proto.h			\
@@ -175,6 +178,7 @@ OBJ_S		= $(SRC_S:.c=.o)
 OBJ_C		= $(SRC_C:.c=.o)
 OBJ_CO		= $(SRC_CO:.c=.o)
 OBJ_GR		= $(SRC_GR:.c=.o)
+OBJ_M		= $(SRC_GR_M:.m=.o)
 
 
 ############### FLAGS ###############
@@ -192,10 +196,12 @@ DEFINE			= $(DEFINE_$(TAG))
 #########  INCLUDES
 
 IFLAGS_i386-Darwin	= \
-		-I$(HOME)/Library/Frameworks/SDL_ttf.framework/Headers	\
 		-I$(HOME)/Library/Frameworks/SDL.framework/Headers	\
-		-I/Library/Frameworks/SDL_ttf.framework/Headers		\
-		-I/Library/Frameworks/SDL.framework/Headers
+		-I$(HOME)/Library/Frameworks/SDL_image.framework/Headers\
+		-I$(HOME)/Library/Frameworks/SDL_ttf.framework/Headers	\
+		-I/Library/Frameworks/SDL.framework/Headers		\
+		-I/Library/Frameworks/SDL_image.framework/Headers	\
+		-I/Library/Frameworks/SDL_ttf.framework/Headers
 
 IFLAGS_i386-FreeBSD	=
 
@@ -213,9 +219,10 @@ LFLAGS_i386-Darwin	= \
 			-lxfunc_$(TAG)		\
 			-lmylist_$(TAG)		\
 			-framework SDL		\
+			-framework SDL_image	\
+			-framework SDL_ttf	\
 			-framework GLUT		\
-			-framework OpenGL	\
-			-framework SDL_ttf
+			-framework OpenGL
 
 LFLAGS_i386-FreeBSD	= \
 			-lmylist_$(TAG)				\
@@ -244,7 +251,7 @@ CFLAGS			+= -g3 -W -Wall -ansi -pedantic $(DEFINE) $(IFLAGS)
 CC_FreeBSD	= gcc
 CC_SunOS	= /usr/sfw/bin/gcc
 CC_Linux	= gcc
-CC_Darwin	= gcc
+CC_Darwin	= gcc -arch i386 -m32
 CC		= $(CC_$(STAG))
 
 RM		= rm -f
@@ -282,9 +289,9 @@ $(NAME_S)	: $(OBJ_S) $(OBJ_CO)
 	$(CC) -o $(NAME_S) $(OBJ_S) $(OBJ_CO) $(LFLAGS)
 	@$(ECHO) "$(GREEN)[LINKING] - DONE$(END)"
 
-$(NAME_GR)	: $(OBJ_GR)
+$(NAME_GR)	: $(OBJ_GR) $(OBJ_M)
 	@$(ECHO) "$(CYAN)[LINKING]: $(NAME_GR)$(END)"
-	$(CC) -o $(NAME_GR) $(OBJ_GR) $(LFLAGS)
+	$(CC) -o $(NAME_GR) $(OBJ_M) $(OBJ_GR) $(LFLAGS)
 	@$(ECHO) "$(GREEN)[LINKING] - DONE$(END)"
 
 tags		:
@@ -308,11 +315,17 @@ tar		:
 
 ############### SUFFIXIES
 
-.SUFIXIES	: .c .o
+.SUFIXIES	: .c .o .m
 .c.o		:
 	@$(ECHO) "$(ORANGE)[OBJ]$(GREY)"
 	$(CC) $(CFLAGS) -c $< -o $@
 	@$(ECHO) "$(ORANGE)[OBJ] -DONE$(END)"
+
+.m.o		:
+	@$(ECHO) "$(ORANGE)[OBJ]$(GREY)"
+	$(CC) $(CFLAGS) -c $< -o $@
+	@$(ECHO) "$(ORANGE)[OBJ] -DONE$(END)"
+
 
 ############### CLEAN OPTION
 

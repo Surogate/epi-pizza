@@ -5,17 +5,17 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Fri Apr 16 09:31:52 2010 pierre1 boutbel
-** Last update Sun Apr 18 12:32:30 2010 pierre1 boutbel
+** Last update Sat Apr 24 05:49:11 2010 Florian Chanioux
 */
 
 #include	<stdlib.h>
 #include	<stdio.h>
 
-#include	"define.h"
+#include	"serveur/define.h"
 #include	"my_list.h"
-#include	"t_struct.h"
-#include	"server_insert_player.h"
-#include	"player_debug.h"
+#include	"serveur/t_struct.h"
+#include	"serveur/server_insert_player.h"
+#include	"serveur/player_debug.h"
 
 static int	find_player(void *ref, t_player *player)
 {

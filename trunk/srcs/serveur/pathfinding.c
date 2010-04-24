@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Thu Apr 15 18:04:21 2010 Florian Chanioux
-** Last update Tue Apr 20 21:46:01 2010 Florian Chanioux
+** Last update Sat Apr 24 05:49:11 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -13,10 +13,10 @@
 #include <stdio.h>
 #include <time.h>
 
-#include "define.h"
+#include "serveur/define.h"
 #include "xfunc.h"
 #include "my_list.h"
-#include "t_struct.h"
+#include "serveur/t_struct.h"
 
 # define	UP	(0)
 # define	DOWN	(1)

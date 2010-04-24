@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 **
 ** Started on  Wed Apr 14 13:18:55 2010 pierre1 boutbel
-** Last update Tue Apr 20 16:41:20 2010 pierre1 boutbel
+** Last update Sat Apr 24 05:50:01 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -13,9 +13,9 @@
 #include	<stdio.h>
 
 #include	"my_list.h"
-#include	"define.h"
-#include	"t_struct.h"
-#include	"t_game_stc.h"
+#include	"serveur/define.h"
+#include	"serveur/t_struct.h"
+#include	"serveur/t_game_stc.h"
 #include	"xfunc.h"
 
 char		*add_player(t_vision *cur_case, char *msg)

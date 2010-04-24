@@ -5,15 +5,15 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Fri Apr 16 16:39:00 2010 pierre1 boutbel
-** Last update Tue Apr 20 17:01:34 2010 pierre1 boutbel
+** Last update Sat Apr 24 05:49:11 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
 #include	<stdlib.h>
 
-#include	"define.h"
+#include	"serveur/define.h"
 #include	"my_list.h"
-#include	"t_struct.h"
+#include	"serveur/t_struct.h"
 #include	"xfunc.h"
 
 static int	count_team(t_team *begin)

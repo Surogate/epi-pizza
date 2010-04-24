@@ -7,10 +7,10 @@
 #include	<stdio.h>
 #include	<stdarg.h>
 
-#include	"define.h"
+#include	"serveur/define.h"
 #include	"my_list.h"
-#include	"t_struct.h"
-#include	"communication.h"
+#include	"serveur/t_struct.h"
+#include	"serveur/communication.h"
 #include	"xfunc.h"
 
 char		*grp_do_incant(t_player *player)

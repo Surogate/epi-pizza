@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Tue Apr  6 15:01:49 2010 Florian Chanioux
-** Last update Tue Apr 20 18:33:06 2010 pierre1 boutbel
+** Last update Sat Apr 24 05:54:11 2010 Florian Chanioux
 */
 
 #include <sys/time.h>
@@ -13,16 +13,16 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "define.h"
+#include "serveur/define.h"
 #include "my_list.h"
-#include "t_struct.h"
-#include "t_packet.h"
-#include "t_game_stc.h"
-#include "game_cmd.h"
-#include "response.h"
-#include "count_player.h"
-#include "server_born.h"
-#include "server_ending.h"
+#include "serveur/t_struct.h"
+#include "serveur/t_packet.h"
+#include "serveur/t_game_stc.h"
+#include "serveur/game_cmd.h"
+#include "serveur/response.h"
+#include "serveur/count_player.h"
+#include "serveur/server_born.h"
+#include "serveur/server_ending.h"
 
 t_inst		tab_instr[NB_INST] =
 {

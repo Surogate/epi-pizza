@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 ** 
 ** Started on  Wed Apr 14 16:37:56 2010 pierre1 boutbel
-** Last update Sun Apr 18 12:34:04 2010 pierre1 boutbel
+** Last update Sat Apr 24 05:49:10 2010 Florian Chanioux
 */
 
 #include	<unistd.h>
@@ -13,10 +13,10 @@
 #include	<stdio.h>
 #include	<time.h>
 
-#include	"define.h"
+#include	"serveur/define.h"
 #include	"xfunc.h"
 #include	"my_list.h"
-#include	"t_struct.h"
+#include	"serveur/t_struct.h"
 
 static t_map	*find_case(t_game *game)
 {

@@ -5,17 +5,17 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr  9 15:22:12 2010 Florian Chanioux
-** Last update Tue Apr 20 20:48:31 2010 Florian Chanioux
+** Last update Sat Apr 24 05:49:10 2010 Florian Chanioux
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "define.h"
+#include "serveur/define.h"
 #include "xfunc.h"
 #include "my_list.h"
-#include "t_struct.h"
+#include "serveur/t_struct.h"
 
 
 void		test_aff_map(t_game *game)

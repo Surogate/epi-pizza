@@ -5,19 +5,19 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Sat Apr 10 15:11:57 2010 francois1 ancel
-** Last update Sat Apr 10 15:11:57 2010 francois1 ancel
+** Last update Sat Apr 24 05:57:14 2010 Florian Chanioux
 */
 
 #include		<string.h>
 #include		<stdlib.h>
 
 #include		"my_list.h"
-#include		"define.h"
-#include		"pars_init_teams.h"
-#include		"pars_display.h"
-#include		"pars_main.h"
-#include		"t_struct.h"
-#include		"pars_define.h"
+#include		"serveur/define.h"
+#include		"serveur/pars_init_teams.h"
+#include		"serveur/pars_display.h"
+#include		"serveur/pars_main.h"
+#include		"serveur/t_struct.h"
+#include		"serveur/pars_define.h"
 
 void			malloc_team(t_opt *opt)
 {

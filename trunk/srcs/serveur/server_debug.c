@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Fri Apr 16 09:15:22 2010 francois1 ancel
-** Last update Sun Apr 18 17:51:36 2010 pierre1 boutbel
+** Last update Sat Apr 24 05:49:11 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include <sys/time.h>
 
-#include "t_packet.h"
+#include "serveur/t_packet.h"
 
 void		debug_packet(t_packet *pak)
 {

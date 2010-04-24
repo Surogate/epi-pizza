@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Sat Apr 10 15:11:57 2010 francois1 ancel
-** Last update Tue Apr 13 13:22:26 2010 Florian Chanioux
+** Last update Sat Apr 24 05:56:32 2010 Florian Chanioux
 */
 
 #include		<string.h>
@@ -13,10 +13,10 @@
 #include		<stdlib.h>
 
 #include		"my_list.h"
-#include		"define.h"
-#include		"pars_display.h"
-#include		"pars_option.h"
-#include		"t_struct.h"
+#include		"serveur/define.h"
+#include		"serveur/pars_display.h"
+#include		"serveur/pars_option.h"
+#include		"serveur/t_struct.h"
 
 void			free_opt(t_opt *opt)
 {

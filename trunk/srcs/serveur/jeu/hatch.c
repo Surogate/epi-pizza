@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Mon Apr 12 19:29:06 2010 Florian Chanioux
-** Last update Tue Apr 20 17:06:19 2010 pierre1 boutbel
+** Last update Sat Apr 24 05:49:08 2010 Florian Chanioux
 */
 
 #include	<sys/types.h>
@@ -15,10 +15,10 @@
 #include	<time.h>
 
 #include	"my_list.h"
-#include	"define.h"
-#include	"t_struct.h"
-#include	"t_packet.h"
-#include	"t_game_stc.h"
+#include	"serveur/define.h"
+#include	"serveur/t_struct.h"
+#include	"serveur/t_packet.h"
+#include	"serveur/t_game_stc.h"
 #include	"xfunc.h"
 
 static int	find_egg(int *ref, t_eggs *egg)

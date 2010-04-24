@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Sat Apr 10 15:11:57 2010 francois1 ancel
-** Last update Sun Apr 18 12:29:28 2010 pierre1 boutbel
+** Last update Sat Apr 24 05:49:11 2010 Florian Chanioux
 */
 
 #include <unistd.h>
@@ -15,24 +15,24 @@
 #include <sys/types.h>
 #include <sys/time.h>
 
-#include "define.h"
+#include "serveur/define.h"
 #include "my_list.h"
 #include "s_cbuf.h"
 #include "cbuf_define.h"
 #include "cbuf_io.h"
 #include "s_vector.h"
-#include "t_packet.h"
-#include "t_struct.h"
-#include "t_svr_stc.h"
-#include "client_fct.h"
-#include "server_kick.h"
-#include "instruction.h"
-#include "server_action.h"
-#include "server_eat.h"
-#include "server_plaction.h"
-#include "server_insert_player.h"
-#include "server_graph.h"
-#include "communication.h"
+#include "serveur/t_packet.h"
+#include "serveur/t_struct.h"
+#include "serveur/t_svr_stc.h"
+#include "serveur/client_fct.h"
+#include "serveur/server_kick.h"
+#include "serveur/instruction.h"
+#include "serveur/server_action.h"
+#include "serveur/server_eat.h"
+#include "serveur/server_plaction.h"
+#include "serveur/server_insert_player.h"
+#include "serveur/server_graph.h"
+#include "serveur/communication.h"
 
 int		check_read(char *str)
 {
