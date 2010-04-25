@@ -67,8 +67,9 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	    }
 	  else if (cli->team < 0)
 	    new_gh(vec, cli, game);
+	  free_packet(cli->packet + cli->cons);
 	}
-      else if (cli->used)
+      else if (cli->used == 1)
 	create_plaction(vec, cli, vec->slt);
     }
   debug_client(cli, "apres instr");

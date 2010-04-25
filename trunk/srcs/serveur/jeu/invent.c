@@ -93,22 +93,21 @@ void		try_invent(t_packet *packet, t_player *player)
   char		*msg;
 
   num_ress = -1;
-  msg = xmalloc((65 + (RESS_NUM * 10)) * sizeof(*msg));
-  msg[0] = '\0';
+  packet->response = xmalloc(sizeof(t_rep));
+  packet->response->mess = xmalloc((65 + (RESS_NUM * 10)) * sizeof(*msg));
   while (++num_ress < RESS_NUM)
     {
       if (num_ress == 0)
-	sprintf(msg, "{%s %i, ", msg_ress[num_ress], player->ress[num_ress]);
+	sprintf(packet->response->mess,
+		"{%s %i, ", msg_ress[num_ress], player->ress[num_ress]);
       else if (num_ress < (RESS_NUM - 1))
-	sprintf(msg + strlen(msg), "%s %i, ", msg_ress[num_ress],
-		player->ress[num_ress]);
+	sprintf(packet->response->mess + strlen(packet->response->mess),
+		"%s %i, ", msg_ress[num_ress], player->ress[num_ress]);
       else
-	sprintf(msg + strlen(msg), "%s %i", msg_ress[num_ress],
-		player->ress[num_ress]);
+	sprintf(packet->response->mess + strlen(packet->response->mess),
+		"%s %i", msg_ress[num_ress], player->ress[num_ress]);
     }
-  msg = strncat(msg, "}\n", 3);
-  packet->response = xmalloc(sizeof(t_rep));
-  packet->response->mess = msg;
+  strncat(packet->response->mess, "}\n", 3);
   packet->response->id_player = packet->player_id;
   packet->ac_rep = 1;
 }
