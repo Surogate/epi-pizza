@@ -62,6 +62,7 @@ typedef	struct	s_egg
 typedef struct	s_team
 {
   char		name[50];
+  int		id;
   struct s_team	*next;
 }		t_team;
 
