@@ -12,6 +12,7 @@
 #include	<stdlib.h>
 #include	<stdio.h>
 #include	<string.h>
+#include	<errno.h>
 #include	<sys/socket.h>
 #include	<sys/types.h>
 #include	"cbuf_define.h"
@@ -63,7 +64,9 @@ int		sock_write(int sock, char *from)
       result = send(sock, from, strlen(from), 0);
       if (result < 0)
 	{
-	  perror("sock send\n");
+	  perror("sock send");
+	  if (errno == EPIPE)
+	    return (-1);
 	  return (EXIT_FAILURE);
 	}
       total += result;
@@ -77,7 +80,7 @@ int		sock_read(int sock, char *to, int limit)
 
   result = recv(sock, to, limit, 0);
   if (result < 0)
-    perror("sock recv\n");
+    perror("sock recv");
   return (result);
 }
 

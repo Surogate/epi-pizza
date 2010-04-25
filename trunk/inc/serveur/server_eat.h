@@ -12,7 +12,7 @@
 # define SERVER_EAT_C_INCLUDED
 
 int		create_eat(t_svr_vector *vec, int player_id);
-int		server_eat(t_svr_vector *vec, int player_id, t_game *game);
+int		server_eat(t_svr_vector *vec, t_packet *pak, t_game *game);
 int		delete_eat(t_svr_vector *vec, int player_id);
 
 #endif

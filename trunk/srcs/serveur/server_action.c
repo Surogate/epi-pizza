@@ -68,23 +68,16 @@ void			delete_action(t_svr_vector *vec, int type, int pos)
 
 int			execute_action(t_svr_vector *vec, t_game *game)
 {
-  t_vector		*action;
   t_packet		*tmp;
   struct timeval	time;
+  int			(*tab[])() = {exec_plaction,
+				      server_kick,
+				      server_eat,
+				      server_hatch};
 
-  action = vec->action;
   gettimeofday(&time, NULL);
-  while ((tmp = action->getnxts(action)) != NULL)
-    if (time_cmp(&time, &(tmp->end)) >= 0)
-      {
-	if (!tmp->type)
-	  exec_plaction(vec, tmp, game);
-	if (tmp->type == 1)
-	  server_kick(vec, tmp->player_id, game);
-	if (tmp->type == 2)
-	  server_eat(vec, tmp->player_id, game);
-	if (tmp->type == 3)
-	  server_hatch(vec, tmp, game);
-      }
+  while ((tmp = (t_packet *)vec->action->getnxts(vec->action)) != NULL)
+    if (time_cmp(&time, &(tmp->end)) >= 0 && tmp->type < 4)
+      tab[tmp->type](vec, tmp, game);
   return (EXIT_SUCCESS);
 }

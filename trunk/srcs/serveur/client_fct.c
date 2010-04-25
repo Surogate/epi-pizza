@@ -28,6 +28,7 @@
 #include "serveur/t_struct.h"
 #include "serveur/server_kick.h"
 #include "serveur/instruction.h"
+#include "serveur/server_debug.h"
 
 t_client		*new_client(int s)
 {
@@ -75,7 +76,7 @@ int			add_client(t_svr_vector *vec, t_select *slt_par,
   return (EXIT_SUCCESS);
 }
 
-static int		parse_word(t_packet *pak, int len)
+static int		parse_word(t_packet *pak)
 {
   int			i;
 
@@ -97,24 +98,19 @@ static int		parse_word(t_packet *pak, int len)
 	i++;
       pak->av[0][i] = '\0';
       i++;
-      pak->av[1] = malloc((len - i + 1) * sizeof(char));
-      strncpy(pak->av[1], pak->av[0] + i, len - i);
-      pak->av[1][len - i] = '\0';
-      pak->ac = 2;
+      pak->av[1] = strdup(pak->av[0] + i);
+      if (pak->av[1])
+	pak->ac = 2;
     }
   return (EXIT_SUCCESS);
 }
 
 int			client_parse_instr(char *str, t_client *cli)
 {
-
   t_packet		*pak;
-  int			i;
-  int			len;
 
   if (cli->used >= 10) 
     return (EXIT_FAILURE);
-  len = strlen(str);
   pak = cli->packet + ((cli->cons + cli->used) % 10);
   pak->av[0] = strdup(str);
   if (pak->av[0] == NULL)
@@ -126,7 +122,7 @@ int			client_parse_instr(char *str, t_client *cli)
   pak->player_id = cli->sock;
   pak->player = cli;
   if (cli->team)
-    if (parse_word(pak, len) == EXIT_SUCCESS)
+    if (parse_word(pak) == EXIT_SUCCESS)
       ++(cli->used);
   debug_instr(pak);
   pak->type = 0;
@@ -145,11 +141,16 @@ void			free_packet(t_client *cli)
   while (i < pak->ac)
     free(pak->av[i++]);
   pak->ac = 0;
-  i = 0;
-  while (i < pak->ac_rep)
-    free(pak->response[i++].mess);
-  free(pak->response);
-  pak->ac_rep = 0;
+  if (pak->ac_rep > 0)
+    {
+      i = 0;
+      while (i < pak->ac_rep)
+	free(pak->response[i++].mess);
+      pak->ac_rep = 0;
+    }
+  if (pak->ac_rep == 0)
+    free(pak->response);
+  pak->ac_rep = -1;
   pak->end.tv_sec = 0;
   pak->end.tv_usec = 0;
   cli->used = cli->used - 1;
