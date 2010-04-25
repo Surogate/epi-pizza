@@ -12,14 +12,16 @@
 #include	<sys/time.h>
 #include	<stdlib.h>
 
+#include	<stdio.h>
+
 #include	"my_list.h"
 #include	"serveur/define.h"
 #include	"serveur/t_struct.h"
 #include	"serveur/t_packet.h"
 #include	"serveur/t_game_stc.h"
+#include	"serveur/game_cmd.h"
 #include	"xfunc.h"
 
-char		*concatene_msg(t_vision *list);
 
 static t_dir_v	gl_dir[5] = {
   {DIR_N, M_NO, M_E},
@@ -28,6 +30,16 @@ static t_dir_v	gl_dir[5] = {
   {DIR_O, M_SO, M_N},
   {0, 0, 0}
 };
+
+/*
+static t_dir_v	gl_dir[5] = {
+  {DIR_N, M_NO, M_E},
+  {DIR_E, M_NE, M_S},
+  {DIR_S, M_SE, M_O},
+  {DIR_O, M_SO, M_N},
+  {0, 0, 0}
+};
+*/
 
 static t_map	*find_left(t_vision *list, t_dir_v *dir, int level)
 {
@@ -76,8 +88,18 @@ static t_vision	*add_level(t_vision *s_vision, t_dir_v *dir, int level)
   i = 0;
   count = 0;
   left = find_left(s_vision, dir, level);
-  while (i != level * 2)
+
+  
+  printf("Debut : Level : %i   Left : X %i, Y : %i\n", level, left->x, left->y);
+  
+  
+  while (i <= level * 2)
     {
+      
+      
+      printf("Nous travaillons sur left soit le : %i %i\n", left->x, left->y);
+      
+
       s_vision = add_case(s_vision, left, level);
       left = left->card[dir->right];
       i++;
@@ -103,7 +125,7 @@ void		try_view(t_packet *packet, t_player *player)
   t_vision	*s_vision;
   int		i;
 
-  i = 0;
+  i = 1;
   s_vision = xmalloc(sizeof(*s_vision));
   s_vision->next = NULL;
   s_vision->level = 0;

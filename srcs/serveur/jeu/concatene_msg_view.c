@@ -43,7 +43,7 @@ char		*add_player(t_vision *cur_case, char *msg)
   cur_player = cur_case->cas->cas.player;
   while (cur_player->data != NULL)
     {
-      msg = xrealloc(msg, strlen(msg) + strlen(MSG_JOUEUR));
+      msg = xrealloc(msg, strlen(msg) + strlen(MSG_JOUEUR) + 3);
       if (flag == 1)
 	snprintf(msg + strlen(msg), strlen(MSG_JOUEUR) + 3, "%s ", MSG_JOUEUR);
       else
@@ -70,17 +70,19 @@ char		*add_ressource(t_vision *cur_case, char *msg)
 {
   int		num_ress;
   int		nb_ress;
+  int		count;
 
+  count = 0;
+  num_ress = -1;
+  while (++num_ress != RESS_NUM)
+    count = count + cur_case->cas->cas.ress[num_ress];
+  msg = xrealloc(msg, strlen(msg) + (15 * count));
   num_ress = -1;
   while (++num_ress != RESS_NUM)
     {
       nb_ress = cur_case->cas->cas.ress[num_ress] + 1;
       while (--nb_ress >= 2)
-	{
-	  msg = xrealloc(msg, strlen(msg) + 14);
 	  snprintf(msg + strlen(msg), 12, "%s ", msg_ress[num_ress]);
-	}
-      msg = xrealloc(msg, strlen(msg) + 14);
       if (nb_ress != 0)
 	{
 	  if (num_ress == find_last_ress(cur_case->cas->cas))
@@ -129,8 +131,13 @@ char		*concatene_msg(t_vision *list)
   msg = xmalloc(2 * sizeof(*msg));
   msg[0] = '{';
   msg[1] = '\0';
+
+  puts("Concatene_msg");
+
   while (cur != NULL)
     {
+      printf("Nous travaillons sur cur %i soit le : %i %i\n", cur->num, 
+	     cur->cas->x, cur->cas->y);
       msg = explore_case(cur, msg);
       cur = cur->next;
     }
