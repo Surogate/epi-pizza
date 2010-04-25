@@ -31,107 +31,38 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-void		draw_mesh(obj_type *mesh)
+static void	draw_trantorien(t_player *player, int ref, GLenum mode)
 {
-  int		l_index;
-
-  glBindTexture(GL_TEXTURE_2D, mesh->id_texture);
-  glColor3f(1.0f, 1.0f, 1.0f);
   glPushMatrix();
-  glScalef(mesh->scale[0], mesh->scale[1], mesh->scale[2]);
-  glBegin(GL_TRIANGLES);
-  l_index = -1;
-  while (++l_index < mesh->polygons_qty)
-  {
-    glTexCoord2f(mesh->mapcoord[ mesh->polygon[l_index].a ].u,
-		 mesh->mapcoord[ mesh->polygon[l_index].a ].v);
-    glVertex3f(mesh->vertex[ mesh->polygon[l_index].a ].x,
-	       mesh->vertex[ mesh->polygon[l_index].a ].y,
-	       mesh->vertex[ mesh->polygon[l_index].a ].z);
-    glTexCoord2f(mesh->mapcoord[ mesh->polygon[l_index].b ].u,
-		 mesh->mapcoord[ mesh->polygon[l_index].b ].v);
-    glVertex3f(mesh->vertex[ mesh->polygon[l_index].b ].x,
-	       mesh->vertex[ mesh->polygon[l_index].b ].y,
-	       mesh->vertex[ mesh->polygon[l_index].b ].z);
-    glTexCoord2f(mesh->mapcoord[ mesh->polygon[l_index].c ].u,
-		 mesh->mapcoord[ mesh->polygon[l_index].c ].v);
-    glVertex3f(mesh->vertex[ mesh->polygon[l_index].c ].x,
-	       mesh->vertex[ mesh->polygon[l_index].c ].y,
-	       mesh->vertex[ mesh->polygon[l_index].c ].z);
-  }
-  glEnd();
-  glPopMatrix();
-}
-/*
-static void	picking_mob(t_game *game)
-{
-  int		x;
-  int		y;
-  int		i;
-
-  i = -1;
-  x = -1;
-  while (++x < game->map.h)
-  {
-    y = -1;
-    while (++y < game->map.w)
-    {
-      ++i;
-      glPushName(i);
-      mod_picking(y, x);
-      glPopName();
-    }
-  }
-}
-*/
-/*
-void		draw_mod(t_game *game, GLenum mode)
-{
-  if (mode == GL_RENDER)
-  {
-    glEnable(GL_TEXTURE_2D);
-    floor_render(game->map.h, game->map.w, game->texture->floor);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    clic_mod(game);
-    glDisable(GL_BLEND);
-    glDisable(GL_TEXTURE_2D);
-  }
-  else
-    picking_mod(game);
-}
-*/
-
-
-static void	draw_trantorien(int name, GLenum mode)
-{
+  glTranslated(player->pos.x * CASE_W, player->pos.y * CASE_H, 0);
   glPushMatrix();
   glTranslated((CASE_H / 2), (CASE_W / 2), 0);
+  glPushMatrix();
+  glTranslated(0, 0, .01);
+  glCallList(TEAM);
+  glPopMatrix();
+  glRotated(player->sens * 90, 0 ,0 ,1);
   if (mode == GL_SELECT)
-    glPushName(name);
-  glCallList(TOTORO + random() % LVLMAX);
+    glPushName(player->id  + ref);
+  glCallList(TOTORO + player->lv);
   if (mode == GL_SELECT)
     glPopName();
+  glPopMatrix();
   glPopMatrix();
 }
 
 void		draw_mob(t_game *game, GLenum mode)
 {
-  int		x;
-  int		y;
-  int		name;
+  int		ref;
+  t_player *temp;
 
-  name = game->map.h * game->map.w;
-  x = -1;
-  while (++x < game->map.h)
-  {
-    y = -1;
-    while (++y < game->map.w)
-    {
-      glPushMatrix();
-      glTranslated(y * CASE_H, x * CASE_W, 0);
-      draw_trantorien(name++, mode);
-      glPopMatrix();
-    }
-  }
+  ref = game->map.h * game->map.w;
+  temp = game->player;
+ while (temp)
+ {
+   draw_trantorien(temp, ref, mode);
+   clic_mob(game, temp, ref);
+   temp = temp->next_pg;
+ }
+  clic_map(game);
 }

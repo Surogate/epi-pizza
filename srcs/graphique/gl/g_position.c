@@ -96,8 +96,9 @@ void		picking_mouse(t_game *game, int x, int y)
   glRenderMode(GL_SELECT);
   glMatrixMode(GL_PROJECTION);
   glPushMatrix();
+  glInitNames();
   glLoadIdentity();
-  gluPickMatrix((GLdouble)x, (GLdouble)(viewport[3] - y), 5, 5, viewport);
+  gluPickMatrix((GLdouble)x, (GLdouble)(viewport[3] - y), 1, 1, viewport);
   ratio = (GLfloat)(viewport[2] / viewport[3]);
   gluPerspective(WIN_FOC, ratio, WIN_NEAR, WIN_FAR);
   glMatrixMode(GL_MODELVIEW);

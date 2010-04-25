@@ -45,7 +45,6 @@ void		picking_map(t_game *game)
     while (++y < game->map.w)
     {
       ++i;
-      printf("val %i,   %i    %i\n", i, game->map.h, game->map.w);
       glPushName(i);
       floor_picking(y, x);
       glPopName();
@@ -56,10 +55,7 @@ void		picking_map(t_game *game)
 void		draw_map(t_game *game, GLenum mode)
 {
   if (mode == GL_RENDER)
-  {
     glCallList(TERRAIN);
-    clic_map(game);
-  }
   else
     glCallList(TERRAIN + 1);
 }

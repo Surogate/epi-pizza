@@ -123,7 +123,9 @@ void initGL(t_game *game)
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
   printf("%d, %d\n", game->map.h, game->map.w);
   make_calllistes_trantorien(game);
-  make_calllistes_picking(game);
+  make_calllistes_picking(TEAM, game->texture->team);
+  make_calllistes_picking(PICKING, game->texture->floor_s);
+  make_calllistes_picking(PSELECT, game->texture->select);
   make_calllistes_interface(game);
   make_calllistes_terrain(game);
 }

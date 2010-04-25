@@ -57,12 +57,12 @@ void            floor_picking(int x, int y)
 {
   glBegin(GL_QUADS);
   glColor3ub(255, 255, 255);
-  glVertex2d(x * CASE_W, y * CASE_H);
+  glVertex3d(x * CASE_W, y * CASE_H, 1);
   glColor3ub(255, 255, 255);
-  glVertex2d(x * CASE_W, y * CASE_H + CASE_H);
+  glVertex3d(x * CASE_W, y * CASE_H + CASE_H, 1);
   glColor3ub(255, 255, 255);
-  glVertex2d(x * CASE_W + CASE_W, y * CASE_H + CASE_H);
+  glVertex3d(x * CASE_W + CASE_W, y * CASE_H + CASE_H, 1);
   glColor3ub(255, 255, 255);
-  glVertex2d(x * CASE_W + CASE_W, y * CASE_H);
+  glVertex3d(x * CASE_W + CASE_W, y * CASE_H, 1);
   glEnd();
 }
