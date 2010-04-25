@@ -30,14 +30,30 @@
 #include "serveur/server_stt.h"
 #include "serveur/pars_main.h"
 
-void		init_server(t_server *server)
+static void	init_log(void)
 {
-  server->port = 1338;
-  server->height = 2;
-  server->width = 2;
-  server->teamname = NULL;
-  server->nb_client = 1;
-  server->delay = 100;
+  FILE		*stream;
+
+  stream = fopen("vector_debug.log", "w+");
+  if (!stream)
+    perror("vector log init fail");
+  else
+    fclose(stream);
+  stream = fopen("packet.log", "w+");
+  if (!stream)
+    perror("packet log init fail");
+  else
+    fclose(stream);
+  stream = fopen("client.log", "w+");
+  if (!stream)
+    perror("client log init fail");
+  else
+    fclose(stream);
+  stream = fopen("cbuf.log", "w+");
+  if (!stream)
+    perror("cbuf log init fail");
+  else
+    fclose(stream);
 }
 
 t_game		*init_game(int ac, char **av)
@@ -49,6 +65,7 @@ t_game		*init_game(int ac, char **av)
   game.player = my_l_init();
   game.eggs = my_l_init();
   game.state = -1;
+  init_log();
   return (&game);
 }
 
