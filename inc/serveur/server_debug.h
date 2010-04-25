@@ -12,5 +12,7 @@
 # define SERVER_DEBUG_C_INCLUDED
 
 void		debug_packet(t_packet *pak, char *str);
+void		debug_client(t_client *cli, char *str);
+void		debug_instr(t_packet *pak);
 
 #endif

@@ -63,40 +63,38 @@ int		create_kick(t_svr_vector *vec, int player_id, int time)
   return (EXIT_FAILURE);
 }
 
-int		server_kick(t_svr_vector *vec, int player_id, t_game *game)
+int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
 {
-  t_vector	*client;
   int		pos;
   t_select	*slt_par;
 
   slt_par = vec->slt;
-  client = vec->client;
-  if (player_id > 0)
+  if (pak->player_id > 0)
     {
-      pos = client->find_pos(client, &player_id, player_id_find);
+      pos = vec->client->find_pos(vec->client, &(pak->player_id), player_id_find);
       if (pos >= 0)
 	{
-	  sock_write(player_id, "You have been kicked\n");
-	  printf("player %i ass kicked\n", player_id);
-	  rm_player(game, player_id);
-	  client->erase(client, pos, free_client);
-	  delete_kick(vec, player_id);
-	  delete_eat(vec, player_id);
-	  delete_plaction(vec, player_id);
-	  FD_CLR(player_id, &(slt_par->fd_read));
+	  sock_write(pak->player_id, "You have been kicked\n");
+	  printf("player %i ass kicked\n", pak->player_id);
+	  rm_player(game, pak->player_id);
+	  vec->client->erase(vec->client, pos, free_client);
+	  delete_kick(vec, pak->player_id);
+	  delete_eat(vec, pak->player_id);
+	  delete_plaction(vec, pak->player_id);
+	  FD_CLR(pak->player_id, &(slt_par->fd_read));
 	  return (EXIT_SUCCESS);
 	}
-      fprintf(stderr, "player %i unknow\n", player_id);
+      fprintf(stderr, "player %i unknow\n", pak->player_id);
     }
   else
     {
-      delete_kick(vec, player_id);
-      delete_eat(vec, player_id);
-      rm_player(game, player_id);
+      delete_kick(vec, pak->player_id);
+      delete_eat(vec, pak->player_id);
+      rm_player(game, pak->player_id);
       printf("l'oeuf a moisie\n");
       return (EXIT_SUCCESS);
     }
-  delete_kick(vec, player_id);
+  delete_kick(vec, pak->player_id);
   return (EXIT_FAILURE);
 }
 

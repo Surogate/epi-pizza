@@ -90,11 +90,11 @@ void		try_take_obj(t_packet *packet, t_player *player)
 void		try_invent(t_packet *packet, t_player *player)
 {
   int		num_ress;
-  char		*msg;
 
   num_ress = -1;
   packet->response = xmalloc(sizeof(t_rep));
-  packet->response->mess = xmalloc((65 + (RESS_NUM * 10)) * sizeof(*msg));
+  packet->response->mess = xmalloc((65 + (RESS_NUM * 10)) * 
+				   sizeof(*(packet->response->mess)));
   while (++num_ress < RESS_NUM)
     {
       if (num_ress == 0)
