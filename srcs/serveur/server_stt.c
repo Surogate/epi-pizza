@@ -94,6 +94,7 @@ int		svr_start(t_game *game)
   if (svr_sock > 0)
     {
       signal(SIGINT, signal_handler);
+      
       result = init_svr(svr_sock, &(game->server), &slt_par);
       if (result == EXIT_SUCCESS)
 	result = select_loop(svr_sock, &slt_par, game);
