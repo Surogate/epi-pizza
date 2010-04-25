@@ -61,10 +61,6 @@ void		camera(t_game *game);
 
 void		DrawStr(const char *str);
 
-void		timing();
-
-
-
 void		mainloop(t_game *game);
 
 void		draw_interface(t_game *game);
@@ -82,6 +78,10 @@ void		clic_mob(t_game *game, t_player *player, int ref);
 void		clic_map(t_game *game);
 
 void		clic_render();
+
+/* Draw WRITE */
+
+void		dwrite(char *str, t_pos pos, int color);
 
 /* Draw (Call by CallList)*/
 

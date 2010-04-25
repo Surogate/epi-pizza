@@ -16,11 +16,9 @@
 
 #ifdef		__APPLE__
 # include	"SDL.h"
-# include	"SDL_ttf.h"
 # include	<GLUT/GLUT.h>
 #else
 # include	<SDL/SDL.h>
-# include	<SDL/SDL_ttf.h>
 # include	<GL/glu.h>
 # include	<GL/gl.h>
 #endif
@@ -61,8 +59,17 @@ void	interface_down(GLuint texture)
   glEnd();
 }
 
+void		show_info(t_game *game)
+{
+  
+}
+
 void		draw_interface(t_game *game)
 {
+  t_pos pos;
+  
+  pos.x = 10;
+  pos.y = 10;
   game = game;
   glDisable(GL_LIGHTING);
   glMatrixMode(GL_PROJECTION);
@@ -72,12 +79,10 @@ void		draw_interface(t_game *game)
   glPushMatrix();
   glLoadIdentity();
   glCallList(INTER);
-  timing();
+  show_info(game);
   glPopMatrix();
   glMatrixMode(GL_PROJECTION);
   glPopMatrix();
   glMatrixMode(GL_MODELVIEW);
   glEnable(GL_LIGHTING);
-
-  /* AFFICHAGE INFO */
 }

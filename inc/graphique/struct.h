@@ -17,6 +17,13 @@ typedef struct	s_event
   int		(*func)();
 }		t_event;
 
+typedef struct
+{
+  int		r;
+  int		g;
+  int		b;
+}		t_color;
+
 typedef struct	s_serv
 {
   int		socket;
@@ -140,7 +147,6 @@ typedef struct	s_game
   t_mouse	mouse;
   t_map		map;
   Uint32	ticks;
-  TTF_Font	*font;
   t_serv	serv;
 }		t_game;
 

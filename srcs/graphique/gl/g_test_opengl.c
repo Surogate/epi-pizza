@@ -17,11 +17,9 @@
 
 #ifdef		__APPLE__
 #include	"SDL.h"
-#include	"SDL_ttf.h"
 #include	<GLUT/GLUT.h>
 #else
 #include	<SDL/SDL.h>
-#include	<SDL/SDL_ttf.h>
 #include	<GL/glu.h>
 #include	<GL/gl.h>
 #endif
@@ -55,21 +53,3 @@ void		printAttributes()
     printf(desc[i], value);
   }
 }
-
-void		timing()
-{
-  char	num_str[128];
-
-  glColor3f(1.0, 1.0, 0.0);
-  glMatrixMode(GL_PROJECTION);
-  glPushMatrix();
-  glLoadIdentity();
-  glOrtho(0, WIN_W, 0, WIN_H, -10.0, 10.0);
-  glRasterPos2f(5.0, 5.0);
-  sprintf(num_str, "devine qui est le plus fort? ");
-  DrawStr(num_str);
-  glPopMatrix();
-  glMatrixMode(GL_MODELVIEW);
-}
-
-

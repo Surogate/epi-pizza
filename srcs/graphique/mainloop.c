@@ -16,11 +16,9 @@
 
 #ifdef		__APPLE__
 # include	"SDL.h"
-# include	"SDL_ttf.h"
 # include	<GLUT/GLUT.h>
 #else
 # include	<SDL/SDL.h>
-# include	<SDL/SDL_ttf.h>
 # include	<GL/glu.h>
 # include	<GL/gl.h>
 #endif
@@ -152,8 +150,6 @@ void		mainloop(t_game *game)
   {
     search_msg(game);
     exit = interaction(game);
-    if (i % 3)
-      {
 	search_msg(game);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	camera(game);
@@ -162,8 +158,6 @@ void		mainloop(t_game *game)
 	/* 	  timedelay(); */
 	glFlush();
 	SDL_GL_SwapBuffers();
-      }
-    i++;
   }
 }
 

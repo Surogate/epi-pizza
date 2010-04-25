@@ -16,11 +16,9 @@
 
 #ifdef		__APPLE__
 # include	"SDL.h"
-# include	"SDL_ttf.h"
 # include	<GLUT/GLUT.h>
 #else
 # include	<SDL/SDL.h>
-# include	<SDL/SDL_ttf.h>
 # include	<GL/glu.h>
 # include	<GL/gl.h>
 #endif
@@ -99,4 +97,5 @@ void		make_calllistes_interface(t_game *game)
   glDisable(GL_TEXTURE_2D);
   glEndList();
   puts("load interface - done");
+  
 }
