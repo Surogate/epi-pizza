@@ -31,8 +31,8 @@
 
 void		init_camera(t_game *game)
 {
-  game->video.cam[0] = /*-(game->map.h * CASE_W) */ 0;
-  game->video.cam[1] = /*-(game->map.h * CASE_H) */ 0;
+  game->video.cam[0] = 0;
+  game->video.cam[1] = 0;
   game->video.cam[2] = 0;
   game->video.cam[3] = CAM_Z;
 }

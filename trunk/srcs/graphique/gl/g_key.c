@@ -37,9 +37,9 @@ int		key_func(t_game *game)
   else if (game->event.key.keysym.sym == SDLK_RIGHT)
     game->map.rot -= 5;
   else if (game->event.key.keysym.sym == SDLK_UP)
-    game->map.z += 5;
+    game->video.cam[3] += 5;
   else if (game->event.key.keysym.sym == SDLK_DOWN)
-    game->map.z -= 5;
+    game->video.cam[3] -= 5;
     else if (game->event.key.keysym.sym == SDLK_c)
       game->info.crazy++;
   else if (game->event.key.keysym.sym == SDLK_ESCAPE)

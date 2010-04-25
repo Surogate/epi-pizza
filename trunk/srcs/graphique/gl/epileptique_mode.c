@@ -21,8 +21,12 @@
 
 static void     draw_trantorien()
 {
+  static int i = 0;
+  
+  i %= 360;
   glPushMatrix();
   glTranslated((CASE_H / 2), (CASE_W / 2), 0);
+  glRotatef(i++, 0 ,0 ,1);
   glCallList(TOTORO + random() % LVLMAX);
   glPopMatrix();
 }

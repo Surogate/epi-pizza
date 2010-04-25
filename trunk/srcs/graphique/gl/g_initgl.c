@@ -44,7 +44,7 @@ static void		init_light(int light)
 {
   static float ambient[] = {0.2, 0.2, 0.2, 1.0};
   static float diffuse[] = {1.0, 1.0, 1.0, 1.0};
-  static float position[] = {0.0, 1.0, 0.0, 0.0};
+  static float position[] = {0.0, 10.0, 0.0, 0.0};
   static float mat_shininess[] = {90.0};
   static float mat_specular[] = {0.8, 0.8, 0.8, 1.0};
   static float mat_diffuse[] = {0.46, 0.66, 0.795, 1.0};
@@ -69,7 +69,6 @@ static void		init_light(int light)
     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, mat_specular);
     glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, mat_diffuse);
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient);
-    glEnable(GL_NORMALIZE);
   }
   else
     puts("LIGHT OFF");
@@ -119,7 +118,6 @@ void initGL(t_game *game)
   glEnable(GL_DEPTH_TEST);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-  printf("%d, %d\n", game->map.h, game->map.w);
   make_calllistes_trantorien(game);
   make_calllistes_picking(TEAM, game->texture->team);
   make_calllistes_picking(PICKING, game->texture->floor_s);

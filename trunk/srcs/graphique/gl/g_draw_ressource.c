@@ -32,9 +32,23 @@
 
 void		draw_ressource(t_game *game, GLenum mode)
 {
-  game = game;
+  int ref;
+  int x;
+   int y;
+    game = game;
   mode = mode;
-  /*
-    code  POUR LES MOB
-  */
+
+
+  ref = game->map.h * game->map.w;
+  x = -1;
+  while (++x < game->map.h)
+  {
+    y = -1;
+    while (++y < game->map.w)
+    { 
+      glPushMatrix();
+      glTranslated(y * CASE_H, x * CASE_W, 0);
+      glPopMatrix();
+    }
+  }
 }
