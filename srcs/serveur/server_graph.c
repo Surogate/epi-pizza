@@ -87,7 +87,7 @@ int		graph_inst(t_client *cli, t_svr_vector *vec)
     {
       	if (cbuf_write(&cli->cbuf, cli->sock) == EXPIPE)
 	  {
-	    printf("le client graphique %i a un soucis\n", cli->sock);
+	    printf("le client graphique %i a un souci\n", cli->sock);
 	    FD_CLR(cli->sock, &(vec->slt->fd_read));
 	    vec->graph->erase(vec->graph, vec->graph->gns_pos, free_client);
 	  }

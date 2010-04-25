@@ -90,11 +90,11 @@ static int		parse_word(t_packet *pak)
       return (EXIT_FAILURE);
     }
   printf("nbr instruct : %i\n", i);
-  if ((i == 5) || (i == 8))
+  if ((i == 5) || (i == 6) || (i == 8))
     {
       printf("double arg\n");
       i = 0;
-      while (pak->av[0][i] != ' ')
+      while (pak->av[0][i] && pak->av[0][i] != ' ')
 	i++;
       pak->av[0][i] = '\0';
       i++;
