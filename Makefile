@@ -254,31 +254,43 @@ IFLAGS			= \
 
 #########  LIBRARIES
 
+LFLAGS_i386-Darwin_$(NAME_GR)	= \
+				-lxfunc_$(TAG)		\
+				-lmylist_$(TAG)		\
+				-framework SDL		\
+				-framework SDL_image	\
+				-framework Cocoa	\
+				-framework GLUT		\
+				-framework OpenGL
+
 LFLAGS_i386-Darwin	= \
 			-lxfunc_$(TAG)		\
 			-lmylist_$(TAG)		\
-			-framework SDL		\
-			-framework SDL_image	\
-			-framework Cocoa	\
-			-framework GLUT		\
-			-framework OpenGL
+
+LFLAGS_i386-FreeBSD_$(NAME_GR)	= \
+				-lmylist_$(TAG)				\
+				-lxfunc_$(TAG)				\					`sdl-config --cflags --libs`		\
+				-lSDL_image				\
+				-lGL -lGLU -lglut			\
+				-lpthread
 
 LFLAGS_i386-FreeBSD	= \
 			-lmylist_$(TAG)				\
 			-lxfunc_$(TAG)				\
-			`sdl-config --cflags --libs`		\
-			-lSDL_image				\
-			-lGL -lGLU -lglut			\
-			-lpthread
+
+LFLAGS_i686-Linux_$(NAME_GR)	= \
+				-lmylist_$(TAG)				\
+				-lxfunc_$(TAG)				\
+				`sdl-config --cflags --libs`		\
+				-lSDL_image				\
+				-lGL -lGLU -lglut
 
 LFLAGS_i686-Linux	= \
 			-lmylist_$(TAG)				\
 			-lxfunc_$(TAG)				\
-			`sdl-config --cflags --libs`		\
-			-lSDL_image				\
-			-lGL -lGLU -lglut
 
 LFLAGS			= -L$(DIR_LIB) $(LFLAGS_$(TAG))
+LFLAGS_$(NAME_GR)	= -L$(DIR_LIB) $(LFLAGS_$(TAG)_$(NAME_GR))
 
 #########  COMPILE FLAGS
 
@@ -330,7 +342,7 @@ $(NAME_S)	: $(OBJ_S) $(OBJ_CO)
 
 $(NAME_GR)	: $(OBJ_GR) $(OBJ_$(STAG)) $(OBJ_CO)
 	@$(ECHO) "$(CYAN)[LINKING]: $(NAME_GR)$(END)"
-	$(CC) -o $(NAME_GR) $(OBJ_CO) $(OBJ_$(STAG)) $(OBJ_GR) $(LFLAGS)
+	$(CC) -o $(NAME_GR) $(OBJ_CO) $(OBJ_$(STAG)) $(OBJ_GR) $(LFLAGS_$(NAME_GR))
 	@$(ECHO) "$(GREEN)[LINKING] - DONE$(END)"
 
 tags		:
