@@ -122,11 +122,15 @@ int			client_parse_instr(char *str, t_client *cli)
   pak->player_id = cli->sock;
   pak->player = cli;
   if (cli->team)
-    if (parse_word(pak) == EXIT_SUCCESS)
-      ++(cli->used);
+    {
+      if (parse_word(pak) == EXIT_SUCCESS)
+	++(cli->used);
+    }
+  else
+    ++(cli->used);
   debug_instr(pak);
   pak->type = 0;
-  pak->ac_rep = 0;
+  pak->ac_rep = -1;
   pak->graph_rep = NULL;
   return (EXIT_SUCCESS);
 }
