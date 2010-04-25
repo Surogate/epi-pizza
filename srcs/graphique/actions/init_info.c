@@ -101,15 +101,42 @@ static t_player	*new_player(char **av)
   player = xmalloc(sizeof(*player));
   if (player)
     {
-      player->id = atoi(&av[1][1]);
+      player->id = atoi(av[1]);
       player->pos.x = atoi(av[2]);
       player->pos.y = atoi(av[3]);
       player->sens = atoi(av[4]);
       player->lv = atoi(av[5]);
-      strcpy(player->team, av[6]);
       player->next_pg = 0;
     }
   return (player);
+}
+
+char		*find_team_name(t_game *game, int id)
+{
+  t_team	*team;
+
+  team = game->team;
+  while (team)
+    {
+      if (team->id == id)
+	return (team->name);
+      team = team->next;
+    }
+  return (0);
+}
+
+int		find_team_id(t_game *game, char *name)
+{
+  t_team	*team;
+
+  team = game->team;
+  while (team)
+    {
+      if (!strcmp(team->name, name))
+	return (team->id);
+      team = team->next;
+    }
+  return (0);
 }
 
 void		player_connect(t_game *game, char **av, int ac)
@@ -131,9 +158,6 @@ void		player_connect(t_game *game, char **av, int ac)
 	  game->player = new_player(av);
 	  player = game->player;
 	}
-      player->id = atoi(&av[1][1]);
-      player->pos.x = atoi(av[2]);
-      player->pos.y = atoi(av[3]);
-      player->sens = atoi(av[4]);
+      player->team = find_team_id(game, av[6]);
     }
 }

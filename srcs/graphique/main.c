@@ -83,11 +83,10 @@ void		test_create_player(t_game *game, int id, int team)
   while (++i != 5)
     {
       if (team == 1)
-	new->team[i] = '1';
+	new->team = 1;
       else
-	new->team[i] = '2';
+	new->team = 2;
     }
-  new->team[i] = '\0';
 }
 
 void		test_init_player(t_game *game)

@@ -34,7 +34,7 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-#define		TEAM	"GRAPHIC\n"
+#define		GRAPH	"GRAPHIC\n"
 
 void		connect_to_serv(t_game *game, char **av)
 {
@@ -49,7 +49,7 @@ void		connect_to_serv(t_game *game, char **av)
       perror("Can't connect");
       exit(EXIT_FAILURE);
     }
-  write(game->serv.socket, TEAM, strlen(TEAM));
+  write(game->serv.socket, GRAPH, strlen(GRAPH));
   printf("Connect at %s\n", av[1]);
   printf("serv socket %d\n", game->serv.socket);
   FD_ZERO(&game->serv.fd_read);
