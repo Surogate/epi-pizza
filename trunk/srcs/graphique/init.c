@@ -33,6 +33,15 @@
 #include	"graphique/proto.h"
 #include	"xfunc.h"
 
+int		rand_pos_case()
+{
+  static long	seed;
+
+  srandom(time(NULL) + seed);
+  seed = random();
+  return ((int)(random() % 24 + 4));
+}
+
 void		create_map(t_game *game)
 {
   int		y;
@@ -42,17 +51,21 @@ void		create_map(t_game *game)
   game->map.t_case= malloc(game->map.h * sizeof(*(game->map.t_case)));
   y = -1;
   while (++y < game->map.h)
-  {
-    game->map.t_case[y] = malloc(game->map.w * sizeof(t_case));
-    x = -1;
-    while (++x < game->map.w)
     {
-      game->map.t_case[y][x].player = 0;
-      temp = -1;
-      while (++temp < 7)
-        game->map.t_case[y][x].obj[temp] = 0;
+      game->map.t_case[y] = malloc(game->map.w * sizeof(t_case));
+      x = -1;
+      while (++x < game->map.w)
+	{
+	  game->map.t_case[y][x].player = 0;
+	  temp = -1;
+	  while (++temp < 7)
+	    {
+	      game->map.t_case[y][x].obj[temp][0] = rand_pos_case();
+	      game->map.t_case[y][x].obj[temp][1] = rand_pos_case();
+	      game->map.t_case[y][x].obj[temp][2] = 0;
+	    }
+	}
     }
-  }
 }
 
 void		init_game(t_game *game)

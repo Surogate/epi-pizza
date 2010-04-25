@@ -101,3 +101,22 @@ void		make_calllistes_interface(t_game *game)
   puts("load interface - done");
   
 }
+
+void		make_calllistes_ressources(t_game *game)
+{
+  int		i;
+  
+  i = -1;
+  while (++i < NBRESS)
+  {
+    printf("loading ressource : %i\n", i);
+    glNewList(RESS + i, GL_COMPILE);
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_NORMALIZE);
+    draw_mesh(game->model.ressource[i]);
+    glDisable(GL_NORMALIZE);
+    glDisable(GL_TEXTURE_2D);
+    glEndList();
+    printf("loading ressource : %i - done\n", i);
+  }
+}

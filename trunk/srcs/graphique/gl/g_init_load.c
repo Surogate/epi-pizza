@@ -44,9 +44,9 @@ void		init_3dsmodel_ress(t_game *game)
     {
       path[8] = i + '1';
       ress = malloc(sizeof(obj_type));
-      ress->scale[0] = 5.0f;
-      ress->scale[1] = 5.0f;
-      ress->scale[2] = 8.0f;
+      ress->scale[0] = 4.0f;
+      ress->scale[1] = 4.0f;
+      ress->scale[2] = 4.0f;
       ress->id_texture = loadtexture(path);
       if (i == 0)
 	Load3DS(ress,"3DS/sphere.3ds");

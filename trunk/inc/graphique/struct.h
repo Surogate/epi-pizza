@@ -90,9 +90,14 @@ typedef struct	s_info
   int		size_w;
 }		t_info;
 
+/*
+  obj[num_ress][0] => x
+  obj[num_ress][1] => y
+  obj[num_ress][2] => qte
+*/
 typedef struct	s_case
 {
-  int		obj[7];
+  int		obj[7][3];
   t_player	*player;
 }		t_case;
 
