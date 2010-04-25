@@ -11,6 +11,11 @@
 #ifndef		__PROTO_H__
 # define	__PROTO_H__
 
+/*random func*/
+void		init_buff(char *buff, int size);
+int		check_next_end(char *str);
+void		free_2d_tab(char **tab);
+
 /*reseau*/
 void		connect_to_serv(t_game *game, char **av);
 char		**split(char *str, char sep);
@@ -26,12 +31,6 @@ void		init_texture(t_game *game);
 void		init_video(t_game *game);
 void		initGL(t_game *game);
 void		printAttributes();
-
-/*circle*/
-/* t_circle	*new_circ(int num); */
-/* void		init_circ(t_game *game); */
-/* char		*circle_get(t_serv *serv); */
-/* void		circle_read(t_serv *serv); */
 
 /* load */
 SDL_Surface	*load_window();

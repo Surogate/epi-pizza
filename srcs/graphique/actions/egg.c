@@ -39,13 +39,18 @@ void		eggs_drop(t_game *game, char **av)
   t_egg		*cur;
   int		i;
 
-  printf("Le joueur %i a termine de pondre l'oeuf %i\n", atoi(av[2]),
-	 atoi(av[1]));
+  printf("Le joueur %i a termine de pondre l'oeuf %i\n",
+	 atoi(av[2]), atoi(av[1]));
   cur = game->egg;
+  new = xmalloc(sizeof(*new));
   if (cur != NULL)
-    while (cur->next != NULL)
-      cur = cur->next;
-  new = xmalloc(sizeof(t_egg));
+    {
+      while (cur->next != NULL)
+	cur = cur->next;
+      cur->next = new;
+    }
+  else
+    game->egg = new;
   new->id = atoi(av[1]);
   player = find_player(game, atoi(av[2]));
   i = -1;
@@ -53,7 +58,6 @@ void		eggs_drop(t_game *game, char **av)
     new->team = player->team;
   new->pos = player->pos;
   new->next = NULL;
-  cur->next = new;
 }
 
 void		eggs_ready(t_game *game, char **av)
@@ -81,7 +85,7 @@ void		eggs_die(t_game *game, char **av, int ac)
 	if (cur->id == atoi(av[1]))
 	  {
 	    if (prec)
-	      prec->next = cur->next;		
+	      prec->next = cur->next;
 	    else
 	      game->egg = cur->next;
 	    prec = cur->next;

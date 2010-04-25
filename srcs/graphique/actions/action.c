@@ -62,7 +62,6 @@ void		end_incant(t_game *game, char **av)
     printf("L'incantation case %s %s a reussie\n", av[1], av[2]);
   else
     printf("L'incantation case %s %s a echoue\n", av[1], av[2]);
-
   game = game;
 }
 
