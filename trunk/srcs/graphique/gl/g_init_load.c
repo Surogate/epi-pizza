@@ -49,7 +49,7 @@ void		init_3dsmodel_ress(t_game *game)
       ress->scale[2] = 8.0f;
       ress->id_texture = loadtexture(path);
       if (i == 0)
-	Load3DS(ress,"3DS/Tore.3ds");
+	Load3DS(ress,"3DS/sphere.3ds");
       else
 	Load3DS(ress,"3DS/diamond.3ds");
       game->model.ressource[i] = ress;
@@ -72,7 +72,6 @@ void		init_3dsmodel(t_game *game)
       trantorien->scale[0] = (5.0f) + i;
       trantorien->scale[1] = (5.0f) + i;
       trantorien->scale[2] = (8.0f) + i;
-      /*load_textureBMP("3DS/totoro3.bmp", &trantorien->id_texture);*/
       trantorien->id_texture = loadtexture(path);
       Load3DS(trantorien,"3DS/totoro.3ds");
       game->model.trantorien[i] = trantorien;
