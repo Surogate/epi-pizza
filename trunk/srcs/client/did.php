@@ -2,7 +2,6 @@
 
 function out_did(&$player)
 {
-	echo "out_did\n";
 	$player['did'][0] = NULL;
 	$x = 1;
 	while ($player['did'][$x] != NULL)
