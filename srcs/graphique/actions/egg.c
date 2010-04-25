@@ -69,7 +69,7 @@ void		eggs_to_player(t_game *game, char **av)
   av = av;
 }
 
-void		eggs_die(t_game *game, char **av)
+void		eggs_die(t_game *game, char **av, int ac)
 {
   game = game;
   av = av;
