@@ -13,5 +13,6 @@
 
 #define CBUFSIZ		4048
 #define EXPIPE		-2
+#define	END_CHAR	'\n'
 
 #endif

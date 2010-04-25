@@ -40,13 +40,14 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
       strncpy(result, cbuf->buf + cbuf->cons, CBUFSIZ - cbuf->cons);
       strncpy(result + (CBUFSIZ - cbuf->cons), cbuf->buf, cbuf->prod);
     }
-  cbuf_error(result);
   if ((cmd = check_read(result)) > 0)
     {
+      printf("======== read =======\nlen : %i\nuse : %i\ncons : %i\n", cmd, cbuf->use, cbuf->cons);
       cbuf->cons = (cbuf->cons + cmd + 1) % CBUFSIZ;
-      cbuf->use -= cmd;
+      cbuf->use -= (cmd - 1);
       result[cmd] = '\0';
-      memset(&cbuf->buf[cbuf->cons - cmd], 0 , cmd);
+      printf("======== readed =======\nlen : %i\nuse : %i\ncons : %i\n", cmd, cbuf->use, cbuf->cons);
+      printf("len : %i\nresult : %s\n", cmd, result);
       return (result);
     }
   return (NULL);
@@ -66,8 +67,6 @@ int		sock_write(int sock, char *from)
       if (result < 0)
 	{
 	  perror("sock send");
-	  if (errno == EPIPE)
-	    return (-1);
 	  return (EXIT_FAILURE);
 	}
       total += result;
@@ -91,21 +90,25 @@ int		cbuf_write(t_cbuf *cbuf, int sock)
 
   if (cbuf->use > CBUFSIZ)
     cbuf_init(cbuf);
+  total = 0;
+  printf("====== write ======\ntotal : %i\nuse : %i\nprod : %i\n",total, cbuf->use, cbuf->prod);
   if (cbuf->prod >= cbuf->cons)
     {
       total = sock_read(sock, cbuf->buf + cbuf->prod, CBUFSIZ - cbuf->prod);
       if (total == -1)
 	return (EXIT_FAILURE);
+      cbuf->prod = (cbuf->prod + total) % (CBUFSIZ);
+      cbuf->use += total;
     }
   if (cbuf->prod < cbuf->cons)
     {
-      total = sock_read(sock, cbuf->buf + cbuf->prod, cbuf->cons - cbuf->prod - 1);
+      total += sock_read(sock, cbuf->buf + cbuf->prod, cbuf->cons - cbuf->prod);
       if (total == -1)
 	return (EXIT_FAILURE);
+      cbuf->prod = (cbuf->prod + total) % (CBUFSIZ);
+      cbuf->use += total;
     }
-  print_cbuf(cbuf);
-  cbuf->prod = (cbuf->prod + total) % (CBUFSIZ);
-  cbuf->use += total;
+  printf("====== writed ======\ntotal : %i\nuse : %i\nprod : %i\n",total, cbuf->use, cbuf->prod);
   if (total == 0)
     return (EXPIPE);
   return (EXIT_SUCCESS);

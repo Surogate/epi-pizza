@@ -11,7 +11,7 @@
 #ifndef		__CIR_BUF_INCLUDED__
 #define		__CIR_BUF_INCLUDED__
 
-#define CBUFSIZ 1024
+#define CBUFSIZ 4048
 
 typedef struct	s_cbuf
 {
