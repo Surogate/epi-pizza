@@ -21,7 +21,7 @@ void		server_msg(t_game *game, char **av);
 void		eggs_drop(t_game *game, char **av);
 void		eggs_ready(t_game *game, char **av);
 void		eggs_to_player(t_game *game, char **av);
-void		eggs_die(t_game *game, char **av);
+void		eggs_die(t_game *game, char **av, int ac);
 
 /*info_player.c*/
 void		change_player_pos(t_game *game, char **av, t_pos pos, 
@@ -41,5 +41,7 @@ void		player_connect(t_game *game, char **av);
 void		drop_item(t_game *game, char **av);
 void		take_item(t_game *game, char **av);
 
+/*common_func.c*/
+t_player	*find_player(t_game *game, int id_player);
 
 #endif		/*__PROTO_ACTIONS_H__*/
