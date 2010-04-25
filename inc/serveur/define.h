@@ -25,7 +25,8 @@
 # define M_CARD		(8)
 
 enum {DIR_N, DIR_E, DIR_S, DIR_O};
-enum {M_E, M_NE, M_N, M_NO, M_O, M_SO, M_S, M_SE};
+/*enum {M_E, M_NE, M_N, M_NO, M_O, M_SO, M_S, M_SE};*/
+enum {M_O, M_SO, M_S, M_SE, M_E, M_NE, M_N, M_NO};
 
 # define MSG_JOUEUR	"joueur"
 # define MSG_RESS	"nourriture", "linemate", "deraumere", "sibur", "mendiane", "phiras", "thystame"
