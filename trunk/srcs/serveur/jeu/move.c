@@ -22,6 +22,17 @@
 #include	"xfunc.h"
 #include	"serveur/communication.h"
 
+/*
+static t_dir_m	gl_dir[5] = {
+  {DIR_N, DIR_O, M_S, DIR_E},
+  {DIR_E, DIR_N, M_O, DIR_S},
+  {DIR_S, DIR_E, M_N, DIR_O},
+  {DIR_O, DIR_S, M_E, DIR_N},
+  {0, 0, 0, 0}
+};
+*/
+
+
 static t_dir_m	gl_dir[5] = {
   {DIR_N, DIR_O, M_N, DIR_E},
   {DIR_E, DIR_N, M_E, DIR_S},
@@ -30,7 +41,8 @@ static t_dir_m	gl_dir[5] = {
   {0, 0, 0, 0}
 };
 
-void		try_turn_left(t_packet *packet, t_player *player)
+
+void		try_turn_right(t_packet *packet, t_player *player)
 {
   player->dir = gl_dir[player->dir].dir_left;
   packet->response = xmalloc(sizeof(t_rep));
@@ -41,7 +53,7 @@ void		try_turn_left(t_packet *packet, t_player *player)
   packet->graph_rep = grp_move(player);
 }
 
-void		try_turn_right(t_packet *packet, t_player *player)
+void		try_turn_left(t_packet *packet, t_player *player)
 {
   packet->response = xmalloc(sizeof(t_rep));
   packet->response->mess = xmalloc(LEN_OK * sizeof(char));
@@ -61,6 +73,9 @@ static int	find_player_by_id(t_player *data, t_player *ref)
 
 void		try_move(t_packet *packet, t_player *player)
 {
+
+  printf("Le joueur regarde dans la dir : %i \n", player->dir);
+
   packet->response = xmalloc(sizeof(t_rep));
   packet->response->mess = xmalloc(LEN_OK * sizeof(char));
   player->pos->cas.player = my_l_rm(player->pos->cas.player, 
