@@ -12,6 +12,7 @@
 #include	<errno.h>
 #include	<unistd.h>
 #include	<stdlib.h>
+#include	<string.h>
 #include	<sys/types.h>
 #include	<sys/select.h>
 
@@ -64,29 +65,24 @@ void		put_to_case(t_game *game, char **av, int ac)
 
 void		team_name(t_game *game, char **av)
 {
-  /*
-  t_team	*old;
+  t_team	*new;
   t_team	*tim;
   int		i;
 
   tim = game->team;
-  while (tim != NULL)
-    {
-      old = tim;
+  if (tim != NULL)
+    while (tim->next != NULL)
       tim = tim->next;
-    }
-  old->next = tim;
-  */
-  /*  tim->name = strcmp(tim->name, av[1]);*/
-  /*
+  new = xmalloc(sizeof(t_team));
+  tim->next = new;
   if (strlen(av[1]) < 50)
     {
       i = -1;
       while (av[1][++i])
-	tim->name[i] = av[1][i];
+	  new->name[i] = av[1][i];
     }
-  tim->next = NULL;
-*/
+  puts(new->name);
+  new->next = NULL;
 }
 
 static t_player	*new_player(char **av)

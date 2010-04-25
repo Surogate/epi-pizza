@@ -31,6 +31,7 @@
 #include	"s_cbuf.h"
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
+#include	"graphique/proto_actions.h"
 #include	"xfunc.h"
 
 void		eggs_drop(t_game *game, char **av)

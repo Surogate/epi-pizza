@@ -104,10 +104,10 @@ void		test_init_player(t_game *game)
   test_create_player(game, 1598, 2);
 
   x = -1;
-  while (++x != 10)
+  while (++x != 5)
     {
       y = -1;
-      while (++y != 10)
+      while (++y != 5)
 	{
 	  o = -1;
 	  while (++o != 8)

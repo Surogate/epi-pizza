@@ -60,12 +60,12 @@ void		incant(t_game *game, char **av)
 
 void		end_incant(t_game *game, char **av)
 {
-  t_player	*pl;
-  
-  if (av[3] == '1')
+  if (av[3][0] == '1')
     printf("L'incantation case %s %s a reussie\n", av[1], av[2]);
   else
     printf("L'incantation case %s %s a echoue\n", av[1], av[2]);
+
+  game = game;
 }
 
 void		player_fork(t_game *game, char **av)
