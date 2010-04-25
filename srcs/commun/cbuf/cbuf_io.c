@@ -27,19 +27,24 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
   memset(result, 0, CBUFSIZ);
   if (cbuf->use == 0)
     return (NULL);
-  else if (cbuf->prod > cbuf->cons)
+  if (cbuf->buf[cbuf->cons] == END_CHAR)
+    ++(cbuf->cons);
+  if (cbuf->prod > cbuf->cons)
     strncpy(result, cbuf->buf + cbuf->cons, cbuf->prod - cbuf->cons);
   else
     {
       strncpy(result, cbuf->buf + cbuf->cons, CBUFSIZ - cbuf->cons);
       strncpy(result + (CBUFSIZ - cbuf->cons), cbuf->buf, cbuf->prod);
     }
+  cbuf_error(result);
   if ((cmd = check_read(result)) != 0)
     {
       printf("cmd : %i\n", cmd);
       cbuf->cons = (cbuf->cons + cmd + 1) % CBUFSIZ;
       cbuf->use -= cmd;
       result[cmd] = '\0';
+      cbuf_error(result);
+      print_cbuf(cbuf);
       return (result);
     }
   return (NULL);
@@ -91,9 +96,10 @@ int		cbuf_write(t_cbuf *cbuf, int sock)
   if (cbuf->prod < cbuf->cons)
     {
       total = sock_read(sock, cbuf->buf + cbuf->prod, cbuf->cons - cbuf->prod);
-      if (total == EXIT_FAILURE)
+      if (total == -1)
 	return (EXIT_FAILURE);
     }
+  print_cbuf(cbuf);
   cbuf->prod = (cbuf->prod + total) % (CBUFSIZ);
   cbuf->use += total;
   if (total == 0)

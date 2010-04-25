@@ -15,7 +15,23 @@
 
 void		print_cbuf(t_cbuf *buf)
 {
-  printf("prod : %i\ncons : %i\nuse : %i\ncontenue : %s\n", 
+  FILE		*debug;
+
+  debug = fopen("cbuf.log", "a");
+  if (!debug)
+    return ;
+  fprintf(debug, "prod : %i\ncons : %i\nuse : %i\ncontenue : %s\n", 
 	 buf->prod, buf->cons, buf->use, buf->buf);
-  fflush(stdout);
+  fclose(debug);
+}
+
+void		cbuf_error(char *str)
+{
+  FILE		*debug;
+
+  debug = fopen("cbuf.log", "a");
+  if (!debug)
+    return ;
+  fprintf(debug, "%s\n", str);
+  fclose(debug);
 }
