@@ -93,7 +93,8 @@ int		mouse_down(t_game *game)
     game->mouse.move.x = game->event.button.x;
     game->mouse.move.y = game->event.button.y;
   }
-  else if (game->event.button.button == SDL_BUTTON_RIGHT)
+  else if (game->event.button.button == SDL_BUTTON_RIGHT &&
+           game->info.crazy == 1)
   {
     temp = game->map.select_c;
     picking_mouse(game, game->event.button.x, game->event.button.y);

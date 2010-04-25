@@ -85,6 +85,7 @@ typedef struct	s_info
   t_pos		pos;
   int		dir;
   int		time;
+  int		crazy;
   int		size_h;
   int		size_w;
 }		t_info;

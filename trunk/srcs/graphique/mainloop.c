@@ -155,7 +155,6 @@ void		mainloop(t_game *game)
 	camera(game);
 	draw_interface(game);
 	draw_gl(game, GL_RENDER);
-	/* 	  timedelay(); */
 	glFlush();
 	SDL_GL_SwapBuffers();
   }

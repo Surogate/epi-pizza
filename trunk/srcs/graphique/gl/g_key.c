@@ -40,8 +40,11 @@ int		key_func(t_game *game)
     game->map.z += 5;
   else if (game->event.key.keysym.sym == SDLK_DOWN)
     game->map.z -= 5;
+    else if (game->event.key.keysym.sym == SDLK_c)
+      game->info.crazy++;
   else if (game->event.key.keysym.sym == SDLK_ESCAPE)
     return (0);
+  game->info.crazy %= 2;
   game->map.rot %= 360;
   if (game->map.z < 100)
     game->map.z = 100;
