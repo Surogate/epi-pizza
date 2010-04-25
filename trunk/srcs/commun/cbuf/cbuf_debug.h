@@ -12,5 +12,6 @@
 # define	__CBUF_DEBUG_C_INCLUDED__
 
 void		print_cbuf(t_cbuf *buf);
+void		cbuf_error(char *str);
 
 #endif		/*__CBUF_DEBUG_C_INCLUDED__*/
