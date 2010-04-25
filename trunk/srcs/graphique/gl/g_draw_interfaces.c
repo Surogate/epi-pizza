@@ -61,7 +61,11 @@ void	interface_down(GLuint texture)
 
 void		show_info(t_game *game)
 {
+  t_pos pos;
   
+  pos.x = 50;
+  pos.y = 50;
+  dwrite("COUCOU", pos, RED);
 }
 
 void		draw_interface(t_game *game)
