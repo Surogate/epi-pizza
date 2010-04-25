@@ -57,10 +57,52 @@ void		DrawStr(const char *str)
   if(!str)
     return ;
   while(str[++i])
-    glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, str[i]);
+    glutBitmapCharacter(GLUT_BITMAP_8_BY_13, str[i]);
 }
 
-void		dwrite(char *str, t_pos pos, int color)
+void		pushwrite()
+{
+ 
+  glMatrixMode(GL_PROJECTION);
+  glPushMatrix();
+  glLoadIdentity();
+  glOrtho(0, WIN_W, 0, WIN_H, -10.0, 10.0);
+}
+
+void		dwrite_int(int nbr, int posx, int posy, int color)
+{
+  int		*tcolor;
+  char		res[10];
+
+  tcolor = initcolor(color);
+  glColor3f(tcolor[0], tcolor[1], tcolor[2]);
+  glRasterPos2f(posx, posy);
+  sprintf(res, "%d", nbr);
+  DrawStr(res);
+  glColor3f(1.0, 1.0, 1.0);
+}
+
+void		dwrite(char *str, int posx, int posy, int color)
+{
+  int   *tcolor;
+
+  tcolor = initcolor(color);
+  glColor3f(tcolor[0], tcolor[1], tcolor[2]);
+  glRasterPos2f(posx, posy);
+  DrawStr(str);
+  glColor3f(1.0, 1.0, 1.0);
+}
+
+
+void		popwrite()
+{
+  glPopMatrix();
+  glMatrixMode(GL_MODELVIEW);
+}
+
+
+/*
+void		dwrite(char *str, int posx, int posy, int color)
 {
   int   *tcolor;
 
@@ -70,11 +112,11 @@ void		dwrite(char *str, t_pos pos, int color)
   glPushMatrix();
   glLoadIdentity();
   glOrtho(0, WIN_W, 0, WIN_H, -10.0, 10.0);
-  glRasterPos2f(pos.x, pos.y);
+  glRasterPos2f(posx, posy);
   DrawStr(str);
   glPopMatrix();
   glMatrixMode(GL_MODELVIEW);
   glColor3f(1.0, 1.0, 1.0);
 }
-
+*/
 

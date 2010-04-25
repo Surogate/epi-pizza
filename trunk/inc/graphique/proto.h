@@ -81,7 +81,7 @@ void		clic_render();
 
 /* Draw WRITE */
 
-void		dwrite(char *str, t_pos pos, int color);
+void		dwrite(char *str, int posx, int posy, int color);
 
 /* Draw (Call by CallList)*/
 

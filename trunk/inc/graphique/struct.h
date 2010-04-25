@@ -103,7 +103,10 @@ typedef struct	s_map
   int		z;
   int		h;
   int		w;
-  int		select;
+  int		select_p_o;
+  int		select_c_o;
+  int		select_p;
+  int		select_c;
 }		t_map;
 
 typedef struct

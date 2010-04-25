@@ -34,8 +34,7 @@ void		clic_mob(t_game *game, t_player *player, int ref)
   int		x;
   int		y;
 
-  if ((game->map.h * game->map.w) <= game->map.select &&
-   game->map.select - ref == player->id )
+  if (game->map.select_p - ref == player->id)
   {
     x = player->pos.x;
     y = player->pos.y;
@@ -51,11 +50,10 @@ void		clic_map(t_game *game)
   int		x;
   int		y;
 
-  if ((game->map.h * game->map.w) > game->map.select &&
-  game->map.select >= 0)
+  if (game->map.select_c >= 0)
   {
-    x = game->map.select % game->map.w;
-    y = game->map.select / game->map.w;
+    x = game->map.select_c % game->map.w;
+    y = game->map.select_c / game->map.w;
     glPushMatrix();
     glTranslatef(x * CASE_H, y * CASE_W, 0.2);
     clic_render(PICKING);
