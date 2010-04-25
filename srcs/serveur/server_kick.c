@@ -57,6 +57,7 @@ int		create_kick(t_svr_vector *vec, int player_id, int time)
       pak->end.tv_sec += time;
       pak->ac = 0;
       pak->ac_rep = 0;
+      pak->graph_rep = NULL;
       action->insert_sort(action, pak, sort_duration);
       return (EXIT_SUCCESS);
     }
