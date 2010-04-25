@@ -70,6 +70,7 @@ void		init_game(t_game *game)
     }
     game->font = TTF_OpenFont(FONT_DIR, MFONT_SIZE);
   */
+  game->team = NULL;
   game->map.rot = 0;
   game->map.z = 200;
   game->info.pos.x = 0;

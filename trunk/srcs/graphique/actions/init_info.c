@@ -70,11 +70,15 @@ void		team_name(t_game *game, char **av)
   int		i;
 
   tim = game->team;
-  if (tim != NULL)
-    while (tim->next != NULL)
-      tim = tim->next;
   new = xmalloc(sizeof(t_team));
-  tim->next = new;
+  if (tim != NULL)
+    {
+      while (tim->next != NULL)
+	tim = tim->next;
+      tim->next = new;
+    }
+  else
+    game->team = new;
   if (strlen(av[1]) < 50)
     {
       i = -1;
