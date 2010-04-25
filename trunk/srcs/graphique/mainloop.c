@@ -78,17 +78,14 @@ void		my_recv(t_game *game)
 
   printf("\033[31mmsg recv!\033[00m\n");
   cbuf_write(game->serv.cbuf, game->serv.socket);
-  print_cbuf(game->serv.cbuf);
   do
     {
       msg = cbuf_read(game->serv.cbuf, check_next_end);
+      printf("%p\n", msg);
       if (msg)
 	{
-	  printf("msg : %s\n", msg);
 	  temp = split(msg, ' ');
-	  printf("func : %s\n", temp[0]);
 	  traitement(game, temp);
-	  printf("fin du traitement\n");
 	  if (!strncmp(temp[0], "msz", 3))
 	    {
 	      printf("taille de la map : %d, %d\n", game->map.h, game->map.w);
@@ -97,9 +94,8 @@ void		my_recv(t_game *game)
 	      printf("fin init map\n");
 	    }
 	}
-      print_cbuf(game->serv.cbuf);
     } while (msg);
-  printf("taille de la map : %d, %d\n", game->map.h, game->map.w);      
+  printf("test\n");
 }
 
 void		search_msg(t_game *game)

@@ -11,7 +11,7 @@
 #ifndef			__CBUF_DEFINE_INCLUDED__
 # define		__CBUF_DEFINE_INCLUDED__
 
-#define CBUFSIZ		1024
+#define CBUFSIZ		4048
 #define EXPIPE		-2
 #define	END_CHAR	'\n'
 
