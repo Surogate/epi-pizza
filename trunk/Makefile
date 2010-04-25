@@ -187,7 +187,9 @@ SRC_GR		= \
 		$(DIR_SRC_GR)actions/init_info.c	\
 		$(DIR_SRC_GR)actions/object.c		\
 		$(DIR_SRC_GR)reseau.c			\
+		$(DIR_SRC_GR)random_func.c		\
 		$(DIR_SRC_GR)split.c			\
+		$(DIR_SRC_GR)message_func.c		\
 		$(DIR_SRC_GR)connect.c
 
 SRC_GR_Darwin	= \
