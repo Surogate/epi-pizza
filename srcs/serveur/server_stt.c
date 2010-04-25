@@ -71,12 +71,6 @@ int		select_loop(int svr_sock, t_select *slt_par, t_game *game)
   while (slt_cont)
     {
       err = select(slt_par->fd_max, &(slt_par->fd_read), NULL, NULL, slt_par->time);
-      if (err < 0)
-	{
-	  if (errno == EINTR)
-	    break;
-	  return (EXIT_FAILURE);
-	}
       if (err > 0)
 	{
 	  if (FD_ISSET(svr_sock, &(slt_par->fd_read)))

@@ -80,6 +80,7 @@ static int		parse_word(t_packet *pak, int len)
   int			i;
 
   i = 0;
+  printf("str recu : %s\n", pak->av[0]);
   if ((i = treatment_duration(pak)) == -1)
     {
       printf("mauvaise instruction\n");

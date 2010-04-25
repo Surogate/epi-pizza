@@ -65,12 +65,9 @@ int			init_svr_par(t_select *slt_par,
   slt_par->fd_max = svr_sock;
   while ((tmp = (t_client *)vec->client->getnxts(vec->client)) != NULL)
     {
-      if (tmp->used < 10)
-	{
-	  FD_SET(tmp->sock, &(slt_par->fd_read));
-	  if (tmp->sock > slt_par->fd_max)
-	    slt_par->fd_max = tmp->sock;
-	}
+      FD_SET(tmp->sock, &(slt_par->fd_read));
+      if (tmp->sock > slt_par->fd_max)
+	slt_par->fd_max = tmp->sock;
     }
   while ((tmp = (t_client *)vec->graph->getnxts(vec->graph)) != NULL)
     {
@@ -100,11 +97,12 @@ void			init_timeout(t_svr_vector *vec, t_select *slt)
 	  timeminus(&(slt->timeout), &(pak->end), &ac_time);
 	  slt->time = &(slt->timeout);
 	}
-      else 
-	{
-	  if ((timeminus(&tmp, &(pak->end), &ac_time) == EXIT_SUCCESS) &&
-	      (time_cmp(&(slt->timeout), &tmp) > 0))
-	    timeminus(&(slt->timeout), &(pak->end), &ac_time);
-	}
+      else if ((timeminus(&tmp, &(pak->end), &ac_time) == EXIT_SUCCESS) &&
+	       (time_cmp(&(slt->timeout), &tmp) > 0))
+	timeminus(&(slt->timeout), &(pak->end), &ac_time);
     }
+  if (slt->time)
+    printf("timeout\n=> sec : %i\n=>usec : %i\n", (int)slt->time->tv_sec, (int)slt->time->tv_usec);
+  else
+    printf("timeout unlimited\n");
 }
