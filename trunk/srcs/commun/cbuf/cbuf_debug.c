@@ -22,6 +22,8 @@ void		print_cbuf(t_cbuf *buf)
     return ;
   fprintf(debug, "prod : %i\ncons : %i\nuse : %i\ncontenue : %s\n", 
 	 buf->prod, buf->cons, buf->use, buf->buf);
+  fprintf(stderr, "prod : %i\ncons : %i\nuse : %i\ncontenue : %s\n", 
+	 buf->prod, buf->cons, buf->use, buf->buf);
   fclose(debug);
 }
 
@@ -33,5 +35,6 @@ void		cbuf_error(char *str)
   if (!debug)
     return ;
   fprintf(debug, "%s\n", str);
+  fprintf(stderr, "%s\n", str);
   fclose(debug);
 }

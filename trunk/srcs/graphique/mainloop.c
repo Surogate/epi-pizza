@@ -51,12 +51,11 @@ int		check_next_end(char *str)
   int		i;
 
   i = 0;
-  while (str[i] && str[i] != '\n')
+  while (str[i] && (str[i] != '\n'))
     i++;
   if (!str[i])
     return (0);
-  else
-    return (i);
+  return (i);
 }
 
 void		free_2d_tab(char **tab)
@@ -79,6 +78,7 @@ void		my_recv(t_game *game)
 
   printf("\033[31mmsg recv!\033[00m\n");
   cbuf_write(game->serv.cbuf, game->serv.socket);
+  print_cbuf(game->serv.cbuf);
   do
     {
       msg = cbuf_read(game->serv.cbuf, check_next_end);
@@ -97,7 +97,8 @@ void		my_recv(t_game *game)
 	      printf("fin init map\n");
 	    }
 	}
-    }while (msg);
+      print_cbuf(game->serv.cbuf);
+    } while (msg);
   printf("taille de la map : %d, %d\n", game->map.h, game->map.w);      
 }
 
