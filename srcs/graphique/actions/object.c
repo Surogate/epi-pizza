@@ -43,7 +43,7 @@ void		drop_item(t_game *game, char **av, int ac)
 	  if (player->id == atoi(&av[1][1]))
 	    {
 	      player->inventaire[atoi(av[2])]--;
-	      game->map.t_case[player->pos.y][player->pos.x].obj[atoi(av[2])]++;
+	      game->map.t_case[player->pos.y][player->pos.x].obj[atoi(av[2])][2]++;
 	    }
 	  player = player->next_pg;
 	}
@@ -62,7 +62,7 @@ void		take_item(t_game *game, char **av, int ac)
 	  if (player->id == atoi(&av[1][1]))
 	    {
 	      player->inventaire[atoi(av[2])]++;
-	      game->map.t_case[player->pos.y][player->pos.x].obj[atoi(av[2])]--;
+	      game->map.t_case[player->pos.y][player->pos.x].obj[atoi(av[2])][2]--;
 	    }
 	  player = player->next_pg;
 	}

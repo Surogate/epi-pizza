@@ -52,15 +52,15 @@ static void	draw_trantorien(t_player *player, int ref, GLenum mode)
 void		draw_mob(t_game *game, GLenum mode)
 {
   int		ref;
-  t_player *temp;
+  t_player	*temp;
 
   ref = game->map.h * game->map.w;
   temp = game->player;
- while (temp)
- {
-   draw_trantorien(temp, ref, mode);
-   clic_mob(game, temp, ref);
-   temp = temp->next_pg;
- }
+  while (temp)
+    {
+      draw_trantorien(temp, ref, mode);
+      clic_mob(game, temp, ref);
+      temp = temp->next_pg;
+    }
   clic_map(game);
 }

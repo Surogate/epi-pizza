@@ -32,10 +32,12 @@
 # define	PICKING		30
 # define	PSELECT		31
 # define	TEAM		32
+# define	RESS		40
 
 enum {YELLOW, BLUE, GREEN, PINK, PURPLE, RED, BLACK, WHITE, CYAN};
 
 # define	LVLMAX		8
+# define	NBRESS		7
 
 # define	FONT_DIR	"./font/MONACO.ttf"
 # define	MFONT_SIZE	7

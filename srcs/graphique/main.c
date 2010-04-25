@@ -111,7 +111,7 @@ void		test_init_player(t_game *game)
 	{
 	  o = -1;
 	  while (++o != 8)
-	    game->map.t_case[x][y].obj[o] = 2;
+	    game->map.t_case[x][y].obj[o][2] = 2;
 	}
     }
 }
