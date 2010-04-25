@@ -39,7 +39,7 @@ void		debug_packet(t_packet *pak, char *str)
       for(i = 0; i < pak->ac_rep; i++)
 	fprintf(debug, "rep %i\nto : %i\nstr : %s\n", i, pak->response[i].id_player, pak->response[i].mess);
       if (pak->graph_rep)
-	fprintf(debug, "graph_rep : %s\n", pak->graph_rep);
+	fprintf(debug, "graph_rep : %s", pak->graph_rep);
     }
   else
     fprintf(debug, "pak non alloue\n");
