@@ -77,6 +77,7 @@ void		my_recv(t_game *game)
   char		*msg;
   char		**temp;
 
+  printf("\033[31mmsg recv!\033[00m\n");
   cbuf_write(game->serv.cbuf, game->serv.socket);
   do
     {
@@ -97,6 +98,7 @@ void		my_recv(t_game *game)
 	    }
 	}
     }while (msg);
+  printf("taille de la map : %d, %d\n", game->map.h, game->map.w);      
 }
 
 void		search_msg(t_game *game)
@@ -109,13 +111,10 @@ void		search_msg(t_game *game)
   FD_SET(game->serv.socket, &game->serv.fd_write);
   ready = select(game->serv.socket + 1, &game->serv.fd_read,
 		 &game->serv.fd_write, NULL, NULL);
-  /* printf("verification du fd %d\n", game->serv.socket); */
   if (ready > 0)
     {
       if (FD_ISSET(game->serv.socket, &game->serv.fd_read))
-	{
-	  my_recv(game);
-	}
+	my_recv(game);
     }
   if (ready < 0)
     {
@@ -150,13 +149,12 @@ void		mainloop(t_game *game)
   {
     search_msg(game);
     exit = interaction(game);
-	search_msg(game);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	camera(game);
-	draw_interface(game);
-	draw_gl(game, GL_RENDER);
-	glFlush();
-	SDL_GL_SwapBuffers();
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    camera(game);
+    draw_interface(game);
+    draw_gl(game, GL_RENDER);
+    glFlush();
+    SDL_GL_SwapBuffers();
   }
 }
 

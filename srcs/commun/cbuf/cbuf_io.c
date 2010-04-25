@@ -46,6 +46,7 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
       result[cmd] = '\0';
       cbuf_error(result);
       print_cbuf(cbuf);
+      memset(&cbuf->buf[cbuf->cons - cmd], 0 , cmd);
       return (result);
     }
   return (NULL);
