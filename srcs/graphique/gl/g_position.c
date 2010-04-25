@@ -106,5 +106,5 @@ void		picking_mouse(t_game *game, int x, int y)
   glMatrixMode(GL_MODELVIEW);
   hits = glRenderMode(GL_RENDER);
   if (hits != 0)
-    game->map.select = processHits(hits, selectBuf);
+    game->map.select_c = processHits(hits, selectBuf);
 }

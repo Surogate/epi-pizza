@@ -85,14 +85,26 @@ int		mouse_up(t_game *game)
 
 int		mouse_down(t_game *game)
 {
+  int temp;
+
   if (game->event.button.button == SDL_BUTTON_LEFT)
   {
     game->mouse.clicked = 1;
-    /*  SDL_WarpMouse(MAP_CW * CASE_W / 2, MAP_CH * CASE_H / 2); */
     game->mouse.move.x = game->event.button.x;
     game->mouse.move.y = game->event.button.y;
   }
   else if (game->event.button.button == SDL_BUTTON_RIGHT)
+  {
+    temp = game->map.select_c;
     picking_mouse(game, game->event.button.x, game->event.button.y);
+    if (game->map.select_c > game->map.h * game->map.w)
+    {
+      game->map.select_p_o = game->map.select_p;
+      game->map.select_p = game->map.select_c;
+      game->map.select_c = temp;
+    }
+    else
+      game->map.select_c_o = game->map.select_c;
+  }
   return (1);
 }
