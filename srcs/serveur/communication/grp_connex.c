@@ -51,7 +51,7 @@ char		*grp_connex_monit(t_game *game)
   int		y;
   char		*msg;
 
-  msg = xmalloc(sizeof(char));
+  msg = NULL;
   msg = msz(msg, game);
   y = -1;
   while (++y < game->server.height)
@@ -74,7 +74,7 @@ char		*grp_connex_player(t_game *game, t_player *player)
 {
   char		*msg;
 
-  msg = xmalloc(2 * sizeof(char));
+  msg = NULL;
   msg = pnw(msg, player, game);
   return (msg);
 }
@@ -83,7 +83,7 @@ char		*grp_connex_zombie(t_game *game, t_player *player, t_eggs *egg)
 {
   char		*msg;
 
-  msg = xmalloc(2 * sizeof(char));
+  msg = NULL;
   msg = ebo(msg, egg);
   msg = pnw(msg, player, game);
   return (msg);

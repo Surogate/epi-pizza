@@ -67,30 +67,32 @@ int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
 {
   int		pos;
   t_select	*slt_par;
+  int		id;
 
   slt_par = vec->slt;
-  if (pak->player_id > 0)
+  id = pak->player_id;
+  if (id > 0)
     {
       pos = vec->client->find_pos(vec->client, &(pak->player_id), player_id_find);
       if (pos >= 0)
 	{
-	  sock_write(pak->player_id, "You have been kicked\n");
-	  printf("player %i ass kicked\n", pak->player_id);
-	  rm_player(game, pak->player_id);
+	  sock_write(id, "You have been kicked\n");
+	  printf("player %i ass kicked\n", id);
+	  rm_player(game, id);
+	  delete_kick(vec, id);
+	  delete_eat(vec, id);
+	  delete_plaction(vec, id);
+	  FD_CLR(id, &(slt_par->fd_read));
 	  vec->client->erase(vec->client, pos, free_client);
-	  delete_kick(vec, pak->player_id);
-	  delete_eat(vec, pak->player_id);
-	  delete_plaction(vec, pak->player_id);
-	  FD_CLR(pak->player_id, &(slt_par->fd_read));
 	  return (EXIT_SUCCESS);
 	}
       fprintf(stderr, "player %i unknow\n", pak->player_id);
     }
   else
     {
-      delete_kick(vec, pak->player_id);
-      delete_eat(vec, pak->player_id);
-      rm_player(game, pak->player_id);
+      delete_kick(vec, id);
+      delete_eat(vec, id);
+      rm_player(game, id);
       printf("l'oeuf a moisie\n");
       return (EXIT_SUCCESS);
     }

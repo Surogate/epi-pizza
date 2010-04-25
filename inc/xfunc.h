@@ -19,5 +19,6 @@ ssize_t		xwrite(int fd, void *buff, size_t nbytes);
 ssize_t		xread(int fd, void *buff, size_t nbytes);
 int		xopen(char *path, int flags, ...);
 int		xclose(int d);
+int		xstrlen(char *str);
 
 #endif		/* __XFUNC_H__ */

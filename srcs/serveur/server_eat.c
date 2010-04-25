@@ -64,18 +64,20 @@ int		create_eat(t_svr_vector *vec, int player_id)
 
 int		server_eat(t_svr_vector *vec, t_packet *pak, t_game *game)
 {
+  int		id;
+
+  id = pak->player_id;
   if (try_eat(game, pak->player_id) == EXIT_FAILURE)
     {
-      sock_write(pak->player_id, "mort\n");
-      printf("player %i died, eat is essential to live\n", pak->player_id);
-      gh_fct(vec, game, pak->player_id, pdi);
-      delete_eat(vec, pak->player_id);
+      sock_write(id, "mort\n");
+      printf("player %i died, eat is essential to live\n", id);
+      gh_fct(vec, game, id, pdi);
       server_kick(vec, pak, game);
       return (EXIT_FAILURE);
     }
-  printf("player %i eat\n", pak->player_id);
-  delete_eat(vec, pak->player_id);
-  create_eat(vec, pak->player_id);
+  printf("player %i eat\n", id);
+  delete_eat(vec, id);
+  create_eat(vec, id);
   return (EXIT_SUCCESS);
 }
 

@@ -27,6 +27,7 @@ FILES_C		= $(D_SRC)my_aff_err.c			\
 		  $(D_SRC)xwrite.c			\
 		  $(D_SRC)xopen.c			\
 		  $(D_SRC)xclose.c			\
+		  $(D_SRC)xstrlen.c			\
 
 FILES_H		= xfunc.h
 

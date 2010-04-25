@@ -13,6 +13,7 @@
 #include		<stdio.h>
 
 #include		"my_list.h"
+#include		"xfunc.h"
 #include		"serveur/define.h"
 #include		"serveur/t_struct.h"
 #include		"serveur/pars_main.h"
@@ -66,7 +67,7 @@ void			display_values(t_server *server, t_team *team)
   printf("\033[1;32mMap height\033[m  -> %d\n", server->height);
   printf("\033[1;32mMap width\033[m   -> %d\n", server->width);
   printf("\033[1;32mTeams Name\033[m :\n");
-  if (!strncmp(team->team, STD_TEAM_NAME, strlen(STD_TEAM_NAME)))
+  if (!strncmp(team->team, STD_TEAM_NAME, xstrlen(STD_TEAM_NAME)))
     printf("\t1 : %s\n", STD_TEAM_NAME);
   else
     while (team != 0)

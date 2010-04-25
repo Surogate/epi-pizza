@@ -43,11 +43,11 @@ char		*add_player(t_vision *cur_case, char *msg)
   cur_player = cur_case->cas->cas.player;
   while (cur_player->data != NULL)
     {
-      msg = xrealloc(msg, strlen(msg) + strlen(MSG_JOUEUR) + 3);
+      msg = xrealloc(msg, xstrlen(msg) + xstrlen(MSG_JOUEUR) + 3);
       if (flag == 1)
-	snprintf(msg + strlen(msg), strlen(MSG_JOUEUR) + 3, "%s ", MSG_JOUEUR);
+	snprintf(msg + strlen(msg), xstrlen(MSG_JOUEUR) + 3, "%s ", MSG_JOUEUR);
       else
-	snprintf(msg + strlen(msg), strlen(MSG_JOUEUR) + 3, "%s", MSG_JOUEUR);
+	snprintf(msg + strlen(msg), xstrlen(MSG_JOUEUR) + 3, "%s", MSG_JOUEUR);
       cur_player = cur_player->next;
     }
   return (msg);
@@ -76,19 +76,19 @@ char		*add_ressource(t_vision *cur_case, char *msg)
   num_ress = -1;
   while (++num_ress != RESS_NUM)
     count = count + cur_case->cas->cas.ress[num_ress];
-  msg = xrealloc(msg, strlen(msg) + (15 * count));
+  msg = xrealloc(msg, xstrlen(msg) + (15 * count));
   num_ress = -1;
   while (++num_ress != RESS_NUM)
     {
       nb_ress = cur_case->cas->cas.ress[num_ress] + 1;
       while (--nb_ress >= 2)
-	  snprintf(msg + strlen(msg), 12, "%s ", msg_ress[num_ress]);
+	  snprintf(msg + xstrlen(msg), 12, "%s ", msg_ress[num_ress]);
       if (nb_ress != 0)
 	{
 	  if (num_ress == find_last_ress(cur_case->cas->cas))
-	    snprintf(msg + strlen(msg), 14, "%s", msg_ress[num_ress]);
+	    snprintf(msg + xstrlen(msg), 14, "%s", msg_ress[num_ress]);
 	  else
-	    snprintf(msg + strlen(msg), 14, "%s ", msg_ress[num_ress]);
+	    snprintf(msg + xstrlen(msg), 14, "%s ", msg_ress[num_ress]);
 	}
     }
   return (msg);
@@ -114,8 +114,8 @@ char		*explore_case(t_vision *cur_case, char *msg)
 	msg = strcat(msg, ",");
       else
 	{
-	  msg = xrealloc(msg, strlen(msg) + 2);
-	  msg = strcat(msg, ", ");
+	  msg = xrealloc(msg, xstrlen(msg) + 3);
+	  msg = strncat(msg, ", ", 2);
 	}
     }
   return (msg);
@@ -141,8 +141,8 @@ char		*concatene_msg(t_vision *list)
       msg = explore_case(cur, msg);
       cur = cur->next;
     }
-  msg = xrealloc(msg, strlen(msg) + 5);
-  len = strlen(msg);
+  len = xstrlen(msg);
+  msg = xrealloc(msg, len + 3);
   msg[len - 1] = '}';
   msg[len] = '\n';
   msg[len + 1] = '\0';
