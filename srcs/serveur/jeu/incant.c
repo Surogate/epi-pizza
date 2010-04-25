@@ -20,6 +20,7 @@
 #include	"serveur/t_game_stc.h"
 #include	"serveur/t_packet.h"
 #include	"xfunc.h"
+#include	"serveur/server_ending.h"
 
 static t_incant	gl_incant[INCANT_NUM + 1] = {
   {1, {0, 1, 0, 0, 0, 0, 0}},
