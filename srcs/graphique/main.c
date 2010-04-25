@@ -63,10 +63,13 @@ void		test_create_player(t_game *game, int id, int team)
   seed = random();
   pl = game->player;
   if (pl != NULL)
-    while (pl != NULL)
+    while (pl->next_pg != NULL)
       pl = pl->next_pg;
   new = xmalloc(sizeof(t_player));
-  pl->next_pg = new;
+  if (pl)
+    pl->next_pg = new;
+  else
+    game->player = new;
   new->next_pg = NULL;
   new->id = id;
   new->lv = random() % 8;
