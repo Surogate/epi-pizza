@@ -114,6 +114,7 @@ void		init_texture(t_game *game)
     game->texture->floor = loadtexture("images/lawn.jpg");
     game->texture->side = loadtexture("images/side.jpg");
     game->texture->floor_s = loadtexture("images/Circle.png");
+    game->texture->select = loadtexture("images/select_pl.png");
   }
   else
     puts("TEXTURE OFF");
@@ -124,5 +125,5 @@ void		init_video(t_game *game)
   game->video.text = 1;
   game->video.fog = 1;
   game->video.light = 1;
-  game->video.aliasing = 1;
+  game->video.aliasing = 0;
 }

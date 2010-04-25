@@ -45,8 +45,8 @@ void		draw_gl(t_game *game, GLenum mode)
   glTranslated(-game->map.h * CASE_H / 2, -game->map.w * CASE_W / 2, 0);
   glPushMatrix();
   draw_map(game, mode);
-  draw_mob(game, mode);
   draw_ressource(game, mode);
+  draw_mob(game, mode);
   glPopMatrix();
   glPopMatrix();
   glPopMatrix();

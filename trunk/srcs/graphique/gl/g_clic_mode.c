@@ -31,18 +31,19 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-void		clic_mob(t_game *game)
+void		clic_mob(t_game *game, t_player *player, int ref)
 {
   int		x;
   int		y;
 
-  if (game->map.h * game->map.w <= game->map.select)
+  if ((game->map.h * game->map.w) <= game->map.select &&
+   game->map.select - ref == player->id )
   {
-    x = game->map.select % game->map.w;
-    y = game->map.select / game->map.w;
+    x = player->pos.x;
+    y = player->pos.y;
     glPushMatrix();
-    glTranslatef(x * CASE_H, y * CASE_W, 0.1);
-    clic_render(game->texture->floor_s);
+    glTranslatef(x * CASE_H, y * CASE_W, 0.2);
+    clic_render(PSELECT);
     glPopMatrix();
   }
 }
@@ -52,13 +53,14 @@ void		clic_map(t_game *game)
   int		x;
   int		y;
 
-  if ((game->map.h * game->map.w) > game->map.select)
+  if ((game->map.h * game->map.w) > game->map.select &&
+  game->map.select >= 0)
   {
     x = game->map.select % game->map.w;
     y = game->map.select / game->map.w;
     glPushMatrix();
-    glTranslatef(x * CASE_H, y * CASE_W, 0.1);
-    clic_render(game->texture->floor_s);
+    glTranslatef(x * CASE_H, y * CASE_W, 0.2);
+    clic_render(PICKING);
     glPopMatrix();
   }
 }

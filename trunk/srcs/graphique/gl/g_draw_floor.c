@@ -31,7 +31,7 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-void		clic_render()
+void		clic_render(int type)
 {
   static int	i;
 
@@ -40,7 +40,7 @@ void		clic_render()
   glPushMatrix();
   i %= 360;
   glRotated((i+= 2), 0 ,0 ,1);
-  glCallList(PICKING);
+  glCallList(type);
   glPopMatrix();
   glPopMatrix();
 }

@@ -48,7 +48,7 @@ void		display_mouse(t_game *game)
   SDL_SetColorKey(game->mouse.img[game->mouse.clicked],
 		  SDL_RLEACCEL | SDL_SRCCOLORKEY, co);
   SDL_BlitSurface(game->mouse.img[game->mouse.clicked],
-		  NULL, game->screen, &pos);
+		NULL, game->screen, &pos);
 }
 
 int		mouse_move(t_game *game)
@@ -58,17 +58,17 @@ int		mouse_move(t_game *game)
   if (game->mouse.clicked)
     {
       if (!(pouet % 5))
-	{
-	  game->info.pos.x += game->mouse.move.x - game->event.button.x;
-	  game->info.pos.y -= game->mouse.move.y - game->event.button.y;
-	  game->info.pos.x = game->info.pos.x % (CASE_W * game->info.size_w);
-	  game->info.pos.y = game->info.pos.y % (CASE_H * game->info.size_h);
-	  game->mouse.move.x = game->event.button.x;
-	  game->mouse.move.y = game->event.button.y;
-	}
+      {
+        game->info.pos.x += game->mouse.move.x - game->event.button.x;
+        game->info.pos.y -= game->mouse.move.y - game->event.button.y;
+        game->info.pos.x = game->info.pos.x % (CASE_W * game->map.w);
+        game->info.pos.y = game->info.pos.y % (CASE_H * game->map.h);
+        game->mouse.move.x = game->event.button.x;
+        game->mouse.move.y = game->event.button.y;
+      }
       pouet++;
       if (pouet > 20)
-	pouet = 0;
+      pouet = 0;
     }
   return (1);
 }
@@ -78,10 +78,10 @@ int		mouse_up(t_game *game)
   if (game->event.button.button == SDL_BUTTON_LEFT)
     {
       printf("release at x = [%d], y = [%d].\ncase current : x=[%d], y=[%d]\n",
-	     game->info.pos.x,
-	     game->info.pos.y,
-	     game->info.pos.x / CASE_W,
-	     game->info.pos.y / CASE_H);
+      game->info.pos.x,
+      game->info.pos.y,
+      game->info.pos.x / CASE_W,
+      game->info.pos.y / CASE_H);
       game->mouse.clicked = 0;
     }
   return (1);
