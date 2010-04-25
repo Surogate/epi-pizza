@@ -40,9 +40,8 @@ void		tempo(t_game *game)
 {
   while (game->map.h == -42)
     {
-      /* printf("tour de boucle tempo\n"); */
-      search_msg(game);
-      if (SDL_PollEvent(&(game->event)))
+       search_msg(game);
+       if (SDL_PollEvent(&(game->event)))
 	{
 	  if (game->event.type == SDL_QUIT)
 	    {
@@ -131,7 +130,7 @@ int		main(int ac, char *av[])
       game.map.h = -42;
       game.serv.cbuf = cbuf_new();
       tempo(&game);
-      test_init_player(&game);
+      /* test_init_player(&game); */
       printAttributes();
       init_texture(&game);
       init_3dsmodel(&game);
