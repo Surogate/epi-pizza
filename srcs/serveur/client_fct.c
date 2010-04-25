@@ -153,6 +153,7 @@ void			free_packet(t_client *cli)
   pak->ac_rep = -1;
   pak->end.tv_sec = 0;
   pak->end.tv_usec = 0;
-  cli->used = cli->used - 1;
+  if (cli->used > 0)
+    cli->used = cli->used - 1;
   cli->cons = (cli->cons + 1) % 10;
 }
