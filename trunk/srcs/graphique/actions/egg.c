@@ -40,7 +40,7 @@ void		eggs_drop(t_game *game, char **av)
   t_egg		*cur;
   int		i;
 
-  printf("Le joueur %i a termine de pondre l'oeuf %i\n", atoi(av[2]), 
+  printf("Le joueur %i a termine de pondre l'oeuf %i\n", atoi(av[2]),
 	 atoi(av[1]));
   cur = game->egg;
   if (cur != NULL)
@@ -71,6 +71,30 @@ void		eggs_to_player(t_game *game, char **av)
 
 void		eggs_die(t_game *game, char **av, int ac)
 {
-  game = game;
-  av = av;
+  t_egg		*prec;
+  t_egg		*cur;
+
+  if (ac > 1)
+    {
+      prec = 0;
+      cur = game->egg;
+      while (cur)
+	if (cur->id == atoi(&av[1][1]))
+	  {
+	    if (prec)
+	      prec->next = cur->next;		
+	    else
+	      game->egg = cur->next;
+	    prec = cur->next;
+	    free(cur);
+	    cur = prec;
+	    prec = 0;
+	    /*anime?*/
+	  }
+	else
+	  {
+	    prec = cur;
+	    cur = cur->next;
+	  }
+    }
 }
