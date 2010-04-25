@@ -73,18 +73,22 @@ void		team_name(t_game *game, char **av)
   new = xmalloc(sizeof(t_team));
   if (tim != NULL)
     {
+      i = 1;
       while (tim->next != NULL)
-	tim = tim->next;
+	{
+	  tim = tim->next;
+	  i++;
+	}
       tim->next = new;
+      new->id = i + 1;
     }
   else
-    game->team = new;
-  if (strlen(av[1]) < 50)
     {
-      i = -1;
-      while (av[1][++i])
-	  new->name[i] = av[1][i];
+      game->team = new;
+      new->id = 1;
     }
+  if (strlen(av[1]) < 50)
+    strcpy(new->name, av[1]);
   puts(new->name);
   new->next = NULL;
 }
