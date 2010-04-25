@@ -48,7 +48,7 @@ int interaction(t_game *game)
     i = -1;
     while (event_type[++i].type)
       if (game->event.type == event_type[i].type)
-	return (event_type[i].func(game));
+        return (event_type[i].func(game));
   }
   return(1);
 }

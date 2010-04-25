@@ -172,7 +172,9 @@ SRC_GR		= \
 		$(DIR_SRC_GR)gl/g_draw_mob.c		\
 		$(DIR_SRC_GR)gl/g_draw_picking.c	\
 		$(DIR_SRC_GR)gl/g_draw_ressource.c	\
+		$(DIR_SRC_GR)gl/show_interface.c	\
 		$(DIR_SRC_GR)gl/g_draw_interfaces.c	\
+		$(DIR_SRC_GR)gl/epileptique_mode.c	\
 		$(DIR_SRC_GR)gl/g_draw_gl.c		\
 		$(DIR_SRC_GR)gl/g_test_opengl.c		\
 		$(DIR_SRC_GR)gl/g_clic_mode.c		\
@@ -246,39 +248,40 @@ IFLAGS			= \
 #########  LIBRARIES
 
 LFLAGS_i386-Darwin_$(NAME_GR)	= \
-				-lxfunc_$(TAG)		\
-				-lmylist_$(TAG)		\
-				-framework SDL		\
-				-framework SDL_image	\
-				-framework Cocoa	\
-				-framework GLUT		\
-				-framework OpenGL
+			-lxfunc_$(TAG)			\
+			-lmylist_$(TAG)			\
+			-framework SDL			\
+			-framework SDL_image		\
+			-framework Cocoa		\
+			-framework GLUT			\
+			-framework OpenGL
 
 LFLAGS_i386-Darwin	= \
-			-lxfunc_$(TAG)		\
-			-lmylist_$(TAG)		\
+			-lxfunc_$(TAG)			\
+			-lmylist_$(TAG)			\
 
 LFLAGS_i386-FreeBSD_$(NAME_GR)	= \
-				-lmylist_$(TAG)				\
-				-lxfunc_$(TAG)				\					`sdl-config --cflags --libs`		\
-				-lSDL_image				\
-				-lGL -lGLU -lglut			\
-				-lpthread
+			-lmylist_$(TAG)			\
+			-lxfunc_$(TAG)			\
+			`sdl-config --cflags --libs`	\
+			-lSDL_image			\
+			-lGL -lGLU -lglut		\
+			-lpthread
 
 LFLAGS_i386-FreeBSD	= \
-			-lmylist_$(TAG)				\
-			-lxfunc_$(TAG)				\
+			-lmylist_$(TAG)			\
+			-lxfunc_$(TAG)			\
 
 LFLAGS_i686-Linux_$(NAME_GR)	= \
-				-lmylist_$(TAG)				\
-				-lxfunc_$(TAG)				\
-				`sdl-config --cflags --libs`		\
-				-lSDL_image				\
-				-lGL -lGLU -lglut
+			-lmylist_$(TAG)			\
+			-lxfunc_$(TAG)			\
+			`sdl-config --cflags --libs`	\
+			-lSDL_image			\
+			-lGL -lGLU -lglut
 
 LFLAGS_i686-Linux	= \
-			-lmylist_$(TAG)				\
-			-lxfunc_$(TAG)				\
+			-lmylist_$(TAG)			\
+			-lxfunc_$(TAG)			\
 
 LFLAGS			= -L$(DIR_LIB) $(LFLAGS_$(TAG))
 LFLAGS_$(NAME_GR)	= -L$(DIR_LIB) $(LFLAGS_$(TAG)_$(NAME_GR))
