@@ -26,8 +26,11 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
   int		cmd;
 
   memset(result, 0, CBUFSIZ);
-  if (cbuf->use == 0)
-    return (NULL);
+  if (cbuf->use <= 0)
+    {
+      cbuf->use = 0;
+      return (NULL);
+    }
   if (cbuf->buf[cbuf->cons] == END_CHAR)
     ++(cbuf->cons);
   if (cbuf->prod > cbuf->cons)
@@ -38,14 +41,11 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
       strncpy(result + (CBUFSIZ - cbuf->cons), cbuf->buf, cbuf->prod);
     }
   cbuf_error(result);
-  if ((cmd = check_read(result)) != 0)
+  if ((cmd = check_read(result)) > 0)
     {
-      printf("cmd : %i\n", cmd);
       cbuf->cons = (cbuf->cons + cmd + 1) % CBUFSIZ;
       cbuf->use -= cmd;
       result[cmd] = '\0';
-      cbuf_error(result);
-      print_cbuf(cbuf);
       memset(&cbuf->buf[cbuf->cons - cmd], 0 , cmd);
       return (result);
     }
@@ -99,7 +99,7 @@ int		cbuf_write(t_cbuf *cbuf, int sock)
     }
   if (cbuf->prod < cbuf->cons)
     {
-      total = sock_read(sock, cbuf->buf + cbuf->prod, cbuf->cons - cbuf->prod);
+      total = sock_read(sock, cbuf->buf + cbuf->prod, cbuf->cons - cbuf->prod - 1);
       if (total == -1)
 	return (EXIT_FAILURE);
     }
