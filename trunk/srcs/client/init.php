@@ -16,7 +16,7 @@ function init_player($sock, $name)
 	$player['did'] = array();
 	$player['flag'] = 0;
 	$player['inv'] = NULL;
-	$player['last_receive'] = NULL;
+	$player['last_receive'] = array();
 	$player['level'] = 1;
 	$player['nb_cmd'] = 0;
 	$player['nb_joueur_last'] = -1;

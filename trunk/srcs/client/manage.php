@@ -7,17 +7,19 @@ function init_conv(&$player)
 {
 	fifo_in(&$player, $player['team_name'] . "\n");
 	$player['flag'] = 1;
+	recv_out(&$player);
 }
 
 function get_int(&$player)
 {
 	$size = array();
-	$cmd_serv = str_replace("\n", " ", $player['last_receive']);
-	$size = explode(" ", $player['last_receive']);
+	$cmd_serv = str_replace("\n", " ", $player['last_receive'][0]);
+	$size = explode(" ", $player['last_receive'][0]);
 	$player['nb_joueur_last'] = intval($size[0]);
 	$player['size_x'] = intval($size[1]);
 	$player['size_y'] = intval($size[2]);
 	$player['flag'] = 2;
+	recv_out(&$player);
 	fifo_in(&$player, "voir\n");
 	fifo_in(&$player, "inventaire\n");
 	echo $player['send'][0];
@@ -26,8 +28,8 @@ function get_int(&$player)
 
 function manage(&$player)
 {
-	echo "Dans manage avec la commande: " . $player['last_receive'] . "\n";
-	if (strcasecmp($player['last_receive'], "bienvenue\n") == 0)
+	echo "Dans manage avec la commande: " . $player['last_receive'][0] . "\n";
+	if (strcasecmp($player['last_receive'][0], "bienvenue\n") == 0)
 		init_conv(&$player);
 	else if ($player['flag'] == 1)
 		get_int(&$player);

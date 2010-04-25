@@ -1,6 +1,7 @@
 <?php
 
 require_once 'manage.php';
+require_once 'recv_stack.php';
 
 function to_read($socket, &$player)
 {
@@ -8,9 +9,9 @@ function to_read($socket, &$player)
 	if ($rec != FALSE)
 		{
 			echo "Received data : " . $buff . "\n";
-			$player['last_receive'] = $buff;
 			str_replace("\n", "\n", $buff, $counter);
 			$player['nb_cmd'] = $counter;
+			recv_in(&$player, $buff);
 			manage(&$player);
 		}
 	else

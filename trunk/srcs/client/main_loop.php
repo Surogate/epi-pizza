@@ -4,6 +4,7 @@ function main_loop($player)
 	{
 		while (1)
 		{
+			/*fifo_in(&$player, "voir\n");*/
 			echo "player send = " . $player['send'] . "\n";
 			echo "fd read = " . $read[0] . "\n";
 			$read   = array($player['socket']);
