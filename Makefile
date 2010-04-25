@@ -238,11 +238,9 @@ IFLAGS_i386-Darwin	= \
 		-I$(HOME)/Library/Frameworks/cocoa.framework/Headers	\
 		-I$(HOME)/Library/Frameworks/SDL.framework/Headers	\
 		-I$(HOME)/Library/Frameworks/SDL_image.framework/Headers\
-		-I$(HOME)/Library/Frameworks/SDL_ttf.framework/Headers	\
 		-I/Library/Frameworks/cocoa.framework/Headers		\
 		-I/Library/Frameworks/SDL.framework/Headers		\
-		-I/Library/Frameworks/SDL_image.framework/Headers	\
-		-I/Library/Frameworks/SDL_ttf.framework/Headers
+		-I/Library/Frameworks/SDL_image.framework/Headers
 
 IFLAGS_i386-FreeBSD	=
 
@@ -262,7 +260,6 @@ LFLAGS_i386-Darwin	= \
 			-framework SDL		\
 			-framework SDL_image	\
 			-framework Cocoa	\
-			-framework SDL_ttf	\
 			-framework GLUT		\
 			-framework OpenGL
 

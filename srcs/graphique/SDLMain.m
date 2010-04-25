@@ -71,8 +71,10 @@ static NSString *getApplicationName(void)
 /* Invoked from the Quit menu item */
 - (void)terminate:(id)sender
 {
+ 
     /* Post a SDL_QUIT event */
     SDL_Event event;
+    sender = sender;
     event.type = SDL_QUIT;
     SDL_PushEvent(&event);
 }
@@ -200,7 +202,8 @@ static void CustomApplicationMain (int argc, char **argv)
 {
     NSAutoreleasePool	*pool = [[NSAutoreleasePool alloc] init];
     SDLMain				*sdlMain;
-
+    argv = argv;
+    argc = argc;
     /* Ensure the application object is initialised */
     [SDLApplication sharedApplication];
     
@@ -256,6 +259,7 @@ static void CustomApplicationMain (int argc, char **argv)
     char *arg;
     char **newargv;
 
+    theApplication = theApplication;
     if (!gFinderLaunch)  /* MacOS is passing command line args. */
         return FALSE;
 
@@ -288,6 +292,7 @@ static void CustomApplicationMain (int argc, char **argv)
 {
     int status;
 
+    note = note;
     /* Set the working directory to the .app's parent directory */
     [self setupWorkingDirectory:gFinderLaunch];
 
