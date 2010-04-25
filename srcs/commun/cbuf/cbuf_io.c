@@ -46,7 +46,9 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
       cbuf->cons = (cbuf->cons + cmd + 1) % CBUFSIZ;
       cbuf->use -= (cmd - 1);
       result[cmd] = '\0';
-      printf("======== readed =======\nlen : %i\nuse : %i\ncons : %i\n", cmd, cbuf->use, cbuf->cons);
+      /* memset(&cbuf->buf[cbuf->cons - cmd], 0 , cmd); */
+      printf("======== readed =======\nlen : %i\nuse : %i\ncons : %i\n",
+	     cmd, cbuf->use, cbuf->cons);
       printf("len : %i\nresult : %s\n", cmd, result);
       return (result);
     }
