@@ -30,6 +30,8 @@
 # define	TERRAIN		10
 # define	INTER		20
 # define	PICKING		30
+# define	PSELECT		31
+# define	TEAM		32
 
 # define	LVLMAX		8
 

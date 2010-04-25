@@ -47,7 +47,7 @@ typedef struct	s_play
   t_pos		pos;
   struct s_play	*next_pg;
   int		inventaire[7];
-  char		team[50];
+  int		team;
 }		t_player;
 
 typedef	struct	s_egg
@@ -55,12 +55,13 @@ typedef	struct	s_egg
   int		id;
   GLuint	name;
   t_pos		pos;
-  char		*team;
+  int		team;
   struct s_egg	*next;
 }		t_egg;
 
 typedef struct	s_team
 {
+  int		id;
   char		name[50];
   int		id;
   struct s_team	*next;
@@ -107,6 +108,7 @@ typedef struct
   GLuint	inter_u;
   GLuint	inter_d;
   GLuint	team;
+  GLuint	select;
 }		t_texture;
 
 typedef struct

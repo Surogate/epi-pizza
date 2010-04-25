@@ -78,7 +78,7 @@ void            floor_picking(int x, int y);
 
 void		draw_mob(t_game *game, GLenum mode);
 
-void		clic_mob(t_game *game);
+void		clic_mob(t_game *game, t_player *player, int ref);
 void		clic_map(t_game *game);
 
 void		clic_render();
@@ -94,7 +94,7 @@ void		side(int x, GLuint select);
 
 /* CALLLIST */
 
-void		make_calllistes_picking(t_game *game);
+void		make_calllistes_picking(int name, GLuint texture);
 void		make_calllistes_trantorien(t_game *game);
 void		make_calllistes_terrain(t_game *game);
 void		make_calllistes_interface(t_game *game);
