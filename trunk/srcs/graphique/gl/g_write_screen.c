@@ -17,17 +17,39 @@
 
 #ifdef		__APPLE__
 #include	"SDL.h"
-#include	"SDL_ttf.h"
 #include	<GLUT/GLUT.h>
 #else
 #include	<SDL/SDL.h>
-#include	<SDL/SDL_ttf.h>
 #include	<GL/glu.h>
 #include	<GL/gl.h>
 # include	<GL/freeglut_std.h>
 #endif
 
-void DrawStr(const char *str)
+#include	"graphique/3dsloader.h"
+#include	"graphique/define.h"
+#include	"s_cbuf.h"
+#include	"graphique/struct.h"
+#include	"graphique/proto.h"
+
+float   *initcolor(int color)
+{
+  static float tcolor[9][3] =
+{
+	{1.0, 1.0, 0.0},
+	{1.0, 0.0, 0.0},
+	{0.0, 1.0, 0.0},
+	{1.0, 0.4, 1.0},
+	{1.0, 1.0, 0.0},
+	{1.0, 0.0, 0.0},
+	{0.0, 0.0, 0.0},
+	{1.0, 1.0, 1.0},
+	{1.0, 1.0, 0.0}
+};
+
+return (tcolor[color]);
+}
+
+void		DrawStr(const char *str)
 {
   GLint i;
 
@@ -37,3 +59,22 @@ void DrawStr(const char *str)
   while(str[++i])
     glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, str[i]);
 }
+
+void		dwrite(char *str, t_pos pos, int color)
+{
+  int   *tcolor;
+
+  tcolor = initcolor(color);
+  glColor3f(tcolor[0], tcolor[1], tcolor[2]);
+  glMatrixMode(GL_PROJECTION);
+  glPushMatrix();
+  glLoadIdentity();
+  glOrtho(0, WIN_W, 0, WIN_H, -10.0, 10.0);
+  glRasterPos2f(pos.x, pos.y);
+  DrawStr(str);
+  glPopMatrix();
+  glMatrixMode(GL_MODELVIEW);
+  glColor3f(1.0, 1.0, 1.0);
+}
+
+

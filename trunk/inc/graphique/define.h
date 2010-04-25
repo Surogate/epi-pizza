@@ -33,6 +33,8 @@
 # define	PSELECT		31
 # define	TEAM		32
 
+enum {YELLOW, BLUE, GREEN, PINK, PURPLE, RED, BLACK, WHITE, CYAN};
+
 # define	LVLMAX		8
 
 # define	FONT_DIR	"./font/MONACO.ttf"

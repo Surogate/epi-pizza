@@ -17,11 +17,9 @@
 
 #ifdef		__APPLE__
 # include	"SDL.h"
-# include	"SDL_ttf.h"
 # include	<GLUT/GLUT.h>
 #else
 # include	<SDL/SDL.h>
-# include	<SDL/SDL_ttf.h>
 # include	<GL/glu.h>
 # include	<GL/gl.h>
 # include	<GL/freeglut_std.h>
@@ -53,11 +51,11 @@ void		display_mouse(t_game *game)
 
 int		mouse_move(t_game *game)
 {
-  static int	pouet = 0;
+  static int	pouet = -1;
 
   if (game->mouse.clicked)
     {
-      if (!(pouet % 5))
+      if (!(++pouet % 4))
       {
         game->info.pos.x += game->mouse.move.x - game->event.button.x;
         game->info.pos.y -= game->mouse.move.y - game->event.button.y;
@@ -65,10 +63,8 @@ int		mouse_move(t_game *game)
         game->info.pos.y = game->info.pos.y % (CASE_H * game->map.h);
         game->mouse.move.x = game->event.button.x;
         game->mouse.move.y = game->event.button.y;
+        pouet = 0;
       }
-      pouet++;
-      if (pouet > 20)
-      pouet = 0;
     }
   return (1);
 }
@@ -91,7 +87,6 @@ int		mouse_down(t_game *game)
 {
   if (game->event.button.button == SDL_BUTTON_LEFT)
   {
-    printf("click\n");
     game->mouse.clicked = 1;
     /*  SDL_WarpMouse(MAP_CW * CASE_W / 2, MAP_CH * CASE_H / 2); */
     game->mouse.move.x = game->event.button.x;

@@ -18,12 +18,10 @@
 
 #ifdef		__APPLE__
 #include	"SDL.h"
-#include	"SDL_ttf.h"
 #include	"SDL_image.h"
 #include	<GLUT/GLUT.h>
 #else
 #include	<SDL/SDL.h>
-#include	<SDL/SDL_ttf.h>
 #include	<GL/glut.h>
 #include	<GL/glu.h>
 #include	<GL/gl.h>
