@@ -11,6 +11,13 @@
 #ifndef		__PROTO_H__
 # define	__PROTO_H__
 
+/*reseau*/
+void		connect_to_serv(t_game *game, char **av);
+char		**split(char *str, char sep);
+void		traitement(t_game *game, char **av);
+void		create_map(t_game *game);
+void		search_msg(t_game *game);
+
 /* init */
 void		init_game(t_game *game);
 void		init_3dsmodel(t_game *game);
