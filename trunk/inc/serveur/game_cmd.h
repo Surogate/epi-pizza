@@ -16,7 +16,7 @@ void		do_expulse(t_packet *packet, t_player *player);
 void		try_expulse(t_packet *packet, t_player *player);
 
 /*hatch.c*/
-void		do_hatch(t_packet *packet, t_game *game, int id_egg);
+void		do_hatch(t_game *game, int id_egg);
 void		do_fork(t_game *game, t_player *player);
 void		try_fork(t_packet *packet, t_player *player);
 

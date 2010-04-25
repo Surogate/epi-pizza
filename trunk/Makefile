@@ -18,7 +18,6 @@ TAG		= $(MTAG)-$(STAG)
 ############### PROJECT
 
 NAME		= zappi
-NAME_C		= client
 NAME_S		= serveur
 NAME_GR		= graphique
 
@@ -32,12 +31,10 @@ DIR_LIB		= ./lib/
 ############### FILES
 
 DIR_SRC_S	= $(DIR_SRC)serveur/
-DIR_SRC_C	= $(DIR_SRC)client/
 DIR_SRC_CO	= $(DIR_SRC)commun/
 DIR_SRC_GR	= $(DIR_SRC)graphique/
 
 DIR_INC_S	= $(DIR_INC)serveur/
-DIR_INC_C	= $(DIR_INC)client/
 DIR_INC_GR	= $(DIR_INC)graphique/
 
 SRC_S		= \
@@ -153,11 +150,6 @@ SRC_INC_CO	= \
 		$(DIR_INC)s_cbuf.h			\
 		$(DIR_INC)s_vector.h			\
 
-SRC_C		= $(DIR_SRC_C)main.c
-
-SRC_INC_C	= \
-
-
 SRC_GR		= \
 		$(DIR_SRC_GR)main.c			\
 		$(DIR_SRC_GR)init.c			\
@@ -214,7 +206,6 @@ SRC_LIB		= \
 
 
 OBJ_S		= $(SRC_S:.c=.o)
-OBJ_C		= $(SRC_C:.c=.o)
 OBJ_CO		= $(SRC_CO:.c=.o)
 OBJ_GR		= $(SRC_GR:.c=.o)
 OBJ_Darwin	= $(SRC_GR_Darwin:.m=.o)
@@ -328,12 +319,7 @@ GREY	= \033[37m
 
 ############### COMMANDS ###############
 
-all		: $(NAME_C) $(NAME_S) $(NAME_GR)
-
-$(NAME_C)	: $(OBJ_C) $(OBJ_CO)
-	@$(ECHO) "$(CYAN)[LINKING]: $(NAME_C)$(END)"
-	$(CC) -o $(NAME_C) $(OBJ_C) $(OBJ_CO) $(LFLAGS)
-	@$(ECHO) "$(GREEN)[LINKING] - DONE$(END)"
+all		: $(NAME_S) $(NAME_GR)
 
 $(NAME_S)	: $(OBJ_S) $(OBJ_CO)
 	@$(ECHO) "$(CYAN)[LINKING]: $(NAME_S)$(END)"
@@ -348,7 +334,6 @@ $(NAME_GR)	: $(OBJ_GR) $(OBJ_$(STAG)) $(OBJ_CO)
 tags		:
 	@$(ECHO) "$(CYAN)[TAGGING]$(END)"
 	$(ETAGS) -o TAGS_$(NAME_S) $(SRC_INC_S) $(SRC_CO) $(SRC_S)
-	$(ETAGS) -o TAGS_$(NAME_C) $(SRC_INC_C) $(SRC_CO) $(SRC_C)
 	$(ETAGS) -o TAGS_$(NAME_GR) $(SRC_INC_GR) $(SRC_GR)
 	@$(ECHO) "$(GREEN)[TAGGING] - DONE$(END)"
 
@@ -360,7 +345,6 @@ tar		:
 		$(SRC_LIB)		\
 		$(SRC_S)		\
 		$(SRC_CO)		\
-		$(SRC_C)		\
 		$(SRC_GR)
 	@$(ECHO) "$(CYAN)[TAR] - DONE$(END)"
 
