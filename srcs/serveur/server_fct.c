@@ -63,10 +63,10 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	    {
 	      create_eat(vec, cli->sock);
 	      gh_fct(vec, game, cli->sock, pnw);
+	      return_packet(cli->packet + cli->cons);
 	    }
 	  else if (cli->team < 0)
 	    new_gh(vec, cli, game);
-	  return_packet(cli->packet + cli->cons);
 	}
       else if (cli->used)
 	create_plaction(vec, cli, vec->slt);
@@ -106,8 +106,22 @@ int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
   t_client	*tmp;
   char		*readed;
   t_vector	*client;
+  t_vector	*graph;
 
   client = vec->client;
+  graph = vec->graph;
+  while ((tmp = (t_client *)graph->getnxts(graph)) != NULL)
+    if (FD_ISSET(tmp->sock, &(slt_par->fd_read)))
+      {
+      	if (cbuf_write(&tmp->cbuf, tmp->sock) == EXPIPE)
+	  {
+	    printf("le client graphique %i a un soucis\n", tmp->sock);
+	    FD_CLR(tmp->sock, &(slt_par->fd_read));
+	    vec->graph->erase(vec->graph, vec->graph->gns_pos, free_client);
+	  }
+	else if ((readed = cbuf_read(&(tmp->cbuf), check_read)))
+	  printf("readed : %s\n", readed);
+      }
   while ((tmp = (t_client *)client->getnxts(client)) != NULL)
     if (FD_ISSET(tmp->sock, &(slt_par->fd_read)))
       {
@@ -126,7 +140,6 @@ int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
 	else if ((readed = cbuf_read(&(tmp->cbuf), check_read)))
 	  instr_catch(readed, tmp, game, vec);
       }
-  while ((tmp = (t_client *)vec->graph->getnxts(vec->graph)) != NULL)
-    graph_inst(tmp, vec);
+  /* graph_inst(tmp, vec);*/
   return (EXIT_SUCCESS);
 }

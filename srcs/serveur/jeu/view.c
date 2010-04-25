@@ -34,7 +34,6 @@ static t_map	*find_left(t_vision *list, t_dir_v *dir, int level)
   t_vision	*cur;
 
   cur = list;
-
   while (cur != NULL)
     {
       if (cur->level == level || level == 1)
