@@ -112,7 +112,7 @@ void		test_init_player(t_game *game)
 	{
 	  o = -1;
 	  while (++o != 8)
-	    game->map.t_case[x][y]->obj[i] = 2;
+	    game->map.t_case[x][y].obj[o] = 2;
 	}
     }
 }
@@ -135,8 +135,6 @@ int		main(int ac, char *av[])
       printAttributes();
       init_texture(&game);
       init_3dsmodel(&game);
-      /* printf("%d, %d\n", game.map.h, game.map.w); */
-/*       sleep(135); */
       initGL(&game);
       mainloop(&game);
       puts("end of program");
