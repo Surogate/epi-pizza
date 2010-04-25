@@ -12,6 +12,7 @@
 #include		<stdlib.h>
 
 #include		"my_list.h"
+#include		"xfunc.h"
 #include		"serveur/define.h"
 #include		"serveur/pars_init_teams.h"
 #include		"serveur/pars_display.h"
@@ -21,7 +22,7 @@
 
 void			malloc_team(t_opt *opt)
 {
-  if ((opt[3].team->team = malloc(strlen(STD_TEAM_NAME) * 
+  if ((opt[3].team->team = malloc((xstrlen(STD_TEAM_NAME) + 1) * 
 				  sizeof(*(opt[3].team->team)))) == NULL)
     puterr("Unable to malloc -> Struct Team\n", 1);
 }

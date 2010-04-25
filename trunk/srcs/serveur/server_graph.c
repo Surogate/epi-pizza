@@ -69,8 +69,7 @@ void		gh_fct(t_svr_vector *vec, t_game *game,
   t_player	*pla;
 
   pla = my_l_find(game->player, &player_id, find_player);
-  str = malloc(sizeof(char));
-  str[0] = '\0';
+  str = NULL;
   if (str && pla)
     {
       str = fct(str, pla, game);

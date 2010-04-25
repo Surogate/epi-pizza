@@ -49,9 +49,7 @@ static void	msg_broad(t_player *player, char **msg, t_rep *rep)
   int		size;
   int		dir;
 
-  size = 15;
-  size += strlen(msg[0]);
-  size += strlen(msg[1]);
+  size = 15 + xstrlen(msg[0]) + xstrlen(msg[1]);
   rep->id_player = player->player_id;
   dir = dir_of_msg(player, player->pos);
   rep->mess = xmalloc(sizeof(char) * size);
@@ -82,7 +80,7 @@ void		broadcast(t_packet *packet, t_player *player, t_game *game)
 	{
 	  packet->response[i].id_player = pl->player_id;
 	  packet->response[i].mess = xmalloc(5 * sizeof(char));
-	  snprintf(packet->response[i].mess, 5, "OK\n");
+	  snprintf(packet->response[i].mess, 5, "ok\n");
 	}
       temp = temp->next;
     }

@@ -15,6 +15,7 @@
 
 #include "serveur/define.h"
 #include "my_list.h"
+#include "xfunc.h"
 #include "serveur/t_struct.h"
 #include "serveur/t_packet.h"
 #include "serveur/t_game_stc.h"
@@ -56,7 +57,7 @@ void		treatment_intr(t_game *game, t_packet *packet)
   player = (t_player *)my_l_find(game->player, packet, find_elem);
   while (++i < NB_INST)
     {
-      if (!strncmp(packet->av[0], tab_instr[i].inst, strlen(packet->av[0])))
+      if (!strncmp(packet->av[0], tab_instr[i].inst, xstrlen(packet->av[0])))
 	tab_instr[i].ptr_func(packet, player, game);
     }
 }
@@ -68,7 +69,8 @@ int		treatment_duration(t_packet *packet)
   i = -1;
   while (++i < NB_INST)
     {
-      if (!strncmp(packet->av[0], tab_instr[i].inst, strlen(tab_instr[i].inst)))
+      if (!strncmp(packet->av[0], tab_instr[i].inst, 
+		   xstrlen(tab_instr[i].inst)))
 	{
 	  packet->duration = tab_instr[i].delay;
 	  return (i);
@@ -91,7 +93,7 @@ int		authent(t_game *game, t_packet *packet)
   while (tmp)
     {
       num = game->server.nb_client - count_player(game, i);
-      if (!strcmp(tmp->team, packet->av[0]) && num > 0)
+      if (!strncmp(tmp->team, packet->av[0], xstrlen(packet->av[0])) && num > 0)
 	{
 	  auth_ok(packet, num - 1, game);
 	  return (player_born(game, packet->player_id, i));

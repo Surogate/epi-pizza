@@ -85,8 +85,8 @@ void		try_incant(t_packet *packet, t_player *player, t_game *game)
     {
       packet->response = xmalloc((my_l_size(player->pos->cas.player) + 1) *
 				 sizeof(*(packet->response)));
-      packet->response[0].mess = xmalloc((strlen(ELEV_OK) + 2) * sizeof(char));
-      snprintf(packet->response[0].mess, strlen(ELEV_OK) + 2, "%s\n", ELEV_OK);
+      packet->response[0].mess = xmalloc((xstrlen(ELEV_OK) + 2) * sizeof(char));
+      snprintf(packet->response[0].mess, xstrlen(ELEV_OK) + 2, "%s\n", ELEV_OK);
       packet->response[0].id_player = player->player_id;
       packet->ac_rep = 1;
       create_rep(packet, player);
