@@ -54,7 +54,7 @@ int		key_func(t_game *game)
 
 int		exit_func(t_game *game)
 {
-  game = game;
+  close(game->serv.socket);
   /*
     TTF_CloseFont(game->font);
     TTF_Quit();
