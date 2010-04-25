@@ -28,8 +28,10 @@
 #include	"graphique/3dsloader.h"
 #include	"graphique/define.h"
 #include	"s_cbuf.h"
+#include	"cbuf_io.h"
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
+
 
 /*include for select*/
 #include	<sys/time.h>

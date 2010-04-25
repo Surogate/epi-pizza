@@ -107,7 +107,6 @@ static t_player	*new_player(char **av)
 void		player_connect(t_game *game, char **av, int ac)
 {
   t_player	*player;
-  t_player	*temp;
 
   if (ac > 5)
     {
