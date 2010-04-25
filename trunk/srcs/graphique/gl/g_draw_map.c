@@ -16,7 +16,6 @@
 
 #ifdef		__APPLE__
 # include	"SDL.h"
-# include	"SDL_ttf.h"
 # include	<GLUT/GLUT.h>
 #else
 # include	<SDL/SDL.h>

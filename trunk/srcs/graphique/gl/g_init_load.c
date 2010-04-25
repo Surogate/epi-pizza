@@ -32,25 +32,6 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-static int	load_textureBMP(const char *path, unsigned int *textureId)
-{
-  SDL_Surface*	TextureSurface = NULL;
-  TextureSurface = SDL_LoadBMP(path);
-
-  if (TextureSurface != NULL)
-  {
-    glGenTextures(1, textureId);
-    glBindTexture(GL_TEXTURE_2D, *textureId);
-
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, TextureSurface->w,
-		 TextureSurface->h, 0, GL_BGR, GL_UNSIGNED_BYTE,
-		 TextureSurface->pixels);
-    SDL_FreeSurface(TextureSurface);
-    return (1);
-  }
-  return (0);
-}
-
 void		init_3dsmodel_ress(t_game *game)
 {
   obj_type	*ress;

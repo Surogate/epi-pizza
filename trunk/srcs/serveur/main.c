@@ -62,7 +62,7 @@ int		main(int ac, char **av)
   {
     test_aff_map(game);
     test_map(game);
-    cas = &(game->map[0][0]);
+    cas = &(game->map[25][25]);
     pathfinding(cas);
     test_pathfinding_map(game);
     reset_pathfinding(game);
