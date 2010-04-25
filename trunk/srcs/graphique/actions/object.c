@@ -33,14 +33,40 @@
 #include	"graphique/proto.h"
 #include	"xfunc.h"
 
-void		drop_item(t_game *game, char **av)
+void		drop_item(t_game *game, char **av, int ac)
 {
-  game = game;
-  av = av;
+  t_player	*player;
+
+  if (ac > 2)
+    {
+      player = game->player;
+      while (player)
+	{
+	  if (player->id == atoi(&av[1][1]))
+	    {
+	      player->inventaire[atoi(av[2])]--;
+	      game->map.t_case[player->pos.y][player->pos.x].obj[atoi(av[2])]++;
+	    }
+	  player = player->next_pg;
+	}
+    }
 }
 
-void		take_item(t_game *game, char **av)
+void		take_item(t_game *game, char **av, int ac)
 {
-  game = game;
-  av = av;
+  t_player	*player;
+
+  if (ac > 2)
+    {
+      player = game->player;
+      while (player)
+	{
+	  if (player->id == atoi(&av[1][1]))
+	    {
+	      player->inventaire[atoi(av[2])]++;
+	      game->map.t_case[player->pos.y][player->pos.x].obj[atoi(av[2])]--;
+	    }
+	  player = player->next_pg;
+	}
+    }
 }

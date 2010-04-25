@@ -59,6 +59,19 @@ int		check_next_end(char *str)
     return (i);
 }
 
+void		free_2d_tab(char **tab)
+{
+  int		i;
+
+  i = 0;
+  while (tab[i])
+    {
+      free(tab[i]);
+      i++;
+    }
+  free(tab);
+}
+
 void		my_recv(t_game *game)
 {
   char		*msg;
@@ -79,6 +92,7 @@ void		my_recv(t_game *game)
 	    {
 	      printf("taille de la map : %d, %d\n", game->map.h, game->map.w);
 	      create_map(game);
+	      free_2d_tab(temp);
 	      printf("fin init map\n");
 	    }
 	}
