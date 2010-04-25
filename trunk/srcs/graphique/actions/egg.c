@@ -80,7 +80,7 @@ void		eggs_die(t_game *game, char **av, int ac)
       prec = 0;
       cur = game->egg;
       while (cur)
-	if (cur->id == atoi(&av[1][1]))
+	if (cur->id == atoi(av[1]))
 	  {
 	    if (prec)
 	      prec->next = cur->next;		

@@ -60,9 +60,9 @@ void		player_level(t_game *game, char **av)
   player = game->player;
   if (player)
     {
-      while (player->next_pg && player->id != atoi(&av[1][1]))
+      while (player->next_pg && player->id != atoi(av[1]))
 	player = player->next_pg;
-      if (player->id == atoi(&av[1][1]))
+      if (player->id == atoi(av[1]))
 	player->lv = atoi(av[2]);
     }
 }
@@ -75,9 +75,9 @@ void		player_invent(t_game *game, char **av)
   player = game->player;
   if (player)
     {
-      while (player->next_pg && player->id != atoi(&av[1][1]))
+      while (player->next_pg && player->id != atoi(av[1]))
 	player = player->next_pg;
-      if (player->id == atoi(&av[1][1]))
+      if (player->id == atoi(av[1]))
 	{
 	  n_obj = 0;
 	  while (n_obj < 8)
@@ -99,7 +99,7 @@ void		player_die(t_game *game, char **av, int ac)
       prec = 0;
       cur = game->player;
       while (cur)
-	if (cur->id == atoi(&av[1][1]))
+	if (cur->id == atoi(av[1]))
 	  {
 	    if (prec)
 	      prec->next_pg = cur->next_pg;
