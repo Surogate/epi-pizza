@@ -63,7 +63,6 @@ typedef struct	s_team
 {
   int		id;
   char		name[50];
-  int		id;
   struct s_team	*next;
 }		t_team;
 
