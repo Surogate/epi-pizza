@@ -89,8 +89,32 @@ void		player_invent(t_game *game, char **av)
     }
 }
 
-void		player_die(t_game *game, char **av)
+void		player_die(t_game *game, char **av, int ac)
 {
-  game = game;
-  av = av;
+  t_player	*prec;
+  t_player	*cur;
+
+  if (ac > 1)
+    {
+      prec = 0;
+      cur = game->player;
+      while (cur)
+	if (cur->id == atoi(&av[1][1]))
+	  {
+	    if (prec)
+	      prec->next_pg = cur->next_pg;
+	    else
+	      game->player = cur->next_pg;
+	    prec = cur->next_pg;
+	    free(cur);
+	    cur = prec;
+	    prec = 0;
+	    /*anime?*/
+	  }
+	else
+	  {
+	    prec = cur;
+	    cur = cur->next_pg;
+	  }
+    }
 }
