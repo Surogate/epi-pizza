@@ -3,7 +3,7 @@
 require_once 'recv_stack.php';
 require_once 'fifo.php';
 require_once 'did.php';
-require_once 'client_prio.php';
+require_once 'prio_ulti.php';
 require_once 'move.php';
 require_once 'analyse.php';
 
@@ -19,7 +19,7 @@ function go_point2(&$player)
 		}
 	recv_out(&$player);
 	out_did(&$player);
-	call_func($player['next_func'], &$player);
+	find_prio(&$player);
 	while (1);
 }
 
@@ -45,7 +45,7 @@ function go_point(&$player)
 			echo "**************************************************************************\n";
 			echo "GO CALL FUNC\n";
 			echo "**************************************************************************\n";
-			call_func($player['next_func'], &$player);
+			find_prio(&$player);
 		}
 	/*out_did(&$player);*/
 }

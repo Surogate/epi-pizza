@@ -1,6 +1,11 @@
-<?php
+B1;2202;0c<?php
+
 require_once 'check_onme.php';
 require_once 'analyse.php';
+require_once 'search_food.php';
+require_once 'main_loop.php';
+require_once 'routine.php';
+require_once 'move.php';
 
 function		get_array()
 {
@@ -9,7 +14,7 @@ function		get_array()
 		 'exec_seeklife',
 		 'check_listen',
 		 'exec_join',
-		 'check_stone',
+		 'check_stones',
 		 'exec_seekstone',
 		 'check_engplayer',
 		 'exec_call',
@@ -35,6 +40,7 @@ function		exec_seeklife(&$player)
     $player['seeking'] = 0;
   search_food(&$player);
   get_there(&$player);
+  fifo_in(&$player, "prend nourriture\n");  
   return ('X');
 }
 
@@ -54,11 +60,10 @@ function		exec_join(&$player)
   return ('X');
 }
 
-function		check_stone(&$player)
+function		check_stones(&$player)
 {
-  $player['object'] = NULL;
   to_search(&$player);
-  if ($player['object'] != NULL)
+  if ($player['objet'] != NULL)
     return (5);
   else
     return (6);
@@ -68,6 +73,7 @@ function		exec_seekstone(&$player)
 {
   echo "EXEC_SEEKSTONE\n";
   get_there(&$player);
+  fifo_in(&$player, "prend " . $player['objet'] . "\n");
   return ('X');
 }
 
