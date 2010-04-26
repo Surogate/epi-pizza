@@ -69,5 +69,8 @@ void		try_expulse(t_packet *packet, t_player *player)
       packet->ac_rep = 1;
     }
   else
-    do_expulse(packet, player);
+    {
+      packet->graph_rep = grp_expulse(player);
+      do_expulse(packet, player);
+    }
 }

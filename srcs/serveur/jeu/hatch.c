@@ -71,5 +71,6 @@ void		try_fork(t_packet *packet, t_player *player, t_game *game)
   new_egg->pos = player->pos;
   new_egg->father = player->player_id;
   new_egg->id = id;
+  packet->graph_rep = grp_fork(player);
   game->eggs = my_l_insert(game->eggs, new_egg);
 }

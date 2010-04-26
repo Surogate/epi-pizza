@@ -90,6 +90,7 @@ void		try_incant(t_packet *packet, t_player *player, t_game *game)
       packet->response[0].id_player = player->player_id;
       packet->ac_rep = 1;
       create_rep(packet, player);
+      packet->graph_rep = grp_incant_done(player);
       is_ending(game);
     }
   else

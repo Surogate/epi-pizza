@@ -44,7 +44,7 @@ static int	dir_of_msg(t_player *player, t_map *cas)
 }
 
 
-static void	msg_broad(t_player *player, char **msg, t_rep *rep)
+static void	msg_broad(t_player *player, char **msg, t_rep *rep, char *crep)
 {
   int		size;
   int		dir;
@@ -54,6 +54,7 @@ static void	msg_broad(t_player *player, char **msg, t_rep *rep)
   dir = dir_of_msg(player, player->pos);
   rep->mess = xmalloc(sizeof(char) * size);
   snprintf(rep->mess, size, "%s %i,%s\n", msg[0], dir, msg[1]);
+  crep = grp_broad(player, rep->mess);
 }
 
 void		broadcast(t_packet *packet, t_player *player, t_game *game)
@@ -72,7 +73,7 @@ void		broadcast(t_packet *packet, t_player *player, t_game *game)
     {
       pl = (t_player *)temp->data;
       if (pl->player_id != player->player_id)
-	msg_broad(pl, packet->av, packet->response + i);
+	msg_broad(pl, packet->av, packet->response + i, packet->graph_rep);
       else
         {
           packet->response[i].id_player = pl->player_id;

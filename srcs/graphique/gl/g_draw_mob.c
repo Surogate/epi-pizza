@@ -34,15 +34,25 @@ static void	draw_trantorien(t_player *player, int ref, GLenum mode)
   glPushMatrix();
   glTranslated(player->pos.x * CASE_W, player->pos.y * CASE_H, 0);
   glPushMatrix();
-  glTranslated((CASE_H / 2), (CASE_W / 2), 0);
+  glTranslated((CASE_H / 2), (CASE_W / 2) , 0);
   glPushMatrix();
   glTranslated(0, 0, .01);
   glCallList(TEAM);
   glPopMatrix();
-  glRotated((player->sens + 1) * 90, 0, 0, 1);
+
+  /*
+Permet de remettre le premier a la bonne place... mais decale les autres
+  glPushMatrix();
+  glTranslated((CASE_H / 2), (CASE_H / 2), 0);
+  */
+
+  glRotated((player->sens + 1) * -90, 0, 0, 1);
   if (mode == GL_SELECT)
-    glPushName(player->id  + ref);
-  glCallList(TOTORO + player->lv);
+    glPushName(player->id + ref);
+  glCallList(TOTORO + player->lv - 1);
+
+  /*  glPopMatrix();*/
+
   if (mode == GL_SELECT)
     glPopName();
   glPopMatrix();
