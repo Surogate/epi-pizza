@@ -17,6 +17,7 @@
 
 static void	llist_check(t_vector *vec)
 {
+  printf("size = %i\n", vec->size);
   if (vec->size == 0)
     {
       vec->start = NULL;

@@ -21,5 +21,7 @@ void		*xrealloc(void *ptr, size_t size)
   mall = realloc(ptr, size);
   if (mall == 0)
     prt_err("realloc failed");
+  if (ptr == NULL)
+    memset(mall, 0, size);
   return (mall);
 }
