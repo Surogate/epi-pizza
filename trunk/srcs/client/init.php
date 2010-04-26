@@ -23,6 +23,7 @@ function init_player($sock, $name)
 	$player['view'] = NULL;
 	$player['next_func'] = 0;
 	$player['seeking'] = 0;
+	$player['tmp'] = 0;
 	return ($player);
 }
 

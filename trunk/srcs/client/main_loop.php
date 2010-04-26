@@ -4,8 +4,6 @@ function main_loop(&$player)
 	{
 		while (1)
 		{
-		  if ($player['flag'] == 3)
-			routine(&$player);
 			$read   = array($player['socket']);
 			if ($player['send'][0] != NULL)
 				$write  = array($player['socket']);
