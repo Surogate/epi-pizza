@@ -19,6 +19,5 @@ function broad_recv(&$player, $text)
 	$parse_broad = array();
 	$parse_broad = explode(",", $text);
 	$sound_way = get_way($parse_broad);
-	while (1);
 }
 ?>

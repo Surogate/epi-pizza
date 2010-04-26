@@ -39,7 +39,6 @@ function which_ans(&$player)
 			{
 			  echo "rep: " . $player['last_receive'][0] . "\n";
 			  echo "pif\n";
-			  while (1);
 			  return (-1);
 			}
 		}
@@ -47,7 +46,6 @@ function which_ans(&$player)
 	$i++;
       echo "i = " . $i . "\n";
     }
-  while (1);
 }
 
 ?>

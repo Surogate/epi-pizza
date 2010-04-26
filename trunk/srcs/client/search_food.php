@@ -32,10 +32,15 @@ function	search_food(&$player)
       $player['reach'] = $i;
       $player['objet'] = "nourriture\n";
     }
-  else
+  else if ($i > 0)
     {
       echo "VALEUR DE I -> " . $i . "\n";
       $player['reach'] = $i - 1;
+      $player['objet'] = NULL;
+    }
+  else
+    {
+      $player['reach'] = 1;
       $player['objet'] = NULL;
     }
   echo "--------------------------------------------------------------------------\n";

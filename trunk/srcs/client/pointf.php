@@ -15,7 +15,6 @@ function go_point2(&$player)
 	if ($player['last_receive'][0] == "ko\n")
 		{
 			echo "to reach: " . $player['reach'] . "\nobjet: " . $player['objet'] . "\nview: " . $player['view'];
-			/*while (1);*/
 		}
 	recv_out(&$player);
 	out_did(&$player);
@@ -46,7 +45,6 @@ function go_point(&$player)
 			echo "**************************************************************************\n";
 			find_prio(&$player);
 		}
-	/*out_did(&$player);*/
 }
 
 ?>
