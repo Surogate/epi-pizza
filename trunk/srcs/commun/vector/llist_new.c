@@ -48,34 +48,6 @@ void		llist_des(t_vector *vec, void strct_des())
   free(vec);
 }
 
-void		*llist_del(t_vector *vec, int at)
-{
-  t_llist	*tmp;
-  t_llist	*nxt;
-  t_llist	*prv;
-  void		*strct;
-
-  tmp = llist_goto(vec, at);
-  if (at == vec->gns_pos && vec->gns)
-    vec->gns = (vec->gns)->prv;
-  if (tmp)
-    {
-      nxt = tmp->nxt;
-      prv = tmp->prv;
-      if (nxt)
-	nxt->prv = prv;
-      if (prv)
-	prv->nxt = nxt;
-      strct = tmp->strct;
-      free(tmp);
-      if (at == 0)
-	vec->start = nxt;
-      vec->size--;
-      return (strct);
-    }
-  return (NULL);
-}
-
 void		llist_display(t_vector *vec, void (*disp)())
 {
   t_llist	*tmp;

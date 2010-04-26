@@ -18,6 +18,7 @@
 #include	"llist_mod.h"
 #include	"llist_sort.h"
 #include	"llist_swap.h"
+#include	"llist_del.h"
 
 t_vector	*vector_new(void *strct)
 {
