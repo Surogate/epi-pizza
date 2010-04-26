@@ -1,5 +1,12 @@
-B1;2202;0cB1;2202;0c<?php
+<?php
 
+require_once 'search_food.php';
+require_once 'main_loop.php';
+require_once 'routine.php';
+require_once 'move.php';
+
+function	get_pfunc()
+{
 $pfunc = array(
     'check_low_life',
     'check_stones',
@@ -14,13 +21,15 @@ $pfunc = array(
     'prepare_fork',
     'check_inv'
 	       );
+return ($pfunc);
+}
 
-function		check_inv(&$player)
+function		check_inv(&$player)  /*11*/
 {
 	routine(&$player);
 }
 
-function		check_low_life($play_info)
+function		check_low_life($play_info) /*0*/
 {
   echo "CHECK_LOW_LIFE\n";
   if ($player['food'] > 10)
@@ -29,7 +38,7 @@ function		check_low_life($play_info)
     return (6);
 }
 
-function		check_stones(&$player)
+function		check_stones(&$player) /*1*/
 {
   echo "CHECK_STONES\n";
   if ($player['go_next_lvl'] == 1)
@@ -38,15 +47,17 @@ function		check_stones(&$player)
     return (2);
 }
 
-function		seek_stones(&$player)
+function		seek_stones(&$player)  /*2*/
 {
 	to_search(&$player);
 	get_there(&$player);
-	fifo_in(&$player, "prend " . $player['objet'] . "\n");
+	fifo_in(&$player, "prend " . $player['objet']);
+	echo "\033[31mSEEK_STONE\033[m\n";
+	main_loop(&$player);
 	return (11);
 }
 
-function		listen_to_player(&$player)
+function		listen_to_player(&$player) /*3*/
 {
 	/*Broadcaster
   $play_info[0] -= 7;
@@ -58,7 +69,7 @@ function		listen_to_player(&$player)
     * */
 }
 
-function		call_player(&$player)
+function		call_player(&$player) /*4*/
 {
   echo "CALL_PLAYER\n";
   $play_info[0] -= 7;
@@ -68,25 +79,35 @@ function		call_player(&$player)
     return (11);
 }
 
-function		check_life(&$player)
+function		check_life(&$player) /*5*/
 {
-  echo "CHECK_LIFE\n";
+  echo "CHECK_LIFE: food = " . $player['food'] . "\n";
   if ($player['food'] > 20)
-    return (11);
+    while(1);/*return (11);*/
   else
-    return (6);
+	{
+		routine(&$player);
+		$player['next_func'] = 6;
+		main_loop(&$player);
+	}
+    /*return (6);*/
 }
 
-function		seek_food(&$player)
+function		seek_food(&$player) /*6*/
 {
-  search_food(&$player);	
+  search_food(&$player);
   get_there(&$player);
-  fifo_in(&$player, "prend " . $player['objet'] . "\n");
+  if ($player['objet'] != NULL)
+	fifo_in(&$player, "prend " . $player['objet']);
   echo "\033[31mSEEK_FOOD\033[m\n";
-  return (5);
+  $player['next_func'] = 5;
+  echo "GO main_loop\n";
+  echo "smg to send = " . $player['send'][0] . "\n";
+  main_loop(&$player);
+  /*return (5);*/
 }
 
-function		prepare_fork(&$player)
+function		prepare_fork(&$player) /*10*/
 {
   echo "PREPARE_FORK\n";
   if ($play_info[0] > 200)
@@ -95,31 +116,31 @@ function		prepare_fork(&$player)
     return (6);
 }
 
-function		pl_fork(&$player)
+function		pl_fork(&$player) /*7*/
 {
   $play_info[0] -= 42;
   echo "PL_FORK\n";
   return (11);
 }
 
-function		go_near_player(&$player)
+function		go_near_player(&$player) /*8*/
 {
   $play_info[0] -= 7;
   echo "GO_NEAR_PLAYER\n";
   return (11);
 }
 
-function		wait_for_player(&$player)
+function		wait_for_player(&$player) /*9*/
 {
   $play_info[0] -= 7;
   echo "WAIT_FOR_PLAYER\n";
   return (11);
 }
 
-function		call_func($pfunc, &$player)
+function		call_func($value, &$player)
 {
   $cycle = 0;
-  $value = 0;
+  $pfunc = get_pfunc();
   do {
     $cycle++;
     echo "Vie du joueur -> " . $player['food'] . "\n";

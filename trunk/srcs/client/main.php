@@ -23,7 +23,7 @@ function connect($ip, $port, $name)
   else
     echo "Connect on " . $ip . "\n";
   $player = init_player($s, $name);
-  main_loop($player);
+  main_loop(&$player);
 }
 
 function connect_serv($argc, $argv)
