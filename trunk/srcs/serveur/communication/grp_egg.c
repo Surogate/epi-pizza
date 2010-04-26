@@ -9,16 +9,21 @@
 */
 
 #include	<sys/types.h>
+#include	<sys/time.h>
 #include	<string.h>
 #include	<stdio.h>
+#include	<stdlib.h>
 #include	<stdarg.h>
 #include	<stdlib.h>
 
-#include	"serveur/define.h"
 #include	"my_list.h"
-#include	"serveur/t_struct.h"
-#include	"serveur/communication.h"
 #include	"xfunc.h"
+#include	"serveur/define.h"
+#include	"serveur/t_struct.h"
+#include	"serveur/t_game_stc.h"
+#include	"serveur/t_packet.h"
+#include	"serveur/communication.h"
+#include	"serveur/game_cmd.h"
 
 static int	find_player(t_player *ref, t_player *data)
 {
@@ -53,10 +58,10 @@ char		*grp_egg_hatch(t_eggs *egg)
   return (msg);
 }
 
-char		*grp_egg_die(t_eggs *egg)
+char		*grp_egg_die(t_game *game, int id_egg)
 {
-  char		*msg;
+  t_eggs	*egg;
 
-  msg = edi(NULL, egg);
-  return (msg);  
+  egg = my_l_find(game->eggs, &id_egg, find_egg);
+  return (edi(NULL, egg));  
 }

@@ -69,7 +69,6 @@ int	       	server_hatch(t_svr_vector *vec, t_packet *pak, t_game *game)
   create_eat(vec, pak->player_id);
   str = eht(NULL, pak->player_id);
   gh_broad(vec, str);
-  free(str);
   delete_hatch(vec, pak->player_id);
   return (EXIT_SUCCESS);
 }

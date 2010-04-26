@@ -12,6 +12,7 @@
 #include	<string.h>
 #include	<stdio.h>
 #include	<stdarg.h>
+#include	<stdlib.h>
 
 #include	"serveur/define.h"
 #include	"my_list.h"
@@ -19,20 +20,24 @@
 #include	"serveur/communication.h"
 #include	"xfunc.h"
 
-char		*grp_player_die(t_player *player)
+static int	find_player(t_player *ref, t_player *data)
 {
-  char		*msg;
+  if (data && (ref->player_id == data->player_id))
+    return (EXIT_SUCCESS);
+  return (EXIT_FAILURE);
+}
 
-  msg = xmalloc(2 * sizeof(char));
-  msg = pdi(msg, player);
-  return (msg);
+char		*grp_player_die(t_game *game, int player_id)
+{
+  t_player	*player;
+  t_player	ref;
+
+  ref.player_id = player_id;
+  player = my_l_find(game->player, &ref, find_player);
+  return (pdi(NULL, player));
 }
 
 char		*grp_party_end(int winner)
 {
-  char		*msg;
-
-  msg = xmalloc(2 * sizeof(char));
-  msg = seg(msg, winner);
-  return (msg);  
+  return (seg(NULL, winner));  
 }

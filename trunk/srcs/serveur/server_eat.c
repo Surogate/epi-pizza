@@ -72,7 +72,7 @@ int		server_eat(t_svr_vector *vec, t_packet *pak, t_game *game)
     {
       sock_write(id, "mort\n");
       printf("player %i died, eat is essential to live\n", id);
-      gh_fct(vec, game, id, pdi);
+      
       server_kick(vec, pak, game);
       return (EXIT_FAILURE);
     }

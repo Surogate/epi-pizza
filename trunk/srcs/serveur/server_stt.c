@@ -65,6 +65,7 @@ int		select_loop(int svr_sock, t_select *slt_par, t_game *game)
 {
   t_svr_vector	vec;
   int		err;
+  char		*str;
 
   slt_cont = 1;
   init_vector(&vec, slt_par);
@@ -80,7 +81,11 @@ int		select_loop(int svr_sock, t_select *slt_par, t_game *game)
 	  fetch_instr(&vec, slt_par, game);
 	}
       end_loop(&vec, slt_par, game, svr_sock);
+      if (game->state >= 0)
+	slt_cont = 0;
     }
+  str = seg(game->state);
+  gh_broad(&vec, str);
   close_client(&vec, slt_par);
   return (EXIT_SUCCESS);
 }
