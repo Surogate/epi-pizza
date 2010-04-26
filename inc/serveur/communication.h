@@ -44,7 +44,7 @@ char		*grp_broad(t_player *player, char *broad);
 
 /*grp_connex*/
 char		*grp_connex_monit(t_game *game);
-char		*grp_connex_player(t_game *game, t_player *player);
+char		*grp_connex_player(t_game *game, int player_id);
 char		*grp_connex_zombie(t_game *game, t_player *player, 
 				   t_eggs *egg);
 
