@@ -30,37 +30,6 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-int		key_left(t_game *game)
-{
-  game->map.rot += 5;
-  game->map.rot %= 360;
-  return (1);
-}
-
-int		key_right(t_game *game)
-{
-  game->map.rot -= 5;
-  game->map.rot %= 360;
-  return (1);
-}
-
-int		key_up(t_game *game)
-{
-  if (game->video.cam[3] > 26)
-    game->video.cam[3] -= 5;
-  if (game->map.z < 100)
-    game->map.z = 100;
-  return (1);
-}
-
-int		key_down(t_game *game)
-{
-  game->video.cam[3] += 5;
-  if (game->map.z > 400)
-    game->map.z = 400;
-  return (1);
-}
-
 int		key_escape(t_game *game)
 {
   return (exit_func(game));
@@ -71,30 +40,6 @@ int		key_c(t_game *game)
     game->info.crazy++;
     game->info.crazy %= 2;
     return (1);
-}
-
-int		key_w(t_game *game)
-{
-  game->info.pos.y += 10;
-  return (1);
-}
-
-int		key_s(t_game *game)
-{
-  game->info.pos.y -= 10;
-  return (1);
-}
-
-int		key_a(t_game *game)
-{
-  game->info.pos.x -= 10;
-  return (1);
-}
-
-int		key_d(t_game *game)
-{
-  game->info.pos.x += 10;
-  return (1);
 }
 
 t_key		key_list[]=
@@ -127,6 +72,10 @@ int		key_func(t_game *game)
 	retour = key_list[i].func(game);
       i++;
     }
+  if (game->map.z < 100)
+    game->map.z = 100;
+  if (game->map.z > 400)
+    game->map.z = 400;
   return (retour);
 }
 
