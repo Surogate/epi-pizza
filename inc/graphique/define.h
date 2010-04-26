@@ -45,6 +45,9 @@ enum {YELLOW, BLUE, GREEN, PINK, PURPLE, RED, BLACK, WHITE, CYAN};
 
 # define	CAM_Z		(200)
 
+# define	CAM_MAX		300
+# define	CAM_MIN		26
+
 #define 	RENDER		1
 #define 	SELECT		2
 #define 	BUFSIZE 	1024
