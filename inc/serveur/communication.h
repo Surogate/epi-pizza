@@ -49,7 +49,7 @@ char		*grp_connex_zombie(t_game *game, t_player *player,
 				   t_eggs *egg);
 
 /*grp_egg*/
-char		*grp_fork(t_player *player);
+char		*grp_fork(t_game *game, int id_player);
 char		*grp_fork_end(t_player *player, t_eggs *egg);
 char		*grp_egg_hatch(t_eggs *egg);
 char		*grp_egg_die(t_eggs *egg);
