@@ -73,11 +73,12 @@ void		init_game(t_game *game)
   game->screen = load_window();
   game->mouse.clicked = 0;
   game->team = NULL;
+  game->player = NULL;
+  game->egg = NULL;
   game->map.rot = 0;
   game->map.z = 200;
   game->info.crazy = 1;
   game->info.pos.x = 0;
   game->info.pos.y = 0;
-  game->player = 0;
   SDL_ShowCursor(1);
 }
