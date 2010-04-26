@@ -79,7 +79,6 @@ int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
 				  player_id_find);
       if (pos >= 0)
 	{
-	  sock_write(id, "You have been kicked\n");
 	  printf("player %i ass kicked\n", id);
 	  rm_player(game, id);
 	  delete_kick(vec, id);
