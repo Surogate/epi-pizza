@@ -40,7 +40,7 @@ int		find_hatch_fct(t_packet *in, int *player_id)
   return (0);
 }
 
-int	       	create_hatch(t_svr_vector *vec, int egg)
+int	       	create_hatch(t_svr_vector *vec, t_packet *tmp)
 {
   t_vector     	*action;
   t_packet     	*pak;
@@ -52,7 +52,9 @@ int	       	create_hatch(t_svr_vector *vec, int egg)
       timeend(&(pak->end), &(vec->slt->delay), 600);
       pak->type = 3;
       pak->duration = 600;
-      pak->player_id = egg;
+      pak->player_id = pak->type;
+      pak->graph_rep = NULL;
+      pak->ac_rep = -1;
       action->insert_sort(action, pak, sort_duration);
       return (EXIT_SUCCESS);
     }
@@ -61,10 +63,13 @@ int	       	create_hatch(t_svr_vector *vec, int egg)
 
 int	       	server_hatch(t_svr_vector *vec, t_packet *pak, t_game *game)
 {
-  printf("eclosion de l'oeuf : %i\n", pak->player_id);
+  char *str;
+
   do_hatch(game, pak->player_id);
-  gh_fct(vec, game, pak->player_id, eht);
   create_eat(vec, pak->player_id);
+  str = eht(NULL, pak->player_id);
+  gh_broad(vec, str);
+  free(str);
   delete_hatch(vec, pak->player_id);
   return (EXIT_SUCCESS);
 }
@@ -76,8 +81,5 @@ void		delete_hatch(t_svr_vector *vec, int player_id)
 
   action = vec->action;
   while ((pos = action->find_pos(action, &player_id, find_hatch_fct)) >= 0)
-    {
-      fprintf(stderr, "=>>> delete hatch at %i\n", pos);
-      action->erase(action, pos, free);
-    }
+    action->erase(action, pos, free);
 }

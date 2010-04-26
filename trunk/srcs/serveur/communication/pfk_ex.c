@@ -21,20 +21,20 @@ char		*pfk(char *msg, t_player *player)
 
 char		*enw(char *msg, int player_id, t_eggs *egg)
 {
-  msg = xrealloc(msg, (xstrlen(msg) + 48) * sizeof(char));
+  xmsg = xrealloc(msg, (xstrlen(msg) + 48) * sizeof(char));
   snprintf(msg + xstrlen(msg), 48, "enw %i %i% i %i\n", egg->id, player_id,
 	   egg->pos->x, egg->pos->y);
   return (msg);
 }
 
-char		*eht(char *msg, t_eggs *egg)
+char		*eht(char *msg, int egg_id)
 {
   msg = xrealloc(msg, (xstrlen(msg) + 15) * sizeof(char));
-  snprintf(msg + xstrlen(msg), 15, "eht %i\n", egg->id);
+  snprintf(msg + xstrlen(msg), 15, "eht %i\n", egg_id);
   return (msg);
 }
 
-char		*ebo(char *msg, t_eggs *egg)
+char		*ebo(char *msg, int egg_id)
 {
   msg = xrealloc(msg, (xstrlen(msg) + 15) * sizeof(char));
   snprintf(msg + xstrlen(msg), 15, "ebo %i\n", egg->id);

@@ -49,7 +49,6 @@ int			create_plaction(t_svr_vector *vec, t_client *cli,
   t_packet		*pak;
 
   pak = cli->packet + (cli->cons % 10);
-  debug_packet(pak, "plaction cree");
   if (pak->duration)
     {
       action = vec->action;
@@ -69,7 +68,7 @@ int			exec_plaction(t_svr_vector *vec, t_packet *pak,
   cli = pak->player;
   treatment_intr(game, pak);
   if (pak->type < 0)
-    create_hatch(vec, pak->type);
+    create_hatch(vec, pak);
   pak->type = 0;
   return_packet(pak);
   if (pak->graph_rep)
@@ -91,9 +90,7 @@ int			delete_plaction(t_svr_vector *vec, int player_id)
 
   action = vec->action;
   while ((pos = action->find_pos(action, &player_id, find_act_fct)) >= 0)
-    {
-      action->delete(action, pos);
-    }
+    action->delete(action, pos);
   return (EXIT_SUCCESS);
 }
 

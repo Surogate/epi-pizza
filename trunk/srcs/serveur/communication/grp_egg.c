@@ -17,8 +17,7 @@ char		*grp_fork(t_player *player)
 {
   char		*msg;
 
-  msg = xmalloc(2 * sizeof(char));
-  msg = pfk(msg, player);
+  msg = pfk(NULL, player);
   return (msg);
 }
 
@@ -26,8 +25,7 @@ char		*grp_fork_end(t_player *player, t_eggs *egg)
 {
   char		*msg;
 
-  msg = xmalloc(2 * sizeof(char));
-  msg = enw(msg, player->player_id, egg);
+  msg = enw(NULL, player->player_id, egg);
   return (msg);
 }
 
@@ -35,8 +33,7 @@ char		*grp_egg_hatch(t_eggs *egg)
 {
   char		*msg;
 
-  msg = xmalloc(2 * sizeof(char));
-  msg = eht(msg, egg);
+  msg = eht(NULL, egg);
   return (msg);
 }
 
@@ -44,7 +41,6 @@ char		*grp_egg_die(t_eggs *egg)
 {
   char		*msg;
 
-  msg = xmalloc(2 * sizeof(char));
-  msg = edi(msg, egg);
+  msg = edi(NULL, egg);
   return (msg);  
 }
