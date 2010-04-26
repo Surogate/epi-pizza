@@ -33,7 +33,7 @@ char		*grp_egg_hatch(t_eggs *egg)
 {
   char		*msg;
 
-  msg = eht(NULL, egg);
+  msg = eht(NULL, egg->id);
   return (msg);
 }
 
