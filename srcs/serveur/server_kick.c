@@ -70,16 +70,18 @@ int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
   int		pos;
   t_select	*slt_par;
   int		id;
+  char		*str;
 
   slt_par = vec->slt;
   id = pak->player_id;
   if (id > 0)
     {
-      pos = vec->client->find_pos(vec->client, &(pak->player_id), 
-				  player_id_find);
+      pos = vec->client->find_pos(vec->client, &id, player_id_find);
       if (pos >= 0)
 	{
 	  printf("player %i ass kicked\n", id);
+	  str = grp_player_die(game, id);
+	  gh_broad(vec, str);
 	  rm_player(game, id);
 	  delete_kick(vec, id);
 	  delete_eat(vec, id);
@@ -92,6 +94,8 @@ int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
     }
   else
     {
+      str = grp_egg_die(game, id);
+      gh_broad(vec, str);
       delete_kick(vec, id);
       delete_eat(vec, id);
       rm_player(game, id);

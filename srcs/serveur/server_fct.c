@@ -71,7 +71,7 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	  free_packet(cli);
 	}
       else if (cli->used == 1)
-	create_plaction(vec, cli, vec->slt);
+	create_plaction(vec, cli, vec->slt, game);
     }
   debug_client(cli, "apres instr");
 }

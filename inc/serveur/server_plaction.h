@@ -13,7 +13,7 @@
 
 int			find_act_fct(t_packet *in, int *player_id);
 int			create_plaction(t_svr_vector *vec, t_client *cli, 
-					t_select *slt);
+					t_select *slt, t_game *game);
 int			exec_plaction(t_svr_vector *vec, t_packet *pak,
 				      t_game *game);
 int			delete_plaction(t_svr_vector *vec, int player_id);

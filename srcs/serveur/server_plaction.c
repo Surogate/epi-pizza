@@ -43,16 +43,27 @@ int			find_act_fct(t_packet *in, int *player_id)
 }
 
 int			create_plaction(t_svr_vector *vec, t_client *cli,
-					t_select *slt)
+					t_select *slt, t_game *game)
 {
   t_vector		*action;
   t_packet		*pak;
+  char			*str;
 
   pak = cli->packet + (cli->cons % 10);
   if (pak->duration)
     {
       action = vec->action;
       timeend(&(pak->end), &(slt->delay), pak->duration);
+      if (pak->duration == 300)
+	{
+	  str = grp_do_incant(game, pak->player_id);
+	  gh_broad(vec, str);
+	}
+      if (pak->duration == 42)
+	{
+	  str = grp_fork(game, pak->player_id);
+	  gh_broad(vec, str);
+	}
       action->insert_sort(action, pak, sort_duration);
     }
   else
@@ -79,7 +90,7 @@ int			exec_plaction(t_svr_vector *vec, t_packet *pak,
   free_packet(cli);
   delete_plaction(vec, pak->player_id);
   if (cli->used)
-    create_plaction(vec, cli, vec->slt);
+    create_plaction(vec, cli, vec->slt, game);
   return (EXIT_SUCCESS);
 }
 

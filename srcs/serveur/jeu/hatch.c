@@ -21,7 +21,7 @@
 #include	"serveur/t_game_stc.h"
 #include	"xfunc.h"
 
-static int	find_egg(int *ref, t_eggs *egg)
+int		find_egg(int *ref, t_eggs *egg)
 {
   if (*ref == egg->id)
     return (EXIT_SUCCESS);

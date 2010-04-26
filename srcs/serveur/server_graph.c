@@ -60,6 +60,7 @@ void		gh_broad(t_svr_vector *vec, char *str)
   graph = vec->graph;
   while ((cli = graph->getnxts(graph)) != NULL)
     sock_write(cli->sock, str);
+  free(str);
 }
 
 void		gh_fct(t_svr_vector *vec, t_game *game,
