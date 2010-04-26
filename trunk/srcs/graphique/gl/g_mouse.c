@@ -115,13 +115,13 @@ int		mouse_down(t_game *game)
     right_click(game);
   else if (game->event.button.button == SDL_BUTTON_WHEELDOWN)
     {
-      if (game->video.cam[3] > 100)
-	game->video.cam[3] -= 5;
-     }
-  else if (game->event.button.button == SDL_BUTTON_WHEELUP)
-    {
       if (game->video.cam[3] < 250)
 	game->video.cam[3] += 5;
-     }
+    }
+  else if (game->event.button.button == SDL_BUTTON_WHEELUP)
+    {
+      if (game->video.cam[3] > 100)
+	game->video.cam[3] -= 5;
+    }
   return (1);
 }
