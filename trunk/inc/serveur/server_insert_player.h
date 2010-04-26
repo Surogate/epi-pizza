@@ -12,7 +12,8 @@
 # define	SERVER_INSERT_PLAYER_C_INCLUDED
 
 t_player	*create_player(int player_id, int team);
-t_player	*init_player(t_game *game, int player_id, int team);
+t_player	*init_player(t_game *game, int player_id, int team, 
+			     t_svr_vector *vec);
 t_player	*insert_player(t_game *game, t_player *player, int y, int x);
 t_player	*rm_player(t_game *game, int id_player);
 

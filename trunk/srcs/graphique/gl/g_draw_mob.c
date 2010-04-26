@@ -40,10 +40,12 @@ static void	draw_trantorien(t_player *player, int ref, GLenum mode)
   glCallList(TEAM);
   glPopMatrix();
 
+  
+
   /*
-Permet de remettre le premier a la bonne place... mais decale les autres
-  glPushMatrix();
-  glTranslated((CASE_H / 2), (CASE_H / 2), 0);
+    Permet de remettre le premier a la bonne place... mais decale les autres
+    glPushMatrix();
+    glTranslated((CASE_H / 2), (CASE_H / 2), 0);
   */
 
   glRotated((player->sens + 1) * -90, 0, 0, 1);
@@ -68,9 +70,14 @@ void		draw_mob(t_game *game, GLenum mode)
   temp = game->player;
   while (temp)
     {
+
+      printf("On affiche le joueur %i dans la case %i %i\n", temp->id, 
+	     temp->pos.x, temp->pos.y);
+
       draw_trantorien(temp, ref, mode);
       clic_mob(game, temp, ref);
       temp = temp->next_pg;
     }
+  puts("");
   clic_map(game);
 }
