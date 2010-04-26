@@ -102,7 +102,7 @@ void		init_texture(t_game *game)
 
 void		init_video(t_game *game)
 {
-  game->video.text = 0;
+  game->video.text = 1;
   game->video.fog = 0;
   game->video.light = 1;
   game->video.aliasing = 0;
