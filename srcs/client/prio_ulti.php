@@ -73,7 +73,8 @@ function		exec_seekstone(&$player)
 {
   echo "EXEC_SEEKSTONE\n";
   get_there(&$player);
-  fifo_in(&$player, "prend " . $player['objet'] . "\n");
+  if ($player['objet'] != NULL)
+    fifo_in(&$player, "prend " . $player['objet'] . "\n");
   return ('X');
 }
 
@@ -104,11 +105,20 @@ function		exec_fork(&$player)
 
 function		find_prio(&$player)
 {
-  $pfunc = get_array();
-  $value = 0;
-  do {
-    $value = $pfunc[$value](&$player);
-  } while ($value != 'X');
-  echo "\n*****END FIND PRIO*****\n";
+  if ($player['tmp'] % 2 == 0)
+    {
+      $player['tmp'] += 1;
+      routine(&$player);
+    }
+  else
+    {
+      $player['tmp'] += 1;
+      $pfunc = get_array();
+      $value = 0;
+      do {
+	$value = $pfunc[$value](&$player);
+      } while ($value != 'X');
+      echo "\n*****END FIND PRIO*****\n";
+    }
 }
 ?>
