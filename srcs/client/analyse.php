@@ -13,25 +13,24 @@ function	fill_rocks()
   return ($rocks);
 }
 
-function	seek_needs($lvl, $tab_inv)
+function	seek_needs($lvl, $tab_inv, &$player)
 {
-  if ($tab_inv['nourriture'] < 600)
-    $need = 'nourriture';
-  else if ($lvl[$pers_skill + 1]['linemate'] - $tab_inv['linemate'] > 0)
+  if (($lvl[$player['level'] + 1]['linemate'] - $tab_inv['linemate']) > 0)
     $need = 'linemate';
-  else if ($lvl[$pers_skill + 1]['deraumere'] - $tab_inv['deraumere'] > 0)
+  else if (($lvl[$player['level'] + 1]['deraumere'] - $tab_inv['deraumere']) > 0)
     $need = 'deraumere';
-  else if ($lvl[$pers_skill + 1]['sibur'] - $tab_inv['sibur'] > 0)
+  else if (($lvl[$player['level'] + 1]['sibur'] - $tab_inv['sibur']) > 0)
     $need = 'sibur';
-  else if ($lvl[$pers_skill + 1]['mendiane'] - $tab_inv['mendiane'] > 0)
+  else if (($lvl[$player['level'] + 1]['mendiane'] - $tab_inv['mendiane']) > 0)
     $need = 'mendiane';
-  else if ($lvl[$pers_skill + 1]['phiras'] - $tab_inv['phiras'] > 0)
+  else if (($lvl[$player['level'] + 1]['phiras'] - $tab_inv['phiras']) > 0)
     $need = 'phiras';
-  else if ($lvl[$pers_skill + 1]['thystame'] - $tab_inv['thystame'] > 0)
+  else if (($lvl[$player['level'] + 1]['thystame'] - $tab_inv['thystame']) > 0)
     $need = 'thystame';
   else
-    $need = 'elevation';
+    $need = NULL;
 
+  echo "VALEUR DE NEED -----> " . $need . "\n";
   return $need;
 }
 
@@ -50,7 +49,6 @@ function	to_search(&$player)
   global $lvl;
   
   $rocks = fill_rocks();
-  $pers_skill = $player['level'];
   $inv = prepare_inv($player['inv']);
   $i = 0;
   while ($i < 7)
@@ -59,14 +57,16 @@ function	to_search(&$player)
       $tab_inv[$tmp[0]] = $tmp[1];
       $i++;
     }  
-  $need = seek_needs($lvl, $tab_inv);
+  $need = seek_needs($lvl, $tab_inv, &$player);
   $view = $player['view'];
   $view = str_replace('{', '', $view);
   $view = str_replace('}', '', $view);
   $view = explode(", ", $view);
   $i = 0;
+  echo "REVALEUR DE VIEW ===||++++++++---> \n" . $player['view'] . "\n";
   while (preg_match("/" . $need . "/i", $view[$i]) == 0 && $view[$i] != NULL)
     $i++;
+  echo "VALEUR DE I : " . $i . "\n";
   $player['reach'] = $i;
   $player['objet'] = $need;
 }
