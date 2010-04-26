@@ -52,7 +52,7 @@ int	       	create_hatch(t_svr_vector *vec, t_packet *tmp)
       timeend(&(pak->end), &(vec->slt->delay), 600);
       pak->type = 3;
       pak->duration = 600;
-      pak->player_id = pak->type;
+      pak->player_id = tmp->type;
       pak->graph_rep = NULL;
       pak->ac_rep = -1;
       action->insert_sort(action, pak, sort_duration);
