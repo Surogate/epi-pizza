@@ -131,6 +131,9 @@ int			client_parse_instr(char *str, t_client *cli)
   debug_instr(pak);
   pak->type = 0;
   pak->ac_rep = -1;
+  pak->response = NULL;
+  pak->end.tv_sec = 0;
+  pak->end.tv_usec = 0;
   pak->graph_rep = NULL;
   return (EXIT_SUCCESS);
 }

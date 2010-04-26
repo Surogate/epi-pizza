@@ -19,6 +19,7 @@
 #include	"s_cbuf.h"
 #include	"cbuf_debug.h"
 #include	"cbuf_io.h"
+#include	"xfunc.h"
 
 char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
 {
@@ -65,7 +66,7 @@ int		sock_write(int sock, char *from)
     return (EXIT_SUCCESS);
   while (total < strlen(from))
     {
-      result = send(sock, from, strlen(from), 0);
+      result = send(sock, from + total, xstrlen(from + total), 0);
       if (result < 0)
 	{
 	  perror("sock send");
