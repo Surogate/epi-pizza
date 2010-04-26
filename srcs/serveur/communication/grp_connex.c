@@ -34,7 +34,6 @@ static char	*print_eggs(char *msg, t_game *game)
   t_eggs	*egg;
 
   list = game->eggs;
-  player = game->player;
   while (list->data != NULL)
     {
       egg = (t_eggs *)list->data;
