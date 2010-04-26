@@ -21,7 +21,7 @@ char		*pie(char *msg, t_player *player, int res);
 char		*pic(char *msg, t_player *player);
 
 char		*pfk(char *msg, t_player *player);
-char		*enw(char *msg, t_player *player, t_eggs *egg);
+char		*enw(char *msg, int player_id, t_eggs *egg);
 char		*eht(char *msg, t_eggs *egg);
 char		*ebo(char *msg, t_eggs *egg);
 char		*edi(char *msg, t_eggs *egg);
@@ -47,7 +47,6 @@ char		*grp_connex_monit(t_game *game);
 char		*grp_connex_player(t_game *game, t_player *player);
 char		*grp_connex_zombie(t_game *game, t_player *player, 
 				   t_eggs *egg);
-
 
 /*grp_egg*/
 char		*grp_fork(t_player *player);
