@@ -83,6 +83,7 @@ typedef struct
   t_map		*pos;
   int		team;
   int		id;
+  int		father;
 }		t_eggs;
 
 typedef struct

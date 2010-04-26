@@ -19,11 +19,11 @@ char		*pfk(char *msg, t_player *player)
   return (msg);
 }
 
-char		*enw(char *msg, t_player *player, t_eggs *egg)
+char		*enw(char *msg, int player_id, t_eggs *egg)
 {
   msg = xrealloc(msg, (xstrlen(msg) + 48) * sizeof(char));
-  snprintf(msg + xstrlen(msg), 48, "enw %i %i% i %i\n", egg->id, 
-	   player->player_id, player->pos->x, player->pos->y);
+  snprintf(msg + xstrlen(msg), 48, "enw %i %i% i %i\n", egg->id, player_id,
+	   egg->pos->x, egg->pos->y);
   return (msg);
 }
 

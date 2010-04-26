@@ -28,22 +28,21 @@ static char	*print_player(char *msg, t_game *game)
   return (msg);
 }
 
-/*
-static char	*print_eggs(char *msg, t_player *player, t_game *game)
+static char	*print_eggs(char *msg, t_game *game)
 {
   t_list	*list;
   t_eggs	*egg;
-  
+
   list = game->eggs;
+  player = game->player;
   while (list->data != NULL)
     {
       egg = (t_eggs *)list->data;
-      msg = enw(msg, player, egg);
+      msg = enw(msg, egg->father, egg);
       list = list->next;
     }
   return (msg);
 }
-*/
 
 char		*grp_connex_monit(t_game *game)
 {
@@ -62,11 +61,7 @@ char		*grp_connex_monit(t_game *game)
     }
   msg = tna(msg, game);
   msg = print_player(msg, game);
-
-  /*FAUT IL SAUVEGARDER QUI A PONDU L'OEUF ?????????*/
-
-  /*  msg = print_eggs(msg, game);*/
-
+  msg = print_eggs(msg, game);
   return (msg);
 }
 
