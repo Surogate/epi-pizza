@@ -42,7 +42,6 @@ char		*grp_incant_done(t_player *player, int res)
 }
 
 /*APPELER GRP_EXPULSE AVANT D'EXPULSER !!!!!*/
-
 char		*grp_expulse(t_player *player)
 {
   t_player	*pl;

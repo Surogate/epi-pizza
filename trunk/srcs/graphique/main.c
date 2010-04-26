@@ -52,6 +52,7 @@ void		tempo(t_game *game)
     }
 }
 
+/*Pas a la norme, mais a virer, donc osef*/
 void		test_create_player(t_game *game, int id, int team)
 {
   t_player	*pl;

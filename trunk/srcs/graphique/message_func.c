@@ -46,7 +46,7 @@ void		my_recv(t_game *game)
   do
     {
       msg = cbuf_read(game->serv.cbuf, check_next_end);
-      printf("%p\n", msg);
+      printf("Msg : %p\n", msg);
       if (msg)
 	{
 	  temp = split(msg, ' ');

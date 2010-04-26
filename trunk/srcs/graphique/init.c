@@ -48,11 +48,11 @@ void		create_map(t_game *game)
   int		x;
   int		temp;
 
-  game->map.t_case= malloc(game->map.h * sizeof(*(game->map.t_case)));
+  game->map.t_case = xmalloc(game->map.h * sizeof(*(game->map.t_case)));
   y = -1;
   while (++y < game->map.h)
     {
-      game->map.t_case[y] = malloc(game->map.w * sizeof(t_case));
+      game->map.t_case[y] = xmalloc(game->map.w * sizeof(t_case));
       x = -1;
       while (++x < game->map.w)
 	{
