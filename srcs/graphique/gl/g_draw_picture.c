@@ -34,10 +34,9 @@ void		draw_picture(t_game *game, int etat)
   if (etat == MOD_FAQ)
     glBindTexture(GL_TEXTURE_2D, game->texture->faq);
   else if (etat == MOD_BEGIN)
-    {
-      puts("Je suis dedans");
-      glBindTexture(GL_TEXTURE_2D, game->texture->intro);
-    }
+    glBindTexture(GL_TEXTURE_2D, game->texture->intro);
+  else if (etat == MOD_BONJOUR)
+    glBindTexture(GL_TEXTURE_2D, game->texture->bonjour);
   
   glDisable(GL_LIGHTING);
   glMatrixMode(GL_PROJECTION);

@@ -33,8 +33,10 @@ void		make_calllistes_picking(int name, GLuint texture)
 {
   glNewList(name, GL_COMPILE);
   glEnable(GL_TEXTURE_2D);
-  glEnable(GL_BLEND);
-  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+  /*  glEnable(GL_BLEND);
+      glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);*/
+
   glTranslatef(-CASE_H / 2, -CASE_W / 2, 0);
   glBindTexture(GL_TEXTURE_2D, texture);
   glBegin(GL_QUADS);

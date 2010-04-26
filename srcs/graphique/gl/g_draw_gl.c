@@ -48,10 +48,10 @@ void		draw_gl(t_game *game, GLenum mode)
     draw_ressource(game, mode);
     draw_mob(game, mode);
   }
-  else if (game->info.crazy == MOD_FAQ || game->info.crazy == MOD_BEGIN)
-    draw_picture(game, game->info.crazy);
-  else
+  else if (game->info.crazy == MOD_CRAZY)
     crazy_mod(game);
+  else
+    draw_picture(game, game->info.crazy);
   glPopMatrix();
   glPopMatrix();
   glPopMatrix();
