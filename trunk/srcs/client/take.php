@@ -4,9 +4,9 @@ function take(&$player, $objet)
 {
 	$len = strlen($objet);
 	if ($objet[$len - 1] != '\n')
-		$commande = "prendre " . $objet . "\n";
+		$commande = "prend " . $objet . "\n";
 	else
-		$commande = "prendre " . $objet;
+		$commande = "prend " . $objet;
 	fifo_in(&$player, $commande);
 }
 

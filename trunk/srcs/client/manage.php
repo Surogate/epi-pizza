@@ -29,6 +29,8 @@ function get_int(&$player)
 function manage(&$player)
 {
 	echo "Dans manage avec la commande: " . $player['last_receive'][0] . "\n";
+	if (strcasecmp("mort\n", $player['last_receive'][0]) == 0)
+		exit ("Vous etes mort\n");
 	if (strcasecmp($player['last_receive'][0], "bienvenue\n") == 0)
 		init_conv(&$player);
 	else if ($player['flag'] == 1)

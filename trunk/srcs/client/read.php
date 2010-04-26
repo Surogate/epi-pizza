@@ -12,6 +12,8 @@ function to_read($socket, &$player)
 			str_replace("\n", "\n", $buff, $counter);
 			$player['nb_cmd'] = $counter;
 			recv_in(&$player, $buff);
+			if (preg_match("/mort/i", $player['last_receive'][0]) == 1)
+				exit("Vous etes mort\n");
 			manage(&$player);
 		}
 	else
