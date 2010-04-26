@@ -31,6 +31,6 @@ char		*pgt(char *msg, t_player *player, int ress)
 char		*pdi(char *msg, t_player *player)
 {
   msg = xrealloc(msg, (xstrlen(msg) + 15) * sizeof(char));
-  snprintf(msg + xstrlen(msg), 15, "pgi %i\n", player->player_id);
+  snprintf(msg + xstrlen(msg), 15, "pdi %i\n", player->player_id);
   return (msg);
 }
