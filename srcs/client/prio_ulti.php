@@ -1,4 +1,4 @@
-B1;2202;0c<?php
+<?php
 
 require_once 'check_onme.php';
 require_once 'analyse.php';
@@ -6,6 +6,7 @@ require_once 'search_food.php';
 require_once 'main_loop.php';
 require_once 'routine.php';
 require_once 'move.php';
+require_once 'get_food.php';
 
 function		get_array()
 {
@@ -26,6 +27,7 @@ function		get_array()
 
 function		check_lowlife(&$player)
 {
+  get_food(&$player);
   if ($player['food'] < 10 || $player['seeking'] == 1)
     return (1);
   else
