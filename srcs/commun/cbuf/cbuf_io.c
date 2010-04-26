@@ -46,6 +46,7 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
       printf("(cbuf->cons + cbuf->use) % CBUFSIZ)\n", (cbuf->cons + cbuf->use) % CBUFSIZ);
       strncpy(result + CBUFSIZ - cbuf->cons, cbuf->buf, (cbuf->cons + cbuf->use) % CBUFSIZ);
     }
+  printf("\033[31m{%s}\033[00m\n", result);
   if ((cmd = check_read(result)) > 0)
     {
       printf("======== read =======\nlen : %i\nuse : %i\ncons : %i\n", cmd, cbuf->use, cbuf->cons);
