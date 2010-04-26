@@ -37,9 +37,25 @@ int		key_escape(t_game *game)
 
 int		key_c(t_game *game)
 {
+  /*
     game->info.crazy++;
     game->info.crazy %= 2;
-    return (1);
+  */
+
+  if (game->info.crazy == MOD_CRAZY)
+    game->info.crazy = MOD_OK;
+  else
+    game->info.crazy = MOD_CRAZY;
+  return (1);
+}
+
+int		key_faq(t_game *game)
+{
+  if (game->info.crazy == MOD_FAQ)
+    game->info.crazy = MOD_OK;
+  else
+    game->info.crazy = MOD_FAQ;
+  return (1);
 }
 
 t_key		key_list[]=
@@ -54,6 +70,7 @@ t_key		key_list[]=
     {SDLK_a, key_a},
     {SDLK_d, key_d},
     {SDLK_ESCAPE, key_escape},
+    {SDLK_F1, key_faq},
     {0,0}
   };
 
@@ -66,6 +83,8 @@ int		key_func(t_game *game)
   keystate = SDL_GetKeyState(NULL);
   i = 0;
   retour = 1;
+  if (game->info.crazy == MOD_BEGIN)
+    game->info.crazy = MOD_OK;
   while (key_list[i].keycode)
     {
       if (keystate[key_list[i].keycode])

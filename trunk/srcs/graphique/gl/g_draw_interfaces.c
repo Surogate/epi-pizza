@@ -46,6 +46,7 @@ void	interface_up(GLuint texture)
 
 void	interface_down(GLuint texture)
 {
+
   glBindTexture(GL_TEXTURE_2D, texture);
   glBegin(GL_QUADS);
   glTexCoord2f(0, 0);
@@ -57,4 +58,18 @@ void	interface_down(GLuint texture)
   glTexCoord2f(1, 0);
   glVertex3f(0.45, -1, 0.9);
   glEnd();
+
+  /*
+  glBindTexture(GL_TEXTURE_2D, texture);
+  glBegin(GL_QUADS);
+  glTexCoord2f(0, 0);
+  glVertex3f(0.45, -0.45, 0.9);
+  glTexCoord2f(0, 1);
+  glVertex3f(1, -0.45, 0.9);
+  glTexCoord2f(1, 1);
+  glVertex3f(1, -1, 0.9);
+  glTexCoord2f(1, 0);
+  glVertex3f(0.45, -1, 0.9);
+  glEnd();
+  */
 }

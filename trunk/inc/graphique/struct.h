@@ -130,6 +130,8 @@ typedef struct
   GLuint	inter_d;
   GLuint	team;
   GLuint	select;
+  GLuint	faq;
+  GLuint	intro;
 }		t_texture;
 
 typedef struct

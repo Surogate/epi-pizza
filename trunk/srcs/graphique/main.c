@@ -52,73 +52,6 @@ void		tempo(t_game *game)
     }
 }
 
-/*Pas a la norme, mais a virer, donc osef*/
-void		test_create_player(t_game *game, int id, int team)
-{
-  t_player	*pl;
-  t_player	*new;
-  static long	seed;
-  int		i;
-
-  srandom(seed + time(NULL));
-  seed = random();
-  pl = game->player;
-  if (pl != NULL)
-    while (pl->next_pg != NULL)
-      pl = pl->next_pg;
-  new = xmalloc(sizeof(t_player));
-  if (pl)
-    pl->next_pg = new;
-  else
-    game->player = new;
-  new->next_pg = NULL;
-  new->id = id;
-  new->lv = random() % 8;
-  new->sens = random() % 4;
-  new->pos.x = random() % 10;
-  new->pos.y = random() % 10;
-  i = -1;
-  while (++i != 8)
-    new->inventaire[i] = random() % 10;
-  i = -1;
-  while (++i != 5)
-    {
-      if (team == 1)
-	new->team = 1;
-      else
-	new->team = 2;
-    }
-}
-
-void		test_init_player(t_game *game)
-{
-  int		x;
-  int		y;
-  int		o;
-
-  test_create_player(game, 1234, 1);
-  test_create_player(game, 34, 1);
-  test_create_player(game, 3234, 1);
-  test_create_player(game, 1534, 1);
-
-  test_create_player(game, 9871, 2);
-  test_create_player(game, 3487, 2);
-  test_create_player(game, 6481, 2);
-  test_create_player(game, 1598, 2);
-
-  x = -1;
-  while (++x != 5)
-    {
-      y = -1;
-      while (++y != 5)
-	{
-	  o = -1;
-	  while (++o != 8)
-	    game->map.t_case[x][y].obj[o][2] = 2;
-	}
-    }
-}
-
 int		main(int ac, char *av[])
 {
   t_game	game;
@@ -132,16 +65,21 @@ int		main(int ac, char *av[])
 # endif
       init_video(&game);
       init_game(&game);
+      initGL(&game);
+
+      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+      camera(&game);
+      init_texture(&game);
+      draw_picture(&game, MOD_BEGIN);
+
       game.map.h = -42;
       game.serv.cbuf = cbuf_new();
       tempo(&game);
       printAttributes();
-      init_texture(&game);
       init_3dsmodel(&game);
-      initGL(&game);
+      init_CallList(&game);
       mainloop(&game);
       puts("end of program");
-      
       SDL_Quit();
     }
   else

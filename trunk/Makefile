@@ -172,6 +172,7 @@ SRC_GR		= \
 		$(DIR_SRC_GR)gl/g_draw_map.c		\
 		$(DIR_SRC_GR)gl/g_draw_mob.c		\
 		$(DIR_SRC_GR)gl/g_draw_picking.c	\
+		$(DIR_SRC_GR)gl/g_draw_picture.c	\
 		$(DIR_SRC_GR)gl/g_draw_ressource.c	\
 		$(DIR_SRC_GR)gl/show_interface.c	\
 		$(DIR_SRC_GR)gl/g_draw_interfaces.c	\
