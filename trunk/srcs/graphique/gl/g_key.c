@@ -38,11 +38,14 @@ int		key_func(t_game *game)
     game->map.rot -= 5;
   else if (game->event.key.keysym.sym == SDLK_UP)
     {
-      if (game->video.cam[3] > 26)
+      if (game->video.cam[3] > CAM_MIN)
 	game->video.cam[3] -= 5;
     }
   else if (game->event.key.keysym.sym == SDLK_DOWN)
-    game->video.cam[3] += 5;
+    {
+      if (game->video.cam[3] < CAM_MAX)
+	game->video.cam[3] += 5;
+    }
   else if (game->event.key.keysym.sym == SDLK_c)
     game->info.crazy++;
   else if (game->event.key.keysym.sym == SDLK_ESCAPE)
