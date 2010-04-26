@@ -132,6 +132,7 @@ typedef struct
   GLuint	select;
   GLuint	faq;
   GLuint	intro;
+  GLuint	bonjour;
 }		t_texture;
 
 typedef struct

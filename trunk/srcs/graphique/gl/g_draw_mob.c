@@ -37,13 +37,7 @@ static void	draw_trantorien(t_player *player, int ref, GLenum mode)
   glTranslated((CASE_H / 2), (CASE_W / 2) , 0);
   glPushMatrix();
   glTranslated(0, 0, .01);
-  
-
-  glColor3f(1.0, 0, 0);
   glCallList(TEAM);
-  glColor3f(1.0, 1.0, 1.0);
-
-
   glPopMatrix();
   glRotated((player->sens + 1) * -90, 0, 0, 1);
   if (mode == GL_SELECT)

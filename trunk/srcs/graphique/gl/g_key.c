@@ -49,6 +49,15 @@ int		key_c(t_game *game)
   return (1);
 }
 
+int		key_b(t_game *game)
+{
+  if (game->info.crazy == MOD_BONJOUR)
+    game->info.crazy = MOD_OK;
+  else
+    game->info.crazy = MOD_BONJOUR;
+  return (1);
+}
+
 int		key_faq(t_game *game)
 {
   if (game->info.crazy == MOD_FAQ)
@@ -69,8 +78,9 @@ t_key		key_list[]=
     {SDLK_s, key_s},
     {SDLK_a, key_a},
     {SDLK_d, key_d},
-    {SDLK_ESCAPE, key_escape},
+    {SDLK_b, key_b},
     {SDLK_F1, key_faq},
+    {SDLK_ESCAPE, key_escape},
     {0,0}
   };
 
