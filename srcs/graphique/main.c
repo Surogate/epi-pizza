@@ -47,6 +47,8 @@ void		tempo(t_game *game)
 	      exit(EXIT_SUCCESS);
 	    }
 	}
+       if (game->map.h == -42)
+	 write(game->serv.socket, "msz\n", 4);
     }
 }
 
