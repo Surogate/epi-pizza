@@ -30,33 +30,104 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-int		key_func(t_game *game)
+int		key_left(t_game *game)
 {
-  if (game->event.key.keysym.sym == SDLK_LEFT)
-    game->map.rot += 5;
-  else if (game->event.key.keysym.sym == SDLK_RIGHT)
-    game->map.rot -= 5;
-  else if (game->event.key.keysym.sym == SDLK_UP)
-    {
-      if (game->video.cam[3] > CAM_MIN)
-	game->video.cam[3] -= 5;
-    }
-  else if (game->event.key.keysym.sym == SDLK_DOWN)
-    {
-      if (game->video.cam[3] < CAM_MAX)
-	game->video.cam[3] += 5;
-    }
-  else if (game->event.key.keysym.sym == SDLK_c)
-    game->info.crazy++;
-  else if (game->event.key.keysym.sym == SDLK_ESCAPE)
-    return (exit_func(game));
-  game->info.crazy %= 2;
+  game->map.rot += 5;
   game->map.rot %= 360;
+  return (1);
+}
+
+int		key_right(t_game *game)
+{
+  game->map.rot -= 5;
+  game->map.rot %= 360;
+  return (1);
+}
+
+int		key_up(t_game *game)
+{
+  if (game->video.cam[3] > 26)
+    game->video.cam[3] -= 5;
   if (game->map.z < 100)
     game->map.z = 100;
+  return (1);
+}
+
+int		key_down(t_game *game)
+{
+  game->video.cam[3] += 5;
   if (game->map.z > 400)
     game->map.z = 400;
   return (1);
+}
+
+int		key_escape(t_game *game)
+{
+  return (exit_func(game));
+}
+
+int		key_c(t_game *game)
+{
+    game->info.crazy++;
+    game->info.crazy %= 2;
+    return (1);
+}
+
+int		key_w(t_game *game)
+{
+  game->info.pos.y += 10;
+  return (1);
+}
+
+int		key_s(t_game *game)
+{
+  game->info.pos.y -= 10;
+  return (1);
+}
+
+int		key_a(t_game *game)
+{
+  game->info.pos.x -= 10;
+  return (1);
+}
+
+int		key_d(t_game *game)
+{
+  game->info.pos.x += 10;
+  return (1);
+}
+
+t_key		key_list[]=
+  {
+    {SDLK_LEFT, key_left},
+    {SDLK_RIGHT, key_right},
+    {SDLK_UP, key_up},
+    {SDLK_DOWN, key_down},
+    {SDLK_c, key_c},
+    {SDLK_w, key_w},
+    {SDLK_s, key_s},
+    {SDLK_a, key_a},
+    {SDLK_d, key_d},
+    {SDLK_ESCAPE, key_escape},
+    {0,0}
+  };
+
+int		key_func(t_game *game)
+{
+  int		i;
+  int		retour;
+  Uint8		*keystate;
+
+  keystate = SDL_GetKeyState(NULL);
+  i = 0;
+  retour = 1;
+  while (key_list[i].keycode)
+    {
+      if (keystate[key_list[i].keycode])
+	retour = key_list[i].func(game);
+      i++;
+    }
+  return (retour);
 }
 
 /* Entre close et return

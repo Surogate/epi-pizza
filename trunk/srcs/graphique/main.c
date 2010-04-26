@@ -137,9 +137,9 @@ int		main(int ac, char *av[])
       init_texture(&game);
       init_3dsmodel(&game);
       initGL(&game);
+      SDL_EnableKeyRepeat(10, 10);
       mainloop(&game);
       puts("end of program");
-      /* exit_func(&game); */
       SDL_Quit();
     }
   else

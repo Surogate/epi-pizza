@@ -11,6 +11,12 @@
 #ifndef		STRUCT_H
 # define	STRUCT_H
 
+typedef	struct	s_key
+{
+  SDLKey	keycode;
+  int		(*func)();
+}		t_key;
+
 typedef struct	s_event
 {
   Uint8		type;
