@@ -33,6 +33,7 @@
 #include "serveur/time_fct.h"
 #include "serveur/server_hatch.h"
 #include "serveur/server_graph.h"
+#include "serveur/communication.h"
 #include "serveur/server_plaction.h"
 
 int			find_act_fct(t_packet *in, int *player_id)
