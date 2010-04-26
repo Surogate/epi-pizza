@@ -35,7 +35,7 @@
 #include "serveur/server_graph.h"
 #include "serveur/communication.h"
 
-static int	find_player(int *player_id, t_player *pla)
+int		find_player(int *player_id, t_player *pla)
 {
   if (pla && (pla->player_id == *player_id))
     return (EXIT_SUCCESS);
@@ -73,6 +73,7 @@ void		gh_fct(t_svr_vector *vec, t_game *game,
   if (str && pla)
     {
       str = fct(str, pla, game);
+      printf("%s\n", str);
       gh_broad(vec, str);
       free(str);
     }

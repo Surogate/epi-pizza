@@ -136,7 +136,6 @@ int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
 	    delete_eat(vec, tmp->sock);
 	    delete_plaction(vec, tmp->sock);
 	    delete_kick(vec, tmp->sock);
-	    gh_fct(vec, game, tmp->sock, pdi);
 	    if (tmp->team > 0)
  	      rm_player(game, tmp->sock);
 	    vec->client->erase(vec->client, client->gns_pos, free_client);
