@@ -21,6 +21,8 @@ t_llist		*llist_goto(t_vector *vec, int at)
   t_llist	*tmp;
 
   tmp = vec->start;
+  if ((at == vec->gns_pos) && vec->gns)
+    return (vec->gns);
   i = 0;
   while (tmp && (i < at))
     {
@@ -40,7 +42,7 @@ void		*llist_at(t_vector *vec, int at)
   return (NULL);
 }
 
-void			*llist_getnxts(t_vector *vec)
+void		*llist_getnxts(t_vector *vec)
 {
   if (!vec->gns)
     {

@@ -140,6 +140,7 @@ SRC_CO		= \
 		$(DIR_SRC_CO)vector/llist_access.c	\
 		$(DIR_SRC_CO)vector/llist_sort.c	\
 		$(DIR_SRC_CO)vector/llist_swap.c	\
+		$(DIR_SRC_CO)vector/llist_del.c	\
 		$(DIR_SRC_CO)count_player.c		\
 
 SRC_INC_CO	= \

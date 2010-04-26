@@ -21,17 +21,16 @@ int		llist_push_back(t_vector *vec, void *strct)
   t_llist	*new;
   t_llist	*tmp;
 
-  new = llist_new(strct, NULL, NULL);
+  tmp = vec->start;
+  if (tmp)
+    while(tmp->nxt)
+      tmp = tmp->nxt;
+  else
+    return (vec->push_front(vec, strct));
+  new = llist_new(strct, NULL, tmp);
   if (new)
     {
-      tmp = vec->start;
-      if (tmp)
-	while(tmp->nxt)
-	  tmp = tmp->nxt;
-      else
-	return (vec->push_front(vec, strct));
       tmp->nxt = new;
-      new->prv = tmp;
       vec->size++;
       return (EXIT_SUCCESS);
     }
@@ -48,7 +47,9 @@ int		llist_push_front(t_vector *vec, void *strct)
       vec->start = new;
       if (new->nxt)
 	(new->nxt)->prv = new;
-      vec->size++;
+      if (vec->gns_pos)
+	++(vec->gns_pos);
+      ++(vec->size);
       return (EXIT_SUCCESS);
     }
   return (EXIT_FAILURE);
@@ -67,6 +68,8 @@ int		llist_insert(t_vector *vec, void *strct, int at)
 	{
 	  if (tmp->nxt)
 	    (tmp->nxt)->prv = new;
+	  if (at < vec->gns_pos)
+	    ++(vec->gns_pos);
 	  tmp->nxt = new;
 	  vec->size++;
 	  return (EXIT_SUCCESS);
@@ -75,13 +78,4 @@ int		llist_insert(t_vector *vec, void *strct, int at)
   else
     vec->push_back(vec, strct);
   return (EXIT_FAILURE);
-}
-
-void		llist_erase(t_vector *vec, int at, void (*destruct)())
-{
-  void		*strct;
-
-  strct = llist_del(vec, at);
-  if (strct)
-    destruct(strct);
 }
