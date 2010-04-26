@@ -70,14 +70,9 @@ void		draw_mob(t_game *game, GLenum mode)
   temp = game->player;
   while (temp)
     {
-
-      printf("On affiche le joueur %i dans la case %i %i\n", temp->id, 
-	     temp->pos.x, temp->pos.y);
-
       draw_trantorien(temp, ref, mode);
       clic_mob(game, temp, ref);
       temp = temp->next_pg;
     }
-  puts("");
   clic_map(game);
 }
