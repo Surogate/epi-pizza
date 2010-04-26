@@ -33,19 +33,23 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
       return (NULL);
     }
   if (cbuf->buf[cbuf->cons] == END_CHAR)
-    ++(cbuf->cons);
-  if (cbuf->prod > cbuf->cons)
-    strncpy(result, cbuf->buf + cbuf->cons, cbuf->prod - cbuf->cons);
+    {
+      ++(cbuf->cons);
+      --(cbuf->use);
+    }
+  if ((cbuf->cons + cbuf->use) < CBUFSIZ)
+    strncpy(result, cbuf->buf + cbuf->cons, cbub->use);
   else
     {
       strncpy(result, cbuf->buf + cbuf->cons, CBUFSIZ - cbuf->cons);
-      strncpy(result + (CBUFSIZ - cbuf->cons), cbuf->buf, cbuf->prod);
+      strncpy(result + CBUFSIZ - cbuf->cons, cbuf->buf, cbuf->use - 
+	      CBUFSIZ - cbuf->cons);
     }
   if ((cmd = check_read(result)) > 0)
     {
       printf("======== read =======\nlen : %i\nuse : %i\ncons : %i\n", cmd, cbuf->use, cbuf->cons);
       cbuf->cons = (cbuf->cons + cmd + 1) % CBUFSIZ;
-      cbuf->use -= (cmd - 1);
+      cbuf->use -= cmd;
       result[cmd] = '\0';
       printf("======== readed =======\nlen : %i\nuse : %i\ncons : %i\n",
 	     cmd, cbuf->use, cbuf->cons);
