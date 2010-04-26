@@ -24,6 +24,8 @@
 #include	"serveur/t_packet.h"
 #include	"serveur/t_svr_stc.h"
 #include	"serveur/t_struct.h"
+#include	"serveur/server_graph.h"
+#include	"serveur/communication.h"
 
 static t_map	*find_case(t_game *game)
 {
@@ -61,12 +63,13 @@ void		generate_ress(t_game *game, t_svr_vector *vec)
     }
 }
 
-void		generate_food(t_game *game)
+void		generate_food(t_game *game, t_svr_vector *vec)
 {
   t_map		*cur_case;
   
   cur_case = find_case(game);
   cur_case->cas.ress[0]++;
+  gh_broad(vec, bct(NULL, cur_case));
 }
 
 static t_map	*find_supp_case(t_game *game, int *i)
