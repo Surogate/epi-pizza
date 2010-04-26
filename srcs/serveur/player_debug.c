@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Wed Apr 21 19:44:08 2010 francois1 ancel
-** Last update Sat Apr 24 05:49:11 2010 Florian Chanioux
+** Last update Mon Apr 26 10:59:26 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
@@ -16,13 +16,13 @@
 #include "my_list.h"
 #include "serveur/t_struct.h"
 
-void debug_player(t_player *pla)
+void	debug_player(t_player *pla)
 {
   if (pla)
     printf("===========\nplayer_id : %i\nteam : %i\nlevel : %i\ndir : %i\n===========\n", pla->player_id, pla->team, pla->level, pla->dir);
 }
 
-int list_debug(t_list *list, void (*printf_fct)())
+int	list_debug(t_list *list, void (*printf_fct)())
 {
   int		i;
   t_list	*tmp;

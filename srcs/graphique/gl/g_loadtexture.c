@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Sat Apr 17 21:15:54 2010 Florian Chanioux
-** Last update Sat Apr 24 04:51:37 2010 Florian Chanioux
+** Last update Mon Apr 26 10:08:23 2010 pierre1 boutbel
 */
 
 #include <sys/types.h>
@@ -48,8 +48,8 @@ static SDL_Surface	*flipSurface(SDL_Surface * surface)
   pitch = surface->pitch;
   current_line = -1;
   while (++current_line < surface->h)
-    memcpy(&((unsigned char* )fliped_surface->pixels)[current_line*pitch],
-	   &((unsigned char* )surface->pixels)[(surface->h - 1  -
+    memcpy(&((unsigned char*)fliped_surface->pixels)[current_line*pitch],
+	   &((unsigned char*)surface->pixels)[(surface->h - 1  -
 						current_line)*pitch],
 	   pitch);
   SDL_UnlockSurface(fliped_surface);

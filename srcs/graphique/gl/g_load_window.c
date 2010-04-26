@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Tue Apr 20 23:13:15 2010 Florian Chanioux
-** Last update Sat Apr 24 04:51:37 2010 Florian Chanioux
+** Last update Mon Apr 26 10:12:13 2010 pierre1 boutbel
 */
 
 #include <sys/types.h>
@@ -33,7 +33,7 @@ SDL_Surface	*load_window()
   SDL_Surface	*screen;
   Uint32	flags;
 
-  flags= SDL_OPENGL;
+  flags = SDL_OPENGL;
   if (FULLSCREEN)
     flags |= SDL_FULLSCREEN;
   xSDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);

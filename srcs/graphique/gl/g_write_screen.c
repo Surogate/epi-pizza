@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Sat Apr 24 13:21:36 2010 Florian Chanioux
-** Last update Sat Apr 24 13:22:36 2010 Florian Chanioux
+** Last update Mon Apr 26 10:11:24 2010 pierre1 boutbel
 */
 
 #include	<sys/select.h>
@@ -31,7 +31,7 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-float   *initcolor(int color)
+float		*initcolor(int color)
 {
   static float tcolor[9][3] =
 {
@@ -54,15 +54,14 @@ void		DrawStr(const char *str)
   GLint i;
 
   i = -1;
-  if(!str)
+  if (!str)
     return ;
-  while(str[++i])
+  while (str[++i])
     glutBitmapCharacter(GLUT_BITMAP_8_BY_13, str[i]);
 }
 
 void		pushwrite()
 {
- 
   glMatrixMode(GL_PROJECTION);
   glPushMatrix();
   glLoadIdentity();

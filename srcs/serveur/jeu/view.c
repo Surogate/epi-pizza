@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 **
 ** Started on  Wed Apr 14 13:20:07 2010 pierre1 boutbel
-** Last update Sat Apr 24 05:49:08 2010 Florian Chanioux
+** Last update Mon Apr 26 10:47:26 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -57,7 +57,7 @@ static t_map	*find_left(t_vision *list, t_dir_v *dir, int level)
   return (NULL);
 }
 
-static t_vision *add_case(t_vision *list, t_map *map, int level)
+static t_vision	*add_case(t_vision *list, t_map *map, int level)
 {
   t_vision	*new;
   t_vision	*cur;

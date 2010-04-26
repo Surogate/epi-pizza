@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Thu Apr 22 21:44:39 2010 Florian Chanioux
-** Last update Sat Apr 24 04:51:38 2010 Florian Chanioux
+** Last update Mon Apr 26 10:04:34 2010 pierre1 boutbel
 */
 
 #include	<stdio.h>
@@ -52,7 +52,7 @@ void		floor_picking_w(int y, int w)
   glEnd();
 }
 
-void            floor_picking(int x, int y)
+void		floor_picking(int x, int y)
 {
   glBegin(GL_QUADS);
   glVertex3d(x * CASE_W, y * CASE_H, 1);

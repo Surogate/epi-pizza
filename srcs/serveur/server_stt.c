@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Tue Apr  6 17:58:29 2010 francois1 ancel
-** Last update Sat Apr 24 05:49:10 2010 Florian Chanioux
+** Last update Mon Apr 26 10:54:48 2010 pierre1 boutbel
 */
 
 #include <sys/types.h>
@@ -70,7 +70,8 @@ int		select_loop(int svr_sock, t_select *slt_par, t_game *game)
   init_vector(&vec, slt_par);
   while (slt_cont)
     {
-      err = select(slt_par->fd_max, &(slt_par->fd_read), NULL, NULL, slt_par->time);
+      err = select(slt_par->fd_max, &(slt_par->fd_read), NULL, NULL,
+		   slt_par->time);
       if (err > 0)
 	{
 	  if (FD_ISSET(svr_sock, &(slt_par->fd_read)))

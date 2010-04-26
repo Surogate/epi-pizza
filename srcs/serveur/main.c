@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr  5 18:15:36 2010 francois1 ancel
-** Last update Sat Apr 24 05:53:27 2010 Florian Chanioux
+** Last update Mon Apr 26 11:01:37 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
@@ -84,18 +84,6 @@ int		main(int ac, char **av)
     test_pathfinding_map(game);
     reset_pathfinding(game);
     test_pathfinding_map(game);
-
-    /*
-    init_player(game, 1594, 1);
-    init_player(game, 11594, 1);
-    init_player(game, 31594, 1);
-    init_player(game, 152394, 1);
-    init_player(game, 5954, 1);
-    init_player(game, 2159314, 1);
-    printf("Il y a %i joueurs\n", my_l_size(game->player));
-    rm_player(game, 1594);
-    printf("Il y a %i joueurs\n", my_l_size(game->player));
-    */
   }
   if (svr_start(&(game->server)) == EXIT_FAILURE)
     perror("svr start error");

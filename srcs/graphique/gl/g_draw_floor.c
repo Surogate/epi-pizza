@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Mon Apr 19 13:15:43 2010 Florian Chanioux
-** Last update Sat Apr 24 04:51:38 2010 Florian Chanioux
+** Last update Mon Apr 26 09:57:04 2010 pierre1 boutbel
 */
 
 #include	<stdio.h>
@@ -37,7 +37,7 @@ void		clic_render(int type)
   glTranslatef(CASE_H / 2, CASE_W / 2, 0);
   glPushMatrix();
   i %= 360;
-  glRotated((i+= 2), 0 ,0 ,1);
+  glRotated((i += 2), 0, 0, 1);
   glCallList(type);
   glPopMatrix();
   glPopMatrix();
@@ -54,7 +54,7 @@ void		around(int h, int w, GLuint texture)
   glRotated(90, 0, 0, 1);
   side(h, texture);
   glPushMatrix();
-  glTranslated(0, -w * CASE_W, 0 );
+  glTranslated(0, -w * CASE_W, 0);
   side(h, texture);
   glPopMatrix();
   glPopMatrix();

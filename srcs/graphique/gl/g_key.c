@@ -5,7 +5,7 @@
 ** Login   <pierro_a@epitech.net>
 **
 ** Started on  Sun Apr  4 17:38:25 2010 frederic1 pierronnet
-** Last update Sat Apr 24 04:52:28 2010 Florian Chanioux
+** Last update Mon Apr 26 10:12:35 2010 pierre1 boutbel
 */
 #include	<sys/types.h>
 #include	<unistd.h>
@@ -56,13 +56,12 @@ int		key_func(t_game *game)
   return (1);
 }
 
+/* Entre close et return
+   TTF_CloseFont(game->font);
+   TTF_Quit();
+*/
 int		exit_func(t_game *game)
 {
   close(game->serv.socket);
-  /*
-    TTF_CloseFont(game->font);
-    TTF_Quit();
-  */
   return (0);
 }
-

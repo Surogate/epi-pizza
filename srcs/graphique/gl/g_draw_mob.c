@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 17:10:54 2010 Florian Chanioux
-** Last update Sat Apr 24 04:53:05 2010 Florian Chanioux
+** Last update Mon Apr 26 09:57:33 2010 pierre1 boutbel
 */
 
 #include	<stdio.h>
@@ -39,7 +39,7 @@ static void	draw_trantorien(t_player *player, int ref, GLenum mode)
   glTranslated(0, 0, .01);
   glCallList(TEAM);
   glPopMatrix();
-  glRotated((player->sens + 1) * 90, 0 ,0 ,1);
+  glRotated((player->sens + 1) * 90, 0, 0, 1);
   if (mode == GL_SELECT)
     glPushName(player->id  + ref);
   glCallList(TOTORO + player->lv);

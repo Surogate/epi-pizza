@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Sat Apr 10 15:11:57 2010 francois1 ancel
-** Last update Sat Apr 24 05:57:36 2010 Florian Chanioux
+** Last update Mon Apr 26 11:00:58 2010 pierre1 boutbel
 */
 
 #include		<stdlib.h>
@@ -61,7 +61,7 @@ void			display_values(t_server *server, t_team *team)
 
   i = 1;
   if (server->debug == 1)
-    printf("\n\033[1;4;5;7;31m\t!!!!!!! WARNING : SERVER IN DEBUG MODE\033[m\n");
+    printf("\n\033[1;4;5;7;31m\t!!!!! WARNING : SERVER IN DEBUG MODE\033[m\n");
   printf("\n\033[1;31m/***************Server Infos***************/\033[m\n\n");
   printf("\033[1;32mServer Port\033[m -> %d\n", server->port);
   printf("\033[1;32mMap height\033[m  -> %d\n", server->height);
