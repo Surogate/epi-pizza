@@ -72,10 +72,6 @@ int		key_func(t_game *game)
 	retour = key_list[i].func(game);
       i++;
     }
-  if (game->map.z < 100)
-    game->map.z = 100;
-  if (game->map.z > 400)
-    game->map.z = 400;
   return (retour);
 }
 
