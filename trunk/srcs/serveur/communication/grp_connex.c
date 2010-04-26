@@ -70,13 +70,12 @@ char		*grp_connex_monit(t_game *game)
   return (msg);
 }
 
-char		*grp_connex_player(t_game *game, t_player *player)
+char		*grp_connex_player(t_game *game, int player_id)
 {
-  char		*msg;
+  t_player	ref;
 
-  msg = NULL;
-  msg = pnw(msg, player, game);
-  return (msg);
+  ref.player_id = player_id;
+  return (pnw(NULL, &ref, game));
 }
 
 char		*grp_connex_zombie(t_game *game, t_player *player, t_eggs *egg)

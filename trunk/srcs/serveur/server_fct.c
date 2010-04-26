@@ -63,7 +63,7 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	  else if (cli->team == 1)
 	    {
 	      create_eat(vec, cli->sock);
-	      gh_fct(vec, game, cli->sock, pnw);
+	      gh_broad(vec, grp_connex_player(game, cli->sock));
 	      return_packet(cli->packet + cli->cons);
 	    }
 	  else if (cli->team < 0)
