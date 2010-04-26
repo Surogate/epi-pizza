@@ -6,6 +6,7 @@
 #include	<string.h>
 #include	<stdio.h>
 #include	<stdarg.h>
+#include	<stdlib.h>
 
 #include	"serveur/define.h"
 #include	"my_list.h"
@@ -28,7 +29,7 @@ char		*grp_do_incant(t_game *game, int id_player)
 
   ref.player_id = id_player;
   player = my_l_find(game->player, &ref, find_player);
-  return (pic(NULL, player);
+  return (pic(NULL, player));
 }
 
 char		*grp_incant_done(t_player *player, int res)
@@ -70,5 +71,5 @@ char		*grp_expulse(t_player *player)
 
 char		*grp_broad(t_player *player, char *broad)
 {
-  return (pbc(msg, player, broad);
+  return (pbc(NULL, player, broad));
 }

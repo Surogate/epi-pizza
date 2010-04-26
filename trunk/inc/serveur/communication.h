@@ -37,7 +37,7 @@ char		*suc(char *msg);
 char		*sbp(char *msg);
 
 /*grp_action*/
-char		*grp_do_incant(t_player *player);
+char		*grp_do_incant(t_game *game, int id_player);
 char		*grp_incant_done(t_player *player, int res);
 char		*grp_expulse(t_player *player);
 char		*grp_broad(t_player *player, char *broad);
