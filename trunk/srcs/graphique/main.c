@@ -139,6 +139,7 @@ int		main(int ac, char *av[])
       initGL(&game);
       mainloop(&game);
       puts("end of program");
+      /* exit_func(&game); */
       SDL_Quit();
     }
   else

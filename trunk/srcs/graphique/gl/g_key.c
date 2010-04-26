@@ -46,7 +46,7 @@ int		key_func(t_game *game)
   else if (game->event.key.keysym.sym == SDLK_c)
     game->info.crazy++;
   else if (game->event.key.keysym.sym == SDLK_ESCAPE)
-    return (0);
+    return (exit_func(game));
   game->info.crazy %= 2;
   game->map.rot %= 360;
   if (game->map.z < 100)
@@ -62,6 +62,31 @@ int		key_func(t_game *game)
 */
 int		exit_func(t_game *game)
 {
+  t_player	*player;
+  t_team	*team;
+  t_egg		*egg;
+
+  printf("free party!\n");
+  while (game->player)
+    {
+      player = game->player->next_pg;
+      free(game->player);
+      game->player = player;
+    }
+  while (game->team)
+    {
+      team = game->team->next;
+      free(game->team);
+      game->team = team;
+    }
+  while (game->egg)
+    {
+      egg = game->egg->next;
+      free(game->egg);
+      game->egg = egg;
+    }
+  SDL_FreeSurface(game->screen);
+  free(game->serv.cbuf);
   close(game->serv.socket);
   return (0);
 }
