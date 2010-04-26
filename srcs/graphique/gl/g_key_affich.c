@@ -30,34 +30,20 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-
-int		key_w(t_game *game)
+int		key_b(t_game *game)
 {
-  game->info.pos.y += 10;
+  if (game->info.crazy == MOD_BONJOUR)
+    game->info.crazy = MOD_OK;
+  else
+    game->info.crazy = MOD_BONJOUR;
   return (1);
 }
 
-int		key_s(t_game *game)
+int		key_faq(t_game *game)
 {
-  game->info.pos.y -= 10;
-  return (1);
-}
-
-int		key_a(t_game *game)
-{
-  game->info.pos.x -= 10;
-  return (1);
-}
-
-int		key_d(t_game *game)
-{
-  game->info.pos.x += 10;
-  return (1);
-}
-
-int		key_space(t_game *game)
-{
-  game->info.pos.x = 0;
-  game->info.pos.y = 0;
+  if (game->info.crazy == MOD_FAQ)
+    game->info.crazy = MOD_OK;
+  else
+    game->info.crazy = MOD_FAQ;
   return (1);
 }

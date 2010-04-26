@@ -18,8 +18,12 @@ int		key_right(t_game *game);
 int		key_left(t_game *game);
 int		key_d(t_game *game);
 int		key_a(t_game *game);
+int		key_b(t_game *game);
 int		key_s(t_game *game);
 int		key_w(t_game *game);
+int		key_c(t_game *game);
+int		key_faq(t_game *game);
+int		key_space(t_game *game);
 
 /*random func*/
 void		init_buff(char *buff, int size);
