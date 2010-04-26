@@ -38,7 +38,7 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
       --(cbuf->use);
     }
   if ((cbuf->cons + cbuf->use) < CBUFSIZ)
-    strncpy(result, cbuf->buf + cbuf->cons, cbub->use);
+    strncpy(result, cbuf->buf + cbuf->cons, cbuf->use);
   else
     {
       strncpy(result, cbuf->buf + cbuf->cons, CBUFSIZ - cbuf->cons);
