@@ -124,4 +124,5 @@ void		initGL(t_game *game)
   make_calllistes_picking(PSELECT, game->texture->select);
   make_calllistes_interface(game);
   make_calllistes_terrain(game);
+  make_calllistes_ressources(game);
 }

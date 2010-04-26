@@ -56,18 +56,18 @@ void		mainloop(t_game *game)
   int		i;
 
   exit = 1;
-  SDL_EnableKeyRepeat(100, 20);
   i = 0;
+  SDL_EnableKeyRepeat(100, 20);
   while (exit)
   {
     search_msg(game);
-    exit = interaction(game);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     camera(game);
     draw_interface(game);
     draw_gl(game, GL_RENDER);
     glFlush();
-    SDL_GL_SwapBuffers();
+    SDL_GL_SwapBuffers(); 
+    exit = interaction(game);
   }
 }
 
