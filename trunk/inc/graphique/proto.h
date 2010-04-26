@@ -11,6 +11,16 @@
 #ifndef		__PROTO_H__
 # define	__PROTO_H__
 
+/*key func*/
+int		key_down(t_game *game);
+int		key_up(t_game *game);
+int		key_right(t_game *game);
+int		key_left(t_game *game);
+int		key_d(t_game *game);
+int		key_a(t_game *game);
+int		key_s(t_game *game);
+int		key_w(t_game *game);
+
 /*random func*/
 void		init_buff(char *buff, int size);
 int		check_next_end(char *str);
