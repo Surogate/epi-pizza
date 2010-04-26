@@ -8,6 +8,7 @@
 ** Last update Sat Apr 24 05:49:10 2010 Florian Chanioux
 */
 
+#include	<sys/time.h>
 #include	<unistd.h>
 #include	<stdlib.h>
 #include	<stdio.h>
@@ -15,7 +16,13 @@
 
 #include	"serveur/define.h"
 #include	"xfunc.h"
+#include	"s_cbuf.h"
+#include	"cbuf_define.h"
+#include	"cbuf_io.h"
+#include	"s_vector.h"
 #include	"my_list.h"
+#include	"serveur/t_packet.h"
+#include	"serveur/t_svr_stc.h"
 #include	"serveur/t_struct.h"
 
 static t_map	*find_case(t_game *game)
@@ -31,7 +38,7 @@ static t_map	*find_case(t_game *game)
   return (&(game->map[y][x]));
 }
 
-void		generate_ress(t_game *game)
+void		generate_ress(t_game *game, t_svr_vector *vec)
 {
   int		nb_ress_total;
   int		nb_ress[RESS_NUM] = {NB_RESS};
@@ -47,6 +54,7 @@ void		generate_ress(t_game *game)
     {
       cur_case = find_case(game);
       cur_case->cas.ress[i]++;
+      gh_broad(vec, bct(NULL, cur_case));
       nb_ress[i]--;
       if (nb_ress[i] == 0)
 	i++;

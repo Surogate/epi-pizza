@@ -26,7 +26,6 @@
 #include "serveur/t_svr_stc.h"
 #include "serveur/client_fct.h"
 #include "serveur/server_kick.h"
-#include "serveur/instruction.h"
 #include "serveur/server_action.h"
 #include "serveur/server_eat.h"
 #include "serveur/server_plaction.h"
@@ -34,6 +33,7 @@
 #include "serveur/server_graph.h"
 #include "serveur/communication.h"
 #include "serveur/server_debug.h"
+#include "serveur/instruction.h"
 
 int		check_read(char *str)
 {
@@ -57,7 +57,7 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	{
 	  delete_kick(vec, cli->sock);
 	  ++(cli->auth);
-	  cli->team = authent(game, cli->packet + cli->cons);
+	  cli->team = authent(game, cli->packet + cli->cons, vec);
 	  if (!cli->team)
 	    create_kick(vec, cli->sock, 3);
 	  else if (cli->team == 1)

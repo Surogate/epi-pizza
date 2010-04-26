@@ -8,11 +8,19 @@
 ** Last update Sat Apr 24 05:49:08 2010 Florian Chanioux
 */
 
+#include	<sys/time.h>
 #include	<sys/types.h>
 #include	<string.h>
 #include	<stdlib.h>
 
 #include	"my_list.h"
+#include	"s_cbuf.h"
+#include	"cbuf_define.h"
+#include	"cbuf_io.h"
+#include	"s_vector.h"
+#include	"my_list.h"
+#include	"serveur/t_packet.h"
+#include	"serveur/t_svr_stc.h"
 #include	"serveur/define.h"
 #include	"serveur/t_struct.h"
 #include	"serveur/t_game_stc.h"
