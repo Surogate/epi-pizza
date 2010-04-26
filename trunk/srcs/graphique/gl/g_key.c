@@ -108,7 +108,6 @@ int		exit_func(t_game *game)
       free(game->egg);
       game->egg = egg;
     }
-  SDL_FreeSurface(game->screen);
   free(game->serv.cbuf);
   close(game->serv.socket);
   return (0);
