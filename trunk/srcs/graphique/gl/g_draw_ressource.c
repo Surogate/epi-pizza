@@ -52,10 +52,14 @@ void		draw_ressource(t_game *game, GLenum mode)
 	  ress = -1;
 	  while (++ress != NBRESS)
 	    {
-	      glPushMatrix();
-	      glTranslated(x * CASE_W, y * CASE_H, 0);
-	      draw_treasure(game->map.t_case[x][y], mode, ress);
-        glPopMatrix();
+	     /*  printf("BOUFFE : [%d]\n", game->map.t_case[y][x].obj[0][2]); */
+	      if (game->map.t_case[y][x].obj[ress][2])
+		{
+		  glPushMatrix();
+		  glTranslated(x * CASE_W, y * CASE_H, 0);
+		  draw_treasure(game->map.t_case[x][y], mode, ress);
+		  glPopMatrix();
+		}
 	    }
 	}
     }
