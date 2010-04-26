@@ -83,29 +83,45 @@ int		mouse_up(t_game *game)
   return (1);
 }
 
-int		mouse_down(t_game *game)
+void		left_click(t_game *game)
+{
+  game->mouse.clicked = 1;
+  game->mouse.move.x = game->event.button.x;
+  game->mouse.move.y = game->event.button.y;
+}
+
+void		right_click(t_game *game)
 {
   int temp;
 
-  if (game->event.button.button == SDL_BUTTON_LEFT)
-  {
-    game->mouse.clicked = 1;
-    game->mouse.move.x = game->event.button.x;
-    game->mouse.move.y = game->event.button.y;
-  }
-  else if (game->event.button.button == SDL_BUTTON_RIGHT &&
-           game->info.crazy == 1)
-  {
-    temp = game->map.select_c;
-    picking_mouse(game, game->event.button.x, game->event.button.y);
-    if (game->map.select_c > game->map.h * game->map.w)
+  temp = game->map.select_c;
+  picking_mouse(game, game->event.button.x, game->event.button.y);
+  if (game->map.select_c > game->map.h * game->map.w)
     {
       game->map.select_p_o = game->map.select_p;
       game->map.select_p = game->map.select_c;
       game->map.select_c = temp;
     }
-    else
-      game->map.select_c_o = game->map.select_c;
-  }
+  else
+    game->map.select_c_o = game->map.select_c;
+}
+
+int		mouse_down(t_game *game)
+{
+  if (game->event.button.button == SDL_BUTTON_LEFT)
+    left_click(game);
+  else if (game->event.button.button == SDL_BUTTON_RIGHT &&
+           game->info.crazy == 1)
+    right_click(game);
+  else if (game->event.button.button == SDL_BUTTON_WHEELDOWN)
+    {
+      if (game->video.cam[3] > 100)
+	game->video.cam[3] -= 5;
+     }
+  else if (game->event.button.button == SDL_BUTTON_WHEELUP)
+    {
+      if (game->video.cam[3] < 250)
+	game->video.cam[3] += 5;
+     }
   return (1);
 }
