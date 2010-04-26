@@ -17,9 +17,8 @@ char		*grp_get_object(t_player *player, int obj)
 {
   char		*msg;
 
-  msg = xmalloc(2 * sizeof(char));
-  msg = pgt(msg, player, obj);
-  msg = pin(msg, player);  
+  msg = pgt(NULL, player, obj);
+  msg = pin(msg, player);
   msg = bct(msg, player->pos);
   return (msg);
 }
@@ -28,8 +27,7 @@ char		*grp_drop_object(t_player *player, int obj)
 {
   char		*msg;
 
-  msg = xmalloc(2 * sizeof(char));
-  msg = pdr(msg, player, obj);
+  msg = pdr(NULL, player, obj);
   msg = pin(msg, player);  
   msg = bct(msg, player->pos);
   return (msg);

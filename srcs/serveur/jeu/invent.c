@@ -52,7 +52,7 @@ void		try_drop_obj(t_packet *packet, t_player *player)
 	  player->ress[num_ress]--;
 	  player->pos->cas.ress[num_ress]++;
 	  snprintf(packet->response->mess, LEN_OK, "%s\n", OK);
-	  packet->graph_rep = grp_get_object(player, num_ress);
+	  packet->graph_rep = grp_drop_object(player, num_ress);
 	}
     }
   else
@@ -81,7 +81,7 @@ void		try_take_obj(t_packet *packet, t_player *player)
 	  snprintf(packet->response->mess, LEN_OK, "%s\n", OK);
 	  player->ress[num_ress]++;
 	  player->pos->cas.ress[num_ress]--;
-	  packet->graph_rep = grp_drop_object(player, num_ress);
+	  packet->graph_rep = grp_get_object(player, num_ress);
 	}
     }
   else
