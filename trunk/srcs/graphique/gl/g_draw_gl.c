@@ -49,7 +49,7 @@ void		draw_gl(t_game *game, GLenum mode)
     draw_mob(game, mode);
   }
   else
-    crazy_mod();
+    crazy_mod(game);
   glPopMatrix();
   glPopMatrix();
   glPopMatrix();
