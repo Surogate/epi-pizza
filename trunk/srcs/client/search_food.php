@@ -1,8 +1,8 @@
 <?php
 function	search_food(&$player)
 {
-  $view = str_replace('{', $player['view']);
-  $view = str_replace('}', $view);
+  $view = str_replace('{', '', $player['view']);
+  $view = str_replace('}', '', $view);
   $view = explode(', ', $view);
 
   $i = 0;
