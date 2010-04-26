@@ -46,13 +46,6 @@ int interaction(t_game *game)
   if (SDL_PollEvent(&(game->event)))
   {
     i = -1;
-    if (game->event.type == SDL_BUTTON_WHEELDOWN)
-      {
-	puts(" autre test");
-	if (game->video.cam[3] > 26)
-	  game->video.cam[3] -= 5;
-      }
-
     while (event_type[++i].type)
       if (game->event.type == event_type[i].type)
         return (event_type[i].func(game));
