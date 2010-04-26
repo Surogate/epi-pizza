@@ -32,7 +32,7 @@
 void		draw_treasure(t_case cas, GLenum mode, int num)
 {
   glPushMatrix();
-  glTranslated(0, 0, 0.5);
+  glTranslated(cas.obj[num][0], cas.obj[num][1], 0.5);
   glCallList(RESS + num);
   glPopMatrix();
 }
