@@ -34,14 +34,16 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
     }
   if (cbuf->buf[cbuf->cons] == END_CHAR)
     {
-      ++(cbuf->cons);
+      cbuf->cons = cbuf->cons % CBUFSIZ;
       --(cbuf->use);
     }
   if ((cbuf->cons + cbuf->use) < CBUFSIZ)
     strncpy(result, cbuf->buf + cbuf->cons, cbuf->use);
   else
     {
+      printf("CBUFSIZ - cbuf->cons\n", CBUFSIZ - cbuf->cons);
       strncpy(result, cbuf->buf + cbuf->cons, CBUFSIZ - cbuf->cons);
+      printf("(cbuf->cons + cbuf->use) % CBUFSIZ)\n", (cbuf->cons + cbuf->use) % CBUFSIZ));
       strncpy(result + CBUFSIZ - cbuf->cons, cbuf->buf, (cbuf->cons + cbuf->use) % CBUFSIZ);
     }
   if ((cmd = check_read(result)) > 0)
