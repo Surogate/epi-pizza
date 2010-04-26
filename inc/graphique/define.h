@@ -48,6 +48,11 @@ enum {YELLOW, BLUE, GREEN, PINK, PURPLE, RED, BLACK, WHITE, CYAN};
 # define	CAM_MAX		300
 # define	CAM_MIN		26
 
+# define	MOD_CRAZY	0
+# define	MOD_OK		1
+# define	MOD_FAQ		2
+# define	MOD_BEGIN	3
+
 #define 	RENDER		1
 #define 	SELECT		2
 #define 	BUFSIZE 	1024

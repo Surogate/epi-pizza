@@ -93,6 +93,8 @@ void		init_texture(t_game *game)
     game->texture->side = loadtexture("images/side.jpg");
     game->texture->floor_s = loadtexture("images/Circle.png");
     game->texture->select = loadtexture("images/select_pl.png");
+    game->texture->faq = loadtexture("images/faq.bmp");
+    game->texture->intro = loadtexture("images/totoro_intro.bmp");
   }
   else
     puts("TEXTURE OFF");

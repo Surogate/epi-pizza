@@ -118,6 +118,10 @@ void		initGL(t_game *game)
   glEnable(GL_DEPTH_TEST);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+}
+
+void		init_CallList(t_game *game)
+{
   make_calllistes_trantorien(game);
   make_calllistes_picking(TEAM, game->texture->team);
   make_calllistes_picking(PICKING, game->texture->floor_s);
