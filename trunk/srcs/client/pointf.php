@@ -20,7 +20,6 @@ function go_point2(&$player)
 	recv_out(&$player);
 	out_did(&$player);
 	find_prio(&$player);
-	while (1);
 }
 
 function go_point(&$player)

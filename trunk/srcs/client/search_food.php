@@ -9,7 +9,7 @@ function	search_food(&$player)
   
   $view = str_replace("{", "", $player['view']);
   $view = str_replace("}", "", $view);
-  $view = explode(',', $view);
+  $view = explode(', ', $view);
   
   echo "**************************************************************************\n";
   echo "wich view of food : |" . $view[0] . "\n" . $view[1] . "\n" . $view[2] . "\n" . $view[3] . "|\n";
@@ -27,15 +27,17 @@ function	search_food(&$player)
   while ((preg_match("/nourriture/i", $view[$i]) != 1) && ($view[$i] != NULL))
     $i++;
   if (preg_match("/nourriture/i", $view[$i]) == 1)
-	{
-		$player['reach'] = $i;
-		$player['objet'] = "nourriture\n";
-	}
+    {
+      echo "VALEUR DE I -> " . $i . "\n";
+      $player['reach'] = $i;
+      $player['objet'] = "nourriture\n";
+    }
   else
-	{
-		$player['reach'] = $i - 1;
-		$player['objet'] = NULL;
-	}
+    {
+      echo "VALEUR DE I -> " . $i . "\n";
+      $player['reach'] = $i - 1;
+      $player['objet'] = NULL;
+    }
   echo "--------------------------------------------------------------------------\n";
   echo "Food is on case: " . $player['reach'] . "\n";
   echo "--------------------------------------------------------------------------\n";
@@ -44,7 +46,6 @@ function	search_food(&$player)
     $i++;
   $nbr = array();
   $nbr = explode(" ", $inv[$i]);
-  $player['food'] = intval($nbr[1]);
   $player['food'] = intval($nbr[1]);
   
   echo "--------------------------------------------------------------------------\n";

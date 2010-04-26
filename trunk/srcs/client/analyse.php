@@ -67,7 +67,7 @@ function	to_search(&$player)
   while (preg_match("/" . $need . "/i", $view[$i]) == 0 && $view[$i] != NULL)
     $i++;
   echo "VALEUR DE I : " . $i . "\n";
-  if ($need != NULL)
+  if (preg_match("/" . $need . "/i", $view[$i]) == 1)
     {
       $player['reach'] = $i;
       $player['objet'] = $need;
@@ -75,7 +75,7 @@ function	to_search(&$player)
   else
     {
       $player['reach'] = $i - 1;
-      $player['objet'] = $need;
+      $player['objet'] = NULL;
     }
 }
 ?>
