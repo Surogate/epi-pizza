@@ -78,14 +78,11 @@ void		player_invent(t_game *game, char **av)
       if (player->id == atoi(av[1]))
 	{
 	  n_obj = 0;
-	  printf("assign\n");
 	  while (n_obj < 7)
 	    {
-	      printf("[%d]\n", atoi(av[4 + n_obj]));
 	      player->inventaire[n_obj] = atoi(av[4 + n_obj]);
 	      n_obj++;
 	    }
-	  printf("fin assign\n");
 	}
     }
 }
