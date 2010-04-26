@@ -55,7 +55,6 @@ int			create_plaction(t_svr_vector *vec, t_client *cli,
       action = vec->action;
       timeend(&(pak->end), &(slt->delay), pak->duration);
       action->insert_sort(action, pak, sort_duration);
-      llist_display(action, debug_packet);
     }
   else
     free_packet(cli);

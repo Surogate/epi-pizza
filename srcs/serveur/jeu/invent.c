@@ -66,14 +66,14 @@ void		try_take_obj(t_packet *packet, t_player *player)
 
   num_ress = 0;
   packet->response = xmalloc(sizeof(t_rep));
-  packet->response->mess = xmalloc(3 * sizeof(char));
+  packet->response->mess = xmalloc(4 * sizeof(char));
   packet->response->id_player = packet->player_id;
   if (packet->ac == 2)
     {
       name_res = packet->av[1];
-      while (num_ress != RESS_NUM && strcmp(name_res, msg_ress[num_ress]) != 0)
+      while ((num_ress != RESS_NUM) && (strcmp(name_res, msg_ress[num_ress]) != 0))
 	num_ress++;
-      if (num_ress == RESS_NUM || player->pos->cas.ress[num_ress] == 0)
+      if ((num_ress == RESS_NUM) || (player->pos->cas.ress[num_ress] == 0))
 	snprintf(packet->response->mess, LEN_OK, "%s\n", KO);
       else
 	{
