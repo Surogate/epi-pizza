@@ -293,8 +293,7 @@ LFLAGS_$(NAME_GR)	= -L$(DIR_LIB) $(LFLAGS_$(TAG)_$(NAME_GR))
 
 #########  COMPILE FLAGS
 
-CFLAGS			+= -g3 -W -Wall -ansi -pedantic $(DEFINE) $(IFLAGS)
-
+CFLAGS			+= -O3 -W -Wall -ansi -pedantic $(DEFINE) $(IFLAGS)
 
 ############### BINARIES ###############
 

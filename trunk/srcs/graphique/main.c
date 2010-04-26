@@ -127,20 +127,21 @@ int		main(int ac, char *av[])
   if (ac > 2)
     {
       connect_to_serv(&game, av);
+# ifdef __APPLE__
       glutInit(&ac, av);
+# endif
       init_video(&game);
       init_game(&game);
       game.map.h = -42;
       game.serv.cbuf = cbuf_new();
       tempo(&game);
-      /* test_init_player(&game); */
       printAttributes();
       init_texture(&game);
       init_3dsmodel(&game);
       initGL(&game);
-      SDL_EnableKeyRepeat(10, 10);
       mainloop(&game);
       puts("end of program");
+      
       SDL_Quit();
     }
   else

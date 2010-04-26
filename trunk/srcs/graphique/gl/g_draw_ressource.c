@@ -29,29 +29,20 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-void		draw_treasure(t_case cas, int ref, GLenum mode, int num)
+void		draw_treasure(t_case cas, GLenum mode, int num)
 {
   glPushMatrix();
-  glTranslated(cas.obj[num][0], cas.obj[num][1], -5);
-  glPushMatrix();
-  glTranslated(0, 0, .01);
-  glPopMatrix();
+  glTranslated(0, 0, 0.5);
   glCallList(RESS + num);
-
-  if (mode == GL_SELECT)
-    glPopName();
-
   glPopMatrix();
 }
 
 void		draw_ressource(t_game *game, GLenum mode)
 {
-  int		ref;
   int		x;
   int		y;
   int		ress;  
   
-  ref = game->map.h * game->map.w;
   x = -1;
   while (++x < game->map.h)
     {
@@ -63,7 +54,8 @@ void		draw_ressource(t_game *game, GLenum mode)
 	    {
 	      glPushMatrix();
 	      glTranslated(x * CASE_W, y * CASE_H, 0);
-	      draw_treasure(game->map.t_case[x][y], ref, mode, ress);
+	      draw_treasure(game->map.t_case[x][y], mode, ress);
+        glPopMatrix();
 	    }
 	}
     }
