@@ -13,13 +13,22 @@
 #include	"serveur/communication.h"
 #include	"xfunc.h"
 
-char		*grp_do_incant(t_player *player)
-{
-  char		*msg;
 
-  msg = xmalloc(2 * sizeof(char));
-  msg = pic(msg, player);
-  return (msg);
+static int	find_player(t_player *ref, t_player *data)
+{
+  if (data && (ref->player_id == data->player_id))
+    return (EXIT_SUCCESS);
+  return (EXIT_FAILURE);
+}
+
+char		*grp_do_incant(t_game *game, int id_player)
+{
+  t_player	*player;
+  t_player	ref;
+
+  ref.player_id = id_player;
+  player = my_l_find(game->player, &ref, find_player);
+  return (pic(NULL, player);
 }
 
 char		*grp_incant_done(t_player *player, int res)
@@ -28,8 +37,7 @@ char		*grp_incant_done(t_player *player, int res)
   t_list	*list;
   char		*msg;
 
-  msg = xmalloc(sizeof(char));
-  msg = pie(msg, player, res);
+  msg = pie(NULL, player, res);
   list = player->pos->cas.player;
   while (list->data != NULL)
     {
@@ -48,8 +56,7 @@ char		*grp_expulse(t_player *player)
   t_list	*list;
   char		*msg;
 
-  msg = xmalloc(sizeof(char));
-  msg = pex(msg, player);
+  msg = pex(NULL, player);
   list = player->pos->cas.player;
   while (list->data != NULL)
     {
@@ -63,9 +70,5 @@ char		*grp_expulse(t_player *player)
 
 char		*grp_broad(t_player *player, char *broad)
 {
-  char		*msg;
-  
-  msg = xmalloc(sizeof(char));
-  msg = pbc(msg, player, broad);
-  return (msg);
+  return (pbc(msg, player, broad);
 }
