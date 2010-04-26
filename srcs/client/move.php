@@ -59,20 +59,26 @@ function pos_max($lvl)
 function get_there(&$player)
 {
 	$move = array();
+	echo "**************************************************************************\n";
+	echo "Move : " . $player['reach'] . "\n";
+	echo "**************************************************************************\n";
 	init_move(&$move, $player['reach']);
-	
-	if ($case_num != 0)
+	echo "Checkpoint0\n";
+	if ($move['case_n'] != 0)
 	{
+		echo "Checkpoint1\n";
 		$end = 0;
 		$niv = 1;
 		while (($niv <= $player['level']) && ($end != 1))
 		{
+			echo "Checkpoint2\n";
 			$pos = pos_max($niv);
 			if (($player['reach'] >= ($pos - $niv)) && (($player['reach']) <= $pos + $niv))
 				$end = coord(&$move, $pos, &$player, $niv);
 			else
 				$niv++;
 		}
+		echo "Checkpoint3\n";
 	}
 	else
 		return (0);

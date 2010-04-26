@@ -1,40 +1,53 @@
 <?php
 
+require_once 'recv_stack.php';
+require_once 'fifo.php';
+require_once 'did.php';
+require_once 'client_prio.php';
 require_once 'move.php';
 require_once 'analyse.php';
 
-function analyse(&$player)
+function go_point2(&$player)
 {
-	to_search(&$player);
-	get_there(&$player);
-	/*fifo_in(&$player, "prend " . $player['objet'] . "\n");*/
-	fifo_in(&$player, "inventaire\n");
-}
-
-function what_seek(&$player)
-{
-	analyse(&$player);
+	echo "**************************************************************************\n";
+	echo "GO POINT_2\n";
+	echo "**************************************************************************\n";
+	if ($player['last_receive'][0] == "ko\n")
+		{
+			echo "to reach: " . $player['reach'] . "\nobjet: " . $player['objet'] . "\nview: " . $player['view'];
+			/*while (1);*/
+		}
+	recv_out(&$player);
+	out_did(&$player);
+	call_func($player['next_func'], &$player);
+	while (1);
 }
 
 function go_point(&$player)
 {
-	echo "Nombre de commandes: " . $player['nb_cmd'] . "\n";
-	echo "did[0]: " . $player['did'][0];
+	echo "**************************************************************************\n";
+	echo "GO POINT : did[0]|" . $player['did'][0]. "|\n";
+	echo "**************************************************************************\n";
 	if (strcasecmp($player['did'][0], "voir\n") == 0)
 		{
 			$player['view'] = $player['last_receive'][0];
 			recv_out(&$player);
+			out_did(&$player);
 		}
 	else if (strcasecmp($player['did'][0], "inventaire\n") == 0)
 		{
 			$player['inv'] = $player['last_receive'][0];
-			echo $player['last_receive'][0];
-			sleep(3);
 			recv_out(&$player);
+			out_did(&$player);
 		}
 	if (($player['view'] != NULL) && ($player['inv'] != NULL))
-		routine(&$player);
-	out_did(&$player);
+		{
+			echo "**************************************************************************\n";
+			echo "GO CALL FUNC\n";
+			echo "**************************************************************************\n";
+			call_func($player['next_func'], &$player);
+		}
+	/*out_did(&$player);*/
 }
 
 ?>

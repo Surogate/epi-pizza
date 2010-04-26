@@ -4,6 +4,8 @@ function init_player($sock, $name)
 {
 	$player = array();
 	
+	$player['CFbroad'] = 0;
+	$player['broad'] = NULL;
 	$player['food'] = 10;	
 	$player['go_next_lvl'] = 0;
 	$player['ans'] = array();
@@ -19,7 +21,7 @@ function init_player($sock, $name)
 	$player['socket'] = $sock;
 	$player['team_name'] = $name;
 	$player['view'] = NULL;
-	
+	$player['next_func'] = 0;
 	return ($player);
 }
 
