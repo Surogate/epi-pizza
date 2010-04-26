@@ -27,7 +27,7 @@ char		*grp_fork_end(t_player *player, t_eggs *egg)
   char		*msg;
 
   msg = xmalloc(2 * sizeof(char));
-  msg = enw(msg, player, egg);
+  msg = enw(msg, player->player_id, egg);
   return (msg);
 }
 
