@@ -63,19 +63,19 @@ int		main(int ac, char *av[])
 # ifdef __APPLE__
       glutInit(&ac, av);
 # endif
-      init_video(&game);
       init_game(&game);
+      init_video(&game);
+      printAttributes();
       initGL(&game);
-
+      init_texture(&game);
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
       camera(&game);
-      init_texture(&game);
       draw_picture(&game, MOD_BEGIN);
-
+      glFlush();
+      SDL_GL_SwapBuffers(); 
       game.map.h = -42;
       game.serv.cbuf = cbuf_new();
       tempo(&game);
-      printAttributes();
       init_3dsmodel(&game);
       init_CallList(&game);
       mainloop(&game);

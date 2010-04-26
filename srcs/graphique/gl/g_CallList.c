@@ -105,12 +105,16 @@ void		make_calllistes_interface(t_game *game)
 void		make_calllistes_ressources(t_game *game)
 {
   int		i;
-  
+
   i = -1;
   while (++i < NBRESS)
   {
     printf("loading ressource : %i\n", i);
     glNewList(RESS + i, GL_COMPILE);
+    if (i == 0)
+      glTranslatef(0, 0, 1);
+    else
+      glTranslatef(0, 0, 0.5);
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_NORMALIZE);
     draw_mesh(game->model.ressource[i]);

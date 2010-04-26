@@ -66,7 +66,4 @@ void		draw_picture(t_game *game, int etat)
   glPopMatrix();
   glMatrixMode(GL_MODELVIEW);
   glEnable(GL_LIGHTING);
-
-  sleep(2);
-
 }
