@@ -37,7 +37,7 @@
 
 static int	find_player(int *player_id, t_player *pla)
 {
-  if (pla->player_id == *player_id)
+  if (pla && (pla->player_id == *player_id))
     return (EXIT_SUCCESS);
   return (EXIT_FAILURE);
 }
