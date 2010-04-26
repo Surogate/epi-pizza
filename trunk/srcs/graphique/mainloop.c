@@ -56,7 +56,7 @@ void		mainloop(t_game *game)
   int		i;
 
   exit = 1;
-  SDL_EnableKeyRepeat(10, 10);
+  SDL_EnableKeyRepeat(50, 10);
   i = 0;
   while (exit)
   {

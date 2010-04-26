@@ -29,15 +29,19 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-void		draw_picture(t_game *game, int etat)
+static void	choose_picture(t_game *game, int etat)
 {
   if (etat == MOD_FAQ)
     glBindTexture(GL_TEXTURE_2D, game->texture->faq);
   else if (etat == MOD_BEGIN)
     glBindTexture(GL_TEXTURE_2D, game->texture->intro);
   else if (etat == MOD_BONJOUR)
-    glBindTexture(GL_TEXTURE_2D, game->texture->bonjour);
-  
+    glBindTexture(GL_TEXTURE_2D, game->texture->bonjour);  
+}
+
+void		draw_picture(t_game *game, int etat)
+{
+  choose_picture(game, etat);
   glDisable(GL_LIGHTING);
   glMatrixMode(GL_PROJECTION);
   glPushMatrix();
@@ -45,7 +49,6 @@ void		draw_picture(t_game *game, int etat)
   glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
   glLoadIdentity();
-
   glEnable(GL_TEXTURE_2D);
   glBegin(GL_QUADS);
   glTexCoord2f(0, 0);
@@ -58,8 +61,6 @@ void		draw_picture(t_game *game, int etat)
   glVertex2f(-1, 1);
   glEnd();
   glDisable(GL_TEXTURE_2D);
-  
-  
   glPopMatrix();
   glMatrixMode(GL_PROJECTION);
   glPopMatrix();

@@ -66,12 +66,3 @@ void		draw_ressource(t_game *game, GLenum mode)
 	}
     }
 }
-	  
-/*glScalef(mesh->scale[0], mesh->scale[1], mesh->scale[2]);*/
-
-/*
-  glPushMatrix();
-  glTranslated(y * CASE_H, x * CASE_W, 0);
-  glPopMatrix();
-*/
-

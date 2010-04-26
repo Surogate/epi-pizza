@@ -194,6 +194,7 @@ SRC_GR		= \
 		$(DIR_SRC_GR)gl/g_key_rotate.c		\
 		$(DIR_SRC_GR)message_func.c		\
 		$(DIR_SRC_GR)gl/g_key_move.c		\
+		$(DIR_SRC_GR)gl/g_key_affich.c		\
 		$(DIR_SRC_GR)connect.c
 
 SRC_GR_Darwin	= \
