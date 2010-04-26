@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Thu Apr 15 15:39:16 2010 francois1 ancel
-** Last update Sat Apr 24 05:49:10 2010 Florian Chanioux
+** Last update Mon Apr 26 10:55:36 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
@@ -75,7 +75,8 @@ int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
   id = pak->player_id;
   if (id > 0)
     {
-      pos = vec->client->find_pos(vec->client, &(pak->player_id), player_id_find);
+      pos = vec->client->find_pos(vec->client, &(pak->player_id), 
+				  player_id_find);
       if (pos >= 0)
 	{
 	  sock_write(id, "You have been kicked\n");

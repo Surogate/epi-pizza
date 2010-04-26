@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Sat Apr 24 02:51:07 2010 Florian Chanioux
-** Last update Sun Apr 25 02:03:31 2010 Florian Chanioux
+** Last update Mon Apr 26 09:56:10 2010 pierre1 boutbel
 */
 
 #include	<stdio.h>
@@ -35,7 +35,7 @@ void		make_calllistes_picking(int name, GLuint texture)
   glEnable(GL_TEXTURE_2D);
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-  glTranslatef(-CASE_H / 2, -CASE_W /2, 0);
+  glTranslatef(-CASE_H / 2, -CASE_W / 2, 0);
   glBindTexture(GL_TEXTURE_2D, texture);
   glBegin(GL_QUADS);
   glTexCoord2f(0, 0);

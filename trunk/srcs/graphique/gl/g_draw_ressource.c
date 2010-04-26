@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Tue Apr 20 12:41:25 2010 Florian Chanioux
-** Last update Sat Apr 24 04:53:57 2010 Florian Chanioux
+** Last update Mon Apr 26 09:58:48 2010 pierre1 boutbel
 */
 
 #include	<stdio.h>
@@ -31,21 +31,10 @@
 
 void		draw_treasure(t_case cas, int ref, GLenum mode, int num)
 {
-
-  /*
-  glPushMatrix();
-  glTranslated(player->pos.x * CASE_W, player->pos.y * CASE_H, 0);
-  */
-
   glPushMatrix();
   glTranslated(cas.obj[num][0], cas.obj[num][1], -5);
   glPushMatrix();
   glTranslated(0, 0, .01);
-
-  /* Je sais pas trop a quoi ca sert, ca pourrait etre utile ? 
-  glCallList(TEAM);
-  */
-
   glPopMatrix();
   glCallList(RESS + num);
 
@@ -70,23 +59,17 @@ void		draw_ressource(t_game *game, GLenum mode)
       while (++y < game->map.w)
 	{ 
 	  ress = -1;
-	  
 	  while (++ress != NBRESS)
 	    {
 	      glPushMatrix();
 	      glTranslated(x * CASE_W, y * CASE_H, 0);
-	  
-	  /*glScalef(mesh->scale[0], mesh->scale[1], mesh->scale[2]);*/
-	      
 	      draw_treasure(game->map.t_case[x][y], ref, mode, ress);
 	    }
 	}
     }
 }
-
-
-
-
+	  
+/*glScalef(mesh->scale[0], mesh->scale[1], mesh->scale[2]);*/
 
 /*
   glPushMatrix();

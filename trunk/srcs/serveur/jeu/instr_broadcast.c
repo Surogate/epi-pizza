@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 ** 
 ** Started on  Fri Apr  9 14:51:20 2010 Florian Chanioux
-** Last update Sat Apr 24 05:49:08 2010 Florian Chanioux
+** Last update Mon Apr 26 10:53:46 2010 pierre1 boutbel
 */
 
 #include <sys/time.h>
@@ -72,16 +72,13 @@ void		broadcast(t_packet *packet, t_player *player, t_game *game)
     {
       pl = (t_player *)temp->data;
       if (pl->player_id != player->player_id)
-	{
-	  msg_broad(pl, packet->av, packet->response + i);
-
-	}
+	msg_broad(pl, packet->av, packet->response + i);
       else
-	{
-	  packet->response[i].id_player = pl->player_id;
-	  packet->response[i].mess = xmalloc(5 * sizeof(char));
-	  snprintf(packet->response[i].mess, 5, "ok\n");
-	}
+        {
+          packet->response[i].id_player = pl->player_id;
+          packet->response[i].mess = xmalloc(5 * sizeof(char));
+          snprintf(packet->response[i].mess, 5, "ok\n");
+        }
       temp = temp->next;
     }
   reset_pathfinding(game);

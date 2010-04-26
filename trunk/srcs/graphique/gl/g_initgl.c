@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Fri Apr 16 18:32:28 2010 Florian Chanioux
-** Last update Sat Apr 24 09:38:33 2010 Florian Chanioux
+** Last update Mon Apr 26 10:05:06 2010 pierre1 boutbel
 */
 
 #include	<stdio.h>
@@ -40,7 +40,7 @@ void		init_doublebuffer()
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, value);
 }
 
-static void		init_light(int light)
+static void	init_light(int light)
 {
   static float ambient[] = {0.2, 0.2, 0.2, 1.0};
   static float diffuse[] = {1.0, 1.0, 1.0, 1.0};
@@ -74,7 +74,7 @@ static void		init_light(int light)
     puts("LIGHT OFF");
 }
 
-static void		init_fog(int fog, GLint fogmode)
+static void	init_fog(int fog, GLint fogmode)
 {
   static float		fog_color[4] = {0.0, 0.5, 0.9, 1.0};
 
@@ -82,18 +82,18 @@ static void		init_fog(int fog, GLint fogmode)
   {
     puts("FOG ON");
     glEnable(GL_FOG);
-    glFogi (GL_FOG_MODE, fogmode) ;
-    glFogfv(GL_FOG_COLOR, fog_color) ;
-    glFogf(GL_FOG_DENSITY, 0.3) ;
-    glFogf(GL_FOG_START, 400.0) ;
-    glFogf(GL_FOG_END, 500.0) ;
+    glFogi (GL_FOG_MODE, fogmode);
+    glFogfv(GL_FOG_COLOR, fog_color);
+    glFogf(GL_FOG_DENSITY, 0.3);
+    glFogf(GL_FOG_START, 400.0);
+    glFogf(GL_FOG_END, 500.0);
     glClearColor(0.0, 0.5, 0.9, 1.0);
   }
   else
     puts("FOG OFF");
 }
 
-static void		init_aliasing(int aliasing)
+static void	init_aliasing(int aliasing)
 {
   if (aliasing == 1)
   {
@@ -107,7 +107,7 @@ static void		init_aliasing(int aliasing)
   }
 }
 
-void initGL(t_game *game)
+void		initGL(t_game *game)
 {
   init_doublebuffer();
   init_aliasing(game->video.aliasing);

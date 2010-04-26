@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Fri Apr 16 09:15:22 2010 francois1 ancel
-** Last update Sat Apr 24 05:49:11 2010 Florian Chanioux
+** Last update Mon Apr 26 10:58:35 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
@@ -32,19 +32,23 @@ void		debug_packet(t_packet *pak, char *str)
     fprintf (debug, "========\n");
   if (pak)
     {
-      fprintf(debug, "player id : %i\nplayer : %p\ntype : %i\nac : %i\n", pak->player_id, pak->player, pak->type, pak->ac);
-      for(i = 0; i < pak->ac; i++)
+      fprintf(debug, "player id : %i\nplayer : %p\ntype : %i\nac : %i\n", 
+	      pak->player_id, pak->player, pak->type, pak->ac);
+      for (i = 0; i < pak->ac; i++)
 	fprintf(debug, "pak->av[%i] = %s\n", i, pak->av[i]);
-      fprintf(debug, "duration : %i\nend.sec %i\nend.usec %i\nac_rep %i\n", pak->duration, (int)pak->end.tv_sec, (int)pak->end.tv_usec, pak->ac_rep);
-      for(i = 0; i < pak->ac_rep; i++)
-	fprintf(debug, "rep %i\nto : %i\nstr : %s\n", i, pak->response[i].id_player, pak->response[i].mess);
+      fprintf(debug, "duration : %i\nend.sec %i\nend.usec %i\nac_rep %i\n", 
+	      pak->duration, (int)pak->end.tv_sec, (int)pak->end.tv_usec, 
+	      pak->ac_rep);
+      for (i = 0; i < pak->ac_rep; i++)
+	fprintf(debug, "rep %i\nto : %i\nstr : %s\n", i, 
+		pak->response[i].id_player, pak->response[i].mess);
       if (pak->graph_rep)
 	fprintf(debug, "graph_rep : %s", pak->graph_rep);
     }
   else
     fprintf(debug, "pak non alloue\n");
   fprintf(debug, "########\n");
-fclose(debug);
+  fclose(debug);
 }
 
 void		debug_client(t_client *cli, char *str)
@@ -61,9 +65,9 @@ void		debug_client(t_client *cli, char *str)
     fprintf (debug, "*******\n");
   if (cli)
     {
-      fprintf(debug, "sock : %i\nteam : %i\nauth : %i\nused : %i\ncons : %i\n", 
+      fprintf(debug, "sock : %i\nteam : %i\nauth : %i\nused : %i\ncons : %i\n",
 	      cli->sock, cli->team, cli->auth, cli->used, cli->cons);
-      for(i = 0; i < cli->used; i++)
+      for (i = 0; i < cli->used; i++)
 	debug_packet(cli->packet + ((cli->cons + i) % 10), str);
     }
   else

@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Wed Apr 21 18:05:56 2010 Florian Chanioux
-** Last update Sat Apr 24 13:26:34 2010 Florian Chanioux
+** Last update Mon Apr 26 10:10:20 2010 pierre1 boutbel
 */
 
 #include	<stdio.h>
@@ -50,14 +50,15 @@ static void		show_info_val(t_player *player, char team)
   popwrite();
 }
 
-static void		show_info(t_game *game)
-{
+/*
   t_player *player;
-
   if (game->map.select_p > game->map.h * game->map.w)
   {
-      /*show_info_val(player);*/
+      show_info_val(player);
   }
+*/
+static void		show_info(t_game *game)
+{
 }
 
 void		draw_interface(t_game *game)

@@ -5,7 +5,7 @@
 ** Login   <chanio_f@epitech.net>
 **
 ** Started on  Wed Apr 14 14:50:42 2010 Florian Chanioux
-** Last update Sat Apr 24 04:51:38 2010 Florian Chanioux
+** Last update Mon Apr 26 10:05:45 2010 pierre1 boutbel
 */
 
 
@@ -39,7 +39,7 @@ t_event		event_type[]=
   {0,0}
 };
 
-int interaction(t_game *game)
+int		interaction(t_game *game)
 {
   int		i;
 
@@ -50,5 +50,5 @@ int interaction(t_game *game)
       if (game->event.type == event_type[i].type)
         return (event_type[i].func(game));
   }
-  return(1);
+  return (1);
 }

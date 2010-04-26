@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Mon Apr 12 11:24:31 2010 francois1 ancel
-** Last update Sat Apr 24 05:49:10 2010 Florian Chanioux
+** Last update Mon Apr 26 10:55:58 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
@@ -102,7 +102,8 @@ void			init_timeout(t_svr_vector *vec, t_select *slt)
 	timeminus(&(slt->timeout), &(pak->end), &ac_time);
     }
   if (slt->time)
-    printf("timeout\n=> sec : %i\n=>usec : %i\n", (int)slt->time->tv_sec, (int)slt->time->tv_usec);
+    printf("timeout\n=> sec : %i\n=>usec : %i\n", (int)slt->time->tv_sec,
+	   (int)slt->time->tv_usec);
   else
     printf("timeout unlimited\n");
 }
