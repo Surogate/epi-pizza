@@ -47,7 +47,7 @@ char		*pnw(char *msg, t_player *player, t_game *game)
 
   count = -1;
   team = game->server.teamname;
-  while ((team != NULL) && (player->team != ++count))
+  while (team && (player->team != ++count))
     team = team->next;
   if (team != NULL)
     {

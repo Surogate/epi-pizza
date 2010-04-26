@@ -35,9 +35,9 @@
 #include "serveur/server_graph.h"
 #include "serveur/communication.h"
 
-int		find_player(int *player_id, t_player *pla)
+static int	find_player(int *ref, t_player *data)
 {
-  if (pla && (pla->player_id == *player_id))
+  if (*ref == data->player_id)
     return (EXIT_SUCCESS);
   return (EXIT_FAILURE);
 }
@@ -62,15 +62,15 @@ void		gh_broad(t_svr_vector *vec, char *str)
     sock_write(cli->sock, str);
 }
 
-void		gh_fct(t_svr_vector *vec, t_game *game, 
-		       int player_id, char *(*fct)())
+void		gh_fct(t_svr_vector *vec, t_game *game,
+		       int id_player, char *(*fct)())
 {
   char		*str;
   t_player	*pla;
 
-  pla = my_l_find(game->player, &player_id, find_player);
   str = NULL;
-  if (str && pla)
+  pla = (t_player *)my_l_find(game->player, &id_player, find_player);
+  if (pla)
     {
       str = fct(str, pla, game);
       printf("%s\n", str);
