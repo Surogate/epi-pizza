@@ -31,7 +31,6 @@ function	seek_needs($lvl, $tab_inv)
     $need = 'thystame';
   else
     $need = 'elevation';
-  echo $need . "\n";
 
   return $need;
 }
@@ -68,6 +67,7 @@ function	to_search(&$player)
   $i = 0;
   while (preg_match("/" . $need . "/i", $view[$i]) == 0 && $view[$i] != NULL)
     $i++;
-  $player['reach'] = $i; 
+  $player['reach'] = $i;
+  $player['objet'] = $need;
 }
 ?>

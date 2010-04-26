@@ -15,51 +15,50 @@ $pfunc = array(
     'check_inv'
 	       );
 
-function		check_inv($play_info)
+function		check_inv(&$player)
 {
-  echo "CHECK_INVENTORY\n";
-  return (0);
+	routine(&$player);
 }
 
 function		check_low_life($play_info)
 {
   echo "CHECK_LOW_LIFE\n";
-  if ($play_info[0] > 300)
+  if ($player['food'] > 10)
     return (1);
   else
     return (6);
 }
 
-function		check_stones($play_info)
+function		check_stones(&$player)
 {
-  $play_info[0] -= 1;
   echo "CHECK_STONES\n";
-  if ($play_info[1] == 1)
+  if ($player['go_next_lvl'] == 1)
     return (3);
   else
     return (2);
 }
 
-function		seek_stones($play_info)
+function		seek_stones(&$player)
 {
-  if (rand(0, 50) == 1)
-    $play_info[1] = 1;
-  $play_info[0] -= 7;
-  echo "SEEK_STONES\n";
-  return (11);
+	to_search(&$player);
+	get_there(&$player);
+	fifo_in(&$player, "prend " . $player['objet'] . "\n");
+	return (11);
 }
 
-function		listen_to_player($play_info)
+function		listen_to_player(&$player)
 {
+	/*Broadcaster
   $play_info[0] -= 7;
   echo "LISTEN_TO_PLAYER\n";
   if (1)
     return (8);
   else
     return (4);
+    * */
 }
 
-function		call_player($play_info)
+function		call_player(&$player)
 {
   echo "CALL_PLAYER\n";
   $play_info[0] -= 7;
@@ -69,25 +68,25 @@ function		call_player($play_info)
     return (11);
 }
 
-function		check_life($play_info)
+function		check_life(&$player)
 {
   echo "CHECK_LIFE\n";
-  if ($play_info[0] > 600)
+  if ($player['food'] > 20)
     return (11);
   else
     return (6);
 }
 
-function		seek_food($play_info)
+function		seek_food(&$player)
 {
-  $play_info[0] -= 7;
-  if (rand(0, 5) == 1)
-    $play_info[0] += 126;
+  search_food(&$player);	
+  get_there(&$player);
+  fifo_in(&$player, "prend " . $player['objet'] . "\n");
   echo "\033[31mSEEK_FOOD\033[m\n";
   return (5);
 }
 
-function		prepare_fork($play_info)
+function		prepare_fork(&$player)
 {
   echo "PREPARE_FORK\n";
   if ($play_info[0] > 200)
@@ -96,43 +95,38 @@ function		prepare_fork($play_info)
     return (6);
 }
 
-function		pl_fork($play_info)
+function		pl_fork(&$player)
 {
   $play_info[0] -= 42;
   echo "PL_FORK\n";
   return (11);
 }
 
-function		go_near_player($play_info)
+function		go_near_player(&$player)
 {
   $play_info[0] -= 7;
   echo "GO_NEAR_PLAYER\n";
   return (11);
 }
 
-function		wait_for_player($play_info)
+function		wait_for_player(&$player)
 {
   $play_info[0] -= 7;
   echo "WAIT_FOR_PLAYER\n";
   return (11);
 }
 
-function		call_func($pfunc)
+function		call_func($pfunc, &$player)
 {
   $cycle = 0;
-  $value = 11;
-  $play_info[0] = 1260;
-  $play_info[1] = 0;
+  $value = 0;
   do {
     $cycle++;
-    echo "Vie du joueur -> " . $play_info[0] . "\n";
-    $value = $pfunc[$value](&$play_info);
-    if ($play_info[0] <= 0)
+    echo "Vie du joueur -> " . $player['food'] . "\n";
+    $value = $pfunc[$value](&$player);
+    if ($player['food'] <= 0)
       break ;
   } while (1);
   echo "LE JOUEUR EST MORT au cycle -> " . $cycle . "\n";
 }
-
-call_func($pfunc);
-
 ?>
