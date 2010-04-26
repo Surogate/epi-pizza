@@ -13,12 +13,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "serveur/define.h"
 #include "my_list.h"
+#include "xfunc.h"
+#include "serveur/define.h"
 #include "serveur/t_struct.h"
 #include "serveur/t_packet.h"
 #include "serveur/server.h"
-#include "xfunc.h"
+#include "serveur/communication.h"
 
 void		test_pathfinding_map(t_game *game);
 

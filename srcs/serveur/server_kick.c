@@ -32,6 +32,8 @@
 #include "serveur/server_eat.h"
 #include "serveur/server_plaction.h"
 #include "serveur/server_debug.h"
+#include "serveur/server_graph.h"
+#include "serveur/communication.h"
 #include "serveur/time_fct.h"
 #include "serveur/server_insert_player.h"
 
@@ -70,7 +72,6 @@ int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
   int		pos;
   t_select	*slt_par;
   int		id;
-  char		*str;
 
   slt_par = vec->slt;
   id = pak->player_id;
@@ -80,8 +81,7 @@ int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
       if (pos >= 0)
 	{
 	  printf("player %i ass kicked\n", id);
-	  str = grp_player_die(game, id);
-	  gh_broad(vec, str);
+	  gh_broad(vec, grp_player_die(game, id));
 	  rm_player(game, id);
 	  delete_kick(vec, id);
 	  delete_eat(vec, id);
@@ -94,8 +94,7 @@ int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
     }
   else
     {
-      str = grp_egg_die(game, id);
-      gh_broad(vec, str);
+      gh_broad(vec, grp_egg_die(game, id));
       delete_kick(vec, id);
       delete_eat(vec, id);
       rm_player(game, id);

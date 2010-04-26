@@ -14,12 +14,13 @@
 #include	<string.h>
 #include	<stdio.h>
 
+#include	"xfunc.h"
 #include	"my_list.h"
 #include	"serveur/define.h"
 #include	"serveur/t_struct.h"
 #include	"serveur/t_packet.h"
 #include	"serveur/t_game_stc.h"
-#include	"xfunc.h"
+#include	"serveur/communication.h"
 
 static void	expulse_list_msg(t_packet *packet, t_player *player)
 {
