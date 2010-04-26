@@ -6,6 +6,7 @@
 #include	<string.h>
 #include	<stdio.h>
 #include	<stdarg.h>
+#include	<stdlib.h>
 
 #include	"serveur/define.h"
 #include	"my_list.h"
@@ -13,12 +14,21 @@
 #include	"serveur/communication.h"
 #include	"xfunc.h"
 
-char		*grp_fork(t_player *player)
+static int	find_player(t_player *ref, t_player *data)
 {
-  char		*msg;
+  if (data && (ref->player_id == data->player_id))
+    return (EXIT_SUCCESS);
+  return (EXIT_FAILURE);
+}
 
-  msg = pfk(NULL, player);
-  return (msg);
+char		*grp_fork(t_game *game, int id_player)
+{
+  t_player	*player;
+  t_player	ref;
+
+  ref.player_id = id_player;
+  player = my_l_find(game->player, &ref, find_player);
+  return (pfk(NULL, player));
 }
 
 char		*grp_fork_end(t_player *player, t_eggs *egg)
