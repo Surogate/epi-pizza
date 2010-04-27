@@ -11,6 +11,7 @@
 #ifndef			CLIENT_FCT_C_INCLUDED
 # define		CLIENT_FCT_C_INCLUDED
 
+int		fill_pak(t_packet *pak);
 t_client	*new_client(int s);
 int		add_client(t_svr_vector *vec, t_select *slt_par, int svr_sock);
 int		client_parse_instr(char *str, t_client *cli);

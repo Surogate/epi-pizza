@@ -55,7 +55,7 @@ char		*grp_egg_hatch(t_eggs *egg);
 char		*grp_egg_die(t_game *game, int id_egg);
 
 /*grp_ending*/
-char		*grp_player_die(t_game *game, int player_id);
+char		*grp_player_die(int player_id);
 char		*grp_party_end(int winner);
 
 /*grp_move*/

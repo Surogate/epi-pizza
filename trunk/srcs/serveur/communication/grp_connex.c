@@ -75,7 +75,7 @@ char		*grp_connex_zombie(t_game *game, t_player *player, t_eggs *egg)
   char		*msg;
 
   msg = NULL;
-  msg = ebo(msg, egg);
+  msg = ebo(msg, egg->id);
   msg = pnw(msg, player, game);
   return (msg);
 }

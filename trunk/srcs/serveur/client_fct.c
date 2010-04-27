@@ -29,6 +29,7 @@
 #include "serveur/server_kick.h"
 #include "serveur/instruction.h"
 #include "serveur/server_debug.h"
+#include "serveur/client_fct.h"
 
 t_client		*new_client(int s)
 {
@@ -128,7 +129,7 @@ int			client_parse_instr(char *str, t_client *cli)
     }
   else
     ++(cli->used);
-  return (fill_pak(pak, str, cli));
+  return (fill_pak(pak));
 }
 
 void			free_packet(t_client *cli)

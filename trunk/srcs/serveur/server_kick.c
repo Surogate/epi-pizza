@@ -80,7 +80,7 @@ static int	test_kick(t_svr_vector *vec, t_game *game, t_packet *pak,
   if (pos >= 0)
     {
       printf("player %i ass kicked\n", id);
-      gh_broad(vec, grp_player_die(game, pak->player_id));
+      gh_broad(vec, grp_player_die(pak->player_id));
       rm_player(game, id);
       supp_ress(game, vec);
       delete_kick(vec, id);
@@ -91,6 +91,7 @@ static int	test_kick(t_svr_vector *vec, t_game *game, t_packet *pak,
       return (EXIT_SUCCESS);
     }
   fprintf(stderr, "player %i unknow\n", pak->player_id);
+  return (EXIT_FAILURE);
 }
 
 int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)

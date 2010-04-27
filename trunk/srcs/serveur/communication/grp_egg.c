@@ -25,13 +25,6 @@
 #include	"serveur/communication.h"
 #include	"serveur/game_cmd.h"
 
-static int	find_player(t_player *ref, t_player *data)
-{
-  if (data && (ref->player_id == data->player_id))
-    return (EXIT_SUCCESS);
-  return (EXIT_FAILURE);
-}
-
 char		*grp_fork(int id_player)
 {
   t_player	ref;
@@ -61,5 +54,5 @@ char		*grp_egg_die(t_game *game, int id_egg)
   t_eggs	*egg;
 
   egg = my_l_find(game->eggs, &id_egg, find_egg);
-  return (edi(NULL, egg));  
+  return (edi(NULL, egg->id));  
 }
