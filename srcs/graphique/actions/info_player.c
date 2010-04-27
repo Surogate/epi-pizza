@@ -47,6 +47,8 @@ void		player_pos(t_game *game, char **av, int ac)
 	    {
 	      if (player->id == p_id)
 		{
+		  if (player->incant)
+		    player->incant = 0;
 		  player->pos.x = atoi(av[2]);
 		  player->pos.y = atoi(av[3]);
 		  player->sens = atoi(av[4]);
