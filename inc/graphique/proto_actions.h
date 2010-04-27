@@ -8,8 +8,8 @@
 /*action.c*/
 void		player_expulse(t_game *game, char **av);
 void		player_broadcast(t_game *game, char **av);
-void		incant(t_game *game, char **av);
-void		end_incant(t_game *game, char **av);
+void		incant(t_game *game, char **av, int ac);
+void		end_incant(t_game *game, char **av, int ac);
 void		player_fork(t_game *game, char **av);
 
 /*com_serveur.c*/
@@ -26,16 +26,16 @@ void		eggs_die(t_game *game, char **av, int ac);
 /*info_player.c*/
 void		change_player_pos(t_game *game, char **av, t_pos pos, 
 				  int p_id);
-void		player_pos(t_game *game, char **av);
-void		player_level(t_game *game, char **av);
-void		player_invent(t_game *game, char **av);
-void		player_die(t_game *game, char **av);
+void		player_pos(t_game *game, char **av, int ac);
+void		player_level(t_game *game, char **av, int ac);
+void		player_invent(t_game *game, char **av, int ac);
+void		player_die(t_game *game, char **av, int ac);
 
 /*init_info.c*/
-void		init_map(t_game *game, char **av);
-void		put_to_case(t_game *game, char **av);
+void		init_map(t_game *game, char **av, int ac);
+void		put_to_case(t_game *game, char **av, int ac);
 void		team_name(t_game *game, char **av);
-void		player_connect(t_game *game, char **av);
+void		player_connect(t_game *game, char **av, int ac);
 
 /*object.h*/
 void		drop_item(t_game *game, char **av);
