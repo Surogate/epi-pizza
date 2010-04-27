@@ -79,10 +79,10 @@ void		init_3dsmodel(t_game *game)
     }
   free(path);
   game->model.eggs = xmalloc(sizeof(obj_type));
-  game->model.eggs->scale[0] = (3.0f) + i;
-  game->model.eggs->scale[1] = (3.0f) + i;
-  game->model.eggs->scale[2] = (8.0f) + i;
-  game->model.eggs->id_texture = loadtexture("egg.bmp");
+  game->model.eggs->scale[0] = 3.0f;
+  game->model.eggs->scale[1] = 3.0f;
+  game->model.eggs->scale[2] = 8.0f;
+  game->model.eggs->id_texture = loadtexture("3DS/egg.bmp");
   Load3DS(game->model.eggs, "3DS/sphere.3ds");
   init_3dsmodel_ress(game);
 }

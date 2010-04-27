@@ -46,8 +46,8 @@ void		draw_gl(t_game *game, GLenum mode)
   if (game->info.crazy == MOD_OK)
   {
     draw_ressource(game, mode);
+    draw_eggs(game, mode);
     draw_mob(game, mode);
-    /*draw_eggs(game, mode);*/
   }
   else if (game->info.crazy == MOD_CRAZY)
     crazy_mod(game);
