@@ -4,7 +4,7 @@ function main_loop(&$player)
 	{
 		while (1)
 		{
-			$read   = array($player['socket']);
+		  $read   = array($player['socket']);
 			if ($player['send'][0] != NULL)
 				$write  = array($player['socket']);
 			else

@@ -39,7 +39,7 @@ function	prepare_inv($inv_base)
   $inv = $inv_base;
   $inv = str_replace('{', '', $inv);
   $inv = str_replace('}', '', $inv);
-  $inv = explode(", ", $inv);
+  $inv = explode(",", $inv);
 
   return ($inv);
 }
@@ -61,7 +61,7 @@ function	to_search(&$player)
   $view = $player['view'];
   $view = str_replace('{', '', $view);
   $view = str_replace('}', '', $view);
-  $view = explode(", ", $view);
+  $view = explode(",", $view);
   $i = 0;
   echo "REVALEUR DE VIEW ===||++++++++---> \n" . $player['view'] . "\n";
   while (preg_match("/" . $need . "/i", $view[$i]) == 0 && $view[$i] != NULL)

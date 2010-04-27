@@ -83,7 +83,6 @@ function		check_life(&$player) /*5*/
 {
   echo "CHECK_LIFE: food = " . $player['food'] . "\n";
   if ($player['food'] > 20)
-    while(1);/*return (11);*/
   else
 	{
 		routine(&$player);
