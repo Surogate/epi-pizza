@@ -56,15 +56,23 @@ void		incant(t_game *game, char **av, int ac)
   t_player	*player;
   int		i;
 
+  i = 0;
+  while (av[i])
+    {
+      printf("%s ", av[i]);
+      i++;
+    }
+  printf("\n");
   if (ac > 3)
     {
       i = 0;
       player = game->player;
-      while (player)
+      while (player && av[4 + i])
 	{
 	  if (player->id == atoi(av[4 + i]))
 	    {
 	      player->incant = 1;
+	      player = game->player;
 	      i++;
 	    }
 	  player = player->next_pg;

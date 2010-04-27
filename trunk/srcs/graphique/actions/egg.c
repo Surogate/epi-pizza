@@ -37,7 +37,6 @@ void		eggs_drop(t_game *game, char **av)
   t_player	*player;
   t_egg		*new;
   t_egg		*cur;
-  int		i;
 
   printf("Le joueur %i a termine de pondre l'oeuf %i\n",
 	 atoi(av[2]), atoi(av[1]));
@@ -53,9 +52,7 @@ void		eggs_drop(t_game *game, char **av)
     game->egg = new;
   new->id = atoi(av[1]);
   player = find_player(game, atoi(av[2]));
-  i = -1;
-  while (player->team)
-    new->team = player->team;
+  new->team = player->team;
   new->pos = player->pos;
   new->next = NULL;
 }
