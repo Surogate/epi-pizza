@@ -41,3 +41,13 @@ char		*grp_party_end(int winner)
 {
   return (seg(NULL, winner));  
 }
+
+char		*grp_connex_player(t_game *game, int player_id)
+{
+  t_player	ref;
+  t_player	*player;
+
+  ref.player_id = player_id;
+  player = my_l_find(game->player, &ref, find_player);
+  return (pnw(NULL, player, game));
+}
