@@ -16,6 +16,7 @@
 #include	<string.h>
 #include	<math.h>
 #include	<sys/select.h>
+#include	<time.h>
 
 #ifdef		__APPLE__
 # include	"SDL.h"
