@@ -5,7 +5,7 @@
 ** Login   <boutbe_a@epitech.net>
 **
 ** Started on  Wed Apr 14 13:19:43 2010 pierre1 boutbel
-** Last update Sat Apr 24 05:49:08 2010 Florian Chanioux
+** Last update Tue Apr 27 17:29:53 2010 pierre1 boutbel
 */
 
 #include	<sys/types.h>
@@ -72,7 +72,7 @@ void		try_take_obj(t_packet *packet, t_player *player)
   if (packet->ac == 2)
     {
       name_res = packet->av[1];
-      while ((num_ress != RESS_NUM) && (strcmp(name_res, msg_ress[num_ress]) != 0))
+      while ((num_ress != RESS_NUM) && (strcmp(name_res, msg_ress[num_ress])))
 	num_ress++;
       if ((num_ress == RESS_NUM) || (player->pos->cas.ress[num_ress] == 0))
 	snprintf(packet->response->mess, LEN_OK, "%s\n", KO);

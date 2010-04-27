@@ -5,7 +5,7 @@
 ## Login   <chanio_f@epitech.net>
 ##
 ## Started on  Thu Mar  4 18:50:14 2010 Florian Chanioux
-## Last update Sat Apr 24 13:23:40 2010 Florian Chanioux
+## Last update Tue Apr 27 17:43:03 2010 pierre1 boutbel
 ##
 
 STAG		= $(shell uname -s)
@@ -84,6 +84,7 @@ SRC_S		= \
 		$(DIR_SRC_S)communication/pfk_ex.c	\
 		$(DIR_SRC_S)communication/sx.c		\
 		$(DIR_SRC_S)client_fct.c		\
+		$(DIR_SRC_S)client_fct2.c		\
 		$(DIR_SRC_S)pars_main.c			\
 		$(DIR_SRC_S)pars_init_teams.c		\
 		$(DIR_SRC_S)pars_option.c		\
