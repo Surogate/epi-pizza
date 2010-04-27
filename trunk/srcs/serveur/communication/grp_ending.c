@@ -33,8 +33,7 @@ char		*grp_player_die(t_game *game, int player_id)
   t_player	ref;
 
   ref.player_id = player_id;
-  player = my_l_find(game->player, &ref, find_player);
-  return (pdi(NULL, player));
+  return (pdi(NULL, &ref));
 }
 
 char		*grp_party_end(int winner)
