@@ -24,10 +24,14 @@ void		draw_trantorien_epileptique(int nb)
   static int i = 0;
 
   i %= 360;
+  puts("coucou");
   glPushMatrix();
   glTranslated((CASE_H / 2), (CASE_W / 2), 0);
-  i *= nb;
-  glRotatef(i++, 0 ,0 ,1);
+  if (nb != 0)
+  {
+    i;
+    glRotatef(i++, 0 ,0 ,1);
+  }
   glCallList(TOTORO + random() % LVLMAX);
   glPopMatrix();
 }

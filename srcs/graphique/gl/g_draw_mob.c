@@ -58,9 +58,14 @@ void		draw_mob(t_game *game, GLenum mode)
   temp = game->player;
   while (temp)
     {
-      if (game->player->incant)
-        draw_trantorien_epileptique(0);
-      draw_trantorien(temp, ref, mode);
+      if (game->player->incant == 1)
+        {
+          puts("coucou");
+          glTranslated(game->player->pos.x * CASE_H, game->player->pos.y * CASE_W, 0);
+          draw_trantorien_epileptique(0);
+        }
+      else
+        draw_trantorien(temp, ref, mode);
       clic_mob(game, temp, ref);
       temp = temp->next_pg;
     }
