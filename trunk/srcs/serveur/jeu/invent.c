@@ -20,6 +20,7 @@
 #include	"serveur/t_game_stc.h"
 #include	"serveur/t_packet.h"
 #include	"xfunc.h"
+#include	"serveur/communication.h"
 
 static char	msg_ress[RESS_NUM][11] = {
   "nourriture",

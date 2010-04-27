@@ -102,6 +102,7 @@ int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
     test_kick(vec, game, pak, id);
   else
     {
+      gh_broad(vec, edi(NULL, id));
       delete_kick(vec, id);
       delete_eat(vec, id);
       rm_player(game, id);
