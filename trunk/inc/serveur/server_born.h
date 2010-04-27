@@ -11,7 +11,6 @@
 #ifndef SERVER_BORN_C_INCLUDED
 # define SERVER_BORN_C_INCLUDED
 
-int		player_born(t_game *game, int id_player, int team, 
-			    t_svr_vector *vec);
+int		player_born(t_game *game, int id_player, int team);
 
 #endif

@@ -14,6 +14,6 @@
 int		find_elem(t_packet *ref, t_player *test);
 void		treatment_intr(t_game *game, t_packet *packet);
 int		treatment_duration(t_packet *packet);
-int		authent(t_game *game, t_packet *packet, t_svr_vector *vec);
+int		authent(t_game *game, t_packet *packet);
 
 #endif
