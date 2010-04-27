@@ -57,6 +57,7 @@ t_key		key_list[]=
     {SDLK_d, key_d},
     {SDLK_b, key_b},
     {SDLK_F1, key_faq},
+    {SDLK_F2, key_legend},
     {SDLK_SPACE, key_space},
     {SDLK_ESCAPE, key_escape},
     {0,0}

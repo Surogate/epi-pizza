@@ -31,8 +31,12 @@
 
 static void	choose_picture(t_game *game, int etat)
 {
-  if (etat == MOD_FAQ)
+  if (etat == MOD_FAQ1)
     glBindTexture(GL_TEXTURE_2D, game->texture->faq);
+  else if (etat == MOD_FAQ2)
+    glBindTexture(GL_TEXTURE_2D, game->texture->faq2);
+  else if (etat == MOD_LEGEND)
+    glBindTexture(GL_TEXTURE_2D, game->texture->legend);
   else if (etat == MOD_BEGIN)
     glBindTexture(GL_TEXTURE_2D, game->texture->intro);
   else if (etat == MOD_BONJOUR)

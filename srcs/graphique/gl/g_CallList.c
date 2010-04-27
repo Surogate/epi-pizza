@@ -69,6 +69,16 @@ void		make_calllistes_trantorien(t_game *game)
     glEndList();
     printf("loading totoro: %i - done\n", i);
   }
+
+    printf("loading egg: %i\n", i);
+    glNewList(EGG + i, GL_COMPILE);
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_NORMALIZE);
+    draw_mesh(game->model.eggs);
+    glDisable(GL_NORMALIZE);
+    glDisable(GL_TEXTURE_2D);
+    glEndList();
+    printf("loading egg: %i - done\n", i);
 }
 
 void		make_calllistes_terrain(t_game *game)
