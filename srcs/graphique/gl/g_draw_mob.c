@@ -39,7 +39,7 @@ static void	draw_trantorien(t_player *player, int ref, GLenum mode)
   glTranslated(0, 0, .01);
   glCallList(TEAM);
   glPopMatrix();
-  glRotated((player->sens + 1) * -90, 0, 0, 1);
+  glRotated((player->sens + 3) * 90, 0, 0, 1);
   if (mode == GL_SELECT)
     glPushName(player->id + ref);
   glCallList(TOTORO + player->lv - 1);
