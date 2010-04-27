@@ -56,6 +56,7 @@ enum {YELLOW, BLUE, GREEN, PINK, PURPLE, RED, BLACK, WHITE, CYAN};
 # define	MOD_BONJOUR	40
 # define	MOD_LEGEND	50
 # define	MOD_FAQ2	60
+# define	MOD_ENDING	70
 
 # define 	RENDER		1
 # define 	SELECT		2

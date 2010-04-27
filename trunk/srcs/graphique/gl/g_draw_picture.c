@@ -40,7 +40,9 @@ static void	choose_picture(t_game *game, int etat)
   else if (etat == MOD_BEGIN)
     glBindTexture(GL_TEXTURE_2D, game->texture->intro);
   else if (etat == MOD_BONJOUR)
-    glBindTexture(GL_TEXTURE_2D, game->texture->bonjour);  
+    glBindTexture(GL_TEXTURE_2D, game->texture->bonjour);
+  else if (etat == MOD_ENDING)
+    glBindTexture(GL_TEXTURE_2D, game->texture->ending);
 }
 
 void		draw_picture(t_game *game, int etat)

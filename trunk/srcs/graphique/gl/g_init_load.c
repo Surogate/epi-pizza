@@ -92,6 +92,7 @@ void		init_texture(t_game *game)
   if (game->video.text)
   {
     puts("TEXTURE ON");
+    srandom(time(NULL));
     game->texture = xmalloc(sizeof(t_texture));
     game->texture->team = loadtexture("images/team-sphere.png");
     game->texture->inter_d = loadtexture("images/interface_down.png");
@@ -103,8 +104,12 @@ void		init_texture(t_game *game)
     game->texture->faq = loadtexture("images/faq.bmp");
     game->texture->faq2= loadtexture("images/faq2.jpg");
     game->texture->legend= loadtexture("images/legend.jpg");
-    game->texture->intro = loadtexture("images/totoro_intro.bmp");
     game->texture->bonjour = loadtexture("images/bnojour.jpg");
+    game->texture->ending = loadtexture("images/ending.jpg");
+    if (random() % 2)
+      game->texture->intro = loadtexture("images/totoro_intro1.jpg");
+    else
+      game->texture->intro = loadtexture("images/totoro_intro2.jpg");
   }
   else
     puts("TEXTURE OFF");

@@ -13,6 +13,6 @@
 
 void		generate_ress(t_game *game, t_svr_vector *vec);
 void		generate_food(t_game *game, t_svr_vector *vec);
-void		supp_ress(t_game *game, t_svr_vector *vec);
+void		supp_ress(t_game *game);
 
 #endif		/*SERVER_RESS_C_INCLUDED*/

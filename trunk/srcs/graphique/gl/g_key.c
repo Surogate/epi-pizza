@@ -32,6 +32,11 @@
 
 int		key_escape(t_game *game)
 {
+  game->info.crazy = MOD_ENDING;
+  draw_picture(game, game->info.crazy);
+  glFlush();
+  SDL_GL_SwapBuffers(); 
+  sleep(3);
   return (exit_func(game));
 }
 
@@ -81,10 +86,6 @@ int		key_func(t_game *game)
   return (retour);
 }
 
-/* Entre close et return
-   TTF_CloseFont(game->font);
-   TTF_Quit();
-*/
 int		exit_func(t_game *game)
 {
   t_player	*player;
