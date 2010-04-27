@@ -31,12 +31,22 @@
 
 static void	draw_trantorien(t_player *player, int ref, GLenum mode)
 {
+  float		test[4];
+
+  test[0] = 1.0;
+  test[1] = 0.0;
+  test[2] = 1.0;
+  test[3] = 0.5;
+
   glPushMatrix();
   glTranslated(player->pos.x * CASE_W, player->pos.y * CASE_H, 0);
   glPushMatrix();
   glTranslated((CASE_H / 2), (CASE_W / 2) , 0);
   glPushMatrix();
   glTranslated(0, 0, .01);
+
+  glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
+
   glCallList(TEAM);
   glPopMatrix();
   glRotated((player->sens + 3) * 90, 0, 0, 1);

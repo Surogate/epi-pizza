@@ -93,12 +93,12 @@ void		player_invent(t_game *game, char **av, int ac)
 {
   t_player	*player;
   int		n_obj;
-  
+
   if (ac > 9)
     {
-      if (player)
+      player = game->player;
+      if (player != NULL)
 	{
-	  player = game->player;
 	  while (player->next_pg && player->id != atoi(av[1]))
 	    player = player->next_pg;
 	  if (player->id == atoi(av[1]))
