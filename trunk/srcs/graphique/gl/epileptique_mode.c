@@ -28,10 +28,7 @@ void		draw_trantorien_epileptique(int nb)
   glPushMatrix();
   glTranslated((CASE_H / 2), (CASE_W / 2), 0);
   if (nb != 0)
-  {
-    i;
     glRotatef(i++, 0 ,0 ,1);
-  }
   glCallList(TOTORO + random() % LVLMAX);
   glPopMatrix();
 }

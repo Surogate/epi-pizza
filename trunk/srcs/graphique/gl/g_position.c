@@ -61,8 +61,7 @@ static int	processHits(GLint hits, GLuint buffer[])
   GLuint minZ;
   GLuint *ptr[2];
 
-  printf("nbr of hits= %i\n", hits);
-  ptr[1] == 0;
+  ptr[1] = 0;
   ptr[0] = (GLuint *)buffer;
   minZ = 0xffffffff;
   i = -1;

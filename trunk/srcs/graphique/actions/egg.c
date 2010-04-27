@@ -79,26 +79,26 @@ void		eggs_die(t_game *game, char **av, int ac)
   t_egg		*cur;
 
   if (ac > 1)
-    {
-      prec = 0;
-      cur = game->egg;
-      while (cur)
-	if (cur->id == atoi(av[1]))
-	  {
-	    if (prec)
-	      prec->next = cur->next;
-	    else
-	      game->egg = cur->next;
-	    prec = cur->next;
-	    free(cur);
-	    cur = prec;
-	    prec = 0;
-	    /*anime?*/
-	  }
-	else
-	  {
-	    prec = cur;
-	    cur = cur->next;
-	  }
-    }
+  {
+    prec = 0;
+    cur = game->egg;
+    while (cur)
+      if (cur->id == atoi(av[1]))
+      {
+        if (prec)
+          prec->next = cur->next;
+        else
+          game->egg = cur->next;
+        prec = cur->next;
+        free(cur);
+        cur = prec;
+        prec = 0;
+      /*anime?*/
+      }
+      else
+      {
+        prec = cur;
+        cur = cur->next;
+      }
+  }
 }
