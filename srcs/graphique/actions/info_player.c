@@ -39,17 +39,20 @@ void		player_pos(t_game *game, char **av, int ac)
   p_id = atoi(av[1]);
   if (ac > 3)
     {
-      player = game->player;
-      while (player)
+      if (IsNumeric(av[1]))
 	{
-	  if (player->id == p_id)
+	  player = game->player;
+	  while (player)
 	    {
-	      player->pos.x = atoi(av[2]);
-	      player->pos.y = atoi(av[3]);
-	      player->sens = atoi(av[4]);
-	      break;
+	      if (player->id == p_id)
+		{
+		  player->pos.x = atoi(av[2]);
+		  player->pos.y = atoi(av[3]);
+		  player->sens = atoi(av[4]);
+		  break;
+		}
+	      player = player->next_pg;
 	    }
-	  player = player->next_pg;
 	}
     }
 }

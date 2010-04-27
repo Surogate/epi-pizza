@@ -50,13 +50,16 @@ void		put_to_case(t_game *game, char **av, int ac)
 
   if (ac > 9)
     {
-      x = atoi(av[1]);
-      y = atoi(av[2]);
-      n_obj = 0;
-      while (n_obj < 7)
-	{	
-	  game->map.t_case[y][x].obj[n_obj][2] = atoi(av[3 + n_obj]);
-	  n_obj++;
+      if (IsNumeric(av[1]) && IsNumeric(av[2]))
+	{
+	  x = atoi(av[1]);
+	  y = atoi(av[2]);
+	  n_obj = 0;
+	  while (n_obj < 7)
+	    {	
+	      game->map.t_case[y][x].obj[n_obj][2] = atoi(av[3 + n_obj]);
+	      n_obj++;
+	    }
 	}
     }
 }
