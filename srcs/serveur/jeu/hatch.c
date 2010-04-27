@@ -24,7 +24,8 @@
 #include	"serveur/game_cmd.h"
 #include	"serveur/communication.h"
 
-int	find_egg(int *ref, t_eggs *egg)
+
+int		find_egg(int *ref, t_eggs *egg)
 {
   if (*ref == egg->id)
     return (EXIT_SUCCESS);
