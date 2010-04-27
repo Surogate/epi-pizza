@@ -37,7 +37,7 @@ char		*suc(char *msg);
 char		*sbp(char *msg);
 
 /*grp_action*/
-char		*grp_do_incant(t_game *game, int id_player);
+char		*grp_do_incant(int id_player);
 char		*grp_incant_done(t_player *player, int res);
 char		*grp_expulse(t_player *player);
 char		*grp_broad(t_player *player, char *broad);
@@ -49,7 +49,7 @@ char		*grp_connex_zombie(t_game *game, t_player *player,
 				   t_eggs *egg);
 
 /*grp_egg*/
-char		*grp_fork(t_game *game, int id_player);
+char		*grp_fork(int id_player);
 char		*grp_fork_end(t_player *player, t_eggs *egg);
 char		*grp_egg_hatch(t_eggs *egg);
 char		*grp_egg_die(t_game *game, int id_egg);
