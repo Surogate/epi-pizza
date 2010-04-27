@@ -27,9 +27,8 @@ static int	find_player(t_player *ref, t_player *data)
   return (EXIT_FAILURE);
 }
 
-char		*grp_player_die(t_game *game, int player_id)
+char		*grp_player_die(int player_id)
 {
-  t_player	*player;
   t_player	ref;
 
   ref.player_id = player_id;

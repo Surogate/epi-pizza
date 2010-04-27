@@ -30,7 +30,7 @@
 #include "serveur/instruction.h"
 #include "serveur/server_debug.h"
 
-int		fill_pak(t_packet *pak, char *str, t_client *cli)
+int		fill_pak(t_packet *pak)
 {
   pak->type = 0;
   pak->ac_rep = -1;

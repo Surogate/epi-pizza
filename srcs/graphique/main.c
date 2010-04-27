@@ -26,7 +26,6 @@
 # include	<GL/gl.h>
 #endif
 
-
 #include	"graphique/3dsloader.h"
 #include	"graphique/define.h"
 #include	"s_cbuf.h"
@@ -38,8 +37,8 @@ void		tempo(t_game *game)
 {
   while (game->map.h == -42)
     {
-       search_msg(game);
-       if (SDL_PollEvent(&(game->event)))
+      search_msg(game);
+      if (SDL_PollEvent(&(game->event)))
 	{
 	  if (game->event.type == SDL_QUIT)
 	    {

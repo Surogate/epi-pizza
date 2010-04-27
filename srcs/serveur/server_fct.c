@@ -34,6 +34,7 @@
 #include "serveur/server_graph.h"
 #include "serveur/communication.h"
 #include "serveur/server_debug.h"
+#include "serveur/server_ress.h"
 
 int		check_read(char *str)
 {
