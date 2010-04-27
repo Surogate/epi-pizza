@@ -40,22 +40,20 @@ void		my_recv(t_game *game)
 {
   char		*msg;
   char		**temp;
-  char		**pouet;
+  char		**temp2;
   int		i;
 
-  printf("\033[31mmsg recv!\033[00m\n");
   cbuf_write(game->serv.cbuf, game->serv.socket);
   do
     {
       msg = cbuf_read(game->serv.cbuf, check_next_end);
-      printf("Msg : %p\n", msg);
       if (msg)
 	{
 	  i = 0;
-	  pouet = split(msg, '\n');
-	  while (pouet[i])
+	  temp2 = split(msg, '\n');
+	  while (temp2[i])
 	    {
-	      temp = split(pouet[i], ' ');
+	      temp = split(temp2[i], ' ');
 	      printf("\033[31mFUNC : %s\033[00m\n", temp[0]);
 	      traitement(game, temp);
 	      if (!strncmp(temp[0], "msz", 3))
@@ -63,10 +61,9 @@ void		my_recv(t_game *game)
 	      free_2d_tab(temp);
 	      i++;
 	    }
-	  free_2d_tab(pouet);
+	  free_2d_tab(temp2);
 	}
     } while (msg);
-  printf("test\n");
 }
 
 void		search_msg(t_game *game)
