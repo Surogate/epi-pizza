@@ -23,28 +23,29 @@ function go_point2(&$player)
 
 function go_point(&$player)
 {
-	echo "**************************************************************************\n";
-	echo "GO POINT : did[0]|" . $player['did'][0]. "|\n";
-	echo "**************************************************************************\n";
-	if (strcasecmp($player['did'][0], "voir\n") == 0)
-		{
-			$player['view'] = $player['last_receive'][0];
-			recv_out(&$player);
-			out_did(&$player);
-		}
-	else if (strcasecmp($player['did'][0], "inventaire\n") == 0)
-		{
-			$player['inv'] = $player['last_receive'][0];
-			recv_out(&$player);
-			out_did(&$player);
-		}
-	if (($player['view'] != NULL) && ($player['inv'] != NULL))
-		{
-			echo "**************************************************************************\n";
-			echo "GO CALL FUNC\n";
-			echo "**************************************************************************\n";
-			find_prio(&$player);
-		}
+  echo "**************************************************************************\n";
+  echo "GO POINT : did[0]|" . $player['did'][0]. "|\n";
+  echo "**************************************************************************\n";
+  if (strcasecmp($player['did'][0], "voir\n") == 0)
+    {
+      $player['view'] = $player['last_receive'][0];
+      recv_out(&$player);
+      out_did(&$player);
+    }
+  else if (strcasecmp($player['did'][0], "inventaire\n") == 0)
+    {
+      $player['inv'] = $player['last_receive'][0];
+      recv_out(&$player);
+      out_did(&$player);
+    }
+  if (($player['view'] != NULL) && ($player['inv'] != NULL))
+    {
+      echo "**************************************************************************\n";
+      echo "GO CALL FUNC\n";
+      echo "**************************************************************************\n";
+      find_prio(&$player);
+    }
+  echo "Jme casse\n";
 }
 
 ?>

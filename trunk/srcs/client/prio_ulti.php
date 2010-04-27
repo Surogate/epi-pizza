@@ -7,8 +7,11 @@ require_once 'main_loop.php';
 require_once 'routine.php';
 require_once 'move.php';
 require_once 'get_food.php';
+require_once 'drop_stones.php';
+require_once 'test_matches.php';
 
-function		get_array()
+
+/*function		get_array()
 {
   $pfunc = array(
 		 'check_lowlife',
@@ -19,7 +22,8 @@ function		get_array()
 		 'exec_seekstone',
 		 'check_engplayer',
 		 'exec_call',
-		 'exec_fork'
+		 'exec_fork',
+		 'exec_incant'
 		 );
 
   return ($pfunc);
@@ -28,6 +32,8 @@ function		get_array()
 function		check_lowlife(&$player)
 {
   get_food(&$player);
+  echo "Mais lulz VOILA LA VALEUR DE FOOD ----> " . $player['food'] . "\n";
+  sleep(1);
   if ($player['food'] < 10 || $player['seeking'] == 1)
     return (1);
   else
@@ -85,6 +91,10 @@ function		check_engplayer(&$player)
   if ($player['connected'] == 0)
     {
       if (check_onme(&$player) == 1)
+	{
+	  return (9);
+	}
+      else
 	return (7);
     }
   return (8);
@@ -93,34 +103,54 @@ function		check_engplayer(&$player)
 function		exec_call(&$player)
 {
   echo "EXEC_CALL\n";
-  /*ici on broadcast un message a la con style*/
-  /*"<!--seek " . $player['level'] . "-->"*/
+  routine(&$player);
+  //ici on broadcast un message a la con style
+  //"<!--seek " . $player['level'] . "-->"
   return ('X');
 }
 
 function		exec_fork(&$player)
 {
   echo "EXEC_FORK\n";
-  /*aller on fork mes cocos*/
+  //aller on fork mes cocos
   return ('X');
 }
 
+function		exec_incant(&$player)
+{
+  echo "J'INCANTE\n";
+  $player['reach'] = seek_empty(&$player);
+  echo "MAIIIIIS LOOOOOOOL -> " . $player['reach'] . "\n";
+  if ($player['reach'] == 0)
+    {
+      drop_stones(&$player);
+      fifo_in(&$player, "incantation\n");
+    }
+  else
+    get_there(&$player); 
+  return ('X');
+}*/
+
 function		find_prio(&$player)
 {
-  if ($player['tmp'] % 2 == 0)
+   if ($player['tmp'] % 2 == 0)
     {
       $player['tmp'] += 1;
       routine(&$player);
     }
   else
     {
-      $player['tmp'] += 1;
+      /*     $player['tmp'] += 1;
       $pfunc = get_array();
       $value = 0;
       do {
 	$value = $pfunc[$value](&$player);
       } while ($value != 'X');
       echo "\n*****END FIND PRIO*****\n";
+      }*/
+  fifo_in(&$player, "prendre nourriture\n");
+  fifo_in(&$player, "prendre linemate\n");
+  fifo_in(&$player, "avance\n");
     }
 }
 ?>
