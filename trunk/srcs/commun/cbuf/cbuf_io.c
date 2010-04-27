@@ -99,7 +99,7 @@ int		cbuf_write(t_cbuf *cbuf, int sock)
   if (cbuf->use > CBUFSIZ)
     cbuf_init(cbuf);
   total = 0;
-  printf("====== write ======\ntotal : %i\nuse : %i\nprod : %i\n",total, cbuf->use, cbuf->prod);
+  /* printf("====== write ======\ntotal : %i\nuse : %i\nprod : %i\n",total, cbuf->use, cbuf->prod); */
   if (cbuf->prod >= cbuf->cons)
     {
       total = sock_read(sock, cbuf->buf + cbuf->prod, CBUFSIZ - cbuf->prod);
@@ -116,7 +116,7 @@ int		cbuf_write(t_cbuf *cbuf, int sock)
       cbuf->prod = (cbuf->prod + total) % (CBUFSIZ);
       cbuf->use += total;
     }
-  printf("====== writed ======\ntotal : %i\nuse : %i\nprod : %i\n",total, cbuf->use, cbuf->prod);
+  /* printf("====== writed ======\ntotal : %i\nuse : %i\nprod : %i\n",total, cbuf->use, cbuf->prod); */
   if (total == 0)
     return (EXPIPE);
   return (EXIT_SUCCESS);
