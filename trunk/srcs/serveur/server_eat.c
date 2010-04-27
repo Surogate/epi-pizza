@@ -76,7 +76,7 @@ int		server_eat(t_svr_vector *vec, t_packet *pak, t_game *game)
       server_kick(vec, pak, game);
       return (EXIT_FAILURE);
     }
-  generate_food(game);
+  generate_food(game, vec);
   printf("player %i eat\n", id);
   delete_eat(vec, id);
   create_eat(vec, id);
