@@ -71,7 +71,8 @@ int		server_eat(t_svr_vector *vec, t_packet *pak, t_game *game)
   id = pak->player_id;
   if (try_eat(game, pak->player_id) == EXIT_FAILURE)
     {
-      sock_write(id, "mort\n");
+      if (pak->player_id > 0)
+	sock_write(id, "mort\n");
       printf("player %i died, eat is essential to live\n", id);
       server_kick(vec, pak, game);
       return (EXIT_FAILURE);
