@@ -50,7 +50,6 @@ int		check_read(char *str)
 static void	instr_catch(char *str, t_client *cli, t_game *game,
 			    t_svr_vector *vec)
 {
-  debug_client(cli, "avant instr");
   if (client_parse_instr(str, cli) == EXIT_SUCCESS)
     {
       if (!cli->team && cli->auth < 3)
@@ -73,7 +72,6 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
       else if (cli->used == 1)
 	create_plaction(vec, cli);
     }
-  debug_client(cli, "apres instr");
 }
 
 void		free_client(t_client *cli)
