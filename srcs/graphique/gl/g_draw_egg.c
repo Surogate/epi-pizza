@@ -29,38 +29,25 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-static void	draw_eggs_onmap(t_egg *player, int ref, GLenum mode)
+static void	draw_eggs_onmap(t_egg *player)
 {
   glPushMatrix();
   glTranslated(player->pos.x * CASE_W, player->pos.y * CASE_H, 0);
   glPushMatrix();
-  glTranslated((CASE_H / 2), (CASE_W / 2) , 0);
-
-  /*ID Negative... voir si ca marche ? */
-  if (mode == GL_SELECT)
-    glPushName(player->id - ref);
+  glTranslated((CASE_H / 2), (CASE_W / 2) , 6);
   glCallList(EGG);
-
-  if (mode == GL_SELECT)
-    glPopName();
   glPopMatrix();
   glPopMatrix();
 }
 
 void		draw_eggs(t_game *game, GLenum mode)
 {
-  int		ref;
   t_egg		*temp;
 
-  ref = game->map.h * game->map.w;
   temp = game->egg;
   while (temp)
     {
-      printf("Nous avons l'oeuf %i sur %i %i\n", temp->id, temp->pos.x, 
-	     temp->pos.y);
-      draw_eggs_onmap(temp, ref, mode);
-      /*clic_mob(game, temp, ref);*/
+      draw_eggs_onmap(temp);
       temp = temp->next;
     }
-  /*clic_map(game);*/
 }

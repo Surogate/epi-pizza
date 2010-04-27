@@ -49,24 +49,6 @@ static void		show_info_val_do(t_player *player, char *team)
   dwrite_int(player->inventaire[5], 900, 45, GREEN);
 }
 
-void		aff_player(t_player *player)
-{
-  t_player	*cur;
-  int		ress;
-  int		count;
-
-  cur = player;
-  while (cur != NULL)
-    {
-      ress = -1;
-      count = 0;
-      while (++ress != 7)
-	count = count + cur->inventaire[ress];
-      printf("Joueur actuel : %i sur le %i-%i au niveau %i avec %i ressources\n", cur->id, cur->pos.x, cur->pos.y, cur->lv, count);
-      cur = cur->next_pg;
-    }
-}
-
 static void		show_info_do(t_game *game)
 {
   int		ref;
@@ -78,12 +60,6 @@ static void		show_info_do(t_game *game)
   {
     if ((player = find_player(game, game->map.select_p - ref)))
     {
-
-      aff_player(game->player);
-
-
-      printf("Test : %i - %i = %i", game->map.select_p, ref, game->map.select_p - ref);
-      printf("On a le joueur num %i, avec \nNourriture %i\n%i\n%i\n%i\n%i\n%i\n%i\n", player->id, player->inventaire[0], player->inventaire[1], player->inventaire[2], player->inventaire[3], player->inventaire[4], player->inventaire[5], player->inventaire[6]);
       team = find_team_name(game, player->team);
       show_info_val_do(player, team);
     }
