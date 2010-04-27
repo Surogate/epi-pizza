@@ -58,7 +58,7 @@ void		draw_ressource(t_game *game, GLenum mode)
 	      if ((qte = game->map.t_case[y][x].obj[ress][2]))
 		{
 		  glPushMatrix();
-		  glTranslated(y * CASE_W, x * CASE_H, 0);
+		  glTranslated(x * CASE_H, y * CASE_W, 0);
 		  draw_treasure(game->map.t_case[y][x], ress, qte);
 		  glPopMatrix();
 		}
