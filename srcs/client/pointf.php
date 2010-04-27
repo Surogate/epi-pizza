@@ -9,9 +9,29 @@ require_once 'analyse.php';
 
 function go_point2(&$player)
 {
+/*
 	echo "**************************************************************************\n";
 	echo "GO POINT_2\n";
 	echo "**************************************************************************\n";
+*/	
+	if ($player['did'][0] == "incantation\n")
+		{
+			if ($player['last_receive'][0] == "elevation en cours\n")
+			{
+				echo "incantation: " . $player['last_receive'][0] . "\n";
+				recv_out(&$player);
+				return (0);
+			}
+			else
+			{
+				echo "incantation: " . $player['last_receive'][0] . "\n";
+				recv_out(&$player);
+				out_did(&$player);
+				$player['level'] += 1;
+				return (0);
+
+			}
+		}
 	if ($player['last_receive'][0] == "ko\n")
 		{
 			echo "to reach: " . $player['reach'] . "\nobjet: " . $player['objet'] . "\nview: " . $player['view'];
@@ -24,10 +44,12 @@ function go_point2(&$player)
 
 function go_point(&$player)
 {
+/*	
   echo "**************************************************************************\n";
   echo "GO POINT : did[0]|" . $player['did'][0]. "|\n";
   echo "**************************************************************************\n";
-  
+ */
+
   echo "player did: " . $player['did'][0] . "\n";
   echo "player did: " . $player['did'][1] . "\n";
   echo "player receive: " . $player['last_receive'][0] . "\n";
@@ -46,9 +68,11 @@ function go_point(&$player)
     }
   if (($player['view'] != NULL) && ($player['inv'] != NULL))
     {
+	  /*
       echo "**************************************************************************\n";
       echo "GO CALL FUNC\n";
       echo "**************************************************************************\n";
+      */
       find_prio(&$player);
 	  echo "go point: " . $player['send'][0] . "\n";
     }

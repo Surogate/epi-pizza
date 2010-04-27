@@ -9,7 +9,7 @@ function	search_food(&$player)
   */
   $view = str_replace("{", "", $player['view']);
   $view = str_replace("}", "", $view);
-  $view = explode(', ', $view);
+  $view = explode(',', $view);
   /*
   echo "**************************************************************************\n";
   echo "wich view of food : |" . $view[0] . "\n" . $view[1] . "\n" . $view[2] . "\n" . $view[3] . "|\n";

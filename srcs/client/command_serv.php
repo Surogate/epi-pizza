@@ -27,11 +27,12 @@ $rep_tab[5] = "ok\n";
 $rep_tab[6] = "ok\n";
 $rep_tab[7] = "ok\n";
 $rep_tab[8] = "ok\n";
-$rep_tab[9] = "elevation en cours\nniveau actuel\n";
+$rep_tab[9] = "elevation en cours\n";
 $rep_tab[10] = "ok\n";
 $rep_tab[11] = "\n";
 $rep_tab[12] = "mort\n";
 $rep_tab[15] = "ko\n";
 $rep_tab[16] = "ko\n";
 $rep_tab[17] = "ko\n";
+$rep_tab[19] = "niveau actuel"
 ?>
