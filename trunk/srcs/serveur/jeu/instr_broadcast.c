@@ -57,7 +57,7 @@ static void	msg_broad(t_player *player, char **msg, t_rep *rep, char *crep)
   crep = grp_broad(player, rep->mess);
 }
 
-void		broadcast(t_packet *packet, t_player *player, t_game *game)
+void		func_broadcast(t_packet *packet, t_player *player, t_game *game)
 {
   t_player	*pl;
   t_list	*temp;
@@ -70,17 +70,32 @@ void		broadcast(t_packet *packet, t_player *player, t_game *game)
   packet->ac_rep = i;
   packet->response = xmalloc(sizeof(*(packet->response)) * (i + 1));
   while (--i >= 0)
+  {
+    pl = (t_player *)temp->data;
+    if (pl->player_id != player->player_id)
+      msg_broad(pl, packet->av, packet->response + i, packet->graph_rep);
+    else
     {
-      pl = (t_player *)temp->data;
-      if (pl->player_id != player->player_id)
-	msg_broad(pl, packet->av, packet->response + i, packet->graph_rep);
-      else
-        {
-          packet->response[i].id_player = pl->player_id;
-          packet->response[i].mess = xmalloc(5 * sizeof(char));
-          snprintf(packet->response[i].mess, 5, "ok\n");
-        }
-      temp = temp->next;
+      packet->response[i].id_player = pl->player_id;
+      packet->response[i].mess = xmalloc(5 * sizeof(char));
+      snprintf(packet->response[i].mess, 5, "ok\n");
     }
+    temp = temp->next;
+  }
   reset_pathfinding(game);
 }
+
+void		broadcast(t_packet *packet, t_player *player, t_game *game)
+{
+  if (packet->ac > 2)
+    func_broadcast(packet, player, game);
+  else
+  {
+    packet->ac_rep = 1;
+    packet->response = xmalloc(sizeof(*(packet->response)));
+    packet->response->id_player = player->player_id;
+    packet->response->mess = xmalloc(5 * sizeof(char));
+    snprintf(packet->response->mess, 5, "ko\n");
+  }
+}
+
