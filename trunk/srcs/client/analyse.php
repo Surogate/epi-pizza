@@ -28,7 +28,7 @@ function	seek_needs($lvl, $tab_inv, &$player)
   else if (($lvl[$player['level'] + 1]['thystame'] - $tab_inv['thystame']) > 0)
     $need = 'thystame';
   else
-    $need = NULL;
+    $need = -1;
 
   echo "VALEUR DE NEED -----> " . $need . "\n";
   return $need;
@@ -67,14 +67,14 @@ function	to_search(&$player)
   while (preg_match("/" . $need . "/i", $view[$i]) == 0 && $view[$i] != NULL)
     $i++;
   echo "VALEUR DE I : " . $i . "\n";
-  if (preg_match("/" . $need . "/i", $view[$i]) == 1)
+  if ((preg_match("/" . $need . "/i", $view[$i]) == 1) || ($need == -1))
     {
       $player['reach'] = $i;
       $player['objet'] = $need;
     }
   else
     {
-      $player['reach'] = $i - 1;
+      $player['reach'] = 2 * $player['level'];
       $player['objet'] = NULL;
     }
 }

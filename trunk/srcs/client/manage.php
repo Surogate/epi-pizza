@@ -1,5 +1,6 @@
 <?php
 
+require_once 'answer.php';
 require_once 'str_func.php';
 require_once 'loop_manage.php';
 
@@ -42,8 +43,9 @@ function manage(&$player)
 	else if ($player['flag'] == 2)
 		get_size(&$player);
 	else if ($player['flag'] == 3)
-		loop_manage(&$player);
+		which_ans(&$player);
 	else
 		aff_error("Initial talk with server failed \n", 0);
+	echo "manage\n";
 }
 ?>

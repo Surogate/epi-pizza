@@ -12,8 +12,7 @@ function		seek_empty(&$player)
 	return ($i);
       $i++;
     }
-  if ($view[$player['reach']] == NULL)
-    return ($i - 1);
+	return (2 * $player['level']);
 }
 
 function		test_matches($view)
