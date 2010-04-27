@@ -36,6 +36,11 @@ function which_ans(&$player)
 			  go_point2(&$player);
 			  return (0);
 			}
+			else if ((preg_match("/" . $rep_tab[$i] . "/i", $player['last_receive'][0]) == 1) || (preg_match("/" . $rep_tab[$i + 10] . "/i", $player['last_receive'][0]) == 1))
+			{
+			  go_point2(&$player);
+			  return (0);
+			}
 		  else
 			{
 			  echo "rep: " . $player['last_receive'][0] . "\n";

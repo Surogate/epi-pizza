@@ -35,7 +35,8 @@ function		check_lowlife(&$player)
 	if ($player['food'] < 2)
 		while (1);
 	get_food(&$player);
-	if ($player['food'] <= 20)/* || $player['seeking'] == 1)*/
+	echo "Dans check life 2, food = " . $player['food'] . "\n";
+	if ($player['food'] <= 30)/* || $player['seeking'] == 1)*/
 		return (1);
 	else
 		return (2);
@@ -45,7 +46,7 @@ function		exec_seeklife(&$player)
 {
   echo "EXEC_SEEKLIFE\n";
   /*$player['seeking'] = 1;*/
-  if ($player['food'] >= 20)
+  if ($player['food'] >= 30)
     return (4);/*$player['seeking'] = 0;*/
   search_food(&$player);
   get_there(&$player);
@@ -150,9 +151,5 @@ function		find_prio(&$player)
        } while ($value != 'X');
     echo "\n*****END FIND PRIO*****\n";
     routine(&$player);
-      /*  fifo_in(&$player, "prendre nourriture\n");
-  fifo_in(&$player, "prendre linemate\n");
-  fifo_in(&$player, "avance\n");
-  }*/
 }
 ?>
