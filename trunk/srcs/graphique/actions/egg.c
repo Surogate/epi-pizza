@@ -52,8 +52,11 @@ void		eggs_drop(t_game *game, char **av)
     game->egg = new;
   new->id = atoi(av[1]);
   player = find_player(game, atoi(av[2]));
-  new->team = player->team;
-  new->pos = player->pos;
+  if (player)
+    {
+      new->team = player->team;
+      new->pos = player->pos;
+    }
   new->next = NULL;
 }
 
