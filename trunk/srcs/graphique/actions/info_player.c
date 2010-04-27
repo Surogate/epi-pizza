@@ -94,40 +94,35 @@ void		player_invent(t_game *game, char **av, int ac)
   t_player	*player;
   int		n_obj;
 
-  if (ac > 9)
+  player = game->player;
+  if (ac > 9 && player != NULL)
     {
-      player = game->player;
-      if (player != NULL)
+      while (player->next_pg && player->id != atoi(av[1]))
+	player = player->next_pg;
+      if (player->id == atoi(av[1]))
 	{
-	  while (player->next_pg && player->id != atoi(av[1]))
-	    player = player->next_pg;
-	  if (player->id == atoi(av[1]))
+	  n_obj = 0;
+	  while (n_obj < 7)
 	    {
-	      n_obj = 0;
-	      while (n_obj < 7)
+	      if (IsNumeric(av[4 +n_obj]))
+		player->inventaire[n_obj] = atoi(av[4 + n_obj]);
+	      else
 		{
-		  if (IsNumeric(av[4 +n_obj]))
-		    player->inventaire[n_obj] = atoi(av[4 + n_obj]);
-		  else
-		    {
-		      printf("\033[31m%s IS NOT A NUMBER!\033[00m\n",
-			     av[4 + n_obj]);
-		      break;
-		    }
-		  n_obj++;
+		  printf("\033[31m%s IS NOT A NUMBER!\033[00m\n",
+			 av[4 + n_obj]);
+		  break;
 		}
+	      n_obj++;
 	    }
 	}
     }
-  else
-    printf("wrong args number\n");
 }
 
 void		player_die(t_game *game, char **av, int ac)
 {
   t_player	*prec;
   t_player	*cur;
-  
+
   if (ac > 1)
     {
       prec = 0;
@@ -143,7 +138,6 @@ void		player_die(t_game *game, char **av, int ac)
 	    free(cur);
 	    cur = prec;
 	    prec = 0;
-	    /*anime?*/
 	  }
 	else
 	  {

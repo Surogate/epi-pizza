@@ -38,7 +38,6 @@ void		player_expulse(t_game *game, char **av)
   printf("Le joueur %i a expulse ses petits camarades\n", atoi(av[1]));
 }
 
-/*Broadcast*/
 void		player_broadcast(t_game *game, char **av)
 {
   int		i;
@@ -56,8 +55,6 @@ void		incant(t_game *game, char **av, int ac)
   t_player	*player;
   int		i;
 
-  i = 0;
-  printf("\n");
   if (ac > 3)
   {
     i = 0;
