@@ -21,7 +21,7 @@
 char		*pfk(char *msg, t_player *player)
 {
   msg = xrealloc(msg, (xstrlen(msg) + 15) * sizeof(char));
-  snprintf(msg + xstrlen(msg), 15, "pdr %i\n", player->player_id);
+  snprintf(msg + xstrlen(msg), 15, "pfk %i\n", player->player_id);
   return (msg);
 }
 
