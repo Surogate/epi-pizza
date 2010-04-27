@@ -114,10 +114,7 @@ int			client_parse_instr(char *str, t_client *cli)
   pak = cli->packet + ((cli->cons + cli->used) % 10);
   pak->av[0] = strdup(str);
   if (pak->av[0] == NULL)
-    {
-      perror("strdup");
-      return (EXIT_FAILURE);
-    }
+    return (EXIT_FAILURE);
   pak->ac = 1;
   pak->player_id = cli->sock;
   pak->player = cli;
@@ -131,7 +128,6 @@ int			client_parse_instr(char *str, t_client *cli)
   debug_instr(pak);
   pak->type = 0;
   pak->ac_rep = -1;
-  pak->response = NULL;
   pak->end.tv_sec = 0;
   pak->end.tv_usec = 0;
   pak->graph_rep = NULL;
