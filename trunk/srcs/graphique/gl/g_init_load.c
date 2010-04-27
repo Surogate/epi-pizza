@@ -31,6 +31,7 @@
 #include	"s_cbuf.h"
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
+#include	"xfunc.h"
 
 void		init_3dsmodel_ress(t_game *game)
 {
@@ -68,7 +69,7 @@ void		init_3dsmodel(t_game *game)
   while (++i != 8)
     {
       path[10] = i + '1';
-      trantorien = malloc(sizeof(obj_type));
+      trantorien = xmalloc(sizeof(obj_type));
       trantorien->scale[0] = (5.0f) + i;
       trantorien->scale[1] = (5.0f) + i;
       trantorien->scale[2] = (8.0f) + i;
@@ -77,6 +78,12 @@ void		init_3dsmodel(t_game *game)
       game->model.trantorien[i] = trantorien;
     }
   free(path);
+  game->model.eggs = xmalloc(sizeof(obj_type));
+  game->model.eggs->scale[0] = (3.0f) + i;
+  game->model.eggs->scale[1] = (3.0f) + i;
+  game->model.eggs->scale[2] = (8.0f) + i;
+  game->model.eggs->id_texture = loadtexture("egg.bmp");
+  Load3DS(game->model.eggs, "3DS/sphere.3ds");
   init_3dsmodel_ress(game);
 }
 
@@ -85,7 +92,7 @@ void		init_texture(t_game *game)
   if (game->video.text)
   {
     puts("TEXTURE ON");
-    game->texture = malloc(sizeof(t_texture));
+    game->texture = xmalloc(sizeof(t_texture));
     game->texture->team = loadtexture("images/team-sphere.png");
     game->texture->inter_d = loadtexture("images/interface_down.png");
     game->texture->inter_u = loadtexture("images/interface_up.png");
@@ -93,7 +100,9 @@ void		init_texture(t_game *game)
     game->texture->side = loadtexture("images/side.jpg");
     game->texture->floor_s = loadtexture("images/Circle.png");
     game->texture->select = loadtexture("images/select_pl.png");
-    game->texture->faq = loadtexture("images/faq2.jpg");
+    game->texture->faq = loadtexture("images/faq.bmp");
+    game->texture->faq2= loadtexture("images/faq2.jpg");
+    game->texture->legend= loadtexture("images/legend.jpg");
     game->texture->intro = loadtexture("images/totoro_intro.bmp");
     game->texture->bonjour = loadtexture("images/bnojour.jpg");
   }

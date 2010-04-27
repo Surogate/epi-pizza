@@ -31,8 +31,9 @@
 # define	INTER		20
 # define	PICKING		30
 # define	PSELECT		31
-# define	TEAM		32
-# define	RESS		40
+# define	EGG		32
+# define	TEAM		33
+# define	RESS		50
 
 enum {YELLOW, BLUE, GREEN, PINK, PURPLE, RED, BLACK, WHITE, CYAN};
 
@@ -46,13 +47,15 @@ enum {YELLOW, BLUE, GREEN, PINK, PURPLE, RED, BLACK, WHITE, CYAN};
 # define	CAM_Z		(200)
 
 # define	CAM_MAX		300
-# define	CAM_MIN		26
+# define	CAM_MIN		-260
 
 # define	MOD_CRAZY	0
-# define	MOD_OK		1
-# define	MOD_FAQ		2
-# define	MOD_BEGIN	3
-# define	MOD_BONJOUR	4
+# define	MOD_OK		10
+# define	MOD_FAQ1	20
+# define	MOD_BEGIN	30
+# define	MOD_BONJOUR	40
+# define	MOD_LEGEND	50
+# define	MOD_FAQ2	60
 
 # define 	RENDER		1
 # define 	SELECT		2

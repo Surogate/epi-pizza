@@ -23,6 +23,7 @@ int		key_s(t_game *game);
 int		key_w(t_game *game);
 int		key_c(t_game *game);
 int		key_faq(t_game *game);
+int		key_legend(t_game *game);
 int		key_space(t_game *game);
 
 /*random func*/
@@ -83,7 +84,7 @@ void		draw_map(t_game *game, GLenum mode);
 void		draw_ressource(t_game *game, GLenum mode);
 
 
-void            floor_picking(int x, int y);
+void		floor_picking(int x, int y);
 
 void		draw_mob(t_game *game, GLenum mode);
 
@@ -91,6 +92,8 @@ void		clic_mob(t_game *game, t_player *player, int ref);
 void		clic_map(t_game *game);
 
 void		clic_render();
+
+void		draw_eggs(t_game *game, GLenum mode);
 
 /* Draw WRITE */
 

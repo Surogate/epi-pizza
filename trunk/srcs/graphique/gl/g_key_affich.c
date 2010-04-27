@@ -41,9 +41,20 @@ int		key_b(t_game *game)
 
 int		key_faq(t_game *game)
 {
-  if (game->info.crazy == MOD_FAQ)
+  if (game->info.crazy == MOD_FAQ1)
+    game->info.crazy = MOD_FAQ2;
+  else if (game->info.crazy == MOD_FAQ2)
     game->info.crazy = MOD_OK;
   else
-    game->info.crazy = MOD_FAQ;
+    game->info.crazy = MOD_FAQ1;
+  return (1);
+}
+
+int		key_legend(t_game *game)
+{
+  if (game->info.crazy == MOD_LEGEND)
+    game->info.crazy = MOD_OK;
+  else
+    game->info.crazy = MOD_LEGEND;
   return (1);
 }
