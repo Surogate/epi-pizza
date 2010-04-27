@@ -140,17 +140,17 @@ function		find_prio(&$player)
     }
   else
     {
-      /*     $player['tmp'] += 1;
+      $player['tmp'] += 1;
       $pfunc = get_array();
       $value = 0;
       do {
 	$value = $pfunc[$value](&$player);
       } while ($value != 'X');
       echo "\n*****END FIND PRIO*****\n";
-      }*/
-  fifo_in(&$player, "prendre nourriture\n");
+    }
+      /*  fifo_in(&$player, "prendre nourriture\n");
   fifo_in(&$player, "prendre linemate\n");
   fifo_in(&$player, "avance\n");
-    }
+  }*/
 }
 ?>
