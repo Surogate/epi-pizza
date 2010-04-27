@@ -26,6 +26,7 @@
 #include "serveur/t_svr_stc.h"
 #include "serveur/client_fct.h"
 #include "serveur/server_kick.h"
+#include "serveur/instruction.h"
 #include "serveur/server_action.h"
 #include "serveur/server_eat.h"
 #include "serveur/server_plaction.h"
@@ -33,7 +34,7 @@
 #include "serveur/server_graph.h"
 #include "serveur/communication.h"
 #include "serveur/server_debug.h"
-#include "serveur/instruction.h"
+#include "serveur/server_graph.h"
 
 int		check_read(char *str)
 {
@@ -57,7 +58,7 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	{
 	  delete_kick(vec, cli->sock);
 	  ++(cli->auth);
-	  cli->team = authent(game, cli->packet + cli->cons, vec);
+	  cli->team = authent(game, cli->packet + cli->cons);
 	  if (!cli->team)
 	    create_kick(vec, cli->sock, 3);
 	  else if (cli->team == 1)
@@ -65,13 +66,14 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	      create_eat(vec, cli->sock);
 	      gh_broad(vec, grp_connex_player(game, cli->sock));
 	      return_packet(cli->packet + cli->cons);
+	      generate_ress(game, vec);
 	    }
 	  else if (cli->team < 0)
 	    new_gh(vec, cli, game);
 	  free_packet(cli);
 	}
       else if (cli->used == 1)
-	create_plaction(vec, cli, vec->slt, game);
+	create_plaction(vec, cli, vec->slt);
     }
   debug_client(cli, "apres instr");
 }
@@ -117,16 +119,7 @@ int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
   while ((tmp = (t_client *)vec->graph->getnxts(vec->graph)) != NULL)
     if (FD_ISSET(tmp->sock, &(slt_par->fd_read)))
       {
-      	if (cbuf_write(&tmp->cbuf, tmp->sock) == EXPIPE)
-	  {
-	    printf("le client graphique %i a un souci\n", tmp->sock);
-	    if (tmp->team > 0)
-	      gh_fct(vec, game, tmp->sock, pdi);
-	    FD_CLR(tmp->sock, &(slt_par->fd_read));
-	    vec->graph->erase(vec->graph, vec->graph->gns_pos, free_client);
-	  }
-	else if ((readed = cbuf_read(&(tmp->cbuf), check_read)))
-	  printf("readed : %s\n", readed);
+	graph_inst(tmp, vec);
       }
   while ((tmp = (t_client *)vec->client->getnxts(vec->client)) != NULL)
     if (FD_ISSET(tmp->sock, &(slt_par->fd_read)))
@@ -139,12 +132,14 @@ int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
 	    delete_plaction(vec, tmp->sock);
 	    delete_kick(vec, tmp->sock);
 	    if (tmp->team > 0)
- 	      rm_player(game, tmp->sock);
+	      {
+		rm_player(game, tmp->sock);
+		supp_ress(game, vec);
+	      }
 	    vec->client->erase(vec->client, client->gns_pos, free_client);
 	  }
 	else if ((readed = cbuf_read(&(tmp->cbuf), check_read)))
 	  instr_catch(readed, tmp, game, vec);
       }
-  /* graph_inst(tmp, vec);*/
   return (EXIT_SUCCESS);
 }

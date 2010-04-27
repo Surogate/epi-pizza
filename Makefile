@@ -68,7 +68,6 @@ SRC_S		= \
 		$(DIR_SRC_S)jeu/connect_nbr.c		\
 		$(DIR_SRC_S)jeu/view.c			\
 		$(DIR_SRC_S)jeu/expulse.c		\
-		$(DIR_SRC_S)jeu/instr_connect.c		\
 		$(DIR_SRC_S)jeu/concatene_msg_view.c	\
 		$(DIR_SRC_S)jeu/eat.c			\
 		$(DIR_SRC_S)communication/grp_action.c	\
@@ -297,7 +296,7 @@ LFLAGS_$(NAME_GR)	= -L$(DIR_LIB) $(LFLAGS_$(TAG)_$(NAME_GR))
 
 #########  COMPILE FLAGS
 
-CFLAGS			+= -O3 -W -Wall -ansi -pedantic $(DEFINE) $(IFLAGS)
+CFLAGS			+= -g3 -W -Wall -ansi -pedantic $(DEFINE) $(IFLAGS)
 
 ############### BINARIES ###############
 
