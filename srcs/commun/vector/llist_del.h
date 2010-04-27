@@ -11,7 +11,9 @@
 #ifndef LLIST_DEL_C_INCLUDED
 # define LLIST_DEL_C_INCLUDED
 
+void		llist_detach(t_llist *to_det);
 void		*llist_del(t_vector *vec, int at);
+void	       	*llist_del_by(t_vector *vec, void *strct, int (*find_fct)());
 void		llist_erase(t_vector *vec, int at, void (*destruct)());
 
 #endif

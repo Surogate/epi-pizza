@@ -54,7 +54,9 @@ void		vector_init(t_vector *new)
   new->getnxts = llist_getnxts;
   new->erase = llist_erase;
   new->delete = llist_del;
+  new->delete_by = llist_del_by;
   new->insert_sort = llist_insert_sort;
   new->find_pos = llist_find_pos;
+  new->find_by = llist_find_by;
   new->swap = llist_swap;
 }
