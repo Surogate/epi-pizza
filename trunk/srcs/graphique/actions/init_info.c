@@ -30,6 +30,7 @@
 #include	"s_cbuf.h"
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
+#include	"graphique/proto_action.h"
 #include	"xfunc.h"
 
 void		init_map(t_game *game, char **av, int ac)

@@ -42,7 +42,7 @@ void		draw_gl(t_game *game, GLenum mode)
   glRotated(game->map.rot, 0, 0, 1);
   glTranslated(-game->map.h * CASE_H / 2, -game->map.w * CASE_W / 2, 0);
   glPushMatrix();
-  draw_map(game, mode);
+  draw_map(mode);
   if (game->info.crazy == MOD_OK)
   {
     draw_ressource(game, mode);

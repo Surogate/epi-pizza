@@ -19,13 +19,14 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-static void     draw_trantorien()
+void		draw_trantorien_epileptique(int nb)
 {
   static int i = 0;
-  
+
   i %= 360;
   glPushMatrix();
   glTranslated((CASE_H / 2), (CASE_W / 2), 0);
+  i *= nb;
   glRotatef(i++, 0 ,0 ,1);
   glCallList(TOTORO + random() % LVLMAX);
   glPopMatrix();
@@ -46,7 +47,7 @@ void		crazy_mod(t_game *game)
     { 
       glPushMatrix();
       glTranslated(y * CASE_H, x * CASE_W, 0);
-      draw_trantorien();
+      draw_trantorien_epileptique(1);
       glPopMatrix();
     }
   }

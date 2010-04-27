@@ -50,7 +50,7 @@ void		picking_map(t_game *game)
   }
 }
 
-void		draw_map(t_game *game, GLenum mode)
+void		draw_map(GLenum mode)
 {
   if (mode == GL_RENDER)
     glCallList(TERRAIN);

@@ -70,7 +70,7 @@ void		pushwrite()
 
 void		dwrite_int(int nbr, int posx, int posy, int color)
 {
-  int		*tcolor;
+  float		*tcolor;
   char		res[10];
 
   tcolor = initcolor(color);
@@ -83,7 +83,7 @@ void		dwrite_int(int nbr, int posx, int posy, int color)
 
 void		dwrite(char *str, int posx, int posy, int color)
 {
-  int   *tcolor;
+  float		*tcolor;
 
   tcolor = initcolor(color);
   glColor3f(tcolor[0], tcolor[1], tcolor[2]);

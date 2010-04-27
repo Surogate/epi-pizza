@@ -117,3 +117,16 @@ void		init_video(t_game *game)
   game->video.light = 1;
   game->video.aliasing = 0;
 }
+
+
+void		init_CallList(t_game *game)
+{
+  make_calllistes_trantorien(game);
+  make_calllistes_picking(TEAM, game->texture->team);
+  make_calllistes_picking(PICKING, game->texture->floor_s);
+  make_calllistes_picking(PSELECT, game->texture->select);
+  make_calllistes_interface(game);
+  make_calllistes_terrain(game);
+  make_calllistes_ressources(game);
+}
+

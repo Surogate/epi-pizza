@@ -162,6 +162,7 @@ SRC_GR		= \
 		$(DIR_SRC_GR)gl/g_key.c			\
 		$(DIR_SRC_GR)gl/g_init_load.c		\
 		$(DIR_SRC_GR)gl/g_initgl.c		\
+		$(DIR_SRC_GR)gl/g_initgl2.c		\
 		$(DIR_SRC_GR)gl/g_CallList.c		\
 		$(DIR_SRC_GR)gl/g_load_window.c		\
 		$(DIR_SRC_GR)gl/g_camera.c		\
