@@ -34,11 +34,13 @@ typedef struct	s_vector
   void		*(*at)();
   int		(*insert)();
   void		*(*delete)();
+  void		*(*delete_by)();
   void		(*destruc)();
   void		*(*getnxts)();
   void		(*erase)();
   void		(*insert_sort)();
   int		(*find_pos)();
+  void		*(*find_by)();
   void		(*swap)();
 }		t_vector;
 
