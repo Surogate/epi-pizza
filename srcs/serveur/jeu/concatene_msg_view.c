@@ -76,7 +76,7 @@ char		*add_ressource(t_vision *cur_case, char *msg)
   num_ress = -1;
   while (++num_ress != RESS_NUM)
     count = count + cur_case->cas->cas.ress[num_ress];
-  msg = xrealloc(msg, xstrlen(msg) + (15 * count));
+  msg = xrealloc(msg, xstrlen(msg) + (17 * count));
   num_ress = -1;
   while (++num_ress != RESS_NUM)
     {
@@ -101,9 +101,9 @@ char		*explore_case(t_vision *cur_case, char *msg)
   if (cur_case->cas->cas.player != NULL)
     msg = add_player(cur_case, msg);
   msg = add_ressource(cur_case, msg);
-  msg = xrealloc(msg, xstrlen(msg) + 4);
+  msg = xrealloc(msg, xstrlen(msg) + 6);
   if (cur_case->next == NULL)
-    msg = strncat(msg, ",", 1);
+    msg = strncat(msg, ",", 2);
   if (cur_case->next != NULL)
     {
       i = -1;
@@ -111,11 +111,11 @@ char		*explore_case(t_vision *cur_case, char *msg)
 	if (cur_case->next->cas->cas.ress[i] != 0)
 	  break;
       if (i == RESS_NUM)
-	strncat(msg, ",", 1);
+	strncat(msg, ",", 2);
       else
 	{
 	  msg = xrealloc(msg, xstrlen(msg) + 3);
-	  strncat(msg, ", ", 2);
+	  strncat(msg, ", ", 3);
 	}
     }
   return (msg);
