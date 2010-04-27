@@ -68,8 +68,10 @@ void		draw_mob(t_game *game, GLenum mode)
     {
       if (temp->incant == 1)
         {
+          glPushMatrix();
           glTranslated(temp->pos.x * CASE_H, temp->pos.y * CASE_W, 0);
           draw_trantorien_epileptique(0);
+          glPopMatrix();
         }
       else
         draw_trantorien(temp, ref, mode);
