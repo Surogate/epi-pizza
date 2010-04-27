@@ -29,7 +29,6 @@ function	seek_needs($lvl, $tab_inv, &$player)
     $need = 'thystame';
   else
     $need = -1;
-  echo "VALEUR DE NEED -----> " . $need . "\n";
   return $need;
 }
 

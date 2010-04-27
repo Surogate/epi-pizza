@@ -24,7 +24,6 @@ function which_ans(&$player)
 	  if ($player['last_receive'][0][0] === '{')
 	    {
 	      go_point(&$player);
-	      echo "je suis re : " . $player['send'][0] . "\n";
 	      return (0);
 	    }
 	  else if ((preg_match("/" . $player['last_receive'][0] . "/i", $rep_tab[$i]) == 1) || (preg_match("/" . $player['last_receive'][0] . "/i", $rep_tab[$i + 10]) == 1))
@@ -37,16 +36,9 @@ function which_ans(&$player)
 	      go_point2(&$player);
 	      return (0);
 	    }
-	  else
-	    {
-	      echo "rep: " . $player['last_receive'][0] . "\n";
-	      echo "pif\n";
-	      return (-1);
-	    }
 	}
       else
 	$i++;
-      echo "i = " . $i . "\n";
     }
 }
 
