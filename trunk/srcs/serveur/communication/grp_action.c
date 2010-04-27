@@ -28,14 +28,12 @@ static int	find_player(t_player *ref, t_player *data)
   return (EXIT_FAILURE);
 }
 
-char		*grp_do_incant(t_game *game, int id_player)
+char		*grp_do_incant(int id_player)
 {
-  t_player	*player;
   t_player	ref;
 
   ref.player_id = id_player;
-  player = my_l_find(game->player, &ref, find_player);
-  return (pic(NULL, player));
+  return (pic(NULL, &ref));
 }
 
 char		*grp_incant_done(t_player *player, int res)

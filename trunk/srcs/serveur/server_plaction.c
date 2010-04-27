@@ -34,6 +34,7 @@
 #include "serveur/server_hatch.h"
 #include "serveur/server_graph.h"
 #include "serveur/server_plaction.h"
+#include "serveur/communication.h"
 
 int			find_act_fct(t_packet *in, int *player_id)
 {
@@ -50,6 +51,10 @@ int			create_plaction(t_svr_vector *vec, t_client *cli)
   pak = cli->packet + (cli->cons % 10);
   if (pak->duration)
     {
+      if (pak->duration == 42)
+	gh_broad(vec, grp_fork(pak->player_id));
+      if (pak->duration == 600)
+	gh_broad(vec, grp_do_incant(pak->player_id));
       action = vec->action;
       timeend(&(pak->end), &(vec->slt->delay), pak->duration);
       action->insert_sort(action, pak, sort_duration);
@@ -71,9 +76,7 @@ int			exec_plaction(t_svr_vector *vec, t_packet *pak,
   pak->type = 0;
   return_packet(pak);
   if (pak->graph_rep)
-    {
-      gh_broad(vec, pak->graph_rep);
-    }
+    gh_broad(vec, pak->graph_rep);
   free_packet(cli);
   delete_plaction(vec, pak->player_id);
   if (cli->used)

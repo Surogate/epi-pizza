@@ -32,14 +32,12 @@ static int	find_player(t_player *ref, t_player *data)
   return (EXIT_FAILURE);
 }
 
-char		*grp_fork(t_game *game, int id_player)
+char		*grp_fork(int id_player)
 {
-  t_player	*player;
   t_player	ref;
 
   ref.player_id = id_player;
-  player = my_l_find(game->player, &ref, find_player);
-  return (pfk(NULL, player));
+  return (pfk(NULL, &ref));
 }
 
 char		*grp_fork_end(t_player *player, t_eggs *egg)
