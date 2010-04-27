@@ -71,23 +71,24 @@ int		create_kick(t_svr_vector *vec, int player_id, int time)
 static int	test_kick(t_svr_vector *vec, t_game *game, t_packet *pak, 
 			  int id)
 {
-  t_select	*slt_par;
-  int		pos;
+  t_client	*cli;
 
-  slt_par = vec->slt;
-  pos = vec->client->find_pos(vec->client, &(pak->player_id),
+  cli = vec->client->delete_by(vec->client, &(pak->player_id),
 			      player_id_find);
-  if (pos >= 0)
+  if (cli)
     {
-      printf("player %i ass kicked\n", id);
-      gh_broad(vec, grp_player_die(pak->player_id));
-      rm_player(game, id);
-      supp_ress(game, vec);
-      delete_kick(vec, id);
-      delete_eat(vec, id);
-      delete_plaction(vec, id);
-      FD_CLR(id, &(slt_par->fd_read));
-      vec->client->erase(vec->client, pos, free_client);
+      printf("player %i ass kicked\n", cli->sock);
+      FD_CLR(cli->sock, &((vec->slt)->fd_read));
+      delete_kick(vec, cli->sock);
+      delete_eat(vec, cli->sock);
+      delete_plaction(vec, cli->sock);
+      if (cli->team > 0)
+	{
+	  gh_broad(vec, grp_player_die(cli->sock));
+	  rm_player(game, cli->sock);
+	  supp_ress(game, vec);
+	}
+      free_client(cli);
       return (EXIT_SUCCESS);
     }
   fprintf(stderr, "player %i unknow\n", pak->player_id);
