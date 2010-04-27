@@ -35,6 +35,8 @@
 #include "serveur/time_fct.h"
 #include "serveur/server_insert_player.h"
 #include "serveur/server_ress.h"
+#include "serveur/server_graph.h"
+#include "serveur/communication.h"
 
 int		find_kick_fct(t_packet *in, int *player_id)
 {
