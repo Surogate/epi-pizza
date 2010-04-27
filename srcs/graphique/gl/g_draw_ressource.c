@@ -42,7 +42,7 @@ void		draw_treasure(t_case cas, int num, int qte)
   glPopMatrix();
 }
 
-void		draw_ressource(t_game *game, GLenum mode)
+void		draw_ressource(t_game *game)
 {
   int		x;
   int		y;

@@ -84,8 +84,10 @@ void		draw_picture(t_game *game, int etat);
 void		draw_interface(t_game *game);
 void		draw_gl(t_game *game, GLenum mode);
 void		picking_map();
-void		draw_ressource(t_game *game, GLenum mode);
+void		draw_ressource(t_game *game);
 void		draw_map(GLenum mode);
+void		crazy_mod(t_game *game);
+void		draw_eggs(t_game *game);
 
 void		draw_trantorien_epileptique(int nb);
 
@@ -99,9 +101,6 @@ void		clic_mob(t_game *game, t_player *player, int ref);
 void		clic_map(t_game *game);
 
 void		clic_render();
-void		crazy_mod(t_game *game);
-
-void		draw_eggs(t_game *game, GLenum mode);
 
 /* Draw WRITE */
 

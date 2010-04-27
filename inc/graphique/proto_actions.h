@@ -43,6 +43,7 @@ void		take_item(t_game *game, char **av);
 
 /*common_func.c*/
 t_player	*find_player(t_game *game, int id_player);
+char		*find_team_name(t_game *game, int id);
 int		IsNumeric(char *str);
 
 

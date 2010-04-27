@@ -40,7 +40,7 @@ static void	draw_eggs_onmap(t_egg *player)
   glPopMatrix();
 }
 
-void		draw_eggs(t_game *game, GLenum mode)
+void		draw_eggs(t_game *game)
 {
   t_egg		*temp;
 
