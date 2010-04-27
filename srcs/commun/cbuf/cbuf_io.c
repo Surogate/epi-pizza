@@ -41,21 +41,21 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
     strncpy(result, cbuf->buf + cbuf->cons, cbuf->use);
   else
     {
-      printf("CBUFSIZ - cbuf->cons\n", CBUFSIZ - cbuf->cons);
+      /* printf("CBUFSIZ - cbuf->cons\n", CBUFSIZ - cbuf->cons); */
       strncpy(result, cbuf->buf + cbuf->cons, CBUFSIZ - cbuf->cons);
-      printf("(cbuf->cons + cbuf->use) % CBUFSIZ)\n", (cbuf->cons + cbuf->use) % CBUFSIZ);
+      /* printf("(cbuf->cons + cbuf->use) % CBUFSIZ)\n", (cbuf->cons + cbuf->use) % CBUFSIZ); */
       strncpy(result + CBUFSIZ - cbuf->cons, cbuf->buf, (cbuf->cons + cbuf->use) % CBUFSIZ);
     }
-  printf("\033[31m{%s}\033[00m\n", result);
   if ((cmd = check_read(result)) > 0)
     {
-      printf("======== read =======\nlen : %i\nuse : %i\ncons : %i\n", cmd, cbuf->use, cbuf->cons);
+      /* printf("======== read =======\nlen : %i\nuse : %i\ncons : %i\n", cmd, cbuf->use, cbuf->cons); */
       cbuf->cons = (cbuf->cons + cmd + 1) % CBUFSIZ;
       cbuf->use -= (cmd + 1);
       result[cmd] = '\0';
-      printf("======== readed =======\nlen : %i\nuse : %i\ncons : %i\n",
-	     cmd, cbuf->use, cbuf->cons);
-      printf("len : %i\nresult : %s\n", cmd, result);
+      printf("\033[31m{%s}\033[00m\n", result);
+      /* printf("======== readed =======\nlen : %i\nuse : %i\ncons : %i\n", */
+/* 	     cmd, cbuf->use, cbuf->cons); */
+/*       printf("len : %i\nresult : %s\n", cmd, result); */
       return (result);
     }
   return (NULL);
