@@ -33,6 +33,7 @@
 #include "serveur/eat.h"
 #include "serveur/time_fct.h"
 #include "serveur/communication.h"
+#include "serveur/server_ress.h"
 
 static int	find_eat_fct(t_packet *in, int *player_id)
 {
@@ -72,7 +73,6 @@ int		server_eat(t_svr_vector *vec, t_packet *pak, t_game *game)
     {
       sock_write(id, "mort\n");
       printf("player %i died, eat is essential to live\n", id);
-      gh_broad(vec, grp_player_die(game, pak->player_id));
       server_kick(vec, pak, game);
       return (EXIT_FAILURE);
     }
