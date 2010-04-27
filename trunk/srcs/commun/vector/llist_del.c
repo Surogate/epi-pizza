@@ -26,10 +26,25 @@ static void	llist_check(t_vector *vec)
     }
 }
 
+void		llist_detach(t_vector *vec, t_llist *to_det)
+{
+  t_llist	*prv;
+
+  if (to_det)
+    {
+      prv = to_det->prv;
+      if (!prv)
+	vec->start = vec->start->nxt;
+      if (to_det->nxt)
+	(to_det->nxt)->prv = prv;
+      if (prv)
+	prv->nxt = to_det->nxt;
+    }
+}
+
 void		*llist_del(t_vector *vec, int at)
 {
   t_llist	*tmp;
-  t_llist	*prv;
   void		*strct;
 
   tmp = llist_goto(vec, at);
@@ -39,18 +54,38 @@ void		*llist_del(t_vector *vec, int at)
     --vec->gns_pos;
   if (tmp)
     {
-      prv = tmp->prv;
-      if (at == 0)
-	vec->start = tmp->nxt;
-      if (tmp->nxt)
-	(tmp->nxt)->prv = prv;
-      if (prv)
-	prv->nxt = tmp->nxt;
+      llist_detach(vec, tmp);
       strct = tmp->strct;
       free(tmp);
       vec->size--;
       llist_check(vec);
       return (strct);
+    }
+  return (NULL);
+}
+
+void			*llist_del_by(t_vector *vec, void *strct, 
+				      int (*find_fct)())
+{
+  static t_llist	*tmp;
+  t_llist		*to_del;
+  void			*cont;
+
+  if (!tmp)
+    tmp = vec->start;
+  while (tmp)
+    {
+      if (tmp->strct && find_fct(tmp->strct, strct))
+	{
+	  to_del = tmp;
+	  tmp = tmp->nxt;
+	  llist_detach(vec, to_del);
+	  cont = to_del->strct;
+	  free(to_del);
+	  return (cont);
+	}
+      else
+	tmp = tmp->nxt;
     }
   return (NULL);
 }

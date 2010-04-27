@@ -13,5 +13,5 @@
 
 void		llist_insert_sort(t_vector *vec, void *strct, int (*sort_fct)());
 int		llist_find_pos(t_vector *vec, void *strct, int (*find_fct)());
-
+void		*llist_find_by(t_vector *vec, void *strct, int (*find_fct)());
 #endif

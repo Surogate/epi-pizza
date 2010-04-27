@@ -61,3 +61,15 @@ int		llist_find_pos(t_vector *vec, void *strct, int (*find_fct)())
     return (i);
   return (-1);
 }
+
+void		*llist_find_by(t_vector *vec, void *strct, int (*find_fct)())
+{
+  t_llist	*tmp;
+
+  tmp = vec->start;
+  while (tmp && (tmp->strct) && !find_fct(tmp->strct, strct))
+    tmp = tmp->nxt;
+  if (tmp)
+    return (tmp->strct);
+  return (NULL);
+}
