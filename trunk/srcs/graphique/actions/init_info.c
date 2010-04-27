@@ -56,7 +56,6 @@ void		put_to_case(t_game *game, char **av, int ac)
       while (n_obj < 7)
 	{	
 	  game->map.t_case[y][x].obj[n_obj][2] = atoi(av[3 + n_obj]);
-	  printf("item %d : [%d]\n", n_obj, game->map.t_case[y][x].obj[n_obj][2]);
 	  n_obj++;
 	}
     }

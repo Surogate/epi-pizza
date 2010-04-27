@@ -74,6 +74,7 @@ int		main(int ac, char *av[])
       game.map.h = -42;
       game.serv.cbuf = cbuf_new();
       tempo(&game);
+      printf("FIN  TEMPPO\n");
       init_3dsmodel(&game);
       init_CallList(&game);
       mainloop(&game);

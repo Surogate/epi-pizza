@@ -20,7 +20,7 @@ void		server_msg(t_game *game, char **av);
 /*egg.c*/
 void		eggs_drop(t_game *game, char **av);
 void		eggs_ready(t_game *game, char **av);
-void		eggs_to_player(t_game *game, char **av);
+void		eggs_to_player(t_game *game, char **av, int ac);
 void		eggs_die(t_game *game, char **av, int ac);
 
 /*info_player.c*/
