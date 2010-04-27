@@ -40,16 +40,16 @@ char		*eht(char *msg, int egg_id)
   return (msg);
 }
 
-char		*ebo(char *msg, t_eggs *egg)
+char		*ebo(char *msg, int egg_id)
 {
   msg = xrealloc(msg, (xstrlen(msg) + 15) * sizeof(char));
-  snprintf(msg + xstrlen(msg), 15, "ebo %i\n", egg->id);
+  snprintf(msg + xstrlen(msg), 15, "ebo %i\n", egg_id);
   return (msg);
 }
 
-char		*edi(char *msg, t_eggs *egg)
+char		*edi(char *msg, int egg_id)
 {
   msg = xrealloc(msg, (xstrlen(msg) + 15) * sizeof(char));
-  snprintf(msg + xstrlen(msg), 15, "edi %i\n", egg->id);
+  snprintf(msg + xstrlen(msg), 15, "edi %i\n", egg_id);
   return (msg);
 }

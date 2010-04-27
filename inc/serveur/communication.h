@@ -23,8 +23,8 @@ char		*pic(char *msg, t_player *player);
 char		*pfk(char *msg, t_player *player);
 char		*enw(char *msg, int player_id, t_eggs *egg);
 char		*eht(char *msg, int egg_id);
-char		*ebo(char *msg, t_eggs *egg);
-char		*edi(char *msg, t_eggs *egg);
+char		*ebo(char *msg, int egg_id);
+char		*edi(char *msg, int egg_id);
 
 char		*ppo(char *msg, t_player *player);
 char		*plv(char *msg, t_player *player);

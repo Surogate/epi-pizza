@@ -15,10 +15,15 @@
 
 #include "serveur/define.h"
 #include "my_list.h"
+#include "s_cbuf.h"
+#include "s_vector.h"
 #include "serveur/t_struct.h"
 #include "serveur/t_packet.h"
 #include "serveur/server.h"
+#include "serveur/t_svr_stc.h"
 #include "xfunc.h"
+#include "serveur/server_graph.h"
+#include "serveur/communication.h"
 
 void		test_pathfinding_map(t_game *game);
 

@@ -20,14 +20,6 @@
 #include	"serveur/communication.h"
 #include	"xfunc.h"
 
-
-static int	find_player(t_player *ref, t_player *data)
-{
-  if (data && (ref->player_id == data->player_id))
-    return (EXIT_SUCCESS);
-  return (EXIT_FAILURE);
-}
-
 char		*grp_do_incant(int id_player)
 {
   t_player	ref;
