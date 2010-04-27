@@ -31,60 +31,71 @@
 #include	"graphique/proto.h"
 #include	"xfunc.h"
 
-void		player_pos(t_game *game, char **av)
+void		player_pos(t_game *game, char **av, int ac)
 {
   t_player	*player;
   int		p_id;
 
   p_id = atoi(av[1]);
-  player = game->player;
-  while (player)
+  if (ac > 3)
     {
-      if (player->id == p_id)
+      player = game->player;
+      while (player)
 	{
-	  player->pos.x = atoi(av[2]);
-	  player->pos.y = atoi(av[3]);
-	  player->sens = atoi(av[4]);
-	  break;
+	  if (player->id == p_id)
+	    {
+	      player->pos.x = atoi(av[2]);
+	      player->pos.y = atoi(av[3]);
+	      player->sens = atoi(av[4]);
+	      break;
+	    }
+	  player = player->next_pg;
 	}
-      player = player->next_pg;
     }
 }
 
-void		player_level(t_game *game, char **av)
+void		player_level(t_game *game, char **av, int ac)
 {
   t_player	*player;
 
-  player = game->player;
-  if (player)
+  if (ac > 1)
     {
-      while (player->next_pg && player->id != atoi(av[1]))
-	player = player->next_pg;
-      if (player->id == atoi(av[1]))
-	player->lv = atoi(av[2]);
+      player = game->player;
+      if (player)
+	{
+	  while (player->next_pg && player->id != atoi(av[1]))
+	    player = player->next_pg;
+	  if (player->id == atoi(av[1]))
+	    player->lv = atoi(av[2]);
+	}
     }
 }
 
-void		player_invent(t_game *game, char **av)
+void		player_invent(t_game *game, char **av, int ac)
 {
   t_player	*player;
   int		n_obj;
 
-  player = game->player;
-  if (player)
+  if (ac > 9)
     {
-      while (player->next_pg && player->id != atoi(av[1]))
-	player = player->next_pg;
-      if (player->id == atoi(av[1]))
+      player = game->player;
+      if (player)
 	{
-	  n_obj = 0;
-	  while (n_obj < 7)
+	  while (player->next_pg && player->id != atoi(av[1]))
+	    player = player->next_pg;
+	  if (player->id == atoi(av[1]))
 	    {
-	      player->inventaire[n_obj] = atoi(av[4 + n_obj]);
-	      n_obj++;
+	      n_obj = 0;
+	      while (n_obj < 7)
+		{
+		  player->inventaire[n_obj] = atoi(av[4 + n_obj]);
+		  n_obj++;
+		}
 	    }
 	}
     }
+  else
+    printf("wrong args number\n");
 }
 
 void		player_die(t_game *game, char **av, int ac)
