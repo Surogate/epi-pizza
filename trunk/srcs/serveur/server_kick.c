@@ -106,6 +106,7 @@ int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
       delete_kick(vec, id);
       delete_eat(vec, id);
       rm_player(game, id);
+      supp_ress(game, vec);
       printf("l'oeuf a moisi\n");
       return (EXIT_SUCCESS);
     }

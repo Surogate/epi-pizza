@@ -62,6 +62,7 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	    create_kick(vec, cli->sock, 3);
 	  else if (cli->team == 1)
 	    {
+	      generate_ress(game, vec);
 	      create_eat(vec, cli->sock);
 	      return_packet(cli->packet + cli->cons);
 	    }
@@ -136,7 +137,10 @@ int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
 	    delete_plaction(vec, tmp->sock);
 	    delete_kick(vec, tmp->sock);
 	    if (tmp->team > 0)
- 	      rm_player(game, tmp->sock);
+	      {
+		rm_player(game, tmp->sock);
+		supp_ress(game, vec);
+	      }
 	    vec->client->erase(vec->client, client->gns_pos, free_client);
 	  }
 	else if ((readed = cbuf_read(&(tmp->cbuf), check_read)))
