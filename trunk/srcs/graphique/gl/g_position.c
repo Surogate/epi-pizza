@@ -34,6 +34,7 @@ static int	calc_res(GLuint *ptr[2],
   int j;
   int res;
 
+  res = -100;
   if (numberOfNames > 0)
   {
     printf ("You picked element #:");
@@ -61,6 +62,7 @@ static int	processHits(GLint hits, GLuint buffer[])
   GLuint *ptr[2];
 
   printf("nbr of hits= %i\n", hits);
+  ptr[1] == 0;
   ptr[0] = (GLuint *)buffer;
   minZ = 0xffffffff;
   i = -1;

@@ -32,12 +32,17 @@
 void		clic_render(int type)
 {
   static int	i;
+  static int	j;
 
   glPushMatrix();
   glTranslatef(CASE_H / 2, CASE_W / 2, 0);
   glPushMatrix();
   i %= 360;
-  glRotated((i += 2), 0, 0, 1);
+  j %= 360;
+  if (type == PSELECT)
+    glRotated(j += 2, 0, 0, 1);
+  else
+    glRotated(i -= 2, 0, 0, 1);
   glCallList(type);
   glPopMatrix();
   glPopMatrix();

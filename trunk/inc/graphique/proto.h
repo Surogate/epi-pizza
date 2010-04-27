@@ -93,6 +93,7 @@ void		floor_picking(int x, int y);
 void		picking_map(t_game *game);
 
 void		draw_mob(t_game *game, GLenum mode);
+void		draw_trantorien_epileptique(int nb);
 
 void		clic_mob(t_game *game, t_player *player, int ref);
 void		clic_map(t_game *game);

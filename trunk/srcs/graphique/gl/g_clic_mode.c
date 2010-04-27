@@ -55,7 +55,7 @@ void		clic_map(t_game *game)
     x = game->map.select_c % game->map.w;
     y = game->map.select_c / game->map.w;
     glPushMatrix();
-    glTranslatef(x * CASE_H, y * CASE_W, 0.2);
+    glTranslatef(x * CASE_H, y * CASE_W, 0.3);
     clic_render(PICKING);
     glPopMatrix();
   }
