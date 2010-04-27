@@ -60,9 +60,7 @@ int		main(int ac, char *av[])
   if (ac > 2)
     {
       connect_to_serv(&game, av);
-# ifdef __APPLE__
       glutInit(&ac, av);
-# endif
       init_game(&game);
       init_video(&game);
       printAttributes();
