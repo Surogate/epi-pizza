@@ -101,9 +101,4 @@ void			init_timeout(t_svr_vector *vec, t_select *slt)
 	       (time_cmp(&(slt->timeout), &tmp) > 0))
 	timeminus(&(slt->timeout), &(pak->end), &ac_time);
     }
-  if (slt->time)
-    printf("timeout\n=> sec : %i\n=>usec : %i\n", (int)slt->time->tv_sec,
-	   (int)slt->time->tv_usec);
-  else
-    printf("timeout unlimited\n");
 }
