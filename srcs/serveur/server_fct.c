@@ -63,6 +63,7 @@ static void	instr_catch(char *str, t_client *cli, t_game *game,
 	  else if (cli->team == 1)
 	    {
 	      generate_ress(game, vec);
+	      gh_broad(vec, grp_connex_player(game, cli->sock));
 	      create_eat(vec, cli->sock);
 	      return_packet(cli->packet + cli->cons);
 	    }
@@ -122,6 +123,7 @@ int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
 	if (cbuf_write(&tmp->cbuf, tmp->sock) == EXPIPE)
 	  {
 	    printf("client %i timeout\n", tmp->sock);
+	    gh_broad(vec, grp_player_die(tmp->sock));
 	    FD_CLR(tmp->sock, &(slt_par->fd_read));
 	    delete_eat(vec, tmp->sock);
 	    delete_plaction(vec, tmp->sock);
@@ -136,6 +138,5 @@ int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
 	else if ((readed = cbuf_read(&(tmp->cbuf), check_read)))
 	  instr_catch(readed, tmp, game, vec);
       }
-  /* graph_inst(tmp, vec);*/
   return (EXIT_SUCCESS);
 }
