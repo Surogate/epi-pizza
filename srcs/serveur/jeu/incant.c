@@ -21,6 +21,7 @@
 #include	"serveur/t_packet.h"
 #include	"xfunc.h"
 #include	"serveur/server_ending.h"
+#include	"serveur/communication.h"
 
 static t_incant	gl_incant[INCANT_NUM + 1] = {
   {1, {0, 1, 0, 0, 0, 0, 0}},
@@ -90,7 +91,7 @@ void		try_incant(t_packet *packet, t_player *player, t_game *game)
       packet->response[0].id_player = player->player_id;
       packet->ac_rep = 1;
       create_rep(packet, player);
-      packet->graph_rep = grp_incant_done(player);
+      packet->graph_rep = grp_incant_done(player, 1);
       is_ending(game);
     }
   else
@@ -99,6 +100,7 @@ void		try_incant(t_packet *packet, t_player *player, t_game *game)
       packet->response->mess = xmalloc(LEN_OK * sizeof(char));
       snprintf(packet->response->mess, LEN_OK, "%s\n", KO);
       packet->response->id_player = packet->player_id;
+      packet->graph_rep = grp_incant_done(player, 0);
       packet->ac_rep = 1;
     }
 }
