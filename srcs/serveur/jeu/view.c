@@ -88,18 +88,8 @@ static t_vision	*add_level(t_vision *s_vision, t_dir_v *dir, int level)
   i = 0;
   count = 0;
   left = find_left(s_vision, dir, level);
-
-
-  printf("Debut : Level : %i   Left : X %i, Y : %i\n", level, left->x, left->y);
-
-
   while (i <= level * 2)
     {
-
-
-      printf("Nous travaillons sur left soit le : %i %i\n", left->x, left->y);
-
-
       s_vision = add_case(s_vision, left, level);
       left = left->card[dir->right];
       i++;

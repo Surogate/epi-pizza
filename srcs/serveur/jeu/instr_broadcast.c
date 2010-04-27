@@ -20,6 +20,7 @@
 #include "serveur/t_packet.h"
 #include "serveur/server.h"
 #include "serveur/communication.h"
+#include "serveur/communication.h"
 
 void		test_pathfinding_map(t_game *game);
 
