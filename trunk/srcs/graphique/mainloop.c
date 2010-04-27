@@ -68,6 +68,7 @@ void		mainloop(t_game *game)
     glFlush();
     SDL_GL_SwapBuffers(); 
     exit = interaction(game);
+    /*ask_pin(game, game->select);*/
   }
 }
 
