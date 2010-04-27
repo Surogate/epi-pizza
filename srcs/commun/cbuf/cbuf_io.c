@@ -21,6 +21,14 @@
 #include	"cbuf_io.h"
 #include	"xfunc.h"
 
+char		*do_return(t_cbuf *cbuf, int cmd, char *result)
+{
+  cbuf->cons = (cbuf->cons + cmd + 1) % CBUFSIZ;
+  cbuf->use -= (cmd + 1);
+  result[cmd] = '\0';
+  return (result);
+}
+
 char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
 {
   static char	result[CBUFSIZ];
@@ -41,24 +49,11 @@ char		*cbuf_read(t_cbuf *cbuf, int (*check_read)())
     strncpy(result, cbuf->buf + cbuf->cons, cbuf->use);
   else
     {
-      /* printf("CBUFSIZ - cbuf->cons :: %i\n", CBUFSIZ - cbuf->cons); */
       strncpy(result, cbuf->buf + cbuf->cons, CBUFSIZ - cbuf->cons);
-      /* printf("(cbuf->cons + cbuf->use) CBUFSIZ) :: %i\n", (cbuf->cons + cbuf->use) % CBUFSIZ); */
       strncpy(result + CBUFSIZ - cbuf->cons, cbuf->buf, (cbuf->cons + cbuf->use) % CBUFSIZ);
     }
-  /* printf("tmp result ; %s\n", result); */
   if ((cmd = check_read(result)) > 0)
-    {
-      /* printf("======== read =======\nlen : %i\nuse : %i\ncons : %i\n", cmd, cbuf->use, cbuf->cons); */
-      cbuf->cons = (cbuf->cons + cmd + 1) % CBUFSIZ;
-      cbuf->use -= (cmd + 1);
-      result[cmd] = '\0';
-      printf("\033[31m{%s}\033[00m\n", result);
-      /* printf("======== readed =======\nlen : %i\nuse : %i\ncons : %i\n", */
-/* 	     cmd, cbuf->use, cbuf->cons); */
-/*       printf("len : %i\nresult : %s\n", cmd, result); */
-      return (result);
-    }
+    return (do_return(cbuf, cmd, result));
   return (NULL);
 }
 
@@ -100,7 +95,6 @@ int		cbuf_write(t_cbuf *cbuf, int sock)
   if (cbuf->use > CBUFSIZ)
     cbuf_init(cbuf);
   total = 0;
-  /* printf("====== write ======\ntotal : %i\nuse : %i\nprod : %i\n",total, cbuf->use, cbuf->prod); */
   if (cbuf->prod >= cbuf->cons)
     {
       total = sock_read(sock, cbuf->buf + cbuf->prod, CBUFSIZ - cbuf->prod);
@@ -117,7 +111,6 @@ int		cbuf_write(t_cbuf *cbuf, int sock)
       cbuf->prod = (cbuf->prod + total) % (CBUFSIZ);
       cbuf->use += total;
     }
-  /* printf("====== writed ======\ntotal : %i\nuse : %i\nprod : %i\n",total, cbuf->use, cbuf->prod); */
   if (total == 0)
     return (EXPIPE);
   return (EXIT_SUCCESS);
