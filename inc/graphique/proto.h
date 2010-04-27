@@ -45,6 +45,9 @@ void		init_camera(t_game *game);
 void		init_texture(t_game *game);
 void		init_video(t_game *game);
 void		initGL(t_game *game);
+void		init_fog(int fog, GLint fogmode);
+void		init_aliasing(int aliasing);
+
 void		printAttributes();
 
 /* load */
@@ -77,14 +80,17 @@ void		DrawStr(const char *str);
 
 void		mainloop(t_game *game);
 
+void		draw_picture(t_game *game, int etat);
 void		draw_interface(t_game *game);
-
 void		draw_gl(t_game *game, GLenum mode);
-void		draw_map(t_game *game, GLenum mode);
+void		picking_map();
 void		draw_ressource(t_game *game, GLenum mode);
+void		draw_map(GLenum mode);
 
+void		draw_trantorien_epileptique(int nb);
 
 void		floor_picking(int x, int y);
+void		picking_map(t_game *game);
 
 void		draw_mob(t_game *game, GLenum mode);
 
@@ -92,6 +98,7 @@ void		clic_mob(t_game *game, t_player *player, int ref);
 void		clic_map(t_game *game);
 
 void		clic_render();
+void		crazy_mod(t_game *game);
 
 void		draw_eggs(t_game *game, GLenum mode);
 
@@ -110,9 +117,17 @@ void		side(int x, GLuint select);
 
 /* CALLLIST */
 
+void		init_CallList(t_game *game);
 void		make_calllistes_picking(int name, GLuint texture);
 void		make_calllistes_trantorien(t_game *game);
 void		make_calllistes_terrain(t_game *game);
 void		make_calllistes_interface(t_game *game);
+void		make_calllistes_ressources(t_game *game);
+
+/* WRITE */
+void		pushwrite();
+void		dwrite_int(int nbr, int posx, int posy, int color);
+void		dwrite(char *str, int posx, int posy, int color);
+void		popwrite();
 
 #endif

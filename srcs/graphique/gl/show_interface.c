@@ -28,6 +28,7 @@
 #include	"s_cbuf.h"
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
+#include	"graphique/proto_actions.h"
 
 static void		show_info_val_do(t_player *player, char *team)
 {

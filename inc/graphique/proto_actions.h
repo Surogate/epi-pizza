@@ -43,5 +43,7 @@ void		take_item(t_game *game, char **av);
 
 /*common_func.c*/
 t_player	*find_player(t_game *game, int id_player);
+int		IsNumeric(char *str);
+
 
 #endif		/*__PROTO_ACTIONS_H__*/

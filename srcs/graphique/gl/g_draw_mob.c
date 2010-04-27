@@ -58,6 +58,8 @@ void		draw_mob(t_game *game, GLenum mode)
   temp = game->player;
   while (temp)
     {
+      if (game->player->incant)
+        draw_trantorien_epileptique(0);
       draw_trantorien(temp, ref, mode);
       clic_mob(game, temp, ref);
       temp = temp->next_pg;
