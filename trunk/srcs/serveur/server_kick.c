@@ -32,12 +32,8 @@
 #include "serveur/server_eat.h"
 #include "serveur/server_plaction.h"
 #include "serveur/server_debug.h"
-#include "serveur/server_graph.h"
-#include "serveur/communication.h"
 #include "serveur/time_fct.h"
 #include "serveur/server_insert_player.h"
-#include "serveur/server_graph.h"
-#include "serveur/communication.h"
 
 int		find_kick_fct(t_packet *in, int *player_id)
 {
@@ -55,7 +51,6 @@ int		create_kick(t_svr_vector *vec, int player_id, int time)
   pak = malloc(sizeof(*pak));
   if (pak)
     {
-      printf("create kick\n");
       pak->player_id = player_id;
       pak->type = 1;
       gettimeofday(&(pak->end), NULL);
@@ -80,13 +75,13 @@ int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
   id = pak->player_id;
   if (id > 0)
     {
-      pos = vec->client->find_pos(vec->client, &id, player_id_find);
+      pos = vec->client->find_pos(vec->client, &(pak->player_id), 
+				  player_id_find);
       if (pos >= 0)
 	{
 	  printf("player %i ass kicked\n", id);
-	  gh_broad(vec, grp_player_die(game, id));
 	  rm_player(game, id);
-	  supp_ress(game, vec);
+	  /* supp_ress(game, vec); */
 	  delete_kick(vec, id);
 	  delete_eat(vec, id);
 	  delete_plaction(vec, id);
@@ -98,10 +93,8 @@ int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
     }
   else
     {
-      gh_broad(vec, grp_egg_die(game, id));
       delete_kick(vec, id);
       delete_eat(vec, id);
-      supp_ress(game, vec);
       rm_player(game, id);
       printf("l'oeuf a moisie\n");
       return (EXIT_SUCCESS);

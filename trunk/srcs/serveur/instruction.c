@@ -16,20 +16,14 @@
 #include "serveur/define.h"
 #include "my_list.h"
 #include "xfunc.h"
-#include "s_cbuf.h"
-#include "cbuf_define.h"
-#include "cbuf_io.h"
-#include "s_vector.h"
 #include "serveur/t_struct.h"
 #include "serveur/t_packet.h"
-#include "serveur/t_svr_stc.h"
 #include "serveur/t_game_stc.h"
 #include "serveur/game_cmd.h"
 #include "serveur/response.h"
 #include "serveur/count_player.h"
 #include "serveur/server_born.h"
 #include "serveur/server_ending.h"
-#include "serveur/instruction.h"
 
 t_inst		tab_instr[NB_INST] =
 {
