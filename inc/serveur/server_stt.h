@@ -13,6 +13,6 @@
 
 int			init_svr(t_server *svr, t_select *slt_par);
 int			select_loop(int svr_sock, t_select *slt_par);
-int			svr_start(t_server *svr);
+int			svr_start(t_game *game);
 
 #endif
