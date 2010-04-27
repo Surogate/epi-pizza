@@ -85,7 +85,7 @@ int		main(int ac, char **av)
     reset_pathfinding(game);
     test_pathfinding_map(game);
   }
-  if (svr_start(&(game->server)) == EXIT_FAILURE)
+  if (svr_start(game) == EXIT_FAILURE)
     perror("svr start error");
   free_map(game);
   return (EXIT_SUCCESS);
