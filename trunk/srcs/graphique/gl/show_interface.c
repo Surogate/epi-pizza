@@ -29,9 +29,8 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-static void		show_info_val(t_player *player, char *team)
+static void		show_info_val_do(t_player *player, char *team)
 {
-  pushwrite();
   dwrite(team, 800, 170, RED);
   dwrite("LVL:", 856, 140, RED);
   dwrite_int(player->lv, 900, 140, GREEN);
@@ -47,17 +46,9 @@ static void		show_info_val(t_player *player, char *team)
   dwrite_int(player->inventaire[4], 900, 60, GREEN);
   dwrite("thystame:", 816, 45, RED);
   dwrite_int(player->inventaire[5], 900, 45, GREEN);
-  popwrite();
 }
 
-/*
-  t_player *player;
-  if (game->map.select_p > game->map.h * game->map.w)
-  {
-      show_info_val(player);
-  }
-*/
-static void		show_info(t_game *game)
+static void		show_info_do(t_game *game)
 {
   int		ref;
   t_player *player;
@@ -69,8 +60,27 @@ static void		show_info(t_game *game)
     if ((player = find_player(game, game->map.select_p - ref)))
     {
       team = find_team_name(game, player->team);
-      show_info_val(player, team);
+      show_info_val_do(player, team);
     }
+  }
+}
+
+static void		show_info_up(t_game *game)
+{
+  int x;
+  int y;
+
+  if (game->map.select_c >= 0 && game->map.select_c <= game->map.h * game->map.w)
+  {
+    x = game->map.select_c / game->map.w;
+    y = game->map.select_c % game->map.w;
+    dwrite_int(game->map.t_case[x][y].obj[0][2], 385, 735, GREEN);
+    dwrite_int(game->map.t_case[x][y].obj[1][2], 436, 735, GREEN);
+    dwrite_int(game->map.t_case[x][y].obj[2][2], 486, 735, GREEN);
+    dwrite_int(game->map.t_case[x][y].obj[3][2], 530, 735, GREEN);
+    dwrite_int(game->map.t_case[x][y].obj[4][2], 570, 735, GREEN);
+    dwrite_int(game->map.t_case[x][y].obj[5][2], 618, 735, GREEN);
+    dwrite_int(game->map.t_case[x][y].obj[5][2], 662, 735, GREEN);
   }
 }
 
@@ -84,7 +94,10 @@ void		draw_interface(t_game *game)
   glPushMatrix();
   glLoadIdentity();
   glCallList(INTER);
-  show_info(game);
+  pushwrite();
+  show_info_up(game);
+  show_info_do(game);
+  popwrite();
   glPopMatrix();
   glMatrixMode(GL_PROJECTION);
   glPopMatrix();

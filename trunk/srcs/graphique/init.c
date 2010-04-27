@@ -80,5 +80,9 @@ void		init_game(t_game *game)
   game->info.crazy = MOD_OK;
   game->info.pos.x = 0;
   game->info.pos.y = 0;
+  game->map.select_c = -200;
+  game->map.select_c_o = -200;
+  game->map.select_p = -200;
+  game->map.select_p_o = -200;
   SDL_ShowCursor(1);
 }
