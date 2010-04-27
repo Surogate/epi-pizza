@@ -93,7 +93,6 @@ void		eggs_die(t_game *game, char **av, int ac)
         free(cur);
         cur = prec;
         prec = 0;
-      /*anime?*/
       }
       else
       {

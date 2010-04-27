@@ -11,6 +11,10 @@
 #ifndef		__PROTO_H__
 # define	__PROTO_H__
 
+/*common func*/
+int		find_team_id(t_game *game, char *name);
+char		*find_team_name(t_game *game, int id);
+
 /*key func*/
 int		key_down(t_game *game);
 int		key_up(t_game *game);

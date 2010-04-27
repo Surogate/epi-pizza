@@ -31,21 +31,39 @@
 #include	"graphique/proto.h"
 #include	"xfunc.h"
 
+char		*find_team_name(t_game *game, int id)
+{
+  t_team	*team;
+
+  team = game->team;
+  while (team)
+    {
+      if (team->id == id)
+	return (team->name);
+      team = team->next;
+    }
+  return (0);
+}
+
+int		find_team_id(t_game *game, char *name)
+{
+  t_team	*team;
+
+  team = game->team;
+  while (team)
+    {
+      if (!strcmp(team->name, name))
+	return (team->id);
+      team = team->next;
+    }
+  return (0);
+}
+
 t_player	*find_player(t_game *game, int pid)
 {
   t_player	*cur;
 
   cur = game->player;
-  /*
-  if (cur)
-    while (cur->next_pg != NULL)
-      {
-	if (cur->id == pid)
-	  return (cur);
-	cur = cur->next_pg;
-      }
-  */
-
   while (cur != NULL)
     {
       if (cur->id == pid)

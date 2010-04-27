@@ -32,8 +32,6 @@
 #include	"graphique/struct.h"
 #include	"graphique/proto.h"
 
-#define		GRAPH	"GRAPHIC\n"
-
 void		connect_to_serv(t_game *game, char **av)
 {
   struct sockaddr_in	sin;

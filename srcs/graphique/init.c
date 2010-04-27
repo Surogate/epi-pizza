@@ -73,6 +73,7 @@ void		create_map(t_game *game)
 void		init_game(t_game *game)
 {
   game->screen = load_window();
+  game->map.t_case = 0;
   game->mouse.clicked = 0;
   game->team = NULL;
   game->player = NULL;

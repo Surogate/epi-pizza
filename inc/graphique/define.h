@@ -11,6 +11,8 @@
 #ifndef		DEFINE_H
 # define	DEFINE_H
 
+# define	GRAPH	"GRAPHIC\n"
+
 # define	FPS		30
 
 # define	WIN_W		1024

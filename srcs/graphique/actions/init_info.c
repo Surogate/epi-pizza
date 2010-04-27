@@ -51,17 +51,18 @@ void		put_to_case(t_game *game, char **av, int ac)
 
   if (ac > 9)
     {
-      if (IsNumeric(av[1]) && IsNumeric(av[2]))
-	{
-	  x = atoi(av[1]);
-	  y = atoi(av[2]);
-	  n_obj = 0;
-	  while (n_obj < 7)
-	    {	
-	      game->map.t_case[y][x].obj[n_obj][2] = atoi(av[3 + n_obj]);
-	      n_obj++;
-	    }
-	}
+      if (game->map.t_case)
+	if (IsNumeric(av[1]) && IsNumeric(av[2]))
+	  {
+	    x = atoi(av[1]);
+	    y = atoi(av[2]);
+	    n_obj = 0;
+	    while (n_obj < 7)
+	      {	
+		game->map.t_case[y][x].obj[n_obj][2] = atoi(av[3 + n_obj]);
+		n_obj++;
+	      }
+	  }
     }
 }
 
@@ -112,34 +113,6 @@ static t_player	*new_player(char **av)
       player->next_pg = 0;
     }
   return (player);
-}
-
-char		*find_team_name(t_game *game, int id)
-{
-  t_team	*team;
-
-  team = game->team;
-  while (team)
-    {
-      if (team->id == id)
-	return (team->name);
-      team = team->next;
-    }
-  return (0);
-}
-
-int		find_team_id(t_game *game, char *name)
-{
-  t_team	*team;
-
-  team = game->team;
-  while (team)
-    {
-      if (!strcmp(team->name, name))
-	return (team->id);
-      team = team->next;
-    }
-  return (0);
 }
 
 void		player_connect(t_game *game, char **av, int ac)

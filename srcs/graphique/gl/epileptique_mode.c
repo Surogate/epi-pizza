@@ -24,7 +24,6 @@ void		draw_trantorien_epileptique(int nb)
   static int i = 0;
 
   i %= 360;
-  puts("coucou");
   glPushMatrix();
   glTranslated((CASE_H / 2), (CASE_W / 2), 0);
   if (nb != 0)

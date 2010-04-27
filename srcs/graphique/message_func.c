@@ -54,7 +54,6 @@ void		my_recv(t_game *game)
 	  while (temp2[i])
 	    {
 	      temp = split(temp2[i], ' ');
-	      printf("\033[31mFUNC : %s\033[00m\n", temp[0]);
 	      traitement(game, temp);
 	      if (!strncmp(temp[0], "msz", 3))
 		create_map(game);
