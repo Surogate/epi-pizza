@@ -119,8 +119,6 @@ int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
       	if (cbuf_write(&tmp->cbuf, tmp->sock) == EXPIPE)
 	  {
 	    printf("le client graphique %i a un souci\n", tmp->sock);
-	    /*if (tmp->team > 0)
-	      gh_fct(vec, game, tmp->sock, pdi);*/
 	    FD_CLR(tmp->sock, &(slt_par->fd_read));
 	    vec->graph->erase(vec->graph, vec->graph->gns_pos, free_client);
 	  }
