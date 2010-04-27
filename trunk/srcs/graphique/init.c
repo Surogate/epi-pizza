@@ -77,7 +77,7 @@ void		init_game(t_game *game)
   game->egg = NULL;
   game->map.rot = 0;
   game->map.z = 200;
-  game->info.crazy = MOD_BEGIN;
+  game->info.crazy = MOD_OK;
   game->info.pos.x = 0;
   game->info.pos.y = 0;
   SDL_ShowCursor(1);
