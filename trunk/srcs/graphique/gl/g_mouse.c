@@ -95,6 +95,7 @@ void		right_click(t_game *game)
   int temp;
 
   temp = game->map.select_c;
+  puts("picking");
   picking_mouse(game, game->event.button.x, game->event.button.y);
   if (game->map.select_c > game->map.h * game->map.w)
     {
@@ -111,7 +112,7 @@ int		mouse_down(t_game *game)
   if (game->event.button.button == SDL_BUTTON_LEFT)
     left_click(game);
   else if (game->event.button.button == SDL_BUTTON_RIGHT &&
-           game->info.crazy == 1)
+           game->info.crazy == MOD_OK)
     right_click(game);
   else if (game->event.button.button == SDL_BUTTON_WHEELDOWN)
     {
