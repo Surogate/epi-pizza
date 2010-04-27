@@ -47,7 +47,7 @@ enum {YELLOW, BLUE, GREEN, PINK, PURPLE, RED, BLACK, WHITE, CYAN};
 # define	CAM_Z		(200)
 
 # define	CAM_MAX		300
-# define	CAM_MIN		260
+# define	CAM_MIN		80
 
 # define	MOD_CRAZY	0
 # define	MOD_OK		10

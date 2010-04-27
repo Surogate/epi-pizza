@@ -72,7 +72,7 @@ void		floor_render(int h, int w, GLuint texture)
   glNormal3f(0.0f, 0.0f, 1.0f);
   glTexCoord2f(0, 0);
   glVertex2d(0, 0);
-  glTexCoord2f(0,h);
+  glTexCoord2f(0,w);
   glVertex2d(0, w * CASE_W);
   glTexCoord2f(h, w);
   glVertex2d(h * CASE_H, w * CASE_W);

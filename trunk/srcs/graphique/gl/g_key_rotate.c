@@ -46,14 +46,14 @@ int		key_right(t_game *game)
 
 int		key_up(t_game *game)
 {
-  if (game->video.cam[3] > 26)
+  if (game->video.cam[3] >CAM_MIN)
     game->video.cam[3] -= 5;
   return (1);
 }
 
 int		key_down(t_game *game)
 {
-  if (game->video.cam[3] < 250)
+  if (game->video.cam[3] < CAM_MAX)
     game->video.cam[3] += 5;
   return (1);
 }
