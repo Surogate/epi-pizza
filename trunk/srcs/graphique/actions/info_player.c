@@ -71,6 +71,20 @@ void		player_level(t_game *game, char **av, int ac)
     }
 }
 
+int		IsNumeric(char *str)
+{
+  int		i;
+
+  i = 0;
+  while (str[i])
+    {
+      if (!(str[i] > 47 && str[i] < 58))
+	return (0);
+      i++;
+    }
+  return (1);
+}
+
 void		player_invent(t_game *game, char **av, int ac)
 {
   t_player	*player;
@@ -92,7 +106,10 @@ void		player_invent(t_game *game, char **av, int ac)
 	      n_obj = 0;
 	      while (n_obj < 7)
 		{
-		  player->inventaire[n_obj] = atoi(av[4 + n_obj]);
+		  if (IsNumeric(av[4 +n_obj]))
+		    player->inventaire[n_obj] = atoi(av[4 + n_obj]);
+		  else
+		    printf("\033[31mNOT A NUMBER![033[00m\n");
 		  n_obj++;
 		}
 	    }
