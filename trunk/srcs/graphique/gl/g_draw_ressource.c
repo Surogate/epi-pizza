@@ -46,11 +46,11 @@ void		draw_ressource(t_game *game, GLenum mode)
   int		ress;
   int		qte;
   
-  x = -1;
-  while (++x < game->map.h)
+  y = -1;
+  while (++y < game->map.h)
     {
-      y = -1;
-      while (++y < game->map.w)
+      x = -1;
+      while (++x < game->map.w)
 	{ 
 	  ress = -1;
 	  while (++ress != NBRESS)
@@ -58,8 +58,8 @@ void		draw_ressource(t_game *game, GLenum mode)
 	      if ((qte = game->map.t_case[y][x].obj[ress][2]))
 		{
 		  glPushMatrix();
-		  glTranslated(x * CASE_W, y * CASE_H, 0);
-		  draw_treasure(game->map.t_case[x][y], ress, qte);
+		  glTranslated(y * CASE_W, x * CASE_H, 0);
+		  draw_treasure(game->map.t_case[y][x], ress, qte);
 		  glPopMatrix();
 		}
 	    }

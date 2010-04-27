@@ -36,15 +36,15 @@ void		picking_map(t_game *game)
   int           i;
 
   i = -1;
-  x = -1;
-  while (++x < game->map.h)
+  y = -1;
+  while (++y < game->map.h)
   {
-    y = -1;
-    while (++y < game->map.w)
+    x = -1;
+    while (++x < game->map.w)
     {
       ++i;
       glPushName(i);
-      floor_picking(y, x);
+      floor_picking(x, y);
       glPopName();
     }
   }

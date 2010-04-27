@@ -59,5 +59,7 @@ int		key_space(t_game *game)
 {
   game->info.pos.x = 0;
   game->info.pos.y = 0;
+  game->map.rot = 0;
+  game->video.cam[3] = CAM_Z;
   return (1);
 }
