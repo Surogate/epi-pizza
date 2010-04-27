@@ -38,7 +38,7 @@ char		*grp_player_die(t_game *game, int player_id)
 
 char		*grp_party_end(int winner)
 {
-  return (seg(NULL, winner));  
+  return (seg(NULL, winner));
 }
 
 char		*grp_connex_player(t_game *game, int player_id)
