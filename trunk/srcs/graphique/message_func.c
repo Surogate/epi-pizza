@@ -40,6 +40,8 @@ void		my_recv(t_game *game)
 {
   char		*msg;
   char		**temp;
+  char		**pouet;
+  int		i;
 
   printf("\033[31mmsg recv!\033[00m\n");
   cbuf_write(game->serv.cbuf, game->serv.socket);
@@ -49,16 +51,19 @@ void		my_recv(t_game *game)
       printf("Msg : %p\n", msg);
       if (msg)
 	{
-	  temp = split(msg, ' ');
-	  printf("\033[31mFUNC : %s\033[00m\n", temp[0]);
-	  traitement(game, temp);
-	  if (!strncmp(temp[0], "msz", 3))
+	  i = 0;
+	  pouet = split(msg, '\n');
+	  while (pouet[i])
 	    {
-	      printf("taille de la map : %d, %d\n", game->map.h, game->map.w);
-	      create_map(game);
-	      printf("fin init map\n");
+	      temp = split(pouet[i], ' ');
+	      printf("\033[31mFUNC : %s\033[00m\n", temp[0]);
+	      traitement(game, temp);
+	      if (!strncmp(temp[0], "msz", 3))
+		create_map(game);
+	      free_2d_tab(temp);
+	      i++;
 	    }
-	  free_2d_tab(temp);
+	  free_2d_tab(pouet);
 	}
     } while (msg);
   printf("test\n");
