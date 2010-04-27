@@ -135,6 +135,7 @@ typedef struct
   GLuint	faq2;
   GLuint	legend;
   GLuint	intro;
+  GLuint	ending;
   GLuint	bonjour;
 }		t_texture;
 
