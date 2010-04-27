@@ -35,13 +35,6 @@
 #include "serveur/server_graph.h"
 #include "serveur/communication.h"
 
-static int	find_player(int *ref, t_player *data)
-{
-  if (*ref == data->player_id)
-    return (EXIT_SUCCESS);
-  return (EXIT_FAILURE);
-}
-
 void		new_gh(t_svr_vector *vec, t_client *cli, t_game *game)
 {
   char		*str;
@@ -63,37 +56,17 @@ void		gh_broad(t_svr_vector *vec, char *str)
   free(str);
 }
 
-void		gh_fct(t_svr_vector *vec, t_game *game,
-		       int id_player, char *(*fct)())
-{
-  char		*str;
-  t_player	*pla;
-
-  str = NULL;
-  pla = (t_player *)my_l_find(game->player, &id_player, find_player);
-  if (pla)
-    {
-      str = fct(str, pla, game);
-      printf("%s\n", str);
-      gh_broad(vec, str);
-      free(str);
-    }
-}
-
 int		graph_inst(t_client *cli, t_svr_vector *vec)
 {
   char		*readed;
 
-  if (FD_ISSET(cli->sock, &(vec->slt->fd_read)))
+  if (cbuf_write(&cli->cbuf, cli->sock) == EXPIPE)
     {
-      	if (cbuf_write(&cli->cbuf, cli->sock) == EXPIPE)
-	  {
-	    printf("le client graphique %i a un souci\n", cli->sock);
-	    FD_CLR(cli->sock, &(vec->slt->fd_read));
-	    vec->graph->erase(vec->graph, vec->graph->gns_pos, free_client);
-	  }
-	else if ((readed = cbuf_read(&(cli->cbuf), check_read)))
-	  printf("readed : %s\n", readed);
+      printf("le client graphique %i a un souci\n", cli->sock);
+      FD_CLR(cli->sock, &(vec->slt->fd_read));
+      vec->graph->erase(vec->graph, vec->graph->gns_pos, free_client);
     }
+  else if ((readed = cbuf_read(&(cli->cbuf), check_read)))
+    printf("readed : %s\n", readed);
   return (EXIT_SUCCESS);
 }
