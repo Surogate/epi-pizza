@@ -34,18 +34,25 @@ static void		show_info_val(t_player *player, char team)
   pushwrite();
   dwrite(team, 800, 170, RED);
   dwrite("LVL:", 856, 140, RED);
+  printf("%i\n", player->lv);
   dwrite_int(player->lv, 900, 140, GREEN);
   dwrite("nourriture:", 800, 120, RED);
+   printf("%i\n", player->inventaire[0]);
   dwrite_int(player->inventaire[0], 900, 120, GREEN);
   dwrite("linemate:", 816, 105, RED);
+   printf("%i\n", player->inventaire[1]);
   dwrite_int(player->inventaire[1], 900, 105, GREEN);
   dwrite("deraumere:", 808, 90, RED);
+   printf("%i\n", player->inventaire[2]);
   dwrite_int(player->inventaire[2], 900, 90, GREEN);
   dwrite("sibur:", 840, 75, RED);
+   printf("%i\n", player->inventaire[3]);
   dwrite_int(player->inventaire[3], 900, 75, GREEN);
   dwrite("phiras:", 832, 60, RED);
+   printf("%i\n", player->inventaire[4]);
   dwrite_int(player->inventaire[4], 900, 60, GREEN);
   dwrite("thystame:", 816, 45, RED);
+   printf("%i\n", player->inventaire[5]);
   dwrite_int(player->inventaire[5], 900, 45, GREEN);
   popwrite();
 }
@@ -59,6 +66,19 @@ static void		show_info_val(t_player *player, char team)
 */
 static void		show_info(t_game *game)
 {
+  int		ref;
+  t_player *player;
+  char *team;
+
+  ref = game->map.h * game->map.w;
+  if (game->map.select_p > 0)
+  {
+    if ((player = find_player(game, game->map.select_p - ref)))
+    {
+       team = find_team_name(game, player->team);
+      show_info_val(player, find_team_name(game, team));
+    }
+  }
 }
 
 void		draw_interface(t_game *game)
