@@ -67,7 +67,7 @@ void		create_rep(t_packet *packet, t_player *player)
       cur_pl = (t_player *)list->data;
       cur_pl->level = cur_pl->level + 1;
       packet->response[packet->ac_rep].id_player = cur_pl->player_id;
-      packet->response[packet->ac_rep].mess = xmalloc(LEN_ELEV * 
+      packet->response[packet->ac_rep].mess = xmalloc((LEN_ELEV + 2)* 
 						      sizeof(char));
       msg[POS_ELEV_K] = cur_pl->level + '0';
       snprintf(packet->response[packet->ac_rep].mess, LEN_ELEV + 2, "%s\n", 

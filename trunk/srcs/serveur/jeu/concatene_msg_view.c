@@ -101,9 +101,9 @@ char		*explore_case(t_vision *cur_case, char *msg)
   if (cur_case->cas->cas.player != NULL)
     msg = add_player(cur_case, msg);
   msg = add_ressource(cur_case, msg);
-  msg = xrealloc(msg, strlen(msg) + 3);
+  msg = xrealloc(msg, xstrlen(msg) + 4);
   if (cur_case->next == NULL)
-    msg = strcat(msg, ",");
+    msg = strncat(msg, ",", 1);
   if (cur_case->next != NULL)
     {
       i = -1;
@@ -111,11 +111,11 @@ char		*explore_case(t_vision *cur_case, char *msg)
 	if (cur_case->next->cas->cas.ress[i] != 0)
 	  break;
       if (i == RESS_NUM)
-	msg = strcat(msg, ",");
+	strncat(msg, ",", 1);
       else
 	{
 	  msg = xrealloc(msg, xstrlen(msg) + 3);
-	  msg = strncat(msg, ", ", 2);
+	  strncat(msg, ", ", 2);
 	}
     }
   return (msg);
@@ -131,13 +131,8 @@ char		*concatene_msg(t_vision *list)
   msg = xmalloc(2 * sizeof(*msg));
   msg[0] = '{';
   msg[1] = '\0';
-
-  puts("Concatene_msg");
-
   while (cur != NULL)
     {
-      printf("Nous travaillons sur cur %i soit le : %i %i\n", cur->num, 
-	     cur->cas->x, cur->cas->y);
       msg = explore_case(cur, msg);
       cur = cur->next;
     }
