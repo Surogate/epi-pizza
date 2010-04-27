@@ -60,16 +60,12 @@ int		graph_inst(t_client *cli, t_svr_vector *vec)
 {
   char		*readed;
 
-  if (FD_ISSET(cli->sock, &(vec->slt->fd_read)))
+  if (cbuf_write(&cli->cbuf, cli->sock) == EXPIPE)
     {
-      	if (cbuf_write(&cli->cbuf, cli->sock) == EXPIPE)
-	  {
-	    printf("le client graphique %i a un souci\n", cli->sock);
-	    FD_CLR(cli->sock, &(vec->slt->fd_read));
-	    vec->graph->erase(vec->graph, vec->graph->gns_pos, free_client);
-	  }
-	else if ((readed = cbuf_read(&(cli->cbuf), check_read)))
-	  printf("readed : %s\n", readed);
+      printf("le client graphique %i a un souci\n", cli->sock);
+      FD_CLR(cli->sock, &(vec->slt->fd_read));
+      vec->graph->erase(vec->graph, vec->graph->gns_pos, free_client);
     }
-  return (EXIT_SUCCESS);
+  else if ((readed = cbuf_read(&(cli->cbuf), check_read)))
+    printf("readed : %s\n", readed);
 }
