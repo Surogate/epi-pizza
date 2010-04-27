@@ -13,13 +13,19 @@
 #include	<stdlib.h>
 #include	<stdio.h>
 #include	<time.h>
+#include	<sys/socket.h>
 
 #include	"my_list.h"
+#include	"s_cbuf.h"
+#include	"s_vector.h"
 #include	"serveur/define.h"
 #include	"serveur/t_struct.h"
 #include	"serveur/t_packet.h"
 #include	"serveur/t_game_stc.h"
+#include	"serveur/t_svr_stc.h"
 #include	"xfunc.h"
+#include	"serveur/communication.h"
+#include	"serveur/server_graph.h"
 
 int	find_egg(int *ref, t_eggs *egg)
 {
@@ -28,7 +34,7 @@ int	find_egg(int *ref, t_eggs *egg)
   return (EXIT_FAILURE);
 }
 
-void		do_hatch(t_game *game, int id_egg)
+void		do_hatch(t_game *game, int id_egg, t_svr_vector *vec)
 {
   t_player	*player;
   t_eggs	*egg;
@@ -36,6 +42,7 @@ void		do_hatch(t_game *game, int id_egg)
   int		i;
 
   egg = my_l_find(game->eggs, &id_egg, find_egg);
+  gh_broad(vec, eht(NULL, egg->id));
   srand(time(NULL));
   player = xmalloc(sizeof(*player));
   player->player_id = egg->id;
@@ -71,6 +78,6 @@ void		try_fork(t_packet *packet, t_player *player, t_game *game)
   new_egg->pos = player->pos;
   new_egg->father = player->player_id;
   new_egg->id = id;
-  packet->graph_rep = grp_fork(player);
+  packet->graph_rep = enw(NULL, player->player_id, new_egg);
   game->eggs = my_l_insert(game->eggs, new_egg);
 }
