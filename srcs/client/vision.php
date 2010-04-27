@@ -1,6 +1,5 @@
 <?php
 
-require_once 'priority.php';
 require_once 'str_func.php';
 
 function what_see($around, &$player)

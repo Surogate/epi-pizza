@@ -31,11 +31,9 @@ function		get_array()
 
 function		check_lowlife(&$player)
 {
-  echo "Dans check life, food = " . $player['food'] . "\n";
   if ($player['food'] < 1)
     exit ("Plus de vie, vous etes mort\n");
   get_food(&$player);
-  echo "Dans check life 2, food = " . $player['food'] . "\n";
   if ($player['food'] <= 30)/* || $player['seeking'] == 1)*/
     return (1);
   else
@@ -44,7 +42,6 @@ function		check_lowlife(&$player)
 
 function		exec_seeklife(&$player)
 {
-  echo "EXEC_SEEKLIFE\n";
   if ($player['food'] >= 30)
     return (4);
   search_food(&$player);
@@ -64,7 +61,6 @@ function		check_listen(&$player)
 
 function		exec_join(&$player)
 {
-  echo "EXEC_JOIN\n";
   $player['reach'] = $player['CFbroad'];
   get_there(&$player);
   return ('X');
@@ -72,9 +68,7 @@ function		exec_join(&$player)
 
 function		check_stones(&$player)
 {
-  echo "Dans check stones, food = " . $player['food'] . "\n";
   to_search(&$player);
-  echo "obj: " . $player['objet'] . "\n" . $player['reach'] . "\n";
   if ($player['objet'] != -1)
     return (5);
   else
@@ -83,11 +77,9 @@ function		check_stones(&$player)
 
 function		exec_seekstone(&$player)
 {
-  echo "EXEC_SEEKSTONE\n";
   get_there(&$player);
   if ($player['objet'] != NULL)
     fifo_in(&$player, "prend " . $player['objet'] . "\n");
-  echo $player['send'][0] . "\n";
   return ('X');
 }
 
@@ -105,7 +97,6 @@ function		check_engplayer(&$player)
 
 function		exec_call(&$player)
 {
-  echo "EXEC_CALL\n";
   routine(&$player);
   //ici on broadcast un message a la con style
   //"<!--seek " . $player['level'] . "-->"
@@ -121,9 +112,7 @@ function		exec_fork(&$player)
 
 function		exec_incant(&$player)
 {
-  echo "J'INCANTE\n";
   $player['reach'] = seek_empty(&$player);
-  echo "MAIIIIIS LOOOOOOOL -> " . $player['reach'] . "\n";
   if ($player['reach'] == 0)
     {
       drop_stones(&$player);
@@ -141,7 +130,6 @@ function		find_prio(&$player)
   do {
     $value = $pfunc[$value](&$player);
   } while ($value != 'X');
-  echo "\n*****END FIND PRIO*****\n";
   routine(&$player);
 }
 ?>
