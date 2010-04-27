@@ -19,10 +19,6 @@ function what_see($around, &$player)
 	  $y++;
 	}
       $y = 0;
-      if ((strcasecmp($tab[$i], "") == 0) || (strcasecmp($tab[$i], "\n") == 0))
-	echo "c'est videeeeeeeeee \n";
-      else
-	echo $tab[$i] . "\n \n";
       $i++;
     }
   define_prio(&$player, &$tab);

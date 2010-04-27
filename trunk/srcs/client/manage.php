@@ -46,6 +46,5 @@ function manage(&$player)
     which_ans(&$player);
   else
     aff_error("Initial talk with server failed \n", 0);
-  echo "manage\n";
 }
 ?>
