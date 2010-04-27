@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Thu Apr 15 15:39:16 2010 francois1 ancel
-** Last update Mon Apr 26 10:55:36 2010 pierre1 boutbel
+** Last update Tue Apr 27 17:46:30 2010 pierre1 boutbel
 */
 
 #include <unistd.h>
@@ -68,39 +68,44 @@ int		create_kick(t_svr_vector *vec, int player_id, int time)
   return (EXIT_FAILURE);
 }
 
-int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
+static int	test_kick(t_svr_vector *vec, t_game *game, t_packet *pak, 
+			  int id)
 {
-  int		pos;
   t_select	*slt_par;
-  int		id;
+  int		pos;
 
   slt_par = vec->slt;
+  pos = vec->client->find_pos(vec->client, &(pak->player_id),
+			      player_id_find);
+  if (pos >= 0)
+    {
+      printf("player %i ass kicked\n", id);
+      gh_broad(vec, grp_player_die(game, pak->player_id));
+      rm_player(game, id);
+      supp_ress(game, vec);
+      delete_kick(vec, id);
+      delete_eat(vec, id);
+      delete_plaction(vec, id);
+      FD_CLR(id, &(slt_par->fd_read));
+      vec->client->erase(vec->client, pos, free_client);
+      return (EXIT_SUCCESS);
+    }
+  fprintf(stderr, "player %i unknow\n", pak->player_id);
+}
+
+int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
+{
+  int		id;
+
   id = pak->player_id;
   if (id > 0)
-    {
-      pos = vec->client->find_pos(vec->client, &(pak->player_id), 
-				  player_id_find);
-      if (pos >= 0)
-	{
-	  printf("player %i ass kicked\n", id);
-	  gh_broad(vec, grp_player_die(game, pak->player_id));
-	  rm_player(game, id);
-	  supp_ress(game, vec);
-	  delete_kick(vec, id);
-	  delete_eat(vec, id);
-	  delete_plaction(vec, id);
-	  FD_CLR(id, &(slt_par->fd_read));
-	  vec->client->erase(vec->client, pos, free_client);
-	  return (EXIT_SUCCESS);
-	}
-      fprintf(stderr, "player %i unknow\n", pak->player_id);
-    }
+    test_kick(vec, game, pak, id);
   else
     {
       delete_kick(vec, id);
       delete_eat(vec, id);
       rm_player(game, id);
-      printf("l'oeuf a moisie\n");
+      printf("l'oeuf a moisi\n");
       return (EXIT_SUCCESS);
     }
   delete_kick(vec, pak->player_id);

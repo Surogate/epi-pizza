@@ -5,7 +5,7 @@
 ** Login   <ancel_a@epitech.net>
 **
 ** Started on  Sat Apr 10 11:35:02 2010 francois1 ancel
-** Last update Sat Apr 24 05:56:04 2010 Florian Chanioux
+** Last update Tue Apr 27 17:47:30 2010 pierre1 boutbel
 */
 
 #include <sys/select.h>
@@ -128,14 +128,7 @@ int			client_parse_instr(char *str, t_client *cli)
     }
   else
     ++(cli->used);
-  debug_instr(pak);
-  pak->type = 0;
-  pak->ac_rep = -1;
-  pak->response = NULL;
-  pak->end.tv_sec = 0;
-  pak->end.tv_usec = 0;
-  pak->graph_rep = NULL;
-  return (EXIT_SUCCESS);
+  return (fill_pak(pak, str, cli));
 }
 
 void			free_packet(t_client *cli)
