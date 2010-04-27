@@ -35,13 +35,6 @@
 #include "serveur/server_graph.h"
 #include "serveur/communication.h"
 
-static int	find_player(int *ref, t_player *data)
-{
-  if (*ref == data->player_id)
-    return (EXIT_SUCCESS);
-  return (EXIT_FAILURE);
-}
-
 void		new_gh(t_svr_vector *vec, t_client *cli, t_game *game)
 {
   char		*str;

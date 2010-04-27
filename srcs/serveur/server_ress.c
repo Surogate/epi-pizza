@@ -11,18 +11,12 @@
 #include	<unistd.h>
 #include	<stdlib.h>
 #include	<stdio.h>
-#include	<sys/time.h>
-#include	<sys/select.h>
-#include	<sys/types.h>
+#include	<time.h>
 
 #include	"serveur/define.h"
 #include	"xfunc.h"
 #include	"my_list.h"
-#include	"s_cbuf.h"
-#include	"s_vector.h"
-#include	"serveur/t_packet.h"
 #include	"serveur/t_struct.h"
-#include	"serveur/t_svr_stc.h"
 
 static t_map	*find_case(t_game *game)
 {
@@ -37,7 +31,7 @@ static t_map	*find_case(t_game *game)
   return (&(game->map[y][x]));
 }
 
-void		generate_ress(t_game *game, t_svr_vector *vec)
+void		generate_ress(t_game *game)
 {
   int		nb_ress_total;
   int		nb_ress[RESS_NUM] = {NB_RESS};
@@ -53,20 +47,18 @@ void		generate_ress(t_game *game, t_svr_vector *vec)
     {
       cur_case = find_case(game);
       cur_case->cas.ress[i]++;
-      gh_broad(vec, bct(NULL, cur_case));
       nb_ress[i]--;
       if (nb_ress[i] == 0)
 	i++;
     }
 }
 
-void		generate_food(t_game *game, t_svr_vector *vec)
+void		generate_food(t_game *game)
 {
   t_map		*cur_case;
   
   cur_case = find_case(game);
   cur_case->cas.ress[0]++;
-  gh_broad(vec, bct(NULL, cur_case));
 }
 
 static t_map	*find_supp_case(t_game *game, int *i)
@@ -90,7 +82,7 @@ static t_map	*find_supp_case(t_game *game, int *i)
   return (cur_case);
 }
 
-void		supp_ress(t_game *game, t_svr_vector *vec)
+void		supp_ress(t_game *game)
 {
   int		nb_ress_total;
   int		nb_ress[RESS_NUM] = {NB_RESS};
@@ -108,7 +100,6 @@ void		supp_ress(t_game *game, t_svr_vector *vec)
       if (i == RESS_NUM)
 	break;
       cur_case->cas.ress[i]--;
-      gh_broad(vec, bct(NULL, cur_case));
       nb_ress[i]--;
       if (nb_ress[i] == 0)
 	i++;

@@ -33,7 +33,6 @@
 #include "serveur/time_fct.h"
 #include "serveur/server_hatch.h"
 #include "serveur/server_graph.h"
-#include "serveur/communication.h"
 #include "serveur/server_plaction.h"
 
 int			find_act_fct(t_packet *in, int *player_id)
@@ -43,8 +42,7 @@ int			find_act_fct(t_packet *in, int *player_id)
   return (0);
 }
 
-int			create_plaction(t_svr_vector *vec, t_client *cli,
-				        t_game *game)
+int			create_plaction(t_svr_vector *vec, t_client *cli)
 {
   t_vector		*action;
   t_packet		*pak;
@@ -54,10 +52,6 @@ int			create_plaction(t_svr_vector *vec, t_client *cli,
     {
       action = vec->action;
       timeend(&(pak->end), &(vec->slt->delay), pak->duration);
-      if (pak->duration == 300)
-	gh_broad(vec, grp_do_incant(game, pak->player_id));
-      if (pak->duration == 42)
-	gh_broad(vec, grp_fork(game, pak->player_id));
       action->insert_sort(action, pak, sort_duration);
     }
   else
@@ -77,11 +71,13 @@ int			exec_plaction(t_svr_vector *vec, t_packet *pak,
   pak->type = 0;
   return_packet(pak);
   if (pak->graph_rep)
-    gh_broad(vec, pak->graph_rep);
+    {
+      gh_broad(vec, pak->graph_rep);
+    }
   free_packet(cli);
   delete_plaction(vec, pak->player_id);
   if (cli->used)
-    create_plaction(vec, cli, game);
+    create_plaction(vec, cli);
   return (EXIT_SUCCESS);
 }
 

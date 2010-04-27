@@ -23,22 +23,20 @@
 # include <sys/select.h>
 #endif
 
+#include "serveur/define.h"
 #include "xfunc.h"
 #include "my_list.h"
 #include "s_cbuf.h"
 #include "cbuf_define.h"
 #include "cbuf_io.h"
 #include "s_vector.h"
-#include "serveur/define.h"
 #include "serveur/t_struct.h"
 #include "serveur/t_packet.h"
 #include "serveur/t_svr_stc.h"
 #include "serveur/server_fct.h"
 #include "serveur/server_ini.h"
-#include "serveur/server_graph.h"
 #include "serveur/client_fct.h"
 #include "serveur/server_action.h"
-#include "serveur/communication.h"
 
 static int		slt_cont;
 
@@ -82,10 +80,7 @@ int		select_loop(int svr_sock, t_select *slt_par, t_game *game)
 	  fetch_instr(&vec, slt_par, game);
 	}
       end_loop(&vec, slt_par, game, svr_sock);
-      if (game->state >= 0)
-	slt_cont = 0;
     }
-  gh_broad(&vec, seg(NULL, game->state));
   close_client(&vec, slt_par);
   return (EXIT_SUCCESS);
 }
