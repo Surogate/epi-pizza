@@ -68,8 +68,7 @@ int		create_kick(t_svr_vector *vec, int player_id, int time)
   return (EXIT_FAILURE);
 }
 
-static int	test_kick(t_svr_vector *vec, t_game *game, t_packet *pak, 
-			  int id)
+static int	test_kick(t_svr_vector *vec, t_game *game, t_packet *pak)
 {
   t_client	*cli;
 
@@ -101,7 +100,7 @@ int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
 
   id = pak->player_id;
   if (id > 0)
-    test_kick(vec, game, pak, id);
+    test_kick(vec, game, pak);
   else
     {
       gh_broad(vec, edi(NULL, id));
