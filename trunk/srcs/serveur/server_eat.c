@@ -50,6 +50,7 @@ int		create_eat(t_svr_vector *vec, int player_id)
   pak = malloc(sizeof(*pak));
   if (pak)
     {
+      printf("create eat\n");
       pak->player_id = player_id;
       pak->type = 2;
       pak->duration = 126;
@@ -76,7 +77,7 @@ int		server_eat(t_svr_vector *vec, t_packet *pak, t_game *game)
       server_kick(vec, pak, game);
       return (EXIT_FAILURE);
     }
-  generate_food(game);
+  /* generate_food(game); */
   printf("player %i eat\n", id);
   delete_eat(vec, id);
   create_eat(vec, id);
