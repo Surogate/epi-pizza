@@ -109,7 +109,11 @@ void		player_invent(t_game *game, char **av, int ac)
 		  if (IsNumeric(av[4 +n_obj]))
 		    player->inventaire[n_obj] = atoi(av[4 + n_obj]);
 		  else
-		    printf("\033[31mNOT A NUMBER![033[00m\n");
+		    {
+		      printf("\033[31m%s IS NOT A NUMBER!\033[00m\n",
+			     av[4 + n_obj]);
+		      break;
+		    }
 		  n_obj++;
 		}
 	    }
