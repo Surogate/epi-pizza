@@ -47,40 +47,45 @@ void		tempo(t_game *game)
 	      exit(EXIT_SUCCESS);
 	    }
 	}
-       /* if (game->map.h == -42) */
-/* 	 write(game->serv.socket, "msz\n", 4); */
+       if (game->map.w > 30)
+	 game->video.fog = 0;
+       else
+	 game->video.fog = 1;
     }
+}
+
+void		launch(t_game *game, char **av, int ac)
+{
+  connect_to_serv(game, av);
+  glutInit(&ac, av);
+  init_game(game);
+  init_video(game);
+  printAttributes();
+  initGL(game);
+  init_texture(game);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  camera(game);
+  draw_picture(game, MOD_BEGIN);
+  glFlush();
+  SDL_GL_SwapBuffers();
+  game->map.h = -42;
+  game->serv.cbuf = cbuf_new();
+  tempo(game);
+  printf("launching viedo mode...\n");
+  init_fog(game->video.fog, GL_LINEAR);
+  init_3dsmodel(game);
+  init_CallList(game);
+  mainloop(game);
+  puts("end of program");
+  SDL_Quit();
 }
 
 int		main(int ac, char *av[])
 {
   t_game	game;
 
-  av = av;
   if (ac > 2)
-    {
-      connect_to_serv(&game, av);
-      glutInit(&ac, av);
-      init_game(&game);
-      init_video(&game);
-      printAttributes();
-      initGL(&game);
-      init_texture(&game);
-      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-      camera(&game);
-      draw_picture(&game, MOD_BEGIN);
-      glFlush();
-      SDL_GL_SwapBuffers(); 
-      game.map.h = -42;
-      game.serv.cbuf = cbuf_new();
-      tempo(&game);
-      printf("FIN  TEMPPO\n");
-      init_3dsmodel(&game);
-      init_CallList(&game);
-      mainloop(&game);
-      puts("end of program");
-      SDL_Quit();
-    }
+    launch(&game, av, ac);
   else
     printf("Usage : ./zappy addr port\n");
   return (EXIT_SUCCESS);

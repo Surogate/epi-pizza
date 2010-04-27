@@ -85,7 +85,6 @@ void		initGL(t_game *game)
   init_doublebuffer();
   init_aliasing(game->video.aliasing);
   init_light(game->video.light);
-  init_fog(game->video.fog, GL_LINEAR);
   init_camera(game);
   reshape();
   glEnable(GL_DEPTH_TEST);
