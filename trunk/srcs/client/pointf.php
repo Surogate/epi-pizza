@@ -13,13 +13,11 @@ function go_point2(&$player)
     {
       if ($player['last_receive'][0] == "elevation en cours\n")
 	{
-	  echo "incantation: " . $player['last_receive'][0] . "\n";
 	  recv_out(&$player);
 	  return (0);
 	}
       else
 	{
-	  echo "incantation: " . $player['last_receive'][0] . "\n";
 	  recv_out(&$player);
 	  out_did(&$player);
 	  $player['level'] += 1;
@@ -28,20 +26,12 @@ function go_point2(&$player)
 	  
 	}
     }
-  if ($player['did'][0] == "fork\n")
-    echo "rep fork: " . $player['last_receive'][0] . "\n";
-  if ($player['last_receive'][0] == "ko\n")
-    echo "to reach: " . $player['reach'] . "\nobjet: " . $player['objet'] . "\nview: " . $player['view'];
   recv_out(&$player);
   out_did(&$player);
  }
 
 function go_point(&$player)
 {
-  echo "player did: " . $player['did'][0] . "\n";
-  echo "player did: " . $player['did'][1] . "\n";
-  echo "player receive: " . $player['last_receive'][0] . "\n";
-  echo "player receive: " . $player['last_receive'][1] . "\n";
   if (strcasecmp($player['did'][0], "voir\n") == 0)
     {
       $player['view'] = $player['last_receive'][0];
