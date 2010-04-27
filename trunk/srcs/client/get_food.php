@@ -8,14 +8,8 @@ function		get_food(&$player)
   $inv = explode(',', $inv);
   
   $food = explode(' ', $inv[0]);
-	if (intval($food[1]) != 0)
-		{
-			echo "MOYEUSUIKON\n";
-			echo "VALEUR DE INTVAL(FOOD) -> " . intval($food[1]);
-			$player['food'] = intval($food[1]);
-		}
-	else
-		echo "TU SUXXX TU SUXXX ET TU RESUXXXX\n";
+  if (intval($food[1]) != 0)
+    $player['food'] = intval($food[1]);
 }
 
 ?>

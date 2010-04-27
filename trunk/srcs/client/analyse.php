@@ -29,7 +29,6 @@ function	seek_needs($lvl, $tab_inv, &$player)
     $need = 'thystame';
   else
     $need = -1;
-
   echo "VALEUR DE NEED -----> " . $need . "\n";
   return $need;
 }
@@ -40,7 +39,6 @@ function	prepare_inv($inv_base)
   $inv = str_replace('{', '', $inv);
   $inv = str_replace('}', '', $inv);
   $inv = explode(",", $inv);
-
   return ($inv);
 }
 
@@ -63,10 +61,8 @@ function	to_search(&$player)
   $view = str_replace('}', '', $view);
   $view = explode(",", $view);
   $i = 0;
-  echo "REVALEUR DE VIEW ===||++++++++---> \n" . $player['view'] . "\n";
   while (preg_match("/" . $need . "/i", $view[$i]) == 0 && $view[$i] != NULL)
     $i++;
-  echo "VALEUR DE I : " . $i . "\n";
   if ((preg_match("/" . $need . "/i", $view[$i]) == 1) || ($need == -1))
     {
       $player['reach'] = $i;
