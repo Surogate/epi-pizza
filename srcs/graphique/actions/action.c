@@ -50,19 +50,48 @@ void		player_broadcast(t_game *game, char **av)
   printf("\n");
 }
 
-void		incant(t_game *game, char **av)
+void		incant(t_game *game, char **av, int ac)
 {
-  game = game;
-  av = av;
+  t_player	*player;
+  int		i;
+
+  if (ac > 3)
+    {
+      i = 0;
+      player = game->player;
+      while (player)
+	{
+	  if (player->id == atoi(av[4 + i]))
+	    {
+	      player->incant = 1;
+	      i++;
+	    }
+	  player = player->next_pg;
+	}
+    }
 }
 
-void		end_incant(t_game *game, char **av)
+void		end_incant(t_game *game, char **av, int ac)
 {
-  if (av[3][0] == '1')
-    printf("L'incantation case %s %s a reussie\n", av[1], av[2]);
-  else
-    printf("L'incantation case %s %s a echoue\n", av[1], av[2]);
-  game = game;
+  t_player	*player;
+
+  if (ac > 2)
+    if (IsNumeric(av[1]) && IsNumeric(av[2]))
+      if (atoi(av[1]) < game->map.w && atoi(av[2]) < game->map.h)
+	{
+	  player = game->player;
+	  while (player)
+	    {
+	      if (player->pos.x == atoi(av[1]) &&
+		  player->pos.y == atoi(av[2]))
+		player->incant = 0;
+	      player = player->next_pg;
+	    }
+	  if (av[3][0] == '1')
+	    printf("L'incantation case %s %s a reussie\n", av[1], av[2]);
+	  else
+	    printf("L'incantation case %s %s a echoue\n", av[1], av[2]);
+	}
 }
 
 void		player_fork(t_game *game, char **av)

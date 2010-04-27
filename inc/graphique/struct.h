@@ -56,6 +56,7 @@ typedef struct	s_play
   int		id;
   GLuint	name;
   int		lv;
+  int		incant;
   int		sens;
   t_pos		pos;
   struct s_play	*next_pg;
