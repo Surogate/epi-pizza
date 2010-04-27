@@ -105,7 +105,6 @@ function		exec_call(&$player)
 
 function		exec_fork(&$player)
 {
-  echo "EXEC_FORK\n";
   fifo_in(&$player, "fork\n");
   return ('X');
 }
