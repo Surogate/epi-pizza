@@ -114,16 +114,7 @@ int		fetch_instr(t_svr_vector *vec, t_select *slt_par,
   graph = vec->graph;
   while ((tmp = (t_client *)vec->graph->getnxts(vec->graph)) != NULL)
     if (FD_ISSET(tmp->sock, &(slt_par->fd_read)))
-      {
-      	if (cbuf_write(&tmp->cbuf, tmp->sock) == EXPIPE)
-	  {
-	    printf("le client graphique %i a un souci\n", tmp->sock);
-	    FD_CLR(tmp->sock, &(slt_par->fd_read));
-	    vec->graph->erase(vec->graph, vec->graph->gns_pos, free_client);
-	  }
-	else if ((readed = cbuf_read(&(tmp->cbuf), check_read)))
-	  printf("readed : %s\n", readed);
-      }
+      graph_inst(tmp, vec);
   while ((tmp = (t_client *)vec->client->getnxts(vec->client)) != NULL)
     if (FD_ISSET(tmp->sock, &(slt_par->fd_read)))
       {
