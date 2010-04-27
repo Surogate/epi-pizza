@@ -8,25 +8,18 @@
 ** Last update Sat Apr 24 05:49:10 2010 Florian Chanioux
 */
 
-#include	<sys/time.h>
-#include	<unistd.h>
-#include	<stdlib.h>
-#include	<stdio.h>
-#include	<time.h>
+#include <sys/time.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
 
-#include	"serveur/define.h"
-#include	"xfunc.h"
-#include	"s_cbuf.h"
-#include	"cbuf_define.h"
-#include	"cbuf_io.h"
-#include	"s_vector.h"
-#include	"my_list.h"
-#include	"serveur/t_packet.h"
-#include	"serveur/t_svr_stc.h"
-#include	"serveur/t_struct.h"
-#include	"serveur/t_packet.h"
-#include	"serveur/server_ress.h"
-#include	"serveur/player_debug.h"
+#include "serveur/define.h"
+#include "xfunc.h"
+#include "my_list.h"
+#include "serveur/t_struct.h"
+#include "serveur/t_packet.h"
+#include "serveur/player_debug.h"
 
 t_player	*create_player(int player_id, int team)
 {
@@ -45,8 +38,7 @@ t_player	*create_player(int player_id, int team)
   return (player);
 }
 
-t_player	*init_player(t_game *game, int player_id, int team, 
-			     t_svr_vector *vec)
+t_player	*init_player(t_game *game, int player_id, int team)
 {
   int		x;
   int		y;
@@ -61,7 +53,6 @@ t_player	*init_player(t_game *game, int player_id, int team,
   player->pos = cas;
   cas->cas.player = my_l_insert(cas->cas.player, player);
   game->player = my_l_insert(game->player, player);
-  generate_ress(game, vec);
   return (player);
 }
 
@@ -102,7 +93,6 @@ t_player	*rm_player(t_game *game, int id_player)
       player->pos->cas.player = my_l_rm(player->pos->cas.player, player,
 					find_player);
       game->player = my_l_rm(game->player, player, find_player);
-      supp_ress(game);
     }
   return (player);
 }
