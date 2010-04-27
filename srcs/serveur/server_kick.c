@@ -34,6 +34,7 @@
 #include "serveur/server_debug.h"
 #include "serveur/time_fct.h"
 #include "serveur/server_insert_player.h"
+#include "serveur/server_ress.h"
 
 int		find_kick_fct(t_packet *in, int *player_id)
 {
@@ -80,8 +81,9 @@ int		server_kick(t_svr_vector *vec, t_packet *pak, t_game *game)
       if (pos >= 0)
 	{
 	  printf("player %i ass kicked\n", id);
+	  gh_broad(vec, grp_player_die(game, pak->player_id));
 	  rm_player(game, id);
-	  /* supp_ress(game, vec); */
+	  supp_ress(game, vec);
 	  delete_kick(vec, id);
 	  delete_eat(vec, id);
 	  delete_plaction(vec, id);
