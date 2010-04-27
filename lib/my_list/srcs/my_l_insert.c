@@ -21,7 +21,7 @@ static t_list		*create_elem(void *element)
 
   if ((res = malloc(sizeof(*res))) == NULL)
   {
-    fprintf(stderr, strerror(errno));
+    fprintf(stderr, "%s\n",strerror(errno));
     exit(EXIT_FAILURE);
   }
   res->data = element;
