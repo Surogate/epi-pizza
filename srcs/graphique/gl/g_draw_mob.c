@@ -44,9 +44,7 @@ static void	draw_trantorien(t_player *player, int ref, GLenum mode)
   glTranslated((CASE_H / 2), (CASE_W / 2) , 0);
   glPushMatrix();
   glTranslated(0, 0, .01);
-
   glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, GL_MODULATE);
-
   glCallList(TEAM);
   glPopMatrix();
   glRotated((player->sens + 3) * 90, 0, 0, 1);
@@ -68,10 +66,9 @@ void		draw_mob(t_game *game, GLenum mode)
   temp = game->player;
   while (temp)
     {
-      if (game->player->incant == 1)
+      if (temp->incant == 1)
         {
-          puts("coucou");
-          glTranslated(game->player->pos.x * CASE_H, game->player->pos.y * CASE_W, 0);
+          glTranslated(temp->pos.x * CASE_H, temp->pos.y * CASE_W, 0);
           draw_trantorien_epileptique(0);
         }
       else

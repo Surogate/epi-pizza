@@ -62,7 +62,7 @@ void		make_calllistes_trantorien(t_game *game)
     printf("loading totoro: %i\n", i);
     glNewList(TOTORO + i, GL_COMPILE);
     glEnable(GL_TEXTURE_2D);
-    glEnable(GL_NORMALIZE);
+    glEnable(GL_NORMALIZE); 
     draw_mesh(game->model.trantorien[i]);
     glDisable(GL_NORMALIZE);
     glDisable(GL_TEXTURE_2D);
