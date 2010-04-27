@@ -1,6 +1,13 @@
 /*
-**  Header
+** hatch.c for  in /home/Ayden/Epitech/Projet/Zappy
+** 
+** Made by Florian Chanioux
+** Login   <chanio_f@epitech.net>
+** 
+** Started on  Mon Apr 12 19:29:06 2010 Florian Chanioux
+** Last update Sat Apr 24 05:49:08 2010 Florian Chanioux
 */
+
 
 #ifndef		__GAME_CMD_H__
 # define	__GAME_CMD_H__
@@ -19,7 +26,8 @@ void		try_expulse(t_packet *packet, t_player *player);
 int		find_egg(int *ref, t_eggs *egg);
 void		do_hatch(t_game *game, int id_egg);
 void		do_fork(t_game *game, t_player *player);
-void		try_fork(t_packet *packet, t_player *player);
+void		try_fork(t_packet *packet, t_player *player, t_game *game);
+
 
 /*incant.h*/
 void		try_incant(t_packet *packet, t_player *player);
