@@ -64,20 +64,19 @@ void		incant(t_game *game, char **av, int ac)
     }
   printf("\n");
   if (ac > 3)
+  {
+    i = 0;
+    player = game->player;
+    while (player && av[4 + i])
     {
-      i = 0;
-      player = game->player;
-      while (player && av[4 + i])
-	{
-	  if (player->id == atoi(av[4 + i]))
-	    {
-	      player->incant = 1;
-	      player = game->player;
-	      i++;
-	    }
-	  player = player->next_pg;
-	}
+      if (player->id == atoi(av[4 + i]))
+      {
+        player->incant = 1;
+        i++;
+      }
+      player = player->next_pg;
     }
+  }
 }
 
 void		end_incant(t_game *game, char **av, int ac)
