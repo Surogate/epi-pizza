@@ -8,15 +8,15 @@ function		drop_stones(&$player)
   global		$lvl;
 
   $rocks = fill_rocks();
-  $i = 1;
-  while ($lvl[$i][$player['level'] + 1] != NULL)
+  $i = 0;
+  while ($i < 6)
     {
       $j = 0;
-      while ($j < $lvl[$rocks[$i]][$player['level']])
-	{
-	  fifo_in(&$player, "pose" . $rocks[$i] . "\n");
-	  $j++;
-	}
+      while ($j < $lvl[$player['level'] + 1][$rocks[$i]])
+		{
+			fifo_in(&$player, "pose " . $rocks[$i] . "\n");
+			$j++;
+		}
       $i++;
     }
 }

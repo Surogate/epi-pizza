@@ -18,7 +18,8 @@ function go_point2(&$player)
 		}
 	recv_out(&$player);
 	out_did(&$player);
-	find_prio(&$player);
+	/*find_prio(&$player);*/
+	echo "2\n";
 }
 
 function go_point(&$player)
@@ -26,6 +27,11 @@ function go_point(&$player)
   echo "**************************************************************************\n";
   echo "GO POINT : did[0]|" . $player['did'][0]. "|\n";
   echo "**************************************************************************\n";
+  
+  echo "player did: " . $player['did'][0] . "\n";
+  echo "player did: " . $player['did'][1] . "\n";
+  echo "player receive: " . $player['last_receive'][0] . "\n";
+  echo "player receive: " . $player['last_receive'][1] . "\n";
   if (strcasecmp($player['did'][0], "voir\n") == 0)
     {
       $player['view'] = $player['last_receive'][0];
@@ -44,8 +50,8 @@ function go_point(&$player)
       echo "GO CALL FUNC\n";
       echo "**************************************************************************\n";
       find_prio(&$player);
+	  echo "go point: " . $player['send'][0] . "\n";
     }
-  echo "Jme casse\n";
 }
 
 ?>

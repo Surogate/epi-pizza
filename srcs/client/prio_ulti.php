@@ -11,7 +11,7 @@ require_once 'drop_stones.php';
 require_once 'test_matches.php';
 
 
-/*function		get_array()
+function		get_array()
 {
   $pfunc = array(
 		 'check_lowlife',
@@ -31,24 +31,26 @@ require_once 'test_matches.php';
 
 function		check_lowlife(&$player)
 {
-  get_food(&$player);
-  echo "Mais lulz VOILA LA VALEUR DE FOOD ----> " . $player['food'] . "\n";
-  sleep(1);
-  if ($player['food'] < 10 || $player['seeking'] == 1)
-    return (1);
-  else
-    return (2);
+	echo "Dans check life, food = " . $player['food'] . "\n";
+	if ($player['food'] < 2)
+		while (1);
+	get_food(&$player);
+	if ($player['food'] <= 20)/* || $player['seeking'] == 1)*/
+		return (1);
+	else
+		return (2);
 }
 
 function		exec_seeklife(&$player)
 {
   echo "EXEC_SEEKLIFE\n";
-  $player['seeking'] = 1;
+  /*$player['seeking'] = 1;*/
   if ($player['food'] >= 20)
-    $player['seeking'] = 0;
+    return (4);/*$player['seeking'] = 0;*/
   search_food(&$player);
   get_there(&$player);
-  fifo_in(&$player, "prend nourriture\n");  
+  if ($player['objet'] != NULL)
+	fifo_in(&$player, "prend nourriture\n");
   return ('X');
 }
 
@@ -70,11 +72,20 @@ function		exec_join(&$player)
 
 function		check_stones(&$player)
 {
+echo "Dans check stones, food = " . $player['food'] . "\n";
   to_search(&$player);
+  echo "obj: " . $player['objet'] . "\n" . $player['reach'] . "\n";
+  /*
   if ($player['objet'] != NULL)
-    return (5);
+  * */
+	if ($player['objet'] != -1)
+		return (5);
+	else
+		return (6);
+  /*
   else
     return (6);
+   */ 
 }
 
 function		exec_seekstone(&$player)
@@ -82,7 +93,8 @@ function		exec_seekstone(&$player)
   echo "EXEC_SEEKSTONE\n";
   get_there(&$player);
   if ($player['objet'] != NULL)
-    fifo_in(&$player, "prend " . $player['objet'] . "\n");
+	fifo_in(&$player, "prend " . $player['objet'] . "\n");
+  echo $player['send'][0] . "\n";
   return ('X');
 }
 
@@ -91,11 +103,9 @@ function		check_engplayer(&$player)
   if ($player['connected'] == 0)
     {
       if (check_onme(&$player) == 1)
-	{
-	  return (9);
-	}
+		return (9);
       else
-	return (7);
+		return (7);
     }
   return (8);
 }
@@ -127,27 +137,19 @@ function		exec_incant(&$player)
       fifo_in(&$player, "incantation\n");
     }
   else
-    get_there(&$player); 
+	get_there(&$player); 
   return ('X');
-}*/
+}
 
 function		find_prio(&$player)
 {
-   if ($player['tmp'] % 2 == 0)
-    {
-      $player['tmp'] += 1;
-      routine(&$player);
-    }
-  else
-    {
-      $player['tmp'] += 1;
-      $pfunc = get_array();
-      $value = 0;
-      do {
+    $pfunc = get_array();
+    $value = 0;
+    do {
 	$value = $pfunc[$value](&$player);
-      } while ($value != 'X');
-      echo "\n*****END FIND PRIO*****\n";
-    }
+       } while ($value != 'X');
+    echo "\n*****END FIND PRIO*****\n";
+    routine(&$player);
       /*  fifo_in(&$player, "prendre nourriture\n");
   fifo_in(&$player, "prendre linemate\n");
   fifo_in(&$player, "avance\n");
