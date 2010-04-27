@@ -34,7 +34,7 @@ void		draw_treasure(t_case cas, int num, int qte)
   qte %= 10;
   glPushMatrix();
   glTranslated(cas.obj[num][0], cas.obj[num][1], 0.5);
-  glScalef(qte, qte, qte);
+  glScalef(qte / 5, qte / 5, qte / 5);
   glCallList(RESS + num);
   glPopMatrix();
 }
