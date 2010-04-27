@@ -106,6 +106,7 @@ static t_player	*new_player(char **av)
       player->pos.x = atoi(av[2]);
       player->pos.y = atoi(av[3]);
       player->sens = atoi(av[4]);
+      player->incant = 0;
       player->lv = atoi(av[5]);
       player->next_pg = 0;
     }
