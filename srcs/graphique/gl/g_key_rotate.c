@@ -32,14 +32,14 @@
 
 int		key_left(t_game *game)
 {
-  game->map.rot -= 5;
+  game->map.rot += 5;
   game->map.rot %= 360;
   return (1);
 }
 
 int		key_right(t_game *game)
 {
-  game->map.rot += 5;
+  game->map.rot -= 5;
   game->map.rot %= 360;
   return (1);
 }

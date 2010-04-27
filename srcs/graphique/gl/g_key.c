@@ -72,8 +72,6 @@ int		key_func(t_game *game)
   keystate = SDL_GetKeyState(NULL);
   i = 0;
   retour = 1;
-  if (game->info.crazy == MOD_BEGIN)
-    game->info.crazy = MOD_OK;
   while (key_list[i].keycode)
     {
       if (keystate[key_list[i].keycode])

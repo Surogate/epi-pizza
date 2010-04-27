@@ -56,6 +56,8 @@ void		draw_eggs(t_game *game, GLenum mode)
   temp = game->egg;
   while (temp)
     {
+      printf("Nous avons l'oeuf %i sur %i %i\n", temp->id, temp->pos.x, 
+	     temp->pos.y);
       draw_eggs_onmap(temp, ref, mode);
       /*clic_mob(game, temp, ref);*/
       temp = temp->next;
