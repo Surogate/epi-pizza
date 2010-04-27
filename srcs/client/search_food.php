@@ -14,7 +14,6 @@ function	search_food(&$player)
     $i++;
   if (preg_match("/nourriture/i", $view[$i]) == 1)
     {
-      echo "VALEUR DE I -> " . $i . "\n";
       $player['reach'] = $i;
       $player['objet'] = "nourriture\n";
     }
