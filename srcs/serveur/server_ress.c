@@ -54,6 +54,7 @@ void		generate_ress(t_game *game, t_svr_vector *vec)
     {
       cur_case = find_case(game);
       cur_case->cas.ress[i]++;
+      gh_broad(vec, bct(NULL, cur_case));
       nb_ress[i]--;
       if (nb_ress[i] == 0)
 	i++;
@@ -108,6 +109,7 @@ void		supp_ress(t_game *game, t_svr_vector *vec)
       if (i == RESS_NUM)
 	break;
       cur_case->cas.ress[i]--;
+      gh_broad(vec, bct(NULL, cur_case));
       nb_ress[i]--;
       if (nb_ress[i] == 0)
 	i++;

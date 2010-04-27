@@ -53,7 +53,6 @@ t_player	*init_player(t_game *game, int player_id, int team)
   player->pos = cas;
   cas->cas.player = my_l_insert(cas->cas.player, player);
   game->player = my_l_insert(game->player, player);
-  generate_ress(game);
   return (player);
 }
 
@@ -94,7 +93,6 @@ t_player	*rm_player(t_game *game, int id_player)
       player->pos->cas.player = my_l_rm(player->pos->cas.player, player,
 					find_player);
       game->player = my_l_rm(game->player, player, find_player);
-      supp_ress(game);
     }
   return (player);
 }
