@@ -1,0 +1,10 @@
+--v on	      =>    verbose 
+--mode pve    =>    pour ia tout seul
+--fork off    =>    pas de fork
+-h	      =>    host
+-p            =>    port
+-n            =>    nombre de joueur initial
+-t	      =>    nom de l'equipe
+
+grep : ERROR, CONNECT, ACTION, SUICIDE,
+     MANAGE, TIMER, NOTICE, MODE, LEVEL
