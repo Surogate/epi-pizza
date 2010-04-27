@@ -45,17 +45,17 @@ void		clic_render(int type)
 
 void		around(int h, int w, GLuint texture)
 {
-  side(w, texture);
+  side(h, texture);
   glPushMatrix();
-  glTranslated(0, h * CASE_H, 0);
-  side(w, texture);
+  glTranslated(0, w * CASE_W, 0);
+  side(h, texture);
   glPopMatrix();
   glPushMatrix();
   glRotated(90, 0, 0, 1);
-  side(h, texture);
+  side(w, texture);
   glPushMatrix();
-  glTranslated(0, -w * CASE_W, 0);
-  side(h, texture);
+  glTranslated(0, -h * CASE_H, 0);
+  side(w, texture);
   glPopMatrix();
   glPopMatrix();
 }
@@ -68,11 +68,11 @@ void		floor_render(int h, int w, GLuint texture)
   glTexCoord2f(0, 0);
   glVertex2d(0, 0);
   glTexCoord2f(0,h);
-  glVertex2d(0, h * CASE_H);
-  glTexCoord2f(w, h);
-  glVertex2d(w * CASE_W, h * CASE_H);
-  glTexCoord2f(w, 0);
-  glVertex2d(w * CASE_W, 0);
+  glVertex2d(0, w * CASE_W);
+  glTexCoord2f(h, w);
+  glVertex2d(h * CASE_H, w * CASE_W);
+  glTexCoord2f(h, 0);
+  glVertex2d(h * CASE_H, 0);
   glEnd();
 }
 
